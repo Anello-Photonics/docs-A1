@@ -67,7 +67,7 @@ The GNSS antennae is shown in the blue connection, and the Primary Antennae is m
 ---------------------------------
 
 The Anello Python Program runs on modern PC, MAC, and Ubuntu based computing systems.  A full introduction
-to the Anello Python Program is provided in Section 2 of this Manual.  The Anello Python Program is 
+to the Anello Python Program is provided in other sections of this Manual.  The Anello Python Program is 
 open-source licensed (BSD license) and directly downloaded from Anello’s public GitHub repository.
 
 Before getting started, first ensure that your computing platform has Python installed.  Python version 3 
@@ -94,8 +94,8 @@ Confirm that Python is installed and the version is at least 3.x
 2.2 Install the Software
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In order to most easily upgrade the Anello Python Program, it is recommended to directly cloning from the 
-the GitHub repo.  
+In order to most easily upgrade the Anello Python Program, directly cloning from the 
+the GitHub repository is recommended.  
 
 .. code-block:: python
 
@@ -113,9 +113,9 @@ the GitHub repo.
 
 2.3 Run the Tool 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Ensure the Vehicle Power Cable is connected and the Green power light is illuminated.  To get started and 
+Ensure the Power Cable is connected and the Green power light is illuminated.  To get started and 
 perform initial unit configuration, use the USB-C interface.  Connect the USB-C cable between your computer 
-and the Anello A-1.  From the board_tools directory run user_program.py
+and the Anello A-1.  From the board_tools directory, run user_program.py
 
 .. code-block:: python
 
@@ -137,7 +137,7 @@ Connection option.
 
 2.4 Connect to the A-1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Select the Connect option form the selection menu and press return. Select COM and Auto, for the unit to 
+Select the Connect option form the selection menu and press return. Select COM and then Auto. The unit will
 be auto detected via Serial over USB-C.  
 
 The Anello A-1 uses two logical ports: 
@@ -187,7 +187,7 @@ the Internet.
 
 2.6 Adjust unit configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In this step, the A-1 configuration is adjusted.  In this example, we configure the the A-1 Ethernet 
+In this step, the A-1 configuration is adjusted.  In this example, we configure the A-1 Ethernet 
 interface which is recommended for in Vehicle collection and testing. Configuring the Ethernet interface consists
 of four steps.
 
@@ -200,19 +200,19 @@ of four steps.
    :scale: 50 %
    :align: center
 
-   Step 1: Anello Configuration with no A-1 IP Assignments
+   Anello Configuration with no A-1 IP Assignments
 
 .. figure:: media/conf_dhcp_complete.png
    :scale: 50 %
    :align: center
 
-   Step 1: Anello Configuration A-1 IP Assignment Complete (DHCP or Static Assignement)
+   Step 1: Configure A-1 IP (DHCP or Static Assignement)
 
 .. figure:: media/conf_setremoteport.png
    :scale: 50 %
    :align: center
 
-   Step 2 and 3: Remote IP and Port Assignement Complete
+   Step 2 and 3: Set Remote IP and Ports
 
 
 .. figure:: media/connect_udp.png
@@ -224,10 +224,10 @@ of four steps.
 ** Congratulations!!! **
 You have completed the initial setup and verification of the Anello A-1.  Prior to 
 installing the A-1 to the vehicle, you may want to confirm additional set up items such as 
-Mounting/Orientation, RTK, etc.  
+Mounting/Orientation, NTRIP, etc.  
 
 .. note::
-    You may need to adjust firewall settings on your computer to ensure that the ports you have selected are open 
+    You may need to adjust firewall settings on your computer to ensure that the UDP ports you have selected are open 
     for traffic.  Windows will automatically prompt a warning as shown in image below.
 
 
@@ -243,7 +243,7 @@ Mounting/Orientation, RTK, etc.
 
 The A-1 is easy to install on a land vehicle.  The mounting location of the A-1 is flexible and can be configured for various 
 installation positions and orientations.  For getting starting quickly and minimizing the configuration steps, 
-the getting-started recommendation is to mount the unit nearer the vehicle’s rear axle and along the vehicle 
+the recommendation is to mount the unit nearer the vehicle’s rear axle and along the vehicle 
 centerline with the X-Axis facing forward along the direction of travel.  This mounting location will ensure 
 good results with minimal configuration.
 
@@ -259,11 +259,11 @@ Python Program.
 
 See Advanced configuration and Anello Python Program detailed descriptions.
 
-The GNSS antennae should be placed on the roof the vehicle. The primary GNSS antenna is labelled GPS1 on 
+The GNSS antennae should be placed on the roof of the vehicle. The primary GNSS antenna is labelled GPS1 on 
 the back of the A-1.  GPS1 must be connected for proper system operation.  GPS2 is optional. 
 
-If the primary antennae is placed directly above the IMU, this results in the simplest lever-arm configuration
-and in most cases can be skipped over. **Avoid** placing the antennae on significantly curved surfaces as 
+If the primary antennae is placed directly above the IMU, this results in the simplest lever-arm configuration. 
+**Avoid** placing the antennae on significantly curved surfaces as 
 this will reduce the available sky view of the Antennae.  **Do not place the antennae inside the vehicle or 
 underneath other things (especially metal) as this will significantly reduce the GNSS signal quality.**
 
@@ -274,7 +274,7 @@ GNSS antennae.
 
 Finally, the EVK ships with an in-vehicle power adaptor.  If the in-vehicle power adaptor is used, please ensure the plug is 
 securely and fully inserted.   Alternatively, cut-off in-vehicle power adaptor and connect the red and black power lines 
-to a stable source of power in the range of 8 to 30V dc.
+to a stable source of power in the range of 8 to 30 VDC.
 
 Once the Anello A-1 is properly installed in the vehicle, you are ready to collect data.  Unlike other 
 systems, the Anello A-1 does not require an extensive driving calibration prior to usage.  However, the 
