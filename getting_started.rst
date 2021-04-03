@@ -147,7 +147,7 @@ The Anello A-1 uses two logical ports:
     +-------------------------+-----------------------------------+
     |  Data Port              | lowest port number e.g., COM7     |
     +-------------------------+-----------------------------------+
-    |  User Messaging Port    | highest port number e.g., COM10   |
+    |  Configuration  Port    | highest port number e.g., COM10   |
     +-------------------------+-----------------------------------+
      
 
