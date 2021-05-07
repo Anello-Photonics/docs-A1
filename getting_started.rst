@@ -115,18 +115,20 @@ the GitHub repository is recommended.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Ensure the Power Cable is connected and the Green power light is illuminated.  To get started and 
 perform initial unit configuration, use the USB-C interface.  Connect the USB-C cable between your computer 
-and the Anello A-1.  From the board_tools directory, run user_program.py
+and the Anello A-1.  From the board_tools directory, run user_program.py. 
 
 .. code-block:: python
 
     cd board_tools
     python user_program.py
 
+If this is your first time to run user_program.py, Python may prompt you to install certain dependencies with PIP.
+PIP is Python's package manager, and it is usually installed by default in Python installations.  If you are unfamiliar
+with PIP a quick start guide is found here `<https://pip.pypa.io/en/stable/quickstart/>`_
+
 The Anello Python Program is divided into two subsections as shown in the image below.  The System Status 
 and a Main Menu.   The A-1 unit will shows as **not connected**, until the A-1 is explicitly connected via the
 Connection option.      
-
- 
 
 .. figure:: media/app_menu.png
    :scale: 50 %
