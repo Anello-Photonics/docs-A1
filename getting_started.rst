@@ -89,7 +89,10 @@ Open a command or terminal window and type.
     ...
     exit()
 
-Confirm that Python is installed and the version is at least 3.x 
+Confirm that Python is installed and the version is at least 3.6
+
+If "python -v" shows version 2 despite Python 3 being installed, try "python3 -v" instead.
+IF that works, use "python3" instead of "python" in the following steps from command line.
 
 2.2 Install the Software
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -110,6 +113,35 @@ the GitHub repository is recommended.
    
    Figure 3: Zip File Direct Download (Use of *git clone* is preferred method)
 
+Install dependencies using pip:
+
+If this is your first time to run user_program.py, you may need to install dependencies with PIP.
+PIP is Python's package manager, and it is usually installed by default in Python installations.  If you are unfamiliar
+with PIP a quick start guide is found here `<https://pip.pypa.io/en/stable/quickstart/>`_
+
+.. code-block:: python
+
+    cd user_tools
+    pip install -r requirements.txt
+
+If this fails, you may need to replace "pip" with "pip3", "python -m pip" or "python3 -m pip"
+
+On some Linux systems, matplotlib and numpy dependencies must be installed with apt instead of pip.
+Instead of using requirements.txt, do:
+
+.. code-block:: python
+    pip install cutie
+    pip install pyserial
+    pip intsall PySimpleGUI
+    sudo apt install matplotlib
+    sudo apt install numpy
+
+or if you already installed requirements.txt, and ran the program, but had a matplotlib or numpy error, do:
+.. code-block:: python
+    pip uninstall matplotlib
+    pip uninstall numpy
+    sudo apt install matplotlib
+    sudo apt install numpy
 
 2.3 Run the Tool 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -122,20 +154,28 @@ and the Anello A-1.  From the board_tools directory, run user_program.py.
     cd board_tools
     python user_program.py
 
-If this is your first time to run user_program.py, Python may prompt you to install certain dependencies with PIP.
-PIP is Python's package manager, and it is usually installed by default in Python installations.  If you are unfamiliar
-with PIP a quick start guide is found here `<https://pip.pypa.io/en/stable/quickstart/>`_
 
 The Anello Python Program is divided into two subsections as shown in the image below.  The System Status 
 and a Main Menu.   The A-1 unit will shows as **not connected**, until the A-1 is explicitly connected via the
 Connection option.      
 
-.. figure:: media/app_menu.png
+.. figure:: media/full_status_labeled.png
    :scale: 50 %
    :align: center
 
    Figure 4: Anello Python Program Home Screen
 
+The main menu actions are:
+-   Refresh:    Refresh the display to see new system status.
+-   Connect:    Connect the app to the A1 over com or udp to configure and log
+-   Configure:  edit A1 device configurations such as udp connection settings, output data rate
+-   Log:        collect the A1 raw message output into a file. Can convert to csv.
+-   Monitor:    opens a display showing the latest INS message contents.
+-   Ntrip:      connect to a server for navigation corrections.
+-   Upgrade:    upgrade the A1 with a newer firmware version
+-   Exit:       exit the program
+
+these are explained in the following sections.
 
 2.4 Connect to the A-1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -154,8 +194,8 @@ The Anello A-1 uses two logical ports:
      
 
 Once connected the System status should be updated and the mapping of the logical ports to the virtual com 
-ports shows in the System Status. When using UDP, the user has the flexiblity to assign the data port and user
-messaging port thru the Anello Python Program.
+ports shows in the System Status. When using UDP, the user has the flexibility to assign the data port and user
+messaging port through the Anello Python Program.
 
 If the auto detection fails, you can try manual connection.  First check that there are four virtual com ports. 
 On Windows, use the device manager to find the COM ports.  On MAC and Ubuntu, use the terminal and change directory to */dev*, 
@@ -167,29 +207,9 @@ and check for four consecutive ports, typically named something like *tty.usbser
     Communication occurs at a fixed baudrate of 921600 bits per second.
 
 
-2.5 Log a data file
+2.5 Adjust unit configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In this step, a short data file is captured. The results are displayed in `Kepler <https://kepler.gl>`_ which is an online tool
-for geo-spatial data analysis. If the A-1 GNSS antennae is indoors, the resulting file may 
-not render in Kepler.gl  tool, but this step demonstrates the process regardless.
-
-To log a file, select *LOG* from the main options list.  The Anello Python Program will automatically 
-name the file unless you override the name.  
-
-The Anello Python Program log files captures all the message types into one combined plain text ASCII file.  
-A second parse step, separates the combined log into a set of CSV data products including the primary inertial 
-navigation solution data, as well as raw GNSS and raw IMU data files.  The inertial navigation and GNSS data files are 
-easily opened in `Kepler <https://kepler.gl>`_ which is an efficient open-source geospatial analysis tool found on 
-the Internet.
-
-.. note::
-    Kepler.GL does NOT store any data in the cloud.  It is purely client side browser app.
-
-
-
-2.6 Adjust unit configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In this step, the A-1 configuration is adjusted.  In this example, we configure the A-1 Ethernet 
+In this step, the A-1 configuration is adjusted.  In this example, we configure the A-1 Ethernet
 interface which is recommended for in Vehicle collection and testing. Configuring the Ethernet interface consists
 of four steps.
 
@@ -224,12 +244,12 @@ of four steps.
    Step 4: Restart Anello Python Program and Connect with UDP
 
 ** Congratulations!!! **
-You have completed the initial setup and verification of the Anello A-1.  Prior to 
-installing the A-1 to the vehicle, you may want to confirm additional set up items such as 
-Mounting/Orientation, NTRIP, etc.  
+You have completed the initial setup and verification of the Anello A-1.  Prior to
+installing the A-1 to the vehicle, you may want to confirm additional set up items such as
+Mounting/Orientation, NTRIP, etc.
 
 .. note::
-    You may need to adjust firewall settings on your computer to ensure that the UDP ports you have selected are open 
+    You may need to adjust firewall settings on your computer to ensure that the UDP ports you have selected are open
     for traffic.  Windows will automatically prompt a warning as shown in image below.
 
 
@@ -237,7 +257,35 @@ Mounting/Orientation, NTRIP, etc.
    :scale: 50 %
    :align: center
 
-   Windows PC Warning for UDP   
+   Windows PC Warning for UDP
+
+2.6 Log a data file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In this step, a short data file is captured. The results are displayed in `Kepler <https://kepler.gl>`_ which is an online tool
+for geo-spatial data analysis. If the A-1 GNSS antennae is indoors, the resulting file may 
+not render in Kepler.gl  tool, but this step demonstrates the process regardless.
+
+To log a file, select *LOG* from the main options list.  The Anello Python Program will automatically 
+name the file unless you override the name.  
+
+The Anello Python Program log files captures all the message types into one combined plain text ASCII file.  
+A second parse step, separates the combined log into a set of CSV data products including the primary inertial 
+navigation solution data, as well as raw GNSS and raw IMU data files.  The inertial navigation and GNSS data files are 
+easily opened in `Kepler <https://kepler.gl>`_ which is an efficient open-source geospatial analysis tool found on 
+the Internet.
+
+.. note::
+    Kepler.GL does NOT store any data in the cloud.  It is purely client side browser app.
+
+
+2.7 Monitor Output
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2.8 Connect to NTRIP Caster
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2.9 Firmware Upgrade
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 3. Vehicle Installation
