@@ -92,7 +92,7 @@ Open a command or terminal window and type.
 Confirm that Python is installed and the version is at least 3.6
 
 If "python -v" shows version 2 despite Python 3 being installed, try "python3 -v" instead.
-IF that works, use "python3" instead of "python" in the following steps from command line.
+If that shows Python 3.x, use "python3" instead of "python" in the following steps from command line.
 
 2.2 Install the Software
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -137,6 +137,7 @@ Instead of using requirements.txt, do:
     sudo apt install numpy
 
 or if you already installed requirements.txt, and ran the program, but had a matplotlib or numpy error, do:
+
 .. code-block:: python
     pip uninstall matplotlib
     pip uninstall numpy
@@ -166,10 +167,11 @@ Connection option.
    Figure 4: Anello Python Program Home Screen
 
 The main menu actions are:
+
 -   Refresh:    Refresh the display to see new system status.
 -   Connect:    Connect the app to the A1 over com or udp to configure and log
 -   Configure:  edit A1 device configurations such as udp connection settings, output data rate
--   Log:        collect the A1 raw message output into a file. Can convert to csv.
+-   Log:        collect the A1 raw message output into a file. Can convert to CSV.
 -   Monitor:    opens a display showing the latest INS message contents.
 -   Ntrip:      connect to a server for navigation corrections.
 -   Upgrade:    upgrade the A1 with a newer firmware version
@@ -261,18 +263,40 @@ Mounting/Orientation, NTRIP, etc.
 
 2.6 Log a data file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In this step, a short data file is captured. The results are displayed in `Kepler <https://kepler.gl>`_ which is an online tool
+The log function collects the A1 output messages of all types into a single text file. The log can be parsed intoe separate
+CSV files for each message type, which can be used to
+
+While connected by COM or UDP, select *Log* in the main menu, then *Start*. You can use the default name based on the time, or enter a name.
+The current log file is show in system status. To end the log, select *Log* and then *Stop*.
+
+.. figure:: media/starting_log.png
+   :scale: 50 %
+   :align: center
+
+   Starting a log.
+
+The log files are under the logs directory, grouped in directories by month and then day.
+
+The comma separated variable (CSV) format is useful for importing to other tools.
+To export a log file to CSV, Select *Log*, then *Export*. Then select the log file to convert in the file picker.
+A single log file containing a mix of message types is converted into separate CSV files for each message type.
+These are saved in the exports directory under the name of the original log file.
+For example, exporting log1.txt will create these files under under the exports/log1 directory:
+
+-   imu.csv : raw IMU data such as acceleration and angular rates (APIMU messages)
+-   gps.csv : GNSS data (APGPS messages)
+-   ins.csv : primary inertial navigation solution data (APINS messages)
+
+The first row of the file lists the message fields. Each other row is one message split into fields, in that same order.
+The gps and ins files also have the final column "position_geojson": a formatted point to display in Kepler.gl, not part of the original message.
+
+.. figure:: media/export_log.png
+   :scale: 50 %
+   :align: center
+
+The exported CSVs can be visualized at `Kepler <https://kepler.gl/demo>`_ which is an online tool
 for geo-spatial data analysis. If the A-1 GNSS antennae is indoors, the resulting file may 
 not render in Kepler.gl  tool, but this step demonstrates the process regardless.
-
-To log a file, select *LOG* from the main options list.  The Anello Python Program will automatically 
-name the file unless you override the name.  
-
-The Anello Python Program log files captures all the message types into one combined plain text ASCII file.  
-A second parse step, separates the combined log into a set of CSV data products including the primary inertial 
-navigation solution data, as well as raw GNSS and raw IMU data files.  The inertial navigation and GNSS data files are 
-easily opened in `Kepler <https://kepler.gl>`_ which is an efficient open-source geospatial analysis tool found on 
-the Internet.
 
 .. note::
     Kepler.GL does NOT store any data in the cloud.  It is purely client side browser app.
@@ -280,6 +304,11 @@ the Internet.
 
 2.7 Monitor Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Monitoring mode opens a display to watch the data of the INS solution in real-time.
+It also allows toggling the logging and gps connection with the LOG and GPS buttons
+
+To start monitoring, select *Monitor* in the main menu. This will launch a separate window. Close it to return to the main menu.
+
 
 2.8 Connect to NTRIP Caster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
