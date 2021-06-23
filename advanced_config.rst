@@ -26,8 +26,6 @@ There following advanced settings are configurable with the Anello Python Progra
 +-----------+----------------------------------------------------------------------------+
 |  rport2   | remote port 2 (data port) integer from 1 to 65535                          |
 +-----------+----------------------------------------------------------------------------+
-|  rport2   | remote port 2 (data port) integer from 1 to 65535                          | 
-+-----------+----------------------------------------------------------------------------+
 
 .. note::
     The odometer (odo) configuration message is written in two parts.  First an #APCFG command 
