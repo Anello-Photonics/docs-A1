@@ -89,7 +89,10 @@ Open a command or terminal window and type.
     ...
     exit()
 
-Confirm that Python is installed and the version is at least 3.x 
+Confirm that Python is installed and the version is at least 3.6
+
+If "python -v" shows version 2 despite Python 3 being installed, try "python3 -v" instead.
+If that shows Python 3.x, use "python3" instead of "python" in the following steps from command line.
 
 2.2 Install the Software
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -110,6 +113,36 @@ the GitHub repository is recommended.
    
    Figure 3: Zip File Direct Download (Use of *git clone* is preferred method)
 
+Install dependencies using pip:
+
+If this is your first time to run user_program.py, you may need to install dependencies with PIP.
+PIP is Python's package manager, and it is usually installed by default in Python installations.  If you are unfamiliar
+with PIP a quick start guide is found here `<https://pip.pypa.io/en/stable/quickstart/>`_
+
+.. code-block:: python
+
+    cd user_tools
+    pip install -r requirements.txt
+
+If this fails, you may need to replace "pip" with "pip3", "python -m pip" or "python3 -m pip"
+
+On some Linux systems, matplotlib and numpy dependencies must be installed with apt instead of pip.
+Instead of using requirements.txt, do:
+
+.. code-block:: python
+    pip install cutie
+    pip install pyserial
+    pip intsall PySimpleGUI
+    sudo apt install matplotlib
+    sudo apt install numpy
+
+or if you already installed requirements.txt, and ran the program, but had a matplotlib or numpy error, do:
+
+.. code-block:: python
+    pip uninstall matplotlib
+    pip uninstall numpy
+    sudo apt install matplotlib
+    sudo apt install numpy
 
 2.3 Run the Tool 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -122,20 +155,29 @@ and the Anello A-1.  From the board_tools directory, run user_program.py.
     cd board_tools
     python user_program.py
 
-If this is your first time to run user_program.py, Python may prompt you to install certain dependencies with PIP.
-PIP is Python's package manager, and it is usually installed by default in Python installations.  If you are unfamiliar
-with PIP a quick start guide is found here `<https://pip.pypa.io/en/stable/quickstart/>`_
 
 The Anello Python Program is divided into two subsections as shown in the image below.  The System Status 
 and a Main Menu.   The A-1 unit will shows as **not connected**, until the A-1 is explicitly connected via the
 Connection option.      
 
-.. figure:: media/app_menu.png
+.. figure:: media/full_status_labeled.png
    :scale: 50 %
    :align: center
 
    Figure 4: Anello Python Program Home Screen
 
+The main menu actions are:
+
+-   Refresh:    Refresh the display to see new system status.
+-   Connect:    Connect the app to the A1 over com or udp to configure and log
+-   Configure:  edit A1 device configurations such as udp connection settings, output data rate
+-   Log:        collect the A1 raw message output into a file. Can convert to CSV.
+-   Monitor:    opens a display showing the latest INS message contents.
+-   Ntrip:      connect to a server for navigation corrections.
+-   Upgrade:    upgrade the A1 with a newer firmware version
+-   Exit:       exit the program
+
+these are explained in the following sections.
 
 2.4 Connect to the A-1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -154,8 +196,8 @@ The Anello A-1 uses two logical ports:
      
 
 Once connected the System status should be updated and the mapping of the logical ports to the virtual com 
-ports shows in the System Status. When using UDP, the user has the flexiblity to assign the data port and user
-messaging port thru the Anello Python Program.
+ports shows in the System Status. When using UDP, the user has the flexibility to assign the data port and user
+messaging port through the Anello Python Program.
 
 If the auto detection fails, you can try manual connection.  First check that there are four virtual com ports. 
 On Windows, use the device manager to find the COM ports.  On MAC and Ubuntu, use the terminal and change directory to */dev*, 
@@ -167,36 +209,39 @@ and check for four consecutive ports, typically named something like *tty.usbser
     Communication occurs at a fixed baudrate of 921600 bits per second.
 
 
-2.5 Log a data file
+2.5 Adjust unit configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In this step, a short data file is captured. The results are displayed in `Kepler <https://kepler.gl>`_ which is an online tool
-for geo-spatial data analysis. If the A-1 GNSS antennae is indoors, the resulting file may 
-not render in Kepler.gl  tool, but this step demonstrates the process regardless.
+The A1 can be configured to allow connection over ethernet(UDP), and to adjust other device settings.
+To adjust configuration, select *Configure* from the main menu while connected. The current configurations will display.
+To change a configuration, select *Edit* and then the configuration to change. Select or type in the new value.
 
-To log a file, select *LOG* from the main options list.  The Anello Python Program will automatically 
-name the file unless you override the name.  
+General configurations:
 
-The Anello Python Program log files captures all the message types into one combined plain text ASCII file.  
-A second parse step, separates the combined log into a set of CSV data products including the primary inertial 
-navigation solution data, as well as raw GNSS and raw IMU data files.  The inertial navigation and GNSS data files are 
-easily opened in `Kepler <https://kepler.gl>`_ which is an efficient open-source geospatial analysis tool found on 
-the Internet.
+-   Output Data Rate    (20/50/100/200) - rate of INS and IMU message outputs in Hz.
+-   Orientation         (+X+Y+Z or other right handed frames) - coordinate system for A1.
+-   Enable GPS          (on/off) - let the A1 use the GPS antenna
+-   Odometer Unit       (mps/mph/kph/fps) - speed unit for odometer input
+-   Enable FOG          (on/off) - let the A1 use the Fiber Optic Gyro for angular rate z.
 
-.. note::
-    Kepler.GL does NOT store any data in the cloud.  It is purely client side browser app.
+UDP connection configurations:
 
+-   DHCP (on/off)               if on, the A1 ip is assigned by router. If off, pick the ip yourself.
+-   A1 ip                       ip address for the A1. Can only set this when DHCP off
+-   remote ip                   ip address of your computer, which A1 will connect to.
+-   remote data port            remote device's port for data channel. This works like the data and config com ports.
+-   remote configuration port   remote devices port for config channel
 
-
-2.6 Adjust unit configuration
+2.5.1 Connecting by UDP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In this step, the A-1 configuration is adjusted.  In this example, we configure the A-1 Ethernet 
-interface which is recommended for in Vehicle collection and testing. Configuring the Ethernet interface consists
+The A-1 Ethernet interface is recommended for in Vehicle collection and testing. To connect by UDP over ethernet, the A1 must first be configured over com.
+
+In this step, the A-1 configuration is adjusted.  Configuring the Ethernet interface consists
 of four steps.
 
 1. Set the A-1 IP address Statically or automatically using DHCP (default)
 2. Set the IP address of where you want the A-1 to send data i.e., the Receiving Computer's IP
 3. Set the Data Port and User Messaging Port numbers
-4. Connect to the A-1 via UDP instead of USB
+4. Connect to the A-1 via UDP instead of USB. Use the same A1 ip, configuration port and data port as in 2-3.
 
 .. figure:: media/conf_no_ipassignment.png
    :scale: 50 %
@@ -221,15 +266,15 @@ of four steps.
    :scale: 50 %
    :align: center
 
-   Step 4: Restart Anello Python Program and Connect with UDP
+   Step 4: Connect with UDP
 
 ** Congratulations!!! **
-You have completed the initial setup and verification of the Anello A-1.  Prior to 
-installing the A-1 to the vehicle, you may want to confirm additional set up items such as 
-Mounting/Orientation, NTRIP, etc.  
+You have completed the initial setup and verification of the Anello A-1.  Prior to
+installing the A-1 to the vehicle, you may want to confirm additional set up items such as
+Mounting/Orientation, NTRIP, etc.
 
 .. note::
-    You may need to adjust firewall settings on your computer to ensure that the UDP ports you have selected are open 
+    You may need to adjust firewall settings on your computer to ensure that the UDP ports you have selected are open
     for traffic.  Windows will automatically prompt a warning as shown in image below.
 
 
@@ -237,8 +282,84 @@ Mounting/Orientation, NTRIP, etc.
    :scale: 50 %
    :align: center
 
-   Windows PC Warning for UDP   
+   Windows PC Warning for UDP
 
+2.6 Log a data file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The log function collects the A1 output messages of all types into a single text file. The log can be parsed intoe separate
+CSV files for each message type, which can be used to
+
+While connected by COM or UDP, select *Log* in the main menu, then *Start*. You can use the default name based on the time, or enter a name.
+The current log file is show in system status. To end the log, select *Log* and then *Stop*.
+
+.. figure:: media/starting_log.png
+   :scale: 50 %
+   :align: center
+
+   Starting a log.
+
+The log files are under the logs directory, grouped in directories by month and then day.
+
+The comma separated variable (CSV) format is useful for importing to other tools.
+To export a log file to CSV, Select *Log*, then *Export*. Then select the log file to convert in the file picker.
+A single log file containing a mix of message types is converted into separate CSV files for each message type.
+These are saved in the exports directory under the name of the original log file.
+For example, exporting log1.txt will create these files under under the exports/log1 directory:
+
+-   imu.csv : raw IMU data such as acceleration and angular rates (APIMU messages)
+-   gps.csv : GNSS data (APGPS messages)
+-   ins.csv : primary inertial navigation solution data (APINS messages)
+
+The first row of the file lists the message fields. Each other row is one message split into fields, in that same order.
+The gps and ins files also have the final column "position_geojson": a formatted point to display in Kepler.gl, not part of the original message.
+
+.. figure:: media/export_log.png
+   :scale: 50 %
+   :align: center
+
+The exported CSVs can be visualized at `Kepler <https://kepler.gl/demo>`_ which is an online tool
+for geo-spatial data analysis. If the A-1 GNSS antenna is indoors or not connected, the resulting file may
+not render in Kepler.gl  tool, but this step demonstrates the process regardless. If the csv files fail to upload, check if they are empty and only upload the non-empty ones.
+
+.. note::
+    Kepler.GL does NOT store any data in the cloud.  It is purely client side browser app.
+
+
+2.7 Monitor Output
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Monitoring mode opens a display to watch the data of the INS solution in real-time.
+It also allows toggling the logging and gps connection with the LOG and GPS buttons
+
+To start monitoring, select *Monitor* in the main menu. This will launch a separate window. Close it to return to the main menu.
+
+.. figure:: media/monitoring.png
+   :scale: 50 %
+   :align: center
+
+   Output Monitoring
+
+Some message fields may not appear until the A1 is turned on for enough time, with GNSS antennas connected.
+
+2.8 Connect to NTRIP Caster
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Connecting to an NTRIP caster will improve the accuracy of GNSS positioning.
+Currently NTRIP requires connecting over UDP.
+From the main menu, select *NTRIP* and then *Start*. Then enter the NTRIP caster details as prompted
+
+-   caster: url or ip address
+-   port: usually 2101
+-   mountpoint
+-   username
+-   password
+-   send GGA (yes/no) - whether the caster requires a GGA message for the device position.
+
+The system status will show the NTRIP connection status. The details of the last used caster are saved.
+
+2.9 Firmware Upgrade
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+To upgrade to a newer firmware version: Connection over COM, select *UPGRADE* from the main menu, then select *yes*. Then follow the instructions on the screen
+The upgrade currently requires the windows executable included in the user_tools repo, HtxAurixBootLoader.exe.
+The A1 output will halt until the upgrade is complete. After upgrading, the new firmware version number should show in system status.
 
 3. Vehicle Installation
 ------------------------
