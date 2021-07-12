@@ -302,6 +302,11 @@ The log files are under the logs directory, grouped in directories by month and 
 
 The comma separated variable (CSV) format is useful for importing to other tools.
 To export a log file to CSV, Select *Log*, then *Export*. Then select the log file to convert in the file picker.
+
+.. figure:: media/export_log.png
+   :scale: 50 %
+   :align: center
+
 A single log file containing a mix of message types is converted into separate CSV files for each message type.
 These are saved in the exports directory under the name of the original log file.
 For example, exporting log1.txt will create these files under under the exports/log1 directory:
@@ -313,17 +318,34 @@ For example, exporting log1.txt will create these files under under the exports/
 The first row of the file lists the message fields. Each other row is one message split into fields, in that same order.
 The gps and ins files also have the final column "position_geojson": a formatted point to display in Kepler.gl, not part of the original message.
 
-.. figure:: media/export_log.png
+.. figure:: media/export_directory.png
    :scale: 50 %
    :align: center
 
 The exported CSVs can be visualized at `Kepler <https://kepler.gl/demo>`_ which is an online tool
 for geo-spatial data analysis. If the A-1 GNSS antenna is indoors or not connected, the resulting file may
-not render in Kepler.gl  tool, but this step demonstrates the process regardless. If the csv files fail to upload, check if they are empty and only upload the non-empty ones.
+not render in Kepler.gl tool, but this step demonstrates the process regardless. If the csv files fail to upload, check if they are empty and only upload the non-empty ones.
 
 .. note::
     Kepler.GL does NOT store any data in the cloud.  It is purely client side browser app.
 
+To use kepler.gl, drag and drop the exported csv files:
+
+.. figure:: media/uploading_1.png
+   :scale: 30 %
+   :align: center
+
+The APINS and APGPS messages will both be shown as layers. You can toggle the visibility of each layer by clicking the eye icon.
+
+.. figure:: media/combined_layers.png
+   :scale: 30 %
+   :align: center
+
+Or click the dual map view button (upper left) to view the layers in a split screen:
+
+.. figure:: media/kepler_split.png
+   :scale: 50 %
+   :align: center
 
 2.7 Monitor Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
