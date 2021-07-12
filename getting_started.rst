@@ -293,7 +293,7 @@ While connected by COM or UDP, select *Log* in the main menu, then *Start*. You 
 The current log file is show in system status. To end the log, select *Log* and then *Stop*.
 
 .. figure:: media/starting_log.png
-   :scale: 50 %
+   :scale: 100 %
    :align: center
 
    Starting a log.
@@ -304,7 +304,7 @@ The comma separated variable (CSV) format is useful for importing to other tools
 To export a log file to CSV, Select *Log*, then *Export*. Then select the log file to convert in the file picker.
 
 .. figure:: media/export_log.png
-   :scale: 50 %
+   :scale: 100 %
    :align: center
 
 A single log file containing a mix of message types is converted into separate CSV files for each message type.
@@ -319,7 +319,7 @@ The first row of the file lists the message fields. Each other row is one messag
 The gps and ins files also have the final column "position_geojson": a formatted point to display in Kepler.gl, not part of the original message.
 
 .. figure:: media/export_directory.png
-   :scale: 50 %
+   :scale: 70 %
    :align: center
 
 The exported CSVs can be visualized at `Kepler <https://kepler.gl/demo>`_ which is an online tool
@@ -332,16 +332,16 @@ not render in Kepler.gl tool, but this step demonstrates the process regardless.
 To use kepler.gl, drag and drop the exported csv files:
 
 .. figure:: media/uploading_1.png
-   :scale: 30 %
+   :scale: 50 %
    :align: center
 
 The APINS and APGPS messages will both be shown as layers. You can toggle the visibility of each layer by clicking the eye icon.
 
 .. figure:: media/combined_layers.png
-   :scale: 30 %
+   :scale: 50 %
    :align: center
 
-Or click the dual map view button (upper left) to view the layers in a split screen:
+Or click the dual map view button (upper left) to view the layers in a split screen. Check or uncheck the desired layers on each side.
 
 .. figure:: media/kepler_split.png
    :scale: 50 %
