@@ -10,21 +10,21 @@ There following advanced settings are configurable with the Anello Python Progra
 +-----------+----------------------------------------------------------------------------+
 |  odr      |  output data rate of primary messages **20,50,100,200** Hz                 |
 +-----------+----------------------------------------------------------------------------+
-|  gps1     |  "on", "off"                                                               |
+|  gps1     |  use the first gps antenna: "on", "off"                                    |
 +-----------+----------------------------------------------------------------------------+
-|  gps2     |  "on", "off"                                                               |
+|  gps2     |  use the second gps antenna: "on", "off"                                   |
 +-----------+----------------------------------------------------------------------------+
 |  odo      |  odometer "on", "off", "mps", "mph", "kph", "fps"  (See Note)              |
 +-----------+----------------------------------------------------------------------------+
-|  dhcp     |  DHCP "on", "off"                                                          |
+|  dhcp     |  DHCP "on", "off" : automatically assign A-1 IP                            |
 +-----------+----------------------------------------------------------------------------+
-|  lip      | local IP (aaa.bbb.ccc.ddd)                                                 |
+|  lip      |  A-1 IP (aaa.bbb.ccc.ddd) for UDP                                          |
 +-----------+----------------------------------------------------------------------------+
-|  rip      | remote IP (aaa.bbb.ccc.ddd)                                                |
+|  rip      |  connected computer IP (aaa.bbb.ccc.ddd) for UDP                           |
 +-----------+----------------------------------------------------------------------------+
-|  rport1   | remote port 1 (data port) integer from 1 to 65535                          |
+|  rport1   |  UDP computer port 1 (data port): integer from 1 to 65535                  |
 +-----------+----------------------------------------------------------------------------+
-|  rport2   | remote port 2 (data port) integer from 1 to 65535                          |
+|  rport2   |  UDP computer port 2 (data port): integer from 1 to 65535                  |
 +-----------+----------------------------------------------------------------------------+
 
 .. note::

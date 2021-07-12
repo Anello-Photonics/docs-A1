@@ -226,10 +226,14 @@ General configurations:
 UDP connection configurations:
 
 -   DHCP (on/off)               if on, the A1 ip is assigned by router. If off, pick the ip yourself.
--   A1 ip                       ip address for the A1. Can only set this when DHCP off
--   remote ip                   ip address of your computer, which A1 will connect to.
--   remote data port            remote device's port for data channel. This works like the data and config com ports.
--   remote configuration port   remote devices port for config channel
+-   UDP  A1 ip                       ip address for the A1. Can only set this when DHCP off
+-   UDP computer ip                   ip address of your computer, which A1 will connect to.
+-   UDP computer data port            remote device's port for data channel. This works like the data and config com ports.
+-   UDP computer configuration port   remote devices port for config channel
+
+.. note::
+    The above UDP ports are the numbers on the connected computer only. The A1 uses UDP ports 1 for data and 2 for configuration.
+    If sending odometer speeds by UDP from another program, send to UDP port 2 on the A1, from the computer UDP config port matching the configurations.
 
 2.5.1 Connecting by UDP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
