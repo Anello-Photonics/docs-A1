@@ -208,6 +208,9 @@ and check for four consecutive ports, typically named something like *tty.usbser
     highest port is the configuration/control port.  The numerically lowest port is the data port. 
     Communication occurs at a fixed baudrate of 921600 bits per second.
 
+.. note::
+    If the four COM ports do not show in the manual connection mode or Windows device manager, you may need to install the FTDI drivers from https://ftdichip.com/drivers/d2xx-drivers/
+
 
 2.5 Adjust unit configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
