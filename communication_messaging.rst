@@ -34,7 +34,7 @@ general conventions as noted here:
 -	The checksum is simple, just an XOR of all the bytes between # and *, written in hexadecimal.
 
 
-The following sentennces are the primary output sentences.  The APIMU and APINS messages are transitted at the output data rate (odr) setting. The GNSS 
+The following sentences are the primary output sentences.  The APIMU and APINS messages are transmitted at the output data rate (odr) setting. The GNSS
 messages are transmitted at 1Hz.
 
 2.1. APIMU Raw IMU Message
@@ -58,17 +58,16 @@ messages are transmitted at 1Hz.
   +---+------------+-----------+-----------------------------------------------------------------------+
   | 7 | WZ         |  dps      |  Z-Axis Angular Rate in units of deg/sec (MEMS)                       |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 8 | OG_VZ      |  Volts    |  High Precicision Z-Axis Angular Rate Raw Volts (Anello Optical Gyro) |
+  | 8 | OG_WZ      |  dps      |  High Precicision Z-Axis Angular Rate Scaled (Anello Optical Gyro)    |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 9 | OG_WZ      |  dps      |  High Precicision Z-Axis Angular Rate Scaled (Anello Optical Gyro)    |
+  | 9 | ODR        |  m/s      |  Scaled Composite Odometer Value (m/s)                                |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 10| ODR        |  m/s      |  Scaled Composite Odometer Value (m/s)                                |
+  | 10| ODR Time   |  ms       |  Timestampe of Odometer Reading in ms                                 |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 11| ODR Time   |  ms       |  Timestampe of Odometer Reading in ms                                 |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 12| Temp C     |  ms       |  Temperature, degrees C                                               |
+  | 11| Temp C     |  ms       |  Temperature, degrees C                                               |
   +---+------------+-----------+-----------------------------------------------------------------------+
   
+.. note:: firmware versions before 0.2.1 also output the Optical Gyro voltage in the 8th position before optical gyro rate, with 13 total fields.
 
 2.2. APGPS Raw GNSS Message
 
@@ -144,6 +143,7 @@ messages are transmitted at 1Hz.
   +---+------------+-----------+------------------------------------------------------------------------------+
   | 13| ZUPT       |           |  Status of ZUPT Solution                                                     |
   +---+------------+-----------+------------------------------------------------------------------------------+
+
 .. note::
     GPS Time in nanoseconds is a useful timestamp for sychronizing the Anello A-1 with other systems, as
     it is an absolute time.  GPS Time (GPST) is a continuous time scale (no leap seconds) defined by the GPS 

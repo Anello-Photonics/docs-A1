@@ -372,7 +372,8 @@ Some message fields may not appear until the A1 is turned on for enough time, wi
 2.8 Connect to NTRIP Caster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Connecting to an NTRIP caster will improve the accuracy of GNSS positioning.
-Currently NTRIP requires connecting over UDP.
+NTRIP requires connecting over UDP in firmware versions before 0.4.3, after which it can be used over UDP or serial.
+
 From the main menu, select *NTRIP* and then *Start*. Then enter the NTRIP caster details as prompted
 
 -   caster: url or ip address
