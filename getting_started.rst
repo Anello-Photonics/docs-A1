@@ -169,12 +169,12 @@ Connection option.
 The main menu actions are:
 
 -   Refresh:    Refresh the display to see new system status.
--   Connect:    Connect the app to the A1 over com or udp to configure and log
--   Configure:  edit A1 device configurations such as udp connection settings, output data rate
--   Log:        collect the A1 raw message output into a file. Can convert to CSV.
+-   Connect:    Connect the app to the A-1 over com or udp to configure and log
+-   Configure:  edit A-1 device configurations such as udp connection settings, output data rate
+-   Log:        collect the A-1 raw message output into a file. Can convert to CSV.
 -   Monitor:    opens a display showing the latest INS message contents.
 -   Ntrip:      connect to a server for navigation corrections.
--   Upgrade:    upgrade the A1 with a newer firmware version
+-   Upgrade:    upgrade the A-1 with a newer firmware version
 -   Exit:       exit the program
 
 these are explained in the following sections.
@@ -214,33 +214,33 @@ and check for four consecutive ports, typically named something like *tty.usbser
 
 2.5 Adjust unit configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The A1 can be configured to allow connection over ethernet(UDP), and to adjust other device settings.
+The A-1 can be configured to allow connection over ethernet(UDP), and to adjust other device settings.
 To adjust configuration, select *Configure* from the main menu while connected. The current configurations will display.
 To change a configuration, select *Edit* and then the configuration to change. Select or type in the new value.
 
 General configurations:
 
 -   Output Data Rate    (20/50/100/200) - rate of INS and IMU message outputs in Hz.
--   Orientation         (+X+Y+Z or other right handed frames) - coordinate system for A1.
--   Enable GPS          (on/off) - let the A1 use the GPS antenna
+-   Orientation         (+X+Y+Z or other right handed frames) - coordinate system for A-1.
+-   Enable GPS          (on/off) - let the A-1 use the GPS antenna
 -   Odometer Unit       (mps/mph/kph/fps) - speed unit for odometer input
--   Enable FOG          (on/off) - let the A1 use the Fiber Optic Gyro for angular rate z.
+-   Enable FOG          (on/off) - let the A-1 use the Fiber Optic Gyro for angular rate z.
 
 UDP connection configurations:
 
--   DHCP (on/off)               if on, the A1 ip is assigned by router. If off, pick the ip yourself.
--   UDP  A1 ip                       ip address for the A1. Can only set this when DHCP off
--   UDP computer ip                   ip address of your computer, which A1 will connect to.
+-   DHCP (on/off)               if on, the A-1 ip is assigned by router. If off, pick the ip yourself.
+-   UDP  A-1 ip                       ip address for the A-1. Can only set this when DHCP off
+-   UDP computer ip                   ip address of your computer, which A-1 will connect to.
 -   UDP computer data port            remote device's port for data channel. This works like the data and config com ports.
 -   UDP computer configuration port   remote devices port for config channel
 
 .. note::
-    The above UDP ports are the numbers on the connected computer only. The A1 uses UDP ports 1 for data and 2 for configuration.
-    If sending odometer speeds by UDP from another program, send to UDP port 2 on the A1, from the computer UDP config port matching the configurations.
+    The above UDP ports are the numbers on the connected computer only. The A-1 uses UDP ports 1 for data and 2 for configuration.
+    If sending odometer speeds by UDP from another program, send to UDP port 2 on the A-1, from the computer UDP config port matching the configurations.
 
 2.5.1 Connecting by UDP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The A-1 Ethernet interface is recommended for in Vehicle collection and testing. To connect by UDP over ethernet, the A1 must first be configured over com.
+The A-1 Ethernet interface is recommended for in Vehicle collection and testing. To connect by UDP over ethernet, the A-1 must first be configured over com.
 
 In this step, the A-1 configuration is adjusted.  Configuring the Ethernet interface consists
 of four steps.
@@ -248,7 +248,7 @@ of four steps.
 1. Set the A-1 IP address Statically or automatically using DHCP (default)
 2. Set the IP address of where you want the A-1 to send data i.e., the Receiving Computer's IP
 3. Set the Data Port and User Messaging Port numbers
-4. Connect to the A-1 via UDP instead of USB. Use the same A1 ip, configuration port and data port as in 2-3.
+4. Connect to the A-1 via UDP instead of USB. Use the same A-1 ip, configuration port and data port as in 2-3.
 
 .. figure:: media/conf_no_ipassignment.png
    :scale: 50 %
@@ -293,7 +293,7 @@ Mounting/Orientation, NTRIP, etc.
 
 2.6 Log a data file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The log function collects the A1 output messages of all types into a single text file. The log can be parsed intoe separate
+The log function collects the A-1 output messages of all types into a single text file. The log can be parsed intoe separate
 CSV files for each message type, which can be used to
 
 While connected by COM or UDP, select *Log* in the main menu, then *Start*. You can use the default name based on the time, or enter a name.
@@ -367,7 +367,7 @@ To start monitoring, select *Monitor* in the main menu. This will launch a separ
 
    Output Monitoring
 
-Some message fields may not appear until the A1 is turned on for enough time, with GNSS antennas connected.
+Some message fields may not appear until the A-1 is turned on for enough time, with GNSS antennas connected.
 
 2.8 Connect to NTRIP Caster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -389,7 +389,7 @@ The system status will show the NTRIP connection status. The details of the last
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To upgrade to a newer firmware version: Connection over COM, select *UPGRADE* from the main menu, then select *yes*. Then follow the instructions on the screen
 The upgrade currently requires the windows executable included in the user_tools repo, HtxAurixBootLoader.exe.
-The A1 output will halt until the upgrade is complete. After upgrading, the new firmware version number should show in system status.
+The A-1 output will halt until the upgrade is complete. After upgrading, the new firmware version number should show in system status.
 
 3. Vehicle Installation
 ------------------------

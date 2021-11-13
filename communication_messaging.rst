@@ -67,7 +67,7 @@ messages are transmitted at 1Hz.
   | 11| Temp C     |  ms       |  Temperature, degrees C                                               |
   +---+------------+-----------+-----------------------------------------------------------------------+
   
-.. note:: firmware versions before 0.2.1 also output the Optical Gyro voltage in the 8th position before optical gyro rate, with 13 total fields.
+.. note:: firmware before v0.2.1 also has the Optical Gyro voltage in the 8th position between MEMS z rate and Optical Gyro Rate.
 
 2.2. APGPS Raw GNSS Message
 
