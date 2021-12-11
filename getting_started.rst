@@ -238,6 +238,8 @@ UDP connection configurations:
     The above UDP ports are the numbers on the connected computer only. The A-1 uses UDP ports 1 for data and 2 for configuration.
     If sending odometer speeds by UDP from another program, send to UDP port 2 on the A-1, from the computer UDP config port matching the configurations.
 
+See the Unit Configurations page for more details.
+
 2.5.1 Connecting by UDP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The A-1 Ethernet interface is recommended for in Vehicle collection and testing. To connect by UDP over ethernet, the A-1 must first be configured over com.
@@ -291,9 +293,20 @@ Mounting/Orientation, NTRIP, etc.
 
    Windows PC Warning for UDP
 
-2.6 Log a data file
+2.6 Set Vehicle Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The log function collects the A-1 output messages of all types into a single text file. The log can be parsed intoe separate
+Vehicle configurations describe the setup of the A1 and other devices in your vehicle and help the navigation algorithm. If you're setting up the A1 now, this can wait until you install it in the vehicle.
+From the main menu, select "VEHICLE CONFIGURATIONS" to set the following:
+
+- Position of both GPS antennas
+- Center of rear wheels, for odometer
+- Origin for navigation output
+
+See the Vehicle Configurations page for more details.
+
+2.7 Log a data file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The log function collects the A-1 output messages of all types into a single text file. The log can be parsed into separate
 CSV files for each message type, which can be used to
 
 While connected by COM or UDP, select *Log* in the main menu, then *Start*. You can use the default name based on the time, or enter a name.
@@ -354,7 +367,7 @@ Or click the dual map view button (upper left) to view the layers in a split scr
    :scale: 50 %
    :align: center
 
-2.7 Monitor Output
+2.8 Monitor Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Monitoring mode opens a display to watch the data of the INS solution in real-time.
 It also allows toggling the logging and gps connection with the LOG and GPS buttons
@@ -369,7 +382,7 @@ To start monitoring, select *Monitor* in the main menu. This will launch a separ
 
 Some message fields may not appear until the A-1 is turned on for enough time, with GNSS antennas connected.
 
-2.8 Connect to NTRIP Caster
+2.9 Connect to NTRIP Caster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Connecting to an NTRIP caster will improve the accuracy of GNSS positioning.
 NTRIP requires connecting over UDP in firmware versions before 0.4.3, after which it can be used over UDP or serial.
@@ -385,7 +398,7 @@ From the main menu, select *NTRIP* and then *Start*. Then enter the NTRIP caster
 
 The system status will show the NTRIP connection status. The details of the last used caster are saved.
 
-2.9 Firmware Upgrade
+2.10 Firmware Upgrade
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To upgrade to a newer firmware version: Connection over COM, select *UPGRADE* from the main menu, then select *yes*. Then follow the instructions on the screen
 The upgrade currently requires the windows executable included in the user_tools repo, HtxAurixBootLoader.exe.

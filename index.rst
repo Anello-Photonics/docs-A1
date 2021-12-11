@@ -14,7 +14,8 @@ canyon environments.
     getting_started
     python_program
     communication_messaging
-    advanced_config
+    unit_configuration
+    vehicle_configuration
     mechanicals
     known_limitations
     
