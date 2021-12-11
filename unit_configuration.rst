@@ -1,7 +1,7 @@
 Unit Configurations
 =======================
 
-Unit configurations control operation of the A1. They can be set with the Anello Python Program bu selecting "UNIT CONFIGURATIONS" in the main menu.
+Unit configurations control operation of the A1. They can be set with the Anello Python Program by selecting "UNIT CONFIGURATIONS" in the main menu.
 They can also be set by **#APCFG** messages over the usb or ethernet connection.
 
 
