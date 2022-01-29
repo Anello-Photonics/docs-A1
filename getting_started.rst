@@ -137,7 +137,7 @@ Instead of using requirements.txt, do:
     sudo apt install matplotlib
     sudo apt install numpy
 
-or if you already installed requirements.txt, and ran the program, but had a matplotlib or numpy error, do:
+Or if you already installed requirements.txt and ran the program, but had a matplotlib or numpy error:
 
 .. code-block:: python
 
@@ -212,6 +212,32 @@ and check for four consecutive ports, typically named something like *tty.usbser
 
 .. note::
     If the four COM ports do not show in the manual connection mode or Windows device manager, you may need to install the FTDI drivers from https://ftdichip.com/drivers/d2xx-drivers/
+
+On Ubuntu or other operating systems, the program may not have permission to access serial ports causing the connect step to fail.
+This can be fixed by increasing user permissions or running as root.
+
+1. Increasing user permissions:
+The user may need to be added to groups "tty" or "dialout" to access the serial port.
+
+.. code-block:: python
+
+    sudo usermod -a -G tty <your user name>
+    sudo usermod -a -G dialout <your user name>
+
+Then log out and back in for the permissions to apply.
+
+2. Running as root:
+Root may have a different default python, so check your python location with :
+
+.. code-block:: python
+
+    which python
+
+then run as root using that path to python:
+
+.. code-block:: python
+
+    sudo <path to python> user_program.py
 
 
 2.5 Adjust unit configuration
