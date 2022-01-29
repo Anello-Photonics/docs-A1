@@ -130,15 +130,17 @@ On some Linux systems, matplotlib and numpy dependencies must be installed with 
 Instead of using requirements.txt, do:
 
 .. code-block:: python
+
     pip install cutie
     pip install pyserial
-    pip intsall PySimpleGUI
+    pip install PySimpleGUI
     sudo apt install matplotlib
     sudo apt install numpy
 
 or if you already installed requirements.txt, and ran the program, but had a matplotlib or numpy error, do:
 
 .. code-block:: python
+
     pip uninstall matplotlib
     pip uninstall numpy
     sudo apt install matplotlib
