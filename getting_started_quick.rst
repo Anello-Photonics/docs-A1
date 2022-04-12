@@ -1,13 +1,15 @@
 Quick Getting Started Guide
-=======================
+==================================
 
 1. A-1 Hardware Connections
-------------------------
+---------------------------------
 The Anello A-1 EVK includes the eight items highlighted below:
 
 .. figure:: media/evk_contents.png
    :align: center
- 
+   
+   Figure 1: Anello A-1 EVK Contents
+
     +---+------------------------------------------------+
     | 1 | A-1 Inertial Navigation System                 +
     +---+------------------------------------------------+
@@ -27,13 +29,15 @@ The Anello A-1 EVK includes the eight items highlighted below:
     +---+------------------------------------------------+
 
 Connect the hardware as follows: 
+
 .. figure:: media/evk_wiring.png
    :scale: 50 %
    :align: center
 
+   Figure 2: Anello A-1 Connection Diagram
+
 1. Connect A-1 power connection using either the wall-power adaptor or the in-vehicle adaptor (green/yellow).  
-2. Connect A-1 to computing system using USB-C (red) for initial system configuration.
-(If A-1 is already configured, Ethernet interface (black) is recommended for data collection.)
+2. Connect A-1 to computing system using USB-C (red) for initial system configuration. (If A-1 is already configured, Ethernet interface (black) is recommended for data collection.)
 3. Connect primary GNSS antenna to GPS1 on the back of the A-1 (blue). An additional antenna to GPS2 is optional.
 
 
@@ -42,24 +46,32 @@ Connect the hardware as follows:
 2.1 Install Anello Python Program
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Confirm that Python is installed and the version is at least 3.6:
+
 .. code-block:: python
+    
     >python -V
 
 Clone the GitHub repository:
+
 .. code-block:: python
-    >cd <directoy to store Anello Python Program>
+    
+    >cd <local directoy to store Anello Python Program>
     >git clone https://github.com/Anello-Photonics/user_tool.git
 
 Install dependencies using pip:
+
 .. code-block:: python
-    cd user_tools
-    pip install -r requirements.txt
+    
+    >cd user_tools
+    >pip install -r requirements.txt
 
 2.2 Run the Tool 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. code-block:: python
-    cd board_tools
-    python user_program.py
+    
+    >cd board_tools
+    >python user_program.py
 
 2.3 Connect to the A-1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -122,6 +134,8 @@ To start monitoring, select *Monitor* in the main menu. This will launch a separ
    :scale: 50 %
    :align: center
 
+   Live Output Monitoring
+
 3.4 Connect to NTRIP Caster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Connecting to an NTRIP caster will improve the accuracy of GNSS positioning using RTK corrections.
@@ -131,7 +145,7 @@ From the main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster deta
 The *System Status* will show the NTRIP connection status.
 
 4 A-1 Vehicle Installation
-------------------------
+----------------------------
 4.1 Set Vehicle Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 From the main menu, select *Vehicle Configurations* to set the positions as prompted.
