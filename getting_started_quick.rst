@@ -30,15 +30,15 @@ The Anello A-1 EVK includes the eight items highlighted below:
 
 Connect the hardware as follows: 
 
-.. figure:: media/evk_wiring.png
+.. figure:: media/evk_wiring_2.png
    :scale: 50 %
    :align: center
 
    Figure 2: Anello A-1 Connection Diagram
 
-1. Connect A-1 power connection using either the wall-power adaptor or the in-vehicle adaptor (green/yellow).  
-2. Connect A-1 to computing system using USB-C (red) for configuration. (If A-1 is already configured, Ethernet interface (black) is recommended for data collection.)
-3. Connect primary GNSS antenna to GPS1 on the back of the A-1 (blue). An additional antenna to GPS2 is optional.
+1. Connect A-1 power connection using either the wall-power adaptor or the in-vehicle adaptor (red).  
+2. Connect A-1 to computing system using USB-C (blue) for configuration. (If A-1 is already configured, Ethernet interface (green) is recommended for data collection.)
+3. Connect primary GNSS antenna (ANT1) to GPS1 on the back of the A-1 (black). An additional antenna connecting to GPS2 is optional.
 
 
 4. A-1 Configurations
