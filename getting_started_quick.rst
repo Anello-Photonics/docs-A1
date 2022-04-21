@@ -1,55 +1,59 @@
-Quick Getting Started Guide
 ==================================
+Getting Started Guide
+==================================
+Thank you for choosing the Anello A-1! The following guide will get you started with hardware configuration and data collection.
+Please contact support@anellophotonics.com with any questions.  
 
-1. A-1 Hardware Connections
+1   A-1 Hardware Connections
 ---------------------------------
-The Anello A-1 EVK includes the eight items highlighted below:
-
-.. figure:: media/evk_contents.png
-   :align: center
-   
-   Figure 1: Anello A-1 EVK Contents
+The Anello A-1 Evaluation Kit (EVK) includes the following items:
 
     +---+------------------------------------------------+
-    | 1 | A-1 Inertial Navigation System                 +
+    | 1 | Anello A-1 EVK                                 |
     +---+------------------------------------------------+
     | 2 | Two Dual-Band Multi-Constellation GNSS Antennae|
     +---+------------------------------------------------+
-    | 3 | A-1 System Power Cable                         |
+    | 3 | Power Cable                                    |
     +---+------------------------------------------------+
-    | 4 | 110-240VAC Wall-Power Adaptor Plug             |
+    | 4 | 110-240V AC Wall-Power Adaptor                 |
     +---+------------------------------------------------+
-    | 5 | International Wall Power Plug Inserts          |
+    | 5 | International Wall-Power Plug Inserts          |
     +---+------------------------------------------------+
     | 6 | In-Vehicle Power Adaptor                       |
     +---+------------------------------------------------+
-    | 7 | USB-C Cable                                    |
+    | 7 | USB Cable                                      |
     +---+------------------------------------------------+
     | 8 | Ethernet Cable                                 |
     +---+------------------------------------------------+
 
+.. image:: media/evk_contents.png
+   :scale: 100 %
+   :align: center
+|
+
 Connect the hardware as follows: 
 
-.. figure:: media/evk_wiring_2.png
-   :scale: 50 %
+1. Connect A-1 to power using either the wall-power adaptor or the in-vehicle adaptor (red).
+2. Connect A-1 to computing system using USB (blue) for configuration. (If A-1 is already configured, Ethernet interface (green) is recommended for data collection.)
+3. Connect GNSS antenna to ANT1 on the back of  A-1 (black). An additional antenna (ANT2) is optional.
+
+.. image:: media/evk_wiring_2.png
+   :scale: 45 %
    :align: center
-
-   Figure 2: Anello A-1 Connection Diagram
-
-1. Connect A-1 power connection using either the wall-power adaptor or the in-vehicle adaptor (red).  
-2. Connect A-1 to computing system using USB-C (blue) for configuration. (If A-1 is already configured, Ethernet interface (green) is recommended for data collection.)
-3. Connect primary GNSS antenna (ANT1) to GPS1 on the back of the A-1 (black). An additional antenna connecting to GPS2 is optional.
-
-
-4. A-1 Configurations
+|
+2   A-1 Configurations
 ---------------------------------
 2.1 Install Anello Python Program
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+If you do not have Python installed, download here: `<https://www.python.org/downloads/>`_
+
 Confirm that Python is installed and the version is at least 3.6:
 
 .. code-block:: python
     
     >python -V
+
+If you do not have a Git client installed, download here: `<https://git-scm.com/download>`_ 
 
 Clone the GitHub repository:
 
@@ -73,97 +77,91 @@ Install dependencies using pip:
     >cd board_tools
     >python user_program.py
 
+You will see *System Status* at the top, showing the Connection, NTRIP, and Logging status.
+
 2.3 Connect to the A-1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Use the arrows to select *Connect* and press enter. Select *COM* and then *Auto*. The unit will
-be auto detected via Serial over USB-C. 
+Use the arrow keys to select *Connect* and press enter. Select *COM* then *Auto* to auto-detect the unit. 
 
-Select the COM ports. The Anello A-1 uses two logical ports: 
+You should now see the *System Status* updated with the Device and Connection information.
 
-    +-------------------------+-----------------------------------+
-    | **Logical Port**        |  **Physical Port** (Serial/USB-C) |
-    +-------------------------+-----------------------------------+
-    |  Data Port              | lowest port number e.g., COM7     |
-    +-------------------------+-----------------------------------+
-    |  Configuration  Port    | highest port number e.g., COM10   |
-    +-------------------------+-----------------------------------+
+Note: If four COM ports do not show in the manual connection mode or Windows device manager, 
+you may need to install the FTDI drivers from https://ftdichip.com/drivers/d2xx-drivers/
 
-2.4 Adjust Unit Configuration
+2.4 A-1 Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Select *Configure* from the main menu. To change a configuration from the default, select *Edit*, 
-then the configuration to change, then select the new value.
+Select *User Configuration* from the main menu to see default configurations. To change any configurations, 
+select *Edit*, then the configuration to change, then select the new value.
 
-The A-1 Ethernet (UDP) interface is recommended for in-vehicle data collection. To connect by UDP over Ethernet: 
-
-1. Connect to the A-1 over COM (section 2.3).
-2. In *Configure*, set the A-1 IP address statically or automatically using DHCP (default)
-3. Set the IP address of where you want the A-1 to send data, i.e., the receiving computer's IP
-4. Set the Data Port and User Messaging Port numbers
-5. Connect to the A-1 via UDP instead of USB. Use the same A-1 IP, configuration port and data port as in steps 2 & 3.
-
-**Congratulations!!!**
-You have completed the initial setup of the Anello A-1.
-
-
-3. A-1 Data Collection
----------------------------------
-3.2 Log a Data File
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Select *Log* in the main menu, then *Start*. Use either the default name or enter a custom name.
-To end the log, select *Log* and then *Stop*.
-
-The log files are saved in the "logs" directory within user_tools, grouped by month and then day.
-
-To export a log file to CSV, Select *Log* in the main menu, then *Export*, then choose the log file.
-Three CSV files will be saved in the "exports" directory, under the name of the original log file:
-
--   imu.csv : raw IMU data such as acceleration and angular rates (APIMU messages)
--   gps.csv : GNSS data (APGPS messages)
--   ins.csv : primary inertial navigation solution data (APINS messages)
-
-If the A-1 antenna was collecting GNSS data during logging, the exported CSVs can be visualized at `Kepler <https://kepler.gl/demo>`_, an online tool for geo-spatial data analysis. 
-
-3.3 Monitor Output
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Monitoring mode opens a display to watch the data of the INS solution in real-time.
-It also supports toggling the logging and GNSS connection with the LOG and GPS buttons
-
-To start monitoring, select *Monitor* in the main menu. This will launch a separate window.
-
-.. figure:: media/monitoring.png
-   :scale: 50 %
-   :align: center
-
-   Live Output Monitoring
-
-3.4 Connect to NTRIP Caster
+2.5 Connect to NTRIP Caster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Connecting to an NTRIP caster will improve the accuracy of GNSS positioning using RTK corrections.
-For firmware versions 0.4.3 and earlier, NTRIP requires the A-1 to be connected by UDP.
 
 From the main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster details as prompted. 
 The *System Status* will show the NTRIP connection status.
 
-4 A-1 Vehicle Installation
-----------------------------
-4.1 Set Vehicle Configurations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-From the main menu, select *Vehicle Configurations* to set the positions as prompted.
+|
+**Congratulations!!!**
+You have completed the initial setup of the Anello A-1.
 
+|
+3   A-1 Data Collection
+---------------------------------
+3.1 Monitor Output
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+For a real-time display of the INS solution, select *Monitor* in the main menu.
+To toggle the logging or GNSS connection, click the LOG or GPS button.
+
+
+3.2 Log a Data File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In the main menu, select *Log*, then *Start*. Use the default filename or enter a custom name. 
+The *System Status* will be updated with the logging information.
+
+To end the log, select *Log* then *Stop*. Log files are saved in the "logs" directory in user_tools, 
+grouped by month and day.
+
+To export a log file to CSV, Select *Log* in the main menu, then *Export*, then choose the log file.
+Three CSV files (imu.csv, gps.csv, and ins.csv) will be saved in the "exports" directory, under the name of the original log file.
+
+Data can be visualized by importing ins.csv into `Kepler <https://kepler.gl/demo>`_
+
+|
+4   A-1 Vehicle Installation
+----------------------------
+4.1 Connect via Ethernet
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The A-1 Ethernet (UDP) interface is recommended for in-vehicle data collection. To connect via UDP: 
+
+1. If you haven't already, connect to the A-1 over COM (see Section 2.3).
+2. Connect the A-1 to your computer using Ethernet (see Section 1)
+3. In main menu, select *User Configuration*, then:
+   
+   a. Set the A-1 IP address statically or automatically using DHCP (default).
+   b. Set receiving computer's IP.
+   c. Set the Data Port and User Messaging Port.
+
+4. In main menu, select *Connect* and choose *UDP*, then *Manual*, then:
+   
+   a. Enter the A-1 IP, Configuration port and data port from step 3.
+   b. If a Windows Security Alert pops up, click "Allow Access" to enable UDP communication.
+|
 4.2 Install the A-1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The mounting location of the A-1 is flexible and can be configured for various installation positions.  
-To minimize configuration, mount the unit near the venter of the vehicle’s rear axle, with the X-Axis facing 
-the direction of travel.
+The A-1 can be configured for various installation positions. To minimize configuration steps, 
+mount the unit near the center of the vehicle’s rear axle, with the X-Axis facing the direction of travel.
 
-.. figure:: media/a1_install_location.png
-   :scale: 50 %
+.. image:: media/a1_install_location.png
+   :scale: 25 %
    :align: center
+|
+The GNSS antennae can be magnetically mounted on the roof of the vehicle.
 
-   Default A-1 Installation Location
+4.3 Set Vehicle Configurations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+From the main menu, select *Vehicle Configurations* and set the positions as prompted.
 
-The GNSS antennae should be magnetically mounted on the roof of the vehicle.
-
+|
 **Congratulations!!!**
-You are now ready to collect data!  Note that the system requires exceeding 2m/s velocity to enter full INS mode, 
-and the performance will generally improve after the first 5 minutes of driving.
+You have completed the A-1 setup! To collect data, please refer to Section 3. 
+Note that the A-1 performance will improve after several minutes of driving.
