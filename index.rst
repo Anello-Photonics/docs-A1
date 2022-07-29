@@ -11,6 +11,7 @@ canyon environments.
     :caption: Anello A-1 Developer Manual
     :maxdepth: 1
 
+    getting_started_quick
     getting_started
     python_program
     communication_messaging
