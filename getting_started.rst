@@ -157,6 +157,16 @@ and the Anello A-1.  From the board_tools directory, run user_program.py.
     cd board_tools
     python user_program.py
 
+Then the interface should show in the terminal, as in figure 4 below.
+This program uses a keyboard interface. Move the cursor up and down with arrow keys and select with enter key. For some settings you will enter text.
+
+.. note::
+    On some Windows computers, the arrow keys did not move the cursor.
+    This appears to be an issue with the readchar dependency, version 3.0.5 on Windows.
+    It can be fixed with this command in terminal:
+
+    pip install readchar==3.0.4
+
 
 The Anello Python Program is divided into two subsections as shown in the image below.  The System Status 
 and a Main Menu.   The A-1 unit will shows as **not connected**, until the A-1 is explicitly connected via the
