@@ -1,15 +1,15 @@
 ==================================
-Getting Started Guide
+Getting Started Quick Guide
 ==================================
-Thank you for choosing the Anello A-1! The following guide will get you started with hardware configuration and data collection.
+Thank you for choosing the Anello EVK! The following guide will get you started with hardware configuration and data collection.
 Please contact support@anellophotonics.com with any questions.  
 
-1   A-1 Hardware Connections
+1   Hardware Connections
 ---------------------------------
-The Anello A-1 Evaluation Kit (EVK) includes the following items:
+The Anello EVK Evaluation Kit (EVK) includes the following items:
 
     +---+------------------------------------------------+
-    | 1 | Anello A-1 EVK                                 |
+    | 1 | Anello EVK                                 |
     +---+------------------------------------------------+
     | 2 | Two Dual-Band Multi-Constellation GNSS Antennae|
     +---+------------------------------------------------+
@@ -27,40 +27,45 @@ The Anello A-1 Evaluation Kit (EVK) includes the following items:
     +---+------------------------------------------------+
 
 .. image:: media/evk_contents.png
-   :scale: 100 %
+   :width: 75 %
    :align: center
 |
 
 Connect the hardware as follows: 
 
-1. Connect A-1 to power using either the wall-power adaptor or the in-vehicle adaptor (red).
-2. Connect A-1 to computing system using USB (blue) for configuration. (If A-1 is already configured, Ethernet interface (green) is recommended for data collection.)
-3. Connect GNSS antenna to ANT1 on the back of  A-1 (black). An additional antenna (ANT2) is optional.
+1. Connect EVK to power using either the wall-power adaptor or the in-vehicle adaptor (red). The unit should **NOT** be directly powered by USB-C.
+2. Connect EVK to computing system using USB (blue) for configuration. If EVK is already configured, Ethernet interface (green) is recommended for data collection since it is faster and more robust than virtual COM.
+3. Connect GNSS antenna to ANT1 on the back of  EVK (black). An additional antenna (ANT2) is optional.
 
 .. image:: media/evk_wiring_2.png
-   :scale: 45 %
+   :width: 45 %
    :align: center
 |
-2   A-1 Configurations
+2   Configurations
 ---------------------------------
 2.1 Install Anello Python Program
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-If you do not have Python installed, download here: `<https://www.python.org/downloads/>`_
+If you do not have Python 3 installed, download here: `<https://www.python.org/downloads/>`_
 
-Confirm that Python is installed and the version is at least 3.6:
+Confirm that Python is installed and the version is at least 3.6.0:
 
 .. code-block:: python
     
     >python -V
 
-If you do not have a Git client installed, download here: `<https://git-scm.com/download>`_ 
+.. note::
+    If "python -V" shows version 2 despite Python 3 being installed, try "python3 -V". If that shows at Python 3.x, use "python3" instead of "python" in the following steps from command line.
+
 
 Clone the GitHub repository:
 
 .. code-block:: python
-    
-    >cd <local directoy to store Anello Python Program>
-    >git clone https://github.com/Anello-Photonics/user_tool.git
+
+    git clone https://github.com/Anello-Photonics/user_tool.git
+
+.. note::
+    If you do not have a Git client installed, download here: `<https://git-scm.com/download>`_ 
+
 
 Install dependencies using pip:
 
@@ -79,7 +84,7 @@ Install dependencies using pip:
 
 You will see *System Status* at the top, showing the Connection, NTRIP, and Logging status.
 
-2.3 Connect to the A-1
+2.3 Connect to the EVK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Use the arrow keys to select *Connect* and press enter. Select *COM* then *Auto* to auto-detect the unit. 
 
@@ -88,24 +93,17 @@ You should now see the *System Status* updated with the Device and Connection in
 Note: If four COM ports do not show in the manual connection mode or Windows device manager, 
 you may need to install the FTDI drivers from https://ftdichip.com/drivers/d2xx-drivers/
 
-2.4 A-1 Configurations
+2.4 EVK Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Select *User Configuration* from the main menu to see default configurations. To change any configurations, 
 select *Edit*, then the configuration to change, then select the new value.
 
-2.5 Connect to NTRIP Caster
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Connecting to an NTRIP caster will improve the accuracy of GNSS positioning using RTK corrections.
+** Congratulations!!! **
+You have completed the initial setup and verification of the Anello EVK.  Prior to
+installing the A-1 to the vehicle, you may want to confirm additional set up items such as
+Mounting/Orientation, NTRIP, etc.
 
-From the main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster details as prompted. 
-The *System Status* will show the NTRIP connection status.
-
-|
-**Congratulations!!!**
-You have completed the initial setup of the Anello A-1.
-
-|
-3   A-1 Data Collection
+3   Data Collection
 ---------------------------------
 3.1 Monitor Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -126,33 +124,40 @@ Three CSV files (imu.csv, gps.csv, and ins.csv) will be saved in the "exports" d
 
 Data can be visualized by importing ins.csv into `Kepler <https://kepler.gl/demo>`_
 
+3.3 Connect to NTRIP Caster
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Connecting to an NTRIP caster will improve the accuracy of GNSS positioning using RTK corrections.
+
+From the main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster details as prompted. 
+The *System Status* will show the NTRIP connection status.
+
 |
-4   A-1 Vehicle Installation
+4   Vehicle Installation
 ----------------------------
 4.1 Connect via Ethernet
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The A-1 Ethernet (UDP) interface is recommended for in-vehicle data collection. To connect via UDP: 
+The EVK Ethernet (UDP) interface is recommended for in-vehicle data collection. To connect via UDP: 
 
-1. If you haven't already, connect to the A-1 over COM (see Section 2.3).
-2. Connect the A-1 to your computer using Ethernet (see Section 1)
+1. If you haven't already, connect to the EVK over COM (see Section 2.3).
+2. Connect the EVK to your computer using Ethernet (see Section 1)
 3. In main menu, select *User Configuration*, then:
    
-   a. Set the A-1 IP address statically or automatically using DHCP (default).
+   a. Set the EVK IP address statically or automatically using DHCP (default).
    b. Set receiving computer's IP.
    c. Set the Data Port and User Messaging Port.
 
 4. In main menu, select *Connect* and choose *UDP*, then *Manual*, then:
    
-   a. Enter the A-1 IP, Configuration port and data port from step 3.
+   a. Enter the EVK IP, Configuration port and data port from step 3.
    b. If a Windows Security Alert pops up, click "Allow Access" to enable UDP communication.
 |
-4.2 Install the A-1
+4.2 Install the EVK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The A-1 can be configured for various installation positions. To minimize configuration steps, 
+The EVK can be configured for various installation positions. To minimize configuration steps, 
 mount the unit near the center of the vehicle’s rear axle, with the X-Axis facing the direction of travel.
 
 .. image:: media/a1_install_location.png
-   :scale: 25 %
+   :width: 25 %
    :align: center
 |
 The GNSS antennae can be magnetically mounted on the roof of the vehicle.
@@ -163,5 +168,5 @@ From the main menu, select *Vehicle Configurations* and set the positions as pro
 
 |
 **Congratulations!!!**
-You have completed the A-1 setup! To collect data, please refer to Section 3. 
-Note that the A-1 performance will improve after several minutes of driving.
+You have completed the EVK setup! To collect data, please refer to Section 3. 
+Note that the EVK performance will improve after several minutes of driving.
