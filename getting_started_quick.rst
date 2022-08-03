@@ -34,14 +34,17 @@ The Anello EVK Evaluation Kit (EVK) includes the following items:
 Connect the hardware as follows: 
 
 1. Connect EVK to power using either the wall-power adaptor or the in-vehicle adaptor (red). The unit should **NOT** be directly powered by USB-C.
-2. Connect EVK to computing system using USB (blue) for configuration. If EVK is already configured, Ethernet interface (green) is recommended for data collection since it is faster and more robust than virtual COM.
+2. Connect EVK to PC, MAC, or Ubuntu computing system using USB (blue) for configuration.
 3. Connect GNSS antenna to ANT1 on the back of  EVK (black). An additional antenna (ANT2) is optional.
 
-.. image:: media/evk_wiring_2.png
+.. note::
+If EVK is already configured, Ethernet interface (green) is recommended for data collection since it is faster and more robust than virtual COM.
+
+.. image:: media/EVK-wiring_2.png
    :width: 45 %
    :align: center
 |
-2   Configurations
+2   Unit Configurations
 ---------------------------------
 2.1 Install Anello Python Program
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -98,6 +101,8 @@ you may need to install the FTDI drivers from https://ftdichip.com/drivers/d2xx-
 Select *User Configuration* from the main menu to see default configurations. To change any configurations, 
 select *Edit*, then the configuration to change, then select the new value.
 
+For more information, please see the "Unit Configurations" tab.
+
 ** Congratulations!!! **
 You have completed the initial setup and verification of the Anello EVK.  Prior to
 installing the A-1 to the vehicle, you may want to confirm additional set up items such as
@@ -108,7 +113,9 @@ Mounting/Orientation, NTRIP, etc.
 3.1 Monitor Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For a real-time display of the INS solution, select *Monitor* in the main menu.
-To toggle the logging or GNSS connection, click the LOG or GPS button.
+
+Logging can be started and ended by clicking the LOG button.
+GNSS input can be turned on or off by clicking the GPS button.
 
 
 3.2 Log a Data File
@@ -136,20 +143,28 @@ The *System Status* will show the NTRIP connection status.
 ----------------------------
 4.1 Connect via Ethernet
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The EVK Ethernet (UDP) interface is recommended for in-vehicle data collection. To connect via UDP: 
+The EVK Ethernet (UDP) interface is recommended for in-vehicle data collection. 
 
-1. If you haven't already, connect to the EVK over COM (see Section 2.3).
-2. Connect the EVK to your computer using Ethernet (see Section 1)
-3. In main menu, select *User Configuration*, then:
-   
-   a. Set the EVK IP address statically or automatically using DHCP (default).
-   b. Set receiving computer's IP.
-   c. Set the Data Port and User Messaging Port.
+Connecting EVK directly to computer:
+1. Find Computer Ethernet IP using ipconfig in cmd window
+2. Set unit configs:
+   - Set DHCP to off
+   - Set Computer IP to that from step 2
+   - Set EVK IP to something with same prefix as Computer IP
+   - Keep data and config port as 1111 and 2222 (this can be any number, as long as it’s not being used for something else e.g. by your OS)
+3. Restart unit
+4. Check unit configs, jot down EVK IP
+5. Connect -> UDP -> Enter EVK IP and data/config ports
 
-4. In main menu, select *Connect* and choose *UDP*, then *Manual*, then:
-   
-   a. Enter the EVK IP, Configuration port and data port from step 3.
-   b. If a Windows Security Alert pops up, click "Allow Access" to enable UDP communication.
+Connecting EVK to computer through router:
+1. Find Computer Ethernet IP using ipconfig in cmd window
+2. Set unit configs:
+   - Set DHCP on
+   - Set Computer IP to that from step 2
+   - Keep data and config port as 1111 and 2222 (this can be any number, as long as it’s not being used for something else e.g. by your OS)
+3. Restart unit
+4. Check unit configs, jot down EVK IP (should have same prefix as router)
+5. Connect -> UDP -> Enter EVK IP and data/config ports
 |
 4.2 Install the EVK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -164,9 +179,11 @@ The GNSS antennae can be magnetically mounted on the roof of the vehicle.
 
 4.3 Set Vehicle Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-From the main menu, select *Vehicle Configurations* and set the positions as prompted.
+From the main menu, select *Vehicle Configurations* and set the positions as prompted. 
+
+For more information, see the "Vehicle Configurations" tab.
 
 |
 **Congratulations!!!**
-You have completed the EVK setup! To collect data, please refer to Section 3. 
+You have completed the EVK setup! Please refer to Data Collection (Section 3) for logging driving data. 
 Note that the EVK performance will improve after several minutes of driving.

@@ -1,10 +1,10 @@
 Mechanicals
 ==================
 
-The current Anello A-1 revision features a 4-pin power connector.  The 4-pin power connector version includes the PPS signals
-for both the internal GNSS Modules of the Anello A-1.
+The current Anello EVK revision features a 4-pin power connector.  The 4-pin power connector version includes the PPS signals
+for both the internal GNSS Modules of the Anello EVK.
 
-The previous revision of the Anello A-1 has a two pin power connector.  This power connector is simply power and ground.
+The previous revision of the Anello EVK has a two pin power connector.  This power connector is simply power and ground.
 
 The connector pinout, cable information and dimensions of the box are found below
 
@@ -13,13 +13,13 @@ The connector pinout, cable information and dimensions of the box are found belo
 .. figure:: media/Anello_A1_MechanicalDwg_rev2.png
    :align: center
 
-A-1 (2-Pin Power Connector) :download:`PDF <media/Anello_A1_MechanicalDwg.pdf>`
+EVK (2-Pin Power Connector) :download:`PDF <media/Anello_A1_MechanicalDwg.pdf>`
 
 .. figure:: media/Anello_A1_MechanicalDwg.png
    :align: center
 
 .. note::
-   More information on the Anello A-1 power connector and options for a mating connector:
+   More information on the Anello EVK power connector and options for a mating connector:
    
    General Info: `<https://www.lemo.com/en/products/low-voltage-connector/b-connector>`_
    

@@ -1,10 +1,10 @@
-Communication and Messaging
+Communication & Messaging
 ===========================
 
 1.  Port Definitions
 ---------------------
 
-The Anello A-1 uses two logical ports for communication.  The primary output port is known as the "Data" port,
+The Anello EVK uses two logical ports for communication.  The primary output port is known as the "Data" port,
 and it the major output messages are transmitted at a configurable fixed output rate on this port.  The "Data"
 port also serves as the input port for the RTCM correction stream.  The control and confiruation port, is used
 for for user and configuration messaging, as well as it serves as the input port for odometer aiding messages.
@@ -23,7 +23,7 @@ for for user and configuration messaging, as well as it serves as the input port
 2.  Data Output Messages
 -------------------------
 
-The Anello A-1 communicates with ASCII sentences.
+The Anello EVK communicates with ASCII sentences.
 ASCII messages are readable by both the user and a computer. The structures of all ASCII messages follow the 
 general conventions as noted here:
 
@@ -145,7 +145,7 @@ messages are transmitted at 1Hz.
   +---+------------+-----------+------------------------------------------------------------------------------+
 
 .. note::
-    GPS Time in nanoseconds is a useful timestamp for sychronizing the Anello A-1 with other systems, as
+    GPS Time in nanoseconds is a useful timestamp for sychronizing the Anello EVK with other systems, as
     it is an absolute time.  GPS Time (GPST) is a continuous time scale (no leap seconds) defined by the GPS 
     Control segment on the basis of a set of atomic clocks at the Monitor Stations and onboard the satellites.
     GPS time is synchronised with the UTC at 1 microsecond level (modulo one second), but actually is kept within 25 ns.
@@ -154,10 +154,10 @@ messages are transmitted at 1Hz.
 3.  RTCM Data Input 
 ----------------------
 
-Standard RTCM Messages are forwarded to the Anello A-1 to enable the GNSS receivers to reach RTK precision.
-The Anello A-1 receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages.  The 
+Standard RTCM Messages are forwarded to the Anello EVK to enable the GNSS receivers to reach RTK precision.
+The Anello EVK receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages.  The 
 Anello Python Program provides an NTRIP client which can connect to a standard NTRIP network and forward the
-received RTCM messages into the Anello A-1.
+received RTCM messages into the Anello EVK.
 
 4.  Configuration Input - Odometer Aiding 
 ------------------------------------------
@@ -179,7 +179,7 @@ The odometer input unit is user configurable with the Python Tool or the Configu
 5.  Configuration Messages
 ---------------------------
 
-The easiest way to configure the Anello A-1 is with the Anello Python Program.  The A-1 saves all changes made
+The easiest way to configure the Anello EVK is with the Anello Python Program.  The EVK saves all changes made
 thru the Anello Python Program to non-volatile flash memory.  This insures that the unit is properly configured when
 used in the field.  
 
