@@ -8,7 +8,7 @@ also serves as a truth reference system for difficult environment driving scenar
 canyon environments.
 
 .. toctree::
-    :caption: Anello A-1 Developer Manual
+    :caption: Anello EVK Developer Manual
     :maxdepth: 1
 
     getting_started_quick
