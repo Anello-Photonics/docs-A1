@@ -17,6 +17,7 @@ canyon environments.
     communication_messaging
     unit_configuration
     vehicle_configuration
+    fw_upgrade
     mechanicals
     known_limitations
     
