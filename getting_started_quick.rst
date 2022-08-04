@@ -41,24 +41,18 @@ Connect the hardware as follows:
 If EVK is already configured, Ethernet interface (green) is recommended for data collection since it is faster and more robust than virtual COM.
 
 .. image:: media/EVK-wiring_2.png
-   :width: 45 %
+   :width: 70 %
    :align: center
 |
 2   Unit Configurations
 ---------------------------------
 2.1 Install Anello Python Program
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-If you do not have Python 3 installed, download here: `<https://www.python.org/downloads/>`_
-
 Confirm that Python is installed and the version is at least 3.6.0:
 
 .. code-block:: python
     
     >python -V
-
-.. note::
-    If "python -V" shows version 2 despite Python 3 being installed, try "python3 -V". If that shows at Python 3.x, use "python3" instead of "python" in the following steps from command line.
-
 
 Clone the GitHub repository:
 
@@ -66,16 +60,14 @@ Clone the GitHub repository:
 
     git clone https://github.com/Anello-Photonics/user_tool.git
 
-.. note::
-    If you do not have a Git client installed, download here: `<https://git-scm.com/download>`_ 
-
-
 Install dependencies using pip:
 
 .. code-block:: python
     
     >cd user_tools
     >pip install -r requirements.txt
+
+If you have any errors with these steps, see "Set-Up Troubleshooting"
 
 2.2 Run the Tool 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -93,9 +85,6 @@ Use the arrow keys to select *Connect* and press enter. Select *COM* then *Auto*
 
 You should now see the *System Status* updated with the Device and Connection information.
 
-Note: If four COM ports do not show in the manual connection mode or Windows device manager, 
-you may need to install the FTDI drivers from https://ftdichip.com/drivers/d2xx-drivers/
-
 2.4 EVK Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Select *User Configuration* from the main menu to see default configurations. To change any configurations, 
@@ -103,10 +92,6 @@ select *Edit*, then the configuration to change, then select the new value.
 
 For more information, please see the "Unit Configurations" tab.
 
-** Congratulations!!! **
-You have completed the initial setup and verification of the Anello EVK.  Prior to
-installing the A-1 to the vehicle, you may want to confirm additional set up items such as
-Mounting/Orientation, NTRIP, etc.
 
 3   Data Collection
 ---------------------------------
