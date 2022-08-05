@@ -3,7 +3,7 @@ Set-Up Troubleshooting
 
 1   Install Anello Python Program
 -----------------------------------
-Confirm that Python is installed and the version is at least 3.6.0:
+Confirm that Python is installed and the version is at least 3.6:
 
 .. code-block:: python
     
@@ -12,7 +12,7 @@ Confirm that Python is installed and the version is at least 3.6.0:
 .. note::
     If "python -V" shows version 2 despite Python 3 being installed, try "python3 -V". If that shows at Python 3.x, use "python3" instead of "python" in the following steps from command line.
 
-In order to most easily upgrade the Anello Python Program, directly cloning from the 
+In order to most easily stay up-to-date with the Anello Python Program, directly cloning from the 
 the GitHub repository is recommended.  
 
 .. code-block:: python
@@ -63,9 +63,9 @@ Or if you already installed requirements.txt and ran the program, but had a matp
 
 2   Connect to EVK
 --------------------
-Ensure the Power Cable is connected and the Green power light is illuminated.  To get started and 
-perform initial unit configuration, use the USB-C interface.  Connect the USB-C cable between your computer 
-and the Anello A-1.  From the board_tools directory, run user_program.py. 
+Ensure the power cable is connected and the green power light is illuminated. To 
+perform initial unit configuration, use the USB-C interface. Connect the USB-C cable between your computer 
+and the EVK.  From the board_tools directory, run user_program.py. 
 
 .. code-block:: python
 
@@ -84,7 +84,7 @@ This program uses a keyboard interface. Move the cursor up and down with arrow k
 
 
 The Anello Python Program is divided into two subsections as shown in the image below.  The System Status 
-and a Main Menu.   The A-1 unit will shows as **not connected**, until the A-1 is explicitly connected via the
+and a Main Menu.   The EVK will shows as **not connected**, until the EVK is explicitly connected via the
 Connection option.      
 
 .. figure:: media/full_status_labeled.png
@@ -96,12 +96,12 @@ Connection option.
 The main menu actions are:
 
 -   Refresh:    Refresh the display to see new system status.
--   Connect:    Connect the app to the A-1 over com or udp to configure and log
--   Configure:  edit A-1 device configurations such as udp connection settings, output data rate
--   Log:        collect the A-1 raw message output into a file. Can convert to CSV.
--   Monitor:    opens a display showing the latest INS message contents.
--   Ntrip:      connect to a server for navigation corrections.
--   Upgrade:    upgrade the A-1 with a newer firmware version
+-   Connect:    Connect the app to the EVK over COM or UDP to configure and log
+-   Configure:  Edit EVK device configurations such as output data rate and UDP connection settings
+-   Log:        Collect EVK raw data and convert to CSV with GPS, IMU, and INS data.
+-   Monitor:    Opens a display showing the real-time INS message contents.
+-   Ntrip:      Connect to a server for navigation corrections.
+-   Upgrade:    Upgrade the EVK with a newer firmware version
 -   Exit:       exit the program
 
 
@@ -110,7 +110,7 @@ The main menu actions are:
 Select the Connect option form the selection menu and press return. Select COM and then Auto. The unit will
 be auto detected via Serial over USB-C.  
 
-The Anello A-1 uses two logical ports: 
+The Anello EVK uses two logical ports: 
 
     +-------------------------+-----------------------------------+
     | **Logical Port**        |  **Physical Port** (Serial/USB-C) |
@@ -130,7 +130,7 @@ On Windows, use the device manager to find the COM ports.  On MAC and Ubuntu, us
 and check for four consecutive ports, typically named something like *tty.usbserial-xxx* on MAC/Ubuntu.
 
 .. note::
-    Anello A-1 generates four virtual com ports on the host; however only two are used. The numerically 
+    The EVK generates four virtual com ports on the host; however only two are used. The numerically 
     highest port is the configuration/control port.  The numerically lowest port is the data port. 
     Communication occurs at a fixed baudrate of 921600 bits per second.
 

@@ -1,15 +1,15 @@
 ==================================
 Getting Started Quick Guide
 ==================================
-Thank you for choosing the Anello EVK! The following guide will get you started with hardware configuration and data collection.
+Thank you for choosing the Anello EVK! The following guide will get you started with connecting, configuration, and data collection with the EVK.
 Please contact support@anellophotonics.com with any questions.  
 
 1   Hardware Connections
 ---------------------------------
-The Anello EVK Evaluation Kit (EVK) includes the following items:
+The Anello Evaluation Kit (EVK) includes the following items:
 
     +---+------------------------------------------------+
-    | 1 | Anello EVK                                 |
+    | 1 | Anello EVK                                     |
     +---+------------------------------------------------+
     | 2 | Two Dual-Band Multi-Constellation GNSS Antennae|
     +---+------------------------------------------------+
@@ -34,11 +34,8 @@ The Anello EVK Evaluation Kit (EVK) includes the following items:
 Connect the hardware as follows: 
 
 1. Connect EVK to power using either the wall-power adaptor or the in-vehicle adaptor (red). The unit should **NOT** be directly powered by USB-C.
-2. Connect EVK to PC, MAC, or Ubuntu computing system using USB (blue) for configuration.
+2. Connect EVK to PC, MAC, or Ubuntu computing system using USB (blue) for configuration. If EVK is already configured, Ethernet interface (green) is recommended for data collection since it is faster and more robust than virtual COM.
 3. Connect GNSS antenna to ANT1 on the back of  EVK (black). An additional antenna (ANT2) is optional.
-
-.. note::
-If EVK is already configured, Ethernet interface (green) is recommended for data collection since it is faster and more robust than virtual COM.
 
 .. image:: media/EVK-wiring_2.png
    :width: 70 %
@@ -48,7 +45,7 @@ If EVK is already configured, Ethernet interface (green) is recommended for data
 ---------------------------------
 2.1 Install Anello Python Program
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Confirm that Python is installed and the version is at least 3.6.0:
+Confirm that Python is installed and the version is at least 3.6:
 
 .. code-block:: python
     
@@ -67,9 +64,9 @@ Install dependencies using pip:
     >cd user_tools
     >pip install -r requirements.txt
 
-If you have any errors with these steps, see "Set-Up Troubleshooting"
+If you have any errors with these steps, see the "Set-Up Troubleshooting" tab
 
-2.2 Run the Tool 
+2.2 Run the Python Tool 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
