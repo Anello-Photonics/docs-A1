@@ -130,45 +130,36 @@ The *System Status* will show the NTRIP connection status.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The EVK Ethernet (UDP) interface is recommended for in-vehicle data collection. 
 
-Connecting EVK directly to computer:
 1. Find Computer Ethernet IP using ipconfig in cmd window
-2. Set unit configs:
-   - Set DHCP to off
-   - Set Computer IP to that from step 2
-   - Set EVK IP to something with same prefix as Computer IP
-   - Keep data and config port as 1111 and 2222 (this can be any number, as long as it’s not being used for something else e.g. by your OS)
-3. Restart unit
-4. Check unit configs, jot down EVK IP
-5. Connect -> UDP -> Enter EVK IP and data/config ports
+2. In user_program.py, select *Unit Configurations*
+       - Set Computer IP to that from step 1
+       - Keep data and configuration port as 1111 and 2222 (this can be any number, as long as it’s not being used for something else e.g. by your OS)
+    If connecting EVK directly to computer:
+       - Set DHCP to off
+       - Set EVK IP to something with same prefix as Computer IP
+    If connecting EVK to computer through router:
+       - Set DHCP on
+       - EVK IP will be auto-assigned after restart
+3. Restart EVK and re-connect via COM
+4. In main menu, select *Unit Configurations*, take note of EVK IP address and data/configuration ports
+5. In main menu, select Connect -> UDP -> Enter EVK IP and data/config ports
 
-Connecting EVK to computer through router:
-1. Find Computer Ethernet IP using ipconfig in cmd window
-2. Set unit configs:
-   - Set DHCP on
-   - Set Computer IP to that from step 2
-   - Keep data and config port as 1111 and 2222 (this can be any number, as long as it’s not being used for something else e.g. by your OS)
-3. Restart unit
-4. Check unit configs, jot down EVK IP (should have same prefix as router)
-5. Connect -> UDP -> Enter EVK IP and data/config ports
-|
+
 4.2 Install the EVK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The EVK can be configured for various installation positions. To minimize configuration steps, 
 mount the unit near the center of the vehicle’s rear axle, with the X-Axis facing the direction of travel.
 
 .. image:: media/a1_install_location.png
-   :width: 25 %
+   :width: 50 %
    :align: center
 |
 The GNSS antennae can be magnetically mounted on the roof of the vehicle.
 
 4.3 Set Vehicle Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-From the main menu, select *Vehicle Configurations* and set the positions as prompted. 
+In the main menu, select *Vehicle Configurations* and set the positions as prompted. For more informaiton, see the "Vehicle Configurations" tab.
 
-For more information, see the "Vehicle Configurations" tab.
-
-|
 **Congratulations!!!**
-You have completed the EVK setup! Please refer to Data Collection (Section 3) for logging driving data. 
+You have completed the EVK setup! Please refer back to Data Collection (Section 3) for data collection. 
 Note that the EVK performance will improve after several minutes of driving.
