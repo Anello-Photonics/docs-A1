@@ -12,7 +12,6 @@ canyon environments.
     :maxdepth: 1
 
     getting_started_quick
-    getting_started
     python_program
     communication_messaging
     unit_configuration
