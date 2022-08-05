@@ -1,5 +1,5 @@
 ==================================
-Getting Started Quick Guide
+Getting Started Guide
 ==================================
 Thank you for choosing the Anello EVK! The following guide will get you started with connecting, configuration, and data collection with the EVK.
 Please contact support@anellophotonics.com with any questions.  
@@ -64,7 +64,7 @@ Install dependencies using pip:
     >cd user_tools
     >pip install -r requirements.txt
 
-If you have any errors with these steps, see the "Set-Up Troubleshooting" tab
+If you have any errors with these steps, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`_.
 
 2.2 Run the Python Tool 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -74,20 +74,21 @@ If you have any errors with these steps, see the "Set-Up Troubleshooting" tab
     >cd board_tools
     >python user_program.py
 
-You will see *System Status* at the top, showing the Connection, NTRIP, and Logging status.
+You will see *System Status* at the top, and *Main Menu* below.
 
 2.3 Connect to the EVK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Use the arrow keys to select *Connect* and press enter. Select *COM* then *Auto* to auto-detect the unit. 
-
 You should now see the *System Status* updated with the Device and Connection information.
+
+For more information or if you experience any errors, please see the "Set-Up Troubleshooting" tab.
 
 2.4 EVK Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Select *User Configuration* from the main menu to see default configurations. To change any configurations, 
 select *Edit*, then the configuration to change, then select the new value.
 
-For more information, please see the "Unit Configurations" tab.
+For more information, please see the `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.
 
 
 3   Data Collection
@@ -155,8 +156,8 @@ The GNSS antennae can be magnetically mounted on the roof of the vehicle.
 
 4.3 Set Vehicle Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In the main menu, select *Vehicle Configurations* and set the positions as prompted. For more informaiton, see the "Vehicle Configurations" tab.
+In the main menu, select *Vehicle Configurations* and set the positions as prompted. For more informaiton, see `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_.
 
 **Congratulations!!!**
-You have completed the EVK setup! Please refer back to Data Collection (Section 3) for data collection. 
+You have completed the EVK setup! Please refer back to `Section 3 <https://docs-a1.readthedocs.io/en/latest/getting_started_quick.html#data-collection>`_ for data collection. 
 Note that the EVK performance will improve after several minutes of driving.
