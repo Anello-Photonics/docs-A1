@@ -20,8 +20,8 @@ the GitHub repository is recommended.
     git clone https://github.com/Anello-Photonics/user_tool.git
 
 .. note::
-    If you do not have a git client installed, you can (a) download/install a git client from 
-    `<https://git-scm.com/download>`_ or (b) download and unzip the source code as shown in image below.
+    If you do not have a git client installed, you can (a) download/install a `git client  
+    <https://git-scm.com/download>`_ or (b) download and unzip the source code as shown in image below.
 
 .. figure:: media/git_download.png
    :align: center
@@ -32,7 +32,7 @@ Install dependencies using pip:
 
 If this is your first time to run user_program.py, you may need to install dependencies with PIP.
 PIP is Python's package manager, and it is usually installed by default in Python installations.  If you are unfamiliar
-with PIP a quick start guide is found here `<https://pip.pypa.io/en/stable/quickstart/>`_
+with PIP a quick start guide is found `here <https://pip.pypa.io/en/stable/quickstart/>`_
 
 .. code-block:: python
 
@@ -61,7 +61,8 @@ Or if you already installed requirements.txt and ran the program, but had a matp
     sudo apt install matplotlib
     sudo apt install numpy
 
-2   Connect to EVK
+
+2   Run Python Program & Connect to EVK
 --------------------
 Ensure the power cable is connected and the green power light is illuminated. To 
 perform initial unit configuration, use the USB-C interface. Connect the USB-C cable between your computer 
@@ -72,7 +73,7 @@ and the EVK.  From the board_tools directory, run user_program.py.
     cd board_tools
     python user_program.py
 
-Then the interface should show in the terminal, as in figure 4 below.
+You should now see the System Status and Main Menu, as shown below.
 This program uses a keyboard interface. Move the cursor up and down with arrow keys and select with enter key. For some settings you will enter text.
 
 .. note::
@@ -104,9 +105,6 @@ The main menu actions are:
 -   Upgrade:    Upgrade the EVK with a newer firmware version
 -   Exit:       exit the program
 
-
-3   Connect to the EVK
-----------------------------
 Select the Connect option form the selection menu and press return. Select COM and then Auto. The unit will
 be auto detected via Serial over USB-C.  
 
@@ -135,7 +133,7 @@ and check for four consecutive ports, typically named something like *tty.usbser
     Communication occurs at a fixed baudrate of 921600 bits per second.
 
 .. note::
-    If the four COM ports do not show in the manual connection mode or Windows device manager, you may need to install the FTDI drivers from https://ftdichip.com/drivers/d2xx-drivers/
+    If the four COM ports do not show in the manual connection mode or Windows device manager, you may need to install the `FTDI drivers <https://ftdichip.com/drivers/d2xx-drivers/>`_
 
 On Ubuntu or other operating systems, the program may not have permission to access serial ports causing the connect step to fail.
 This can be fixed by increasing user permissions or running as root.
