@@ -19,5 +19,6 @@ canyon environments.
     vehicle_configuration
     fw_upgrade
     mechanicals
+    setup_troubleshooting
     known_limitations
     
