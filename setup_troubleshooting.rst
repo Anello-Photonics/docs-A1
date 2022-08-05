@@ -3,6 +3,15 @@ Set-Up Troubleshooting
 
 1   Install Anello Python Program
 -----------------------------------
+Confirm that Python is installed and the version is at least 3.6.0:
+
+.. code-block:: python
+    
+    >python -V
+
+.. note::
+    If "python -V" shows version 2 despite Python 3 being installed, try "python3 -V". If that shows at Python 3.x, use "python3" instead of "python" in the following steps from command line.
+
 In order to most easily upgrade the Anello Python Program, directly cloning from the 
 the GitHub repository is recommended.  
 
@@ -11,7 +20,7 @@ the GitHub repository is recommended.
     git clone https://github.com/Anello-Photonics/user_tool.git
 
 .. note::
-    If you do not have a git client installed, you can (a) download/install a git client  from 
+    If you do not have a git client installed, you can (a) download/install a git client from 
     `<https://git-scm.com/download>`_ or (b) download and unzip the source code as shown in image below.
 
 .. figure:: media/git_download.png
@@ -94,6 +103,7 @@ The main menu actions are:
 -   Ntrip:      connect to a server for navigation corrections.
 -   Upgrade:    upgrade the A-1 with a newer firmware version
 -   Exit:       exit the program
+
 
 3   Connect to the EVK
 ----------------------------
