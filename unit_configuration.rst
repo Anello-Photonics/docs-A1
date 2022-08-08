@@ -1,12 +1,9 @@
 Unit Configurations
 =======================
-
-The EVK can be configured to allow connection over ethernet(UDP), and to adjust other device settings.
 To adjust configuration, select *Configure* from the main menu while connected. The current configurations will display.
 To change a configuration, select *Edit* and then the configuration to change. Select or type in the new value.
 
 General configurations:
-
 -   Output Data Rate    (20/50/100/200) - rate of INS and IMU message outputs in Hz.
 -   Orientation         (+X+Y+Z or other right handed frames) - coordinate system for EVK.
 -   Enable GPS          (on/off) - let the EVK use the GPS antenna
@@ -14,12 +11,11 @@ General configurations:
 -   Enable FOG          (on/off) - let the EVK use the Fiber Optic Gyro for angular rate z.
 
 UDP connection configurations:
-
--   DHCP (on/off)               if on, the EVK ip is assigned by router. If off, pick the ip yourself.
--   UDP A-1 ip                       ip address for the EVK. Can only set this when DHCP off
--   UDP computer ip                   ip address of your computer, which EVK will connect to.
--   UDP computer data port            remote device's port for data channel. This works like the data and config com ports.
--   UDP computer configuration port   remote devices port for config channel
+-   DHCP (on/off):               If on, the EVK ip is assigned by router. If off, pick the ip yourself.
+-   UDP A-1 IP:                       IP address for the EVK. Can only set this when DHCP is off
+-   UDP computer IP:                   IP address of your computer, which EVK will connect to.
+-   UDP computer data port:            Remote device's port for data channel. This works like the data and config com ports.
+-   UDP computer configuration port:   Remote devices port for config channel
 
 .. note::
     The above UDP ports are the numbers on the connected computer only. The EVK uses UDP ports 1 for data and 2 for configuration.

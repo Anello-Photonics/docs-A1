@@ -33,14 +33,15 @@ The Anello Evaluation Kit (EVK) includes the following items:
 
 Connect the hardware as follows: 
 
-1. Connect EVK to power using either the wall-power adaptor or the in-vehicle adaptor (red). The unit should **NOT** be directly powered by USB-C.
+1. Connect EVK to power using either the wall-power adaptor or the in-vehicle adaptor (red). The unit should **not** be directly powered by USB-C.
 2. Connect EVK to PC, MAC, or Ubuntu computing system using USB (blue) for configuration. If EVK is already configured, Ethernet interface (green) is recommended for data collection since it is faster and more robust than virtual COM.
-3. Connect GNSS antenna to ANT1 on the back of  EVK (black). An additional antenna (ANT2) is optional.
+3. Connect primary GNSS antenna to ANT1 on the back of the EVK (black). An additional antenna (ANT2) is optional.
 
 .. image:: media/EVK-wiring_2.png
-   :width: 70 %
+   :width: 100 %
    :align: center
-|
+
+
 2   Unit Configurations
 ---------------------------------
 2.1 Install Anello Python Program
@@ -64,7 +65,7 @@ Install dependencies using pip:
     >cd user_tools
     >pip install -r requirements.txt
 
-If you have any errors with these steps, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`_.
+If you have any errors with these steps, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`_.
 
 2.2 Run the Python Tool 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -74,14 +75,14 @@ If you have any errors with these steps, see the `Set-Up Troubleshooting <https:
     >cd board_tools
     >python user_program.py
 
-You will see *System Status* at the top, and *Main Menu* below.
+You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`_.
 
 2.3 Connect to the EVK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Use the arrow keys to select *Connect* and press enter. Select *COM* then *Auto* to auto-detect the unit. 
-You should now see the *System Status* updated with the Device and Connection information.
+You should now see the *System Status* updated with the device information.
 
-For more information or if you experience any errors, please see the "Set-Up Troubleshooting" tab.
+For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`_.
 
 2.4 EVK Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -93,15 +94,7 @@ For more information, please see the `Unit Configurations <https://docs-a1.readt
 
 3   Data Collection
 ---------------------------------
-3.1 Monitor Output
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For a real-time display of the INS solution, select *Monitor* in the main menu.
-
-Logging can be started and ended by clicking the LOG button.
-GNSS input can be turned on or off by clicking the GPS button.
-
-
-3.2 Log a Data File
+3.1 Log a Data File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In the main menu, select *Log*, then *Start*. Use the default filename or enter a custom name. 
 The *System Status* will be updated with the logging information.
@@ -114,6 +107,13 @@ Three CSV files (imu.csv, gps.csv, and ins.csv) will be saved in the "exports" d
 
 Data can be visualized by importing ins.csv into `Kepler <https://kepler.gl/demo>`_
 
+3.2 Monitor Output
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+For a real-time display of the INS solution, select *Monitor* in the main menu.
+
+Logging can be started and ended by clicking the LOG button.
+GNSS input can be turned on or off by clicking the GPS button.
+
 3.3 Connect to NTRIP Caster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Connecting to an NTRIP caster will improve the accuracy of GNSS positioning using RTK corrections.
@@ -121,7 +121,7 @@ Connecting to an NTRIP caster will improve the accuracy of GNSS positioning usin
 From the main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster details as prompted. 
 The *System Status* will show the NTRIP connection status.
 
-|
+
 4   Vehicle Installation
 ----------------------------
 4.1 Connect via Ethernet
@@ -149,7 +149,7 @@ The EVK can be configured for various installation positions. To minimize config
 mount the unit near the center of the vehicle’s rear axle, with the X-Axis facing the direction of travel.
 
 .. image:: media/a1_install_location.png
-   :width: 50 %
+   :width: 70 %
    :align: center
 |
 The GNSS antennae can be magnetically mounted on the roof of the vehicle.

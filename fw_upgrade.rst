@@ -13,10 +13,10 @@ To update the firmware version using an ANELLO-provided .hex file:
 
     4. In terminal, enter the following commands, with the correct data port # (e.g. 6 for COM6 in step 3.1) and hex file name (including .hex):
         
-       HtxAurixBootLoader START TC36X 6 <data port number> 115200 0 0 0 0
-       HtxAurixBootLoader PROGRAMVERIFY <hex file name> 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000 0x0
-       HtxAurixBootLoader END
+       | > HtxAurixBootLoader START TC36X 6 <data port number> 115200 0 0 0 0
+       | > HtxAurixBootLoader PROGRAMVERIFY <hex file name> 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000 0x0
+       | > HtxAurixBootLoader END
 
-       After each step it should show "operation successful". If it doesn't, repeat the last step. If that doesn't work, unplug USB and start over from step #3.
+       After each step it should show "Operation Successful!" If it doesn't, repeat the last step. If that doesn't work, unplug USB and start over from step #3.
 
     5. FW version will be updated in System Status upon re-connecting to EVK
