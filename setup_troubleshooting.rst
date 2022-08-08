@@ -62,8 +62,8 @@ Or if you already installed requirements.txt and ran the program, but had a matp
     sudo apt install numpy
 
 
-2   Run Python Program & Connect to EVK
---------------------
+2   Run Python Program
+---------------------------
 Ensure the power cable is connected and the green power light is illuminated. To 
 perform initial unit configuration, use the USB-C interface. Connect the USB-C cable between your computer 
 and the EVK.  From the board_tools directory, run user_program.py. 
@@ -105,6 +105,9 @@ The main menu actions are:
 -   Upgrade:    Upgrade the EVK with a newer firmware version
 -   Exit:       exit the program
 
+
+2   Connect to EVK
+----------------------
 Select the Connect option form the selection menu and press return. Select COM and then Auto. The unit will
 be auto detected via Serial over USB-C.  
 
