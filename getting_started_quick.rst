@@ -1,7 +1,7 @@
 ==================================
 Getting Started Guide
 ==================================
-Thank you for choosing the Anello EVK! The following guide will get you started with connecting, configuration, and data collection with the EVK.
+Thank you for choosing the Anello EVK! This guide will get you started with EVK connection, configuration and data collection.
 Please contact support@anellophotonics.com with any questions.  
 
 1   Hardware Connections
@@ -34,7 +34,7 @@ The Anello Evaluation Kit (EVK) includes the following items:
 Connect the hardware as follows: 
 
 1. Connect EVK to power using either the wall-power adaptor or the in-vehicle adaptor (red). The unit should **not** be directly powered by USB-C.
-2. Connect EVK to PC, MAC, or Ubuntu computing system using USB (blue) for configuration. If EVK is already configured, Ethernet interface (green) is recommended for data collection since it is faster and more robust than virtual COM.
+2. Connect EVK to PC, MAC, or Ubuntu computing system using USB (blue) for configuration. If EVK is already configured, ethernet interface (green) is recommended for data collection since it is faster and more robust.
 3. Connect primary GNSS antenna to ANT1 on the back of the EVK (black). An additional antenna (ANT2) is optional.
 
 .. image:: media/EVK-wiring_2.png
@@ -75,14 +75,14 @@ If you have any errors with these steps, see `Set-Up Troubleshooting <https://do
     >cd board_tools
     >python user_program.py
 
-You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`_.
+You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#run-python-program>`_.
 
 2.3 Connect to the EVK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Use the arrow keys to select *Connect* and press enter. Select *COM* then *Auto* to auto-detect the unit. 
 You should now see the *System Status* updated with the device information.
 
-For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`_.
+For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#connect-to-evk>`_.
 
 2.4 EVK Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -131,7 +131,7 @@ The EVK Ethernet (UDP) interface is recommended for in-vehicle data collection.
 1. Find Computer Ethernet IP using ipconfig in cmd window
 2. In user_program.py, select *Unit Configurations*
        - Set Computer IP to that from step 1
-       - Keep data and configuration port as 1111 and 2222 (this can be any number, as long as it’s not being used for something else e.g. by your OS)
+       - Keep data and configuration port as 1111 and 2222 (these can be any number, as long as it’s not being used for something else e.g. by your OS)
     If connecting EVK directly to computer:
        - Set DHCP to off
        - Set EVK IP to something with same prefix as Computer IP
@@ -139,17 +139,17 @@ The EVK Ethernet (UDP) interface is recommended for in-vehicle data collection.
        - Set DHCP on
        - EVK IP will be auto-assigned after restart
 3. Restart EVK and re-connect via COM
-4. In main menu, select *Unit Configurations*, take note of EVK IP address and data/configuration ports
-5. In main menu, select Connect -> UDP -> Enter EVK IP and data/config ports
+4. In main menu, select *Unit Configurations*, take note of EVK IP and data/configuration ports
+5. In main menu, select *Connect* -> *UDP* -> Enter EVK IP and data/config ports
 
 
 4.2 Install the EVK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The EVK can be configured for various installation positions. To minimize configuration steps, 
-mount the unit near the center of the vehicle’s rear axle, with the X-Axis facing the direction of travel.
+mount near the center of the vehicle’s rear axle, with the x-axis facing the direction of travel.
 
 .. image:: media/a1_install_location.png
-   :width: 70 %
+   :width: 50 %
    :align: center
 |
 The GNSS antennae can be magnetically mounted on the roof of the vehicle.
