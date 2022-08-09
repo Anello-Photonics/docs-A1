@@ -22,14 +22,13 @@ UDP connection configurations:
     If sending odometer speeds by UDP from another program, send to UDP port 2 on the EVK, from the computer UDP config port matching the configurations.
 
 
-Unit configurations control operation of the EVK. They can be set with the Anello Python Program by selecting "UNIT CONFIGURATIONS" in the main menu.
-They can also be set by **#APCFG** messages over the usb or ethernet connection.
+Unit configurations can also be set by **#APCFG** messages over the usb or ethernet connection.
 
 
 +------------------------+-------------------+----------------------------------------------------------------------+
 | Configuration          |  Code (for APCFG) | Value / Description                                                  |
 +------------------------+-------------------+----------------------------------------------------------------------+
-| Orientation            |        orn        |   Coordinate axes for outputs, e.g. **+X-Y-Z** - see below           |
+| Orientation            |        orn        |  Coordinate axes for outputs, e.g. **+X-Y-Z** - see below            |
 +------------------------+-------------------+----------------------------------------------------------------------+
 | Output Data Rate       |        odr        |  rate of APIMU messages:  **20,50,100,200** Hz                       |
 +------------------------+-------------------+----------------------------------------------------------------------+

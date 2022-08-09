@@ -106,7 +106,7 @@ The main menu actions are:
 -   Exit:       exit the program
 
 
-2   Connect to EVK
+3   Connect to EVK
 ----------------------
 Select the Connect option form the selection menu and press return. Select COM and then Auto. The unit will
 be auto detected via Serial over USB-C.  
