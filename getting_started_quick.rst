@@ -15,11 +15,11 @@ The Anello Evaluation Kit (EVK) includes the following items:
     +---+------------------------------------------------+
     | 3 | Power Cable                                    |
     +---+------------------------------------------------+
-    | 4 | 110-240V AC Wall-Power Adaptor                 |
+    | 4 | 110-240V AC Wall-Power Adapter                 |
     +---+------------------------------------------------+
     | 5 | International Wall-Power Plug Inserts          |
     +---+------------------------------------------------+
-    | 6 | In-Vehicle Power Adaptor                       |
+    | 6 | In-Vehicle Power Adapter                       |
     +---+------------------------------------------------+
     | 7 | USB Cable                                      |
     +---+------------------------------------------------+
@@ -27,13 +27,13 @@ The Anello Evaluation Kit (EVK) includes the following items:
     +---+------------------------------------------------+
 
 .. image:: media/evk_contents.png
-   :width: 75 %
+   :width: 90 %
    :align: center
 |
 
 Connect the hardware as follows: 
 
-1. Connect EVK to power using either the wall-power adaptor or the in-vehicle adaptor (red). The unit should **not** be directly powered by USB-C.
+1. Connect EVK to power using either the wall-power er or the in-vehicle adapter (red). The unit should **not** be directly powered by USB-C.
 2. Connect EVK to PC, MAC, or Ubuntu computing system using USB (blue) for configuration. If EVK is already configured, ethernet interface (green) is recommended for data collection since it is faster and more robust.
 3. Connect primary GNSS antenna to ANT1 on the back of the EVK (black). An additional antenna (ANT2) is optional.
 
