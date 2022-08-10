@@ -50,8 +50,8 @@ used, so long as they support *BOTH GPS L1 and L2C bands as well as the equivale
 Glonass, Galileo, and Beidou constellations*.  Contact Anello if there are questions about using an alternate 
 GNSS antennae.  
 
-Finally, the EVK ships with an in-vehicle power adaptor.  If the in-vehicle power adaptor is used, please ensure the plug is 
-securely and fully inserted.   Alternatively, cut-off in-vehicle power adaptor and connect the red and black power lines 
+Finally, the EVK ships with an in-vehicle power adapter.  If the in-vehicle power adapter is used, please ensure the plug is 
+securely and fully inserted.   Alternatively, cut-off in-vehicle power adapter and connect the red and black power lines 
 to a stable source of power in the range of 8 to 30 VDC.
 
 Once the Anello EVK is properly installed in the vehicle, you are ready to collect data.  Unlike other 
