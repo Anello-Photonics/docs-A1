@@ -4,10 +4,10 @@ Communication & Messaging
 1.  Port Definitions
 ---------------------
 
-The Anello EVK uses two logical ports for communication.  The primary output port is known as the "Data" port,
-and it the major output messages are transmitted at a configurable fixed output rate on this port.  The "Data"
-port also serves as the input port for the RTCM correction stream.  The control and confiruation port, is used
-for for user and configuration messaging, as well as it serves as the input port for odometer aiding messages.
+The Anello EVK uses two logical ports for communication.  The primary output port is known as the "Data" port.
+The major output messages are transmitted at a configurable fixed output rate on this port.  The "Data"
+port also serves as the input port for the RTCM correction stream.  The second port, the "Configuration" port, is used 
+for user and configuration messaging. The "Configuration" port also serves as the input port for odometer aiding messages.
 
     +-------------------------+-----------------------------------+
     | **Logical Port**        |  **Functions**                    |
