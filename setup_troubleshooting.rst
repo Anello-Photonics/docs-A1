@@ -66,7 +66,7 @@ Or if you already installed requirements.txt and ran the program, but had a matp
 ---------------------------
 Ensure the power cable is connected and the green power light is illuminated. To 
 perform initial unit configuration, use the USB-C interface. Connect the USB-C cable between your computer 
-and the EVK.  From the board_tools directory, run user_program.py. 
+and the EVK. From the board_tools directory, run user_program.py. 
 
 .. code-block:: python
 
@@ -108,8 +108,8 @@ The main menu actions are:
 
 3   Connect to EVK
 ----------------------
-Select the Connect option form the selection menu and press return. Select COM and then Auto. The unit will
-be auto detected via Serial over USB-C.  
+Select *Connect* form the main menu and press enter. Select *COM* then *Auto*. The unit will
+be auto-detected over USB-C.  
 
 The Anello EVK uses two logical ports: 
 
@@ -122,17 +122,17 @@ The Anello EVK uses two logical ports:
     +-------------------------+-----------------------------------+
      
 
-Once connected the System status should be updated and the mapping of the logical ports to the virtual com 
-ports shows in the System Status. When using UDP, the user has the flexibility to assign the data port and user
+Once connected, the System status will be updated with the mapping of the logical ports to the virtual COM 
+ports. When using UDP, the user has the flexibility to assign the data port and user
 messaging port through the Anello Python Program.
 
-If the auto detection fails, you can try manual connection.  First check that there are four virtual com ports. 
-On Windows, use the device manager to find the COM ports.  On MAC and Ubuntu, use the terminal and change directory to */dev*, 
+If the auto detection fails, you can try manual connection. First check that there are four virtual COM ports. 
+On Windows, use the device manager to find the COM ports. On Mac and Ubuntu, use the terminal and change directory to */dev*, 
 and check for four consecutive ports, typically named something like *tty.usbserial-xxx* on MAC/Ubuntu.
 
 .. note::
-    The EVK generates four virtual com ports on the host; however only two are used. The numerically 
-    highest port is the configuration/control port.  The numerically lowest port is the data port. 
+    The EVK generates four virtual COM ports on the host; however only two are used. The numerically 
+    highest port is the configuration port.  The numerically lowest port is the data port. 
     Communication occurs at a fixed baudrate of 921600 bits per second.
 
 .. note::

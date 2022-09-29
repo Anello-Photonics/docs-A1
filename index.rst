@@ -1,5 +1,5 @@
-Anello A-1 Developer Manual
-===========================
+Anello EVK Developer Manual
+============================
 
 The Anello A-1 EVK is an easy to use high-accuracy navigation system that provides a convenient way 
 to evaluate the exclusive benefits of Anello’s low-drift optical gyro technology.  System designers 

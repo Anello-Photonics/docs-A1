@@ -4,11 +4,11 @@ To adjust configuration, select *Configure* from the main menu while connected. 
 To change a configuration, select *Edit* and then the configuration to change. Select or type in the new value.
 
 General configurations:
--   Output Data Rate    (20/50/100/200) - rate of INS and IMU message outputs in Hz.
--   Orientation         (+X+Y+Z or other right handed frames) - coordinate system for EVK.
+-   Output Data Rate    (20/50/100/200) - rate of INS and IMU message outputs in Hz
+-   Orientation         (+X+Y+Z or other right handed frames) - coordinate system for EVK
 -   Enable GPS          (on/off) - let the EVK use the GPS antenna
 -   Odometer Unit       (mps/mph/kph/fps) - speed unit for odometer input
--   Enable FOG          (on/off) - let the EVK use the Fiber Optic Gyro for angular rate z.
+-   Enable FOG          (on/off) - let the EVK use the optical gyro for angular rate z
 
 UDP connection configurations:
 -   DHCP (on/off):               If on, the EVK ip is assigned by router. If off, pick the ip yourself.
@@ -30,36 +30,36 @@ Unit configurations can also be set by **#APCFG** messages over the usb or ether
 +------------------------+-------------------+----------------------------------------------------------------------+
 | Orientation            |        orn        |  Coordinate axes for outputs, e.g. **+X-Y-Z** - see below            |
 +------------------------+-------------------+----------------------------------------------------------------------+
-| Output Data Rate       |        odr        |  rate of APIMU messages:  **20,50,100,200** Hz                       |
+| Output Data Rate       |        odr        |  Rate of APIMU messages:  **20,50,100,200** Hz                       |
 +------------------------+-------------------+----------------------------------------------------------------------+
-| Enable GPS 1           |        gps1       |  use the first gps antenna: "on", "off"                              |
+| Enable GPS 1           |        gps1       |  Use the first gps antenna: "on", "off"                              |
 +------------------------+-------------------+----------------------------------------------------------------------+
-| Enable GPS 2           |        gps2       |  use the second gps antenna: "on", "off"                             |
+| Enable GPS 2           |        gps2       |  Use the second gps antenna: "on", "off"                             |
 +------------------------+-------------------+----------------------------------------------------------------------+
 | Odometer Unit          |        odo        |  Speed unit of the odometer message: "mps", "mph", "kph", "fps"      |
 +------------------------+-------------------+----------------------------------------------------------------------+
-| DHCP (auto assign IP)  |        dhcp       |  DHCP "on", "off" : let router assign EVK IP for udp messaging.      |
+| DHCP (auto assign IP)  |        dhcp       |  DHCP "on", "off" : let router assign EVK IP for UDP messaging.      |
 +------------------------+-------------------+----------------------------------------------------------------------+
 | UDP A1 IP              |        lip        |  EVK's IP address, applies only if DHCP off:  (aaa.bbb.ccc.ddd)      |
 +------------------------+-------------------+----------------------------------------------------------------------+
 | UDP COMPUTER IP        |        rip        |  IP address of computer to for UDP communication: (aaa.bbb.ccc.ddd)  |
 +------------------------+-------------------+----------------------------------------------------------------------+
-| UDP DATA PORT          |       rport1      |  computer's udp port for data output: integer from 1 to 65535        |
+| UDP DATA PORT          |       rport1      |  Computer's UDP port for data output: integer from 1 to 65535        |
 +------------------------+-------------------+----------------------------------------------------------------------+
-| UDP CONFIGURATION PORT |       rport2      |  computer's udp port for config messaging: integer from 1 to 65535   |
+| UDP CONFIGURATION PORT |       rport2      |  Computer's UDP port for config messaging: integer from 1 to 65535   |
 +------------------------+-------------------+----------------------------------------------------------------------+
-| UDP ODOMETER PORT      |       rport3      |  computer's udp port for odometer messaging: integer from 1 to 65535 |
+| UDP ODOMETER PORT      |       rport3      |  Computer's UDP port for odometer messaging: integer from 1 to 65535 |
 +------------------------+-------------------+----------------------------------------------------------------------+
 
 .. note::
     Orientation describes the coordinate axes used in IMU and INS output in terms of the EVK coordinate axes (shown on EVK label)
 
-    The first pair of symbols represents the x axis of the new frame in terms of the original EVK coordinate axes.
-    eg: -Y means that the new x axis is the negation of the original y axis. The second and third pairs describe the new y and z axes.
+    The first pair of symbols represents the X axis of the new frame in terms of the original EVK coordinate axes.
+    eg: -Y means that the new X axis is the negation of the original Y axis. The second and third pairs describe the new Y and Z axes.
 
     These values are possible: the 8 right-handed frames with Z mapped to +-Z
 
-    1. +X+Y+Z 	  default, matches coordinate axes on EVK label
+    1. +X+Y+Z 	  Default, matches coordinate axes on EVK label
     2. +Y+X-Z
     3. -X-Y+Z
     4. +Y-X+Z
@@ -68,6 +68,5 @@ Unit configurations can also be set by **#APCFG** messages over the usb or ether
     7. -X+Y-Z
     8. -Y-X-Z
 
-    This affects the accelerations and rates in the APIMU message.
-    Suppose the unit in in the default +X+Y+Z shows an acceleration vector of <i, j, k>.
-    Then in the in the Y-X+Z frame, the APIMU message would show accelerations <j,-i,k>.
+    If the unit is in the default +X+Y+Z, the acceleration vector would be <i, j, k>.
+    In the Y-X+Z frame, the APIMU message would show accelerations <j, -i, k>.
