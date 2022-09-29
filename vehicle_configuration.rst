@@ -10,9 +10,9 @@ They can also be set directly by **#APVEH** messages over usb or ethernet connec
 +----------------+------------------+---------------------------------------------------------+
 | Configuration  | codes(for APVEH) |                     Description                         |
 +----------------+------------------+---------------------------------------------------------+
-|  Lever Arm 1   |  g1x, g1y, g1z   |   GNSS Antenna 1 position relative to EVK                |
+|  Lever Arm 1   |  g1x, g1y, g1z   |   GNSS Antenna 1 position relative to EVK               |
 +----------------+------------------+---------------------------------------------------------+
-|  Lever Arm 2   |  g2x, g2y, g2z   |   GNSS Antenna 2 position relative to EVK                |
+|  Lever Arm 2   |  g2x, g2y, g2z   |   GNSS Antenna 2 position relative to EVK               |
 +----------------+------------------+---------------------------------------------------------+
 | Vehicle Center |  cnx, cny, cnz   |   Center of rear wheels, origin for odometer input      |
 +----------------+------------------+---------------------------------------------------------+
