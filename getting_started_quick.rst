@@ -86,7 +86,7 @@ For more information or if you experience any errors, see the `Set-Up Troublesho
 
 2.4 EVK Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Select *User Configuration* from the main menu to see default configurations. To change any configurations, 
+Select *Unit Configuration* from the main menu to see default configurations. To change any configurations, 
 select *Edit*, then the configuration to change, then select the new value.
 
 For more information, please see the `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.

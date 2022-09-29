@@ -5,7 +5,7 @@ Vehicle configurations describe the positions of parts in the vehicle setup, whi
 All positions are x,y,z triples in meters, using the EVK as the origin and using the standard EVK coordinate system (not corrected for mounting orientation).
 
 These are configurable with the Anello Python Program by selecting "VEHICLE CONFIGURATIONS" in the main menu.
-They can also be set directly by **#APVEH** messages over usb or ethernet connection.
+They can also be set directly by **#APVEH** messages over usb or ethernet connection. 
 
 +----------------+------------------+---------------------------------------------------------+
 | Configuration  | codes(for APVEH) |                     Description                         |
