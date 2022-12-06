@@ -4,21 +4,28 @@ Communication & Messaging
 1.  Port Definitions
 ---------------------
 
-The ANELLO EVK uses two logical ports for communication.  The primary output port is known as the "Data" port,
-and it the major output messages are transmitted at a configurable fixed output rate on this port.  The "Data"
-port also serves as the input port for the RTCM correction stream.  The control and confiruation port, is used
-for for user and configuration messaging, as well as it serves as the input port for odometer aiding messages.
+The Anello EVK uses two logical ports for communication. The primary output port is known as the "Data" port, 
+where the major output messages are transmitted at a configurable fixed output rate. This
+port also serves as the input port for the RTCM correction stream. The "Configuration" port is used 
+for configuration messaging, and also serves as the input port for odometer aiding messages.
+Communication occurs at a fixed baudrate of 921600 bits per second.
 
-    +-------------------------+-----------------------------------+
-    | **Logical Port**        |  **Functions**                    |
-    +-------------------------+-----------------------------------+
-    |  Data Port  (Output)    | Output Data Messages (IMU,GPS,NAV)|
-    +-------------------------+-----------------------------------+
-    |  Data Port  (Input)     | RTCM Data Stream                  |
-    +-------------------------+-----------------------------------+
-    |  Configuration  Port    | Odometer Aiding, Configuration    |
-    +-------------------------+-----------------------------------+
+    +--------------------+----------------------------+---------------------------------------+
+    | **Logical Port**   |  **Physical Port**         |  **Functions**                        |
+    +--------------------+----------------------------+---------------------------------------+
+    | Data Port          | Lowest port #, e.g. COM7   | Output Data Messages, Input RTCM Data |
+    +--------------------+----------------------------+---------------------------------------+
+    | Configuration Port | Highest port #, e.g. COM10 | Odometer Aiding, Configuration        |
+    +--------------------+----------------------------+---------------------------------------+
      
+    +--------------------+----------------------------+---------------------------------------+
+    | **Logical Port**   |  **Physical Port**         |  **Functions**                        |
+    +--------------------+----------------------------+---------------------------------------+
+    | Data Port          | Lowest port #, e.g. COM7   | Output Data Messages, Input RTCM Data |
+    +--------------------+----------------------------+---------------------------------------+
+    | Configuration Port | Highest port #, e.g. COM10 | Odometer Aiding, Configuration        |
+    +--------------------+----------------------------+---------------------------------------+
+>>>>>>> main
 
 2.  ASCII Data Output Messages
 -------------------------------
@@ -101,11 +108,11 @@ following conventions:
   +---+---------------+-----------+-----------------------------------------------------------------------+
   | 12| FixType       |           |  0: No Fix, 2: 2D Fix, 3: 3D Fix, 5: Time Only                        |
   +---+---------------+-----------+-----------------------------------------------------------------------+
-  | 13| SatNum        |           |  Number of Satellites used in solution                                |
+  | 13| SatNum        |           |  Number of satellites used in solution                                |
   +---+---------------+-----------+-----------------------------------------------------------------------+
-  | 14| Speed Acc     |           |  Accuracy of GNSS Speed Measurement                                   |
+  | 14| Speed Acc     |           |  Accuracy of GNSS speed measurement                                   |
   +---+---------------+-----------+-----------------------------------------------------------------------+
-  | 15| Hdg Acc       |           |  Accuracy of GNSS Heading Measurement                                 |
+  | 15| Hdg Acc       |           |  Accuracy of GNSS heading measurement                                 |
   +---+---------------+-----------+-----------------------------------------------------------------------+
   | 16| RTK Status    |           |  0: Single Point Positioning, 1: RTK Float, 2: RTK Fixed              |
   +---+---------------+-----------+-----------------------------------------------------------------------+

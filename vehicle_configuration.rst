@@ -2,17 +2,17 @@ Vehicle Configuration
 =======================
 
 Vehicle configurations describe the positions of parts in the vehicle setup, which are used in the INS message calculations. The IMU message is not affected.
-All positions are x, y, z triples in meters, using the EVK as the origin and using the standard EVK coordinate system (not corrected for mounting orientation).
+All positions are x,y,z triples in meters, using the EVK as the origin and using the standard EVK coordinate system (not corrected for mounting orientation).
 
 These are configurable with the ANELLO Python Program by selecting *Vehicle Configurations* in the main menu.
-They can also be set directly by **#APVEH** messages over USB or Ethernet connection.
+They can also be set directly by **#APVEH** messages over USB or Ethernet connection. 
 
 +----------------+------------------+------------------------------------------------------------+
 | Configuration  | APVEH Codes      |                     Description                            |
 +----------------+------------------+------------------------------------------------------------+
-|  Lever Arm 1   |  g1x, g1y, g1z   |   Vector from EVK center to antenna 1                      |
+|  Lever Arm 1   |  g1x, g1y, g1z   |   Vector from EVK center to antenna 1                     |
 +----------------+------------------+------------------------------------------------------------+
-|  Lever Arm 2   |  g2x, g2y, g2z   |   Vector from EVK center to antenna 2                      |
+|  Lever Arm 2   |  g2x, g2y, g2z   |   Vector from EVK center to antenna 2                     |
 +----------------+------------------+------------------------------------------------------------+
 | Vehicle Center |  cnx, cny, cnz   |   Vector from EVK center to center of rear axle            |
 +----------------+------------------+------------------------------------------------------------+

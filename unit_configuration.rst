@@ -53,19 +53,19 @@ UDP connection configurations:
 
 Orientation describes the coordinate axes used in IMU and INS output in terms of the EVK coordinate axes (shown on EVK label).
 
-The first pair of symbols represents the x axis of the new frame in terms of the original EVK coordinate axes. eg: -Y means that the new x axis is 
-the negation of the original y axis. The second and third pairs describe the new y and z axes. 
+    The first pair of symbols represents the X axis of the new frame in terms of the original EVK coordinate axes.
+    eg: -Y means that the new X axis is the negation of the original Y axis. The second and third pairs describe the new Y and Z axes.
 
 The following 8 right-handed frames are possible:
 
-1. +X+Y+Z default, matches coordinate axes on EVK label 
-2. +Y+X-Z 
-3. -X-Y+Z 
-4. +Y-X+Z 
-5. -Y+X+Z 
-6. +X-Y-Z 
-7. -X+Y-Z 
-8. -Y-X-Z 
+    1. +X+Y+Z 	  Default, matches coordinate axes on EVK label
+    2. +Y+X-Z
+    3. -X-Y+Z
+    4. +Y-X+Z
+    5. -Y+X+Z
+    6. +X-Y-Z
+    7. -X+Y-Z
+    8. -Y-X-Z
 
-This affects the accelerations and rates in the APIMU message. Suppose the unit in in the default +X+Y+Z shows an acceleration vector of <i, j, k>. 
-Then in the in the Y-X+Z frame, the APIMU message would show accelerations <j,-i,k>. 
+    If the unit is in the default +X+Y+Z, the acceleration vector would be <i, j, k>.
+    In the Y-X+Z frame, the APIMU message would show accelerations <j, -i, k>.
