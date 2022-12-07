@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unit Configurations &mdash; Anello A-1 Developer Manual  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Vehicle Configuration" href="vehicle_configuration.html" />
+    <link rel="prev" title="Communication &amp; Messaging" href="communication_messaging.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Anello A-1 Developer Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Anello A-1 Developer Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started_quick.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_troubleshooting.html">Set-Up Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication_messaging.html">Communication &amp; Messaging</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Unit Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vehicle_configuration.html">Vehicle Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mechanicals.html">Mechanicals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fw_upgrade.html">Firmware Upgrade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_program.html">Python Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="known_limitations.html">Known Issues and Limitations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Anello A-1 Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Unit Configurations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/unit_configuration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="unit-configurations">
+<h1>Unit Configurations<a class="headerlink" href="#unit-configurations" title="Permalink to this headline">¶</a></h1>
+<p>To adjust configuration, select <em>Unit Configuration</em> from the main menu.
+To change a configuration, select <em>Edit</em> and then the configuration to change. Select or type in the new value.</p>
+<p>General configurations:</p>
+<ul class="simple">
+<li><p>Orientation coordinate system for EVK (+X+Y+Z or other right handed frames). See bottom of page.</p></li>
+<li><p>Output Data Rate (20/50/100/200) in Hz</p></li>
+<li><p>Rate of INS and IMU message outputs in Hz. Must be divisible by the ODR</p></li>
+<li><p>Enable GPS (on/off) for each reciever</p></li>
+<li><p>Odometer Unit (mps/mph/kph/fps), speed unit for odometer input</p></li>
+<li><p>Enable FOG (on/off)</p></li>
+</ul>
+<p>UDP connection configurations:</p>
+<ul class="simple">
+<li><p>DHCP (on/off): If on, the EVK IP is assigned by router. If off, pick the IP yourself.</p></li>
+<li><p>UDP A-1 IP: IP address for the EVK. Can only set this when DHCP is off</p></li>
+<li><p>UDP computer IP: IP address of your computer, which EVK will connect to.</p></li>
+<li><p>UDP computer data port: Remote device’s port for data channel. This works like the data and config COM ports.</p></li>
+<li><p>UDP computer configuration port: Remote devices port for config channel</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The above UDP ports are the numbers on the connected computer only. The EVK uses UDP port 1 for data and 2 for configuration.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If sending odometer speeds by UDP from another program, send to UDP port 2 on the EVK, from the computer UDP config port matching the configurations.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 11%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Configuration</p></td>
+<td><p>APCFG Code</p></td>
+<td><p>Value/Description</p></td>
+</tr>
+<tr class="row-even"><td><p>Orientation</p></td>
+<td><p>orn</p></td>
+<td><p>Coordinate axes for outputs, e.g. +X-Y-Z (see below)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Output Data Rate</p></td>
+<td><p>odr</p></td>
+<td><p>Rate of APIMU messages: 20, 50, 100, or 200 Hz</p></td>
+</tr>
+<tr class="row-even"><td><p>Enable GPS 1</p></td>
+<td><p>gps1</p></td>
+<td><p>Use primary antenna (ANT1): ‘on’, ‘off’</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enable GPS 2</p></td>
+<td><p>gps2</p></td>
+<td><p>Use secondary antenna (ANT2): ‘on’, ‘off’</p></td>
+</tr>
+<tr class="row-even"><td><p>Odometer Units</p></td>
+<td><p>odo</p></td>
+<td><p>Speed unit of the odometer message: ‘mps’, ‘mph’, ‘kph’, ‘fps’</p></td>
+</tr>
+<tr class="row-odd"><td><p>DHCP (auto-assign IP)</p></td>
+<td><p>dhcp</p></td>
+<td><p>DHCP (let router assign EVK IP for UDP messaging): ‘on’, ‘off’</p></td>
+</tr>
+<tr class="row-even"><td><p>EVK UDP Port</p></td>
+<td><p>lip</p></td>
+<td><p>EVK’s IP address, applies only if DHCP off: (aaa.bbb.ccc.ddd)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Computer UDP Port</p></td>
+<td><p>rip</p></td>
+<td><p>IP address of computer for UDP communication: (aaa.bbb.ccc.eee)</p></td>
+</tr>
+<tr class="row-even"><td><p>UDP Data Port</p></td>
+<td><p>rport1</p></td>
+<td><p>Computer’s UDP port for data output: integer from 1 to 65535</p></td>
+</tr>
+<tr class="row-odd"><td><p>UDP Configuration Port</p></td>
+<td><p>rport2</p></td>
+<td><p>Computer’s UDP port for config messaging: integer from 1 to 65535</p></td>
+</tr>
+<tr class="row-even"><td><p>UDP Odometer Port</p></td>
+<td><p>rport3</p></td>
+<td><p>Computer’s UDP port for odometer messaging: integer from 1 to 65535</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Orientation describes the coordinate axes used in IMU and INS output in terms of the EVK coordinate axes (shown on EVK label).</p>
+<p>The first pair of symbols represents the x axis of the new frame in terms of the original EVK coordinate axes. eg: -Y means that the new x axis is
+the negation of the original y axis. The second and third pairs describe the new y and z axes.</p>
+<p>The following 8 right-handed frames are possible:</p>
+<ol class="arabic simple">
+<li><p>+X+Y+Z default, matches coordinate axes on EVK label</p></li>
+<li><p>+Y+X-Z</p></li>
+<li><p>-X-Y+Z</p></li>
+<li><p>+Y-X+Z</p></li>
+<li><p>-Y+X+Z</p></li>
+<li><p>+X-Y-Z</p></li>
+<li><p>-X+Y-Z</p></li>
+<li><p>-Y-X-Z</p></li>
+</ol>
+<p>This affects the accelerations and rates in the APIMU message. Suppose the unit in in the default +X+Y+Z shows an acceleration vector of &lt;i, j, k&gt;.
+Then in the in the Y-X+Z frame, the APIMU message would show accelerations &lt;j,-i,k&gt;.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="communication_messaging.html" class="btn btn-neutral float-left" title="Communication &amp; Messaging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vehicle_configuration.html" class="btn btn-neutral float-right" title="Vehicle Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Anello Photonics, Inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

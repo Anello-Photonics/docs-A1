@@ -12,12 +12,12 @@ canyon environments.
     :maxdepth: 1
 
     getting_started_quick
-    python_program
-    communication_messaging
+    setup_troubleshooting
     unit_configuration
     vehicle_configuration
-    fw_upgrade
+    communication_messaging
     mechanicals
-    setup_troubleshooting
+    fw_upgrade
+    python_program
     known_limitations
     

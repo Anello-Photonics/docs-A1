@@ -1,7 +1,7 @@
 Set-Up Troubleshooting
 ======================
 
-1   Install Anello Python Program
+1   Install ANELLO Python Program
 -----------------------------------
 Confirm that Python is installed and the version is at least 3.6:
 
@@ -12,7 +12,7 @@ Confirm that Python is installed and the version is at least 3.6:
 .. note::
     If "python -V" shows version 2 despite Python 3 being installed, try "python3 -V". If that shows at Python 3.x, use "python3" instead of "python" in the following steps from command line.
 
-In order to most easily stay up-to-date with the Anello Python Program, directly cloning from the 
+In order to most easily stay up-to-date with the ANELLO Python Program, directly cloning from the 
 the GitHub repository is recommended.  
 
 .. code-block:: python
@@ -84,7 +84,7 @@ This program uses a keyboard interface. Move the cursor up and down with arrow k
     pip install readchar==3.0.4
 
 
-The Anello Python Program is divided into two subsections as shown in the image below.  The System Status 
+The ANELLO Python Program is divided into two subsections as shown in the image below.  The System Status 
 and a Main Menu.   The EVK will shows as **not connected**, until the EVK is explicitly connected via the
 Connection option.      
 
@@ -92,18 +92,20 @@ Connection option.
    :scale: 50 %
    :align: center
 
-   Figure 4: Anello Python Program Home Screen
+   Figure 4: ANELLO Python Program Home Screen
 
 The main menu actions are:
 
--   Refresh:    Refresh the display to see new system status.
--   Connect:    Connect the app to the EVK over COM or UDP to configure and log
--   Configure:  Edit EVK device configurations such as output data rate and UDP connection settings
--   Log:        Collect EVK raw data and convert to CSV with GPS, IMU, and INS data.
--   Monitor:    Opens a display showing the real-time INS message contents.
--   Ntrip:      Connect to a server for navigation corrections.
--   Upgrade:    Upgrade the EVK with a newer firmware version
--   Exit:       exit the program
+-   Refresh:               Refresh the display to see new system status
+-   Connect:               Connect to the EVK over COM or UDP
+-   Restart Unit:          Restart the EVK
+-   Unit Configuration:    Edit EVK configurations such as output data rate
+-   Vehicle Configuration: Set lever arms such as to antennae and vehicle center
+-   Log:                   Collect EVK GPS, IMU, and INS data and convert to CSV
+-   Monitor:               Opens a display showing the real-time INS message contents
+-   NTRIP:                 Connect to a server for GNSS corrections
+-   Upgrade:               Change the EVK firmware version
+-   Exit:                  Exit the python program
 
 
 3   Connect to EVK
@@ -111,7 +113,7 @@ The main menu actions are:
 Select *Connect* form the main menu and press enter. Select *COM* then *Auto*. The unit will
 be auto-detected over USB-C.  
 
-The Anello EVK uses two logical ports: 
+The ANELLO EVK uses two logical ports: 
 
     +-------------------------+-----------------------------------+
     | **Logical Port**        |  **Physical Port** (Serial/USB-C) |
