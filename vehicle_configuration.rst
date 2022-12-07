@@ -54,7 +54,7 @@ to a stable source of power in the range of 8 to 30 VDC.
 
 Once the ANELLO EVK is properly installed in the vehicle, you are ready to collect data. The EVK does not require an extensive 
 driving calibration prior to usage. However, the system does require exceeding 2 m/s velocity to enter full INS mode, and the 
-performance will generally improve after the first 5 minutes of driving.
+performance will generally improve after several minutes of driving.
 
 .. note:: The EVK algorithm is currently intended for wheeled land vehicles. Contact ANELLO about availability and support for 
    other vehicle types such as aircraft/drones, marine vehicles, and tracked land vehicles.

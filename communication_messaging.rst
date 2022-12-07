@@ -18,14 +18,6 @@ Communication occurs at a fixed baudrate of 921600 bits per second.
     | Configuration Port | Highest port #, e.g. COM10 | Odometer Aiding, Configuration        |
     +--------------------+----------------------------+---------------------------------------+
      
-    +--------------------+----------------------------+---------------------------------------+
-    | **Logical Port**   |  **Physical Port**         |  **Functions**                        |
-    +--------------------+----------------------------+---------------------------------------+
-    | Data Port          | Lowest port #, e.g. COM7   | Output Data Messages, Input RTCM Data |
-    +--------------------+----------------------------+---------------------------------------+
-    | Configuration Port | Highest port #, e.g. COM10 | Odometer Aiding, Configuration        |
-    +--------------------+----------------------------+---------------------------------------+
->>>>>>> main
 
 2.  ASCII Data Output Messages
 -------------------------------
@@ -73,7 +65,7 @@ following conventions:
   | 11| Temp C     |  °C       |  Temperature                                                          |
   +---+------------+-----------+-----------------------------------------------------------------------+
   
-.. note:: firmware before v0.2.1 also has the Optical Gyro voltage in the 8th position between MEMS z rate and Optical Gyro Rate.
+.. note:: firmware before v0.2.1 also has the Optical Gyro voltage in the 8th position between MEMS Z rate and Optical Gyro Rate.
 
 
 2.2. APGPS Message
@@ -367,7 +359,7 @@ For more details on configuration parameters and values, see `Unit Configuration
 4.3.  RTCM Data Input 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Standard RTCM Messages are forwarded to the ANELLO EVK to enable the GNSS receivers to reach RTK precision. 
+Standard RTCM messages are forwarded to the ANELLO EVK to enable the GNSS receivers to reach RTK precision. 
 The EVK receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages. The 
 ANELLO Python Program provides an NTRIP client which can connect to a standard NTRIP network and forward the
 received RTCM messages into the EVK.

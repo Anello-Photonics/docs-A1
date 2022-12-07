@@ -6,10 +6,10 @@ To change a configuration, select *Edit* and then the configuration to change. S
 General configurations:  
 
 - Orientation coordinate system for EVK (+X+Y+Z or other right handed frames). See bottom of page.  
-- Output Data Rate (20/50/100/200) in Hz 
-- Rate of INS and IMU message outputs in Hz. Must be divisible by the ODR
+- Output Data Rate (20/50/100/200 Hz)
+- Rate of INS message output in Hz. Must be divisible by the ODR
 - Enable GPS (on/off) for each reciever 
-- Odometer Unit (mps/mph/kph/fps), speed unit for odometer input  
+- Odometer Units (mps/mph/kph/fps) 
 - Enable FOG (on/off)
 
 UDP connection configurations:  

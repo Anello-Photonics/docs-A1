@@ -13,9 +13,9 @@ canyon environments.
 
     getting_started_quick
     setup_troubleshooting
-    communication_messaging
     unit_configuration
     vehicle_configuration
+    communication_messaging
     mechanicals
     fw_upgrade
     python_program
