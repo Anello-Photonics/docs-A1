@@ -1,7 +1,7 @@
 Firmware Upgrade
 ======================
 
-To update the firmware version using an ANELLO-provided .hex file:
+Please use the following procedure to update the firmware version using an ANELLO-provided .hex file. Note that this must be done on a Windows machine.
     1. Make sure HtxAurixBootLoader.exe in user_tool -> board_tools
 
     2. Add new .hex file to user_tool -> board_tools
