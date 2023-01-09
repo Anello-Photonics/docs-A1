@@ -4,19 +4,34 @@ Communication & Messaging
 1.  Port Definitions
 ---------------------
 
-The Anello EVK uses two logical ports for communication. The primary output port is known as the "Data" port, 
-where the major output messages are transmitted at a configurable fixed output rate. This
-port also serves as the input port for the RTCM correction stream. The "Configuration" port is used 
-for configuration messaging, and also serves as the input port for odometer aiding messages.
-Communication occurs at a fixed baudrate of 921600 bits per second.
+The Anello EVK communicates by serial interface (by USB cable) or UDP (over ethernet). The same port and message definitions apply for either interface.
 
-    +--------------------+----------------------------+---------------------------------------+
-    | **Logical Port**   |  **Physical Port**         |  **Functions**                        |
-    +--------------------+----------------------------+---------------------------------------+
-    | Data Port          | Lowest port #, e.g. COM7   | Output Data Messages, Input RTCM Data |
-    +--------------------+----------------------------+---------------------------------------+
-    | Configuration Port | Highest port #, e.g. COM10 | Odometer Aiding, Configuration        |
-    +--------------------+----------------------------+---------------------------------------+
+The primary output port is known as the "Data" port, where the major output messages are transmitted at a configurable fixed output rate.
+This port also serves as the input port for the RTCM correction stream.
+
+The "Configuration" port is used for configuration messaging, and also serves as the input port for odometer aiding messages.
+
+For UDP only, there is a third "Odometer" port to receive odometer messages, which is preferred to keep the configuration port free.
+Over serial, use the configuration port for odometer messages.
+
+UDP communication uses fixed port numbers on the EVK but selactable ports on the external device.
+These ports, along with IP addresses and other UDP settings should be configured in user_program.py (see the Unit Configurations section).
+
+Serial communication occurs at a baudrate of 921600 bits per second for the EVK product and 230400 for GNSS/INS and IMU products.
+
+    +--------------------+------------------------------------------+---------------------------------------+
+    | **Logical Port**   |  **Physical Port**                       |  **Functions**                        |
+    +--------------------+------------------------------------------+---------------------------------------+
+    | Data Port          | Lowest serial port #, e.g. COM7          | Output Data Messages, Input RTCM Data |
+    |                    +------------------------------------------+                                       |
+    |                    | UDP: EVK port 1, computer port selectable|                                       |
+    +--------------------+------------------------------------------+---------------------------------------+
+    | Configuration Port | Highest serial port #, e.g. COM10        | Odometer Aiding, Configuration        |
+    |                    +------------------------------------------+                                       |
+    |                    | UDP: EVK port 2, computer port selectable|                                       |
+    +--------------------+------------------------------------------+---------------------------------------+
+    | Odometer Port      | UDP: EVK port 3, computer port selectable| Preferred Odometer Channel, UDP only  |
+    +--------------------+------------------------------------------+---------------------------------------+
      
 
 2.  ASCII Data Output Messages
@@ -29,7 +44,7 @@ following conventions:
 -	Each log or command is of variable length depending on amount of data and formats.
 -	All data fields are delimited by a comma ',' with two exceptions:
 - Each log ends with a hexadecimal checksum preceded by an asterisk and followed by a line termination using the carriage return and line feed characters.  
-- The checksum is simple, just an XOR of all the bytes between # and *, written in hexadecimal.
+- The checksum is simple, just an XOR of all the bytes between # and \*, written in hexadecimal.
 - APIMU and APINS messages are transmitted at the output data rate (ODR) setting. 
 - APGPS messages are transmitted at the rate which the EVK receives messages internally. Default is 4 Hz. 
 

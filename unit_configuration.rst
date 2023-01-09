@@ -17,12 +17,13 @@ UDP connection configurations:
 - DHCP (on/off): If on, the EVK IP is assigned by router. If off, pick the IP yourself.  
 - UDP A-1 IP: IP address for the EVK. Can only set this when DHCP is off  
 - UDP computer IP: IP address of your computer, which EVK will connect to.  
-- UDP computer data port: Remote device's port for data channel. This works like the data and config COM ports.  
-- UDP computer configuration port: Remote devices port for config channel 
+- UDP computer data port: Remote device's port for data channel, works like the data serial port.
+- UDP computer configuration port: Remote device's port for config channel, works like the config serial port.
+- UDP computer odoometer port: Remote device's port for odometer messaging.
 
-.. note:: The above UDP ports are the numbers on the connected computer only. The EVK uses UDP port 1 for data and 2 for configuration. 
+.. note:: The above UDP ports are the numbers on the connected computer only. The EVK uses UDP port 1 for data, 2 for configuration, 3 for odometer.
 
-.. note:: If sending odometer speeds by UDP from another program, send to UDP port 2 on the EVK, from the computer UDP config port matching the configurations. 
+.. note:: If sending odometer speeds by UDP from another program, send to UDP port 3 on the EVK, from the computer's UDP port matching "odometer port" configuration.
 |
 
   +------------------------+------------+-----------------------------------------------------------------------+
