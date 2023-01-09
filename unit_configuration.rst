@@ -19,7 +19,7 @@ UDP connection configurations:
 - UDP computer IP: IP address of your computer, which EVK will connect to.  
 - UDP computer data port: Remote device's port for data channel, works like the data serial port.
 - UDP computer configuration port: Remote device's port for config channel, works like the config serial port.
-- UDP computer odoometer port: Remote device's port for odometer messaging.
+- UDP computer odometer port: Remote device's port for odometer messaging.
 
 .. note:: The above UDP ports are the numbers on the connected computer only. The EVK uses UDP port 1 for data, 2 for configuration, 3 for odometer.
 
