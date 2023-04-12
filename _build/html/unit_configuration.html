@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Vehicle Configuration" href="vehicle_configuration.html" />
-    <link rel="prev" title="Communication &amp; Messaging" href="communication_messaging.html" /> 
+    <link rel="prev" title="Set-Up Troubleshooting" href="setup_troubleshooting.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -37,13 +37,13 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Anello A-1 Developer Manual</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Anello EVK Developer Manual</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started_quick.html">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_troubleshooting.html">Set-Up Troubleshooting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="communication_messaging.html">Communication &amp; Messaging</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Unit Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vehicle_configuration.html">Vehicle Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication_messaging.html">Communication &amp; Messaging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mechanicals.html">Mechanicals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fw_upgrade.html">Firmware Upgrade</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_program.html">Python Program</a></li>
@@ -81,10 +81,10 @@ To change a configuration, select <em>Edit</em> and then the configuration to ch
 <p>General configurations:</p>
 <ul class="simple">
 <li><p>Orientation coordinate system for EVK (+X+Y+Z or other right handed frames). See bottom of page.</p></li>
-<li><p>Output Data Rate (20/50/100/200) in Hz</p></li>
-<li><p>Rate of INS and IMU message outputs in Hz. Must be divisible by the ODR</p></li>
+<li><p>Output Data Rate (20/50/100/200 Hz)</p></li>
+<li><p>Rate of INS message output in Hz. Must be divisible by the ODR</p></li>
 <li><p>Enable GPS (on/off) for each reciever</p></li>
-<li><p>Odometer Unit (mps/mph/kph/fps), speed unit for odometer input</p></li>
+<li><p>Odometer Units (mps/mph/kph/fps)</p></li>
 <li><p>Enable FOG (on/off)</p></li>
 </ul>
 <p>UDP connection configurations:</p>
@@ -166,11 +166,14 @@ To change a configuration, select <em>Edit</em> and then the configuration to ch
 </table>
 </div></blockquote>
 <p>Orientation describes the coordinate axes used in IMU and INS output in terms of the EVK coordinate axes (shown on EVK label).</p>
-<p>The first pair of symbols represents the x axis of the new frame in terms of the original EVK coordinate axes. eg: -Y means that the new x axis is
-the negation of the original y axis. The second and third pairs describe the new y and z axes.</p>
+<blockquote>
+<div><p>The first pair of symbols represents the X axis of the new frame in terms of the original EVK coordinate axes.
+eg: -Y means that the new X axis is the negation of the original Y axis. The second and third pairs describe the new Y and Z axes.</p>
+</div></blockquote>
 <p>The following 8 right-handed frames are possible:</p>
-<ol class="arabic simple">
-<li><p>+X+Y+Z default, matches coordinate axes on EVK label</p></li>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>+X+Y+Z     Default, matches coordinate axes on EVK label</p></li>
 <li><p>+Y+X-Z</p></li>
 <li><p>-X-Y+Z</p></li>
 <li><p>+Y-X+Z</p></li>
@@ -179,15 +182,16 @@ the negation of the original y axis. The second and third pairs describe the new
 <li><p>-X+Y-Z</p></li>
 <li><p>-Y-X-Z</p></li>
 </ol>
-<p>This affects the accelerations and rates in the APIMU message. Suppose the unit in in the default +X+Y+Z shows an acceleration vector of &lt;i, j, k&gt;.
-Then in the in the Y-X+Z frame, the APIMU message would show accelerations &lt;j,-i,k&gt;.</p>
+<p>If the unit is in the default +X+Y+Z, the acceleration vector would be &lt;i, j, k&gt;.
+In the Y-X+Z frame, the APIMU message would show accelerations &lt;j, -i, k&gt;.</p>
+</div></blockquote>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="communication_messaging.html" class="btn btn-neutral float-left" title="Communication &amp; Messaging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setup_troubleshooting.html" class="btn btn-neutral float-left" title="Set-Up Troubleshooting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="vehicle_configuration.html" class="btn btn-neutral float-right" title="Vehicle Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

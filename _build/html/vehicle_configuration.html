@@ -18,7 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Mechanicals" href="mechanicals.html" />
+    <link rel="next" title="Communication &amp; Messaging" href="communication_messaging.html" />
     <link rel="prev" title="Unit Configurations" href="unit_configuration.html" /> 
 </head>
 
@@ -37,13 +37,13 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Anello A-1 Developer Manual</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Anello EVK Developer Manual</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started_quick.html">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_troubleshooting.html">Set-Up Troubleshooting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="communication_messaging.html">Communication &amp; Messaging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unit_configuration.html">Unit Configurations</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Vehicle Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication_messaging.html">Communication &amp; Messaging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mechanicals.html">Mechanicals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fw_upgrade.html">Firmware Upgrade</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_program.html">Python Program</a></li>
@@ -77,38 +77,9 @@
   <section id="vehicle-configuration">
 <h1>Vehicle Configuration<a class="headerlink" href="#vehicle-configuration" title="Permalink to this headline">¶</a></h1>
 <p>Vehicle configurations describe the positions of parts in the vehicle setup, which are used in the INS message calculations. The IMU message is not affected.
-All positions are x, y, z triples in meters, using the EVK as the origin and using the standard EVK coordinate system (not corrected for mounting orientation).</p>
+All positions are x,y,z triples in meters, using the EVK as the origin and using the standard EVK coordinate system (not corrected for mounting orientation).</p>
 <p>These are configurable with the ANELLO Python Program by selecting <em>Vehicle Configurations</em> in the main menu.
 They can also be set directly by <strong>#APVEH</strong> messages over USB or Ethernet connection.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 19%" />
-<col style="width: 64%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Configuration</p></td>
-<td><p>APVEH Codes</p></td>
-<td><p>Description</p></td>
-</tr>
-<tr class="row-even"><td><p>Lever Arm 1</p></td>
-<td><p>g1x, g1y, g1z</p></td>
-<td><p>Vector from EVK center to antenna 1</p></td>
-</tr>
-<tr class="row-odd"><td><p>Lever Arm 2</p></td>
-<td><p>g2x, g2y, g2z</p></td>
-<td><p>Vector from EVK center to antenna 2</p></td>
-</tr>
-<tr class="row-even"><td><p>Vehicle Center</p></td>
-<td><p>cnx, cny, cnz</p></td>
-<td><p>Vector from EVK center to center of rear axle</p></td>
-</tr>
-<tr class="row-odd"><td><p>Output Center</p></td>
-<td><p>ocx, ocy, ocz</p></td>
-<td><p>Vector from EVK center to desired INS solution position</p></td>
-</tr>
-</tbody>
-</table>
 <p>The mounting location of the EVK is flexible and can be configured for various installation positions and orientations.
 For getting starting quickly and minimizing the configuration steps, we recommendation mounting the unit near the center
 of the vehicle’s rear axle with the X-Axis facing forward along the direction of travel. This will ensure
@@ -140,7 +111,7 @@ securely and fully inserted. Alternatively, cut-off in-vehicle power adapter and
 to a stable source of power in the range of 8 to 30 VDC.</p>
 <p>Once the ANELLO EVK is properly installed in the vehicle, you are ready to collect data. The EVK does not require an extensive
 driving calibration prior to usage. However, the system does require exceeding 2 m/s velocity to enter full INS mode, and the
-performance will generally improve after the first 5 minutes of driving.</p>
+performance will generally improve after several minutes of driving.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The EVK algorithm is currently intended for wheeled land vehicles. Contact ANELLO about availability and support for
@@ -153,7 +124,7 @@ other vehicle types such as aircraft/drones, marine vehicles, and tracked land v
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="unit_configuration.html" class="btn btn-neutral float-left" title="Unit Configurations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="mechanicals.html" class="btn btn-neutral float-right" title="Mechanicals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="communication_messaging.html" class="btn btn-neutral float-right" title="Communication &amp; Messaging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

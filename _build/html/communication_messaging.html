@@ -18,8 +18,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Unit Configurations" href="unit_configuration.html" />
-    <link rel="prev" title="Set-Up Troubleshooting" href="setup_troubleshooting.html" /> 
+    <link rel="next" title="Mechanicals" href="mechanicals.html" />
+    <link rel="prev" title="Vehicle Configuration" href="vehicle_configuration.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -37,10 +37,12 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Anello A-1 Developer Manual</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Anello EVK Developer Manual</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started_quick.html">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_troubleshooting.html">Set-Up Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unit_configuration.html">Unit Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vehicle_configuration.html">Vehicle Configuration</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Communication &amp; Messaging</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#port-definitions">1.  Port Definitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ascii-data-output-messages">2.  ASCII Data Output Messages</a><ul>
@@ -64,8 +66,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="unit_configuration.html">Unit Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vehicle_configuration.html">Vehicle Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mechanicals.html">Mechanicals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fw_upgrade.html">Firmware Upgrade</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_program.html">Python Program</a></li>
@@ -100,27 +100,29 @@
 <h1>Communication &amp; Messaging<a class="headerlink" href="#communication-messaging" title="Permalink to this headline">¶</a></h1>
 <section id="port-definitions">
 <h2>1.  Port Definitions<a class="headerlink" href="#port-definitions" title="Permalink to this headline">¶</a></h2>
-<p>The ANELLO EVK uses two logical ports for communication.  The primary output port is known as the “Data” port,
-and it the major output messages are transmitted at a configurable fixed output rate on this port.  The “Data”
-port also serves as the input port for the RTCM correction stream.  The control and confiruation port, is used
-for for user and configuration messaging, as well as it serves as the input port for odometer aiding messages.</p>
+<p>The Anello EVK uses two logical ports for communication. The primary output port is known as the “Data” port,
+where the major output messages are transmitted at a configurable fixed output rate. This
+port also serves as the input port for the RTCM correction stream. The “Configuration” port is used
+for configuration messaging, and also serves as the input port for odometer aiding messages.
+Communication occurs at a fixed baudrate of 921600 bits per second.</p>
 <blockquote>
 <div><table class="docutils align-default">
 <colgroup>
-<col style="width: 42%" />
-<col style="width: 58%" />
+<col style="width: 23%" />
+<col style="width: 32%" />
+<col style="width: 45%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Logical Port</strong></p></td>
+<td><p><strong>Physical Port</strong></p></td>
 <td><p><strong>Functions</strong></p></td>
 </tr>
-<tr class="row-even"><td><p>Data Port  (Output)</p></td>
-<td><p>Output Data Messages (IMU,GPS,NAV)</p></td>
+<tr class="row-even"><td><p>Data Port</p></td>
+<td><p>Lowest port #, e.g. COM7</p></td>
+<td><p>Output Data Messages, Input RTCM Data</p></td>
 </tr>
-<tr class="row-odd"><td><p>Data Port  (Input)</p></td>
-<td><p>RTCM Data Stream</p></td>
-</tr>
-<tr class="row-even"><td><p>Configuration  Port</p></td>
+<tr class="row-odd"><td><p>Configuration Port</p></td>
+<td><p>Highest port #, e.g. COM10</p></td>
 <td><p>Odometer Aiding, Configuration</p></td>
 </tr>
 </tbody>
@@ -202,12 +204,12 @@ following conventions:</p>
 <td><p>High Precicision Z-Axis Angular Rate (ANELLO Optical Gyro)</p></td>
 </tr>
 <tr class="row-odd"><td><p>9</p></td>
-<td><p>ODR</p></td>
+<td><p>ODO</p></td>
 <td><p>m/s</p></td>
 <td><p>Scaled Composite Odometer Value</p></td>
 </tr>
 <tr class="row-even"><td><p>10</p></td>
-<td><p>ODR Time</p></td>
+<td><p>ODO Time</p></td>
 <td><p>ms</p></td>
 <td><p>Timestampe of Odometer Reading</p></td>
 </tr>
@@ -221,7 +223,7 @@ following conventions:</p>
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>firmware before v0.2.1 also has the Optical Gyro voltage in the 8th position between MEMS z rate and Optical Gyro Rate.</p>
+<p>firmware before v0.2.1 also has the Optical Gyro voltage in the 8th position between MEMS Z rate and Optical Gyro Rate.</p>
 </div>
 </section>
 <section id="apgps-message">
@@ -308,17 +310,17 @@ following conventions:</p>
 <tr class="row-odd"><td><p>13</p></td>
 <td><p>SatNum</p></td>
 <td></td>
-<td><p>Number of Satellites used in solution</p></td>
+<td><p>Number of satellites used in solution</p></td>
 </tr>
 <tr class="row-even"><td><p>14</p></td>
 <td><p>Speed Acc</p></td>
 <td></td>
-<td><p>Accuracy of GNSS Speed Measurement</p></td>
+<td><p>Accuracy of GNSS speed measurement</p></td>
 </tr>
 <tr class="row-odd"><td><p>15</p></td>
 <td><p>Hdg Acc</p></td>
 <td></td>
-<td><p>Accuracy of GNSS Heading Measurement</p></td>
+<td><p>Accuracy of GNSS heading measurement</p></td>
 </tr>
 <tr class="row-even"><td><p>16</p></td>
 <td><p>RTK Status</p></td>
@@ -915,7 +917,7 @@ To do this, see <a class="reference external" href="https://docs-a1.readthedocs.
 </section>
 <section id="rtcm-data-input">
 <h3>4.3.  RTCM Data Input<a class="headerlink" href="#rtcm-data-input" title="Permalink to this headline">¶</a></h3>
-<p>Standard RTCM Messages are forwarded to the ANELLO EVK to enable the GNSS receivers to reach RTK precision.
+<p>Standard RTCM messages are forwarded to the ANELLO EVK to enable the GNSS receivers to reach RTK precision.
 The EVK receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages. The
 ANELLO Python Program provides an NTRIP client which can connect to a standard NTRIP network and forward the
 received RTCM messages into the EVK.</p>
@@ -927,8 +929,8 @@ received RTCM messages into the EVK.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="setup_troubleshooting.html" class="btn btn-neutral float-left" title="Set-Up Troubleshooting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="unit_configuration.html" class="btn btn-neutral float-right" title="Unit Configurations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="vehicle_configuration.html" class="btn btn-neutral float-left" title="Vehicle Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mechanicals.html" class="btn btn-neutral float-right" title="Mechanicals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

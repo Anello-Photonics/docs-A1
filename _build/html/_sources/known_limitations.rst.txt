@@ -6,3 +6,5 @@ Known Issues and Limitations
     2. The algorithm on the ANELLO EVK is currently designed for wheeled land vehicles. Contact Anello about availability and support for other vehicle types such as aircraft/drones, marine vehicles, and tracked land vehicles.
 
     3. Units with firmware versions before 1.0 may experience some timing jitter issues. For improved timing, please contact ANELLO to upgrade firmware.
+
+    4. The CAN connector is not yet functional. Please use the USB and Ethernet options and contact ANELLO for questions on future CAN availability.
