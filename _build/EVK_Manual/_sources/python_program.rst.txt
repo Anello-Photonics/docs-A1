@@ -1,8 +1,0 @@
-Python Program
-=======================
-
-The ANELLO Python Program source code is found here: `ANELLO GitHub <https://github.com/Anello-Photonics/user_tool>`_
-
-
-
-
