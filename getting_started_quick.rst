@@ -67,6 +67,8 @@ Install dependencies using pip:
 
 If you have any errors with these steps, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`_.
 
+Please run "git pull" periodically to make sure you are using the latest code.
+
 2.2 Run the Python Tool 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

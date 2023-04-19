@@ -84,9 +84,9 @@ This program uses a keyboard interface. Move the cursor up and down with arrow k
     pip install readchar==3.0.4
 
 
-The ANELLO Python Program is divided into two subsections as shown in the image below.  The System Status 
-and a Main Menu.   The EVK will shows as **not connected**, until the EVK is explicitly connected via the
-Connection option.      
+The ANELLO Python Program is divided into two subsections as shown in the image below. The System Status 
+and a Main Menu. The EVK will shows as **not connected**, until the EVK is explicitly connected via the
+Connection option. 
 
 .. figure:: media/full_status_labeled.png
    :scale: 50 %
