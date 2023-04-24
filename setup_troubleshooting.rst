@@ -180,7 +180,18 @@ To fix:
 
 If you have multiple Python versions installed, ensure firewall lists the version you use to run user_program.
 
-- in cmd: enter "where python" and "python --version" to check the version and location.
+- in cmd: check the Python location and version with:
+
+.. code-block:: python
+
+    where python
+
+and
+
+.. code-block:: python
+
+    python --version
+
+
 - use that path while adding Python in the firewall settings.
 - Or select Python in the firewall list, click "details" and verify the path matches.
-
