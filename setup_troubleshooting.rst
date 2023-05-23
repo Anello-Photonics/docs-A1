@@ -166,3 +166,32 @@ then run as root using that path to python:
 
     sudo <path to python> user_program.py
 
+On Windows, the firewall can block communication on UDP ports.
+When this issue happens, you can connect by UDP in user_program.py and read/write configurations, but the logs and monitor are empty.
+
+To fix:
+
+- in Windows start menu, search "firewall", then click "Firewall & network protection"
+- click "Allow an app through firewall"
+- In the popup: click "change settings"
+- Scroll down to see if "Python" is in the list.
+- if not: click "allow another app" -> "Browse" and select your python.exe
+- Check the "public" and "private" boxes for Python, then click "ok".
+
+If you have multiple Python versions installed, ensure firewall lists the version you use to run user_program.
+
+- in cmd: check the Python location and version with:
+
+.. code-block:: python
+
+    where python
+
+and
+
+.. code-block:: python
+
+    python --version
+
+
+- use that path while adding Python in the firewall settings.
+- Or select Python in the firewall list, click "details" and verify the path matches.
