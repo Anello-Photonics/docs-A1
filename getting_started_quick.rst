@@ -64,7 +64,7 @@ Install dependencies using pip:
 
 .. code-block:: python
     
-    >cd user_tools
+    >cd user_tool
     >pip install -r requirements.txt
 
 If you have any errors with these steps, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`_.

@@ -1,10 +1,10 @@
 ==================================
 GNSS INS Getting Started Guide
 ==================================
-Thank you for choosing the ANELLO GNSS INS! This guide will get you started with GNSS INS connection, configuration and data collection.
+Thank you for choosing the ANELLO GNSS INS! This guide will get you started with connection, configuration and data collection.
 Please contact support@anellophotonics.com with any questions.  
 
-1   GNSS INS Evaluation Kit
+1   Hardware Connections
 ---------------------------------
 The ANELLO GNSS INS unit is pictured below. It features a 20 pin automotive-grade Molex MX150 connector and two FAKRA SMB GNSS connectors.
 
@@ -50,7 +50,7 @@ Install dependencies using pip:
 
 .. code-block:: python
     
-    >cd user_tools
+    >cd user_tool
     >pip install -r requirements.txt
 
 If you have any errors with these steps, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`_.
