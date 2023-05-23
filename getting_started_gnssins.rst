@@ -15,16 +15,16 @@ The ANELLO GNSS INS unit is pictured below. It features a 20 pin automotive-grad
 If you purchased the GNSS INS Evaluation Kit, you will also receive the items pictured below.
 
 .. image:: media/GNSS_INS_EvalKit.png
-   :width: 90 %
+   :width: 100 %
    :align: center
 |
 
 To use the GNSS INS Evaluation Kit, connect the hardware as follows: 
 
-1. Connect GNSS INS breakout cable to GNSS INS unit
-2. Connect GNSS INS to power using either the AC/DC adapter or the Auto Cable Plug.
+1. Connect breakout cable to GNSS INS unit
+2. Connect to power using either the AC/DC adapter or the Auto Cable Plug.
 3. Connect primary GNSS antenna to ANT1 using SMA to FAKRA Adapters. An additional antenna (ANT2) is optional and enables stationary dual heading.
-4. Connect GNSS INS to PC, MAC, or Ubuntu computing system via RS-232 using USB 2.0 to DB9 Serial Converters for configuration.
+4. Connect to PC, Mac, or Ubuntu computing system via RS-232 using USB 2.0 to DB9 Serial Converters for configuration.
 5. If you'd like to use Automotive Ethernet, see section 4.1 for connection instructions.
 
 
