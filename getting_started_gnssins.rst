@@ -143,7 +143,7 @@ The GNSS INS automotive ethernet interface is recommended for in-vehicle data co
 The GNSS INS can be configured for various installation positions. To minimize configuration steps, 
 mount near the center of the vehicle’s rear axle, with the x-axis facing the direction of travel.
 
-.. image:: media/a1_install_location.png
+.. image:: media/GNSSINS_Vehicle_Installation.png
    :width: 50 %
    :align: center
 |
