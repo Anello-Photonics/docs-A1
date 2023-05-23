@@ -1,7 +1,7 @@
 ==================================
-Getting Started Guide
+IMU/IMU+ Getting Started Guide
 ==================================
-Thank you for choosing the ANELLO EVK! This guide will get you started with EVK connection, configuration and data collection.
+Thank you for choosing the ANELLO IMU/IMU+! This guide will get you started with EVK connection, configuration and data collection.
 Please contact support@anellophotonics.com with any questions.  
 
 1   Hardware Connections
@@ -46,6 +46,8 @@ Connect the hardware as follows:
 ---------------------------------
 2.1 Install ANELLO Python Program
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+If you would like to use the ANELLO Python Program to connect, configure, and log data with the IMU/IMU+, please use the following instructions.
+
 Confirm that Python is installed and the version is at least 3.6:
 
 .. code-block:: python

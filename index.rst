@@ -11,7 +11,8 @@ canyon environments.
     :caption: Anello EVK Developer Manual
     :maxdepth: 1
 
-    getting_started_quick
+    getting_started_evk
+    getting_started_gnssins
     setup_troubleshooting
     unit_configuration
     vehicle_configuration

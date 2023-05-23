@@ -1,52 +1,39 @@
 ==================================
-Getting Started Guide
+GNSS INS Getting Started Guide
 ==================================
-Thank you for choosing the ANELLO EVK! This guide will get you started with EVK connection, configuration and data collection.
+Thank you for choosing the ANELLO GNSS INS! This guide will get you started with GNSS INS connection, configuration and data collection.
 Please contact support@anellophotonics.com with any questions.  
 
-1   Hardware Connections
+1   GNSS INS Evaluation Kit
 ---------------------------------
-The ANELLO Evaluation Kit (EVK) includes the following items:
+The ANELLO GNSS is pictured below. It features a 20 pin automotive-grade Molex MX150 connector and two FAKRA SMB GNSS connectors.
 
-    +---+------------------------------------------------+
-    | 1 | ANELLO EVK                                     |
-    +---+------------------------------------------------+
-    | 2 | Two Dual-Band Multi-Constellation GNSS Antennae|
-    +---+------------------------------------------------+
-    | 3 | Power Cable                                    |
-    +---+------------------------------------------------+
-    | 4 | 110-240V AC Wall-Power Adapter                 |
-    +---+------------------------------------------------+
-    | 5 | International Wall-Power Plug Inserts          |
-    +---+------------------------------------------------+
-    | 6 | In-Vehicle Power Adapter                       |
-    +---+------------------------------------------------+
-    | 7 | USB Cable                                      |
-    +---+------------------------------------------------+
-    | 8 | Ethernet Cable                                 |
-    +---+------------------------------------------------+
+.. image:: media/ANELLO_GNSS_INS.png
+   :width: 50 %
+   :align: center
+|
+If you purchased the GNSS INS Evaluation Kit, you will also receive the items pictured below.
 
-.. image:: media/evk_contents.png
-   :width: 90 %
+.. image:: media/GNSS_INS_EvalKit.png
+   :width: 50 %
    :align: center
 |
 
-Connect the hardware as follows: 
+To use the GNSS INS Evaluation Kit, connect the hardware as follows: 
 
-1. Connect EVK to power using either the wall-power er or the in-vehicle adapter (red). The unit should **not** be directly powered by USB-C.
-2. Connect EVK to PC, MAC, or Ubuntu computing system using USB (blue) for configuration. If EVK is already configured, ethernet interface (green) is recommended for data collection since it is faster and more robust.
-3. Connect primary GNSS antenna to ANT1 on the back of the EVK (black). An additional antenna (ANT2) is optional.
-
-.. image:: media/EVK-wiring_2.png
-   :width: 100 %
-   :align: center
+1. Connect GNSS INS breakout cable to GNSS INS unit
+2. Connect GNSS INS to power using either the AC/DC adapter or the Auto Cable Plug.
+2. Connect GNSS INS to PC, MAC, or Ubuntu computing system via RS-232 using USB 2.0 to DB9 Serial Converters for configuration.
+3. Connect primary GNSS antenna to ANT1 using SMA to FAKRA Adapters. An additional antenna (ANT2) is optional and enables stationary dual heading.
 
 
 2   Unit Configurations
 ---------------------------------
 2.1 Install ANELLO Python Program
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Confirm that Python is installed and the version is at least 3.6:
+If you would like to use the ANELLO Python Program to connect, configure, and log data with the GNSS INS, please use the following instructions.
+
+Confirm that Python is installed on your computer and the version is at least 3.6:
 
 .. code-block:: python
     
@@ -79,14 +66,14 @@ Please run "git pull" periodically to make sure you are using the latest code.
 
 You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#run-python-program>`_.
 
-2.3 Connect to the EVK
+2.3 Connect to the GNSS INS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Use the arrow keys to select *Connect*, then *COM*, then *Auto* to auto-detect the unit. 
 You should now see the *System Status* updated with the device information.
 
 For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#connect-to-evk>`_.
 
-2.4 EVK Configurations
+2.4 GNSS INS Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Select *Unit Configuration* from the main menu to see default configurations. To change any configurations, 
 select *Edit*, then the configuration to change, then select the new value.
@@ -127,32 +114,32 @@ The *System Status* will show the NTRIP connection status.
 ----------------------------
 4.1 Connect via Ethernet
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The EVK Ethernet (UDP) interface is recommended for in-vehicle data collection. 
+The GNSS INS automotive ethernet interface is recommended for in-vehicle data collection. If your system does not use automotive ethernet, a media converter such as the `Rad Moon <https://intrepidcs.com/products/automotive-ethernet-tools/rad-moon-100base-t1-ethernet-media-converter/>`_ would be reequired.
 
 1. Find Computer Ethernet IP using ipconfig in terminal
 2. In user_program.py, select *Unit Configurations*
    
    - Set Computer IP to that from step 1
-   - Keep data and configuration port as 1111 and 2222 (these can be any number not  used for something else, e.g. your OS)
+   - Keep data and configuration port as 1111 and 2222 (these can be any number not used for something else, e.g. your OS)
    
-   If connecting EVK directly to computer:
+   If connecting directly to computer:
    
    - Set DHCP to off
-   - Set EVK IP to something with same prefix as Computer IP
+   - Set GNSS INS (A1) IP to something with same prefix as Computer IP
    
-   If connecting EVK to computer through router:
+   If connecting GNSS INS to computer through router:
    
    - Set DHCP on
-   - EVK IP will be auto-assigned after restart
+   - GNSS INS (A1) IP will be auto-assigned after restart
 
-3. Restart EVK and re-connect via COM
-4. In main menu, select *Unit Configurations*, take note of EVK IP and data/config ports
-5. In main menu, select *Connect* -> *UDP* -> Enter EVK IP and data/config ports
+3. Restart GNSS INS and re-connect via RS-232
+4. In main menu, select *Unit Configurations*, take note of GNSS INS IP and data/config ports
+5. In main menu, select *Connect* -> *UDP* -> Enter GNSS INS IP and data/config ports
 
 
-4.2 Install the EVK
+4.2 Install the GNSS INS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The EVK can be configured for various installation positions. To minimize configuration steps, 
+The GNSS INS can be configured for various installation positions. To minimize configuration steps, 
 mount near the center of the vehicle’s rear axle, with the x-axis facing the direction of travel.
 
 .. image:: media/a1_install_location.png
@@ -166,5 +153,5 @@ The GNSS antennae can be magnetically mounted on the roof of the vehicle.
 In main menu, select *Vehicle Configurations* and set the lever arms as prompted. For more informaiton, see `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_.
 
 **Congratulations!!!**
-You have completed the EVK setup! Please refer back to `Section 3 <https://docs-a1.readthedocs.io/en/latest/getting_started_quick.html#data-collection>`_ for data collection. 
-Note that the EVK performance will improve after several minutes of driving.
+You have completed the GNSS INS setup! Please refer back to `Section 3 <https://docs-a1.readthedocs.io/en/latest/getting_started_quick.html#data-collection>`_ for data collection. 
+Note that the GNSS INS performance will improve after several minutes of driving.
