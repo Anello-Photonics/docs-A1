@@ -6,7 +6,7 @@ Please contact support@anellophotonics.com with any questions.
 
 1   GNSS INS Evaluation Kit
 ---------------------------------
-The ANELLO GNSS is pictured below. It features a 20 pin automotive-grade Molex MX150 connector and two FAKRA SMB GNSS connectors.
+The ANELLO GNSS INS unit is pictured below. It features a 20 pin automotive-grade Molex MX150 connector and two FAKRA SMB GNSS connectors.
 
 .. image:: media/ANELLO_GNSS_INS.png
    :width: 50 %
@@ -15,7 +15,7 @@ The ANELLO GNSS is pictured below. It features a 20 pin automotive-grade Molex M
 If you purchased the GNSS INS Evaluation Kit, you will also receive the items pictured below.
 
 .. image:: media/GNSS_INS_EvalKit.png
-   :width: 50 %
+   :width: 90 %
    :align: center
 |
 
@@ -23,8 +23,9 @@ To use the GNSS INS Evaluation Kit, connect the hardware as follows:
 
 1. Connect GNSS INS breakout cable to GNSS INS unit
 2. Connect GNSS INS to power using either the AC/DC adapter or the Auto Cable Plug.
-2. Connect GNSS INS to PC, MAC, or Ubuntu computing system via RS-232 using USB 2.0 to DB9 Serial Converters for configuration.
 3. Connect primary GNSS antenna to ANT1 using SMA to FAKRA Adapters. An additional antenna (ANT2) is optional and enables stationary dual heading.
+4. Connect GNSS INS to PC, MAC, or Ubuntu computing system via RS-232 using USB 2.0 to DB9 Serial Converters for configuration.
+5. If you'd like to use Automotive Ethernet, see section 4.1 for connection instructions.
 
 
 2   Unit Configurations
@@ -111,9 +112,9 @@ The *System Status* will show the NTRIP connection status.
 
 
 4   Vehicle Installation
-----------------------------
-4.1 Connect via Ethernet
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------
+4.1 Connect via Automotive Ethernet
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The GNSS INS automotive ethernet interface is recommended for in-vehicle data collection. If your system does not use automotive ethernet, a media converter such as the `Rad Moon <https://intrepidcs.com/products/automotive-ethernet-tools/rad-moon-100base-t1-ethernet-media-converter/>`_ would be reequired.
 
 1. Find Computer Ethernet IP using ipconfig in terminal
@@ -134,7 +135,7 @@ The GNSS INS automotive ethernet interface is recommended for in-vehicle data co
 
 3. Restart GNSS INS and re-connect via RS-232
 4. In main menu, select *Unit Configurations*, take note of GNSS INS IP and data/config ports
-5. In main menu, select *Connect* -> *UDP* -> Enter GNSS INS IP and data/config ports
+5. In main menu, select *Connect* -> *UDP* -> Enter GNSS INS (A1) IP and data/config ports
 
 
 4.2 Install the GNSS INS
