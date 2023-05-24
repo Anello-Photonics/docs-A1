@@ -16,7 +16,7 @@ EVK SCD Drawing: :download:`PDF <media/Anello_A1_MechanicalDwg_rev2.pdf>`
    Mating Connector: `<https://www.lemo.com/pdf/FGG.0B.304.CLAD52.pdf>`_                                                      
 
 
-The ANELLO GNSS INS features a 20 pin Molex MX150 connector.
+The ANELLO GNSS INS features a 20 pin Molex MX150 connector and two FAKRA SMB GNSS connectors.
 
 GNSS INS SCD Drawing: :download:`PDF <media/10000201-22_01_SCD_GNSS_INS.pdf>`
 
