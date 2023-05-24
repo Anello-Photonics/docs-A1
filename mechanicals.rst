@@ -20,5 +20,5 @@ The ANELLO GNSS INS features a 20 pin Molex MX150 connector.
 
 GNSS INS SCD Drawing: :download:`PDF <media/10000201-22_01_SCD_GNSS_INS.pdf>`
 
-.. figure:: media/10000201-22_01_SCD_GNSS_INS.png
+.. figure:: media/10000201-22_01_SCD_GNSS_INS.pdf
    :align: center
