@@ -1,21 +1,11 @@
 Mechanicals
 ==================
 
-The current ANELLO EVK revision features a 4-pin power connector.  The 4-pin power connector version includes the PPS signals
-for both the internal GNSS Modules of the ANELLO EVK.
+The ANELLO EVK features a 4-pin power connector. The 4-pin power connector version includes PPS input (PPS1) and output (PPS2) signals.
 
-The previous revision of the ANELLO EVK has a two pin power connector.  This power connector is simply power and ground.
-
-The connector pinout, cable information and dimensions of the box are found below
-
-4-Pin (4-Pin Power Connector) :download:`PDF <media/Anello_A1_MechanicalDwg_rev2.pdf>`
+EVK SCD Drawing: :download:`PDF <media/Anello_A1_MechanicalDwg_rev2.pdf>`
 
 .. figure:: media/Anello_A1_MechanicalDwg_rev2.png
-   :align: center
-
-EVK (2-Pin Power Connector) :download:`PDF <media/Anello_A1_MechanicalDwg.pdf>`
-
-.. figure:: media/Anello_A1_MechanicalDwg.png
    :align: center
 
 .. note::
@@ -23,6 +13,12 @@ EVK (2-Pin Power Connector) :download:`PDF <media/Anello_A1_MechanicalDwg.pdf>`
    
    General Info: `<https://www.lemo.com/en/products/low-voltage-connector/b-connector>`_
    
-   Rev 2 (4 pin): `<https://www.lemo.com/pdf/FGG.0B.304.CLAD52.pdf>`_                                                      
-   
-   Rev 1 (2 pin): `<https://www.lemo.com/pdf/FGG.0B.302.CLAD52.pdf>`_     
+   Mating Connector: `<https://www.lemo.com/pdf/FGG.0B.304.CLAD52.pdf>`_                                                      
+
+
+The ANELLO GNSS INS features a 20 pin Molex MX150 connector.
+
+GNSS INS SCD Drawing: :download:`PDF <media/10000201-22_01_SCD_GNSS_INS.pdf>`
+
+.. figure:: media/10000201-22_01_SCD_GNSS_INS.png
+   :align: center
