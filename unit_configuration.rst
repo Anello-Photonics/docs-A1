@@ -2,55 +2,43 @@ Unit Configurations
 =======================
 To adjust configuration, select *Unit Configuration* from the main menu.
 To change a configuration, select *Edit* and then the configuration to change. Select or type in the new value.
+|
 
-General configurations:  
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | Configuration          | APCFG Code | Value/Description                                                                                   |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | Orientation            | orn        | Coordinate axes for outputs, e.g. +X-Y-Z (see below)                                                |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | Output Data Rate       | odr        | Rate of APIMU messages: 20, 50, 100, or 200 Hz                                                      |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | Enable GPS 1           | gps1       | Use primary antenna (ANT1): 'on', 'off'                                                             |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | Enable GPS 2           | gps2       | Use secondary antenna (ANT2): 'on', 'off'                                                           |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | Odometer Units         | odo        | Speed unit of the odometer message: 'mps', 'mph', 'kph', 'fps'                                      |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | Enable FOG             | fog        | Enable optical gyro data to be used in algorithm: 'on', 'off'                                       |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | DHCP (auto-assign IP)  | dhcp       | DHCP (let router assign EVK IP for UDP messaging): 'on', 'off'                                      |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | EVK UDP Port           | lip        | EVK's IP address, applies only if DHCP off: aaa.bbb.ccc.ddd                                         |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | Computer UDP Port      | rip        | IP address of computer for UDP communication: aaa.bbb.ccc.eee                                       |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | UDP Data Port          | rport1     | Computer's UDP port for data output (works like data serial port): integer from 1 to 65535          |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | UDP Configuration Port | rport2     | Computer's UDP port for config messaging (works like data serial port): integer from 1 to 65535     |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | UDP Odometer Port      | rport3     | Computer's UDP port for odometer messaging: integer from 1 to 65535                                 |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
 
-- Orientation coordinate system for EVK (+X+Y+Z or other right handed frames). See bottom of page.  
-- Output Data Rate (20/50/100/200 Hz)
-- Rate of INS message output in Hz. Must be divisible by the ODR
-- Enable GPS (on/off) for each reciever 
-- Odometer Units (mps/mph/kph/fps) 
-- Enable FOG (on/off)
-
-UDP connection configurations:  
-
-- DHCP (on/off): If on, the EVK IP is assigned by router. If off, pick the IP yourself.  
-- UDP A-1 IP: IP address for the EVK. Can only set this when DHCP is off  
-- UDP computer IP: IP address of your computer, which EVK will connect to.  
-- UDP computer data port: Remote device's port for data channel, works like the data serial port.
-- UDP computer configuration port: Remote device's port for config channel, works like the config serial port.
-- UDP computer odometer port: Remote device's port for odometer messaging.
 
 .. note:: The above UDP ports are the numbers on the connected computer only. The EVK uses UDP port 1 for data, 2 for configuration, 3 for odometer.
 
 .. note:: If sending odometer speeds by UDP from another program, send to UDP port 3 on the EVK, from the computer's UDP port matching "odometer port" configuration.
-|
 
-  +------------------------+------------+-----------------------------------------------------------------------+
-  | Configuration          | APCFG Code | Value/Description                                                     |
-  +------------------------+------------+-----------------------------------------------------------------------+
-  | Orientation            | orn        | Coordinate axes for outputs, e.g. +X-Y-Z (see below)                  |
-  +------------------------+------------+-----------------------------------------------------------------------+
-  | Output Data Rate       | odr        | Rate of APIMU messages: 20, 50, 100, or 200 Hz                        |
-  +------------------------+------------+-----------------------------------------------------------------------+
-  | Enable GPS 1           | gps1       | Use primary antenna (ANT1): 'on', 'off'                               |
-  +------------------------+------------+-----------------------------------------------------------------------+
-  | Enable GPS 2           | gps2       | Use secondary antenna (ANT2): 'on', 'off'                             |
-  +------------------------+------------+-----------------------------------------------------------------------+
-  | Odometer Units         | odo        | Speed unit of the odometer message: 'mps', 'mph', 'kph', 'fps'        |
-  +------------------------+------------+-----------------------------------------------------------------------+
-  | DHCP (auto-assign IP)  | dhcp       | DHCP (let router assign EVK IP for UDP messaging): 'on', 'off'        |
-  +------------------------+------------+-----------------------------------------------------------------------+
-  | EVK UDP Port           | lip        | EVK's IP address, applies only if DHCP off: (aaa.bbb.ccc.ddd)         |
-  +------------------------+------------+-----------------------------------------------------------------------+
-  | Computer UDP Port      | rip        | IP address of computer for UDP communication: (aaa.bbb.ccc.eee)       |
-  +------------------------+------------+-----------------------------------------------------------------------+
-  | UDP Data Port          | rport1     | Computer's UDP port for data output: integer from 1 to 65535          |
-  +------------------------+------------+-----------------------------------------------------------------------+
-  | UDP Configuration Port | rport2     | Computer's UDP port for config messaging: integer from 1 to 65535     |
-  +------------------------+------------+-----------------------------------------------------------------------+
-  | UDP Odometer Port      | rport3     | Computer's UDP port for odometer messaging: integer from 1 to 65535   |
-  +------------------------+------------+-----------------------------------------------------------------------+
+.. note:: The GNSS INS unit has output data rate constraints when outputting data over RS-232. In RTCM mode, ODR is limited to 100 Hz. In ASCII mode, ODR is limited to 50 Hz.
+
 
 Orientation describes the coordinate axes used in IMU and INS output in terms of the EVK coordinate axes (shown on EVK label).
 
