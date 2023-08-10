@@ -83,7 +83,7 @@ You will see *System Status* at the top, and *Main Menu* below. For more informa
 
 2.3 Connect to the EVK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Use the arrow keys to select *Connect*, then *COM*, then *Auto* to auto-detect the unit. 
+Use the arrow keys to select *Connect*, then *COM*, then *Auto* to auto-detect the unit. You can also use *Manual* if you know the data and config ports.
 You should now see the *System Status* updated with the device information.
 
 For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#connect-to-evk>`_.
@@ -98,16 +98,20 @@ For more information, please see `Unit Configurations <https://docs-a1.readthedo
 
 3   Data Collection
 ---------------------------------
+
+The following steps can be used to 
+
 3.1 Log a Data File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In the main menu, select *Log*, then *Start*. Use the default filename or enter a custom name. 
 The *System Status* will be updated with the logging information.
 
-To end a log, select *Log* then *Stop*. Log files are saved in the "logs" directory in user_tools, 
+To end a log, select *Log* then *Stop*. Log files are saved in the "logs" directory in user_tool, 
 grouped by month and day.
 
 To export a log to CSV, Select *Log*, then *Export*, then choose the log file.
-Three CSV files (imu.csv, gps.csv, and ins.csv) will be saved in the "exports" directory, under the name of the original log file.
+CSV files for each message (IMU, GPS, HDG, and INS) will be saved in the "exports" directory, under the name of the original log file. 
+For more information on the output messages, see `Comminication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`_.
 
 INS solution can be visualized by importing ins.csv into `Kepler <https://kepler.gl/demo>`_
 
@@ -170,3 +174,5 @@ In main menu, select *Vehicle Configurations* and set the lever arms as prompted
 **Congratulations!!!**
 You have completed the EVK setup! Please refer back to `Section 3 <https://docs-a1.readthedocs.io/en/latest/getting_started_quick.html#data-collection>`_ for data collection. 
 Note that the EVK performance will improve after several minutes of driving.
+
+Please contact support@anellophotonics.com with any questions. 

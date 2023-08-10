@@ -1,10 +1,10 @@
 Communication & Messaging
 ===========================
 
-1.  Port Definitions
----------------------
+1.  EVK Port Definitions
+--------------------------
 
-The Anello EVK communicates by serial interface (by USB cable) or UDP (over ethernet). The same port and message definitions apply for either interface.
+The Anello EVK communicates by serial interface (USB) or UDP (ethernet). The same port and message definitions apply for either interface.
 
 The primary output port is known as the "Data" port, where the major output messages are transmitted at a configurable fixed output rate.
 This port also serves as the input port for the RTCM correction stream.
@@ -17,7 +17,7 @@ Over serial, use the configuration port for odometer messages.
 UDP communication uses fixed port numbers on the EVK but selactable ports on the external device.
 These ports, along with IP addresses and other UDP settings should be configured in user_program.py (see the Unit Configurations section).
 
-Serial communication occurs at a baudrate of 921600 bits per second for the EVK product and 230400 for GNSS/INS and IMU products.
+Serial communication occurs at a baudrate of 921600 bits per second for the EVK and 230400 for GNSS INS and IMU.
 
     +--------------------+------------------------------------------+---------------------------------------+
     | **Logical Port**   |  **Physical Port**                       |  **Functions**                        |
@@ -35,9 +35,9 @@ Serial communication occurs at a baudrate of 921600 bits per second for the EVK 
      
 
 2.  ASCII Data Output Messages
--------------------------------
+---------------------------------
 
-The ANELLO EVK has two message formats, the first is ASCII. The structures of all ASCII messages use the 
+ANELLO EVK has two message formats, ASCII and RTCM. The structures of all ASCII messages use the 
 following conventions:
 
 -	The lead code identifier for each record is '#'.
@@ -52,6 +52,8 @@ following conventions:
 2.1. APIMU Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+The APIMU message is the IMU output message for EVK and GNSS INS units only.
+
   +---+------------+-----------+-----------------------------------------------------------------------+
   |   | Field      |  Units    |  Description                                                          |
   +---+------------+-----------+-----------------------------------------------------------------------+
@@ -59,7 +61,7 @@ following conventions:
   +---+------------+-----------+-----------------------------------------------------------------------+
   | 1 | Time       |  ms       |  Time since power on                                                  |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 2 | T_Sync     |  ms       |  Time at last sync rising edge (zero when sync disabled)              |
+  | 2 | T_Sync     |  ms       |  Time at last sync rising edge (zero when sync config disabled)       |
   +---+------------+-----------+-----------------------------------------------------------------------+
   | 3 | AX         |  g        |  X-Axis Acceleration                                                  |
   +---+------------+-----------+-----------------------------------------------------------------------+
@@ -75,7 +77,7 @@ following conventions:
   +---+------------+-----------+-----------------------------------------------------------------------+
   | 9 | OG_WZ      |  deg/s    |  High Precicision Z-Axis Angular Rate (ANELLO Optical Gyro)           |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 10| ODO        |  m/s      |  Scaled Composite Odometer Value                                      |
+  | 10| ODO        |           |  Scaled Composite Odometer Value (units set in configurations)        |
   +---+------------+-----------+-----------------------------------------------------------------------+
   | 11| ODO Time   |  ms       |  Timestampe of Odometer Reading                                       |
   +---+------------+-----------+-----------------------------------------------------------------------+
@@ -87,9 +89,46 @@ following conventions:
 
   Firmware before v1.0.39 does not have T_Sync field.
 
-
-2.2. APGPS Message
+2.2 APIM1 Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The APIM1 message is the same as APIMU but without odometer values. This is the output message for IMU and IMU+ units only.
+
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  |   | Field      |  Units    |  Description                                                          |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 0 | APIMU      |           |  Sentence identifier                                                  |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 1 | Time       |  ms       |  Time since power on                                                  |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 2 | T_Sync     |  ms       |  Time at last sync rising edge (zero when sync config disabled)       |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 3 | AX         |  g        |  X-Axis Acceleration                                                  |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 4 | AY         |  g        |  Y-Axis Acceleration                                                  |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 5 | AZ         |  g        |  Z-Axis Acceleration                                                  |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 6 | WX         |  deg/s    |  X-Axis Angular Rate (MEMS)                                           |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 7 | WY         |  deg/s    |  Y-Axis Angular Rate (MEMS)                                           |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 8 | WZ         |  deg/s    |  Z-Axis Angular Rate (MEMS)                                           |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 9 | OG_WZ      |  deg/s    |  High Precicision Z-Axis Angular Rate (ANELLO Optical Gyro)           |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 12| Temp C     |  °C       |  Temperature                                                          |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  
+.. note:: 
+  Firmware before v0.2.1 also has the Optical Gyro voltage MEMS Z rate and Optical Gyro rate.
+
+  Firmware before v1.0.39 does not have T_Sync field.
+
+2.3 APGPS Message
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The APGPS message is the PVT output from the EVK and GNSS INS units only.
 
   +---+---------------+-----------+-----------------------------------------------------------------------+
   |   | Field         |  Units    |  Description                                                          |
@@ -98,7 +137,7 @@ following conventions:
   +---+---------------+-----------+-----------------------------------------------------------------------+
   | 1 | Time          |  ms       |  Time since power on                                                  |
   +---+---------------+-----------+-----------------------------------------------------------------------+
-  | 2 | GPS Time      |  ns       |  GPS Time (not UTC time)                                              |
+  | 2 | GPS Time      |  ns       |  GPS Time in integer ns (not UTC time)                                |
   +---+---------------+-----------+-----------------------------------------------------------------------+
   | 3 | Lat           |  deg      |  Latitude, '+': north, '-': south                                     |
   +---+---------------+-----------+-----------------------------------------------------------------------+
@@ -108,7 +147,7 @@ following conventions:
   +---+---------------+-----------+-----------------------------------------------------------------------+
   | 6 | Alt msl       |  m        |  Height above mean sea level                                          |
   +---+---------------+-----------+-----------------------------------------------------------------------+
-  | 7 | Speed         |  m/s      |  Speed                                                                |
+  | 7 | Speed         |  m/s      |  GNSS Speed                                                           |
   +---+---------------+-----------+-----------------------------------------------------------------------+
   | 8 | Heading       |  deg      |  GNSS Heading (ground track)                                          |
   +---+---------------+-----------+-----------------------------------------------------------------------+
@@ -122,17 +161,69 @@ following conventions:
   +---+---------------+-----------+-----------------------------------------------------------------------+
   | 13| SatNum        |           |  Number of satellites used in solution                                |
   +---+---------------+-----------+-----------------------------------------------------------------------+
-  | 14| Speed Acc     |           |  Accuracy of GNSS speed measurement                                   |
+  | 14| Speed Acc     |           |  Accuracy of GNSS Speed measurement                                   |
   +---+---------------+-----------+-----------------------------------------------------------------------+
-  | 15| Hdg Acc       |           |  Accuracy of GNSS heading measurement                                 |
+  | 15| Hdg Acc       |           |  Accuracy of GNSS Heading measurement                                 |
   +---+---------------+-----------+-----------------------------------------------------------------------+
   | 16| RTK Status    |           |  0: Single Point Positioning, 1: RTK Float, 2: RTK Fixed              |
   +---+---------------+-----------+-----------------------------------------------------------------------+
 
-.. note:: FW v1.0.0 and later: This packet should be used to correlate GPS time and system time. The packet is time stamped at the time the PPS signal is generated by the GNSS receiver.
+.. note:: 
+  FW v1.0.0 and later: This packet should be used to correlate GPS time and system time. The packet is time stamped at the time the PPS signal is generated by the GNSS receiver.
 
 
-2.3. APINS Messages
+2.4 APHDG Message
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The APHDG message contains dual heading information from the dual GNSS receivers if both ANT1 and ANT2 are connected and have good signal. 
+This message is output from the EVK and GNSS INS units only.
+
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  |   | Field                  |  Units    |  Description                                                          |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 0 | APHDG                  |           |  Sentence identifier                                                  |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 1 | Time                   |  ms       |  Time since power on                                                  |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 2 | GPS Time               |  ns       |  GPS Time in integer ns (not UTC time)                                |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 3 | relPosN                |  m        |  North component of relative position vector                          |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 4 | relPosE                |  m        |  East component of relative position vector                           |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 5 | relPosD                |  m        |  Down component of relative position vector                           |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 6 | relPosLength           |  m        |  Length of relative position vector between antennae                  |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 7 | relPosHeading          |  deg      |  Dual heading                                                         |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 8 | RelPosLength Accuracy  |  m        |  Accuracy of dual antennae baseline length                            |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 9 | relPosHeading Accuracy |  deg      |  GNSS Heading (ground track)                                          |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 10| headingValid           |           |  311: Heading Fixed                                                   |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 11| gnssFixOK              |           |  gnssFixOK Flag                                                       |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 12| diffSoln               |           |  diffSoln Flag                                                        |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 13| relPosValid            |           |  relPosValid Flag                                                     |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 14| carrSoln               |           |  carrSoln Flag                                                        |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 15| isMoving               |           |  isMoving Flag                                                        |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 16| refPosMiss             |           |  refPosMiss Flag                                                      |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 17| refObsMiss             |           |  refObsMiss Flag                                                      |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 18| relPosHeading_Valid    |           |  relPosHeading_Valid Flag                                             |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+  | 19| relPos_Normalized      |           |  relPos_Normalized Flag                                               |
+  +---+------------------------+-----------+-----------------------------------------------------------------------+
+
+
+2.5 APINS Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   +---+------------+-----------+-------------------------------------------------------------------------------------------------------------------------+
@@ -172,10 +263,10 @@ following conventions:
 .. note:: Roll, pitch and heading angles are calculated as standard aerospace Euler angles.
 
 
-3.  Binary Data Output Messages
-----------------------------------
+3.  RTCM Binary Data Output Messages
+--------------------------------------
 
-3.1. Message format
+3.1. Message Format
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The binary packets use an RTCM standard 10403 envelope for each message. 
@@ -195,7 +286,7 @@ The binary packets use an RTCM standard 10403 envelope for each message.
   +---+-----------+--------------------------------------------------------------+
 
 
-3.2. IMU
+3.2. IMU Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   +---+-------------+----------+------------------+----------------------------------------------------------+
@@ -231,7 +322,7 @@ The binary packets use an RTCM standard 10403 envelope for each message.
   +---+-------------+----------+------------------+----------------------------------------------------------+
 
 
-3.3. GPS PVT
+3.3. GPS PVT Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The EVK includes two GNSS receivers. This message can be requested from either or both receivers. 
@@ -280,7 +371,7 @@ The Antenna ID field indicates which receiver produced the position information.
   +---+---------------+----------+------------+----------------------------------------------------------+
 
 
-3.4. INS
+3.4. INS Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------+
@@ -318,10 +409,35 @@ The Antenna ID field indicates which receiver produced the position information.
   +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------+
   
 
-4.  EVK Input Messages
+4.  Input Messages
 -----------------------------
 
-4.1. APODO Message
+4.1  APCFG Messages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The easiest way to configure the EVK is with the ANELLO Python Program, which saves all changes to non-volatile flash memory. 
+To do this, see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.
+
+Alternatively, the EVK can be dynamically configured using the APCFG message. The protocol allows for both temporary (RAM) and permanent setting (FLASH) of configuration parameters.
+
+**#APCFG,<r/w/R/W>,<param>,<value1>,..,<valueN>*checksum**
+
+  +---+------------+-----------------------------------------------------------------------+
+  |   | Field      |  Description                                                          |
+  +---+------------+-----------------------------------------------------------------------+
+  | 0 | APCFG      |  Sentence identifier                                                  |
+  +---+------------+-----------------------------------------------------------------------+
+  | 1 |<read/write>|  'r': read  RAM, 'w': write RAM, 'R': read FLASH, 'W': write FLASH    |
+  +---+------------+-----------------------------------------------------------------------+
+  | 2 | <param>    |  Configuration parameter (APCFG code)                                 |
+  +---+------------+-----------------------------------------------------------------------+
+  | 3 | <value>    |  Configuration value, expressed in ASCII                              |
+  +---+------------+-----------------------------------------------------------------------+
+
+For more details on configuration parameters and values, see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.
+
+
+4.2 APODO Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The configuration port accepts an odometer aiding message which can convey a direction and a speed. Direction may come from transmission position (reverse, drive) 
@@ -353,35 +469,10 @@ Examples:
 These would all be interpreted as moving in reverse with a speed of 24. 
 
 
-4.2.  APCFG Messages
+4.3  RTCM Data Input 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The easiest way to configure the EVK is with the ANELLO Python Program, which saves all changes to non-volatile flash memory. 
-To do this, see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.
-
-Alternatively, the EVK can be dynamically configured using the APCFG message. The protocol allows for both temporary (RAM) and permanent setting (FLASH) of configuration parameters.
-
-**#APCFG,<r/w/R/W>,<param>,<value1>,..,<valueN>*checksum**
-
-  +---+------------+-----------------------------------------------------------------------+
-  |   | Field      |  Description                                                          |
-  +---+------------+-----------------------------------------------------------------------+
-  | 0 | APCFG      |  Sentence identifier                                                  |
-  +---+------------+-----------------------------------------------------------------------+
-  | 1 |<read/write>|  'r': read  RAM, 'w': write RAM, 'R': read FLASH, 'W': write FLASH    |
-  +---+------------+-----------------------------------------------------------------------+
-  | 2 | <param>    |  Configuration parameter (APCFG code)                                 |
-  +---+------------+-----------------------------------------------------------------------+
-  | 3 | <value>    |  Configuration value, expressed in ASCII                              |
-  +---+------------+-----------------------------------------------------------------------+
-
-For more details on configuration parameters and values, see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.
-
-
-4.3.  RTCM Data Input 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Standard RTCM messages are forwarded to the ANELLO EVK to enable the GNSS receivers to reach RTK precision. 
+Standard RTCM messages can be forwarded to the ANELLO EVK to enable the GNSS receivers to reach RTK precision. 
 The EVK receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages. The 
 ANELLO Python Program provides an NTRIP client which can connect to a standard NTRIP network and forward the
 received RTCM messages into the EVK.
