@@ -79,7 +79,7 @@ The APIMU message is the IMU output message for EVK and GNSS INS units only.
   +---+------------+-----------+-----------------------------------------------------------------------+
   | 10| ODO        |           |  Scaled Composite Odometer Value (units set in configurations)        |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 11| ODO Time   |  ms       |  Timestampe of Odometer Reading                                       |
+  | 11| ODO Time   |  ms       |  Timestamp of Odometer Reading                                        |
   +---+------------+-----------+-----------------------------------------------------------------------+
   | 12| Temp C     |  °C       |  Temperature                                                          |
   +---+------------+-----------+-----------------------------------------------------------------------+
@@ -257,8 +257,6 @@ This message is output from the EVK and GNSS INS units only.
   +---+------------+-----------+-------------------------------------------------------------------------------------------------------------------------+
   | 13| ZUPT       |           |  0: Moving, 1: Stationary                                                                                               |
   +---+------------+-----------+-------------------------------------------------------------------------------------------------------------------------+
-
-.. note:: GPS time in this packet is interpolated from the last GNSS fix and system time. 
 
 .. note:: Roll, pitch and heading angles are calculated as standard aerospace Euler angles.
 
