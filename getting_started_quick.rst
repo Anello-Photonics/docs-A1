@@ -33,7 +33,7 @@ The ANELLO Evaluation Kit (EVK) includes the following items:
 
 Connect the hardware as follows: 
 
-1. Connect EVK to power using either the wall-power or the in-vehicle adapter (red). The unit should **not** be directly powered by USB-C.
+1. Connect EVK to power using either the wall-power or the in-vehicle adapter (red).
 2. Connect EVK to PC, MAC, or Ubuntu computing system using USB (blue) for configuration. If EVK is already configured, ethernet interface (green) is recommended for data collection since it is faster and more robust.
 3. Connect primary GNSS antenna to ANT1 on the back of the EVK (black). An additional antenna (ANT2) is optional.
 
@@ -44,10 +44,10 @@ Connect the hardware as follows:
 
 2   Unit Configurations
 ---------------------------------
-2.1 Install ANELLO Python Program
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 If you would like to use the ANELLO Python Program to connect, configure, and log data with the EVK, please use the following instructions.
 
+2.1 Install ANELLO Python Program
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Confirm that Python is installed on your computer and the version is at least 3.6:
 
 .. code-block:: python

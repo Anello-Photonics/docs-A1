@@ -30,10 +30,10 @@ To use the GNSS INS Evaluation Kit, connect the hardware as follows:
 
 2   Unit Configurations
 ---------------------------------
-2.1 Install ANELLO Python Program
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 If you would like to use the ANELLO Python Program to connect, configure, and log data with the GNSS INS, please use the following instructions.
 
+2.1 Install ANELLO Python Program
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Confirm that Python is installed on your computer and the version is at least 3.6:
 
 .. code-block:: python

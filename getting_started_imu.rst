@@ -29,10 +29,11 @@ For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.
 
 2   Unit Configurations
 ---------------------------------
-2.1 Install ANELLO Python Program
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 If you would like to use the ANELLO Python Program to connect, configure, and log data with the IMU, please use the following instructions.
 
+
+2.1 Install ANELLO Python Program
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Confirm that Python is installed on your computer and the version is at least 3.6:
 
 .. code-block:: python
