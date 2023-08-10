@@ -21,9 +21,9 @@ EVK SCD Drawing: :download:`PDF <media/Anello_A1_MechanicalDwg_rev2.pdf>`
 ---------------------------------
 The ANELLO GNSS INS features a 20 pin Molex MX150 connector and two FAKRA SMB GNSS connectors.
 
-GNSS INS SCD Drawing: :download:`PDF <media/SCD_GNSS_INS.pdf>`
+GNSS INS SCD Drawing: :download:`PDF <media/SCD_GMechanical_NSS_INS.pdf>`
 
-.. figure:: media/SCD_GNSS_INS.pdf
+.. figure:: media/SCD_Mechanical_GNSS_INS.pdf
    :align: center
 
 .. note::
@@ -35,9 +35,9 @@ GNSS INS SCD Drawing: :download:`PDF <media/SCD_GNSS_INS.pdf>`
 ---------------------------------
 The ANELLO IMU/IMU+ features an 8 pin Molex MX150 connector.
 
-IMU/IMU+ SCD Drawing: :download:`PDF <media/SCD_IMU.pdf>`
+IMU/IMU+ SCD Drawing: :download:`PDF <media/SCD_Mechanical_IMU.pdf>`
 
-.. figure:: media/SCD_IMU.pdf
+.. figure:: media/SCD_Mechanical_IMU.pdf
    :align: center
 
 .. note::
