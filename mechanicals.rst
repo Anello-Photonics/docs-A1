@@ -3,7 +3,8 @@ Mechanicals
 
 1   ANELLO EVK
 ---------------------------------
-The ANELLO EVK features a 4-pin power connector. The 4-pin power connector version includes PPS input (PPS1) and output (PPS2) signals.
+The ANELLO EVK features a 4-pin power connector which includes PPS input (PPS1) and output (PPS2) signals. 
+It also features USB C, Ethernet, and CAN connectors, as well as two SMA RF antennae input.
 
 EVK SCD Drawing: :download:`PDF <media/Anello_A1_MechanicalDwg_rev2.pdf>`
 
