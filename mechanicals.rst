@@ -27,7 +27,7 @@ GNSS INS SCD Drawing: :download:`PDF <media/10000201-22_01_SCD_GNSS_INS.pdf>`
    :align: center
 
 .. note::
-   If you purchased the GNSS INS Evaluation Kit, a schematic of the breakout cable can be downloaded `here <media/25000701_03-25_SCD_Breakout Cable_INS-GNSS.pdf>`
+   If you purchased the GNSS INS Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/25000701_03-25_SCD_Breakout Cable_INS-GNSS.pdf>`
 
 
 
@@ -41,5 +41,5 @@ IMU/IMU+ SCD Drawing: :download:`PDF <media/10000901_04-22_SCD_IMU.pdf>`
    :align: center
 
 .. note::
-   If you purchased the IMU/IMU+ Evaluation Kit, a schematic of the breakout cable can be downloaded `here <media/25001501_01-25_SCD_Breakout Cable_IMU.pdf>`
+   If you purchased the IMU/IMU+ Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/25001501_01-25_SCD_Breakout Cable_IMU.pdf>`
 
