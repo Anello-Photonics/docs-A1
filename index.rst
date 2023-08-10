@@ -16,6 +16,7 @@ and is available for purchase and evaluation.
 
     getting_started_quick
     getting_started_gnssins
+    getting_started_imu
     setup_troubleshooting
     unit_configuration
     vehicle_configuration
