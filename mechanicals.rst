@@ -37,7 +37,7 @@ The ANELLO IMU/IMU+ features an 8 pin Molex MX150 connector.
 
 IMU/IMU+ SCD Drawing: :download:`PDF <media/SCD_IMU.pdf>`
 
-.. figure:: media/SCD_IMU_IMU+.pdf
+.. figure:: media/SCD_IMU.pdf
    :align: center
 
 .. note::
