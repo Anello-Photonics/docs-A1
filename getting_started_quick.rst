@@ -41,6 +41,8 @@ Connect the hardware as follows:
    :width: 100 %
    :align: center
 
+For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-evk>`_.
+
 
 2   Unit Configurations
 ---------------------------------

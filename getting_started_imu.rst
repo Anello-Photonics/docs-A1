@@ -25,7 +25,7 @@ To use the IMU Evaluation Kit, connect the hardware as follows:
 2. Connect to power using the AC/DC adapter.
 3. Connect to PC, Mac, or Ubuntu computing system via RS-232 using USB 2.0 to DB9 Serial Converters.
 
-For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html>`_.
+For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-imu-imu>`_.
 
 2   Unit Configurations
 ---------------------------------

@@ -27,6 +27,8 @@ To use the GNSS INS Evaluation Kit, connect the hardware as follows:
 4. Connect to PC, Mac, or Ubuntu computing system via RS-232 using USB 2.0 to DB9 Serial Converters for configuration.
 5. If you'd like to use Automotive Ethernet, see section 4.1 for connection instructions.
 
+For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-gnss-ins>`_.
+
 
 2   Unit Configurations
 ---------------------------------
