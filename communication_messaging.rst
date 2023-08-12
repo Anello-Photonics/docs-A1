@@ -77,11 +77,11 @@ The APIMU message is the IMU output message for EVK and GNSS INS units only.
   +---+------------+-----------+-----------------------------------------------------------------------+
   | 9 | OG_WZ      |  deg/s    |  High Precicision Z-Axis Angular Rate (ANELLO Optical Gyro)           |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 10| ODO        |           |  Scaled Composite Odometer Value (units set in configurations)        |
+  | 10| ODO        |  m/s      |  Scaled Composite Odometer Value                                      |
   +---+------------+-----------+-----------------------------------------------------------------------+
   | 11| ODO Time   |  ms       |  Timestamp of Odometer Reading                                        |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 12| Temp C     |  °C       |  Temperature                                                          |
+  | 12| Temp       |  °C       |  Temperature                                                          |
   +---+------------+-----------+-----------------------------------------------------------------------+
   
 .. note:: 
