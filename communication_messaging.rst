@@ -199,9 +199,9 @@ This message is output from the EVK and GNSS INS units only.
   +---+------------------------+-----------+-----------------------------------------------------------------------+
   | 8 | RelPosLength Accuracy  |  m        |  Accuracy of dual antennae baseline length                            |
   +---+------------------------+-----------+-----------------------------------------------------------------------+
-  | 9 | relPosHeading Accuracy |  deg      |  GNSS Heading (ground track)                                          |
+  | 9 | relPosHeading Accuracy |  deg      |  Accuracy of dual antennae heading                                         |
   +---+------------------------+-----------+-----------------------------------------------------------------------+
-  | 10| headingValid           |           |  311: Heading Fixed                                                   |
+  | 10| headingValid           |           |  headingValid Flag: 311 = Heading Fixed                                                   |
   +---+------------------------+-----------+-----------------------------------------------------------------------+
   | 11| gnssFixOK              |           |  gnssFixOK Flag                                                       |
   +---+------------------------+-----------+-----------------------------------------------------------------------+
@@ -460,10 +460,11 @@ The odometer input unit is user configurable to m/s, mile/h, km/h, f/s.
   | 2 | <speed>    |  <config> |  Speed is a floating point value expressed in ASCII          |
   +---+------------+-----------+--------------------------------------------------------------+
 
-Examples: 
-#APODO, -,24*CS 
-#APODO, -24*CS 
-#APODO, -,-24*CS 
+Examples (CS = checksum): 
+#APODO,-,24*CS 
+#APODO,-24*CS 
+#APODO,-,-24*CS 
+
 These would all be interpreted as moving in reverse with a speed of 24. 
 
 
@@ -474,3 +475,32 @@ Standard RTCM messages can be forwarded to the ANELLO EVK to enable the GNSS rec
 The EVK receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages. The 
 ANELLO Python Program provides an NTRIP client which can connect to a standard NTRIP network and forward the
 received RTCM messages into the EVK.
+
+
+4.4  Ping 
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Ping command can be used to test if the serial port is properly configured.
+
+#APPNG*48
+
+A correctly received ping command generates a response from the unit of: #APPNG,0*54
+
+
+4.5  Echo 
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Echo command serves as an additional communication test for the serial port configuration as well as the checksum generator. For example:
+
+#APECH,Echo! echo… ech… e…*77
+
+A correctly received Echo command generates an identical response from the unit: #APECH,Echo! echo… ech… e…*77.
+
+
+4.5  Reset 
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The reset command allows the user to reset the system, e.g. after changing a configuration setting that requires a power cycle. 
+No response message is generated; however, the system will reset causing the system output to be suspended briefly. 
+
+#APRST,0*58 

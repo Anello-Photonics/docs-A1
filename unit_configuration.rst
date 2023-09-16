@@ -1,7 +1,7 @@
 Unit Configurations
 =======================
-To adjust configuration, select *Unit Configuration* from the main menu.
-To change a configuration, select *Edit* and then the configuration to change. Select or type in the new value.
+Unit configuration can be adjusted using the *Unit Configuration* menu in the ANELLO Python Program, 
+or by sending APCFG commands over the configuration port as described in `Communication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apcfg-messages>`_.
 |
 
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
@@ -9,7 +9,7 @@ To change a configuration, select *Edit* and then the configuration to change. S
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
   | Orientation            | orn        | Coordinate axes for outputs, e.g. +X-Y-Z (see below)                                                |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
-  | Output Data Rate       | odr        | Rate of APIMU messages: 20, 50, 100, or 200 Hz                                                      |
+  | Output Data Rate       | odr        | Rate of APIMU messages: 20, 50, 100, or 200 Hz. Requires reset.                                     |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
   | Enable GPS 1           | gps1       | Use primary antenna (ANT1): 'on', 'off'                                                             |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
@@ -31,6 +31,30 @@ To change a configuration, select *Edit* and then the configuration to change. S
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
   | UDP Odometer Port      | rport3     | Computer's UDP port for odometer messaging: integer from 1 to 65535                                 |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | APCFG Output           | min        | Minutes between output of APCFG configuration values over the data port (0 disables the output)     |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | Accel Cutoff Freq      | lpa        | Low-pass filter cutoff frequency [Hz] for the MEMS accelerometer (0 disables filter)                |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | MEMS Gyro Cutoff Freq  | lpw        | Low-pass filter cutoff frequency [Hz] for the MEMS angular rate sensor (0 disables filter)          |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | FOG Cutoff Freq        | lpo        | Low-pass filter cutoff frequency [Hz] for the optical gyro (0 disables filter)                      |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | NTRIP Input Channel    | ntrip      | Input channel for NTRIP data. 0: off (default), 1: Serial, 2: UDP                                   |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | Sync Pulse Enable      | sync       | Enables the external synchronization pulse input: 'on', 'off'                                       |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | Output Message Format  | mfm        | Format of the output messages. 1: ASCII, 4: RTCM                                                    |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | Enable Serial Output   | uart       | Enable output over serial interface: 'on', 'off'                                                    |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | Enable Ethernet Output | eth        | Enable output over ethernet interface: 'on', 'off'                                                  |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | NMEA Output Messages   | nmea       | Format of the output messages. 1: ASCII, 4: RTCM                                                    |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | Output Message Format  | mfm        | Configures up to 8 NMEA messages to be output on the config port (0-255). 0: off, 255: all on       |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | Baud Rate              | bau        | Serial communication baud rate in bits per second. Requires reset.                                  |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
 
 
 .. note:: The above UDP ports are the numbers on the connected computer only. The EVK uses UDP port 1 for data, 2 for configuration, 3 for odometer.
@@ -39,6 +63,8 @@ To change a configuration, select *Edit* and then the configuration to change. S
 
 .. note:: The GNSS INS unit has output data rate constraints when outputting data over RS-232. In RTCM mode, ODR is limited to 100 Hz. In ASCII mode, ODR is limited to 50 Hz.
 
+
+Some configurations require a system reset after changing, such as the ODR and baud rate: #APRST,0*58 
 
 Orientation describes the coordinate axes used in IMU and INS output in terms of the EVK coordinate axes (shown on EVK label).
 
