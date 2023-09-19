@@ -57,11 +57,11 @@ or by sending APCFG commands over the configuration port as described in `Commun
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
 
 
+.. note:: The GNSS INS unit has output data rate constraints when outputting data over RS-232. In RTCM mode, ODR is limited to 100 Hz. In ASCII mode, ODR is limited to 50 Hz.
+
 .. note:: The above UDP ports are the numbers on the connected computer only. The EVK uses UDP port 1 for data, 2 for configuration, 3 for odometer.
 
 .. note:: If sending odometer speeds by UDP from another program, send to UDP port 3 on the EVK, from the computer's UDP port matching "odometer port" configuration.
-
-.. note:: The GNSS INS unit has output data rate constraints when outputting data over RS-232. In RTCM mode, ODR is limited to 100 Hz. In ASCII mode, ODR is limited to 50 Hz.
 
 
 Some configurations require a system reset after changing, such as the ODR and baud rate: #APRST,0*58 
