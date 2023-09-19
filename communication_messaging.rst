@@ -317,7 +317,39 @@ The binary packets use an RTCM standard 10403 envelope for each message.
   +---+-------------+----------+------------------+----------------------------------------------------------+
 
 
-3.2 GPS PVT Message (EVK/GNSS INS)
+3.2 IMU Message (IMU/IMU+)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  +---+-------------+----------+------------------+----------------------------------------------------------+
+  |   | Field       |  Type    |  Units           |  Description                                             |
+  +---+-------------+----------+------------------+----------------------------------------------------------+
+  | 0 | Message #   |  uint12  |  4058            |  ANELLO Photonics custom message number                  |
+  +---+-------------+----------+------------------+----------------------------------------------------------+
+  | 1 | Sub Type ID |  uint4   |  6               |                                                          |
+  +---+-------------+----------+------------------+----------------------------------------------------------+
+  | 2 | MCU Time    |  uint64  |  ns              |  Time since power on                                     |
+  +---+-------------+----------+------------------+----------------------------------------------------------+
+  | 3 | Sync Time   |  uint64  |  ns              |  Timestamp of input sync pulse (if enabled and provided) |
+  +---+-------------+----------+------------------+----------------------------------------------------------+
+  | 4 | AX          |  int32   |  1/143165577 g   |  X-Axis Acceleration (intended 15g/2^31)                 |
+  +---+-------------+----------+------------------+----------------------------------------------------------+
+  | 5 | AY          |  int32   |  1/143165577 g   |  Y-Axis Acceleration                                     |
+  +---+-------------+----------+------------------+----------------------------------------------------------+
+  | 6 | AZ          |  int32   |  1/143165577 g   |  Z-Axis Acceleration                                     |
+  +---+-------------+----------+------------------+----------------------------------------------------------+
+  | 7 | WX          |  int32   |  1/4772186 deg/s |  X-Axis Angular Rate (MEMS) (intended 450/2^31)          |
+  +---+-------------+----------+------------------+----------------------------------------------------------+
+  | 8 | WY          |  int32   |  1/4772186 deg/s |  Y-Axis Angular Rate (MEMS)                              |
+  +---+-------------+----------+------------------+----------------------------------------------------------+
+  | 9 | WZ          |  int32   |  1/4772186 deg/s |  Z-Axis Angular Rate (MEMS)                              |
+  +---+-------------+----------+------------------+----------------------------------------------------------+
+  | 10| OG_WZ       |  int32   |  1/4772186 deg/s |  High precision optical gyro z-axis angular rate         |
+  +---+-------------+----------+------------------+----------------------------------------------------------+
+  | 11| Temp C      |  int16   |  0.01 °C         |  Temperature                                             |
+  +---+-------------+----------+------------------+----------------------------------------------------------+
+
+
+3.3 GPS PVT Message (EVK/GNSS INS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The EVK includes two GNSS receivers. This message can be requested from either or both receivers. 
@@ -366,7 +398,7 @@ The Antenna ID field indicates which receiver produced the position information.
   +---+---------------+----------+------------+----------------------------------------------------------+
 
 
-3.3 INS Message (EVK/GNSS INS)
+3.4 INS Message (EVK/GNSS INS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------+
@@ -402,38 +434,6 @@ The Antenna ID field indicates which receiver produced the position information.
   +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------+
   | 14| Status        |  uint8   |            |  0: Attitude Only, 1: Position and Attitude, 2: Position, Attitude, and Heading, 3: RTK Float, 4: RTK Fixed |
   +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------+
-
-
-  3.4 IMU Message (IMU/IMU+)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  |   | Field       |  Type    |  Units           |  Description                                             |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 0 | Message #   |  uint12  |  4058            |  ANELLO Photonics custom message number                  |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 1 | Sub Type ID |  uint4   |  6               |                                                          |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 2 | MCU Time    |  uint64  |  ns              |  Time since power on                                     |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 3 | Sync Time   |  uint64  |  ns              |  Timestamp of input sync pulse (if enabled and provided) |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 4 | AX          |  int32   |  1/143165577 g   |  X-Axis Acceleration (intended 15g/2^31)                 |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 5 | AY          |  int32   |  1/143165577 g   |  Y-Axis Acceleration                                     |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 6 | AZ          |  int32   |  1/143165577 g   |  Z-Axis Acceleration                                     |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 7 | WX          |  int32   |  1/4772186 deg/s |  X-Axis Angular Rate (MEMS) (intended 450/2^31)          |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 8 | WY          |  int32   |  1/4772186 deg/s |  Y-Axis Angular Rate (MEMS)                              |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 9 | WZ          |  int32   |  1/4772186 deg/s |  Z-Axis Angular Rate (MEMS)                              |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 10| OG_WZ       |  int32   |  1/4772186 deg/s |  High precision optical gyro z-axis angular rate         |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 11| Temp C      |  int16   |  0.01 °C         |  Temperature                                             |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
   
 
 4.  Input Messages
@@ -467,9 +467,8 @@ For more details on configuration parameters and values, see `Unit Configuration
 4.2 APODO Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The configuration port accepts an odometer aiding message which can convey a direction and a speed. Direction may come from transmission position (reverse, drive) 
-or from a signed value of the speed. A negative value indicates reverse (motion in the direction 180 degrees from the vehicle heading); a positive value indicates 
-forward (motion in the direction of the vehicle heading). The direction field is optional - if no direction is indicated, the direction is assumed to be forward.   
+The configuration port accepts an odometer aiding message which can convey a direction and a speed.
+A negative value indicates reverse, and a positive value indicates forward. If no direction is indicated, the direction is assumed to be forward.   
 
 Direction can also be input without a speed. This can be useful when there is no odometer input available, but transmission position is available. This allows the system to 
 distinguish between reverse movement and rotating the vehicle 180 degrees before moving. 
