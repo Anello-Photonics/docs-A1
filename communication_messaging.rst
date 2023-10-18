@@ -1,55 +1,67 @@
 Communication & Messaging
 ===========================
 
-1.  EVK Port Definitions
+1.  Port Definitions
 --------------------------
 
-The Anello EVK communicates by serial interface (USB) or UDP (ethernet). The same port and message definitions apply for either interface.
+The communication interfaces currently supported for the ANELLO products are listed below:
 
-The primary output port is known as the "Data" port, where the major output messages are transmitted at a configurable fixed output rate.
-This port also serves as the input port for the RTCM correction stream.
+    1. ANELLO EVK: Serial (USB), UDP (Ethernet)
+    
+    2. ANELLO GNSS INS: Serial (RS-232), UDP (Ethernet)
 
-The "Configuration" port is used for configuration messaging, and also serves as the input port for odometer aiding messages.
+    3. ANELL IMU/IMU+: Serial (RS-232)
 
-For UDP only, there is a third "Odometer" port to receive odometer messages, which is preferred to keep the configuration port free.
+
+The primary output port, the Data port is where the main output messages are transmitted, and serves as the input port for the RTCM correction stream.
+
+The Configuration port is used for configuration messaging, inputting for odometer messages, and outputting NMEA messages if configured (firmware v1.2 and later).
+
+For UDP, there is a third "Odometer" port to receive odometer messages, which is preferred to keep the configuration port free.
 Over serial, use the configuration port for odometer messages.
 
-UDP communication uses fixed port numbers on the EVK but selactable ports on the external device.
-These ports, along with IP addresses and other UDP settings should be configured in user_program.py (see the Unit Configurations section).
+UDP communication uses fixed port numbers on the EVK but selectable ports on the external device.
+These ports, along with IP addresses and other UDP settings should be configured (see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_).
 
-Serial communication occurs at a baudrate of 921600 bits per second for the EVK and 230400 for GNSS INS and IMU.
+Serial communication occurs at a default baud rate of 921600 bits per second for the EVK and 230400 for GNSS INS and IMU/IMU+.
 
     +--------------------+------------------------------------------+---------------------------------------+
     | **Logical Port**   |  **Physical Port**                       |  **Functions**                        |
     +--------------------+------------------------------------------+---------------------------------------+
-    | Data Port          | Lowest serial port #, e.g. COM7          | Output Data Messages, Input RTCM Data |
-    |                    +------------------------------------------+                                       |
+    | Data Port          | Lowest serial port #, e.g. COM7          | Output: Data Messages                 |
+    |                    +------------------------------------------+ Input: RTCM Data                      |
     |                    | UDP: EVK port 1, computer port selectable|                                       |
     +--------------------+------------------------------------------+---------------------------------------+
-    | Configuration Port | Highest serial port #, e.g. COM10        | Odometer Aiding, Configuration        |
-    |                    +------------------------------------------+                                       |
+    | Configuration Port | Highest serial port #, e.g. COM10        | Output: NMEA Messages (if configured) |
+    |                    +------------------------------------------+ Input: Odometer Data, Configuration   |
     |                    | UDP: EVK port 2, computer port selectable|                                       |
     +--------------------+------------------------------------------+---------------------------------------+
-    | Odometer Port      | UDP: EVK port 3, computer port selectable| Preferred Odometer Channel, UDP only  |
+    | Odometer Port      | UDP: EVK port 3, computer port selectable| Odometer Channel (UDP Only)           |
     +--------------------+------------------------------------------+---------------------------------------+
-     
+
+ .. note:: 
+  The "lowest" and "highest" serial ports mentioned above refer to the EVK, which uses an FTDI chip to create 4 virtual COM ports.
+  The GNSS INS and IMU/IMU+ have two RS-232 connections, where RS-232 1 is the Data port and RS-232 2 is the Configuration port. 
+  The port numbers that appear once connected to the computer are determined by how the OS assigns the ports, and therefore the 
+  Data port is not necessarily the lowest port # like in the EVK.
+
 
 2.  ASCII Data Output Messages
 ---------------------------------
 
-ANELLO EVK has two message formats, ASCII and RTCM. The structures of all ASCII messages use the 
+ANELLO has two message formats, ASCII and RTCM. The structures of all ASCII messages use the 
 following conventions:
 
--	The lead code identifier for each record is '#'.
--	Each log or command is of variable length depending on amount of data and formats.
--	All data fields are delimited by a comma ',' with two exceptions:
-- Each log ends with a hexadecimal checksum preceded by an asterisk and followed by a line termination using the carriage return and line feed characters.  
-- The checksum is simple, just an XOR of all the bytes between # and \*, written in hexadecimal.
-- APIMU and APINS messages are transmitted at the output data rate (ODR) setting. 
-- APGPS messages are transmitted at the rate which the EVK receives messages internally. Default is 4 Hz. 
+-	The lead code identifier for each record is '#'
+-	All data fields are delimited by a comma
+- Each log ends with a hexadecimal checksum preceded by an asterisk and followed by a line termination using the carriage return and line feed characters
+- The checksum is an XOR of all the bytes between # and \*, written in hexadecimal
+- APIMU messages are transmitted at the output data rate (ODR) setting
+- APINS messages are transmitted at 100 Hz
+- APGPS messages are transmitted at 4 Hz
 
 
-2.1 APIMU Message
+2.1 APIMU Message (EVK/GNSS INS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The APIMU message is the IMU output message for EVK and GNSS INS units only.
@@ -89,7 +101,7 @@ The APIMU message is the IMU output message for EVK and GNSS INS units only.
 
   Firmware before v1.0.39 does not have T_Sync field.
 
-2.2 APIM1 Message
+2.2 APIM1 Message (IMU/IMU+)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The APIM1 message is the same as APIMU but without odometer values. This is the output message for IMU and IMU+ units only.

@@ -1,13 +1,31 @@
 Unit Configurations
 =======================
-Unit configuration can be adjusted using the *Unit Configuration* menu in the ANELLO Python Program, 
-or by sending APCFG commands over the configuration port as described in `Communication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apcfg-messages>`_.
-|
+
+The easiest way to configure the EVK is with the ANELLO Python Program, which saves all changes to non-volatile flash memory. 
+To do this, see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.
+
+Alternatively, the EVK can be dynamically configured using the APCFG message. The protocol allows for both temporary (RAM) and permanent setting (FLASH) of configuration parameters.
+
+**#APCFG,<r/w/R/W>,<param>,<value1>,..,<valueN>*checksum**
+
+  +---+------------+-----------------------------------------------------------------------+
+  |   | Field      |  Description                                                          |
+  +---+------------+-----------------------------------------------------------------------+
+  | 0 | APCFG      |  Sentence identifier                                                  |
+  +---+------------+-----------------------------------------------------------------------+
+  | 1 |<read/write>|  'r': read  RAM, 'w': write RAM, 'R': read FLASH, 'W': write FLASH    |
+  +---+------------+-----------------------------------------------------------------------+
+  | 2 | <param>    |  Configuration parameter (APCFG code)                                 |
+  +---+------------+-----------------------------------------------------------------------+
+  | 3 | <value>    |  Configuration value, expressed in ASCII                              |
+  +---+------------+-----------------------------------------------------------------------+
+
+The available parameters and values to configure are described in the table below:
 
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
   | Configuration          | APCFG Code | Value/Description                                                                                   |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
-  | Orientation            | orn        | Coordinate axes for outputs, e.g. +X-Y-Z (see below)                                                |
+  | Orientation            | orn        | Coordinate axes for outputs, e.g. +X+Y+Z (see below)                                                |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
   | Output Data Rate       | odr        | Rate of APIMU messages: 20, 50, 100, or 200 Hz. Requires reset.                                     |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
