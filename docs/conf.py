@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath('.'))
 
 # -- Project information -----------------------------------------------------
 
-project = u'Anello A-1 Developer Manual'
+project = u'Anello Developer Manual'
 copyright = u'2021, Anello Photonics, Inc'
 author = u'Anello Engineering'
 
@@ -59,7 +59,7 @@ master_doc = 'index'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -99,7 +99,7 @@ linkcheck_anchors = False
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = []
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -115,7 +115,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Anello A-1'
+htmlhelp_basename = 'Anello'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -142,7 +142,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Anello.tex', u'A-1 Documentation',
+    (master_doc, 'Anello.tex', u'Documentation',
      u'Anello Engineering', 'manual'),
 ]
 
@@ -152,7 +152,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'Anello A-1', u'A-1 Documentation',
+    (master_doc, 'Anello', u'Documentation',
      [author], 1)
 ]
 
@@ -163,7 +163,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Anello A-1', u'A-1 Documentation',
-     author, 'Anello A-1', 'High-accuracy GNSS/INS Optical Gyro Navigation System',
+    (master_doc, 'Anello', u'Documentation',
+     author, 'Anello', 'High-accuracy GNSS INS Optical Gyro Navigation System',
      'Robotics'),
 ]

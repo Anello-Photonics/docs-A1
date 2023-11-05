@@ -14,15 +14,15 @@ Reach out to info@anellophotonics.com for more information.
     :caption: ANELLO Developer Manual
     :maxdepth: 1
 
-    ../getting_started_quick
-    ../getting_started_gnssins
-    ../getting_started_imu
-    ../setup_troubleshooting
-    ../unit_configuration
-    ../vehicle_configuration
-    ../communication_messaging
-    ../mechanicals
-    ../fw_upgrade
-    ../python_program
-    ../known_limitations
+    getting_started_quick
+    getting_started_gnssins
+    getting_started_imu
+    setup_troubleshooting
+    unit_configuration
+    vehicle_configuration
+    communication_messaging
+    mechanicals
+    fw_upgrade
+    python_program
+    known_limitations
     
