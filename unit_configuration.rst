@@ -82,7 +82,8 @@ The available parameters and values to configure are described in the table belo
 .. note:: If sending odometer speeds by UDP from another program, send to UDP port 3 on the EVK, from the computer's UDP port matching "odometer port" configuration.
 
 
-Some configurations require a system reset after changing, such as the ODR and baud rate: #APRST,0*58 
+Some configurations require a system reset after changing, such as the ODR and baud rate. This can be done by selecting "Reset" in the user_program.py main menu, 
+or sending the reset command over the Configuration port: #APRST,0*58 
 
 Orientation describes the coordinate axes used in IMU and INS output in terms of the EVK coordinate axes (shown on EVK label).
 
