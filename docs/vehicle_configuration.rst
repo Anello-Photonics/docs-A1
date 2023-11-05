@@ -10,9 +10,9 @@ They can also be set directly by **#APVEH** messages over USB or Ethernet connec
 +----------------+------------------+------------------------------------------------------------+
 | Configuration  | APVEH Codes      |                     Description                            |
 +----------------+------------------+------------------------------------------------------------+
-|  Lever Arm 1   |  g1x, g1y, g1z   |   Vector from EVK center to antenna 1                     |
+|  Lever Arm 1   |  g1x, g1y, g1z   |   Vector from EVK center to antenna 1                      |
 +----------------+------------------+------------------------------------------------------------+
-|  Lever Arm 2   |  g2x, g2y, g2z   |   Vector from EVK center to antenna 2                     |
+|  Lever Arm 2   |  g2x, g2y, g2z   |   Vector from EVK center to antenna 2                      |
 +----------------+------------------+------------------------------------------------------------+
 | Vehicle Center |  cnx, cny, cnz   |   Vector from EVK center to center of rear axle            |
 +----------------+------------------+------------------------------------------------------------+

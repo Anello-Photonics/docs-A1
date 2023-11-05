@@ -532,9 +532,9 @@ A correctly received ping command generates a response from the unit of: #APPNG,
 
 The Echo command serves as an additional communication test for the serial port configuration as well as the checksum generator. For example:
 
-#APECH,Echo! echo… ech… e…*77
+#APECH,Echo! echo… ech… e…\*77
 
-A correctly received Echo command generates an identical response from the unit: #APECH,Echo! echo… ech… e…*77.
+A correctly received Echo command generates an identical response from the unit: #APECH,Echo! echo… ech… e…\*77.
 
 
 4.5  Reset 
