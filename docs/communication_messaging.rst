@@ -524,7 +524,9 @@ The Ping command can be used to test if the serial port is properly configured.
 
 #APPNG*48
 
-A correctly received ping command generates a response from the unit of: #APPNG,0*54
+A correctly received ping command generates a response from the unit of: 
+
+#APPNG,0*54
 
 
 4.5  Echo 
@@ -534,7 +536,9 @@ The Echo command serves as an additional communication test for the serial port 
 
 #APECH,Echo! echo… ech… e…\*77
 
-A correctly received Echo command generates an identical response from the unit: #APECH,Echo! echo… ech… e…\*77.
+A correctly received Echo command generates an identical response from the unit: 
+
+#APECH,Echo! echo… ech… e…\*77.
 
 
 4.5  Reset 
