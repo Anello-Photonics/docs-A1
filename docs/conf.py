@@ -40,7 +40,8 @@ needs_sphinx = '1.5.6'
 # ones.
 extensions = ['sphinx.ext.mathjax',
               'sphinx.ext.autosectionlabel',
-              'sphinx.ext.ifconfig']
+              'sphinx.ext.ifconfig',
+              'recommonmark']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

@@ -29,7 +29,7 @@ The ANELLO Evaluation Kit (EVK) includes the following items:
 .. image:: media/evk_contents.png
    :width: 90 %
    :align: center
-|
+
 
 Connect the hardware as follows: 
 
@@ -69,7 +69,7 @@ Install dependencies using pip:
     >cd user_tool
     >pip install -r requirements.txt
 
-If you have any errors with these steps, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`_.
+If you have any errors with these steps, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`__.
 
 Please run "git pull" periodically to make sure you are using the latest code.
 
@@ -81,14 +81,14 @@ Please run "git pull" periodically to make sure you are using the latest code.
     >cd board_tools
     >python user_program.py
 
-You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#run-python-program>`_.
+You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#run-python-program>`__.
 
 2.3 Connect to the EVK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Use the arrow keys to select *Connect*, then *COM*, then *Auto* to auto-detect the unit. You can also use *Manual* if you know the data and config ports.
 You should now see the *System Status* updated with the device information.
 
-For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#connect-to-evk>`_.
+For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#connect-to-evk>`__.
 
 2.4 EVK Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -166,7 +166,7 @@ mount near the center of the vehicle’s rear axle, with the x-axis facing the d
 .. image:: media/a1_install_location.png
    :width: 50 %
    :align: center
-|
+
 The GNSS antennae can be magnetically mounted on the roof of the vehicle.
 
 4.3 Set Vehicle Configurations

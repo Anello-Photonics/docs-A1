@@ -11,13 +11,13 @@ The ANELLO IMU unit is pictured below. It features an 8 pin automotive-grade Mol
 .. image:: media/ANELLO_IMU.png
    :width: 50 %
    :align: center
-|
-If you purchased the IMU Evaluation Kit, you will also receive the items pictured below. See `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html>`_ for schematic of the breakout cable.
+
+If you purchased the IMU Evaluation Kit, you will also receive the items pictured below. See `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html>`__ for schematic of the breakout cable.
 
 .. image:: media/IMU_EvalKit.png
    :width: 100 %
    :align: center
-|
+
 
 To use the IMU Evaluation Kit, connect the hardware as follows: 
 
@@ -25,7 +25,7 @@ To use the IMU Evaluation Kit, connect the hardware as follows:
 2. Connect to power using the AC/DC adapter.
 3. Connect to PC, Mac, or Ubuntu computing system via RS-232 using USB 2.0 to DB9 Serial Converters.
 
-For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-imu-imu>`_.
+For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-imu-imu>`__.
 
 2   Unit Configurations
 ---------------------------------
@@ -53,7 +53,7 @@ Install dependencies using pip:
     >cd user_tool
     >pip install -r requirements.txt
 
-If you have any errors with these steps, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`_.
+If you have any errors with these steps, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`__.
 
 Please run "git pull" periodically to make sure you are using the latest code.
 
@@ -65,14 +65,14 @@ Please run "git pull" periodically to make sure you are using the latest code.
     >cd board_tools
     >python user_program.py
 
-You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#run-python-program>`_.
+You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#run-python-program>`__.
 
 2.3 Connect to the IMU
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Use the arrow keys to select *Connect*, then *COM*, then *Auto* to auto-detect the unit. You can also use *Manual* if you know the data and config ports.
 You should now see the *System Status* updated with the device information.
 
-For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#connect-to-evk>`_.
+For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#connect-to-evk>`__.
 
 2.4 IMU Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -94,7 +94,7 @@ grouped by month and day.
 
 To export a log to CSV, Select *Log*, then *Export*, then choose the log file.
 A CSV file containing the IMU output data will be saved in the "exports" directory, under the name of the original log file.
-For more information on the output message format, see `Comminication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`_.
+For more information on the output message format, see `Communication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`_.
 
 
 3.2 Monitor Output

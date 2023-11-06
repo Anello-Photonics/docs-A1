@@ -11,13 +11,13 @@ The ANELLO GNSS INS unit is pictured below. It features a 20 pin automotive-grad
 .. image:: media/ANELLO_GNSS_INS.png
    :width: 50 %
    :align: center
-|
-If you purchased the GNSS INS Evaluation Kit, you will also receive the items pictured below. See `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html>`_ for schematic of the breakout cable.
+
+If you purchased the GNSS INS Evaluation Kit, you will also receive the items pictured below. See `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html>`__ for schematic of the breakout cable.
 
 .. image:: media/GNSS_INS_EvalKit.png
    :width: 100 %
    :align: center
-|
+
 
 To use the GNSS INS Evaluation Kit, connect the hardware as follows: 
 
@@ -27,7 +27,7 @@ To use the GNSS INS Evaluation Kit, connect the hardware as follows:
 4. Connect to PC, Mac, or Ubuntu computing system via RS-232 using USB 2.0 to DB9 Serial Converters for configuration.
 5. If you'd like to use Automotive Ethernet, see section 4.1 for connection instructions.
 
-For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-gnss-ins>`_.
+For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-gnss-ins>`__.
 
 
 2   Unit Configurations
@@ -55,7 +55,7 @@ Install dependencies using pip:
     >cd user_tool
     >pip install -r requirements.txt
 
-If you have any errors with these steps, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`_.
+If you have any errors with these steps, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`__.
 
 Please run "git pull" periodically to make sure you are using the latest code.
 
@@ -67,14 +67,14 @@ Please run "git pull" periodically to make sure you are using the latest code.
     >cd board_tools
     >python user_program.py
 
-You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#run-python-program>`_.
+You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#run-python-program>`__.
 
 2.3 Connect to the GNSS INS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Use the arrow keys to select *Connect*, then *COM*, then *Auto* to auto-detect the unit.  You can also use *Manual* if you know the data and config ports.
 You should now see the *System Status* updated with the device information.
 
-For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#connect-to-evk>`_.
+For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#connect-to-evk>`__.
 
 2.4 GNSS INS Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -149,7 +149,7 @@ mount near the center of the vehicle’s rear axle, with the x-axis facing the d
 .. image:: media/GNSSINS_Vehicle_Installation.png
    :width: 50 %
    :align: center
-|
+
 The GNSS antennae can be magnetically mounted on the roof of the vehicle.
 
 4.3 Set Vehicle Configurations
