@@ -169,12 +169,22 @@ mount near the center of the vehicle’s rear axle, with the x-axis facing the d
 
 The GNSS antennae can be magnetically mounted on the roof of the vehicle.
 
+
 4.3 Set Vehicle Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In main menu, select *Vehicle Configurations* and set the lever arms as prompted. For more informaiton, see `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_.
 
-**Congratulations!!!**
-You have completed the EVK setup! Please refer back to `Section 3 <https://docs-a1.readthedocs.io/en/latest/getting_started_quick.html#data-collection>`_ for data collection. 
-Note that the EVK performance will improve after several minutes of driving.
 
-Please contact support@anellophotonics.com with any questions. 
+4.4 Drive Test
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+There are a couple important notes to optimize the performance of your ANELLO EVK. 
+
+Heading can be initialized in one of two ways: 1) using dual GNSS heading (while stationary), or 2) GNSS velocity heading (while moving). 
+If heading is not initialized using dual GNSS while stationary, you must either 1) Provide odometer input to indicate at minimum forwards/backwards motion, 
+or 2) Start the drive by driving forwards at a speed > 2 m/s, to ensure GNSS velocity heading initializes in the correct direction.
+
+For extended GNSS-denied testing, it is highly recommended to add odometer input to the system to minimize large distance traveled errors.
+
+
+**Congratulations!!!**
+You have completed the EVK setup! Please contact support@anellophotonics.com with any questions. 
