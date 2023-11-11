@@ -42,7 +42,7 @@ with PIP a quick start guide is found `here <https://pip.pypa.io/en/stable/quick
 If this fails, you may need to replace "pip" with "pip3", "python -m pip" or "python3 -m pip"
 
 On some Linux systems, matplotlib and numpy dependencies must be installed with apt instead of pip.
-Instead of using requirements.txt, do:
+Instead of using requirements.txt, you can do:
 
 .. code-block:: python
 
@@ -52,14 +52,14 @@ Instead of using requirements.txt, do:
     sudo apt install matplotlib
     sudo apt install numpy
 
-Or if you already installed requirements.txt and ran the program, but had a matplotlib or numpy error:
+Or if you already installed requirements.txt and ran the program, but had a matplotlib error:
 
 .. code-block:: python
 
     pip uninstall matplotlib
-    pip uninstall numpy
     sudo apt install matplotlib
-    sudo apt install numpy
+
+As of Nov 2023, we noticed some issues installing the necessary dependencies using Python 3.12 and the corresponding pip. If you experience this issue, please revert to Python 3.11 until it is resolved.
 
 
 2   Run Python Program
