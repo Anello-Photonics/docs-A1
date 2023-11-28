@@ -12,6 +12,8 @@ EVK SCD Drawing: :download:`PDF <media/Anello_A1_MechanicalDwg_rev2.pdf>`
    :align: center
 
 .. note::
+   As shown in the image above, the power connector includes two additional pins: PPS Out and Sync In. The power connector included in the EVK kit includes two wires, where the black wire is PPS Out and the green wire is Sync In.
+   
    Power Connector info: `<https://www.lemo.com/en/products/low-voltage-connector/b-connector>`_
    
    Mating Connector: `<https://www.lemo.com/pdf/FGG.0B.304.CLAD52.pdf>`_                                                      
