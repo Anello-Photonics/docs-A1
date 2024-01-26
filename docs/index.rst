@@ -14,7 +14,7 @@ Reach out to info@anellophotonics.com for more information.
     :caption: ANELLO Developer Manual
     :maxdepth: 1
 
-    getting_started_evk
+    getting_started_quick
     getting_started_gnssins
     getting_started_imu
     python_tool
