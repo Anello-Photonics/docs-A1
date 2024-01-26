@@ -1,51 +1,65 @@
 ==================================
-GNSS INS Getting Started Guide
+EVK Getting Started Guide
 ==================================
-Thank you for choosing the ANELLO GNSS INS! This guide will get you started with connection, configuration and data collection.
+Thank you for choosing the ANELLO EVK! This guide will get you started with EVK connection, configuration and data collection.
 Please contact support@anellophotonics.com with any questions.  
 
 1   Hardware Connections
 ---------------------------------
-The ANELLO GNSS INS unit is pictured below. It features a 20 pin automotive-grade Molex MX150 connector and two FAKRA SMB GNSS connectors.
+The ANELLO Evaluation Kit (EVK) includes the following items:
 
-.. image:: media/ANELLO_GNSS_INS.png
-   :width: 50 %
+    +---+------------------------------------------------+
+    | 1 | ANELLO EVK                                     |
+    +---+------------------------------------------------+
+    | 2 | Two Dual-Band Multi-Constellation GNSS Antennae|
+    +---+------------------------------------------------+
+    | 3 | Power Cable                                    |
+    +---+------------------------------------------------+
+    | 4 | 110-240V AC Wall-Power Adapter                 |
+    +---+------------------------------------------------+
+    | 5 | International Wall-Power Plug Inserts          |
+    +---+------------------------------------------------+
+    | 6 | In-Vehicle Power Adapter                       |
+    +---+------------------------------------------------+
+    | 7 | USB Cable                                      |
+    +---+------------------------------------------------+
+    | 8 | Ethernet Cable                                 |
+    +---+------------------------------------------------+
+
+.. image:: media/evk_contents.png
+   :width: 90 %
    :align: center
 
-If you purchased the GNSS INS Evaluation Kit, you will also receive the items pictured below. See `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html>`__ for schematic of the breakout cable.
 
-.. image:: media/GNSS_INS_EvalKit.png
+Connect the hardware as follows: 
+
+1. Connect EVK to power using either the wall-power or the in-vehicle adapter (red).
+2. Connect EVK to computer using USB-C (blue). Ethernet interface (green) is also available, but connection over serial is required first to configure IP addresses.
+3. Connect primary GNSS antenna to ANT1 on the back of the EVK (black). An optional additional antenna (ANT2) enables stationary heading initialization.
+
+.. image:: media/EVK-wiring_2.png
    :width: 100 %
    :align: center
 
-
-To use the GNSS INS Evaluation Kit, connect the hardware as follows: 
-
-1. Connect breakout cable to GNSS INS unit
-2. Connect to power using either the AC/DC adapter or the Auto Cable Plug.
-3. Connect primary GNSS antenna to ANT1 using SMA to FAKRA Adapters. An additional antenna (ANT2) is optional and enables stationary dual heading.
-4. Connect to computer via RS-232 using USB 2.0 to DB9 serial converters for configuration.
-5. If you'd like to use the automotive ethernet interface, connection over serial is required first to configure IP addresses.
-
-For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-gnss-ins>`__.
+For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-evk>`_.
 
 
 2   Software Interfaces
 ---------------------------------
-ANELLO provides a Python tool to connect, configure, and log data with the GNSS INS.
+ANELLO provides a Python tool to connect, configure, and log data with the EVK.
 Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python-tool.html>`_.
 
 ANELLO units are also compatible with ROS using our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
 
-If you would like to connect to the GNSS INS using a serial interface software such as CoolTerm, 
-please ensure you use the correct baud rate (default for the GNSS INS is 230400), and set Data Bits = 8, Stop Bits = 1, and Parity = None.
+If you would like to connect to the EVK using a serial interface software such as CoolTerm, 
+please ensure you use the correct baud rate (default for the EVK is 921600), and set Data Bits = 8, Stop Bits = 1, and Parity = None.
 
 For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software-tools.html>`_.
 
 
-3   Configure ANELLO GNSS INS
+3   Configure ANELLO EVK
 ---------------------------------
-Before testing your GNSS INS, please review the available configurations and ensure they are set according to your testing needs.
+Before testing your EVK, please review the available configurations and ensure they are set according to your testing needs.
 A description of ANELLO unit and vehicle configurations can be found at `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_,
 and `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_, respectively.
 
@@ -63,15 +77,16 @@ Note that as of firmware v1.2.0, to use dual antenna functionality, the antenna 
 
 3.2 Other Configuration Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-You may also send configurations manually over the GNSS INS's serial configuration port using a serial interface software, such as CoolTerm.
+You may also send configurations manually over the EVK's serial configuration port using a serial interface software, such as CoolTerm.
+Note that the configuration port on the EVK is the highest of the four virtual COM ports (more information at `Comminication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`_). 
 
 
 4   Connect to NTRIP Caster
 ------------------------------
-Standard RTCM messages can be forwarded to the ANELLO GNSS INS data port to enable the GNSS receivers to reach RTK-level accuracy. 
-The GNSS INS receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages. 
+Standard RTCM messages can be forwarded to the ANELLO EVK data port to enable the GNSS receivers to reach RTK-level accuracy. 
+The EVK receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages. 
 
-The ANELLO Python Program also provides an NTRIP client which can connect to a standard NTRIP network and forward the received RTCM messages into the GNSS INS.
+The ANELLO Python Program also provides an NTRIP client which can connect to a standard NTRIP network and forward the received RTCM messages into the EVK.
 
 From the main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster details as prompted. 
 The *System Status* will show the NTRIP connection status.
@@ -79,14 +94,16 @@ The *System Status* will show the NTRIP connection status.
 
 5   Vehicle Installation
 ----------------------------
-The GNSS INS can be configured for various installation positions. To minimize configuration steps, 
+
+The EVK can be configured for various installation positions. To minimize configuration steps, 
 mount near the center of the vehicle’s rear axle, with the x-axis facing the direction of travel.
 
-.. image:: media/GNSSINS_Vehicle_Installation.png
+.. image:: media/a1_install_location.png
    :width: 50 %
    :align: center
 
 The GNSS antennae can be magnetically mounted on the roof of the vehicle.
+
 
 6   Data Collection & Visualization
 ------------------------------------
@@ -100,7 +117,7 @@ To maximize ANELLO's ability to help analyze your data, we recommend logging dat
 
 6.2 Monitor Data Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For a real-time display of the ANELLO GNSS INS data, select *Monitor* in the main menu.
+For a real-time display of the ANELLO EVK data, select *Monitor* in the main menu.
 
 More information on the monitor window can be found at `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python-tool.html>`_.
 
@@ -117,4 +134,4 @@ Before conducting drive testing, please review `Drive Testing Best Practices <ht
 to ensure the system is set up properly, initializes smoothly, and is optimized for your use case.
 
 **Congratulations!!!**
-You have completed the GNSS INS setup and data collection! Please feel free to contact support@anellophotonics.com with any questions. 
+You have completed the EVK setup and data collection! Please feel free to contact support@anellophotonics.com with any questions. 

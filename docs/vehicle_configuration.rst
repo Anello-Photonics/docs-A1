@@ -1,23 +1,28 @@
 Vehicle Configuration
 =======================
 
-Vehicle configurations describe the positions of parts in the vehicle setup, which are used in the ANELLO algorithm calculations. The IMU message is not affected by these settings.
+The ANELLO EVK and GNSS INS require vehicle configurations to be set 
+
+Vehicle configurations describe the positions of parts in the vehicle setup, which are used in the ANELLO algorithm. 
+The measurements in the IMU message are not affected by these settings.
 All positions are x,y,z in meters, using the EVK as the origin and using the standard EVK coordinate system (not corrected for mounting orientation).
 
 These are configurable with the ANELLO Python Program by selecting *Vehicle Configurations* in the main menu.
 They can also be set directly by **#APVEH** messages over USB or Ethernet connection. 
 
-+----------------+------------------+------------------------------------------------------------+
-| Configuration  | APVEH Codes      |                     Description                            |
-+----------------+------------------+------------------------------------------------------------+
-|  Lever Arm 1   |  g1x, g1y, g1z   |   Vector from EVK center to antenna 1                      |
-+----------------+------------------+------------------------------------------------------------+
-|  Lever Arm 2   |  g2x, g2y, g2z   |   Vector from EVK center to antenna 2                      |
-+----------------+------------------+------------------------------------------------------------+
-| Vehicle Center |  cnx, cny, cnz   |   Vector from EVK center to center of rear axle            |
-+----------------+------------------+------------------------------------------------------------+
-| Output Center  |  ocx, ocy, ocz   |   Vector from EVK center to desired INS solution position  |
-+----------------+------------------+------------------------------------------------------------+
++-------------------+------------------+------------------------------------------------------------+
+| Configuration     | APVEH Codes      |                     Description                            |
++-------------------+------------------+------------------------------------------------------------+
+|  Lever Arm 1      |  g1x, g1y, g1z   |   Vector from EVK center to antenna 1                      |
++-------------------+------------------+------------------------------------------------------------+
+|  Lever Arm 2      |  g2x, g2y, g2z   |   Vector from EVK center to antenna 2                      |
++-------------------+------------------+------------------------------------------------------------+
+| Vehicle Center    |  cnx, cny, cnz   |   Vector from EVK center to center of rear axle            |
++-------------------+------------------+------------------------------------------------------------+
+| Output Center     |  ocx, ocy, ocz   |   Vector from EVK center to desired INS solution position  |
++-------------------+------------------+------------------------------------------------------------+
+| Antenna Baseline  |  ocx, ocy, ocz   |   Vector from EVK center to desired INS solution position  |
++-------------------+------------------+------------------------------------------------------------+
 
 The mounting location of the EVK is flexible and can be configured for various installation positions and orientations. 
 For the least complexity, we recommendation mounting the unit above the center of the vehicle’s rear axle with the X-Axis facing forward along the direction of travel. 

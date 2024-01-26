@@ -1,7 +1,7 @@
 ==================================
-IMU/IMU+ Getting Started Guide
+IMU & IMU+ Getting Started Guide
 ==================================
-Thank you for choosing the ANELLO IMU! This guide will get you started with connection, configuration and data collection.
+Thank you for choosing the ANELLO IMU/IMU+! This guide will get you started with connection, configuration and data collection.
 Please contact support@anellophotonics.com with any questions.  
 
 1   Hardware Connections
@@ -27,81 +27,52 @@ To use the IMU Evaluation Kit, connect the hardware as follows:
 
 For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-imu-imu>`__.
 
-2   Unit Configurations
+
+2   Software Interfaces
 ---------------------------------
-If you would like to use the ANELLO Python Program to connect, configure, and log data with the IMU, please use the following instructions.
+ANELLO provides a Python tool to connect, configure, and log data with the ANELLO IMU.
+Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python-tool.html>`_.
+
+ANELLO units are also compatible with ROS using our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
+
+If you would like to connect to the IMU using a serial interface software such as CoolTerm, 
+please ensure you use the correct baud rate (default for the IMU is 230400), and set Data Bits = 8, Stop Bits = 1, and Parity = None.
+
+For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software-tools.html>`_.
 
 
-2.1 Install ANELLO Python Program
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Confirm that Python is installed on your computer and the version is at least 3.6:
-
-.. code-block:: python
-    
-    >python -V
-
-Clone the GitHub repository:
-
-.. code-block:: python
-
-    git clone https://github.com/Anello-Photonics/user_tool.git
-
-Install dependencies using pip:
-
-.. code-block:: python
-    
-    >cd user_tool
-    >pip install -r requirements.txt
-
-If you have any errors with these steps, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`__.
-
-Please run "git pull" periodically to make sure you are using the latest code.
-
-2.2 Run the Python Tool 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: python
-    
-    >cd board_tools
-    >python user_program.py
-
-You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#run-python-program>`__.
-
-2.3 Connect to the IMU
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Use the arrow keys to select *Connect*, then *COM*, then *Auto* to auto-detect the unit. You can also use *Manual* if you know the data and config ports.
-You should now see the *System Status* updated with the device information.
-
-For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#connect-to-evk>`__.
-
-2.4 IMU Configurations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Select *Unit Configuration* from the main menu to see default configurations. To change any configurations, 
-select *Edit*, then the configuration to change, then select the new value.
-
-For more information, please see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.
-
-
-3   Data Collection
+3   Configure ANELLO IMU/IMU+
 ---------------------------------
-3.1 Log a Data File
+Before testing your IMU, please review the available configurations and ensure they are set according to your testing needs.
+A description of ANELLO unit and vehicle configurations can be found at `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_..
+
+There are two options to change configurations:
+
+3.1 Configure using ANELLO Python Tool
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+For unit configurations, select *Unit Configuration* from the main menu to see default configurations. To change a configuration, 
+select *Edit*, then the configuration to change, then select or enter the new value.
+
+3.2 Other Configuration Methods
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You may also send configurations manually over the IMU's serial configuration port using a serial interface software, such as CoolTerm.
+
+
+4   Data Collection & Visualization
+------------------------------------
+
+4.1 Log Data
+~~~~~~~~~~~~~~~~~
+To log data, you may use the ANELLO Python Tool, the ANELLO ROS driver, or another program of your choice.
+
+To maximize ANELLO's ability to help analyze your data, we recommend logging data with the ANELLO Python Tool. Instructions can be found at 
+`ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python-tool.html>`_.
+
+4.2 Monitor Data Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In the main menu, select *Log*, then *Start*. Use the default filename or enter a custom name. 
-The *System Status* will be updated with the logging information.
+For a real-time display of the ANELLO IMU data, select *Monitor* in the main menu.
 
-To end a log, select *Log* then *Stop*. Log files are saved in the "logs" directory in user_tool, 
-grouped by month and day.
-
-To export a log to CSV, Select *Log*, then *Export*, then choose the log file.
-A CSV file containing the IMU output data will be saved in the "exports" directory, under the name of the original log file.
-For more information on the output message format, see `Communication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`_.
-
-
-3.2 Monitor Output
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For a real-time display of the IMU data, select *Monitor* in the main menu. For the IMU unit, only the *IMU* tab will be populated.
-
-Logging can be started and ended by clicking the LOG button.
+More information on the monitor window can be found at `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python-tool.html>`_.
 
 
 **Congratulations!!!**

@@ -24,6 +24,7 @@ UDP communication uses fixed port numbers on the EVK but selectable ports on the
 These ports, along with IP addresses and other UDP settings should be configured (see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_).
 
 Serial communication occurs at a default baud rate of 921600 bits per second for the EVK and 230400 for GNSS INS and IMU/IMU+.
+For interfacing on a serial interface software such as CoolTerm, please set Data Bits = 8, Stop Bits = 1, and Parity = None.
 
     +--------------------+------------------------------------------+---------------------------------------+
     | **Logical Port**   |  **Physical Port**                       |  **Functions**                        |
@@ -44,6 +45,8 @@ Serial communication occurs at a default baud rate of 921600 bits per second for
   The GNSS INS and IMU/IMU+ have two RS-232 connections, where RS-232 1 is the Data port and RS-232 2 is the Configuration port. 
   The port numbers that appear once connected to the computer are determined by how the OS assigns the ports, and therefore the 
   Data port is not necessarily the lowest port # like in the EVK.
+
+
 
 
 2.  ASCII Data Output Messages
