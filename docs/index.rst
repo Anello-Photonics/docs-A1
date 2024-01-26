@@ -23,6 +23,7 @@ Reach out to info@anellophotonics.com for more information.
     vehicle_configuration
     communication_messaging
     mechanicals
+    drive_testing
     fw_upgrade
     software_tools
     known_limitations
