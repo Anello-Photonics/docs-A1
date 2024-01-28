@@ -4,7 +4,7 @@ EVK Getting Started Guide
 Thank you for choosing the ANELLO EVK! This guide will get you started with EVK connection, configuration and data collection.
 Please contact support@anellophotonics.com with any questions.  
 
-1   Hardware Connections
+Hardware Connections
 ---------------------------------
 The ANELLO Evaluation Kit (EVK) includes the following items:
 
@@ -44,7 +44,7 @@ Connect the hardware as follows:
 For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-evk>`_.
 
 
-2   Software Interfaces
+Software Interfaces
 ---------------------------------
 ANELLO provides a Python tool to connect, configure, and log data with the EVK.
 Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python-tool.html>`_.
@@ -57,7 +57,7 @@ please ensure you use the correct baud rate (default for the EVK is 921600), and
 For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software-tools.html>`_.
 
 
-3   Configure ANELLO EVK
+Configure ANELLO EVK
 ---------------------------------
 Before testing your EVK, please review the available configurations and ensure they are set according to your testing needs.
 A description of ANELLO unit and vehicle configurations can be found at `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_,
@@ -65,7 +65,7 @@ and `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_co
 
 There are two options to change configurations:
 
-3.1 Configure using ANELLO Python Tool
+Configure using ANELLO Python Tool
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For unit configurations, select *Unit Configuration* from the main menu to see default configurations. To change a configuration, 
 select *Edit*, then the configuration to change, then select or enter the new value.
@@ -75,13 +75,13 @@ For vehicle configurations, select *Vehicle Configuration* from the main menu an
 Note that as of firmware v1.2.0, to use dual antenna functionality, the antenna baseline must be calibrated. Please refer to 
 `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_ to ensure all vehicle configurations are set properly.
 
-3.2 Other Configuration Methods
+Other Configuration Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 You may also send configurations manually over the EVK's serial configuration port using a serial interface software, such as CoolTerm.
 Note that the configuration port on the EVK is the highest of the four virtual COM ports (more information at `Comminication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`_). 
 
 
-4   Connect to NTRIP Caster
+Connect to NTRIP Caster
 ------------------------------
 Standard RTCM messages can be forwarded to the ANELLO EVK data port to enable the GNSS receivers to reach RTK-level accuracy. 
 The EVK receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages. 
@@ -92,7 +92,7 @@ From the main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster deta
 The *System Status* will show the NTRIP connection status.
 
 
-5   Vehicle Installation
+Vehicle Installation
 ----------------------------
 
 The EVK can be configured for various installation positions. To minimize configuration steps, 
@@ -105,30 +105,30 @@ mount near the center of the vehicle’s rear axle, with the x-axis facing the d
 The GNSS antennae can be magnetically mounted on the roof of the vehicle.
 
 
-6   Data Collection & Visualization
+Data Collection & Visualization
 ------------------------------------
 
-6.1 Log Data
+Log Data
 ~~~~~~~~~~~~~~~~~
 To log data, you may use the ANELLO Python Tool, the ANELLO ROS driver, or another program of your choice.
 
 To maximize ANELLO's ability to help analyze your data, we recommend logging data with the ANELLO Python Tool. Instructions can be found at 
 `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python-tool.html>`_.
 
-6.2 Monitor Data Output
+Monitor Data Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For a real-time display of the ANELLO EVK data, select *Monitor* in the main menu.
 
 More information on the monitor window can be found at `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python-tool.html>`_.
 
-6.3 Data Visualization
+Data Visualization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 INS solution can be visualized by importing ins.csv into `Kepler <https://kepler.gl/demo>`_.
 You may also use a `CSV to KML converter <https://www.convertcsv.com/csv-to-kml.htm>`_ to visualize the results in Google Earth, 
 but note that these tools often have data length limitations.
 
 
-7   Drive Testing
+Drive Testing
 -------------------
 Before conducting drive testing, please review `Drive Testing Best Practices <https://docs-a1.readthedocs.io/en/latest/drive-testing.html>`_ 
 to ensure the system is set up properly, initializes smoothly, and is optimized for your use case.

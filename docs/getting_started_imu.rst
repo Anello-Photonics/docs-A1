@@ -4,7 +4,7 @@ IMU & IMU+ Getting Started Guide
 Thank you for choosing the ANELLO IMU/IMU+! This guide will get you started with connection, configuration and data collection.
 Please contact support@anellophotonics.com with any questions.  
 
-1   Hardware Connections
+Hardware Connections
 ---------------------------------
 The ANELLO IMU unit is pictured below. It features an 8 pin automotive-grade Molex MX150 connector.
 
@@ -28,7 +28,7 @@ To use the IMU Evaluation Kit, connect the hardware as follows:
 For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-imu-imu>`__.
 
 
-2   Software Interfaces
+Software Interfaces
 ---------------------------------
 ANELLO provides a Python tool to connect, configure, and log data with the ANELLO IMU.
 Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python-tool.html>`_.
@@ -41,34 +41,34 @@ please ensure you use the correct baud rate (default for the IMU is 230400), and
 For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software-tools.html>`_.
 
 
-3   Configure ANELLO IMU/IMU+
+Configure ANELLO IMU/IMU+
 ---------------------------------
 Before testing your IMU, please review the available configurations and ensure they are set according to your testing needs.
 A description of ANELLO unit and vehicle configurations can be found at `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_..
 
 There are two options to change configurations:
 
-3.1 Configure using ANELLO Python Tool
+Configure using ANELLO Python Tool
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For unit configurations, select *Unit Configuration* from the main menu to see default configurations. To change a configuration, 
 select *Edit*, then the configuration to change, then select or enter the new value.
 
-3.2 Other Configuration Methods
+Other Configuration Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 You may also send configurations manually over the IMU's serial configuration port using a serial interface software, such as CoolTerm.
 
 
-4   Data Collection & Visualization
+Data Collection & Visualization
 ------------------------------------
 
-4.1 Log Data
+Log Data
 ~~~~~~~~~~~~~~~~~
 To log data, you may use the ANELLO Python Tool, the ANELLO ROS driver, or another program of your choice.
 
 To maximize ANELLO's ability to help analyze your data, we recommend logging data with the ANELLO Python Tool. Instructions can be found at 
 `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python-tool.html>`_.
 
-4.2 Monitor Data Output
+Monitor Data Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For a real-time display of the ANELLO IMU data, select *Monitor* in the main menu.
 

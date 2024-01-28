@@ -1,12 +1,12 @@
 Unit Configurations
 =======================
 
-The easiest way to configure the EVK is with the ANELLO Python Program, which saves all changes to non-volatile flash memory. 
-To do this, see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.
+The easiest way to configure an ANELLO unit is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#unit-configurations>`_, 
+which saves all changes to non-volatile flash memory. 
 
-Alternatively, the EVK can be dynamically configured using the APCFG message. The protocol allows for both temporary (RAM) and permanent setting (FLASH) of configuration parameters.
+Alternatively, the unit can be configured using the APCFG message, which allows for both temporary (RAM) and permanent setting (FLASH) of configuration parameters.
 
-**#APCFG,<r/w/R/W>,<param>,<value1>,..,<valueN>*checksum**
+**#APCFG,<r/w/R/W>,<param1>,<value1>,...,<paramN>,<valueN>*checksum**
 
   +---+------------+-----------------------------------------------------------------------+
   |   | Field      |  Description                                                          |
@@ -20,14 +20,18 @@ Alternatively, the EVK can be dynamically configured using the APCFG message. Th
   | 3 | <value>    |  Configuration value, expressed in ASCII                              |
   +---+------------+-----------------------------------------------------------------------+
 
+Unit Configuration Settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The available parameters and values to configure are described in the table below:
 
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
   | Configuration          | APCFG Code | Value/Description                                                                                   |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
-  | Orientation            | orn        | Coordinate axes for outputs, e.g. +X+Y+Z (see below)                                                |
+  | Orientation            | orn        | Coordinate axes for mounting position, default +X+Y+Z (see below)                                   |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
-  | Output Data Rate       | odr        | Rate of APIMU messages: 20, 50, 100, or 200 Hz. Requires reset.                                     |
+  | Alignment Angles       | aln        | Alignment angles of unit (in degrees), in +Z+Y+X order. Default +0.0+0.0+0.0                        |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | Output Data Rate       | odr        | Output rate of APIMU message: 20, 50, 100, or 200 Hz. Requires reset.                               |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
   | Enable GPS 1           | gps1       | Use primary antenna (ANT1): 'on', 'off'                                                             |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
@@ -49,7 +53,7 @@ The available parameters and values to configure are described in the table belo
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
   | UDP Odometer Port      | rport3     | Computer's UDP port for odometer messaging: integer from 1 to 65535                                 |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
-  | APCFG Output           | min        | Minutes between output of APCFG configuration values over the data port (0 disables the output)     |
+  | APCFG Output           | min        | Minutes between output of APCFG configuration values over the data port (0 disables output)         |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
   | Accel Cutoff Freq      | lpa        | Low-pass filter cutoff frequency [Hz] for the MEMS accelerometer (0 disables filter)                |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
@@ -61,45 +65,40 @@ The available parameters and values to configure are described in the table belo
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
   | Sync Pulse Enable      | sync       | Enables the external synchronization pulse input: 'on', 'off'                                       |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
-  | Output Message Format  | mfm        | Format of the output messages. 1: ASCII, 4: RTCM                                                    |
+  | Output Message Format  | mfm        | Format of the output messages. 1: ASCII, 4: RTCM (default)                                          |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
   | Enable Serial Output   | uart       | Enable output over serial interface: 'on', 'off'                                                    |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
   | Enable Ethernet Output | eth        | Enable output over ethernet interface: 'on', 'off'                                                  |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
-  | NMEA Output Messages   | nmea       | Format of the output messages. 1: ASCII, 4: RTCM                                                    |
-  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
-  | Output Message Format  | mfm        | Configures up to 8 NMEA messages to be output on the config port (0-255). 0: off, 255: all on       |
+  | NMEA Output Messages   | nmea       | Configures up to 8 NMEA messages to be output on the config port (0-255). 0: off, 255: all on       |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
   | Baud Rate              | bau        | Serial communication baud rate in bits per second. Requires reset.                                  |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
 
+.. note:: Some configurations require a system reset after changing, such as the ODR and baud rate. This can be done by selecting "Reset" in the user_program.py main menu, or sending the reset command over the Configuration port: #APRST,0*58 
 
-.. note:: The GNSS INS unit has output data rate constraints when outputting data over RS-232. In RTCM mode, ODR is limited to 100 Hz. In ASCII mode, ODR is limited to 50 Hz.
+.. note:: The UDP ports are the numbers on the connected computer only. The EVK uses UDP port 1 for data, 2 for configuration, and 3 for odometer.
 
-.. note:: The above UDP ports are the numbers on the connected computer only. The EVK uses UDP port 1 for data, 2 for configuration, 3 for odometer.
+Output Data Rate (ODR)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The GNSS INS has output data rate constraints when outputting data over RS-232. In RTCM or binary messaging mode, maximum ODR is 100 Hz. In ASCII mode, maximum ODR is 50 Hz.
+All other ANELLO units support ODR up to 200 Hz. RTCM message format is recommended for best timing.
 
-.. note:: If sending odometer speeds by UDP from another program, send to UDP port 3 on the EVK, from the computer's UDP port matching "odometer port" configuration.
+.. note:: Decreasing the baud rate will affect the maximum output data rate. It is recommended to keep the default baud rate (921600 for EVK; 230400 for GNSS INS and IMU) enable highest ODR.
 
+Unit Installation Orientation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Orientation describes the mounting orientation of the ANELLO Unit on the vehicle. 
+This configuration is only used in the ANELLO algorithm and does not affect IMU data output.
 
-Some configurations require a system reset after changing, such as the ODR and baud rate. This can be done by selecting "Reset" in the user_program.py main menu, 
-or sending the reset command over the Configuration port: #APRST,0*58 
+The following 8 right hand rule frames are possible:
 
-Orientation describes the coordinate axes used in IMU and INS output in terms of the EVK coordinate axes (shown on EVK label).
-
-    The first pair of symbols represents the X axis of the new frame in terms of the original EVK coordinate axes.
-    eg: -Y means that the new X axis is the negation of the original Y axis. The second and third pairs describe the new Y and Z axes.
-
-The following 8 right-handed frames are possible:
-
-    1. +X+Y+Z 	  Default, matches coordinate axes on EVK label
-    2. +Y+X-Z
-    3. -X-Y+Z
-    4. +Y-X+Z
-    5. -Y+X+Z
-    6. +X-Y-Z
-    7. -X+Y-Z
-    8. -Y-X-Z
-
-    If the unit is in the default +X+Y+Z, the acceleration vector would be <i, j, k>.
-    In the Y-X+Z frame, the APIMU message would show accelerations <j, -i, k>.
+    1. +X+Y+Z  Default; Unit mounted upright with X pointing in vehicle forward
+    2. +Y-X+Z  Unit mounted upright with X pointing in vehicle right
+    3. -Y+X+Z  Unit mounted upright with X pointing in vehicle left
+    4. -X-Y+Z  Unit mounted upright with X pointing in vehicle back
+    5. +X-Y-Z  Unit mounted upside down with X pointing in vehicle forward
+    6. +Y+X-Z  Unit mounted upside down with X pointing in vehicle right
+    7. -Y-X-Z  Unit mounted upside down with X pointing in vehicle left
+    8. -X+Y-Z  Unit mounted upside down with X pointing in vehicle back

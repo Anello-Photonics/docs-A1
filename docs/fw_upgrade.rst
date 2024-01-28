@@ -1,7 +1,8 @@
+======================
 Firmware Upgrade
 ======================
 
-ANELLO recommends maintaining the latest firmware for best results. The latest firmware release is v1.2.5. 
+ANELLO recommends maintaining the latest firmware for best results. The latest firmware release is v1.2.6. 
 If you are on an older version, please contact ANELLO for the latest firmware and follow the instructions below to upgrade.
 
 Firmware upgrades currently must be done on a Windows machine. Please ensure power is not disrupted to the unit during the firmware upgrade process. 

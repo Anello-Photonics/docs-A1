@@ -64,9 +64,8 @@ following conventions:
 - APGPS messages are transmitted at 4 Hz
 
 
-2.1 APIMU Message (EVK/GNSS INS)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+2.1 APIMU Message (EVK & GNSS INS)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The APIMU message is the IMU output message for EVK and GNSS INS units only.
 
   +---+------------+-----------+-----------------------------------------------------------------------+
@@ -104,9 +103,8 @@ The APIMU message is the IMU output message for EVK and GNSS INS units only.
 
   Firmware before v1.0.39 does not have T_Sync field.
 
-2.2 APIM1 Message (IMU/IMU+)
+2.2 APIM1 Message (IMU & IMU+)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 The APIM1 message is the same as APIMU but without odometer values. This is the output message for IMU and IMU+ units only.
 
   +---+------------+-----------+-----------------------------------------------------------------------+
@@ -142,7 +140,6 @@ The APIM1 message is the same as APIMU but without odometer values. This is the 
 
 2.3 APGPS Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 The APGPS message is the PVT output from the EVK and GNSS INS units only.
 
   +---+---------------+-----------+-----------------------------------------------------------------------+
@@ -189,8 +186,7 @@ The APGPS message is the PVT output from the EVK and GNSS INS units only.
 
 2.4 APHDG Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The APHDG message contains dual heading information from the dual GNSS receivers if both ANT1 and ANT2 are connected and have good signal. 
+The APHDG message contains dual heading information from the dual GNSS receivers if both ANT1 and ANT2 are connected. 
 This message is output from the EVK and GNSS INS units only.
 
   +---+------------------------+-----------+-----------------------------------------------------------------------+
@@ -210,36 +206,28 @@ This message is output from the EVK and GNSS INS units only.
   +---+------------------------+-----------+-----------------------------------------------------------------------+
   | 6 | relPosLength           |  m        |  Length of relative position vector between antennae                  |
   +---+------------------------+-----------+-----------------------------------------------------------------------+
-  | 7 | relPosHeading          |  deg      |  Dual heading                                                         |
+  | 7 | relPosHeading          |  deg      |  Heading from primary antenna to secondary antenna                    |
   +---+------------------------+-----------+-----------------------------------------------------------------------+
   | 8 | RelPosLength Accuracy  |  m        |  Accuracy of dual antennae baseline length                            |
   +---+------------------------+-----------+-----------------------------------------------------------------------+
   | 9 | relPosHeading Accuracy |  deg      |  Accuracy of dual antennae heading                                    |
   +---+------------------------+-----------+-----------------------------------------------------------------------+
-  | 10| headingValid           |           |  headingValid Flag: 311 = Heading Fixed                               |
-  +---+------------------------+-----------+-----------------------------------------------------------------------+
-  | 11| gnssFixOK              |           |  gnssFixOK Flag                                                       |
-  +---+------------------------+-----------+-----------------------------------------------------------------------+
-  | 12| diffSoln               |           |  diffSoln Flag                                                        |
-  +---+------------------------+-----------+-----------------------------------------------------------------------+
-  | 13| relPosValid            |           |  relPosValid Flag                                                     |
-  +---+------------------------+-----------+-----------------------------------------------------------------------+
-  | 14| carrSoln               |           |  carrSoln Flag                                                        |
-  +---+------------------------+-----------+-----------------------------------------------------------------------+
-  | 15| isMoving               |           |  isMoving Flag                                                        |
-  +---+------------------------+-----------+-----------------------------------------------------------------------+
-  | 16| refPosMiss             |           |  refPosMiss Flag                                                      |
-  +---+------------------------+-----------+-----------------------------------------------------------------------+
-  | 17| refObsMiss             |           |  refObsMiss Flag                                                      |
-  +---+------------------------+-----------+-----------------------------------------------------------------------+
-  | 18| relPosHeading_Valid    |           |  relPosHeading_Valid Flag                                             |
-  +---+------------------------+-----------+-----------------------------------------------------------------------+
-  | 19| relPos_Normalized      |           |  relPos_Normalized Flag                                               |
+  | 10| flags                  |           |  Status based on bits:                                                |
+  |   |                        |           |  - Bit 0: gnssFixOK                                                   |
+  |   |                        |           |  - Bit 1: diffSoln                                                    |
+  |   |                        |           |  - Bit 2: relPosValid                                                 |
+  |   |                        |           |  - Bits 4..3: carrSoln                                                |
+  |   |                        |           |  - Bit 5: isMoving                                                    |
+  |   |                        |           |  - Bit 6: refPosMiss                                                  |
+  |   |                        |           |  - Bit 7: refObsMiss                                                  |
+  |   |                        |           |  - Bit 8: relPosHeading Valid                                         |
+  |   |                        |           |  - Bit 9: relPos Normalized                                           |
   +---+------------------------+-----------+-----------------------------------------------------------------------+
 
 
 2.5 APINS Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The APINS message is the Kalman filter position, velocity, and attitude solution output from the EVK and GNSS INS units.
 
   +---+------------+-----------+-------------------------------------------------------------------------------------------------------------------------+
   |   | Field      |  Units    |  Description                                                                                                            |
@@ -296,8 +284,9 @@ The binary packets use an RTCM standard 10403 envelope for each message.
   +---+-----------+--------------------------------------------------------------+
 
 
-3.1 IMU Message (EVK/GNSS INS)
+3.1 IMU Message (EVK & GNSS INS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The IMU output message for EVK and GNSS INS units has a subtype ID of 1.
 
   +---+-------------+----------+------------------+----------------------------------------------------------+
   |   | Field       |  Type    |  Units           |  Description                                             |
@@ -332,8 +321,10 @@ The binary packets use an RTCM standard 10403 envelope for each message.
   +---+-------------+----------+------------------+----------------------------------------------------------+
 
 
-3.2 IMU Message (IMU/IMU+)
+3.2 IMU Message (IMU & IMU+)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The IMU output message for IMU and IMU+ units has a subtype ID of 6. 
+It is the same as IMU message for the EVK and GNSS INS but without odometer values.
 
   +---+-------------+----------+------------------+----------------------------------------------------------+
   |   | Field       |  Type    |  Units           |  Description                                             |
@@ -366,9 +357,8 @@ The binary packets use an RTCM standard 10403 envelope for each message.
 
 3.3 GPS PVT Message (EVK/GNSS INS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The EVK includes two GNSS receivers. This message can be requested from either or both receivers. 
-The Antenna ID field indicates which receiver produced the position information. 
+The GPS message is the PVT output from the EVK and GNSS INS units only. 
+The Antenna ID field indicates which receiver (that connected to ANT1 or ANT2) produced the position information. 
 
   +---+---------------+----------+------------+----------------------------------------------------------+
   |   | Field         |  Type    |  Units     |  Description                                             |
@@ -379,7 +369,7 @@ The Antenna ID field indicates which receiver produced the position information.
   +---+---------------+----------+------------+----------------------------------------------------------+
   | 2 | Time          |  uint64  |  ns        |  Time since power on                                     |
   +---+---------------+----------+------------+----------------------------------------------------------+
-  | 3 | GPS Time      |  uint64  |  ns        |  GPS time                                                |
+  | 3 | GPS Time      |  uint64  |  ns        |  GPS time (GTOW) – Seconds since Jan 6, 1980             |
   +---+---------------+----------+------------+----------------------------------------------------------+
   | 4 | Latitude      |  int32   |  1e-7 deg  |  Latitude, '+': north, '-': south                        |
   +---+---------------+----------+------------+----------------------------------------------------------+
@@ -412,9 +402,52 @@ The Antenna ID field indicates which receiver produced the position information.
   | 18| Antenna ID    |  uint8   |            |  Primary or secondary antenna                            |
   +---+---------------+----------+------------+----------------------------------------------------------+
 
-
-3.4 INS Message (EVK/GNSS INS)
+3.4 HDG Message (EVK/GNSS INS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The HDG message contains dual heading information from the dual GNSS receivers if both ANT1 and ANT2 are connected. 
+This message is output from the EVK and GNSS INS units only.
+
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  |   | Field                  |  Type    |  Units           |  Description                                             |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 0 | Message #              |  uint12  |  4058            |  ANELLO Photonics custom message number                  |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 1 | Sub Type ID            |  uint4   |  3               |                                                          |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 2 | MCU Time               |  uint64  |  ns              |  Time since power on                                     |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 3 | GPS Time               |  uint64  |  ns              |  GPS time (GTOW) – Seconds since Jan 6, 1980             |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 4 | relPosN                |  int32   |  0.01 m          |  North component of relative position vector             |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 5 | relPosE                |  int32   |  0.01 m          |  East component of relative position vector              |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 6 | relPosD                |  int32   |  0.01 m          |  Down component of relative position vector              |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 7 | relPosLength           |  int32   |  0.01 m          |  Length of relative position vector between antennae     |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 8 | relPosHeading          |  int32   |  1e-5 deg        |  Heading from primary antenna to secondary antenna       |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 9 | relPosLength Accuracy  |  uint32  |  0.01 m          |  Accuracy of dual antennae baseline length               |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 10| relPosHeading Accuracy |  uint32  |  1e-5 deg        |  Accuracy of dual antennae heading                       |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 11| flags                  |  uint16_t|                  |  Status based on bits:                                   |
+  |   |                        |          |                  |  - Bit 0: gnssFixOK                                      |
+  |   |                        |          |                  |  - Bit 1: diffSoln                                       |
+  |   |                        |          |                  |  - Bit 2: relPosValid                                    |
+  |   |                        |          |                  |  - Bits 4..3: carrSoln                                   |
+  |   |                        |          |                  |  - Bit 5: isMoving                                       |
+  |   |                        |          |                  |  - Bit 6: refPosMiss                                     |
+  |   |                        |          |                  |  - Bit 7: refObsMiss                                     |
+  |   |                        |          |                  |  - Bit 8: relPosHeading Valid                            |
+  |   |                        |          |                  |  - Bit 9: relPos Normalized                              |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+
+
+3.5 INS Message (EVK/GNSS INS)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The APINS message is the Kalman filter position, velocity, and attitude solution output from the EVK and GNSS INS units.
 
   +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
   |   | Field         |  Type    |  Units     |  Description                                                                                                            |
@@ -481,27 +514,28 @@ For more details on configuration parameters and values, see `Unit Configuration
 
 4.2 APODO Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The configuration port accepts an odometer aiding message which can convey a direction and a speed.
+The ANELLO EVK and GNSS INS accepts odometer input over the configuration port.
+The APODO message is in ASCII format and used to convey the vehicle direction and a speed.
 A negative value indicates reverse, and a positive value indicates forward. If no direction is indicated, the direction is assumed to be forward.   
 
-Direction can also be input without a speed. This can be useful when there is no odometer input available, but transmission position is available. This allows the system to 
-distinguish between reverse movement and rotating the vehicle 180 degrees before moving. 
+Direction can also be input without a speed. This can be useful when there is no odometer input available, but transmission position is available. 
+This is useful to enable INS initialization in both forward and reverse. 
 
-When an #APODO is received with a reverse direction indication, the unit will assume the vehicle is in reverse until a packet is received with a forward direction. 
-The odometer input unit is user configurable to m/s, mile/h, km/h, f/s. 
+When an APODO message is received with a reverse direction indication, the unit will assume the vehicle is in reverse until a packet is received with a forward direction. 
+The units of the speed in the APODO message is user configurable to m/s (default), mile/hr, km/hr, ft/s 
+(see 'odo' code in `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_).
 
-**#APODO,<speed>*checksum**
+**#APODO,<dir>,<speed>*checksum**
 
-  +---+------------+-----------+--------------------------------------------------------------+
-  |   | Field      |  Units    |  Description                                                 |
-  +---+------------+-----------+--------------------------------------------------------------+
-  | 0 | APODO      |           |  Sentence identifier                                         |
-  +---+------------+-----------+--------------------------------------------------------------+
-  | 1 | <dir>      |           |  '-': reverse, '+': forward                                  |
-  +---+------------+-----------+--------------------------------------------------------------+
-  | 2 | <speed>    |  <config> |  Speed is a floating point value expressed in ASCII          |
-  +---+------------+-----------+--------------------------------------------------------------+
+  +---+------------+-----------+-------------------------------------------------------------------------+
+  |   | Field      |  Units    |  Description                                                            |
+  +---+------------+-----------+-------------------------------------------------------------------------+
+  | 0 | APODO      |           |  Sentence identifier                                                    |
+  +---+------------+-----------+-------------------------------------------------------------------------+
+  | 1 | <dir>      |           |  '-': reverse, '+': forward (optional)                                  |
+  +---+------------+-----------+-------------------------------------------------------------------------+
+  | 2 | <speed>    |  <config> |  Speed is a floating point value, units are set in unit configurations  |
+  +---+------------+-----------+-------------------------------------------------------------------------+
 
 Examples (CS = checksum): 
 #APODO,-,24*CS 
@@ -510,19 +544,18 @@ Examples (CS = checksum):
 
 These would all be interpreted as moving in reverse with a speed of 24. 
 
+.. note:: If sending odometer speeds by UDP from another program, send to UDP port 3 on the EVK, from the computer's UDP port matching "odometer port" configuration.
+
 
 4.3  RTCM Data Input 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Standard RTCM messages can be forwarded to the ANELLO EVK to enable the GNSS receivers to reach RTK precision. 
-The EVK receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages. The 
-ANELLO Python Program provides an NTRIP client which can connect to a standard NTRIP network and forward the
-received RTCM messages into the EVK.
+Standard RTCM messages can be forwarded to the data port of the ANELLO EVK and GNSS INS to enable the GNSS receivers to reach RTK precision. 
+Standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages, are supported. 
+The ANELLO Python Program provides an NTRIP client which can connect to a standard NTRIP network and forward the RTCM messages to the ANELLO unit.
 
 
 4.4  Ping 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 The Ping command can be used to test if the serial port is properly configured.
 
 #APPNG*48
@@ -534,7 +567,6 @@ A correctly received ping command generates a response from the unit of:
 
 4.5  Echo 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 The Echo command serves as an additional communication test for the serial port configuration as well as the checksum generator. For example:
 
 #APECH,Echo! echo… ech… e…\*77
@@ -546,7 +578,6 @@ A correctly received Echo command generates an identical response from the unit:
 
 4.5  Reset 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 The reset command allows the user to reset the system, e.g. after changing a configuration setting that requires a power cycle. 
 No response message is generated; however, the system will reset causing the system output to be suspended briefly. 
 
