@@ -5,7 +5,7 @@ The ANELLO Python Program can be used to connect, configure, and log data with a
 It can also be used as an NTRIP client to forward RTK corrections to your EVK or GNSS INS for enhanced GPS accuracy.
 Please see the instructions below to use the ANELLO Python program and reach out to us with any questions.
 
-1   Install ANELLO Python Program
+Install ANELLO Python Program
 -------------------------------------
 
 Confirm that `python <https://www.python.org/downloads/>`_ is installed on your computer and the version is at least 3.6:
@@ -38,7 +38,7 @@ Install dependencies using pip:
 
 If you have any issues, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`__.
 
-2   Run the Python Tool 
+Run the Python Tool 
 -------------------------------------
 
 .. code-block:: python
@@ -48,10 +48,10 @@ If you have any issues, see `Set-Up Troubleshooting <https://docs-a1.readthedocs
 
 You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#run-python-program>`__.
 
-3   Connect to ANELLO Unit
+Connect to ANELLO Unit
 -------------------------------------
 
-3.1 Connect Over Serial
+Connect Over Serial
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Ensure the power cable is connected and the green power light is illuminated. Connect the ANELLO unit to the computer using the USB-C interface.
 
@@ -60,7 +60,7 @@ You should now see the *System Status* updated with the device information.
 
 For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#connect-to-anello-unit>`__.
 
-3.2 Connect Over Ethernet
+Connect Over Ethernet
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The Ethernet (UDP) interface is recommended for in-vehicle data collection. 
 
@@ -84,17 +84,17 @@ The Ethernet (UDP) interface is recommended for in-vehicle data collection.
 4. In main menu, select *Unit Configurations*, take note of ANELLO IP and data/config ports
 5. In main menu, select *Connect* -> *UDP* -> Enter ANELLO IP and data/config ports
 
-4   Set ANELLO Configurations
+Set ANELLO Configurations
 -------------------------------------
 
-4.1 Unit Configurations
+Unit Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In main menu, select *Unit Configuration* to see default configurations. To change any configurations, 
 select *Edit*, then the configuration to change, then select the new value.
 
 Please see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_ for more information on available configurations.
 
-4.2 Vehicle Configurations
+Vehicle Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Before you collect data with the ANELLO EVK of GNSS INS, vehicle configurations must be set.
 
@@ -105,7 +105,7 @@ For firmware versions 1.2.0 and later, antenna baseline calibration must be perf
 
 Please see `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_ for more information.
 
-5   Data Collection
+Data Collection
 ---------------------------------
 
 In the main menu, select *Log*, then *Start*. Use the default filename or enter a custom name. 
@@ -119,7 +119,7 @@ For more information on the output messages, see `Comminication & Messaging <htt
 
 The INS solution can be visualized by importing ins.csv into `Kepler <https://kepler.gl/demo>`_.
 
-6   Monitor Output
+Monitor Output
 -------------------------------------
 For a real-time display of the ANELLO data, select *Monitor* in the main menu.
 
@@ -130,12 +130,13 @@ Turning the GPS button off stops sending GPS data into the ANELLO unit, and may 
 You may also simulate GPS loss by covering antennae with an metal enclosure, using a digital attenuator, or other methods.
 ANELLO does not recommend simulating GPS loss by disconnecting antennae mid-drive as this can often cause spurious signal to be read by the GPS receiver and fed into the INS algorithm.
 
-7   Connect to NTRIP Caster
+Connect to NTRIP Caster
 -------------------------------------
 Standard RTCM messages can be forwarded to the ANELLO EVK and GNSS INS units data port to enable the GNSS receivers to reach RTK-level accuracy. 
 The EVK and GNSS INS receive standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages. 
 
-The ANELLO Python Program also provides an NTRIP client which can connect to a standard NTRIP network and forward the received RTCM messages into the EVK.
+The ANELLO Python Program also provides an NTRIP client which can connect to a standard NTRIP network and forward the RTCM messages into the EVK or GNSS INS.
+To do this:
 
 From the main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster details as prompted. 
-The *System Status* will show the NTRIP connection status.
+If successful, the *System Status* will show the NTRIP connection status.
