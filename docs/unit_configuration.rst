@@ -29,7 +29,7 @@ The available parameters and values to configure are described in the table belo
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
   | Orientation            | orn        | Coordinate axes for mounting position, default +X+Y+Z (see below)                                   |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
-  | Alignment Angles       | aln        | Alignment angles of unit (in degrees), in +Z+Y+X order. Default +0.0+0.0+0.0                        |
+  | Alignment Angles       | aln        | Alignment angles of unit in degrees, in +X+Y+Z (roll, pitch, yaw) order. Default +0.0+0.0+0.0       |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
   | Output Data Rate       | odr        | Output rate of APIMU message: 20, 50, 100, or 200 Hz. Requires reset.                               |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
