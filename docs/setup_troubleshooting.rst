@@ -1,7 +1,7 @@
 Python Tool Troubleshooting
 ========================================
 
-1   Install ANELLO Python Program
+Install ANELLO Python Program
 -----------------------------------
 
 PIP is Python's package manager and it is usually installed by default in Python installations.
@@ -43,7 +43,7 @@ If you experience errors or warnings which may be related to access, please be s
 Other access issues may be related to internal firewall or other security features, so please check with your IT team if you are unable to install Python packages.
 
 
-2   Run Python Program
+Run Python Program
 ---------------------------
 
 After installing dependencies and running user_program.py, you should now see the System Status and Main Menu, as shown below.
@@ -75,7 +75,7 @@ The main menu actions are:
     pip install readchar==3.0.4
 
 
-3   Connect to ANELLO Unit
+Connect to ANELLO Unit
 ----------------------------
 
 For information on the interfaces, ports, and baud rates for your ANELLO unit, 
@@ -83,17 +83,23 @@ see `Communication & Messaging <https://docs-a1.readthedocs.io/en/latest/communi
 
 If the auto detection fails, you can try manual connection. First check that the ports associated with your ANELLO unit are recognized by your computer. 
 On Windows, use the device manager to find the COM ports. On Mac and Ubuntu, use the terminal and change directory to */dev*, 
-and check for four consecutive ports, typically named something like *tty.usbserial-xxx*.
+and check for ports associated with the ANELLO unit, typically named something like *tty.usbserial-xxx*.
 
-.. note::
-    If you are using the EVK and four COM ports do not show in the manual connection mode or your computer's device manager, 
-    you may need to install the `FTDI drivers <https://ftdichip.com/drivers/d2xx-drivers/>`_
-
-On Ubuntu or other operating systems, the program may not have permission to access serial ports causing the connect step to fail.
-This can be fixed by increasing user permissions or running as administrator.
-
-3.1 Increasing User Permissions
+Drivers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+If you are using the EVK and four COM ports do not show in the manual connection mode or your computer's device manager, 
+you may need to install the `FTDI drivers <https://ftdichip.com/drivers/d2xx-drivers/>`_
+
+If you are using the GNSS INS or IMU and the two ports do not show in the manual connection mode or your computer's device manager, 
+you may need to install the CableCreations drivers for the RS-232 to USB cable. 
+This can be found by installing the zip file `here <https://www.prolific.com.tw/US/ShowProduct.aspx?p_id=225&pcid=41>`_.
+`This YouTube video <https://www.youtube.com/watch?v=wEsv6_a0YTs>` can be helpful resource for walking through those steps.
+
+Increasing User Permissions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+On Ubuntu or other operating systems, the program may not have permission to access serial ports causing the connect step to fail.
+This can be fixed by increasing user permissions or running as root.
+
 The user may need to be added to groups "tty" or "dialout" to access the serial port.
 
 .. code-block:: python
@@ -103,9 +109,10 @@ The user may need to be added to groups "tty" or "dialout" to access the serial 
 
 Then log out and back in for the permissions to apply.
 
-3.2 Running as Root
+Running as Root
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Root may have a different default python, so check your python location with:
+Running as root may also help with user permisions issues, but note that root may have a different default python.
+Check your python location with:
 
 .. code-block:: python
 
