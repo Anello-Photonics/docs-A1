@@ -10,7 +10,7 @@ Please run "git pull" regularly to make sure you are using the latest code.
 2  ROS Compatibility
 ---------------------------------
 If you would like to integrate an ANELLO unit into ROS, see our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
-Currently only ROS1 is supported.
+Currently only ROS1 is supported, ROS2 support is coming soon.
 
 Please run "git pull" regularly to make sure you are using the latest code.
 

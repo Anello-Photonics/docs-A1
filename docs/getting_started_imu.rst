@@ -31,14 +31,14 @@ For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.
 Software Interfaces
 ---------------------------------
 ANELLO provides a Python tool to connect, configure, and log data with the ANELLO IMU.
-Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python-tool.html>`_.
+Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`_.
 
 ANELLO units are also compatible with ROS using our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
 
 If you would like to connect to the IMU using a serial interface software such as CoolTerm, 
 please ensure you use the correct baud rate (default for the IMU is 230400), and set Data Bits = 8, Stop Bits = 1, and Parity = None.
 
-For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software-tools.html>`_.
+For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software_tools.html>`_.
 
 
 Configure ANELLO IMU/IMU+
@@ -66,13 +66,13 @@ Log Data
 To log data, you may use the ANELLO Python Tool, the ANELLO ROS driver, or another program of your choice.
 
 To maximize ANELLO's ability to help analyze your data, we recommend logging data with the ANELLO Python Tool. Instructions can be found at 
-`ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python-tool.html>`_.
+`ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection>`_.
 
 Monitor Data Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For a real-time display of the ANELLO IMU data, select *Monitor* in the main menu.
 
-More information on the monitor window can be found at `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python-tool.html>`_.
+More information on the monitor window can be found at `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#monitor-output>`_.
 
 
 **Congratulations!!!**

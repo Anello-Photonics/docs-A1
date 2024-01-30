@@ -1,7 +1,7 @@
 .wy-nav-content {
-    max-width: 1600px !important;
+    max-width: 1200px !important;
 }
 
 body {
-    font-size: 16px;
+    font-size: 16px !important;
 }
