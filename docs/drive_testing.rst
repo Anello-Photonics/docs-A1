@@ -4,13 +4,14 @@ Drive Testing Best Practices
 Please review these best practices prior to drive testing.
 
 **Important:** If you would like help from the ANELLO team on data analysis and fine-tuning, we ask that you please share:
+
 1. The raw log file starting at power-up of the unit and including the entire drive period
 2. A screenshot or list of unit and vehicle configurations
 3. Details and/or pictures of the unit installation
 4. Description of test vehicle and testing goals
 
 
-1   Vehicle Configurations
+Vehicle Configurations
 ---------------------------------
 It is important to ensure the lever arms are set properly prior to drive testing. 
 If you are using dual antenna in your setup, this includes an accurate antenna baseline calibration.
@@ -18,32 +19,33 @@ If you are using dual antenna in your setup, this includes an accurate antenna b
 For more information, please refer to `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_.
 
 
-2   Odometer Input
+Odometer Input
 -----------------------
 For extended GNSS-denied testing, it is strongly recommended to add odometer input to the ANELLO EVK or GNSS INS to minimize error, particularly in distance traveled.
 
 
-3   Initialization
+Initialization
 -----------------------
 There are a couple important notes to optimize the performance of your ANELLO EVK. 
 
-3.1 Heading Initialization
+Heading Initialization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Heading can be initialized in one of two ways: 
-1. Using dual antenna heading (while stationary). This requires an accurate antenna baseline calibration (see `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_).
 
+1. Using dual antenna heading (while stationary). This requires an accurate antenna baseline calibration (see `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_).
 2. Using GNSS velocity heading (while moving). This requires driving forwards at speeds of > 2 m/s (> 5 mph) for about 30 seconds. The faster you drive, the better tuned the GNSS velocity heading will be.
 
-3.2 Direction Initialization
+Direction Initialization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 At the start of the drive, if the heading has not been initialized using dual antenna heading and odometer input with directionality is not provided to the unit, 
 the algorithm currently assumes the vehicle direction is forwards.
 
 To support forward and backward initialization, ANELLO recommends one of the following: 
+
 1. Provide odometer input to indicate forwards/backwards speeds
 2. Ensure dual antenna heading is initialized prior to vehicle movement
 
-3.3 Filter Initialization
+Filter Initialization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The Kalman filter typically converges within 2-5 minutes of driving. 
 The faster the driving, and the more dynamics the vehicle experiences (e.g. left and right turns), the faster the filter converges.
