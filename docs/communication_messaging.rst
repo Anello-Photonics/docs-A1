@@ -26,12 +26,12 @@ in order to keep the serial configuration port free.
     | **Logical Port**   |  **Physical Port**                       |  **Functions**                        |
     +--------------------+------------------------------------------+---------------------------------------+
     | Data Port          | Lowest serial port #, e.g. COM7          | Output: Data Messages                 |
-    |                    +------------------------------------------+ Input: RTCM Data                      |
-    |                    | UDP: EVK port 1, computer port selectable|                                       |
+    |                    +------------------------------------------+                                       |
+    |                    | UDP: EVK port 1, computer port selectable| Input: RTCM Data                      |
     +--------------------+------------------------------------------+---------------------------------------+
     | Configuration Port | Highest serial port #, e.g. COM10        | Output: NMEA Messages (if configured) |
-    |                    +------------------------------------------+ Input: Odometer Data, Configuration   |
-    |                    | UDP: EVK port 2, computer port selectable|                                       |
+    |                    +------------------------------------------+                                       |
+    |                    | UDP: EVK port 2, computer port selectable| Input: Odometer Data, Configuration   |
     +--------------------+------------------------------------------+---------------------------------------+
     | Odometer Port      | UDP: EVK port 3, computer port selectable| Odometer Channel (UDP Only)           |
     +--------------------+------------------------------------------+---------------------------------------+
