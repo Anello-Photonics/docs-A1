@@ -47,7 +47,7 @@ For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.
 Software Interfaces
 ---------------------------------
 ANELLO provides a Python tool to connect, configure, and log data with the EVK.
-Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`_.
+Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`__.
 
 ANELLO units are also compatible with ROS using our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
 
@@ -113,13 +113,13 @@ Log Data
 To log data, you may use the ANELLO Python Tool, the ANELLO ROS driver, or another program of your choice.
 
 To maximize ANELLO's ability to help analyze your data, we recommend logging data with the ANELLO Python Tool. Instructions can be found at 
-`ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection>`_.
+`ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection>`__.
 
 Monitor Data Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For a real-time display of the ANELLO EVK data, select *Monitor* in the main menu.
 
-More information on the monitor window can be found at `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#monitor-output>`_.
+More information on the monitor window can be found at `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#monitor-output>`__.
 
 Data Visualization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
