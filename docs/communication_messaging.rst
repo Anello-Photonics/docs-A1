@@ -1,7 +1,7 @@
 Communication & Messaging
 ===========================
 
-1.  Port Definitions
+1  Port Definitions
 --------------------------
 
 The communication interfaces currently supported for the ANELLO products are listed below:
@@ -13,18 +13,14 @@ The communication interfaces currently supported for the ANELLO products are lis
     3. ANELL IMU/IMU+: Serial (RS-232)
 
 
-The primary output port, the Data port is where the main output messages are transmitted, and serves as the input port for the RTCM correction stream.
+For all interfaces, there are two main port types. 
 
-The Configuration port is used for configuration messaging, inputting for odometer messages, and outputting NMEA messages if configured (firmware v1.2 and later).
+1. The data port is where the main ANELLO output messages are transmitted, and also serves as the input port for the RTCM correction stream.
+2. The configuration port is used for inputting configuration messaging, inputting odometer messages, and outputting NMEA messages (firmware v1.2 and later).
 
-For UDP, there is a third "Odometer" port to receive odometer messages, which is preferred to keep the configuration port free.
-Over serial, use the configuration port for odometer messages.
-
-UDP communication uses fixed port numbers on the EVK but selectable ports on the external device.
-These ports, along with IP addresses and other UDP settings should be configured (see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_).
-
-Serial communication occurs at a default baud rate of 921600 bits per second for the EVK and 230400 for GNSS INS and IMU/IMU+.
-For interfacing on a serial interface software such as CoolTerm, please set Data Bits = 8, Stop Bits = 1, and Parity = None.
+For UDP interface, there is a third "odometer" port, which is strictly used to send odometer messages. 
+This option can be used to feed in odometer data if using ANELLO Python Program to record data over serial, 
+in order to keep the serial configuration port free.
 
     +--------------------+------------------------------------------+---------------------------------------+
     | **Logical Port**   |  **Physical Port**                       |  **Functions**                        |
@@ -40,16 +36,20 @@ For interfacing on a serial interface software such as CoolTerm, please set Data
     | Odometer Port      | UDP: EVK port 3, computer port selectable| Odometer Channel (UDP Only)           |
     +--------------------+------------------------------------------+---------------------------------------+
 
+UDP communication uses fixed port numbers on the EVK but selectable ports on the external device.
+These ports, along with IP addresses and other UDP settings should be configured (see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_).
+
+Serial communication occurs at a default baud rate of 921600 for the EVK and 230400 for GNSS INS and IMU/IMU+.
+For interfacing on a serial interface software such as CoolTerm, please set Data Bits = 8, Stop Bits = 1, and Parity = None.
+
  .. note:: 
   The "lowest" and "highest" serial ports mentioned above refer to the EVK, which uses an FTDI chip to create 4 virtual COM ports.
-  The GNSS INS and IMU/IMU+ have two RS-232 connections, where RS-232 1 is the Data port and RS-232 2 is the Configuration port. 
+  The GNSS INS and IMU/IMU+ have two RS-232 connections, where RS232-1 is the data port and RS232-2 is the configuration port. 
   The port numbers that appear once connected to the computer are determined by how the OS assigns the ports, and therefore the 
   Data port is not necessarily the lowest port # like in the EVK.
 
 
-
-
-2.  ASCII Data Output Messages
+2  ASCII Data Output Messages
 ---------------------------------
 
 ANELLO has two message formats, ASCII and RTCM. The structures of all ASCII messages use the 
@@ -264,7 +264,7 @@ The APINS message is the Kalman filter position, velocity, and attitude solution
 .. note:: Roll, pitch and heading angles are calculated as standard aerospace Euler angles.
 
 
-3.  RTCM Binary Data Output Messages
+3  RTCM Binary Data Output Messages
 --------------------------------------
 
 The binary packets use an RTCM standard 10403 envelope for each message. 
@@ -484,10 +484,10 @@ The APINS message is the Kalman filter position, velocity, and attitude solution
   +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
   
 
-4.  Input Messages
+4  Input Messages
 -----------------------------
 
-4.1  APCFG Messages
+4.1 APCFG Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The easiest way to configure the EVK is with the ANELLO Python Program, which saves all changes to non-volatile flash memory. 
@@ -510,7 +510,6 @@ Alternatively, the EVK can be dynamically configured using the APCFG message. Th
   +---+------------+-----------------------------------------------------------------------+
 
 For more details on configuration parameters and values, see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.
-
 
 4.2 APODO Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -547,14 +546,14 @@ These would all be interpreted as moving in reverse with a speed of 24.
 .. note:: If sending odometer speeds by UDP from another program, send to UDP port 3 on the EVK, from the computer's UDP port matching "odometer port" configuration.
 
 
-4.3  RTCM Data Input 
+4.3 RTCM Data Input 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Standard RTCM messages can be forwarded to the data port of the ANELLO EVK and GNSS INS to enable the GNSS receivers to reach RTK precision. 
 Standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages, are supported. 
 The ANELLO Python Program provides an NTRIP client which can connect to a standard NTRIP network and forward the RTCM messages to the ANELLO unit.
 
 
-4.4  Ping 
+4.4 Ping Command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 The Ping command can be used to test if the serial port is properly configured.
 
@@ -565,7 +564,7 @@ A correctly received ping command generates a response from the unit of:
 #APPNG,0*54
 
 
-4.5  Echo 
+4.5 Echo Command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 The Echo command serves as an additional communication test for the serial port configuration as well as the checksum generator. For example:
 
@@ -576,7 +575,7 @@ A correctly received Echo command generates an identical response from the unit:
 #APECH,Echo! echo… ech… e…\*77.
 
 
-4.5  Reset 
+4.6 Reset Command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 The reset command allows the user to reset the system, e.g. after changing a configuration setting that requires a power cycle. 
 No response message is generated; however, the system will reset causing the system output to be suspended briefly. 

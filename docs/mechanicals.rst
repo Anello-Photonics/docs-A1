@@ -1,7 +1,7 @@
 Mechanicals
 ==================
 
-1   ANELLO EVK
+ANELLO EVK
 ---------------------------------
 The ANELLO EVK features a 4-pin power connector which includes PPS input (PPS1) and output (PPS2) signals. 
 It also features USB C, Ethernet, and CAN connectors, as well as two SMA RF antennae input.
@@ -20,7 +20,7 @@ EVK SCD Drawing: :download:`PDF <media/Anello_A1_MechanicalDwg_rev2.pdf>`
 
 
 
-2   ANELLO GNSS INS
+ANELLO GNSS INS
 ---------------------------------
 The ANELLO GNSS INS features a 20 pin Molex MX150 connector and two FAKRA SMB GNSS connectors.
 
@@ -34,7 +34,7 @@ GNSS INS SCD Drawing: :download:`PDF <media/SCD_Mechanical_GNSS_INS.pdf>`
 
 
 
-3   ANELLO IMU/IMU+
+ANELLO IMU/IMU+
 ---------------------------------
 The ANELLO IMU/IMU+ features an 8 pin Molex MX150 connector.
 
