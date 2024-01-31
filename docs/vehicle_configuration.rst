@@ -44,6 +44,13 @@ in the vehicle frame, i.e. not corrected for mounting orientation of the unit.
 | Antenna Baseline    |  bsl             |   Baseline length between two antennae, in meters                                |
 +---------------------+------------------+----------------------------------------------------------------------------------+
 
+In order to use dual antenna heading, the antenna baseline must be calibrated using the ANELLO Python program. 
+The options to enter an antenna baseline are as follows:
+
+1. **Enter manually:** Enter baseline between center of antennae, in meters. This should only be used if you can measure this baseline in a CAD model within 2cm accuracy.
+2. **Auto calibrate:** This is the recommended method. Mount antennae in desired position on vehicle, ensure your vehicle has full open sky view. The ANELLO unit will measure the baseline between the antennae to sub-2cm accuracy and save the antenna baseline configuration automatically.
+2. **Calibrate from lever arms:** Similar to #1, this should only be used if you are certain of your lever arm measurements to sub-cm accuracy.
+
 Mounting ANELLO Unit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The mounting location of the ANELLO EVK and GNSS INS is flexible and can be configured for various installation positions and orientations. 
