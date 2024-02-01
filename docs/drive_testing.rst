@@ -1,7 +1,9 @@
 ==================================
 Drive Testing Best Practices
 ==================================
-Please review these best practices prior to drive testing.
+Please review these best practices prior to drive testing. 
+Note that the EVK and GNSS INS algorithms are currently optimized for wheeled land vehicles. 
+For support on other vehicle types, please contact support@anellophotonics.com.
 
 **Important:** If you would like help from the ANELLO team on data analysis and fine-tuning, we ask that you please share:
 
