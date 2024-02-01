@@ -72,7 +72,9 @@ used, as long as they support dual band and all constellations. Please avoid pla
 or below obstructions which would reduce available sky view.
 
 Units received after Nov 1, 2022 and with firmware version 1.0 or later will have dual antenna functionality. 
-On firmware v1.2.0 and later, antennae can be positioned in any orientation on the vehicle as long as they are separated by at least 0.6 meters and accurate lever arms are set.
+If you are on a firmware version lower than v1.2.0, ANT1 must be in the back and ANT2 in the front.
+On firmware v1.2.0 and later, antennae can be positioned in any orientation on the vehicle. 
+Either way, the antennae must be separated by at least 0.6 meters and accurate lever arms must be set.
 Errors in the lever arm settings will directly cause errors in vehicle heading obtained by the GNSS INS antennae.
 
 For best performance, it is recommended to orient both antennae in the same direction, and ensure there is a ground plane with a diameter of at least 10 cm (4 in).
