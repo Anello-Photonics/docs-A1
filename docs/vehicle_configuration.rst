@@ -44,12 +44,18 @@ in the vehicle frame, i.e. not corrected for mounting orientation of the unit.
 | Antenna Baseline    |  bsl             |   Baseline length between two antennae, in meters                                |
 +---------------------+------------------+----------------------------------------------------------------------------------+
 
-Starting in FW version 1.2.0, in order to use dual antenna heading, the antenna baseline must be calibrated using the ANELLO Python program. 
-The options to enter an antenna baseline are as follows:
+Dual Antenna Baseline Calibration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. **Enter manually:** Enter baseline between center of antennae, in meters. This should only be used if you can measure this baseline in a CAD model within 2cm accuracy.
-2. **Auto calibrate:** This is the recommended method. Mount antennae in desired position on vehicle, ensure your vehicle has full open sky view. The calibration takes 2-5 minutes where the ANELLO unit will measure the baseline between the antennae to sub-2cm accuracy and save the resulting configuration automatically.
-3. **Calibrate from lever arms:** Similar to #1, this should only be used if you are certain of your lever arm measurements to sub-cm accuracy.
+Starting in FW version 1.2.0, in order to use dual antenna heading, the antenna baseline must be calibrated using the ANELLO Python program.
+Navigate to *Vehicle Configurations* menu, select *Edit*, then *Antenna Baseline*.
+
+For most users, we recommend using the **Auto calibrate** feature. Before you perform auto-calibration, mount the antennae in the desired position 
+on vehicle and ensure the antennae have full open sky view. The calibration takes 2-5 minutes where the ANELLO unit will measure the baseline between 
+the antennae to sub-2cm accuracy and save the resulting configuration automatically.
+
+If you install the ANELLO unit using a CAD model and know your antenna baseline to sub-2cm accuracy, you can use th **Enter manually** option to manually set this configuration.
+Similarly, you may also use **Calibrate from lever arms** if you are certain of your lever arm measurements to sub-cm accuracy.
 
 Mounting ANELLO Unit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
