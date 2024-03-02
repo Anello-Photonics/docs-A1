@@ -477,10 +477,179 @@ The INS message is the Kalman filter position, velocity, and attitude solution o
   +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
   
 
-4  Input Messages
+4  ANELLO Binary Data Output Messages
+--------------------------------------
+The Anello binary packets use a 2-byte preamble followed by a 1-byte message type and a 1-byte length. 
+There is also a 2-byte checksum after the payload. 
+
+  +---+---------------+--------------------------------------------------------------+
+  |   | Field         |  Value/Description                                           |
+  +---+---------------+--------------------------------------------------------------+
+  | 0 | Preamble      |  0xC5 0x50                                                   |
+  +---+---------------+--------------------------------------------------------------+
+  | 1 | Message Type  |  IMU = 0x02, GPS = 0x03, GP2 = 0x04, HDG = 0x05, INS = 0x06  |
+  +---+---------------+--------------------------------------------------------------+
+  | 2 | Length        |  1 byte, # bytes in data message                             |
+  +---+---------------+--------------------------------------------------------------+
+  | 3 | Data          |  Data message as defined below                               |
+  +---+---------------+--------------------------------------------------------------+
+  | 4 | Checksum      |  2 byte                                                      |
+  +---+---------------+--------------------------------------------------------------+
+
+
+4.1 IMU Message (EVK & GNSS INS)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The IMU output message for EVK and GNSS INS units has a subtype ID of 1.
+
+  +---+-------------+----------+------------------------------------+----------------------------------------------------------+
+  |   | Field       |  Type    |  Units                             |  Description                                             |
+  +---+-------------+----------+------------------------------------+----------------------------------------------------------+
+  | 0 | MCU Time    |  uint64  |  ns                                |  Time since power on                                     |
+  +---+-------------+----------+------------------------------------+----------------------------------------------------------+
+  | 1 | Sync Time   |  uint64  |  ns                                |  Timestamp of input sync pulse (if enabled and provided) |
+  +---+-------------+----------+------------------------------------+----------------------------------------------------------+
+  | 2 | ODO Time    |  uint64  |  ns                                |  Timestamp of odometer reading                           |
+  +---+-------------+----------+------------------------------------+----------------------------------------------------------+
+  | 3 | AX          |  int16   |  g = value * (range * 0.0000305)   |  X-Axis Acceleration (intended 15g/2^31)                 |
+  +---+-------------+----------+------------------------------------+----------------------------------------------------------+
+  | 4 | AY          |  int16   |  g = value * (range * 0.0000305)   |  Y-Axis Acceleration                                     |
+  +---+-------------+----------+------------------------------------+----------------------------------------------------------+
+  | 5 | AZ          |  int16   |  g = value * (range * 0.0000305)   |  Z-Axis Acceleration                                     |
+  +---+-------------+----------+------------------------------------+----------------------------------------------------------+
+  | 6 | WX          |  int16   |  dps = value * (range * 0.000035)  |  X-Axis Angular Rate (MEMS) (intended 450/2^31)          |
+  +---+-------------+----------+------------------------------------+----------------------------------------------------------+
+  | 7 | WY          |  int16   |  dps = value * (range * 0.000035)  |  Y-Axis Angular Rate (MEMS)                              |
+  +---+-------------+----------+------------------------------------+----------------------------------------------------------+
+  | 8 | WZ          |  int16   |  dps = value * (range * 0.000035)  |  Z-Axis Angular Rate (MEMS)                              |
+  +---+-------------+----------+------------------------------------+----------------------------------------------------------+
+  | 9 | OG_WZ       |  int32   |  dps * 10000000                    |  High precision optical gyro z-axis angular rate         |
+  +---+-------------+----------+------------------------------------+----------------------------------------------------------+
+  | 10| ODO         |  int16   |  (m/s) * 100                       |  Scaled composite odometer value                         |
+  +---+-------------+----------+------------------------------------+----------------------------------------------------------+
+  | 11| Temp C      |  int16   |  deg C * 100                       |  Temperature                                             |
+  +---+-------------+----------+------------------------------------+----------------------------------------------------------+
+  | 12| MEMS Ranges |  uint16  |  g and dps                         |  First 5 bits accel range; Next 11 bits rate range       |
+  +---+-------------+----------+------------------------------------+----------------------------------------------------------+
+  | 13| FOG Range   |  uint16  |  dps                               |  Optical gyro range                                      |
+  +---+-------------+----------+------------------------------------+----------------------------------------------------------+
+
+4.2 GPS/GP2 PVT Message (EVK/GNSS INS)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The GPS message is the PVT output from the EVK and GNSS INS units only. 
+The Antenna ID field indicates which receiver (that connected to ANT1 or ANT2) produced the position information. 
+
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+  |   | Field         |  Type    |  Units     |  Description                                                                                  |
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+  | 0 | MCU Time      |  uint64  |  ns        |  Time since power on                                                                          |
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+  | 1 | GPS Time      |  uint64  |  ns        |  GPS time (GTOW) – Seconds since Jan 6, 1980                                                  |
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+  | 2 | Latitude      |  int32   |  1e-7 deg  |  Latitude, '+': north, '-': south                                                             |
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+  | 3 | Longitude     |  int32   |  1e-7 deg  |  Longitude, '+': east, '-': west                                                              |
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+  | 4 | Alt ellipsoid |  int32   |  0.01 m    |  Height above ellipsoid                                                                       |
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+  | 5 | Alt msl       |  int32   |  0.01 m    |  Height above mean sea level                                                                  |
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+  | 6 | Speed         |  int16   |  0.01 m/s  |  Speed                                                                                        |
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+  | 7 | Heading       |  int16   |  0.01 deg  |  GNSS Heading (ground track)                                                                  |
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+  | 8 | Hacc          |  uint16  |  0.001 m   |  Horizontal accuracy                                                                          |
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+  | 9 | Vacc          |  uint16  |  0.001 m   |  Vertical accuracy                                                                            |
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+  | 10| PDOP          |  uint16  |  0.01      |  Position dilution of precision                                                               |
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+  | 11| Speed acc     |  uint16  |  0.001 m/s |  Speed accuracy                                                                               |
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+  | 12| Hdg acc       |  uint16  |  0.01 deg  |  Heading accuracy                                                                             |
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+  | 13| SatNum        |  uint8   |            |  Number of Satellites used in solution                                                        |
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+  | 14| Status        |  uint8   |            |  First 4 bits Fix Type, last 4 bits RTK Status. See ASCII packet for details on these fields. |
+  +---+---------------+----------+------------+-----------------------------------------------------------------------------------------------+
+ 
+4.3 HDG Message (EVK/GNSS INS)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The HDG message contains dual heading information from the dual GNSS receivers if both ANT1 and ANT2 are connected. 
+This message is output from the EVK and GNSS INS units only.
+
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  |   | Field                  |  Type    |  Units           |  Description                                             |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 0 | MCU Time               |  uint64  |  ns              |  Time since power on                                     |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 1 | GPS Time               |  uint64  |  ns              |  GPS time (GTOW) – Time since Jan 6, 1980                |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 2 | relPosN                |  int16   |  0.01 m          |  North component of relative position vector             |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 3 | relPosE                |  int16   |  0.01 m          |  East component of relative position vector              |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 4 | relPosD                |  int16   |  0.01 m          |  Down component of relative position vector              |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 5 | relPosLength           |  int16   |  0.01 m          |  Length of relative position vector between antennae     |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 6 | relPosHeading          |  int16   |  0.01 deg        |  Heading from primary antenna to secondary antenna       |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 7 | relPosLength Accuracy  |  uint16  |  1e-5 m          |  Accuracy of dual antennae baseline length               |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 8 | relPosHeading Accuracy |  uint16  |  0.01 deg        |  Accuracy of dual antennae heading                       |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+  | 9 | flags                  |  uint16_t|                  |  Status based on bits:                                   |
+  |   |                        |          |                  |  - Bit 0: gnssFixOK                                      |
+  |   |                        |          |                  |  - Bit 1: diffSoln                                       |
+  |   |                        |          |                  |  - Bit 2: relPosValid                                    |
+  |   |                        |          |                  |  - Bits 4..3: carrSoln                                   |
+  |   |                        |          |                  |  - Bit 5: isMoving                                       |
+  |   |                        |          |                  |  - Bit 6: refPosMiss                                     |
+  |   |                        |          |                  |  - Bit 7: refObsMiss                                     |
+  |   |                        |          |                  |  - Bit 8: relPosHeading Valid                            |
+  |   |                        |          |                  |  - Bit 9: relPos Normalized                              |
+  +---+------------------------+----------+------------------+----------------------------------------------------------+
+
+
+4.4 INS Message (EVK/GNSS INS)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The INS message is the Kalman filter position, velocity, and attitude solution output from the EVK and GNSS INS units.
+
+  +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
+  |   | Field         |  Type    |  Units     |  Description                                                                                                            |
+  +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
+  | 0 | MCU Time      |  uint64  |  ns        |  Time since power on                                                                                                    |
+  +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
+  | 1 | PPS Time      |  uint64  |  ns        |  Time of last PPS pulse converted to GPS time (time since midnight on Jan 6, 1980)                                      |
+  +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
+  | 2 | Latitude      |  int32   |  1e-7 deg  |  Latitude, '+': north, '-': south                                                                                       |
+  +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
+  | 3 | Longitude     |  int32   |  1e-7 deg  |  Longitude, '+': east, '-': west                                                                                        |
+  +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
+  | 4 | Alt ellipsoid |  int32   |  0.01 m    |  Height above ellipsoid                                                                                                 |
+  +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
+  | 5 | VN            |  int16   |  0.01 m/s  |  North Velocity in NED Frame                                                                                            |
+  +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
+  | 6 | VE            |  int16   |  0.01 m/s  |  East Velocity in NED Frame                                                                                             |
+  +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
+  | 7 | VD            |  int16   |  0.01 m/s  |  Down Velocity in NED Frame                                                                                             |
+  +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
+  | 8 | Roll          |  int16   |  0.01 deg  |  Roll Angle, rotation about body frame X                                                                                |
+  +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
+  | 9 | Pitch         |  int16   |  0.01 deg  |  Pitch Angle, rotation about body frame Y                                                                               |
+  +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
+  | 10| Heading       |  int16   |  0.01 deg  |  Heading Angle, rotation about body frame Z                                                                             |
+  +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
+  | 11| ZUPT          |  uint8   |            |  0: Moving, 1: Stationary                                                                                               |
+  +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
+  | 12| Status        |  uint8   |            |  0: Attitude Only, 1: Position and Attitude, 2: Position, Attitude, and Heading, 3: RTK Float, 4: RTK Fixed             |
+  +---+---------------+----------+------------+-------------------------------------------------------------------------------------------------------------------------+
+
+
+5  Input Messages
 -----------------------------
 
-4.1 APCFG Messages
+5.1 APCFG Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The easiest way to configure the EVK is with the ANELLO Python Program, which saves all changes to non-volatile flash memory. 
@@ -504,7 +673,7 @@ Alternatively, the EVK can be dynamically configured using the APCFG message. Th
 
 For more details on configuration parameters and values, see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.
 
-4.2 APODO Message
+5.2 APODO Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The ANELLO EVK and GNSS INS accepts odometer input over the configuration port.
 The APODO message is in ASCII format and used to convey the vehicle direction and a speed.
@@ -539,14 +708,14 @@ These would all be interpreted as moving in reverse with a speed of 24.
 .. note:: If sending odometer speeds by UDP from another program, send to UDP port 3 on the EVK, from the computer's UDP port matching "odometer port" configuration.
 
 
-4.3 RTCM Data Input 
+5.3 RTCM Data Input 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Standard RTCM messages can be forwarded to the data port of the ANELLO EVK and GNSS INS to enable the GNSS receivers to reach RTK precision. 
 Standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages, are supported. 
 The ANELLO Python Program provides an NTRIP client which can connect to a standard NTRIP network and forward the RTCM messages to the ANELLO unit.
 
 
-4.4 Ping Command
+5.4 Ping Command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 The Ping command can be used to test if the serial port is properly configured.
 
@@ -557,7 +726,7 @@ A correctly received ping command generates a response from the unit of:
 #APPNG,0*54
 
 
-4.5 Echo Command
+5.5 Echo Command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 The Echo command serves as an additional communication test for the serial port configuration as well as the checksum generator. For example:
 
@@ -568,7 +737,7 @@ A correctly received Echo command generates an identical response from the unit:
 #APECH,Echo! echo… ech… e…\*77.
 
 
-4.6 Reset Command
+5.6 Reset Command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 The reset command allows the user to reset the system, e.g. after changing a configuration setting that requires a power cycle. 
 No response message is generated; however, the system will reset causing the system output to be suspended briefly. 
