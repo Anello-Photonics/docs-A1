@@ -6,13 +6,14 @@ Please contact support@anellophotonics.com with any questions.
 
 Hardware Connections
 ---------------------------------
-The ANELLO IMU unit is pictured below. It features an 8 pin automotive-grade Molex MX150 connector.
+The ANELLO IMU/IMU+ unit is pictured below. It features an 8 pin automotive-grade Molex MX150 connector.
 
 .. image:: media/ANELLO_IMU.png
    :width: 50 %
    :align: center
 
-If you purchased the IMU Evaluation Kit, you will also receive the items pictured below. See `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html>`__ for schematic of the breakout cable.
+If you received an ANELLO IMU+ Loaner unit, you will also receive the Accessory Kit with the items pictured below. 
+For IMU+ purchases, the Accessory Kit is sold separately and more information is available upon request.
 
 .. image:: media/IMU_EvalKit.png
    :width: 100 %
@@ -25,7 +26,8 @@ To use the IMU Evaluation Kit, connect the hardware as follows:
 2. Connect to power using the AC/DC adapter.
 3. Connect to PC, Mac, or Ubuntu computing system via RS-232 using USB 2.0 to DB9 Serial Converters.
 
-For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-imu-imu>`__.
+An SCD drawing of the IMU+ and a schematic of the Accessory kit breakout cable can be found in 
+`Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-imu-imu>`__.
 
 
 Software Interfaces
