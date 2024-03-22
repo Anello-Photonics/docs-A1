@@ -12,13 +12,13 @@ The ANELLO IMU/IMU+ unit is pictured below. It features an 8 pin automotive-grad
    :width: 50 %
    :align: center
 
+
 If you received an ANELLO IMU+ Loaner unit, you will also receive the Accessory Kit with the items pictured below. 
 For IMU+ purchases, the Accessory Kit is sold separately and more information is available upon request.
 
 .. image:: media/IMU_EvalKit.png
    :width: 100 %
    :align: center
-
 
 To use the IMU Evaluation Kit, connect the hardware as follows: 
 
