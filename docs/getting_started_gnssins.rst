@@ -12,7 +12,9 @@ The ANELLO GNSS INS unit is pictured below. It features a 20 pin automotive-grad
    :width: 50 %
    :align: center
 
-If you purchased the GNSS INS Evaluation Kit, you will also receive the items pictured below. See `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html>`__ for schematic of the breakout cable.
+If you received an ANELLO GNSS INS Loaner unit, you will also receive the Accessory Kit with the items pictured below. 
+For GNSS INS purchases, the Accessory Kit is sold separately and more information is available upon request.
+
 
 .. image:: media/GNSS_INS_EvalKit.png
    :width: 100 %
@@ -27,7 +29,8 @@ To use the GNSS INS Evaluation Kit, connect the hardware as follows:
 4. Connect to computer via RS-232 using USB 2.0 to DB9 serial converters for configuration.
 5. If you'd like to use the automotive ethernet interface, connection over serial is required first to configure IP addresses.
 
-For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-gnss-ins>`__.
+An SCD drawing of the GNSS INS and a schematic of the Accessory kit breakout cable can be found in 
+`Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-imu-imu>`__.
 
 
 Software Interfaces
