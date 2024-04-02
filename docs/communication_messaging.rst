@@ -58,7 +58,7 @@ following conventions:
 -	The lead code identifier for each record is '#'
 -	All data fields are delimited by a comma
 - Each log ends with a hexadecimal checksum preceded by an asterisk and followed by a line termination using the carriage return and line feed characters
-- The checksum is an XOR of all the bytes between # and \*, written in hexadecimal
+- The checksum is an XOR of all the bytes between # and \*, written in hexadecimal (letters must be uppercase)
 - APIMU messages are transmitted at the output data rate (ODR) setting
 - APINS messages are transmitted at 100 Hz
 - APGPS messages are transmitted at 4 Hz
@@ -275,6 +275,10 @@ The binary packets use an RTCM standard 10403 envelope for each message.
   +---+-----------+--------------------------------------------------------------+
   | 4 | CRC       |  3 byte                                                      |
   +---+-----------+--------------------------------------------------------------+
+
+The ANELLO Python Tool handles logging and decoding of the RTCM binary format. 
+However, an `RTCM decoder <https://github.com/Anello-Photonics/decoder/blob/master/decoder.cpp>`_ is provided if needed,
+with the checksum definition found `here <https://github.com/Anello-Photonics/decoder/blob/master/artcm/artcm.c>`_.
 
 
 3.1 IMU Message (EVK & GNSS INS)
@@ -519,22 +523,23 @@ The units of the speed in the APODO message is user configurable to m/s (default
 
 **#APODO,<dir>,<speed>*checksum**
 
-  +---+------------+-----------+-------------------------------------------------------------------------+
-  |   | Field      |  Units    |  Description                                                            |
-  +---+------------+-----------+-------------------------------------------------------------------------+
-  | 0 | APODO      |           |  Sentence identifier                                                    |
-  +---+------------+-----------+-------------------------------------------------------------------------+
-  | 1 | <dir>      |           |  '-': reverse, '+': forward (optional)                                  |
-  +---+------------+-----------+-------------------------------------------------------------------------+
-  | 2 | <speed>    |  <config> |  Speed is a floating point value, units are set in unit configurations  |
-  +---+------------+-----------+-------------------------------------------------------------------------+
+  +---+------------+------------------------------------------------------------------------------------+
+  |   | Field      |  Description                                                                       |
+  +---+------------+------------------------------------------------------------------------------------+
+  | 0 | APODO      |  Sentence identifier                                                               |
+  +---+------------+------------------------------------------------------------------------------------+
+  | 1 | <dir>      |  '-': reverse, '+': forward (optional)                                             |
+  +---+------------+------------------------------------------------------------------------------------+
+  | 2 | <speed>    |  Speed is a floating point value, units are set in unit configurations             |
+  +---+------------+------------------------------------------------------------------------------------+
+  | 3 | checksum   |  XOR of bytes between # and \* written in hexadecimal (letters must be uppercase)  |
+  +---+------------+------------------------------------------------------------------------------------+
 
-Examples (CS = checksum): 
-#APODO,-,24*CS 
-#APODO,-24*CS 
-#APODO,-,-24*CS 
+For example, the following would all be interpreted as moving in reverse with a speed of 24: 
+#APODO,-,24*7E 
+#APODO,-24*52
+#APODO,-,-24*53
 
-These would all be interpreted as moving in reverse with a speed of 24. 
 
 .. note:: If sending odometer speeds by UDP from another program, send to UDP port 3 on the EVK, from the computer's UDP port matching "odometer port" configuration.
 
