@@ -579,3 +579,41 @@ The reset command allows the user to reset the system, e.g. after changing a con
 No response message is generated; however, the system will reset causing the system output to be suspended briefly. 
 
 #APRST,0*58 
+
+
+4  Error Messages
+-----------------------------
+
+If an incorrect command is sent to the unit, it responds with one of ten error responses. The error message format is: 
+
+#APERR,<error code>*CS 
+
+The following table lists the error code along with the corresponding description. 
+
++------------+--------------------------------------------+
+| Error Code | Description                                |
++============+============================================+
+| 1          | No start character (#)                     |
++------------+--------------------------------------------+
+| 2          | Read/Write indicator missing (from #APCFG  |
+|            | or #APVEH)                                 |
++------------+--------------------------------------------+
+| 3          | Incomplete message (checksum missing)      |
++------------+--------------------------------------------+
+| 4          | Incorrect checksum                         |
++------------+--------------------------------------------+
+| 5          | Invalid preamble (AP)                      |
++------------+--------------------------------------------+
+| 6          | Invalid message type                       |
++------------+--------------------------------------------+
+| 7          | Invalid field                              |
++------------+--------------------------------------------+
+| 8          | Invalid value                              |
++------------+--------------------------------------------+
+| 9          | Flash locked                               |
++------------+--------------------------------------------+
+| 10         | Unexpected character (applies to APPID,    |
+|            | APSTA, APVER, APSER, APFSN, and APFHW)     |
++------------+--------------------------------------------+
+| 11         | Disabled command (applies to APODO)        |
++------------+--------------------------------------------+
