@@ -38,7 +38,7 @@ Connect the hardware as follows:
 3. Connect primary GNSS antenna to ANT1 on the back of the EVK (black). An optional additional antenna (ANT2) enables stationary heading initialization.
 
 .. image:: media/EVK-wiring_2.png
-   :width: 100 %
+   :width: 80 %
    :align: center
 
 For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-evk>`_.

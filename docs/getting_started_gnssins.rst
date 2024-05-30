@@ -9,7 +9,7 @@ Hardware Connections
 The ANELLO GNSS INS unit is pictured below. It features a 20 pin automotive-grade Molex MX150 connector and two FAKRA SMB GNSS connectors.
 
 .. image:: media/ANELLO_GNSS_INS.png
-   :width: 50 %
+   :width: 30 %
    :align: center
 
 If you received an ANELLO GNSS INS Loaner unit, you will also receive the Accessory Kit with the items pictured below. 
@@ -17,7 +17,7 @@ For GNSS INS purchases, the Accessory Kit is sold separately and more informatio
 
 
 .. image:: media/GNSS_INS_EvalKit.png
-   :width: 100 %
+   :width: 70 %
    :align: center
 
 
