@@ -97,10 +97,10 @@ Please see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_c
 
 Vehicle Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Before you collect data with the ANELLO EVK of GNSS INS, vehicle configurations must be set.
+Before you collect data with the ANELLO EVK or GNSS INS, vehicle configurations must be set.
 
-In main menu, select *Vehicle Configurations* and set the lever arms as prompted. 
-All measurements are set using the center of the ANELLO unit as the origin and are measured in meters.
+In the main menu, select *Vehicle Configurations* and set the lever arms as prompted. 
+All measurements are using the center of the ANELLO unit as the origin and are measured in meters.
 
 For firmware versions 1.2.0 and later, antenna baseline calibration must be performed. 
 

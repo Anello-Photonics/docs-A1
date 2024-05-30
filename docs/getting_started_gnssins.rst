@@ -30,7 +30,7 @@ To use the GNSS INS Evaluation Kit, connect the hardware as follows:
 5. If you'd like to use the automotive ethernet interface, connection over serial is required first to configure IP addresses.
 
 An SCD drawing of the GNSS INS and a schematic of the Accessory kit breakout cable can be found in 
-`Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-imu-imu>`__.
+`Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-gnss-ins>`__.
 
 
 Software Interfaces
@@ -48,25 +48,16 @@ For a full list of software tools, please see `Software Tools <https://docs-a1.r
 
 Configure ANELLO GNSS INS
 ---------------------------------
-Before testing your GNSS INS, please review the available configurations and ensure they are set according to your testing needs.
-A description of ANELLO unit and vehicle configurations can be found at `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_,
-and `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_, respectively.
+Before testing the ANELLO GNSS INS, please review the `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_,
+and `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_ and ensure they are set according to your testing needs.
 
-There are two options to change configurations:
+The easiest way to change configurations is using the `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#set-anello-configurations>`__.
+Select *Unit Configuration* from the main menu. The default configurations will appear, and you can select *Edit* to change a configuration.
 
-Configure using ANELLO Python Tool
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For unit configurations, select *Unit Configuration* from the main menu to see default configurations. To change a configuration, 
-select *Edit*, then the configuration to change, then select or enter the new value.
+You may also send configurations manually using the `#APCFG command <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apcfg-messages>`_ 
+over the GNSS INS configuration port (RS232-2) using a serial interface software such as CoolTerm.
 
-For vehicle configurations, select *Vehicle Configuration* from the main menu and select *Edit*, to set the lever arms.
-
-Note that as of firmware v1.2.0, to use dual antenna functionality, the antenna baseline must be calibrated. Please refer to 
-`Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_ to ensure all vehicle configurations are set properly.
-
-Other Configuration Methods
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-You may also send configurations manually over the GNSS INS's serial configuration port using a serial interface software, such as CoolTerm.
+.. note:: As of firmware v1.2.0, the antenna baseline must be calibrated to use dual antenna functionality. Please refer to `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_ to ensure all vehicle configurations are set properly.
 
 
 Connect to NTRIP Caster
@@ -91,25 +82,23 @@ mount near the center of the vehicle’s rear axle, with the x-axis facing the d
 
 The GNSS antennae can be magnetically mounted on the roof of the vehicle.
 
+
 Data Collection & Visualization
 ------------------------------------
 
 Log Data
 ~~~~~~~~~~~~~~~~~
-To log data, you may use the ANELLO Python Tool, the ANELLO ROS driver, or another program of your choice.
-
-To maximize ANELLO's ability to help analyze your data, we recommend logging data with the ANELLO Python Tool. Instructions can be found at 
-`ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection>`__.
+The ANELLO Python Tool can be used to `log data <https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection>`__ from the ANELLO GNSS INS
+by selecting *Log* in the main menu. Alternatively, you may use the ANELLO ROS driver or another program of your choice to log data. 
 
 Monitor Data Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For a real-time display of the ANELLO GNSS INS data, select *Monitor* in the main menu.
-
-More information on the monitor window can be found at `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#monitor-output>`__.
+The ANELLO Python Tool can be used to `monitor data <https://docs-a1.readthedocs.io/en/latest/python_tool.html#monitor-output>`__ 
+from the ANELLO GNSS INS in real-time by selecting *Monitor* in the main menu.
 
 Data Visualization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-INS solution can be visualized by importing ins.csv into `Kepler <https://kepler.gl/demo>`_.
+The INS solution can be visualized by importing ins.csv into `Kepler <https://kepler.gl/demo>`_.
 You may also use a `CSV to KML converter <https://www.convertcsv.com/csv-to-kml.htm>`_ to visualize the results in Google Earth, 
 but note that these tools often have data length limitations.
 
