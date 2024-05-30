@@ -79,3 +79,7 @@ More information on the monitor window can be found at `ANELLO Python Tool <http
 
 **Congratulations!!!**
 You have completed the IMU setup! Please contact support@anellophotonics.com with any questions. 
+
+Note: This device complies with part 15 of the FCC Rules. Operation is subject to the following two conditions: 
+(1) This device may not cause harmful interference, and 
+(2) this device must accept any interference received, including interference that may cause undesired operation.
