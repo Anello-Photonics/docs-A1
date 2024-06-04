@@ -1,7 +1,7 @@
 Communication & Messaging
 ===========================
 
-1  Port Definitions
+1  Interfaces
 --------------------------
 
 The communication interfaces currently supported for the ANELLO products are listed below:
@@ -12,6 +12,18 @@ The communication interfaces currently supported for the ANELLO products are lis
 
     3. ANELL IMU/IMU+: Serial (RS-232)
 
+Serial Communication Parameters:
+
+Default Baud Rate:
+- EVK: 921600
+- GNSS INS and IMU/IMU+: 230400
+
+Voltage Levels: RS-232 (+/- 7V)
+
+Data Format:
+- Data Bits: 8
+- Stop Bits: 1 
+- Parity: None
 
 For all interfaces, there are two main port types. 
 
@@ -38,9 +50,6 @@ in order to keep the serial configuration port free.
 
 UDP communication uses fixed port numbers on the EVK but selectable ports on the external device.
 These ports, along with IP addresses and other UDP settings should be configured (see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_).
-
-Serial communication occurs at a default baud rate of 921600 for the EVK and 230400 for GNSS INS and IMU/IMU+.
-For interfacing on a serial interface software such as CoolTerm, please set Data Bits = 8, Stop Bits = 1, and Parity = None.
 
  .. note:: 
   The "lowest" and "highest" serial ports mentioned above refer to the EVK, which uses an FTDI chip to create 4 virtual COM ports.
@@ -254,7 +263,7 @@ The APINS message is the Kalman filter position, velocity, and attitude solution
   | 13| ZUPT       |           |  0: Moving, 1: Stationary                                                                                               |
   +---+------------+-----------+-------------------------------------------------------------------------------------------------------------------------+
 
-.. note:: Roll, pitch and heading angles are calculated as standard aerospace Euler angles.
+.. note:: Roll, pitch and heading angles are calculated as standard aerospace Euler angles in a 3-2-1 (yaw, pitch, roll) body frame rotation.
 
 
 3  RTCM Binary Data Output Messages

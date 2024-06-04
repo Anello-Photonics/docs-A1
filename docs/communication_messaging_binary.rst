@@ -256,7 +256,7 @@ The APINS message is the Kalman filter position, velocity, and attitude solution
   | 13| ZUPT       |           |  0: Moving, 1: Stationary                                                                                               |
   +---+------------+-----------+-------------------------------------------------------------------------------------------------------------------------+
 
-.. note:: Roll, pitch and heading angles are calculated as standard aerospace Euler angles.
+.. note:: Roll, pitch and heading angles are calculated as standard aerospace Euler angles in a 3-2-1 (yaw, pitch, roll) body frame rotation.
 
 
 3  RTCM Binary Data Output Messages
