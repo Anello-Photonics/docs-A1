@@ -69,7 +69,7 @@ You may also send configurations manually using the `#APCFG command <https://doc
 over the EVK's configuration port using a serial interface software such as CoolTerm. Note that the configuration port on the EVK is the highest of the four virtual COM ports 
 (more information at `Comminication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`_). 
 
-.. note:: As of firmware v1.2.0, the antenna baseline must be calibrated to use dual antenna functionality. Please refer to `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_ to ensure all vehicle configurations are set properly.
+.. note:: As of firmware v1.2.6, the antenna baseline must be calibrated to use dual antenna functionality. Please refer to `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_ to ensure all vehicle configurations are set properly.
 
 
 Connect to NTRIP Caster

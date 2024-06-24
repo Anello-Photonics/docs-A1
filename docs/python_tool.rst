@@ -102,7 +102,7 @@ Before you collect data with the ANELLO EVK or GNSS INS, vehicle configurations 
 In the main menu, select *Vehicle Configurations* and set the lever arms as prompted. 
 All measurements are using the center of the ANELLO unit as the origin and are measured in meters.
 
-For firmware versions 1.2.0 and later, antenna baseline calibration must be performed. 
+For firmware versions 1.2.6 and later, antenna baseline calibration must be performed. 
 
 Please see `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_ for more information.
 

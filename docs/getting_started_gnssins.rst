@@ -57,7 +57,7 @@ Select *Unit Configuration* from the main menu. The default configurations will 
 You may also send configurations manually using the `#APCFG command <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apcfg-messages>`_ 
 over the GNSS INS configuration port (RS232-2) using a serial interface software such as CoolTerm.
 
-.. note:: As of firmware v1.2.0, the antenna baseline must be calibrated to use dual antenna functionality. Please refer to `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_ to ensure all vehicle configurations are set properly.
+.. note:: As of firmware v1.2.6, the antenna baseline must be calibrated to use dual antenna functionality. Please refer to `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_ to ensure all vehicle configurations are set properly.
 
 
 Connect to NTRIP Caster
