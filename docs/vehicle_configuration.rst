@@ -83,7 +83,7 @@ For the least complexity, we recommendation mounting the unit above the center o
    Default Installation Location
 
 If the unit is oriented differently (e.g. backwards or upside down), the orientation must be configured using the ANELLO Python Program, 
-see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.
+see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`__.
 
 ANELLO Unit Installation Misalignment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
