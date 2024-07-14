@@ -77,6 +77,8 @@ The available parameters and values to configure are described in the table belo
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
   | Baud Rate              | bau        | Serial communication baud rate in bits per second. Requires reset.                                  |
   +------------------------+------------+-----------------------------------------------------------------------------------------------------+
+  | NHC                    | nhc        | NHC functionality in EKF. Valid values range from 0 to 7. 0 – default car case, 1 – truck case, 2 – ag case, 7 – drone case (NHC off)    |
+  +------------------------+------------+-----------------------------------------------------------------------------------------------------+
 
 .. note:: Some configurations require a system reset after changing, such as the ODR and baud rate. This can be done by selecting "Reset" in the user_program.py main menu, or sending the reset command over the Configuration port: #APRST,0*58 
 

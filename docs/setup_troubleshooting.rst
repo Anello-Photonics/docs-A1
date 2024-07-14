@@ -35,12 +35,19 @@ Or if you already installed requirements.txt and ran the program, but received a
     pip uninstall matplotlib
     sudo apt install matplotlib
 
-If you still have issues, you may need to re-install `python <https://www.python.org/downloads/>`_ to ensure pip is installed correctly.
+Starting Feb 2024, PySimpleGUI started requiring a license for their new version 5 release. If you have any issues with license requests, please run:
+
+.. code-block:: python
+
+    pip uninstall PySimpleGUI
+    pip install -r requirements.txt
+
+If you still have issues installing packages after trying the above steps, you may need to re-install `python <https://www.python.org/downloads/>`_ to ensure pip is installed correctly.
 Note that as of Nov 2023, we noticed some issues with Python 3.12 and the corresponding pip supporting the necessary dependencies. 
 If you are using Python 3.12 and experience issues with specific packages, please revert to Python 3.11 and try again.
 
 If you experience errors or warnings which may be related to access, please be sure to run your command window as administrator.
-Other access issues may be related to internal firewall or other security features, so please check with your IT team if you are unable to install Python packages.
+Other access issues may be related to internal firewall or other security features, so please check with your IT team if you are unable to install any Python packages.
 
 
 Run Python Program
@@ -66,13 +73,6 @@ The main menu actions are:
 -   NTRIP:                 Connect to a server for GNSS corrections
 -   Upgrade:               Change the unit's firmware version
 -   Exit:                  Exit the python program
-
-.. note::
-    On some Windows computers, the arrow keys did not move the cursor.
-    This appears to be an issue with the readchar dependency, version 3.0.5 on Windows.
-    It can be fixed with this command in terminal:
-
-    pip install readchar==3.0.4
 
 
 Connect to ANELLO Unit
