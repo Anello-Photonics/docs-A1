@@ -106,3 +106,14 @@ The following 8 right hand rule frames are possible:
     6. +Y+X-Z  Unit mounted upside down with X pointing in vehicle right
     7. -Y-X-Z  Unit mounted upside down with X pointing in vehicle left
     8. -X+Y-Z  Unit mounted upside down with X pointing in vehicle back
+
+ANELLO Unit Installation Misalignment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Misalignment in the unit installation will degrade performance, particularly in GNSS-denied periods.
+ANELLO recommends the following procedure for calibrating roll and pitch installation misalignment angles:
+
+1. Park the vehicle in any location and take note of the roll and pitch reported by the ANELLO unit.
+2. Park the vehicle in the same location but rotated 180 degrees, and take note of the roll and pitch reported by the ANELLO unit.
+3. Ensure that there is no difference in side or front/rear load on the vehicle which may affect the roll or pitch between the two tests.
+4. Calculate roll misalignment angle = (roll_1 + roll_2) / 2 ; pitch misalignment angle = (pitch_1 + pitch_2) / 2
+5. Set the roll and pitch misalignment angles, and any known heading angles, using the ANELLO Python tool or APCFG command with aln code.
