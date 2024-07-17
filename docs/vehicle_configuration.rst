@@ -73,6 +73,7 @@ To utilize these improvements, a stationary period must be calibrated using the 
 
 Mounting ANELLO Unit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The ANELLO unit should be mounted securely on a flat surface to avoid movement of the unit during vehicle testing.
 The mounting location of the ANELLO EVK and GNSS INS is flexible and can be configured for various installation positions and orientations. 
 For the least complexity, we recommendation mounting the unit above the center of the vehicle’s rear axle with the X-Axis facing forward along the direction of travel. 
 
@@ -82,8 +83,10 @@ For the least complexity, we recommendation mounting the unit above the center o
 
    Default Installation Location
 
-If the unit is oriented differently (e.g. backwards or upside down), the orientation must be configured using the ANELLO Python Program, 
-see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`__.
+If the unit is oriented differently (e.g. backwards or upside down), the "Orientation" configuration must be configured using the ANELLO Python Program, 
+see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#unit-installation-orientation>`__.
+In addition, if the unit is misaligned from the vehicle axis in either roll, pitch, or heading, the "Installation Misalignment Angle" configuration must also be set.
+If the misalignment angles are unknown, these can be measured using the `these procedures <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#anello-unit-installation-misalignment>`__.
 
 Antenna Mounting
 ~~~~~~~~~~~~~~~~~~~~~
