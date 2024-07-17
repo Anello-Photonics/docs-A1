@@ -78,15 +78,16 @@ The mounting location of the ANELLO EVK and GNSS INS is flexible and can be conf
 For the least complexity, we recommendation mounting the unit above the center of the vehicle’s rear axle with the X-Axis facing forward along the direction of travel. 
 
 .. figure:: media/a1_install_location.png
-   :scale: 50 %
+   :scale: 30 %
    :align: center
 
    Default Installation Location
 
-If the unit is oriented differently (e.g. backwards or upside down), the "Orientation" configuration must be configured using the ANELLO Python Program, 
-see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#unit-installation-orientation>`__.
+If the unit is oriented differently (e.g. backwards or upside down), the "Orientation" configuration must be configured using the ANELLO Python Program.
+See `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#unit-installation-orientation>`__ for orientation options.
+
 In addition, if the unit is misaligned from the vehicle axis in either roll, pitch, or heading, the "Installation Misalignment Angle" configuration must also be set.
-If the misalignment angles are unknown, these can be measured using the `these procedures <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#anello-unit-installation-misalignment>`__.
+If the misalignment angles are unknown, the roll and pitch misalignment can be measured using the `these procedures <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#anello-unit-installation-misalignment>`__.
 
 Antenna Mounting
 ~~~~~~~~~~~~~~~~~~~~~
