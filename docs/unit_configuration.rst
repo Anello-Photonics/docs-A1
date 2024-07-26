@@ -115,5 +115,21 @@ ANELLO recommends the following procedure for calibrating roll and pitch install
 1. Park the vehicle in any location and take note of the roll and pitch reported by the ANELLO unit.
 2. Park the vehicle in the same location but rotated 180 degrees, and take note of the roll and pitch reported by the ANELLO unit.
 3. Ensure that there is no difference in side or front/rear load on the vehicle which may affect the roll or pitch between the two tests.
-4. Calculate roll misalignment angle = (roll_1 + roll_2) / 2 ; pitch misalignment angle = (pitch_1 + pitch_2) / 2
-5. Set the roll and pitch misalignment angles, and any known heading angles, using the ANELLO Python tool or APCFG command with aln code.
+4. Calculate roll misalignment angle = (roll_1 + roll_2) / 2
+5. Calculate pitch misalignment angle = (pitch_1 + pitch_2) / 2
+6. Use the calculated roll and pitch misalignment angles, and any known heading misalignment angles, to set the Alignment Angles configuration using the ANELLO Python tool or the APCFG command with aln code.
+
+Example:
+roll_1 = 5.0, pitch_1 = -10.0
+roll_2 = 1.0, pitch_2 = 0.0
+
+Roll misalignment angle = (roll_1 + roll_2) / 2 = 3.0
+Pitch misalignment angle = (pitch_1 + pitch_2) / 2 = -5.0
+
+Alignment Angle (roll, pitch, yaw) = +3.0, -5.0, 0.0
+
+After setting the configuration and restarting the unit, the unit should now show roll and pitch equivalent to the slope of the ground when parked in the same spot.
+For reference, the slope of the ground using the example above can be calculated by:
+
+Roll slope = (roll_1 - roll_2) / 2 = 2.0
+Pitch slope = (pitch_1 - pitch_2) / 2 = -5.0
