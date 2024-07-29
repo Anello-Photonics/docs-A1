@@ -110,7 +110,8 @@ The following 8 right hand rule frames are possible:
 ANELLO Unit Installation Misalignment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Misalignment in the unit installation will degrade performance, particularly in GNSS-denied periods.
-ANELLO recommends the following procedure for calibrating roll and pitch installation misalignment angles:
+ANELLO recommends the following procedure for calibrating roll and pitch installation misalignment angles.
+Please ensure the Alignment Angles configuration is set to (0,0,0) before starting the procedure.
 
 1. Park the vehicle in any location and take note of the roll and pitch reported by the ANELLO unit.
 2. Park the vehicle in the same location but rotated 180 degrees, and take note of the roll and pitch reported by the ANELLO unit.
