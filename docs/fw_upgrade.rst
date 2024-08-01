@@ -39,7 +39,7 @@ Upgrading from v1.1
 If you are upgrading from v1.1 or older:
 
 1. Completing `antenna baseline calibration <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html#dual-antenna-baseline-calibration>`_ is now required to use the dual antenna feature.
-2. An installation `misalignment angle configuration <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html#anello-unit-installation-misalignment>`_ is now available, which improves performance on long-distance dead reckoning.
+2. An installation `misalignment angle configuration <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#anello-unit-installation-misalignment>`_ is now available, which improves performance on long-distance dead reckoning.
 
 Upgrading from v1.0
 ~~~~~~~~~~~~~~~~~~~~~~~
