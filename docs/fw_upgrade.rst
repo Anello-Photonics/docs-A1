@@ -29,21 +29,23 @@ Please review below for key considerations to ensure the best performance when u
 Always make sure to run "git pull" to make sure your user_tool has all the latest configurations and calibration schemes.
 Please contact ANELLO for the latest firmware image and full release notes.
 
-Upgrading from v1.2 to v1.3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-If you are upgrading from v1.2, improvements in were made to state estimates while stationary.
+Upgrading from v1.2
+~~~~~~~~~~~~~~~~~~~~~~~
+If you are upgrading from v1.2, improvements in were made in v1.3 during stationary periods, particularly when odometer input is not provided.
 To take advantage of these improvements, a `ZUPT calibration <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html#zupt-calibration>`_ must be performed.
 
 Upgrading from v1.1
 ~~~~~~~~~~~~~~~~~~~~~~~
-If you are upgrading from v1.1 or older:
+If you are upgrading from v1.1, in addition to the items above:
 
 1. Completing `antenna baseline calibration <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html#dual-antenna-baseline-calibration>`_ is now required to use the dual antenna feature.
 2. An installation `misalignment angle configuration <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#anello-unit-installation-misalignment>`_ is now available, which improves performance on long-distance dead reckoning.
 
 Upgrading from v1.0
 ~~~~~~~~~~~~~~~~~~~~~~~
-If you are upgrading from v1.0 or older, please note that the IMU message now has an additional field (T_Sync) which wasn't included in previous firmwares.
+If you are upgrading from v1.0 or older, in addition to the items above:
+
+The IMU message now has an additional field (T_Sync) which wasn't included in previous firmwares.
 
 There are also several new `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_ which will default to OFF when upgrading from v1.0 or earlier.
 Please make sure these are set properly upon upgrading:
