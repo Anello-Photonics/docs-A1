@@ -7,7 +7,10 @@ If you are on an older version, please contact ANELLO for the latest FW image an
 
 Firmware Upgrade Procedure
 --------------------------------------
-FW upgrades currently must be done on a Windows machine and over serial. 
+FW upgrades currently must be done over the serial interface and can be done on computers using the following OS/processors:
+GNSS INS, EVK, X3: Windows, Linux (x86), Linux (ARM)
+IMU+: Windows only
+
 Please ensure power and serial connection is not disrupted to the unit during the firmware upgrade process. 
 If you experience any errors during the process, please power cycle the unit and try again.
 Make sure to first run "git pull" in user_tool to ensure you are using the latest firmware upgrade functionality.
@@ -25,7 +28,7 @@ Make sure to first run "git pull" in user_tool to ensure you are using the lates
 
 Firmware Upgrade Notes
 ------------------------------
-Please review below for key considerations to ensure the best performance when upgrading between different FW versions. 
+Please review the key considerations below to ensure the best performance when upgrading between different FW versions. 
 Always make sure to run "git pull" to make sure your user_tool has all the latest configurations and calibration schemes.
 Please contact ANELLO for the latest firmware image and full release notes.
 
