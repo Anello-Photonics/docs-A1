@@ -393,9 +393,9 @@ The Antenna ID field indicates which receiver (that connected to ANT1 or ANT2) p
   +---+---------------+----------+------------+----------------------------------------------------------+
   | 11| Vacc          |  uint32  |  0.001 m   |  Vertical accuracy                                       |
   +---+---------------+----------+------------+----------------------------------------------------------+
-  | 12| Speed acc     |  uint32  |  0.001 m/s |  Speed accuracy                                          |
+  | 12| Hdg acc       |  uint32  |  1e-5 deg  |  Heading accuracy                                          |
   +---+---------------+----------+------------+----------------------------------------------------------+
-  | 13| Hdg acc       |  uint32  |  1e-5 deg  |  Heading accuracy                                        |
+  | 13| Speed acc     |  uint32  |  0.001 m/s |  Speed accuracy                                        |
   +---+---------------+----------+------------+----------------------------------------------------------+
   | 14| PDOP          |  uint16  |  0.01      |  Position dilution of precision                          |
   +---+---------------+----------+------------+----------------------------------------------------------+
@@ -434,7 +434,7 @@ This message is output from the EVK and GNSS INS units only.
   +---+------------------------+----------+------------------+----------------------------------------------------------+
   | 8 | relPosHeading          |  int32   |  1e-5 deg        |  Heading from primary antenna to secondary antenna       |
   +---+------------------------+----------+------------------+----------------------------------------------------------+
-  | 9 | relPosLength Accuracy  |  uint32  |  0.01 m          |  Accuracy of dual antennae baseline length               |
+  | 9 | relPosLength Accuracy  |  uint32  |  0.1 mm          |  Accuracy of dual antennae baseline length               |
   +---+------------------------+----------+------------------+----------------------------------------------------------+
   | 10| relPosHeading Accuracy |  uint32  |  1e-5 deg        |  Accuracy of dual antennae heading                       |
   +---+------------------------+----------+------------------+----------------------------------------------------------+
