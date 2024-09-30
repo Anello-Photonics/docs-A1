@@ -73,7 +73,7 @@ The available parameters and values to configure are described in the table belo
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
   | Enable Ethernet Output | eth        | Enable output over ethernet interface: 'on', 'off'                                                          |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
-  | NMEA Output Messages   | nmea       | Configures up to 8 NMEA messages to be output on the config port (0-255). 0: off, 255: all on               |
+  | NMEA Output Messages   | nmea       | Configures NMEA messages to be output on the config port. Bit 0 = GGA, Bit 1 = GSA, Bit 2 = RMC             |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
   | Baud Rate              | bau        | Serial communication baud rate in bits per second. Requires reset.                                          |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
@@ -86,10 +86,19 @@ The available parameters and values to configure are described in the table belo
 
 Output Data Rate (ODR)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The GNSS INS has output data rate constraints when outputting data over RS-232. In RTCM or binary messaging mode, maximum ODR is 100 Hz. In ASCII mode, maximum ODR is 50 Hz.
+The GNSS INS has output data rate constraints when outputting data over RS-232. In RTCM or binary messaging mode, 
+maximum ODR is 100 Hz. In ASCII mode, maximum ODR is 50 Hz.
 All other ANELLO units support ODR up to 200 Hz. RTCM message format is recommended for best timing.
 
 .. note:: Decreasing the baud rate will affect the maximum output data rate. It is recommended to keep the default baud rate (921600 for EVK; 230400 for GNSS INS and IMU) enable highest ODR.
+
+Digital Filters
+~~~~~~~~~~~~~~~~~~~
+Fixed-point digital filters are implemented in the firmware and operate on the raw sensors readings (counts) prior to conversion to scaled 
+sensor readings (in [g] and [°/s]). Cutoff frequencies can be selected by the user using the APCFG command for the accelerometers (lpa), 
+MEMS angular-rate sensors (lpw), and optical gyroscopes (lpo).
+
+Any integer value between zero and 90% of Nyquist frequency (0.5*ODR) can be selected. A zero value disables filtering and any value above 90% Nyquist is limited.
 
 Unit Installation Orientation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -134,3 +143,4 @@ For reference, the slope of the ground using the example above can be calculated
 
 Roll slope = (roll_1 - roll_2) / 2 = 2.0
 Pitch slope = (pitch_1 - pitch_2) / 2 = -5.0
+

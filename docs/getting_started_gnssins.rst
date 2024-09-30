@@ -65,7 +65,7 @@ Connect to NTRIP Caster
 Standard RTCM messages can be forwarded to the ANELLO GNSS INS data port to enable the GNSS receivers to reach RTK-level accuracy. 
 The GNSS INS receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages. 
 
-The ANELLO Python Program also provides an NTRIP client which can connect to a standard NTRIP network and forward the received RTCM messages into the GNSS INS.
+The ANELLO Python Program also provides an NTRIP caster which can connect to a standard NTRIP network and forward the received RTCM messages into the GNSS INS.
 
 From the main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster details as prompted. 
 The *System Status* will show the NTRIP connection status.
