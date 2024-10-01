@@ -7,9 +7,9 @@ For support on other vehicle types, please contact support@anellophotonics.com.
 
 **Important:** If you would like help from the ANELLO team on data analysis and fine-tuning, we ask that you please share:
 
-1. The raw log file starting at power-up of the unit and including the entire drive period
-2. A screenshot or list of unit and vehicle configurations
-3. Details and/or pictures of the unit installation
+1. The raw log file starting at power-up and including the entire drive period
+2. The config file (using the "Save Configs" option in the Python tool main menu). If you do not see this option, please run "git pull" to make sure you have the latest code.
+3. Pictures of the installation (ANELLO unit and antennae)
 4. Description of test vehicle and testing goals
 
 
