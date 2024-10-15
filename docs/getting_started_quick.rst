@@ -34,20 +34,20 @@ The ANELLO Evaluation Kit (EVK) includes the following items:
 Connect the hardware as follows: 
 
 1. Connect EVK to power using either the wall-power or the in-vehicle adapter (red).
-2. Connect EVK to computer using USB-C (blue). Ethernet interface (green) is also available, but connection over serial is required first to configure IP addresses.
+2. Connect EVK to computer using USB-C (blue). Ethernet interface (green) is also available, either directly to the computer or through a router, but connection over serial is required first to configure IP addresses.
 3. Connect primary GNSS antenna to ANT1 on the back of the EVK (black). An optional additional antenna (ANT2) enables stationary heading initialization.
 
 .. image:: media/EVK-wiring_2.png
    :width: 80 %
    :align: center
 
-For more information on hardware mechanicals, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-evk>`_.
+For more an SCD drawing of the EVK, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-evk>`_.
 
 
 Software Interfaces
 ---------------------------------
 ANELLO provides a Python tool to connect, configure, and log data with the EVK.
-Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`__.
+Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`__ to install and run the Python tool.
 
 ANELLO units are also compatible with ROS using our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
 
@@ -57,10 +57,28 @@ please ensure you use the correct baud rate (default for the EVK is 921600), and
 For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software_tools.html>`_.
 
 
+Vehicle Installation
+----------------------------
+
+The EVK can be configured for various installation positions. To minimize configuration steps, 
+mount near the center of the vehicle’s rear axle, with the X-forward facing the direction of travel.
+
+.. image:: media/a1_install_location.png
+   :width: 50 %
+   :align: center
+
+The GNSS antennae can be magnetically mounted on the roof of the vehicle. See `Antenna Mounting <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html#antenna-mounting>`_
+for requirements on antenna installation.
+
+
 Configure ANELLO EVK
 ---------------------------------
-Before testing the ANELLO EVK, please review the `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_,
-and `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_ and ensure they are set according to your testing needs.
+Before testing the ANELLO GNSS INS, please review and set:
+
+1. `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_: Common Unit Configurations which change between setups are `Orientation <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#unit-installation-orientation>`_, 
+`Misalignment Angle <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#anello-unit-installation-misalignment>`_, and Odometer Units. If you would like to use the Ethernet interface, please turn on "Enable Ethernet Output" and set UDP-related configurations. 
+
+2. `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_: All lever arm measurments and calibrations must be completed prior to drive testing.
 
 The easiest way to change configurations is using the `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#set-anello-configurations>`__.
 Select *Unit Configuration* from the main menu. The default configurations will appear, and you can select *Edit* to change a configuration.
@@ -79,21 +97,8 @@ The EVK receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 
 
 The ANELLO Python Program also provides an NTRIP client which can connect to a standard NTRIP network and forward the received RTCM messages into the EVK.
 
-From the main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster details as prompted. 
+From the Python tool main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster details as prompted. 
 The *System Status* will show the NTRIP connection status.
-
-
-Vehicle Installation
-----------------------------
-
-The EVK can be configured for various installation positions. To minimize configuration steps, 
-mount near the center of the vehicle’s rear axle, with the x-axis facing the direction of travel.
-
-.. image:: media/a1_install_location.png
-   :width: 50 %
-   :align: center
-
-The GNSS antennae can be magnetically mounted on the roof of the vehicle.
 
 
 Data Collection & Visualization
@@ -101,8 +106,9 @@ Data Collection & Visualization
 
 Log Data
 ~~~~~~~~~~~~~~~~~
-The ANELLO Python Tool can be used to `log data <https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection>`__ from the ANELLO EVK
-by selecting *Log* in the main menu. Alternatively, you may use the ANELLO ROS driver or another program of your choice to log data. 
+ANELLO recommends logging data using either:
+1. ANELLO `Python tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection>`__, by selecting *Log* in the main menu, OR
+2. ANELLO `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`__
 
 Monitor Data Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -120,6 +126,13 @@ Drive Testing
 -------------------
 Before conducting drive testing, please review `Drive Testing Best Practices <https://docs-a1.readthedocs.io/en/latest/drive_testing.html>`_ 
 to ensure the system is set up properly, initializes smoothly, and is optimized for your use case.
+
+If you would like help from the ANELLO team on data analysis and fine-tuning, we ask that you please share:
+
+1. The raw log file starting at power-up and including the entire drive period
+2. The config file (using the "Save Configs" option in the Python tool main menu). If you do not see this option, please run "git pull" to make sure you have the latest Python tool updates.
+3. Pictures of the installation (ANELLO unit and antennae)
+4. Description of testing goals and performance requirements
 
 **Congratulations!!!**
 You have completed the EVK setup and data collection! Please feel free to contact support@anellophotonics.com with any questions. 

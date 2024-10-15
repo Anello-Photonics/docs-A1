@@ -36,7 +36,7 @@ An SCD drawing of the GNSS INS and a schematic of the Accessory kit breakout cab
 Software Interfaces
 ---------------------------------
 ANELLO provides a Python tool to connect, configure, and log data with the GNSS INS.
-Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`__.
+Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`__  to install and run the Python tool.
 
 ANELLO units are also compatible with ROS using our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
 
@@ -46,10 +46,28 @@ please ensure you use the correct baud rate (default for the GNSS INS is 230400)
 For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software_tools.html>`_.
 
 
+Vehicle Installation
+----------------------------
+The GNSS INS can be configured for various installation positions. To minimize configuration steps, 
+mount near the center of the vehicle’s rear axle, with the X-forward facing the direction of travel.
+
+.. image:: media/GNSSINS_Vehicle_Installation.png
+   :width: 50 %
+   :align: center
+
+The GNSS antennae can be magnetically mounted on the roof of the vehicle. See `Antenna Mounting <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html#antenna-mounting>`_
+for requirements on antenna installation.
+
+
 Configure ANELLO GNSS INS
 ---------------------------------
-Before testing the ANELLO GNSS INS, please review the `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_,
-and `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_ and ensure they are set according to your testing needs.
+Before testing the ANELLO GNSS INS, please review and set:
+
+1. `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_: Common Unit Configurations which change between setups are `Orientation <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#unit-installation-orientation>`_, 
+`Misalignment Angle <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#anello-unit-installation-misalignment>`_, and Odometer Units. If you would like to use the Ethernet interface, please turn on "Enable Ethernet Output" and set UDP-related configurations. 
+
+2. `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_: All lever arm measurements and calibrations must be completed prior to drive testing.
+
 
 The easiest way to change configurations is using the `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#set-anello-configurations>`__.
 Select *Unit Configuration* from the main menu. The default configurations will appear, and you can select *Edit* to change a configuration.
@@ -67,20 +85,8 @@ The GNSS INS receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and 
 
 The ANELLO Python Program also provides an NTRIP caster which can connect to a standard NTRIP network and forward the received RTCM messages into the GNSS INS.
 
-From the main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster details as prompted. 
+From the Python tool main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster details as prompted. 
 The *System Status* will show the NTRIP connection status.
-
-
-Vehicle Installation
-----------------------------
-The GNSS INS can be configured for various installation positions. To minimize configuration steps, 
-mount near the center of the vehicle’s rear axle, with the x-axis facing the direction of travel.
-
-.. image:: media/GNSSINS_Vehicle_Installation.png
-   :width: 50 %
-   :align: center
-
-The GNSS antennae can be magnetically mounted on the roof of the vehicle.
 
 
 Data Collection & Visualization
@@ -88,8 +94,9 @@ Data Collection & Visualization
 
 Log Data
 ~~~~~~~~~~~~~~~~~
-The ANELLO Python Tool can be used to `log data <https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection>`__ from the ANELLO GNSS INS
-by selecting *Log* in the main menu. Alternatively, you may use the ANELLO ROS driver or another program of your choice to log data. 
+ANELLO recommends logging data using either:
+1. ANELLO `Python tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection>`__, by selecting *Log* in the main menu, OR
+2. ANELLO `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`__
 
 Monitor Data Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -107,6 +114,13 @@ Drive Testing
 -------------------
 Before conducting drive testing, please review `Drive Testing Best Practices <https://docs-a1.readthedocs.io/en/latest/drive_testing.html>`_ 
 to ensure the system is set up properly, initializes smoothly, and is optimized for your use case.
+
+If you would like help from the ANELLO team on data analysis and fine-tuning, we ask that you please share:
+
+1. The raw log file starting at power-up and including the entire drive period
+2. The config file (using the "Save Configs" option in the Python tool main menu). If you do not see this option, please run "git pull" to make sure you have the latest Python tool updates.
+3. Pictures of the installation (ANELLO unit and antennae)
+4. Description of testing goals and performance requirements
 
 **Congratulations!!!**
 You have completed the GNSS INS setup and data collection! Please feel free to contact support@anellophotonics.com with any questions. 

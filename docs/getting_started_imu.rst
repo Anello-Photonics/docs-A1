@@ -33,7 +33,7 @@ An SCD drawing of the IMU+ and a schematic of the Accessory kit breakout cable c
 Software Interfaces
 ---------------------------------
 ANELLO provides a Python tool to connect, configure, and log data with the ANELLO IMU.
-Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`__.
+Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`__ to install and run the Python tool.
 
 ANELLO units are also compatible with ROS using our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
 
@@ -55,13 +55,14 @@ You may also send configurations manually using the `#APCFG command <https://doc
 over the IMU's configuration port using a serial interface software such as CoolTerm.
 
 
-Data Collection & Visualization
-------------------------------------
+Data Collection
+----------------------------
 
 Log Data
 ~~~~~~~~~~~~~~~~~
-The ANELLO Python Tool can be used to `log data <https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection>`__ from the ANELLO IMU
-by selecting *Log* in the main menu. Alternatively, you may use the ANELLO ROS driver or another program of your choice to log data. 
+ANELLO recommends logging data using either:
+1. ANELLO `Python tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection>`__, by selecting *Log* in the main menu, OR
+2. ANELLO `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`__
 
 Monitor Data Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
