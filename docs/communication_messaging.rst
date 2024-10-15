@@ -498,7 +498,7 @@ The INS message is the Kalman filter position, velocity, and attitude solution o
 4.1 APCFG Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The easiest way to configure an ANELLO unit is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#unit-configurations>`_, 
+The easiest way to configure an ANELLO unit is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#unit-configurations>`__, 
 which saves all changes to non-volatile flash memory. 
 
 Alternatively, the unit can be configured using the APCFG message, which allows for both temporary (RAM) and permanent setting (FLASH) of configuration parameters.
@@ -524,7 +524,7 @@ For more details on configuration parameters and values, see `Unit Configuration
 4.2 APVEH Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The easiest way to set ANELLO vehicle configurations is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#vehicle-configurations>`_, 
+The easiest way to set ANELLO vehicle configurations is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#vehicle-configurations>`__, 
 which saves all changes to non-volatile flash memory. 
 
 Alternatively, the unit can be configured using the APVEH message, which allows for both temporary (RAM) and permanent setting (FLASH) of configuration parameters.
