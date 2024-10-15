@@ -47,7 +47,8 @@ For more an SCD drawing of the EVK, see `Mechanicals <https://docs-a1.readthedoc
 Software Interfaces
 ---------------------------------
 ANELLO provides a Python tool to connect, configure, and log data with the EVK.
-Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`__ to install and run the Python tool.
+Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`__ to install and run the Python tool. 
+Be sure to run "git pull" regularly to make sure you are using the latest Python tool updates.
 
 ANELLO units are also compatible with ROS using our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
 
@@ -130,7 +131,7 @@ to ensure the system is set up properly, initializes correctly, and is optimized
 If you would like help from the ANELLO team on data analysis and fine-tuning, we ask that you please share:
 
 1. The raw log file starting at power-up and including the entire drive period
-2. The config file (using the "Save Configs" option in the Python tool main menu). If you do not see this option, please run "git pull" to make sure you have the latest Python tool updates.
+2. The config file (using the "Save Configs" option in the Python tool main menu).
 3. Pictures of the installation (ANELLO unit and antennae)
 4. Description of testing goals and performance requirements
 
