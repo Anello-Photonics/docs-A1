@@ -84,7 +84,9 @@ pygments_style = 'sphinx'
 # if not on_rtd:  # only import and set the theme if we're building docs locally
 import sphinx_rtd_theme
 html_theme = 'sphinx_rtd_theme'
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+# Commenting out html_theme_path due to "WARNING: Calling get_html_theme_path is deprecated. 
+# If you are calling it to define html_theme_path, you are safe to remove that code." 
+# html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # A timeout value, in seconds, for the linkcheck builder
 # http://sphinx-doc.org/config.html#confval-linkcheck_timeout
