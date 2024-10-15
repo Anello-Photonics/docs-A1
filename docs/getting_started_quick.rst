@@ -27,7 +27,7 @@ The ANELLO Evaluation Kit (EVK) includes the following items:
     +---+------------------------------------------------+
 
 .. image:: media/evk_contents.png
-   :width: 60 %
+   :width: 75 %
    :align: center
 
 
@@ -64,7 +64,7 @@ The EVK can be configured for various installation positions. To minimize config
 mount near the center of the vehicle’s rear axle, with the X-forward facing the direction of travel.
 
 .. image:: media/a1_install_location.png
-   :width: 30 %
+   :width: 40 %
    :align: center
 
 The GNSS antennae can be magnetically mounted on the roof of the vehicle. See `Antenna Mounting <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html#antenna-mounting>`_

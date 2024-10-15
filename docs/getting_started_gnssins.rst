@@ -52,7 +52,7 @@ The GNSS INS can be configured for various installation positions. To minimize c
 mount near the center of the vehicle’s rear axle, with the X-forward facing the direction of travel.
 
 .. image:: media/GNSSINS_Vehicle_Installation.png
-   :width: 50 %
+   :width: 40 %
    :align: center
 
 The GNSS antennae can be magnetically mounted on the roof of the vehicle. See `Antenna Mounting <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html#antenna-mounting>`_
