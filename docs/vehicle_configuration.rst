@@ -4,7 +4,7 @@ Vehicle Configuration
 
 The ANELLO EVK and GNSS INS products require vehicle configurations to be set for proper functionality. 
 
-The easiest way to set ANELLO vehicle configurations is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#vehicle-configurations>`_, 
+The easiest way to set ANELLO vehicle configurations is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#vehicle-configurations>`__, 
 which saves all changes to non-volatile flash memory. 
 
 Alternatively, the unit can be configured using the `APVEH message <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apveh-messages>`_.
