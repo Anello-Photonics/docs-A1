@@ -27,7 +27,7 @@ The ANELLO Evaluation Kit (EVK) includes the following items:
     +---+------------------------------------------------+
 
 .. image:: media/evk_contents.png
-   :width: 90 %
+   :width: 60 %
    :align: center
 
 
@@ -38,7 +38,7 @@ Connect the hardware as follows:
 3. Connect primary GNSS antenna to ANT1 on the back of the EVK (black). An optional additional antenna (ANT2) enables stationary heading initialization.
 
 .. image:: media/EVK-wiring_2.png
-   :width: 80 %
+   :width: 60 %
    :align: center
 
 For more an SCD drawing of the EVK, see `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-evk>`_.
@@ -64,7 +64,7 @@ The EVK can be configured for various installation positions. To minimize config
 mount near the center of the vehicle’s rear axle, with the X-forward facing the direction of travel.
 
 .. image:: media/a1_install_location.png
-   :width: 50 %
+   :width: 30 %
    :align: center
 
 The GNSS antennae can be magnetically mounted on the roof of the vehicle. See `Antenna Mounting <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html#antenna-mounting>`_
