@@ -125,7 +125,7 @@ but note that these tools often have data length limitations.
 Drive Testing
 -------------------
 Before conducting drive testing, please review `Drive Testing Best Practices <https://docs-a1.readthedocs.io/en/latest/drive_testing.html>`_ 
-to ensure the system is set up properly, initializes smoothly, and is optimized for your use case.
+to ensure the system is set up properly, initializes correctly, and is optimized for your use case.
 
 If you would like help from the ANELLO team on data analysis and fine-tuning, we ask that you please share:
 
