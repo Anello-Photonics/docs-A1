@@ -82,6 +82,8 @@ The ANELLO Python Program also provides an NTRIP client which can connect to a s
 From the main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster details as prompted. 
 The *System Status* will show the NTRIP connection status.
 
+Corrections must be configured to the WGS84 coordinate frame. Our inertial navigation system assumes WGS84 as the reference coordinate system, and using a different coordinate frame may result in incorrect positioning and navigation data.
+
 
 5). Vehicle Installation
 ----------------------------
