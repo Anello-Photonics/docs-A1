@@ -4,26 +4,10 @@ Vehicle Configuration
 
 The ANELLO EVK and GNSS INS products require vehicle configurations to be set for proper functionality. 
 
-The easiest way to set ANELLO vehicle configurations is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#vehicle-configurations>`_, 
+The easiest way to set ANELLO vehicle configurations is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#vehicle-configurations>`__, 
 which saves all changes to non-volatile flash memory. 
 
-Alternatively, the unit can be configured using the APVEH message, which allows for both temporary (RAM) and permanent setting (FLASH) of configuration parameters.
-
-**#APVEH,<r/w/R/W>,<param1>,<value1>,...,<paramN>,<valueN>*checksum**
-
-  +---+------------+-------------------------------------------------------------------------------------+
-  |   | Field      |  Description                                                                        |
-  +---+------------+-------------------------------------------------------------------------------------+
-  | 0 | APVEH      |  Sentence identifier                                                                |
-  +---+------------+-------------------------------------------------------------------------------------+
-  | 1 |<read/write>|  'r': read  RAM, 'w': write RAM, 'R': read FLASH, 'W': write FLASH                  |
-  +---+------------+-------------------------------------------------------------------------------------+
-  | 2 | <param>    |  Configuration parameter (APVEH code)                                               |
-  +---+------------+-------------------------------------------------------------------------------------+
-  | 3 | <value>    |  Configuration value, expressed in ASCII                                            |
-  +---+------------+-------------------------------------------------------------------------------------+
-  | 4 | checksum   |  XOR of bytes between # and \* written in hexadecimal (letters must be uppercase)   |
-  +---+------------+-------------------------------------------------------------------------------------+
+Alternatively, the unit can be configured using the `APVEH message <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apveh-messages>`_.
 
 Vehicle Configuration Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

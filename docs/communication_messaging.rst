@@ -498,28 +498,54 @@ The INS message is the Kalman filter position, velocity, and attitude solution o
 4.1 APCFG Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The easiest way to configure the EVK is with the ANELLO Python Program, which saves all changes to non-volatile flash memory. 
-To do this, see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.
+The easiest way to configure an ANELLO unit is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#unit-configurations>`__, 
+which saves all changes to non-volatile flash memory. 
 
-Alternatively, the EVK can be dynamically configured using the APCFG message. The protocol allows for both temporary (RAM) and permanent setting (FLASH) of configuration parameters.
+Alternatively, the unit can be configured using the APCFG message, which allows for both temporary (RAM) and permanent setting (FLASH) of configuration parameters.
 
-**#APCFG,<r/w/R/W>,<param>,<value1>,..,<valueN>*checksum**
+**#APCFG,<r/w/R/W>,<param1>,<value1>,...,<paramN>,<valueN>*checksum**
 
-  +---+------------+-----------------------------------------------------------------------+
-  |   | Field      |  Description                                                          |
-  +---+------------+-----------------------------------------------------------------------+
-  | 0 | APCFG      |  Sentence identifier                                                  |
-  +---+------------+-----------------------------------------------------------------------+
-  | 1 |<read/write>|  'r': read  RAM, 'w': write RAM, 'R': read FLASH, 'W': write FLASH    |
-  +---+------------+-----------------------------------------------------------------------+
-  | 2 | <param>    |  Configuration parameter (APCFG code)                                 |
-  +---+------------+-----------------------------------------------------------------------+
-  | 3 | <value>    |  Configuration value, expressed in ASCII                              |
-  +---+------------+-----------------------------------------------------------------------+
+  +---+------------+-------------------------------------------------------------------------------------+
+  |   | Field      |  Description                                                                        |
+  +---+------------+-------------------------------------------------------------------------------------+
+  | 0 | APCFG      |  Sentence identifier                                                                |
+  +---+------------+-------------------------------------------------------------------------------------+
+  | 1 |<read/write>|  'r': read  RAM, 'w': write RAM, 'R': read FLASH, 'W': write FLASH                  |
+  +---+------------+-------------------------------------------------------------------------------------+
+  | 2 | <param>    |  Configuration parameter (APCFG code)                                               |
+  +---+------------+-------------------------------------------------------------------------------------+
+  | 3 | <value>    |  Configuration value, expressed in ASCII                                            |
+  +---+------------+-------------------------------------------------------------------------------------+
+  | 4 | checksum   |  XOR of bytes between # and \* written in hexadecimal (letters must be uppercase)   |
+  +---+------------+-------------------------------------------------------------------------------------+
 
 For more details on configuration parameters and values, see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.
 
-4.2 APODO Message
+4.2 APVEH Messages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The easiest way to set ANELLO vehicle configurations is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#vehicle-configurations>`__, 
+which saves all changes to non-volatile flash memory. 
+
+Alternatively, the unit can be configured using the APVEH message, which allows for both temporary (RAM) and permanent setting (FLASH) of configuration parameters.
+
+**#APVEH,<r/w/R/W>,<param1>,<value1>,...,<paramN>,<valueN>*checksum**
+
+  +---+------------+-------------------------------------------------------------------------------------+
+  |   | Field      |  Description                                                                        |
+  +---+------------+-------------------------------------------------------------------------------------+
+  | 0 | APVEH      |  Sentence identifier                                                                |
+  +---+------------+-------------------------------------------------------------------------------------+
+  | 1 |<read/write>|  'r': read  RAM, 'w': write RAM, 'R': read FLASH, 'W': write FLASH                  |
+  +---+------------+-------------------------------------------------------------------------------------+
+  | 2 | <param>    |  Configuration parameter (APVEH code)                                               |
+  +---+------------+-------------------------------------------------------------------------------------+
+  | 3 | <value>    |  Configuration value, expressed in ASCII                                            |
+  +---+------------+-------------------------------------------------------------------------------------+
+  | 4 | checksum   |  XOR of bytes between # and \* written in hexadecimal (letters must be uppercase)   |
+  +---+------------+-------------------------------------------------------------------------------------+
+
+4.3 APODO Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The ANELLO EVK and GNSS INS accepts odometer input over the configuration port.
 The APODO message is in ASCII format and used to convey the vehicle direction and a speed.
@@ -555,14 +581,14 @@ For example, the following would all be interpreted as moving in reverse with a 
 .. note:: If sending odometer speeds by UDP from another program, send to UDP port 3 on the EVK, from the computer's UDP port matching "odometer port" configuration.
 
 
-4.3 RTCM Data Input 
+4.4 RTCM Data Input 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Standard RTCM messages can be forwarded to the data port of the ANELLO EVK and GNSS INS to enable the GNSS receivers to reach RTK precision. 
 Standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages, are supported. 
 The ANELLO Python Program provides an NTRIP client which can connect to a standard NTRIP network and forward the RTCM messages to the ANELLO unit.
 
 
-4.4 Ping Command
+4.5 Ping Command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 The Ping command can be used to test if the serial port is properly configured.
 
@@ -573,7 +599,7 @@ A correctly received ping command generates a response from the unit of:
 #APPNG,0*54
 
 
-4.5 Echo Command
+4.6 Echo Command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 The Echo command serves as an additional communication test for the serial port configuration as well as the checksum generator. For example:
 
@@ -584,7 +610,7 @@ A correctly received Echo command generates an identical response from the unit:
 #APECH,Echo! echo… ech… e…\*77.
 
 
-4.6 Reset Command
+4.7 Reset Command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 The reset command allows the user to reset the system, e.g. after changing a configuration setting that requires a power cycle. 
 No response message is generated; however, the system will reset causing the system output to be suspended briefly. 
@@ -592,7 +618,7 @@ No response message is generated; however, the system will reset causing the sys
 #APRST,0*58 
 
 
-4  Error Messages
+5  Error Messages
 -----------------------------
 
 If an incorrect command is sent to the unit, it responds with one of ten error responses. The error message format is: 
