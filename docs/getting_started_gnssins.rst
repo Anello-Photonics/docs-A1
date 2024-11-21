@@ -48,7 +48,6 @@ For a full list of software tools, please see `Software Tools <https://docs-a1.r
 
 
 
-=======
 3.) Vehicle Installation
 ----------------------------
 The GNSS INS can be configured for various installation positions. To minimize configuration steps, 
