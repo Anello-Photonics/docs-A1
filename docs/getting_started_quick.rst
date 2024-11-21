@@ -106,7 +106,6 @@ Corrections must be configured to the WGS84 coordinate frame. Our inertial navig
 
 
 6). Data Collection & Visualization
->>>>>>> origin/main
 ------------------------------------
 
 a). Log Data
