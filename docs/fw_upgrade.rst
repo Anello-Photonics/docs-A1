@@ -8,6 +8,7 @@ If you are on an older version, please contact ANELLO for the latest FW image an
 Firmware Upgrade Procedure
 --------------------------------------
 FW upgrades currently must be done over the serial interface and can be done on computers using the following OS/processors:
+
 1. GNSS INS, EVK, X3: Windows, Linux (x86), Linux (ARM)
 2. IMU+: Windows only
 
