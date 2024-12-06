@@ -3,6 +3,7 @@ Firmware Upgrade
 ======================
 
 ANELLO recommends using the latest firmware (FW) for best results. The latest FW release is:
+
 - GNSS INS, EVK, IMU+: v1.3.24 (released June 17, 2024)
 - X3: v1.0.4
 
@@ -24,8 +25,8 @@ Make sure to first run "git pull" in user_tool to ensure you are using the lates
     2. Run user_program.py and connect to unit over COM (USB)
         
     3. On main menu, select Upgrade -> Yes and select ANELLO-provided .hex file
-        1. Upgrade will run automatically and typically takes about 5 minutes to completed
-        2. If you experience any issues, power cycle the unit and start again from step 2
+        - Upgrade will run automatically and typically takes about 5 minutes to completed
+        - If you experience any issues, power cycle the unit and start again from step 2
 
     4. After successful upgrade, the FW version will be updated in System Status upon re-connecting to the unit
 
