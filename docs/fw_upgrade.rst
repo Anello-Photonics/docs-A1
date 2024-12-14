@@ -22,9 +22,9 @@ Make sure to first run "git pull" in user_tool to ensure you are using the lates
 
     1. Ensure HtxAurixBootLoader.exe is in user_tool -> board_tools
 
-    2. Run user_program.py and connect to unit over COM (USB)
+    2. Run user_program.py (for EVK, GNSS INS, and IMU+) or x3_tool.py (for X3) and connect to unit over COM (USB)
         
-    3. On main menu, select Upgrade -> Yes and select ANELLO-provided .hex file
+    3. On main menu, select Upgrade -> Yes. Select ANELLO-provided .hex file
         - Upgrade will run automatically and typically takes about 5 minutes to completed
         - If you experience any issues, power cycle the unit and start again from step 2
 
