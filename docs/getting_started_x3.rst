@@ -14,14 +14,15 @@ The ANELLO X3 unit is pictured below. It features an 8 pin automotive-grade Mole
    :align: center
 
 
-If you received an ANELLO IMU+ Loaner unit, you will also receive the Accessory Kit with the items pictured below. 
+If you received an ANELLO X3 Loaner unit, you will also receive the Accessory Kit with the items pictured below. 
 For IMU+ purchases, the Accessory Kit is sold separately and more information is available upon request.
 
-.. image:: media/IMU_EvalKit.png
+.. image:: media/X3_Accesory_Kit.png
    :width: 70 %
    :align: center
 
-To use the IMU Evaluation Kit, connect the hardware as follows:
+To use the X3 Evaluation Kit, connect the hardware as follows:
+=-#~
 
 a. Connect breakout cable to IMU unit. 
 b. Connect to power using the AC/DC adapter. 
