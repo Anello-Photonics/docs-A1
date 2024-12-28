@@ -45,4 +45,4 @@ Filter Initialization
 The Kalman filter typically converges within 2-5 minutes of driving. 
 The faster the driving, and the more dynamics the vehicle experiences (e.g. left and right turns), the faster the filter converges.
 
-For GPS-denied testing, we recommend allowing at least a 2-5 minute initialization period of driving prior to GPS signal loss.
+For GPS-denied testing, we recommend allowing at least a 2-5 minute initialization period of driving prior to GPS signal loss or degradation.

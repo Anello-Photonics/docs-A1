@@ -1,7 +1,7 @@
 Communication & Messaging
 ===========================
 
-1  Interfaces
+1  Interfacing
 --------------------------
 
 The communication interfaces currently supported for the ANELLO products are listed below:
@@ -12,7 +12,8 @@ The communication interfaces currently supported for the ANELLO products are lis
 
     3. ANELL IMU/IMU+: Serial (RS-232)
 
-Serial Communication Parameters:
+1.1 Serial Communication Parameters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Default Baud Rate:
 - EVK: 921600
@@ -25,6 +26,8 @@ Data Format:
 - Stop Bits: 1 
 - Parity: None
 
+1.2 Port Definitions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For all interfaces, there are two main port types. 
 
 1. The data port is where the main ANELLO output messages are transmitted, and also serves as the input port for the RTCM correction stream.
@@ -56,6 +59,29 @@ These ports, along with IP addresses and other UDP settings should be configured
   The GNSS INS and IMU/IMU+ have two RS-232 connections, where RS232-1 is the data port and RS232-2 is the configuration port. 
   The port numbers that appear once connected to the computer are determined by how the OS assigns the ports, and therefore the 
   Data port is not necessarily the lowest port # like in the EVK.
+
+1.3 Time Synchronization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1.3.1 External Sync Pulse
+""""""""""""""""""""""""""
+All ANELLO products include the option for time synchronization via an external sync pulse, e.g. from external PPS signal.
+To enable external synchronization, the "Sync Pulse Enable" `Unit Configuration <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_ must be enabled.
+Enabling the sync configuration requires the unit to be reset or repowered as the interrupt is set up during MCU initialization. 
+When "Sync Pulse Enable" is on, the rising edge of the sync pulse is detected by an interrupt and time-tagged in the IMU message "T_Sync" field.
+
+The sync pulse input can be sent up to 100 Hz with a pulse width of at least 5 ms. 
+A voltage level of 3.3 V is standard, but voltages from 1.5 to 5 V are also supported.
+See `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-evk>`_ to find the sync input pin for each product.
+
+1.3.2 PPS Synchronization
+""""""""""""""""""""""""""
+For the ANELLO GNSS INS and EVK products which contain an internal GNSS receiver, a PPS output pulse is also supplied for time synchronization.
+PPS is output directly from the GNSS receiver, which will continue outputting a PPS pulse even if a GPS time fix is lost. 
+Note that the PPS accuracy will degrade with time, with drifts around 1 us per second without GPS.
+See `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-evk>`_ to find the PPS output pin for each product.
+
+The PPS rising edge is also detected by an interrupt in the firmware. At the time of the interrupt, the MCU time is recorded by the firmware.
+The MCU time of the PPS interrupt is placed into the APINS message. 
 
 
 2  ASCII Data Output Messages

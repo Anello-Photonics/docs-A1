@@ -3,7 +3,7 @@
 Communication & Messaging
 ===========================
 
-1  Port Definitions
+1  Interfacing
 --------------------------
 
 The communication interfaces currently supported for the ANELLO products are listed below:
@@ -14,7 +14,11 @@ The communication interfaces currently supported for the ANELLO products are lis
 
     3. ANELL IMU/IMU+: Serial (RS-232)
 
+Serial communication occurs at a default baud rate of 921600 for the EVK and 230400 for GNSS INS and IMU/IMU+.
+For interfacing on a serial interface software such as CoolTerm, please set Data Bits = 8, Stop Bits = 1, and Parity = None.
 
+1.1 Port Definitions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For all interfaces, there are two main port types. 
 
 1. The data port is where the main ANELLO output messages are transmitted, and also serves as the input port for the RTCM correction stream.
@@ -40,9 +44,6 @@ in order to keep the serial configuration port free.
 
 UDP communication uses fixed port numbers on the EVK but selectable ports on the external device.
 These ports, along with IP addresses and other UDP settings should be configured (see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_).
-
-Serial communication occurs at a default baud rate of 921600 for the EVK and 230400 for GNSS INS and IMU/IMU+.
-For interfacing on a serial interface software such as CoolTerm, please set Data Bits = 8, Stop Bits = 1, and Parity = None.
 
  .. note:: 
   The "lowest" and "highest" serial ports mentioned above refer to the EVK, which uses an FTDI chip to create 4 virtual COM ports.
