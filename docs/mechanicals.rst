@@ -48,3 +48,5 @@ IMU/IMU+ SCD Drawing: :download:`PDF <media/SCD_Mechanical_IMU.pdf>`
 .. note::
    If you purchased the IMU/IMU+ Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/SCD_Breakout Cable_IMU.pdf>`
 
+ANELLO X3
+---------------------------------

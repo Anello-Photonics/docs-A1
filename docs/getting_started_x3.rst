@@ -22,26 +22,24 @@ For IMU+ purchases, the Accessory Kit is sold separately and more information is
    :align: center
 
 To use the X3 Evaluation Kit, connect the hardware as follows:
-=-#~
 
-a. Connect breakout cable to IMU unit. 
+a. Connect breakout cable to X3 unit. 
 b. Connect to power using the AC/DC adapter. 
 c. Connect to PC, Mac, or Ubuntu computing system via RS-232 using USB 2.0 to DB9 Serial Converters. 
 
 
-An SCD drawing of the IMU+ and a schematic of the Accessory kit breakout cable can be found in 
-`Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-imu-imu>`__.
-
+An SCD drawing of the X3 and a schematic of the Accessory kit breakout cable can be found in 
+`Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-x3>`__.
 
 2.) Software Interfaces
 ---------------------------------
-ANELLO provides a Python tool to connect, configure, and log data with the ANELLO IMU.
+ANELLO provides a Python tool to connect, configure, and log data with the ANELLO X3.
 Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`__ to install and run the Python tool.
 Be sure to run "git pull" regularly to make sure you are using the latest Python tool updates.
 
 ANELLO units are also compatible with ROS using our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
 
-If you would like to connect to the IMU using a serial interface software such as CoolTerm, 
+If you would like to connect to the X3 using a serial interface software such as CoolTerm, 
 please ensure you use the correct baud rate (default for the IMU is 230400), and set Data Bits = 8, Stop Bits = 1, and Parity = None.
 
 For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software_tools.html>`_.
@@ -49,14 +47,14 @@ For a full list of software tools, please see `Software Tools <https://docs-a1.r
 
 3.) Configure ANELLO X3
 ---------------------------------
-Before testing your IMU, please review the `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_ 
+Before testing your X3, please review the `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_ 
 and ensure they are set according to your testing needs.
 
 The easiest way to change configurations is using the `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#set-anello-configurations>`__.
 Select *Unit Configuration* from the main menu. The default configurations will appear, and you can select *Edit* to change a configuration.
 
 You may also send configurations manually using the `#APCFG command <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apcfg-messages>`_ 
-over the IMU's configuration port using a serial interface software such as CoolTerm.
+over the X3's configuration port using a serial interface software such as CoolTerm.
 
 
 4.) Data Collection
@@ -72,11 +70,11 @@ ANELLO recommends logging data using either:
 b.) Monitor Data Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The ANELLO Python Tool can be used to `monitor data <https://docs-a1.readthedocs.io/en/latest/python_tool.html#monitor-output>`__ 
-from the ANELLO IMU in real-time by selecting *Monitor* in the main menu.
+from the ANELLO X3 in real-time by selecting *Monitor* in the main menu.
 
 
 **Congratulations!!!**
-You have completed the IMU setup! Please contact support@anellophotonics.com with any questions. 
+You have completed the X3 setup! Please contact support@anellophotonics.com with any questions. 
 
 Note: This device complies with FCC Part 15 standards. Operation is subject to the following two conditions: 
 (1) This device may not cause harmful interference, and 
