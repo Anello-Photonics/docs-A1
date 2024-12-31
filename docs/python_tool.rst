@@ -45,7 +45,7 @@ Run the Python Tool
 .. code-block:: python
     
     cd board_tools
-    python user_program.py
+    python user_program.py (for ANELLO X3: python x3_tool.py)
 
 You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#run-python-program>`__.
 

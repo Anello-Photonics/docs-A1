@@ -10,7 +10,9 @@ The communication interfaces currently supported for the ANELLO products are lis
     
     2. ANELLO GNSS INS: Serial (RS-232), UDP (Automotive Ethernet)
 
-    3. ANELL IMU/IMU+: Serial (RS-232)
+    3. ANELLO IMU/IMU+: Serial (RS-232)
+
+    4. ANELLO X3: Serial (RS-422), UART (3.3V)
 
 1.1 Serial Communication Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -18,6 +20,7 @@ The communication interfaces currently supported for the ANELLO products are lis
 Default Baud Rate:
 - EVK: 921600
 - GNSS INS and IMU/IMU+: 230400
+- X3: 460800
 
 RS-232 Voltage Levels: +/- 7V
 

@@ -7,7 +7,7 @@ Please contact support@anellophotonics.com with any questions.
 
 1.) Hardware Connections
 ---------------------------------
-The ANELLO X3 unit is pictured below. It features an 8 pin automotive-grade Molex MX150 connector.
+The ANELLO X3 unit is pictured below.
 
 .. image:: media/X3.png
    :width: 30 %
@@ -25,7 +25,7 @@ To use the X3 Evaluation Kit, connect the hardware as follows:
 
 a. Connect breakout cable to X3 unit. 
 b. Connect to power using the AC/DC adapter. 
-c. Connect to PC, Mac, or Ubuntu computing system via RS-232 using USB 2.0 to DB9 Serial Converters. 
+c. Connect to PC, Mac, or Ubuntu computing system via RS-422 using USB 2.0 to DB9 Serial Converters. 
 
 
 An SCD drawing of the X3 and a schematic of the Accessory kit breakout cable can be found in 
@@ -40,7 +40,7 @@ Be sure to run "git pull" regularly to make sure you are using the latest Python
 ANELLO units are also compatible with ROS using our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
 
 If you would like to connect to the X3 using a serial interface software such as CoolTerm, 
-please ensure you use the correct baud rate (default for the IMU is 230400), and set Data Bits = 8, Stop Bits = 1, and Parity = None.
+please ensure you use the correct baud rate (default for the X3 is 460800), and set Data Bits = 8, Stop Bits = 1, and Parity = None.
 
 For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software_tools.html>`_.
 
