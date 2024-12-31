@@ -51,6 +51,12 @@ IMU/IMU+ SCD Drawing: :download:`PDF <media/SCD_Mechanical_IMU.pdf>`
 ANELLO X3
 ---------------------------------
 
+Mounting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The X3 is supplied on a mounting plate/heatsink. If removed from plate, adequate heatsinking or air flow conditions must be maintained. Please consult with ANELLO (support@anellophotonics.com) with any questions.
+
+.. figure:: media/X3_on_mounting_plate.png
+   :align: center
 
 X3 SCD Drawing: :download:`PDF <media/SCD_Mechanical_X3.pdf>`
 
