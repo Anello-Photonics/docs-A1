@@ -168,11 +168,11 @@ This is the same as APIMU but with additional Optical Gyro Rates for 3 axes, mag
   +---+------------+-----------+-----------------------------------------------------------------------+
   | 9 | OG_WZ      |  deg/s    |  High Precicision Z-Axis Angular Rate (ANELLO Optical Gyro)           |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 10| MAG_X      |  g        |  X-Axis Magnetic Field Measurement                                      |
+  | 10| MAG_X      |  g        |  X-Axis Magnetic Field Measurement                                    |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 11| MAG_Y      |  g        |  X-Axis Magnetic Field Measurement                                        |
+  | 11| MAG_Y      |  g        |  X-Axis Magnetic Field Measurement                                    |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 9 | MAG_Z      |  g        |  X-Axis Magnetic Field Measurement           |
+  | 9 | MAG_Z      |  g        |  X-Axis Magnetic Field Measurement                                    |
   +---+------------+-----------+-----------------------------------------------------------------------+
   | 12| Temp C     |  °C       |  Temperature                                                          |
   +---+------------+-----------+-----------------------------------------------------------------------+
