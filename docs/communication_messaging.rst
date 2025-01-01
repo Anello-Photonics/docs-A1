@@ -164,31 +164,31 @@ This is the same as APIMU but with additional Optical Gyro Rates for 3 axes, mag
   +---+------------+-----------+-----------------------------------------------------------------------+
   | 9 | OG_WX      |  deg/s    |  High Precicision X-Axis Angular Rate (ANELLO Optical Gyro)           |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 9 | OG_WY      |  deg/s    |  High Precicision Y-Axis Angular Rate (ANELLO Optical Gyro)           |
+  | 10| OG_WY      |  deg/s    |  High Precicision Y-Axis Angular Rate (ANELLO Optical Gyro)           |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 9 | OG_WZ      |  deg/s    |  High Precicision Z-Axis Angular Rate (ANELLO Optical Gyro)           |
+  | 11| OG_WZ      |  deg/s    |  High Precicision Z-Axis Angular Rate (ANELLO Optical Gyro)           |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 10| MAG_X      |  g        |  X-Axis Magnetic Field Measurement                                    |
+  | 12| MAG_X      |  g        |  X-Axis Magnetic Field Measurement                                    |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 11| MAG_Y      |  g        |  X-Axis Magnetic Field Measurement                                    |
+  | 13| MAG_Y      |  g        |  X-Axis Magnetic Field Measurement                                    |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 9 | MAG_Z      |  g        |  X-Axis Magnetic Field Measurement                                    |
+  | 14| MAG_Z      |  g        |  X-Axis Magnetic Field Measurement                                    |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 12| Temp C     |  °C       |  Temperature                                                          |
+  | 15| Temp C     |  °C       |  Temperature                                                          |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 12| Status_X   | Bitfield  |  Status based on bits:                                                |
+  | 16| Status_X   | Bitfield  |  Status based on bits:                                                |
   |   |            |           |  - Bit 0: Gyro discrepency                                            |
   |   |            |           |  - Bit 1: Temperature uncontrolled                                    |
   |   |            |           |  - Bit 2: Over current error                                          |
   |   |            |           |  - Bit 3: SiPhOG supply voltage bad                                   |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 12| Status_Y   | Bitfield  |  Status based on bits:                                                |
+  | 17| Status_Y   | Bitfield  |  Status based on bits:                                                |
   |   |            |           |  - Bit 0: Gyro discrepency                                            |
   |   |            |           |  - Bit 1: Temperature uncontrolled                                    |
   |   |            |           |  - Bit 2: Over current error                                          |
   |   |            |           |  - Bit 3: SiPhOG supply voltage bad                                   |
   +---+------------+-----------+-----------------------------------------------------------------------+
-  | 12| Status_Z   | Bitfield  |  Status based on bits:                                                |
+  | 18| Status_Z   | Bitfield  |  Status based on bits:                                                |
   |   |            |           |  - Bit 0: Gyro discrepency                                            |
   |   |            |           |  - Bit 1: Temperature uncontrolled                                    |
   |   |            |           |  - Bit 2: Over current error                                          |
