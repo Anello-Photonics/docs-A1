@@ -102,7 +102,7 @@ following conventions:
 - APGPS messages are transmitted at 4 Hz
 
 
-2.1 APIMU Message (EVK & GNSS INS)
+2.1.1 APIMU Message (EVK & GNSS INS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The APIMU message is the IMU output message for EVK and GNSS INS units only.
 
@@ -138,7 +138,66 @@ The APIMU message is the IMU output message for EVK and GNSS INS units only.
   
 .. note:: Firmware before v1.0.39 does not have T_Sync field.
 
-2.2 APIM1 Message (IMU & IMU+)
+2.1.2 APIMU Message (X3)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This is the same as APIMU but with additional Optical Gyro Rates for 3 axes, magnetic field measurements, and without odometer values. This is the output message for X3 units only.
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  |   | Field      |  Units    |  Description                                                          |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 0 | APIMU      |           |  Sentence identifier                                                  |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 1 | Time       |  ms       |  Time since power on                                                  |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 2 | T_Sync     |  ms       |  Time at last sync rising edge (zero when sync config disabled)       |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 3 | AX         |  g        |  X-Axis Acceleration                                                  |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 4 | AY         |  g        |  Y-Axis Acceleration                                                  |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 5 | AZ         |  g        |  Z-Axis Acceleration                                                  |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 6 | WX         |  deg/s    |  X-Axis Angular Rate (MEMS)                                           |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 7 | WY         |  deg/s    |  Y-Axis Angular Rate (MEMS)                                           |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 8 | WZ         |  deg/s    |  Z-Axis Angular Rate (MEMS)                                           |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 9 | OG_WX      |  deg/s    |  High Precicision X-Axis Angular Rate (ANELLO Optical Gyro)           |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 9 | OG_WY      |  deg/s    |  High Precicision Y-Axis Angular Rate (ANELLO Optical Gyro)           |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 9 | OG_WZ      |  deg/s    |  High Precicision Z-Axis Angular Rate (ANELLO Optical Gyro)           |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 10| MAG_X      |  g        |  X-Axis Magnetic Field Measurement                                      |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 11| MAG_Y      |  g        |  X-Axis Magnetic Field Measurement                                        |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 9 | MAG_Z      |  g        |  X-Axis Magnetic Field Measurement           |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 12| Temp C     |  °C       |  Temperature                                                          |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 12| Status_X   | Bitfield  |  Status based on bits:                                                |
+  |   |            |           |  - Bit 0: Gyro discrepency                                            |
+  |   |            |           |  - Bit 1: Temperature uncontrolled                                    |
+  |   |            |           |  - Bit 2: Over current error                                          |
+  |   |            |           |  - Bit 3: SiPhOG supply voltage bad                                   |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 12| Status_Y   | Bitfield  |  Status based on bits:                                                |
+  |   |            |           |  - Bit 0: Gyro discrepency                                            |
+  |   |            |           |  - Bit 1: Temperature uncontrolled                                    |
+  |   |            |           |  - Bit 2: Over current error                                          |
+  |   |            |           |  - Bit 3: SiPhOG supply voltage bad                                   |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+  | 12| Status_Z   | Bitfield  |  Status based on bits:                                                |
+  |   |            |           |  - Bit 0: Gyro discrepency                                            |
+  |   |            |           |  - Bit 1: Temperature uncontrolled                                    |
+  |   |            |           |  - Bit 2: Over current error                                          |
+  |   |            |           |  - Bit 3: SiPhOG supply voltage bad                                   |
+  +---+------------+-----------+-----------------------------------------------------------------------+
+
+
+
+2.1.3 APIM1 Message (IMU & IMU+)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The APIM1 message is the same as APIMU but without odometer values. This is the output message for IMU and IMU+ units only.
 
@@ -170,7 +229,7 @@ The APIM1 message is the same as APIMU but without odometer values. This is the 
   
 .. note:: Firmware before v1.0.39 does not have T_Sync field.
 
-2.3 APGPS Message
+2.2 APGPS Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The APGPS message is the PVT output from the EVK and GNSS INS units only.
 
@@ -215,7 +274,7 @@ The APGPS message is the PVT output from the EVK and GNSS INS units only.
 .. note:: This packet should be used to correlate GPS time and system time. The packet is time stamped at the time the PPS signal is generated by the GNSS receiver.
 
 
-2.4 APHDG Message
+2.3 APHDG Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The APHDG message contains dual heading information from the dual GNSS receivers if both ANT1 and ANT2 are connected. 
 This message is output from the EVK and GNSS INS units only.
@@ -256,7 +315,7 @@ This message is output from the EVK and GNSS INS units only.
   +---+------------------------+-----------+-----------------------------------------------------------------------+
 
 
-2.5 APINS Message
+2.4 APINS Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The APINS message is the Kalman filter position, velocity, and attitude solution output from the EVK and GNSS INS units.
 
