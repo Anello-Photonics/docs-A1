@@ -417,7 +417,9 @@ The IMU output message for EVK and GNSS INS units has a subtype ID of 1.
 
 3.1.2 IMU Message (X3)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 The ANELLO binary packets use a 2-byte preamble followed by a 1-byte message type and a 1-byte length. There is also a 2-byte checksum after the payload.
+
   +-----------+---------------+---------------------+------------------------------------+-------------+
   | Preamble  | Message Type  |  Length information |  Payload                           |  Checksum   | 
   +-----------+---------------+---------------------+------------------------------------+-------------+
