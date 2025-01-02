@@ -379,7 +379,7 @@ However, an `RTCM decoder <https://github.com/Anello-Photonics/decoder/blob/mast
 with the checksum definition found `here <https://github.com/Anello-Photonics/decoder/blob/master/artcm/artcm.c>`_.
 
 
-3.1 IMU Message (EVK & GNSS INS)
+3.1.1 IMU Message (EVK & GNSS INS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The IMU output message for EVK and GNSS INS units has a subtype ID of 1.
 
@@ -415,8 +415,75 @@ The IMU output message for EVK and GNSS INS units has a subtype ID of 1.
   | 13| Temp C      |  int16   |  0.01 °C         |  Temperature                                             |
   +---+-------------+----------+------------------+----------------------------------------------------------+
 
+3.1.2 IMU Message (X3)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The ANELLO binary packets use a 2-byte preamble followed by a 1-byte message type and a 1-byte length. There is also a 2-byte checksum after the payload.
+  +-----------+---------------+---------------------+------------------------------------+-------------+
+  | Preamble  | Message Type  |  Length information |  Payload                           |  Checksum   | 
+  +-----------+---------------+---------------------+------------------------------------+-------------+
+  | 0xC5 0x50 | IMU = 253     |  1-byte             |  Message structure defined below   |  2-byte     | 
+  +-----------+---------------+---------------------+------------------------------------+-------------+
 
-3.2 IMU Message (IMU & IMU+)
+
+  The payload for the binary output message is described below
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  |   | Field       |  Type    |  Units                     |  Description                                             |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 0 | MCU Time    |  uint64  |  ns                        |  Time since power on                                     |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 1 | Sync Time   |  uint64  |  ns                        |  Timestamp of input sync pulse (if enabled and provided) |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 2 | AX1         |  int16   |  g=value*(range*0.0000305) |  Scaled sensor accel                                     |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 3 | AY1         |  int16   |  g=value*(range*0.0000305) |  Scaled sensor accel                                     |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 4 | AZ1         |  int16   |  g=value*(range*0.0000305) |  Scaled sensor accel                                     |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 5 | WX1         |  int16   |  dps=value*(range*0.000035)|  Scaled sensor rate                                      |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 6 | WY1         |  int16   |  dps=value*(range*0.000035)|  Scaled sensor rate                                      |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 7 | WZ1         |  int16   |  dps=value*(range*0.000035)|  Scaled sensor rate                                      |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 8 | OG_WX       |  int32   |  dps * 10000000            |  Scaled sensor rate for FOG                              |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 9 | OG_WY       |  int32   |  dps * 10000000            |  Scaled sensor rate for FOG                              |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 10| OG_WZ       |  int32   |  dps * 10000000            |  Scaled sensor rate for FOG                              |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 11| MAG_X       |  int16   |  g * 4096                  |  Scaled magnetometer data                                |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 12| MAG_Y       |  int16   |  g * 4096                  |  Scaled magnetometer data                                |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 13| MAG_Z       |  int16   |  g * 4096                  |  Scaled magnetometer data                                |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 14| Temperature |  int16   |  °C * 100                  |  Scaled temperature data                                 |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 15| MEMS Range  |  uint16  |  g and dps                 |  First 5 bits accel range, next 11 bits rate range       |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 16| FOG Range   |  uint16  |  dps                       |  FOG range in DPS                                        |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 17| Status_X   | Bitfield  |                            | Status based on bits:                                    |
+  |   |            |           |                            | - Bit 0: Gyro discrepency                                |
+  |   |            |           |                            | - Bit 1: Temperature uncontrolled                        |
+  |   |            |           |                            | - Bit 2: Over current error                              |
+  |   |            |           |                            | - Bit 3: SiPhOG supply voltage bad                       |
+  +---+------------+-----------+----------------------------+----------------------------------------------------------+
+  | 18| Status_Y   | Bitfield  |                            | Status based on bits:                                    |
+  |   |            |           |                            | - Bit 0: Gyro discrepency                                |
+  |   |            |           |                            | - Bit 1: Temperature uncontrolled                        |
+  |   |            |           |                            | - Bit 2: Over current error                              |
+  |   |            |           |                            | - Bit 3: SiPhOG supply voltage bad                       |
+  +---+------------+-----------+----------------------------+----------------------------------------------------------+
+  | 19| Status_Z   | Bitfield  |                            | Status based on bits:                                    |
+  |   |            |           |                            | - Bit 0: Gyro discrepency                                |
+  |   |            |           |                            | - Bit 1: Temperature uncontrolled                        |
+  |   |            |           |                            | - Bit 2: Over current error                              |
+  |   |            |           |                            | - Bit 3: SiPhOG supply voltage bad                       |
+  +---+------------+-----------+----------------------------+----------------------------------------------------------+
+
+
+3.1.3 IMU Message (IMU & IMU+)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The IMU output message for IMU and IMU+ units has a subtype ID of 6. 
 It is the same as IMU message for the EVK and GNSS INS but without odometer values.
