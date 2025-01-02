@@ -425,7 +425,8 @@ The ANELLO binary packets use a 2-byte preamble followed by a 1-byte message typ
   +-----------+---------------+---------------------+------------------------------------+-------------+
 
 
-  The payload for the binary output message is described below
+The payload for the binary output message is described below
+
   +---+-------------+----------+----------------------------+----------------------------------------------------------+
   |   | Field       |  Type    |  Units                     |  Description                                             |
   +---+-------------+----------+----------------------------+----------------------------------------------------------+
