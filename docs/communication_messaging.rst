@@ -463,24 +463,24 @@ The ANELLO binary packets use a 2-byte preamble followed by a 1-byte message typ
   +---+-------------+----------+----------------------------+----------------------------------------------------------+
   | 16| FOG Range   |  uint16  |  dps                       |  FOG range in DPS                                        |
   +---+-------------+----------+----------------------------+----------------------------------------------------------+
-  | 17| Status_X   | Bitfield  |                            | Status based on bits:                                    |
-  |   |            |           |                            | - Bit 0: Gyro discrepency                                |
-  |   |            |           |                            | - Bit 1: Temperature uncontrolled                        |
-  |   |            |           |                            | - Bit 2: Over current error                              |
-  |   |            |           |                            | - Bit 3: SiPhOG supply voltage bad                       |
-  +---+------------+-----------+----------------------------+----------------------------------------------------------+
-  | 18| Status_Y   | Bitfield  |                            | Status based on bits:                                    |
-  |   |            |           |                            | - Bit 0: Gyro discrepency                                |
-  |   |            |           |                            | - Bit 1: Temperature uncontrolled                        |
-  |   |            |           |                            | - Bit 2: Over current error                              |
-  |   |            |           |                            | - Bit 3: SiPhOG supply voltage bad                       |
-  +---+------------+-----------+----------------------------+----------------------------------------------------------+
-  | 19| Status_Z   | Bitfield  |                            | Status based on bits:                                    |
-  |   |            |           |                            | - Bit 0: Gyro discrepency                                |
-  |   |            |           |                            | - Bit 1: Temperature uncontrolled                        |
-  |   |            |           |                            | - Bit 2: Over current error                              |
-  |   |            |           |                            | - Bit 3: SiPhOG supply voltage bad                       |
-  +---+------------+-----------+----------------------------+----------------------------------------------------------+
+  | 17| Status_X    | Bitfield |                            | Status based on bits:                                    |
+  |   |             |          |                            | - Bit 0: Gyro discrepency                                |
+  |   |             |          |                            | - Bit 1: Temperature uncontrolled                        |
+  |   |             |          |                            | - Bit 2: Over current error                              |
+  |   |             |          |                            | - Bit 3: SiPhOG supply voltage bad                       |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 18| Status_Y    | Bitfield |                            | Status based on bits:                                    |
+  |   |             |          |                            | - Bit 0: Gyro discrepency                                |
+  |   |             |          |                            | - Bit 1: Temperature uncontrolled                        |
+  |   |             |          |                            | - Bit 2: Over current error                              |
+  |   |             |          |                            | - Bit 3: SiPhOG supply voltage bad                       |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
+  | 19| Status_Z    | Bitfield |                            | Status based on bits:                                    |
+  |   |             |          |                            | - Bit 0: Gyro discrepency                                |
+  |   |             |          |                            | - Bit 1: Temperature uncontrolled                        |
+  |   |             |          |                            | - Bit 2: Over current error                              |
+  |   |             |          |                            | - Bit 3: SiPhOG supply voltage bad                       |
+  +---+-------------+----------+----------------------------+----------------------------------------------------------+
 
 
 3.1.3 IMU Message (IMU & IMU+)
