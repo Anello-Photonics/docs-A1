@@ -4,7 +4,7 @@ IMU & IMU+ Getting Started Guide
 Thank you for choosing the ANELLO IMU/IMU+! This step-by-step guide will get you started with connection, configuration and data collection.
 Please contact support@anellophotonics.com with any questions.  
 
-1.) Hardware Connections
+1. Hardware Connections
 ---------------------------------
 The ANELLO IMU/IMU+ unit is pictured below. It features an 8 pin automotive-grade Molex MX150 connector.
 
@@ -31,7 +31,7 @@ An SCD drawing of the IMU+ and a schematic of the Accessory kit breakout cable c
 `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-imu-imu>`__.
 
 
-2.) Software Interfaces
+2. Software Interfaces
 ---------------------------------
 ANELLO provides a Python tool to connect, configure, and log data with the ANELLO IMU.
 Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`__ to install and run the Python tool.
@@ -45,7 +45,7 @@ please ensure you use the correct baud rate (default for the IMU is 230400), and
 For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software_tools.html>`_.
 
 
-3.) Configure ANELLO IMU/IMU+
+3. Configure ANELLO IMU/IMU+
 ---------------------------------
 Before testing your IMU, please review the `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_ 
 and ensure they are set according to your testing needs.
@@ -57,17 +57,17 @@ You may also send configurations manually using the `#APCFG command <https://doc
 over the IMU's configuration port using a serial interface software such as CoolTerm.
 
 
-4.) Data Collection
+4. Data Collection
 ----------------------------
 
 
-a.) Log Data
+a. Log Data
 ~~~~~~~~~~~~~~~~~
 ANELLO recommends logging data using either:
 1. ANELLO `Python tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection>`__, by selecting *Log* in the main menu, OR
 2. ANELLO `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`__
 
-b.) Monitor Data Output
+b. Monitor Data Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The ANELLO Python Tool can be used to `monitor data <https://docs-a1.readthedocs.io/en/latest/python_tool.html#monitor-output>`__ 
 from the ANELLO IMU in real-time by selecting *Monitor* in the main menu.

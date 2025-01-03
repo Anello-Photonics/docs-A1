@@ -5,7 +5,7 @@ X3 Getting Started Guide
 Thank you for choosing the ANELLO X3! This step-by-step guide will get you started with connection, configuration and data collection.
 Please contact support@anellophotonics.com with any questions.  
 
-1.) Hardware Connections
+1. Hardware Connections
 ---------------------------------
 The ANELLO X3 unit is pictured below.
 
@@ -31,7 +31,7 @@ c. Connect to PC, Mac, or Ubuntu computing system via RS-422 using USB 2.0 to DB
 An SCD drawing of the X3 and a schematic of the Accessory kit breakout cable can be found in 
 `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-x3>`__.
 
-2.) Software Interfaces
+2. Software Interfaces
 ---------------------------------
 ANELLO provides a Python tool to connect, configure, and log data with the ANELLO X3.
 Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`__ to install and run the Python tool.
@@ -44,8 +44,16 @@ please ensure you use the correct baud rate (default for the X3 is 460800), and 
 
 For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software_tools.html>`_.
 
+3. Timing
+---------------------------------
+The timing of the startup sequence is shown below. Please allow ~7 seconds for valid data output after power is applied.
 
-3.) Configure ANELLO X3
+.. image:: media/x3_timing.png
+   :width: 50 %
+   :align: center
+
+
+4. Configure ANELLO X3
 ---------------------------------
 Before testing your X3, please review the `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_ 
 and ensure they are set according to your testing needs.
@@ -57,17 +65,17 @@ You may also send configurations manually using the `#APCFG command <https://doc
 over the X3's configuration port using a serial interface software such as CoolTerm.
 
 
-4.) Data Collection
+5. Data Collection
 ----------------------------
 
 
-a.) Log Data
+a. Log Data
 ~~~~~~~~~~~~~~~~~
 ANELLO recommends logging data using either:
 1. ANELLO `Python tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection>`__, by selecting *Log* in the main menu, OR
 2. ANELLO `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`__
 
-b.) Monitor Data Output
+b. Monitor Data Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The ANELLO Python Tool can be used to `monitor data <https://docs-a1.readthedocs.io/en/latest/python_tool.html#monitor-output>`__ 
 from the ANELLO X3 in real-time by selecting *Monitor* in the main menu.

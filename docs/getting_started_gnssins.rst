@@ -4,7 +4,7 @@ GNSS INS Getting Started Guide
 Thank you for choosing the ANELLO GNSS INS! This step-by-step guide will get you started with connection, configuration and data collection.
 Please contact support@anellophotonics.com with any questions.  
 
-1.) Hardware Connections
+1. Hardware Connections
 ---------------------------------
 The ANELLO GNSS INS unit is pictured below. It features a 20 pin automotive-grade Molex MX150 connector and two FAKRA SMB GNSS connectors.
 
@@ -33,7 +33,7 @@ An SCD drawing of the GNSS INS and a schematic of the Accessory kit breakout cab
 `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-gnss-ins>`__.
 
 
-2.) Software Interfaces
+2. Software Interfaces
 ---------------------------------
 ANELLO provides a Python tool to connect, configure, and log data with the GNSS INS.
 Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`__  to install and run the Python tool.
@@ -48,7 +48,7 @@ For a full list of software tools, please see `Software Tools <https://docs-a1.r
 
 
 
-3.) Vehicle Installation
+3. Vehicle Installation
 ----------------------------
 The GNSS INS can be configured for various installation positions. To minimize configuration steps, 
 mount near the center of the vehicle’s rear axle, with the X-forward facing the direction of travel.
@@ -61,7 +61,7 @@ The GNSS antennae can be magnetically mounted on the roof of the vehicle. See `A
 for requirements on antenna installation.
 
 
-4.) Configure ANELLO GNSS INS
+4. Configure ANELLO GNSS INS
 ---------------------------------
 Before testing the ANELLO GNSS INS, please review and set:
 
@@ -80,7 +80,7 @@ over the GNSS INS configuration port (RS232-2) using a serial interface software
 .. note:: As of firmware v1.2.6, the antenna baseline must be calibrated to use dual antenna functionality. Please refer to `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_ to ensure all vehicle configurations are set properly.
 
 
-5.) Connect to NTRIP Caster
+5. Connect to NTRIP Caster
 ------------------------------
 Standard RTCM messages can be forwarded to the ANELLO GNSS INS data port to enable the GNSS receivers to reach RTK-level accuracy. 
 The GNSS INS receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages. 
@@ -93,7 +93,7 @@ The *System Status* will show the NTRIP connection status.
 Corrections must be configured to the WGS84 coordinate frame. Our inertial navigation system assumes WGS84 as the reference coordinate system, and using a different coordinate frame may result in incorrect positioning and navigation data.
 
 
-6.) Data Collection & Visualization
+6. Data Collection & Visualization
 ------------------------------------
 
 a. Log Data
@@ -114,7 +114,7 @@ You may also use a `CSV to KML converter <https://www.convertcsv.com/csv-to-kml.
 but note that these tools often have data length limitations.
 
 
-7.) Drive Testing
+7. Drive Testing
 -------------------
 Before conducting drive testing, please review `Drive Testing Best Practices <https://docs-a1.readthedocs.io/en/latest/drive_testing.html>`_ 
 to ensure the system is set up properly, initializes correctly, and is optimized for your use case.
