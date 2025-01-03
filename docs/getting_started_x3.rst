@@ -15,7 +15,7 @@ The ANELLO X3 unit is pictured below.
 
 
 If you received an ANELLO X3 Loaner unit, you will also receive the Accessory Kit with the items pictured below. 
-For IMU+ purchases, the Accessory Kit is sold separately and more information is available upon request.
+For X3 purchases, the Accessory Kit is sold separately and more information is available upon request.
 
 .. image:: media/X3_Accesory_Kit.png
    :width: 70 %
