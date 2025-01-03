@@ -18,16 +18,17 @@ The communication interfaces currently supported for the ANELLO products are lis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Default Baud Rate:
-- EVK: 921600
-- GNSS INS and IMU/IMU+: 230400
-- X3: 460800
+    - EVK: 921600
+    - GNSS INS and IMU/IMU+: 230400
+    - X3: 460800
 
-RS-232 Voltage Levels: +/- 7V
+RS-232 Voltage Levels: 
+    - +/- 7V
 
 Data Format:
-- Data Bits: 8
-- Stop Bits: 1 
-- Parity: None
+    - Data Bits: 8
+    - Stop Bits: 1 
+    - Parity: None
 
 1.2 Port Definitions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

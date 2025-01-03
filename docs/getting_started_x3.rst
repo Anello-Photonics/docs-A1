@@ -18,7 +18,7 @@ If you received an ANELLO X3 Loaner unit, you will also receive the Accessory Ki
 For X3 purchases, the Accessory Kit is sold separately and more information is available upon request.
 
 .. image:: media/X3_Accesory_Kit.png
-   :width: 70 %
+   :width: 50 %
    :align: center
 
 To use the X3 Evaluation Kit, connect the hardware as follows:
