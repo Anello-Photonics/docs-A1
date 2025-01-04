@@ -813,3 +813,47 @@ The following table lists the error code along with the corresponding descriptio
 +------------+--------------------------------------------+
 | 11         | Disabled command (applies to APODO)        |
 +------------+--------------------------------------------+
+
+6  Checksum
+----------------------------
+
+6.1 Ascii Checksum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The ASCII checksum is an XOR of all characters between the start character ‘#’ and the checksum indicator ‘*’. The following python code snippet can be used to generate the correct checksum.
+
+.. code-block:: python
+
+    # Specify the input message (generates the string: #APCFG,W,odr,2,msg,IMU*4B)
+    msg = b’APCFG,W,odr,2,msg,IMU’
+
+    # Generate the checksum for the inertial product input message
+    checksum = 0
+    for c in msg:
+      checksum = checksum ^ int(c)
+
+    # Print the complete message (starting field and checksum) to the screen
+    print(‘#%s*%02X’ % (msg.decode(), checksum))
+
+
+6.2 Binary Checksum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+GNSS / INS, EVK, IMU / IMU+:
+  The checksum definition can befound `here <https://github.com/Anello-Photonics/decoder/blob/master/artcm/artcm.c>`_.
+
+
+X3:
+  The 2 preamble bytes and the checksum itself are not included in the checksum calculation.
+  Checksum is calculated as follows, where N is the number of bytes included in the checksum calculation:
+
+  .. code-block:: python
+
+    CK_A = 0
+    CK_B = 0
+    for (I = 0; I < N; I++)
+    {
+    CK_A = CK_A + Buffer[I]
+    CK_B = CK_B + CK_A
+    }
+
