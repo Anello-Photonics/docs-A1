@@ -840,7 +840,7 @@ The ASCII checksum is an XOR of all characters between the start character â€˜#â
 
 
 GNSS / INS, EVK, IMU / IMU+:
-  The checksum definition can befound `here <https://github.com/Anello-Photonics/decoder/blob/master/artcm/artcm.c>`_.
+  The checksum definition can be found `here <https://github.com/Anello-Photonics/decoder/blob/master/artcm/artcm.c>`_.
 
 
 X3:
@@ -849,11 +849,11 @@ X3:
 
   .. code-block:: python
 
-    CK_A = 0
-    CK_B = 0
-    for (I = 0; I < N; I++)
-    {
-    CK_A = CK_A + Buffer[I]
-    CK_B = CK_B + CK_A
-    }
+      CK_A = 0
+      CK_B = 0
+      for (I = 0; I < N; I++)
+      {
+      CK_A = CK_A + Buffer[I]
+      CK_B = CK_B + CK_A
+      }
 
