@@ -50,6 +50,7 @@ IMU/IMU+ SCD Drawing: :download:`PDF <media/SCD_Mechanical_IMU.pdf>`
 
 ANELLO X3
 ---------------------------------
+The ANELLO X3 features a 14 pin Molex Microfit 430451427 connector.
 
 Mounting
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
