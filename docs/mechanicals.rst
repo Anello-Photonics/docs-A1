@@ -48,3 +48,21 @@ IMU/IMU+ SCD Drawing: :download:`PDF <media/SCD_Mechanical_IMU.pdf>`
 .. note::
    If you purchased the IMU/IMU+ Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/SCD_Breakout Cable_IMU.pdf>`
 
+ANELLO X3
+---------------------------------
+The ANELLO X3 features a 14 pin Molex Microfit 430451427 connector.
+
+Mounting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The X3 is supplied on a mounting plate/heatsink. If removed from plate, adequate heatsinking or air flow conditions must be maintained. Please consult with ANELLO (support@anellophotonics.com) with any questions.
+
+.. figure:: media/X3_on_mounting_plate.png
+   :align: center
+
+X3 SCD Drawing: :download:`PDF <media/SCD_Mechanical_X3.pdf>`
+
+.. figure:: media/SCD_Mechanical_X3.pdf
+   :align: center
+
+.. note::
+   If you purchased the X3 Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/SCD_Breakout Cable_X3.pdf>`

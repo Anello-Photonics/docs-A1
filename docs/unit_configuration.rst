@@ -7,8 +7,11 @@ which saves all changes to non-volatile flash memory.
 Alternatively, the unit can be configured using the `APCFG message <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apcfg-messages>`_.
 
 Unit Configuration Settings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------
 The available parameters and values to configure are described in the table below:
+
+GNSS / INS and ANELLO EVK:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
   | Configuration          | APCFG Code | Value/Description                                                                                           |
@@ -63,6 +66,27 @@ The available parameters and values to configure are described in the table belo
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
   | NHC                    | nhc        | Non-holonomic constraint. 0: Default Vehicle, 2: Heavy Vibration Vehicle, 7: NHC off (not recommended)      |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
+
+IMU / IMU+ and ANELLO X3:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
+  | Configuration          | APCFG Code | Value/Description                                                                                           |
+  +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
+  | Output Data Rate       | odr        | Output rate of APIMU message: 20, 50, 100, or 200 Hz. Requires reset.                                       |
+  +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
+  | Accel Cutoff Freq      | lpa        | Low-pass filter cutoff frequency [Hz] for the MEMS accelerometer (0 disables filter)                        |
+  +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
+  | MEMS Gyro Cutoff Freq  | lpw        | Low-pass filter cutoff frequency [Hz] for the MEMS angular rate sensor (0 disables filter)                  |
+  +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
+  | FOG Cutoff Freq        | lpo        | Low-pass filter cutoff frequency [Hz] for the optical gyro (0 disables filter)                              |
+  +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
+  | Baud Rate              | bau        | Serial communication baud rate in bits per second. Requires reset.                                          |
+  +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
+  | Sync Pulse Enable      | sync       | Enables the external synchronization pulse input: 'on', 'off'                                               |
+  +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
+  | Output Message Format  | mfm        | Format of the output messages. 1: ASCII, 4: RTCM (default)                                                  |
+  +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
+  
 
 .. note:: Some configurations require a system reset after changing, such as the ODR and baud rate. This can be done by selecting "Reset" in the user_program.py main menu, or sending the reset command over the Configuration port: #APRST,0*58 
 

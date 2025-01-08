@@ -17,6 +17,7 @@ Reach out to info@anellophotonics.com for more information.
     getting_started_quick
     getting_started_gnssins
     getting_started_imu
+    getting_started_x3
     python_tool
     setup_troubleshooting
     unit_configuration
