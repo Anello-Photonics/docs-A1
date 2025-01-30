@@ -116,8 +116,8 @@ This configuration is only used in the ANELLO algorithm and does not affect IMU 
 The following 8 right hand rule frames are possible:
 
     1. +X+Y+Z  Default; Unit mounted upright with X pointing in vehicle forward
-    2. +Y-X+Z  Unit mounted upright with X pointing in vehicle right
-    3. -Y+X+Z  Unit mounted upright with X pointing in vehicle left
+    2. +Y-X+Z  Unit mounted upright with X pointing in vehicle left
+    3. -Y+X+Z  Unit mounted upright with X pointing in vehicle right
     4. -X-Y+Z  Unit mounted upright with X pointing in vehicle back
     5. +X-Y-Z  Unit mounted upside down with X pointing in vehicle forward
     6. +Y+X-Z  Unit mounted upside down with X pointing in vehicle right
