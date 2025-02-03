@@ -74,6 +74,9 @@ from the ANELLO IMU in real-time by selecting *Monitor* in the main menu.
 
 5. ANELLO AHRS Solution
 -------------------------------
+Available as an upgrade for the ANELLO IMU+ is the ANELLO AHRS Solution which provides the roll, pitch and yaw angles calculated as standard aerospace Euler angles in a 3-2-1 (yaw, pitch, roll) body frame rotation at a fixed 100 Hz output data rate.
+Information for configurations can be found in the `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_  and message structures can be found in
+`Communication and Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`_.
 
 **Congratulations!!!**
 You have completed the IMU setup! Please contact support@anellophotonics.com with any questions. 

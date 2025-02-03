@@ -824,35 +824,6 @@ No response message is generated; however, the system will reset causing the sys
 
 #APRST,0*58 
 
-4.8 AHRS Commands.
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-The ANELLO IMU AHRS solution features three additional commands. The commands that are added are: 
-
-"ahrs" : enables or disables the AHRS filter output and calculations. This command is flash only. 
-
-"azupt" : configures the ZUPT mode for the AHRS filter. 0 is off, 1 is heading lock. This command is RAM only. ZUPT is used to tell the IMU AHRS system that it is stationary. 
-The user should only command this mode when the user can confirm that the system is stationary and turn off the mode before motion starts. 
-While ZUPT is on, heading is locked, roll and pitch are estimated with accelerometer values, and angular rate biases are estimated. 
-While ZUPT is off, the angular rates have the biases subtracted before being input  into the filter. 
-
-"ahdg" : allows the user to load in a custom heading to the AHRS filter. Input format is    degrees * 1000 to give 3 decimals of precision. Ex: 180.123 would be loaded as  180123. 
-This command is RAM only. 
-
-Examples:
-----------
-+---------------------+--------------------------------------------+
-| Message             | Description                                |
-+=====================+============================================+
-| APCFG,W,ahrs,1      | Enables AHRS solution                      |
-+---------------------+--------------------------------------------+
-| APCFG,W,ahrs,0      | Disables AHRS solution                     |
-+---------------------+--------------------------------------------+
-| APCFG,w,azupt,1     | Incomplete message (checksum missing)      |
-+---------------------+--------------------------------------------+
-| APCFG,w,azupt,0     | Incorrect checksum                         |
-+---------------------+--------------------------------------------+
-| APCFG,w,ahdg,170000 | Invalid preamble (AP)                      |
-+---------------------+--------------------------------------------+
 
 5  Error Messages
 -----------------------------
