@@ -72,6 +72,8 @@ b. Monitor Data Output
 The ANELLO Python Tool can be used to `monitor data <https://docs-a1.readthedocs.io/en/latest/python_tool.html#monitor-output>`__ 
 from the ANELLO IMU in real-time by selecting *Monitor* in the main menu.
 
+5. ANELLO AHRS Solution
+-------------------------------
 
 **Congratulations!!!**
 You have completed the IMU setup! Please contact support@anellophotonics.com with any questions. 
