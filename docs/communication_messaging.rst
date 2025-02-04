@@ -60,7 +60,7 @@ These ports, along with IP addresses and other UDP settings should be configured
 
  .. note:: 
   The "lowest" and "highest" serial ports mentioned above refer to the EVK, which uses an FTDI chip to create 4 virtual COM ports.
-  The GNSS INS and IMU/IMU+ have two RS-232 connections, where RS232-1 is the data port and RS232-2 is the configuration port. 
+  The GNSS INS and IMU/IMU+ have two RS-232 connections, where RS232-1 is the configuration port and RS232-2 is the data port. 
   The port numbers that appear once connected to the computer are determined by how the OS assigns the ports, and therefore the 
   Data port is not necessarily the lowest port # like in the EVK.
 
@@ -377,6 +377,7 @@ The APAHRS message is only available with the ANELLO AHRS upgrade on the IMU+. I
   | 6 | ZUPT Status|           |  1 if ZUPT is enabled, 0 if ZUPT is disabled                                                                                   |
   +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
 
+.. note:: The yaw is not an absolute heading but an integrated relative heading - unless an absolute heading is provided by the user, after which the optical gyro integrates relative to that absolute heading.
 
 3  RTCM Binary Data Output Messages
 --------------------------------------
@@ -696,6 +697,7 @@ The APAHRS message is only available with the ANELLO AHRS upgrade on the IMU+. I
   | 7 | ZUPT Status   |  uint8   |  1 or 0    |  1 if ZUPT is enabled, 0 if ZUPT is disabled                                                                                 |
   +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
 
+.. note:: The yaw is not an absolute heading but an integrated relative heading - unless an absolute heading is provided by the user, after which the optical gyro integrates relative to that absolute heading.
 
 
 
