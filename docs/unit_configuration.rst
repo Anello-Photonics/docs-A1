@@ -67,6 +67,8 @@ GNSS / INS and ANELLO EVK:
   | NHC                    | nhc        | Non-holonomic constraint. 0: Default Vehicle, 2: Heavy Vibration Vehicle, 7: NHC off (not recommended)      |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
 
+.. note:: The UDP ports are the numbers on the connected computer only. The EVK uses UDP port 1 for data, 2 for configuration, and 3 for odometer.
+
 IMU / IMU+ and ANELLO X3:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
@@ -92,17 +94,17 @@ Additional IMU+ ANELLO AHRS Commands:
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
   | Configuration          | APCFG Code | Value/Description                                                                                           |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
-  | Enable AHRS            | ahrs       | enables or disables the AHRS filter output and calculations. This command is flash only.                    |
+  | Enable AHRS            | ahrs       | Enables or disables the AHRS filter output and calculations. This command is flash only.                    |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
-  | Enable ZUPT            | azupt      | configures the ZUPT mode for the AHRS filter. 0 is off, 1 is heading lock. This command is RAM only.        |
+  | Enable ZUPT            | azupt      | Configures the ZUPT mode for the AHRS filter. 0 is off, 1 is heading lock. This command is RAM only.        |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
-  | Heading Update         | ahdg       | allows the user to load in a custom heading to the AHRS filter. Input format is degrees * 1000 to give 3    |
+  | Heading Update         | ahdg       | Allows the user to load in a custom heading to the AHRS filter. Input format is degrees * 1000 to give 3    |
   |                        |            | decimals of precision. Ex: 180.123 would be loaded as  180123. This command is RAM only.                    |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
 
 .. note:: Some configurations require a system reset after changing, such as the ODR and baud rate. This can be done by selecting "Reset" in the user_program.py main menu, or sending the reset command over the Configuration port: #APRST,0*58 
 
-.. note:: The UDP ports are the numbers on the connected computer only. The EVK uses UDP port 1 for data, 2 for configuration, and 3 for odometer.
+
 
 Output Data Rate (ODR)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -166,4 +168,4 @@ Pitch slope = (pitch_1 - pitch_2) / 2 = -5.0
 
 AZUPT for ANELLO AHRS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Zero Update Position and Timing (ZUPT) is used to tell the IMU AHRS system that it is stationary. The user should only command this mode when the user can confirm that the system is stationary and turn off the mode before motion starts. While ZUPT is on, heading is locked, roll and pitch are estimated with accelerometer values, and angular rate biases are estimated. While ZUPT is off, the angular rates have the biases subtracted before being input into the filter 
+Zero velocity update (ZUPT) is used to tell the IMU AHRS system that it is stationary. The user should only command this mode when the user can confirm that the system is stationary and turn off the mode before motion starts. While ZUPT is on, heading is locked, roll and pitch are estimated with accelerometer values, and angular rate biases are estimated. While ZUPT is off, the angular rates have the biases subtracted before being input into the filter 
