@@ -166,4 +166,4 @@ Pitch slope = (pitch_1 - pitch_2) / 2 = -5.0
 
 AZUPT for ANELLO AHRS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-ZUPT is used to tell the IMU AHRS system that it is stationary.The user shouldonly command this mode when the user can confirm that the system is stationary and turn off the mode before motion starts. While ZUPT is on, heading is locked, roll and pitch are estimated with accelerometer values, and angular rate biases are estimated. While ZUPT is off, the angular rates have the biases subtracted before being input  into the filter 
+Zero Update Position and Timing (ZUPT) is used to tell the IMU AHRS system that it is stationary. The user should only command this mode when the user can confirm that the system is stationary and turn off the mode before motion starts. While ZUPT is on, heading is locked, roll and pitch are estimated with accelerometer values, and angular rate biases are estimated. While ZUPT is off, the angular rates have the biases subtracted before being input into the filter 
