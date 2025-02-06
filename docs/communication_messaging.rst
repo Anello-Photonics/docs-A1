@@ -60,7 +60,7 @@ These ports, along with IP addresses and other UDP settings should be configured
 
  .. note:: 
   The "lowest" and "highest" serial ports mentioned above refer to the EVK, which uses an FTDI chip to create 4 virtual COM ports.
-  The GNSS INS and IMU/IMU+ have two RS-232 connections, where RS232-1 is the data port and RS232-2 is the configuration port. 
+  The GNSS INS and IMU/IMU+ have two RS-232 connections, where RS232-1 is the configuration port and RS232-2 is the data port. 
   The port numbers that appear once connected to the computer are determined by how the OS assigns the ports, and therefore the 
   Data port is not necessarily the lowest port # like in the EVK.
 
@@ -355,6 +355,29 @@ The APINS message is the Kalman filter position, velocity, and attitude solution
 
 .. note:: Roll, pitch and heading angles are calculated as standard aerospace Euler angles in a 3-2-1 (yaw, pitch, roll) body frame rotation.
 
+2.5 APAHRS Message
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The APAHRS message is only available with the ANELLO AHRS upgrade on the IMU+. It provides the roll, pitch and yaw angles calculated as standard aerospace Euler angles in a 3-2-1 (yaw, pitch, roll) body frame rotation.
+
+  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
+  |   | Field      |  Units    |  Description                                                                                                                   |
+  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
+  | 0 | APINS      |           |  Sentence identifier                                                                                                           |
+  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
+  | 1 | Time       |  ms       |  Time since power on                                                                                                           |
+  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
+  | 2 | Sync Time  |  ns       |  Time of the last sync pulse.                                                                                                  |
+  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
+  | 3 | Roll       |  deg      |  Roll in degrees                                                                                                               |
+  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
+  | 4 | Pitch      |  deg      |  Pitch in degrees                                                                                                              |
+  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
+  | 5 | Yaw        |  deg      |  Yaw in degrees                                                                                                                |
+  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
+  | 6 | ZUPT Status|           |  1 if ZUPT is enabled, 0 if ZUPT is disabled                                                                                   |
+  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
+
+.. note:: The yaw is not an absolute heading but an integrated relative heading - unless an absolute heading is provided by the user, after which the optical gyro integrates relative to that absolute heading.
 
 3  RTCM Binary Data Output Messages
 --------------------------------------
@@ -649,7 +672,34 @@ The INS message is the Kalman filter position, velocity, and attitude solution o
   | 14| Status        |  uint8   |            |  0: Attitude Only; 1: Position and Attitude; 2: Position, Attitude, and Heading; 3: RTK Float; 4: RTK Fix                    |
   |   |               |          |            |  If GPS button is turned OFF in Python tool, 8: Attitude Only; 9: Position and Attitude; 10: Position, Attitude, and Heading |  
   +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
-  
+
+3.6 AHRS Message (IMU+)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The APAHRS message is only available with the ANELLO AHRS upgrade on the IMU+. It provides the roll, pitch and yaw angles calculated as standard aerospace Euler angles in a 3-2-1 (yaw, pitch, roll) body frame rotation.
+
+  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
+  |   | Field         |  Type    |  Units     |  Description                                                                                                                 |
+  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
+  | 0 | Message #     |  uint12  |  4058      |                                                                                                                              |
+  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
+  | 1 | Sub Type ID   |  uint4   |  8         |                                                                                                                              |
+  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
+  | 2 | Time          |  uint64  |  ns        |  Time since power on                                                                                                         |
+  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
+  | 3 | Sync Time     |  uint64  |  ns        |  Time of last sync pulse.                                                                                                    |
+  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
+  | 4 | Roll          |  int32   |  1e-5 deg  |  Roll in degrees                                                                                                             |
+  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
+  | 5 | Pitch         |  int32   |  1e-5 deg  |  Pitch in degrees                                                                                                            |
+  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
+  | 6 | Yaw           |  int32   |  1e-5 deg  |  Yaw in degrees                                                                                                              |
+  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
+  | 7 | ZUPT Status   |  uint8   |  1 or 0    |  1 if ZUPT is enabled, 0 if ZUPT is disabled                                                                                 |
+  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
+
+.. note:: The yaw is not an absolute heading but an integrated relative heading - unless an absolute heading is provided by the user, after which the optical gyro integrates relative to that absolute heading.
+
+
 
 4  Input Messages
 -----------------------------
