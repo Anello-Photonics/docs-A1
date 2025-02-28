@@ -1,0 +1,237 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GNSS INS Getting Started Guide &mdash; Anello Developer Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=547657ed" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="IMU &amp; IMU+ Getting Started Guide" href="getting_started_imu.html" />
+    <link rel="prev" title="EVK Getting Started Guide" href="getting_started_quick.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Anello Developer Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ANELLO Developer Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started_quick.html">EVK Getting Started Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GNSS INS Getting Started Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hardware-connections">1. Hardware Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#software-interfaces">2. Software Interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vehicle-installation">3. Vehicle Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-anello-gnss-ins">4. Configure ANELLO GNSS INS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#connect-to-ntrip-caster">5. Connect to NTRIP Caster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-collection-visualization">6. Data Collection &amp; Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-log-data">a. Log Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#b-monitor-data-output">b. Monitor Data Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-data-visualization">c. Data Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#drive-testing">7. Drive Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_imu.html">IMU &amp; IMU+ Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_x3.html">X3 Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_tool.html">ANELLO Python Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_troubleshooting.html">Python Tool Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unit_configuration.html">Unit Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vehicle_configuration.html">Vehicle Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication_messaging.html">Communication &amp; Messaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mechanicals.html">Mechanicals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drive_testing.html">Drive Testing Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fw_upgrade.html">Firmware Upgrade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="known_limitations.html">Known Issues and Limitations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Anello Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">GNSS INS Getting Started Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting_started_gnssins.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gnss-ins-getting-started-guide">
+<h1>GNSS INS Getting Started Guide<a class="headerlink" href="#gnss-ins-getting-started-guide" title="Link to this heading"></a></h1>
+<p>Thank you for choosing the ANELLO GNSS INS! This step-by-step guide will get you started with connection, configuration and data collection.
+Please contact <a class="reference external" href="mailto:support&#37;&#52;&#48;anellophotonics&#46;com">support<span>&#64;</span>anellophotonics<span>&#46;</span>com</a> with any questions.</p>
+<section id="hardware-connections">
+<h2>1. Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading"></a></h2>
+<p>The ANELLO GNSS INS unit is pictured below. It features a 20 pin automotive-grade Molex MX150 connector and two FAKRA SMB GNSS connectors.</p>
+<a class="reference internal image-reference" href="_images/ANELLO_GNSS_INS.png"><img alt="_images/ANELLO_GNSS_INS.png" class="align-center" src="_images/ANELLO_GNSS_INS.png" style="width: 30%;" /></a>
+<p>If you received an ANELLO GNSS INS Loaner unit, you will also receive the Accessory Kit with the items pictured below.
+For GNSS INS purchases, the Accessory Kit is sold separately and more information is available upon request.</p>
+<a class="reference internal image-reference" href="_images/GNSS_INS_EvalKit.png"><img alt="_images/GNSS_INS_EvalKit.png" class="align-center" src="_images/GNSS_INS_EvalKit.png" style="width: 70%;" /></a>
+<p>To use the GNSS INS Evaluation Kit, connect the hardware as follows:</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Connect breakout cable to GNSS INS unit</p></li>
+<li><p>Connect to power using either the AC/DC adapter or the Auto Cable Plug.</p></li>
+<li><p>Connect primary GNSS antenna to ANT1 using SMA to FAKRA Adapters. An additional antenna (ANT2) is optional and enables stationary dual heading.</p></li>
+<li><p>Connect to computer via RS-232 using USB 2.0 to DB9 serial converters for configuration.</p></li>
+<li><p>If you’d like to use the automotive ethernet interface, connection over serial is required first to configure IP addresses.</p></li>
+</ol>
+</div></blockquote>
+<p>An SCD drawing of the GNSS INS and a schematic of the Accessory kit breakout cable can be found in
+<a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-gnss-ins">Mechanicals</a>.</p>
+</section>
+<section id="software-interfaces">
+<h2>2. Software Interfaces<a class="headerlink" href="#software-interfaces" title="Link to this heading"></a></h2>
+<p>ANELLO provides a Python tool to connect, configure, and log data with the GNSS INS.
+Please see instructions on <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/python_tool.html">ANELLO Python Tool</a>  to install and run the Python tool.
+Be sure to run “git pull” regularly to make sure you are using the latest Python tool updates.</p>
+<p>ANELLO units are also compatible with ROS using our C-based <a class="reference external" href="https://github.com/Anello-Photonics/ANELLO_ROS_Driver">ROS driver</a>.</p>
+<p>If you would like to connect to the GNSS INS using a serial interface software such as CoolTerm,
+please ensure you use the correct baud rate (default for the GNSS INS is 230400), and set Data Bits = 8, Stop Bits = 1, and Parity = None.</p>
+<p>For a full list of software tools, please see <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/software_tools.html">Software Tools</a>.</p>
+</section>
+<section id="vehicle-installation">
+<h2>3. Vehicle Installation<a class="headerlink" href="#vehicle-installation" title="Link to this heading"></a></h2>
+<p>The GNSS INS can be configured for various installation positions. To minimize configuration steps,
+mount near the center of the vehicle’s rear axle, with the X-forward facing the direction of travel.</p>
+<a class="reference internal image-reference" href="_images/GNSSINS_Vehicle_Installation.png"><img alt="_images/GNSSINS_Vehicle_Installation.png" class="align-center" src="_images/GNSSINS_Vehicle_Installation.png" style="width: 40%;" /></a>
+<p>The GNSS antennae can be magnetically mounted on the roof of the vehicle. See <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html#antenna-mounting">Antenna Mounting</a>
+for requirements on antenna installation.</p>
+</section>
+<section id="configure-anello-gnss-ins">
+<h2>4. Configure ANELLO GNSS INS<a class="headerlink" href="#configure-anello-gnss-ins" title="Link to this heading"></a></h2>
+<p>Before testing the ANELLO GNSS INS, please review and set:</p>
+<p>1. <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/unit_configuration.html">Unit Configurations</a>: Common Unit Configurations which change between setups are <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#unit-installation-orientation">Orientation</a>,
+<a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#anello-unit-installation-misalignment">Misalignment Angle</a>, and Odometer Units. If you would like to use the Ethernet interface, please turn on “Enable Ethernet Output” and set UDP-related configurations.</p>
+<ol class="arabic simple" start="2">
+<li><p><a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html">Vehicle Configurations</a>: All lever arm measurements and calibrations must be completed prior to drive testing.</p></li>
+</ol>
+<p>The easiest way to change configurations is using the <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/python_tool.html#set-anello-configurations">ANELLO Python Tool</a>.
+Select <em>Unit Configuration</em> from the main menu. The default configurations will appear, and you can select <em>Edit</em> to change a configuration.</p>
+<p>You may also send configurations manually using the <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apcfg-messages">#APCFG command</a>
+over the GNSS INS configuration port (RS232-2) using a serial interface software such as CoolTerm.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As of firmware v1.2.6, the antenna baseline must be calibrated to use dual antenna functionality. Please refer to <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html">Vehicle Configurations</a> to ensure all vehicle configurations are set properly.</p>
+</div>
+</section>
+<section id="connect-to-ntrip-caster">
+<h2>5. Connect to NTRIP Caster<a class="headerlink" href="#connect-to-ntrip-caster" title="Link to this heading"></a></h2>
+<p>Standard RTCM messages can be forwarded to the ANELLO GNSS INS data port to enable the GNSS receivers to reach RTK-level accuracy.
+The GNSS INS receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages.</p>
+<p>The ANELLO Python Program also provides an NTRIP caster which can connect to a standard NTRIP network and forward the received RTCM messages into the GNSS INS.</p>
+<p>From the Python tool main menu, select <em>NTRIP</em> and then <em>Start</em>. Enter the NTRIP caster details as prompted.
+The <em>System Status</em> will show the NTRIP connection status.</p>
+<p>Corrections must be configured to the WGS84 coordinate frame. Our inertial navigation system assumes WGS84 as the reference coordinate system, and using a different coordinate frame may result in incorrect positioning and navigation data.</p>
+</section>
+<section id="data-collection-visualization">
+<h2>6. Data Collection &amp; Visualization<a class="headerlink" href="#data-collection-visualization" title="Link to this heading"></a></h2>
+<section id="a-log-data">
+<h3>a. Log Data<a class="headerlink" href="#a-log-data" title="Link to this heading"></a></h3>
+<p>ANELLO recommends logging data using either:
+1. ANELLO <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection">Python tool</a>, by selecting <em>Log</em> in the main menu, OR
+2. ANELLO <a class="reference external" href="https://github.com/Anello-Photonics/ANELLO_ROS_Driver">ROS driver</a></p>
+</section>
+<section id="b-monitor-data-output">
+<h3>b. Monitor Data Output<a class="headerlink" href="#b-monitor-data-output" title="Link to this heading"></a></h3>
+<p>The ANELLO Python Tool can be used to <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/python_tool.html#monitor-output">monitor data</a>
+from the ANELLO GNSS INS in real-time by selecting <em>Monitor</em> in the main menu.</p>
+</section>
+<section id="c-data-visualization">
+<h3>c. Data Visualization<a class="headerlink" href="#c-data-visualization" title="Link to this heading"></a></h3>
+<p>The INS solution can be visualized by importing ins.csv into <a class="reference external" href="https://kepler.gl/demo">Kepler</a>.
+You may also use a <a class="reference external" href="https://www.convertcsv.com/csv-to-kml.htm">CSV to KML converter</a> to visualize the results in Google Earth,
+but note that these tools often have data length limitations.</p>
+</section>
+</section>
+<section id="drive-testing">
+<h2>7. Drive Testing<a class="headerlink" href="#drive-testing" title="Link to this heading"></a></h2>
+<p>Before conducting drive testing, please review <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/drive_testing.html">Drive Testing Best Practices</a>
+to ensure the system is set up properly, initializes correctly, and is optimized for your use case.</p>
+<p>If you would like help from the ANELLO team on data analysis and fine-tuning, we ask that you please share:</p>
+<ol class="arabic simple">
+<li><p>The raw log file starting at power-up and including the entire drive period</p></li>
+<li><p>The config file (using the “Save Configs” option in the Python tool main menu).</p></li>
+<li><p>Pictures of the installation (ANELLO unit and antennae)</p></li>
+<li><p>Description of testing goals and performance requirements</p></li>
+</ol>
+<p><strong>Congratulations!!!</strong>
+You have completed the GNSS INS setup and data collection! Please feel free to contact <a class="reference external" href="mailto:support&#37;&#52;&#48;anellophotonics&#46;com">support<span>&#64;</span>anellophotonics<span>&#46;</span>com</a> with any questions.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started_quick.html" class="btn btn-neutral float-left" title="EVK Getting Started Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="getting_started_imu.html" class="btn btn-neutral float-right" title="IMU &amp; IMU+ Getting Started Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Anello Photonics, Inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

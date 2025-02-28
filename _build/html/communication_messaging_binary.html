@@ -1,0 +1,1719 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Communication &amp; Messaging &mdash; Anello Developer Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=547657ed" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Anello Developer Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ANELLO Developer Manual</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_quick.html">EVK Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_gnssins.html">GNSS INS Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_imu.html">IMU &amp; IMU+ Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_x3.html">X3 Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_tool.html">ANELLO Python Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_troubleshooting.html">Python Tool Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unit_configuration.html">Unit Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vehicle_configuration.html">Vehicle Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication_messaging.html">Communication &amp; Messaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mechanicals.html">Mechanicals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drive_testing.html">Drive Testing Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fw_upgrade.html">Firmware Upgrade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="known_limitations.html">Known Issues and Limitations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Anello Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Communication &amp; Messaging</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/communication_messaging_binary.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="communication-messaging">
+<h1>Communication &amp; Messaging<a class="headerlink" href="#communication-messaging" title="Link to this heading"></a></h1>
+<section id="interfacing">
+<h2>1  Interfacing<a class="headerlink" href="#interfacing" title="Link to this heading"></a></h2>
+<p>The communication interfaces currently supported for the ANELLO products are listed below:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>ANELLO EVK: Serial (USB), UDP (Ethernet)</p></li>
+<li><p>ANELLO GNSS INS: Serial (RS-232), UDP (Ethernet)</p></li>
+<li><p>ANELLO IMU/IMU+: Serial (RS-232)</p></li>
+<li><p>ANELLO X3: Serial (RS-422), UART (3.3V)</p></li>
+</ol>
+</div></blockquote>
+<p>Serial communication occurs at a default baud rate of 921600 for the EVK, 230400 for GNSS INS and IMU/IMU+, and 460800 bps for the X3.
+For interfacing on a serial interface software such as CoolTerm, please set Data Bits = 8, Stop Bits = 1, and Parity = None.</p>
+<section id="port-definitions">
+<h3>1.1 Port Definitions<a class="headerlink" href="#port-definitions" title="Link to this heading"></a></h3>
+<p>For all interfaces, there are two main port types.</p>
+<ol class="arabic simple">
+<li><p>The data port is where the main ANELLO output messages are transmitted, and also serves as the input port for the RTCM correction stream.</p></li>
+<li><p>The configuration port is used for inputting configuration messaging, inputting odometer messages, and outputting NMEA messages (firmware v1.2 and later).</p></li>
+</ol>
+<p>For UDP interface, there is a third “odometer” port, which is strictly used to send odometer messages.
+This option can be used to feed in odometer data if using ANELLO Python Program to record data over serial,
+in order to keep the serial configuration port free.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Logical Port</strong></p></td>
+<td><p><strong>Physical Port</strong></p></td>
+<td><p><strong>Functions</strong></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>Data Port</p></td>
+<td><p>Lowest serial port #, e.g. COM7</p></td>
+<td rowspan="2"><p>Output: Data Messages</p>
+<p>Input: RTCM Data</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>UDP: EVK port 1, computer port selectable</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>Configuration Port</p></td>
+<td><p>Highest serial port #, e.g. COM10</p></td>
+<td rowspan="2"><p>Output: NMEA Messages (if configured)</p>
+<p>Input: Odometer Data, Configuration</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>UDP: EVK port 2, computer port selectable</p></td>
+</tr>
+<tr class="row-even"><td><p>Odometer Port</p></td>
+<td><p>UDP: EVK port 3, computer port selectable</p></td>
+<td><p>Odometer Channel (UDP Only)</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>UDP communication uses fixed port numbers on the EVK but selectable ports on the external device.
+These ports, along with IP addresses and other UDP settings should be configured (see <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/unit_configuration.html">Unit Configurations</a>).</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The “lowest” and “highest” serial ports mentioned above refer to the EVK, which uses an FTDI chip to create 4 virtual COM ports.
+The GNSS INS and IMU/IMU+ have two RS-232 connections, where RS232-1 is the data port and RS232-2 is the configuration port.
+The port numbers that appear once connected to the computer are determined by how the OS assigns the ports, and therefore the
+Data port is not necessarily the lowest port # like in the EVK.</p>
+</div>
+</div></blockquote>
+</section>
+</section>
+<section id="ascii-data-output-messages">
+<h2>2  ASCII Data Output Messages<a class="headerlink" href="#ascii-data-output-messages" title="Link to this heading"></a></h2>
+<p>ANELLO has two message formats, ASCII and RTCM. The structures of all ASCII messages use the
+following conventions:</p>
+<ul class="simple">
+<li><p>The lead code identifier for each record is ‘#’</p></li>
+<li><p>All data fields are delimited by a comma</p></li>
+<li><p>Each log ends with a hexadecimal checksum preceded by an asterisk and followed by a line termination using the carriage return and line feed characters</p></li>
+<li><p>The checksum is an XOR of all the bytes between # and *, written in hexadecimal</p></li>
+<li><p>APIMU messages are transmitted at the output data rate (ODR) setting</p></li>
+<li><p>APINS messages are transmitted at 100 Hz</p></li>
+<li><p>APGPS messages are transmitted at 4 Hz</p></li>
+</ul>
+<section id="apimu-message-evk-gnss-ins">
+<h3>2.1 APIMU Message (EVK &amp; GNSS INS)<a class="headerlink" href="#apimu-message-evk-gnss-ins" title="Link to this heading"></a></h3>
+<p>The APIMU message is the IMU output message for EVK and GNSS INS units only.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Units</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>APIMU</p></td>
+<td></td>
+<td><p>Sentence identifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Time</p></td>
+<td><p>ms</p></td>
+<td><p>Time since power on</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>T_Sync</p></td>
+<td><p>ms</p></td>
+<td><p>Time at last sync rising edge (zero when sync config disabled)</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>AX</p></td>
+<td><p>g</p></td>
+<td><p>X-Axis Acceleration</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>AY</p></td>
+<td><p>g</p></td>
+<td><p>Y-Axis Acceleration</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>AZ</p></td>
+<td><p>g</p></td>
+<td><p>Z-Axis Acceleration</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>WX</p></td>
+<td><p>deg/s</p></td>
+<td><p>X-Axis Angular Rate (MEMS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>WY</p></td>
+<td><p>deg/s</p></td>
+<td><p>Y-Axis Angular Rate (MEMS)</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>WZ</p></td>
+<td><p>deg/s</p></td>
+<td><p>Z-Axis Angular Rate (MEMS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>OG_WZ</p></td>
+<td><p>deg/s</p></td>
+<td><p>High Precicision Z-Axis Angular Rate (ANELLO Optical Gyro)</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>ODO</p></td>
+<td><p>m/s</p></td>
+<td><p>Scaled Composite Odometer Value</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>ODO Time</p></td>
+<td><p>ms</p></td>
+<td><p>Timestamp of Odometer Reading</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>Temp</p></td>
+<td><p>°C</p></td>
+<td><p>Temperature</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Firmware before v1.0.39 does not have T_Sync field.</p>
+</div>
+</section>
+<section id="apim1-message-imu-imu">
+<h3>2.2 APIM1 Message (IMU &amp; IMU+)<a class="headerlink" href="#apim1-message-imu-imu" title="Link to this heading"></a></h3>
+<p>The APIM1 message is the same as APIMU but without odometer values. This is the output message for IMU and IMU+ units only.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Units</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>APIMU</p></td>
+<td></td>
+<td><p>Sentence identifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Time</p></td>
+<td><p>ms</p></td>
+<td><p>Time since power on</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>T_Sync</p></td>
+<td><p>ms</p></td>
+<td><p>Time at last sync rising edge (zero when sync config disabled)</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>AX</p></td>
+<td><p>g</p></td>
+<td><p>X-Axis Acceleration</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>AY</p></td>
+<td><p>g</p></td>
+<td><p>Y-Axis Acceleration</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>AZ</p></td>
+<td><p>g</p></td>
+<td><p>Z-Axis Acceleration</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>WX</p></td>
+<td><p>deg/s</p></td>
+<td><p>X-Axis Angular Rate (MEMS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>WY</p></td>
+<td><p>deg/s</p></td>
+<td><p>Y-Axis Angular Rate (MEMS)</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>WZ</p></td>
+<td><p>deg/s</p></td>
+<td><p>Z-Axis Angular Rate (MEMS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>OG_WZ</p></td>
+<td><p>deg/s</p></td>
+<td><p>High Precicision Z-Axis Angular Rate (ANELLO Optical Gyro)</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>Temp C</p></td>
+<td><p>°C</p></td>
+<td><p>Temperature</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Firmware before v1.0.39 does not have T_Sync field.</p>
+</div>
+</section>
+<section id="apgps-message">
+<h3>2.3 APGPS Message<a class="headerlink" href="#apgps-message" title="Link to this heading"></a></h3>
+<p>The APGPS message is the PVT output from the EVK and GNSS INS units only.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Units</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>APGPS</p></td>
+<td></td>
+<td><p>Sentence identifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Time</p></td>
+<td><p>ms</p></td>
+<td><p>Time since power on</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>GPS Time</p></td>
+<td><p>ns</p></td>
+<td><p>GPS Time in integer ns</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Lat</p></td>
+<td><p>deg</p></td>
+<td><p>Latitude, ‘+’: north, ‘-’: south</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Long</p></td>
+<td><p>deg</p></td>
+<td><p>Longitude, ‘+’: east, ‘-’: west</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Alt ellipsoid</p></td>
+<td><p>m</p></td>
+<td><p>Height above ellipsoid</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Alt msl</p></td>
+<td><p>m</p></td>
+<td><p>Height above mean sea level</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Speed</p></td>
+<td><p>m/s</p></td>
+<td><p>GNSS Speed</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Heading</p></td>
+<td><p>deg</p></td>
+<td><p>GNSS Heading (ground track)</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Hacc</p></td>
+<td><p>m</p></td>
+<td><p>Horizontal Accuracy</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Vacc</p></td>
+<td><p>m</p></td>
+<td><p>Vertical Accuracy</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>PDOP</p></td>
+<td></td>
+<td><p>Position dilution of precision</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>FixType</p></td>
+<td></td>
+<td><p>0: No Fix, 2: 2D Fix, 3: 3D Fix, 5: Time Only</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>SatNum</p></td>
+<td></td>
+<td><p>Number of satellites used in solution</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>Speed Acc</p></td>
+<td></td>
+<td><p>Accuracy of GNSS Speed measurement</p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p>Hdg Acc</p></td>
+<td></td>
+<td><p>Accuracy of GNSS Heading measurement</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>RTK Status</p></td>
+<td></td>
+<td><p>0: Single Point Positioning, 1: RTK Float, 2: RTK Fixed</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This packet should be used to correlate GPS time and system time. The packet is time stamped at the time the PPS signal is generated by the GNSS receiver.</p>
+</div>
+</section>
+<section id="aphdg-message">
+<h3>2.4 APHDG Message<a class="headerlink" href="#aphdg-message" title="Link to this heading"></a></h3>
+<p>The APHDG message contains dual heading information from the dual GNSS receivers if both ANT1 and ANT2 are connected.
+This message is output from the EVK and GNSS INS units only.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Units</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>APHDG</p></td>
+<td></td>
+<td><p>Sentence identifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Time</p></td>
+<td><p>ms</p></td>
+<td><p>Time since power on</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>GPS Time</p></td>
+<td><p>ns</p></td>
+<td><p>GPS Time in integer ns (not UTC time)</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>relPosN</p></td>
+<td><p>m</p></td>
+<td><p>North component of relative position vector</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>relPosE</p></td>
+<td><p>m</p></td>
+<td><p>East component of relative position vector</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>relPosD</p></td>
+<td><p>m</p></td>
+<td><p>Down component of relative position vector</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>relPosLength</p></td>
+<td><p>m</p></td>
+<td><p>Length of relative position vector between antennae</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>relPosHeading</p></td>
+<td><p>deg</p></td>
+<td><p>Heading from primary antenna to secondary antenna</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>RelPosLength Accuracy</p></td>
+<td><p>m</p></td>
+<td><p>Accuracy of dual antennae baseline length</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>relPosHeading Accuracy</p></td>
+<td><p>deg</p></td>
+<td><p>Accuracy of dual antennae heading</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>flags</p></td>
+<td></td>
+<td><p>Status based on bits:
+- Bit 0: gnssFixOK
+- Bit 1: diffSoln
+- Bit 2: relPosValid
+- Bits 4..3: carrSoln
+- Bit 5: isMoving
+- Bit 6: refPosMiss
+- Bit 7: refObsMiss
+- Bit 8: relPosHeading Valid
+- Bit 9: relPos Normalized</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="apins-message">
+<h3>2.5 APINS Message<a class="headerlink" href="#apins-message" title="Link to this heading"></a></h3>
+<p>The APINS message is the Kalman filter position, velocity, and attitude solution output from the EVK and GNSS INS units.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Units</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>APINS</p></td>
+<td></td>
+<td><p>Sentence identifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Time</p></td>
+<td><p>ms</p></td>
+<td><p>Time since power on</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>PPS Time</p></td>
+<td><p>ns</p></td>
+<td><p>Time of last PPS pulse converted to GPS time (time since midnight on Jan 6, 1980)</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Status</p></td>
+<td></td>
+<td><p>0: Attitude Only, 1: Position and Attitude, 2: Position, Attitude, and Heading, 3: RTK Float, 4: RTK Fixed</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Lat</p></td>
+<td><p>deg</p></td>
+<td><p>Latitude, ‘+’: north, ‘-’: south</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Long</p></td>
+<td><p>deg</p></td>
+<td><p>Longitude, ‘+’: east, ‘-’: west</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Height</p></td>
+<td><p>m</p></td>
+<td><p>Height above ellipsoid</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>VN</p></td>
+<td><p>m/s</p></td>
+<td><p>North Velocity in NED Frame</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>VE</p></td>
+<td><p>m/s</p></td>
+<td><p>East Velocity in NED Frame</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>VD</p></td>
+<td><p>m/s</p></td>
+<td><p>Down Velocity in NED Frame</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Roll</p></td>
+<td><p>deg</p></td>
+<td><p>Roll Angle, rotation about body frame X</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Pitch</p></td>
+<td><p>deg</p></td>
+<td><p>Pitch Angle, rotation about body frame Y</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>Heading</p></td>
+<td><p>deg</p></td>
+<td><p>Heading Angle, rotation about body frame Z</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>ZUPT</p></td>
+<td></td>
+<td><p>0: Moving, 1: Stationary</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Roll, pitch and heading angles are calculated as standard aerospace Euler angles in a 3-2-1 (yaw, pitch, roll) body frame rotation.</p>
+</div>
+</section>
+</section>
+<section id="rtcm-binary-data-output-messages">
+<h2>3  RTCM Binary Data Output Messages<a class="headerlink" href="#rtcm-binary-data-output-messages" title="Link to this heading"></a></h2>
+<p>The binary packets use an RTCM standard 10403 envelope for each message.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Value/Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Preamble</p></td>
+<td><p>0xD3</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Reserved</p></td>
+<td><p>000000 (6 bit)</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Length</p></td>
+<td><p>10 bit, # bytes in data message</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Data</p></td>
+<td><p>Data message as defined below</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>CRC</p></td>
+<td><p>3 byte</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<section id="imu-message-evk-gnss-ins">
+<h3>3.1 IMU Message (EVK &amp; GNSS INS)<a class="headerlink" href="#imu-message-evk-gnss-ins" title="Link to this heading"></a></h3>
+<p>The IMU output message for EVK and GNSS INS units has a subtype ID of 1.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Type</p></td>
+<td><p>Units</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Message #</p></td>
+<td><p>uint12</p></td>
+<td><p>4058</p></td>
+<td><p>ANELLO Photonics custom message number</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Sub Type ID</p></td>
+<td><p>uint4</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>MCU Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>Time since power on</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Sync Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>Timestamp of input sync pulse (if enabled and provided)</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>ODO Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>Timestamp of odometer reading</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>AX</p></td>
+<td><p>int32</p></td>
+<td><p>1/143165577 g</p></td>
+<td><p>X-Axis Acceleration (intended 15g/2^31)</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>AY</p></td>
+<td><p>int32</p></td>
+<td><p>1/143165577 g</p></td>
+<td><p>Y-Axis Acceleration</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>AZ</p></td>
+<td><p>int32</p></td>
+<td><p>1/143165577 g</p></td>
+<td><p>Z-Axis Acceleration</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>WX</p></td>
+<td><p>int32</p></td>
+<td><p>1/4772186 deg/s</p></td>
+<td><p>X-Axis Angular Rate (MEMS) (intended 450/2^31)</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>WY</p></td>
+<td><p>int32</p></td>
+<td><p>1/4772186 deg/s</p></td>
+<td><p>Y-Axis Angular Rate (MEMS)</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>WZ</p></td>
+<td><p>int32</p></td>
+<td><p>1/4772186 deg/s</p></td>
+<td><p>Z-Axis Angular Rate (MEMS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>OG_WZ</p></td>
+<td><p>int32</p></td>
+<td><p>1/4772186 deg/s</p></td>
+<td><p>High precision optical gyro z-axis angular rate</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>ODO</p></td>
+<td><p>int16</p></td>
+<td><p>0.01 m/s</p></td>
+<td><p>Scaled composite odometer value</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>Temp C</p></td>
+<td><p>int16</p></td>
+<td><p>0.01 °C</p></td>
+<td><p>Temperature</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="imu-message-imu-imu">
+<h3>3.2 IMU Message (IMU &amp; IMU+)<a class="headerlink" href="#imu-message-imu-imu" title="Link to this heading"></a></h3>
+<p>The IMU output message for IMU and IMU+ units has a subtype ID of 6.
+It is the same as IMU message for the EVK and GNSS INS but without odometer values.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Type</p></td>
+<td><p>Units</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Message #</p></td>
+<td><p>uint12</p></td>
+<td><p>4058</p></td>
+<td><p>ANELLO Photonics custom message number</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Sub Type ID</p></td>
+<td><p>uint4</p></td>
+<td><p>6</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>MCU Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>Time since power on</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Sync Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>Timestamp of input sync pulse (if enabled and provided)</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>AX</p></td>
+<td><p>int32</p></td>
+<td><p>1/143165577 g</p></td>
+<td><p>X-Axis Acceleration (intended 15g/2^31)</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>AY</p></td>
+<td><p>int32</p></td>
+<td><p>1/143165577 g</p></td>
+<td><p>Y-Axis Acceleration</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>AZ</p></td>
+<td><p>int32</p></td>
+<td><p>1/143165577 g</p></td>
+<td><p>Z-Axis Acceleration</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>WX</p></td>
+<td><p>int32</p></td>
+<td><p>1/4772186 deg/s</p></td>
+<td><p>X-Axis Angular Rate (MEMS) (intended 450/2^31)</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>WY</p></td>
+<td><p>int32</p></td>
+<td><p>1/4772186 deg/s</p></td>
+<td><p>Y-Axis Angular Rate (MEMS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>WZ</p></td>
+<td><p>int32</p></td>
+<td><p>1/4772186 deg/s</p></td>
+<td><p>Z-Axis Angular Rate (MEMS)</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>OG_WZ</p></td>
+<td><p>int32</p></td>
+<td><p>1/4772186 deg/s</p></td>
+<td><p>High precision optical gyro z-axis angular rate</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Temp C</p></td>
+<td><p>int16</p></td>
+<td><p>0.01 °C</p></td>
+<td><p>Temperature</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="gps-pvt-message-evk-gnss-ins">
+<h3>3.3 GPS PVT Message (EVK/GNSS INS)<a class="headerlink" href="#gps-pvt-message-evk-gnss-ins" title="Link to this heading"></a></h3>
+<p>The GPS message is the PVT output from the EVK and GNSS INS units only.
+The Antenna ID field indicates which receiver (that connected to ANT1 or ANT2) produced the position information.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Type</p></td>
+<td><p>Units</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Message #</p></td>
+<td><p>uint12</p></td>
+<td><p>4058</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Sub Type ID</p></td>
+<td><p>uint4</p></td>
+<td><p>2</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>Time since power on</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>GPS Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>GPS time (GTOW) – Time since Jan 6, 1980</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Latitude</p></td>
+<td><p>int32</p></td>
+<td><p>1e-7 deg</p></td>
+<td><p>Latitude, ‘+’: north, ‘-’: south</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Longitude</p></td>
+<td><p>int32</p></td>
+<td><p>1e-7 deg</p></td>
+<td><p>Longitude, ‘+’: east, ‘-’: west</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Alt ellipsoid</p></td>
+<td><p>int32</p></td>
+<td><p>0.001 m</p></td>
+<td><p>Height above ellipsoid</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Alt msl</p></td>
+<td><p>int32</p></td>
+<td><p>0.001 m</p></td>
+<td><p>Height above mean sea level</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Speed</p></td>
+<td><p>int32</p></td>
+<td><p>0.001 m/s</p></td>
+<td><p>Speed</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Heading</p></td>
+<td><p>int32</p></td>
+<td><p>0.001 deg</p></td>
+<td><p>GNSS Heading (ground track)</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Hacc</p></td>
+<td><p>uint32</p></td>
+<td><p>0.001 m</p></td>
+<td><p>Horizontal accuracy</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Vacc</p></td>
+<td><p>uint32</p></td>
+<td><p>0.001 m</p></td>
+<td><p>Vertical accuracy</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>Speed acc</p></td>
+<td><p>uint32</p></td>
+<td><p>0.001 m/s</p></td>
+<td><p>Speed accuracy</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>Hdg acc</p></td>
+<td><p>uint32</p></td>
+<td><p>1e-5 deg</p></td>
+<td><p>Heading accuracy</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>PDOP</p></td>
+<td><p>uint16</p></td>
+<td><p>0.01</p></td>
+<td><p>Position dilution of precision</p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p>FixType</p></td>
+<td><p>uint8</p></td>
+<td></td>
+<td><p>0: No Fix, 2: 2D Fix, 3: 3D Fix, 5: Time Only</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>SatNum</p></td>
+<td><p>uint8</p></td>
+<td></td>
+<td><p>Number of Satellites used in solution</p></td>
+</tr>
+<tr class="row-odd"><td><p>17</p></td>
+<td><p>RTK Status</p></td>
+<td><p>uint8</p></td>
+<td></td>
+<td><p>0: Single Point Positioning, 1: RTK Float, 2: RTK Fixed</p></td>
+</tr>
+<tr class="row-even"><td><p>18</p></td>
+<td><p>Antenna ID</p></td>
+<td><p>uint8</p></td>
+<td></td>
+<td><p>Primary or secondary antenna</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="hdg-message-evk-gnss-ins">
+<h3>3.4 HDG Message (EVK/GNSS INS)<a class="headerlink" href="#hdg-message-evk-gnss-ins" title="Link to this heading"></a></h3>
+<p>The HDG message contains dual heading information from the dual GNSS receivers if both ANT1 and ANT2 are connected.
+This message is output from the EVK and GNSS INS units only.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Type</p></td>
+<td><p>Units</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Message #</p></td>
+<td><p>uint12</p></td>
+<td><p>4058</p></td>
+<td><p>ANELLO Photonics custom message number</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Sub Type ID</p></td>
+<td><p>uint4</p></td>
+<td><p>3</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>MCU Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>Time since power on</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>GPS Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>GPS time (GTOW) – Time since Jan 6, 1980</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>relPosN</p></td>
+<td><p>int32</p></td>
+<td><p>0.01 m</p></td>
+<td><p>North component of relative position vector</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>relPosE</p></td>
+<td><p>int32</p></td>
+<td><p>0.01 m</p></td>
+<td><p>East component of relative position vector</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>relPosD</p></td>
+<td><p>int32</p></td>
+<td><p>0.01 m</p></td>
+<td><p>Down component of relative position vector</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>relPosLength</p></td>
+<td><p>int32</p></td>
+<td><p>0.01 m</p></td>
+<td><p>Length of relative position vector between antennae</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>relPosHeading</p></td>
+<td><p>int32</p></td>
+<td><p>1e-5 deg</p></td>
+<td><p>Heading from primary antenna to secondary antenna</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>relPosLength Accuracy</p></td>
+<td><p>uint32</p></td>
+<td><p>0.01 m</p></td>
+<td><p>Accuracy of dual antennae baseline length</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>relPosHeading Accuracy</p></td>
+<td><p>uint32</p></td>
+<td><p>1e-5 deg</p></td>
+<td><p>Accuracy of dual antennae heading</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>flags</p></td>
+<td><p>uint16_t</p></td>
+<td></td>
+<td><p>Status based on bits:
+- Bit 0: gnssFixOK
+- Bit 1: diffSoln
+- Bit 2: relPosValid
+- Bits 4..3: carrSoln
+- Bit 5: isMoving
+- Bit 6: refPosMiss
+- Bit 7: refObsMiss
+- Bit 8: relPosHeading Valid
+- Bit 9: relPos Normalized</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="ins-message-evk-gnss-ins">
+<h3>3.5 INS Message (EVK/GNSS INS)<a class="headerlink" href="#ins-message-evk-gnss-ins" title="Link to this heading"></a></h3>
+<p>The INS message is the Kalman filter position, velocity, and attitude solution output from the EVK and GNSS INS units.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Type</p></td>
+<td><p>Units</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Message #</p></td>
+<td><p>uint12</p></td>
+<td><p>4058</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Sub Type ID</p></td>
+<td><p>uint4</p></td>
+<td><p>4</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>Time since power on</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>PPS Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>Time of last PPS pulse converted to GPS time (time since midnight on Jan 6, 1980)</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Latitude</p></td>
+<td><p>int32</p></td>
+<td><p>1e-7 deg</p></td>
+<td><p>Latitude, ‘+’: north, ‘-’: south</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Longitude</p></td>
+<td><p>int32</p></td>
+<td><p>1e-7 deg</p></td>
+<td><p>Longitude, ‘+’: east, ‘-’: west</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Alt ellipsoid</p></td>
+<td><p>int32</p></td>
+<td><p>0.001 m</p></td>
+<td><p>Height above ellipsoid</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>VN</p></td>
+<td><p>int32</p></td>
+<td><p>0.001 m/s</p></td>
+<td><p>North Velocity in NED Frame</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>VE</p></td>
+<td><p>int32</p></td>
+<td><p>0.001 m/s</p></td>
+<td><p>East Velocity in NED Frame</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>VD</p></td>
+<td><p>int32</p></td>
+<td><p>0.001 m/s</p></td>
+<td><p>Down Velocity in NED Frame</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Roll</p></td>
+<td><p>int32</p></td>
+<td><p>1e-5 deg</p></td>
+<td><p>Roll Angle, rotation about body frame X</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Pitch</p></td>
+<td><p>int32</p></td>
+<td><p>1e-5 deg</p></td>
+<td><p>Pitch Angle, rotation about body frame Y</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>Heading</p></td>
+<td><p>int32</p></td>
+<td><p>1e-5 deg</p></td>
+<td><p>Heading Angle, rotation about body frame Z</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>ZUPT</p></td>
+<td><p>uint8</p></td>
+<td></td>
+<td><p>0: Moving, 1: Stationary</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>Status</p></td>
+<td><p>uint8</p></td>
+<td></td>
+<td><p>0: Attitude Only, 1: Position and Attitude, 2: Position, Attitude, and Heading, 3: RTK Float, 4: RTK Fixed</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+</section>
+<section id="anello-binary-data-output-messages">
+<h2>4  ANELLO Binary Data Output Messages<a class="headerlink" href="#anello-binary-data-output-messages" title="Link to this heading"></a></h2>
+<p>The Anello binary packets use a 2-byte preamble followed by a 1-byte message type and a 1-byte length.
+There is also a 2-byte checksum after the payload.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Value/Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Preamble</p></td>
+<td><p>0xC5 0x50</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Message Type</p></td>
+<td><p>IMU = 0x02, GPS = 0x03, GP2 = 0x04, HDG = 0x05, INS = 0x06</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Length</p></td>
+<td><p>1 byte, # bytes in data message</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Data</p></td>
+<td><p>Data message as defined below</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Checksum</p></td>
+<td><p>2 byte</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<section id="id1">
+<h3>4.1 IMU Message (EVK &amp; GNSS INS)<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>The IMU output message for EVK and GNSS INS units has a subtype ID of 1.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Type</p></td>
+<td><p>Units</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>MCU Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>Time since power on</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Sync Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>Timestamp of input sync pulse (if enabled and provided)</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>ODO Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>Timestamp of odometer reading</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>AX</p></td>
+<td><p>int16</p></td>
+<td><p>g = value * (range * 0.0000305)</p></td>
+<td><p>X-Axis Acceleration (intended 15g/2^31)</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>AY</p></td>
+<td><p>int16</p></td>
+<td><p>g = value * (range * 0.0000305)</p></td>
+<td><p>Y-Axis Acceleration</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>AZ</p></td>
+<td><p>int16</p></td>
+<td><p>g = value * (range * 0.0000305)</p></td>
+<td><p>Z-Axis Acceleration</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>WX</p></td>
+<td><p>int16</p></td>
+<td><p>dps = value * (range * 0.000035)</p></td>
+<td><p>X-Axis Angular Rate (MEMS) (intended 450/2^31)</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>WY</p></td>
+<td><p>int16</p></td>
+<td><p>dps = value * (range * 0.000035)</p></td>
+<td><p>Y-Axis Angular Rate (MEMS)</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>WZ</p></td>
+<td><p>int16</p></td>
+<td><p>dps = value * (range * 0.000035)</p></td>
+<td><p>Z-Axis Angular Rate (MEMS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>OG_WZ</p></td>
+<td><p>int32</p></td>
+<td><p>dps * 10000000</p></td>
+<td><p>High precision optical gyro z-axis angular rate</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>ODO</p></td>
+<td><p>int16</p></td>
+<td><p>(m/s) * 100</p></td>
+<td><p>Scaled composite odometer value</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Temp C</p></td>
+<td><p>int16</p></td>
+<td><p>deg C * 100</p></td>
+<td><p>Temperature</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>MEMS Ranges</p></td>
+<td><p>uint16</p></td>
+<td><p>g and dps</p></td>
+<td><p>First 5 bits accel range; Next 11 bits rate range</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>FOG Range</p></td>
+<td><p>uint16</p></td>
+<td><p>dps</p></td>
+<td><p>Optical gyro range</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="gps-gp2-pvt-message-evk-gnss-ins">
+<h3>4.2 GPS/GP2 PVT Message (EVK/GNSS INS)<a class="headerlink" href="#gps-gp2-pvt-message-evk-gnss-ins" title="Link to this heading"></a></h3>
+<p>The GPS message is the PVT output from the EVK and GNSS INS units only.
+The Antenna ID field indicates which receiver (that connected to ANT1 or ANT2) produced the position information.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Type</p></td>
+<td><p>Units</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>MCU Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>Time since power on</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>GPS Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>GPS time (GTOW) – Seconds since Jan 6, 1980</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Latitude</p></td>
+<td><p>int32</p></td>
+<td><p>1e-7 deg</p></td>
+<td><p>Latitude, ‘+’: north, ‘-’: south</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Longitude</p></td>
+<td><p>int32</p></td>
+<td><p>1e-7 deg</p></td>
+<td><p>Longitude, ‘+’: east, ‘-’: west</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Alt ellipsoid</p></td>
+<td><p>int32</p></td>
+<td><p>0.01 m</p></td>
+<td><p>Height above ellipsoid</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Alt msl</p></td>
+<td><p>int32</p></td>
+<td><p>0.01 m</p></td>
+<td><p>Height above mean sea level</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Speed</p></td>
+<td><p>int16</p></td>
+<td><p>0.01 m/s</p></td>
+<td><p>Speed</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Heading</p></td>
+<td><p>int16</p></td>
+<td><p>0.01 deg</p></td>
+<td><p>GNSS Heading (ground track)</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Hacc</p></td>
+<td><p>uint16</p></td>
+<td><p>0.001 m</p></td>
+<td><p>Horizontal accuracy</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Vacc</p></td>
+<td><p>uint16</p></td>
+<td><p>0.001 m</p></td>
+<td><p>Vertical accuracy</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>PDOP</p></td>
+<td><p>uint16</p></td>
+<td><p>0.01</p></td>
+<td><p>Position dilution of precision</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Speed acc</p></td>
+<td><p>uint16</p></td>
+<td><p>0.001 m/s</p></td>
+<td><p>Speed accuracy</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>Hdg acc</p></td>
+<td><p>uint16</p></td>
+<td><p>0.01 deg</p></td>
+<td><p>Heading accuracy</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>SatNum</p></td>
+<td><p>uint8</p></td>
+<td></td>
+<td><p>Number of Satellites used in solution</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>Status</p></td>
+<td><p>uint8</p></td>
+<td></td>
+<td><p>First 4 bits Fix Type, last 4 bits RTK Status. See ASCII packet for details on these fields.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3>4.3 HDG Message (EVK/GNSS INS)<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>The HDG message contains dual heading information from the dual GNSS receivers if both ANT1 and ANT2 are connected.
+This message is output from the EVK and GNSS INS units only.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Type</p></td>
+<td><p>Units</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>MCU Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>Time since power on</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>GPS Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>GPS time (GTOW) – Time since Jan 6, 1980</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>relPosN</p></td>
+<td><p>int16</p></td>
+<td><p>0.01 m</p></td>
+<td><p>North component of relative position vector</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>relPosE</p></td>
+<td><p>int16</p></td>
+<td><p>0.01 m</p></td>
+<td><p>East component of relative position vector</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>relPosD</p></td>
+<td><p>int16</p></td>
+<td><p>0.01 m</p></td>
+<td><p>Down component of relative position vector</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>relPosLength</p></td>
+<td><p>int16</p></td>
+<td><p>0.01 m</p></td>
+<td><p>Length of relative position vector between antennae</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>relPosHeading</p></td>
+<td><p>int16</p></td>
+<td><p>0.01 deg</p></td>
+<td><p>Heading from primary antenna to secondary antenna</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>relPosLength Accuracy</p></td>
+<td><p>uint16</p></td>
+<td><p>1e-5 m</p></td>
+<td><p>Accuracy of dual antennae baseline length</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>relPosHeading Accuracy</p></td>
+<td><p>uint16</p></td>
+<td><p>0.01 deg</p></td>
+<td><p>Accuracy of dual antennae heading</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>flags</p></td>
+<td><p>uint16_t</p></td>
+<td></td>
+<td><p>Status based on bits:
+- Bit 0: gnssFixOK
+- Bit 1: diffSoln
+- Bit 2: relPosValid
+- Bits 4..3: carrSoln
+- Bit 5: isMoving
+- Bit 6: refPosMiss
+- Bit 7: refObsMiss
+- Bit 8: relPosHeading Valid
+- Bit 9: relPos Normalized</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="id3">
+<h3>4.4 INS Message (EVK/GNSS INS)<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>The INS message is the Kalman filter position, velocity, and attitude solution output from the EVK and GNSS INS units.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Type</p></td>
+<td><p>Units</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>MCU Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>Time since power on</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>PPS Time</p></td>
+<td><p>uint64</p></td>
+<td><p>ns</p></td>
+<td><p>Time of last PPS pulse converted to GPS time (time since midnight on Jan 6, 1980)</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Latitude</p></td>
+<td><p>int32</p></td>
+<td><p>1e-7 deg</p></td>
+<td><p>Latitude, ‘+’: north, ‘-’: south</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Longitude</p></td>
+<td><p>int32</p></td>
+<td><p>1e-7 deg</p></td>
+<td><p>Longitude, ‘+’: east, ‘-’: west</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Alt ellipsoid</p></td>
+<td><p>int32</p></td>
+<td><p>0.01 m</p></td>
+<td><p>Height above ellipsoid</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>VN</p></td>
+<td><p>int16</p></td>
+<td><p>0.01 m/s</p></td>
+<td><p>North Velocity in NED Frame</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>VE</p></td>
+<td><p>int16</p></td>
+<td><p>0.01 m/s</p></td>
+<td><p>East Velocity in NED Frame</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>VD</p></td>
+<td><p>int16</p></td>
+<td><p>0.01 m/s</p></td>
+<td><p>Down Velocity in NED Frame</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Roll</p></td>
+<td><p>int16</p></td>
+<td><p>0.01 deg</p></td>
+<td><p>Roll Angle, rotation about body frame X</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Pitch</p></td>
+<td><p>int16</p></td>
+<td><p>0.01 deg</p></td>
+<td><p>Pitch Angle, rotation about body frame Y</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Heading</p></td>
+<td><p>int16</p></td>
+<td><p>0.01 deg</p></td>
+<td><p>Heading Angle, rotation about body frame Z</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>ZUPT</p></td>
+<td><p>uint8</p></td>
+<td></td>
+<td><p>0: Moving, 1: Stationary</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>Status</p></td>
+<td><p>uint8</p></td>
+<td></td>
+<td><p>0: Attitude Only, 1: Position and Attitude, 2: Position, Attitude, and Heading, 3: RTK Float, 4: RTK Fixed</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+</section>
+<section id="input-messages">
+<h2>5  Input Messages<a class="headerlink" href="#input-messages" title="Link to this heading"></a></h2>
+<section id="apcfg-messages">
+<h3>5.1 APCFG Messages<a class="headerlink" href="#apcfg-messages" title="Link to this heading"></a></h3>
+<p>The easiest way to configure the EVK is with the ANELLO Python Program, which saves all changes to non-volatile flash memory.
+To do this, see <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/unit_configuration.html">Unit Configurations</a>.</p>
+<p>Alternatively, the EVK can be dynamically configured using the APCFG message. The protocol allows for both temporary (RAM) and permanent setting (FLASH) of configuration parameters.</p>
+<p><strong>#APCFG,&lt;r/w/R/W&gt;,&lt;param&gt;,&lt;value1&gt;,..,&lt;valueN&gt;*checksum</strong></p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>APCFG</p></td>
+<td><p>Sentence identifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>&lt;read/write&gt;</p></td>
+<td><p>‘r’: read  RAM, ‘w’: write RAM, ‘R’: read FLASH, ‘W’: write FLASH</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>&lt;param&gt;</p></td>
+<td><p>Configuration parameter (APCFG code)</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>&lt;value&gt;</p></td>
+<td><p>Configuration value, expressed in ASCII</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>For more details on configuration parameters and values, see <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/unit_configuration.html">Unit Configurations</a>.</p>
+</section>
+<section id="apodo-message">
+<h3>5.2 APODO Message<a class="headerlink" href="#apodo-message" title="Link to this heading"></a></h3>
+<p>The ANELLO EVK and GNSS INS accepts odometer input over the configuration port.
+The APODO message is in ASCII format and used to convey the vehicle direction and a speed.
+A negative value indicates reverse, and a positive value indicates forward. If no direction is indicated, the direction is assumed to be forward.</p>
+<p>Direction can also be input without a speed. This can be useful when there is no odometer input available, but transmission position is available.
+This is useful to enable INS initialization in both forward and reverse.</p>
+<p>When an APODO message is received with a reverse direction indication, the unit will assume the vehicle is in reverse until a packet is received with a forward direction.
+The units of the speed in the APODO message is user configurable to m/s (default), mile/hr, km/hr, ft/s
+(see ‘odo’ code in <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/unit_configuration.html">Unit Configurations</a>).</p>
+<p><strong>#APODO,&lt;dir&gt;,&lt;speed&gt;*checksum</strong></p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p>Field</p></td>
+<td><p>Units</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>APODO</p></td>
+<td></td>
+<td><p>Sentence identifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>&lt;dir&gt;</p></td>
+<td></td>
+<td><p>‘-’: reverse, ‘+’: forward (optional)</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>&lt;speed&gt;</p></td>
+<td><p>&lt;config&gt;</p></td>
+<td><p>Speed is a floating point value, units are set in unit configurations</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Examples (CS = checksum):
+#APODO,-,24*CS
+#APODO,-24*CS
+#APODO,-,-24*CS</p>
+<p>These would all be interpreted as moving in reverse with a speed of 24.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If sending odometer speeds by UDP from another program, send to UDP port 3 on the EVK, from the computer’s UDP port matching “odometer port” configuration.</p>
+</div>
+</section>
+<section id="rtcm-data-input">
+<h3>5.3 RTCM Data Input<a class="headerlink" href="#rtcm-data-input" title="Link to this heading"></a></h3>
+<p>Standard RTCM messages can be forwarded to the data port of the ANELLO EVK and GNSS INS to enable the GNSS receivers to reach RTK precision.
+Standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages, are supported.
+The ANELLO Python Program provides an NTRIP client which can connect to a standard NTRIP network and forward the RTCM messages to the ANELLO unit.</p>
+</section>
+<section id="ping-command">
+<h3>5.4 Ping Command<a class="headerlink" href="#ping-command" title="Link to this heading"></a></h3>
+<p>The Ping command can be used to test if the serial port is properly configured.</p>
+<p>#APPNG*48</p>
+<p>A correctly received ping command generates a response from the unit of:</p>
+<p>#APPNG,0*54</p>
+</section>
+<section id="echo-command">
+<h3>5.5 Echo Command<a class="headerlink" href="#echo-command" title="Link to this heading"></a></h3>
+<p>The Echo command serves as an additional communication test for the serial port configuration as well as the checksum generator. For example:</p>
+<p>#APECH,Echo! echo… ech… e…*77</p>
+<p>A correctly received Echo command generates an identical response from the unit:</p>
+<p>#APECH,Echo! echo… ech… e…*77.</p>
+</section>
+<section id="reset-command">
+<h3>5.6 Reset Command<a class="headerlink" href="#reset-command" title="Link to this heading"></a></h3>
+<p>The reset command allows the user to reset the system, e.g. after changing a configuration setting that requires a power cycle.
+No response message is generated; however, the system will reset causing the system output to be suspended briefly.</p>
+<p>#APRST,0*58</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Anello Photonics, Inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

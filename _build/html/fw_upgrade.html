@@ -1,0 +1,203 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Firmware Upgrade &mdash; Anello Developer Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=547657ed" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Software Tools" href="software_tools.html" />
+    <link rel="prev" title="Drive Testing Best Practices" href="drive_testing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Anello Developer Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ANELLO Developer Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started_quick.html">EVK Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_gnssins.html">GNSS INS Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_imu.html">IMU &amp; IMU+ Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_x3.html">X3 Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_tool.html">ANELLO Python Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_troubleshooting.html">Python Tool Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unit_configuration.html">Unit Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vehicle_configuration.html">Vehicle Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication_messaging.html">Communication &amp; Messaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mechanicals.html">Mechanicals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drive_testing.html">Drive Testing Best Practices</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Firmware Upgrade</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#firmware-upgrade-procedure">Firmware Upgrade Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#evk-gnss-ins-firmware-upgrade-notes">EVK / GNSS INS Firmware Upgrade Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-from-v1-2">Upgrading from v1.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-from-v1-1">Upgrading from v1.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-from-v1-0">Upgrading from v1.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#legacy-units">Legacy Units</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="known_limitations.html">Known Issues and Limitations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Anello Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Firmware Upgrade</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/fw_upgrade.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="firmware-upgrade">
+<h1>Firmware Upgrade<a class="headerlink" href="#firmware-upgrade" title="Link to this heading"></a></h1>
+<p>ANELLO recommends using the latest firmware (FW) for best results. The latest FW release is:</p>
+<ul class="simple">
+<li><p>GNSS INS, EVK, IMU+: v1.3.24 (released June 17, 2024)</p></li>
+<li><p>X3: v1.0.8 (Released Dec 13, 2024)</p></li>
+</ul>
+<p>If you are on an older version, please contact ANELLO for the latest FW image.</p>
+<section id="firmware-upgrade-procedure">
+<h2>Firmware Upgrade Procedure<a class="headerlink" href="#firmware-upgrade-procedure" title="Link to this heading"></a></h2>
+<p>FW upgrades currently must be done over the serial interface and can be done on computers using the following OS/processors:</p>
+<ul class="simple">
+<li><p>GNSS INS, EVK, X3: Windows, Linux (x86), Linux (ARM)</p></li>
+<li><p>IMU+: Windows only</p></li>
+</ul>
+<p>Please ensure power and serial connection is not disrupted to the unit during the firmware upgrade process.
+If you experience any errors during the process, please power cycle the unit and try again.
+Make sure to first run “git pull” in user_tool to ensure you are using the latest firmware upgrade functionality.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Ensure HtxAurixBootLoader.exe is in user_tool -&gt; board_tools</p></li>
+<li><p>Run user_program.py (for EVK, GNSS INS, and IMU+) or x3_tool.py (for X3) and connect to unit over COM (USB)</p></li>
+<li><dl class="simple">
+<dt>On main menu, select Upgrade -&gt; Yes. Select ANELLO-provided .hex file</dt><dd><ul class="simple">
+<li><p>Upgrade will run automatically and typically takes about 5 minutes to completed</p></li>
+<li><p>If you experience any issues, power cycle the unit and start again from step 2</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>After successful upgrade, the FW version will be updated in System Status upon re-connecting to the unit</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="evk-gnss-ins-firmware-upgrade-notes">
+<h2>EVK / GNSS INS Firmware Upgrade Notes<a class="headerlink" href="#evk-gnss-ins-firmware-upgrade-notes" title="Link to this heading"></a></h2>
+<p>Please review the key considerations below to ensure the best performance when upgrading between different FW versions.
+Always make sure to run “git pull” to make sure your user_tool has all the latest configurations and calibration schemes.
+Please contact ANELLO for the latest firmware image and full release notes.</p>
+<section id="upgrading-from-v1-2">
+<h3>Upgrading from v1.2<a class="headerlink" href="#upgrading-from-v1-2" title="Link to this heading"></a></h3>
+<p>If you are upgrading from v1.2, improvements in were made in v1.3 during stationary periods, particularly when odometer input is not provided.
+To take advantage of these improvements, a <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html#zupt-calibration">ZUPT calibration</a> must be performed.</p>
+</section>
+<section id="upgrading-from-v1-1">
+<h3>Upgrading from v1.1<a class="headerlink" href="#upgrading-from-v1-1" title="Link to this heading"></a></h3>
+<p>If you are upgrading from v1.1, in addition to the items above:</p>
+<ol class="arabic simple">
+<li><p>Completing <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html#dual-antenna-baseline-calibration">antenna baseline calibration</a> is now required to use the dual antenna feature.</p></li>
+<li><p>An installation <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#anello-unit-installation-misalignment">misalignment angle configuration</a> is now available, which improves performance on long-distance dead reckoning.</p></li>
+</ol>
+</section>
+<section id="upgrading-from-v1-0">
+<h3>Upgrading from v1.0<a class="headerlink" href="#upgrading-from-v1-0" title="Link to this heading"></a></h3>
+<p>If you are upgrading from v1.0 or older, in addition to the items above:</p>
+<p>The IMU message now has an additional field (T_Sync) which wasn’t included in previous firmwares.</p>
+<p>There are also several new <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/unit_configuration.html">Unit Configurations</a> which will default to OFF when upgrading from v1.0 or earlier.
+Please make sure these are set properly upon upgrading:</p>
+<ol class="arabic simple">
+<li><p>Enable Serial Output: defaults OFF, turn ON if outputting over serial.</p></li>
+<li><p>Enable Ethernet Output: defaults OFF, turn ON if outputting over ethernet.</p></li>
+<li><p>NTRIP Input Channel: defaults OFF (no NTRIP data used), set to Serial if sending NTRIP over serial, set to Ethernet if sending NTRIP over ethernet.</p></li>
+<li><p>Sensor low-pass filter cutoff frequencies are defaulted to 0 (no filter). We recommend setting these to 90% Nyquist (90 Hz for output data rate of 200 Hz).</p></li>
+</ol>
+</section>
+<section id="legacy-units">
+<h3>Legacy Units<a class="headerlink" href="#legacy-units" title="Link to this heading"></a></h3>
+<p>Units received before Nov 1, 2022 are an older hardware revision that are not dual GNSS capable and may be limited in performance.
+These older units are are not guaranteed compatibility with newer software and features.
+To upgrade to the latest hardware, please contact ANELLO.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="drive_testing.html" class="btn btn-neutral float-left" title="Drive Testing Best Practices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="software_tools.html" class="btn btn-neutral float-right" title="Software Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Anello Photonics, Inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

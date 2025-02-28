@@ -1,0 +1,151 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Tools &mdash; Anello Developer Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=547657ed" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Known Issues and Limitations" href="known_limitations.html" />
+    <link rel="prev" title="Firmware Upgrade" href="fw_upgrade.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Anello Developer Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ANELLO Developer Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started_quick.html">EVK Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_gnssins.html">GNSS INS Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_imu.html">IMU &amp; IMU+ Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_x3.html">X3 Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_tool.html">ANELLO Python Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_troubleshooting.html">Python Tool Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unit_configuration.html">Unit Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vehicle_configuration.html">Vehicle Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication_messaging.html">Communication &amp; Messaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mechanicals.html">Mechanicals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drive_testing.html">Drive Testing Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fw_upgrade.html">Firmware Upgrade</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Software Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#anello-python-program">ANELLO Python Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ros-compatibility">ROS Compatibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#serial-interface-software">Serial Interface Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sample-odometer-programs">Sample Odometer Programs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="known_limitations.html">Known Issues and Limitations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Anello Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Software Tools</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/software_tools.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="software-tools">
+<h1>Software Tools<a class="headerlink" href="#software-tools" title="Link to this heading"></a></h1>
+<section id="anello-python-program">
+<h2>ANELLO Python Program<a class="headerlink" href="#anello-python-program" title="Link to this heading"></a></h2>
+<p>The ANELLO Python Program source code is found on the <a class="reference external" href="https://github.com/Anello-Photonics/user_tool">ANELLO GitHub</a>.</p>
+<p>Please run “git pull” regularly to make sure you are using the latest code.</p>
+</section>
+<section id="ros-compatibility">
+<h2>ROS Compatibility<a class="headerlink" href="#ros-compatibility" title="Link to this heading"></a></h2>
+<p>If you would like to integrate an ANELLO unit into ROS, see our C-based <a class="reference external" href="https://github.com/Anello-Photonics/ANELLO_ROS_Driver">ROS1 driver</a>
+or <a class="reference external" href="https://github.com/Anello-Photonics/ANELLO_ROS_Driver/tree/ros2_main">ROS2 driver</a></p>
+<p>Please run “git pull” regularly to make sure you are using the latest code.</p>
+</section>
+<section id="serial-interface-software">
+<h2>Serial Interface Software<a class="headerlink" href="#serial-interface-software" title="Link to this heading"></a></h2>
+<p>You are welcome to use a serial interface software, such as CoolTerm, to interface with ANELLO units.</p>
+<p>Please ensure you use the correct baud rate and set Data Bits = 8, Stop Bits = 1, and Parity = None. See <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/communication_messaging.html">Comminication &amp; Messaging</a>
+for information on data and configuration ports and default baud rates.</p>
+</section>
+<section id="sample-odometer-programs">
+<h2>Sample Odometer Programs<a class="headerlink" href="#sample-odometer-programs" title="Link to this heading"></a></h2>
+<p>The message format and instructions for sending odometer information to an ANELLO EVK or GNSS INS can be found under <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apodo-message">Communication &amp; Messaging</a>.
+We have also included several sample odometer programs in user_tool -&gt; <a class="reference external" href="https://github.com/Anello-Photonics/user_tool/tree/main/board_tools">board_tools</a>, supporting both UDP and serial interfaces.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fw_upgrade.html" class="btn btn-neutral float-left" title="Firmware Upgrade" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="known_limitations.html" class="btn btn-neutral float-right" title="Known Issues and Limitations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Anello Photonics, Inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

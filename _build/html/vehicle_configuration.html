@@ -1,0 +1,238 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vehicle Configuration &mdash; Anello Developer Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=547657ed" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Communication &amp; Messaging" href="communication_messaging.html" />
+    <link rel="prev" title="Unit Configurations" href="unit_configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Anello Developer Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ANELLO Developer Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started_quick.html">EVK Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_gnssins.html">GNSS INS Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_imu.html">IMU &amp; IMU+ Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_x3.html">X3 Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_tool.html">ANELLO Python Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_troubleshooting.html">Python Tool Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unit_configuration.html">Unit Configurations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Vehicle Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#vehicle-configuration-settings">Vehicle Configuration Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dual-antenna-baseline-calibration">Dual Antenna Baseline Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zupt-calibration">ZUPT Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mounting-anello-unit">Mounting ANELLO Unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#antenna-mounting">Antenna Mounting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#odometer-input">Odometer Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-vehicle-types">Supported Vehicle Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="communication_messaging.html">Communication &amp; Messaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mechanicals.html">Mechanicals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drive_testing.html">Drive Testing Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fw_upgrade.html">Firmware Upgrade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="known_limitations.html">Known Issues and Limitations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Anello Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Vehicle Configuration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/vehicle_configuration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="vehicle-configuration">
+<h1>Vehicle Configuration<a class="headerlink" href="#vehicle-configuration" title="Link to this heading"></a></h1>
+<p>The ANELLO EVK and GNSS INS products require vehicle configurations to be set for proper functionality.</p>
+<p>The easiest way to set ANELLO vehicle configurations is using the <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/python_tool.html#vehicle-configurations">ANELLO Python Program</a>,
+which saves all changes to non-volatile flash memory.</p>
+<p>Alternatively, the unit can be configured using the <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apveh-messages">APVEH message</a>.</p>
+<section id="vehicle-configuration-settings">
+<h2>Vehicle Configuration Settings<a class="headerlink" href="#vehicle-configuration-settings" title="Link to this heading"></a></h2>
+<p>Vehicle configurations describe the positions of parts in the vehicle setup, which are used in the ANELLO algorithm.
+All positions are in meters, using the center of the ANELLO unit as the origin and using the coordinate system (X forward, Y right, Z down)
+in the vehicle frame, i.e. not corrected for mounting orientation of the unit.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Configuration</p></td>
+<td><p>APVEH Codes</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>Lever Arm 1</p></td>
+<td><p>g1x, g1y, g1z</p></td>
+<td><p>Vector from center of ANELLO unit to antenna 1, in meters</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lever Arm 2</p></td>
+<td><p>g2x, g2y, g2z</p></td>
+<td><p>Vector from center of ANELLO unit to antenna 2, in meters</p></td>
+</tr>
+<tr class="row-even"><td><p>Rear Axle Center</p></td>
+<td><p>cnx, cny, cnz</p></td>
+<td><p>Vector from center of ANELLO unit to center of rear axle, in meters</p></td>
+</tr>
+<tr class="row-odd"><td><p>Output Center</p></td>
+<td><p>ocx, ocy, ocz</p></td>
+<td><p>Vector from center of ANELLO unit to desired INS solution position, in meters</p></td>
+</tr>
+<tr class="row-even"><td><p>Antenna Baseline</p></td>
+<td><p>bsl</p></td>
+<td><p>Baseline length between two antennae, in meters</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="dual-antenna-baseline-calibration">
+<h2>Dual Antenna Baseline Calibration<a class="headerlink" href="#dual-antenna-baseline-calibration" title="Link to this heading"></a></h2>
+<p>As of FW version 1.2.6, in order to use dual antenna heading, the antenna baseline must be calibrated:</p>
+<ol class="arabic simple">
+<li><p>Install the ANELLO unit and antennae on the vehicle.</p></li>
+<li><p>Navigate to <em>Vehicle Configurations</em> menu, select <em>Edit</em>, then <em>Antenna Baseline</em>.</p></li>
+</ol>
+<p>For most users, we recommend using the <strong>Auto calibrate</strong> feature. Before you perform auto-calibration, mount the antennae in the desired position
+on vehicle and ensure the antennae have full open sky view. The calibration takes 2-5 minutes where the ANELLO unit will measure the baseline between
+the antennae to sub-2cm accuracy and save the resulting configuration automatically.</p>
+<p>If you install the ANELLO unit using a CAD model and know your antenna baseline to sub-2cm accuracy, you can use th <strong>Enter manually</strong> option to manually set this configuration.
+Similarly, you may also use <strong>Calibrate from lever arms</strong> if you are certain of your lever arm measurements to sub-cm accuracy.</p>
+</section>
+<section id="zupt-calibration">
+<h2>ZUPT Calibration<a class="headerlink" href="#zupt-calibration" title="Link to this heading"></a></h2>
+<p>As of FW version 1.3.24, algorithm improvements were made to better take advantage of stationary periods.
+To utilize these improvements, a stationary period must be calibrated using the ANELLO Python program:</p>
+<ol class="arabic simple">
+<li><p>Ensure the unit is already installed on the vehicle and the vehicle is turned on and stationary.</p></li>
+<li><p>In the Python tool, navigate to <em>Vehicle Configurations</em>, select <em>Edit</em>, then <em>ZUPT</em>.</p></li>
+<li><p>Leave the vehicle on, stationary, and undisturbed for 2 minutes while the calibration is being peformed.</p></li>
+<li><p>Once complete, the calibrated “ZUPT” values will appear under the <em>Vehicle Configurations</em></p></li>
+</ol>
+</section>
+<section id="mounting-anello-unit">
+<h2>Mounting ANELLO Unit<a class="headerlink" href="#mounting-anello-unit" title="Link to this heading"></a></h2>
+<p>The ANELLO unit should be mounted securely on a flat surface to avoid movement of the unit during vehicle testing.
+The mounting location of the ANELLO EVK and GNSS INS is flexible and can be configured for various installation positions and orientations.
+For the least complexity, we recommendation mounting the unit above the center of the vehicle’s rear axle with the X-Axis facing forward along the direction of travel.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="_images/a1_install_location.png"><img alt="_images/a1_install_location.png" src="_images/a1_install_location.png" style="width: 302.4px; height: 256.8px;" /></a>
+<figcaption>
+<p><span class="caption-text">Default Installation Location</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>If the unit is oriented differently (e.g. backwards or upside down), the “Orientation” configuration must be configured using the ANELLO Python Program.
+See <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#unit-installation-orientation">Unit Configurations</a> for orientation options.</p>
+<p>In addition, if the unit is misaligned from the vehicle axis in either roll, pitch, or heading, the “Installation Misalignment Angle” configuration must also be set.
+If the misalignment angles are unknown, the roll and pitch misalignment can be measured using the <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#anello-unit-installation-misalignment">these procedures</a>.</p>
+</section>
+<section id="antenna-mounting">
+<h2>Antenna Mounting<a class="headerlink" href="#antenna-mounting" title="Link to this heading"></a></h2>
+<p>The antennae provided with the ANELLO EVK magnetically mount to the vehicle roof. Alternative GNSS antennae can be
+used, as long as they support dual band and all constellations. Please avoid placing antennae on significantly curved surfaces
+or below obstructions which would reduce available sky view. For best performance, it is recommended to orient both antennae in the same direction,
+and ensure there is a ground plane with a diameter of at least 10 cm (4 in).
+Magnetic mounting to the roof of a car acts as an effective ground plane.</p>
+<p>Units received after Nov 1, 2022 and with firmware v1.0 or later will have dual GNSS functionality.
+Antennae must be separated by at least 0.6 meters and accurate lever arms must be set.
+Errors in the lever arm settings will directly cause errors in vehicle.</p>
+<p>If you are on a firmware version earlier than v1.2.6, ANT1 must be in the back and ANT2 in the front.
+On firmware v1.2.6 and later, antennae can be positioned in any orientation on the vehicle as long as accurate lever arms are set.</p>
+</section>
+<section id="odometer-input">
+<h2>Odometer Input<a class="headerlink" href="#odometer-input" title="Link to this heading"></a></h2>
+<p>For extended GNSS-denied testing, it is recommended to send odometer input (including both speed and direction) to the ANELLO EVK or GNSS INS.
+This can be done by sending an <a class="reference external" href="https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apodo-message">APODO message</a> to the configuration port of the ANELLO unit.
+A few recommended odometer options are:</p>
+<ol class="arabic simple">
+<li><p>If you have access to the vehicle CAN bus, you can read in the directional speed from the CAN bus to the computer used to connect to the EVK or GNSS INS. Then, construct and send the APODO message to the ANELLO unit.</p></li>
+<li><p>An external wheel speed sensor can be installed on the vehicle. ANELLO recommends the Pegasem WSS, though it is not robust enough to suit rough terrains.</p></li>
+<li><p>A radar odometer can be installed on the vehicle. ANELLO recommends the Pegasem GSS.</p></li>
+</ol>
+</section>
+<section id="supported-vehicle-types">
+<h2>Supported Vehicle Types<a class="headerlink" href="#supported-vehicle-types" title="Link to this heading"></a></h2>
+<p>The ANELLO GNSS INS and EVK algorithm is currently designed for wheeled land vehicles. Please contact ANELLO about support for other vehicle types.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="unit_configuration.html" class="btn btn-neutral float-left" title="Unit Configurations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="communication_messaging.html" class="btn btn-neutral float-right" title="Communication &amp; Messaging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Anello Photonics, Inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

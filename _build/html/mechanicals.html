@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mechanicals &mdash; Anello Developer Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/my_theme.css?v=547657ed" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Drive Testing Best Practices" href="drive_testing.html" />
+    <link rel="prev" title="Communication &amp; Messaging" href="communication_messaging.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Anello Developer Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ANELLO Developer Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started_quick.html">EVK Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_gnssins.html">GNSS INS Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_imu.html">IMU &amp; IMU+ Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_x3.html">X3 Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_tool.html">ANELLO Python Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_troubleshooting.html">Python Tool Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unit_configuration.html">Unit Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vehicle_configuration.html">Vehicle Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication_messaging.html">Communication &amp; Messaging</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mechanicals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#anello-evk">ANELLO EVK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#anello-gnss-ins">ANELLO GNSS INS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#anello-imu-imu">ANELLO IMU/IMU+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#anello-x3">ANELLO X3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mounting">Mounting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="drive_testing.html">Drive Testing Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fw_upgrade.html">Firmware Upgrade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_tools.html">Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="known_limitations.html">Known Issues and Limitations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Anello Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Mechanicals</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/mechanicals.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mechanicals">
+<h1>Mechanicals<a class="headerlink" href="#mechanicals" title="Link to this heading"></a></h1>
+<section id="anello-evk">
+<h2>ANELLO EVK<a class="headerlink" href="#anello-evk" title="Link to this heading"></a></h2>
+<p>The ANELLO EVK features a 4-pin power connector which includes PPS input (PPS1) and output (PPS2) signals.
+It also features USB C, Ethernet, and CAN connectors, as well as two SMA RF antennae input.</p>
+<p>EVK SCD Drawing: <a class="reference download internal" download="" href="_downloads/bc2450a95c7b23fc32e7e808192e81de/Anello_A1_MechanicalDwg_rev2.pdf"><code class="xref download docutils literal notranslate"><span class="pre">PDF</span></code></a></p>
+<figure class="align-center">
+<img alt="_images/Anello_A1_MechanicalDwg_rev2.png" src="_images/Anello_A1_MechanicalDwg_rev2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As shown in the image above, the power connector includes two additional pins: PPS Out and Sync In. The power connector included in the EVK kit includes two wires, where the black wire is PPS Out and the green wire is Sync In.</p>
+<p>Power Connector info: <a class="reference external" href="https://www.lemo.com/en/products/low-voltage-connector/b-connector">https://www.lemo.com/en/products/low-voltage-connector/b-connector</a></p>
+<p>Mating Connector: <a class="reference external" href="https://www.lemo.com/pdf/FGG.0B.304.CLAD52.pdf">https://www.lemo.com/pdf/FGG.0B.304.CLAD52.pdf</a></p>
+</div>
+</section>
+<section id="anello-gnss-ins">
+<h2>ANELLO GNSS INS<a class="headerlink" href="#anello-gnss-ins" title="Link to this heading"></a></h2>
+<p>The ANELLO GNSS INS features a 20 pin Molex MX150 connector and two FAKRA SMB GNSS connectors. The case housing is aluminum with an anodized finish.
+The ground pins (11, 12) are electrically connected to the case. There is also a case ground screw on the side of the case.</p>
+<p>GNSS INS SCD Drawing: <a class="reference download internal" download="" href="_downloads/29f09edd2622b16bfa4b7c64443fe617/SCD_Mechanical_GNSS_INS.pdf"><code class="xref download docutils literal notranslate"><span class="pre">PDF</span></code></a></p>
+<figure class="align-center">
+<img alt="_images/SCD_Mechanical_GNSS_INS.pdf" src="_images/SCD_Mechanical_GNSS_INS.pdf" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you purchased the GNSS INS Evaluation Kit, a schematic of the breakout cable can be downloaded <a class="reference download internal" download="" href="_downloads/5a9a2c0421159b0641df67d1ff5f8784/SCD_Breakout%20Cable_INS-GNSS.pdf"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a></p>
+</div>
+</section>
+<section id="anello-imu-imu">
+<h2>ANELLO IMU/IMU+<a class="headerlink" href="#anello-imu-imu" title="Link to this heading"></a></h2>
+<p>The ANELLO IMU/IMU+ features an 8 pin Molex MX150 connector. The case housing is aluminum with an anodized finish.
+The ground pin is electrically connected to the case. There is also a case ground screw on the side of the case.</p>
+<p>IMU/IMU+ SCD Drawing: <a class="reference download internal" download="" href="_downloads/326d6a37585fc740de722f73c1dc3ac3/SCD_Mechanical_IMU.pdf"><code class="xref download docutils literal notranslate"><span class="pre">PDF</span></code></a></p>
+<figure class="align-center">
+<img alt="_images/SCD_Mechanical_IMU.pdf" src="_images/SCD_Mechanical_IMU.pdf" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you purchased the IMU/IMU+ Evaluation Kit, a schematic of the breakout cable can be downloaded <a class="reference download internal" download="" href="_downloads/a02b2fcb3d0aa87d0fb609a88cf0f795/SCD_Breakout%20Cable_IMU.pdf"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a></p>
+</div>
+</section>
+<section id="anello-x3">
+<h2>ANELLO X3<a class="headerlink" href="#anello-x3" title="Link to this heading"></a></h2>
+<p>The ANELLO X3 features a 14 pin Molex Microfit 430451427 connector.</p>
+<section id="mounting">
+<h3>Mounting<a class="headerlink" href="#mounting" title="Link to this heading"></a></h3>
+<p>The X3 is supplied on a mounting plate/heatsink. If removed from plate, adequate heatsinking or air flow conditions must be maintained. Please consult with ANELLO (<a class="reference external" href="mailto:support&#37;&#52;&#48;anellophotonics&#46;com">support<span>&#64;</span>anellophotonics<span>&#46;</span>com</a>) with any questions.</p>
+<figure class="align-center">
+<img alt="_images/X3_on_mounting_plate.png" src="_images/X3_on_mounting_plate.png" />
+</figure>
+<p>X3 SCD Drawing: <a class="reference download internal" download="" href="_downloads/9e7356172cf66dcfe53c99506f18ec58/SCD_Mechanical_X3.pdf"><code class="xref download docutils literal notranslate"><span class="pre">PDF</span></code></a></p>
+<figure class="align-center">
+<img alt="_images/SCD_Mechanical_X3.pdf" src="_images/SCD_Mechanical_X3.pdf" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you purchased the X3 Evaluation Kit, a schematic of the breakout cable can be downloaded <a class="reference download internal" download="" href="_downloads/5ef73ae022dc7cb39c0c132658f16233/SCD_Breakout%20Cable_X3.pdf"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a></p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="communication_messaging.html" class="btn btn-neutral float-left" title="Communication &amp; Messaging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="drive_testing.html" class="btn btn-neutral float-right" title="Drive Testing Best Practices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Anello Photonics, Inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
