@@ -42,6 +42,8 @@ ANELLO units are also compatible with ROS using our C-based `ROS driver <https:/
 If you would like to connect to the IMU using a serial interface software such as CoolTerm, 
 please ensure you use the correct baud rate (default for the IMU is 230400), and set Data Bits = 8, Stop Bits = 1, and Parity = None.
 
+More information on the IMU+ interfacing can be found under under `Communication and Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`__.
+
 For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software_tools.html>`_.
 
 
@@ -60,10 +62,11 @@ over the IMU's configuration port using a serial interface software such as Cool
 4. Data Collection
 ----------------------------
 
+The IMU+ message format is found under under `Communication and Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#imu-message-imu-imu>`_.
 
 a. Log Data
 ~~~~~~~~~~~~~~~~~
-ANELLO recommends logging data using either:
+ANELLO provides the following tools for logging:
 1. ANELLO `Python tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection>`__, by selecting *Log* in the main menu, OR
 2. ANELLO `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`__
 
