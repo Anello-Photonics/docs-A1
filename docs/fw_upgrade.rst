@@ -41,8 +41,9 @@ To enter bootloading mode, send the following command to the UART port using a s
 In a terminal, navigate to the bootloader (found in user_tool -> board_tools directory) and locate the correct bootloader for your OS (using Windows x86 as an exampl below).
 Enter the following commands one at a time:
 
-    1. ./crossplatform_bootloader_windows_x86_release START TC36X 6 <RS-422 port #> 115200 0 0 0 0
-        a. If the X3 RS-422 port is COM8, you would enter 8 for <RS-422 port #>
+    1. ./crossplatform_bootloader_windows_x86_release START TC36X 6 <data port #> 115200 0 0 0 0
+        a. E.g. if the data port is COM8, you would enter 8 for <data port #>
+        b. For the X3, the "data" port is the RS-422 port
     2. ./crossplatform_bootloader_windows_x86_release PROGRAM <hex file path>
     3. ./crossplatform_bootloader_windows_x86_release END
 
