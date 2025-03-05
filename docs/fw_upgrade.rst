@@ -9,8 +9,8 @@ ANELLO recommends using the latest firmware (FW) for best results. The latest FW
 
 If you are on an older version, please contact ANELLO for the latest FW image.
 
-Firmware Upgrade Procedure
---------------------------------------
+Firmware Upgrade Procedure - Python Tool
+------------------------------------------
 FW upgrades currently must be done over the serial interface and can be done on computers using the following OS/processors:
 
 - GNSS INS, EVK, X3: Windows, Linux (x86), Linux (ARM)
@@ -30,6 +30,22 @@ Make sure to first run "git pull" in user_tool to ensure you are using the lates
 
     4. After successful upgrade, the FW version will be updated in System Status upon re-connecting to the unit
 
+Firmware Upgrade Procedure - Command Line
+------------------------------------------
+Connect both X3 serial ports (UART and RS-422) to a Windows computer using the provided DB9 to USB cables.
+
+To enter bootloading mode, send the following command to the UART port using a serial interface program such as CoolTerm:
+#APRST,2*5A
+
+In a terminal, navigate to the bootloader (found in user_tool -> board_tools directory) and find the correct bootloader for your OS - 
+currently Windows, Linux (x86), Linux (ARM) are supported. Enter the following commands one at a time (using Windows x86 as an example):
+
+    1. ./crossplatform_bootloader_windows_x86_release START TC36X 6 <RS-422 port #> 115200 0 0 0 0
+        a. If the X3 RS-422 port is COM8, you would enter 8 for <RS-422 port #>
+    2. ./crossplatform_bootloader_windows_x86_release PROGRAM <hex file path>
+    3. ./crossplatform_bootloader_windows_x86_release END
+
+After each step it should show "Operation Successful!" If it doesn't, repeat the last step.
 
 EVK / GNSS INS Firmware Upgrade Notes
 ---------------------------------------
