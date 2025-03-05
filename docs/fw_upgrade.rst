@@ -32,13 +32,13 @@ Make sure to first run "git pull" in user_tool to ensure you are using the lates
 
 Firmware Upgrade Procedure - Command Line
 ------------------------------------------
-Connect both X3 serial ports (UART and RS-422) to a Windows computer using the provided DB9 to USB cables.
+Connect both serial ports to a Windows, Linux (x86), or Linux (ARM) computer using the provided USB cable (EVK) or DB9 to USB cables (all other units).
 
 To enter bootloading mode, send the following command to the UART port using a serial interface program such as CoolTerm:
 #APRST,2*5A
 
-In a terminal, navigate to the bootloader (found in user_tool -> board_tools directory) and find the correct bootloader for your OS - 
-currently Windows, Linux (x86), Linux (ARM) are supported. Enter the following commands one at a time (using Windows x86 as an example):
+In a terminal, navigate to the bootloader (found in user_tool -> board_tools directory) and locate the correct bootloader for your OS - 
+currently Windows, Linux (x86), and Linux (ARM) are supported. Enter the following commands one at a time (using Windows x86 as an example):
 
     1. ./crossplatform_bootloader_windows_x86_release START TC36X 6 <RS-422 port #> 115200 0 0 0 0
         a. If the X3 RS-422 port is COM8, you would enter 8 for <RS-422 port #>
