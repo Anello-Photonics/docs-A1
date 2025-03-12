@@ -31,6 +31,9 @@ Make sure to first run "git pull" in user_tool to ensure you are using the lates
 
     3. After successful upgrade, the FW version will be updated in System Status upon re-connecting to the unit
 
+If for any reason the power or serial connection gets disrupted during the firmware upgrade process and power cycling doesn't bring back the unit to a 
+functioning state, please try running the bootloader commands from the command line as described below (starting with step 1).
+
 Firmware Upgrade Procedure - Command Line
 ------------------------------------------
 Connect both serial ports to a Windows, Linux (x86), or Linux (ARM) computer using the provided USB cable (EVK) or DB9 to USB cables (all other units).
