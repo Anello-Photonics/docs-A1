@@ -50,14 +50,8 @@ IMU/IMU+ SCD Drawing: :download:`PDF <media/SCD_Mechanical_IMU.pdf>`
 
 ANELLO X3
 ---------------------------------
-The ANELLO X3 features a 14 pin Molex Microfit 430451427 connector.
-
-Mounting
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The X3 is supplied on a mounting plate/heatsink. If removed from plate, adequate heatsinking or air flow conditions must be maintained. Please consult with ANELLO (support@anellophotonics.com) with any questions.
-
-.. figure:: media/X3_on_mounting_plate.png
-   :align: center
+The ANELLO X3 features a 14 pin Molex Microfit 430451427 connector. Note that if your X3 serial number is below 830, 
+the unit will need to be mounted on the mounting plate shipped with the unit, or similar heat sinking must be used.
 
 X3 SCD Drawing: :download:`PDF <media/SCD_Mechanical_X3.pdf>`
 
