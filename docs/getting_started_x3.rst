@@ -40,7 +40,7 @@ Be sure to run "git pull" regularly to make sure you are using the latest Python
 ANELLO units are also compatible with ROS using our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
 
 If you would like to connect to the X3 using a serial interface software such as CoolTerm, 
-please ensure you use the correct baud rate (default for the X3 is 460800), and set Data Bits = 8, Stop Bits = 1, and Parity = None.
+please ensure you use the correct baud rate **(default for the X3 is 460800), and set Data Bits = 8, Stop Bits = 1, and Parity = None.**
 
 For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software_tools.html>`_.
 
