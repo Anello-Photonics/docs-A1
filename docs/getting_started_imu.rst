@@ -89,3 +89,5 @@ You have completed the IMU setup! Please contact support@anellophotonics.com wit
 Note: This device complies with FCC Part 15 standards. Operation is subject to the following two conditions: 
 (1) This device may not cause harmful interference, and 
 (2) this device must accept any interference received, including interference that may cause undesired operation.
+
+.. [1] IMU+ User Manual 93001301
