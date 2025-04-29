@@ -140,3 +140,5 @@ If you would like help from the ANELLO team on data analysis and fine-tuning, we
 
 **Congratulations!!!**
 You have completed the EVK setup and data collection! Please feel free to contact support@anellophotonics.com with any questions. 
+
+.. [1] EVK User Manual 93001601
