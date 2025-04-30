@@ -89,4 +89,4 @@ Note: This device complies with FCC Part 15 standards. Operation is subject to t
 (2) this device must accept any interference received, including interference that may cause undesired operation.
 
 
-.. [1] X3 User Manual 93001401
+*X3 User Manual 93001401*
