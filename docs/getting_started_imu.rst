@@ -91,4 +91,4 @@ Note: This device complies with FCC Part 15 standards. Operation is subject to t
 (2) this device must accept any interference received, including interference that may cause undesired operation.
 
 
-*IMU+ User Manual 93001301*
+*IMU+ User Manual 93001301 v1.0.0*
