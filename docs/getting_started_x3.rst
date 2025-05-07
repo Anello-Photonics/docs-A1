@@ -84,9 +84,5 @@ from the ANELLO X3 in real-time by selecting *Monitor* in the main menu.
 **Congratulations!!!**
 You have completed the X3 setup! Please contact support@anellophotonics.com with any questions. 
 
-Note: This device complies with FCC Part 15 standards. Operation is subject to the following two conditions: 
-(1) This device may not cause harmful interference, and 
-(2) this device must accept any interference received, including interference that may cause undesired operation.
-
 
 *X3 User Manual 93001401 v1.0.0*

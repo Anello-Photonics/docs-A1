@@ -33,9 +33,9 @@ The ANELLO Evaluation Kit (EVK) includes the following items:
 
 Connect the hardware as follows: 
 
-a. Connect EVK to power using either the wall-power or the in-vehicle adapter (red).
-b. Connect EVK to computer using USB-C (blue). Ethernet interface (green) is also available, either directly to the computer or through a router, but connection over serial is required first to configure IP addresses.
-c. Connect primary GNSS antenna to ANT1 on the back of the EVK (black). An optional additional antenna (ANT2) enables stationary heading initialization.
+1. Connect EVK to power using either the wall-power or the in-vehicle adapter (red).
+2. Connect EVK to computer using USB-C (blue). An ethernet connection (green) can also be used, but the EVK must first be connected via USB-C to configure IP addresses.
+3. Connect primary GNSS antenna to ANT1 on the back of the EVK (black). An optional additional antenna (ANT2) enables stationary heading initialization.
 
 .. image:: media/EVK-wiring_2.png
    :width: 60 %
