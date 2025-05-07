@@ -28,4 +28,5 @@ Reach out to info@anellophotonics.com for more information.
     fw_upgrade
     software_tools
     known_limitations
+    version
     
