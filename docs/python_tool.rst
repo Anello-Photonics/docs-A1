@@ -9,10 +9,12 @@ Please see the instructions below to use the ANELLO Python program and contact s
 Install ANELLO Python Program
 -------------------------------------
 
-Confirm that `python <https://www.python.org/downloads/>`_ is installed on your computer and the version is at least 3.6:
+Confirm that `python <https://www.python.org/downloads/>`_ is installed on your computer and the version is at least 3.6.
+Open a terminal and type:
 
 .. code-block:: python
-    
+    :caption: Terminal
+
     python --version
 
 .. note::
@@ -24,6 +26,7 @@ Make sure you have a `git client <https://git-scm.com/download>`_ on your comput
 Clone the GitHub repository:
 
 .. code-block:: python
+    :caption: Terminal
 
     git clone https://github.com/Anello-Photonics/user_tool.git
 
@@ -33,7 +36,8 @@ Clone the GitHub repository:
 Install dependencies using pip:
 
 .. code-block:: python
-    
+    :caption: Terminal
+
     cd user_tool
     pip install -r requirements.txt
 
@@ -43,8 +47,8 @@ Run the Python Tool
 -------------------------------------
 
 .. code-block:: python
-    
-    cd board_tools
+    :caption: Terminal
+
     python user_program.py (for ANELLO X3: python x3_tool.py)
 
 You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#run-python-program>`__.

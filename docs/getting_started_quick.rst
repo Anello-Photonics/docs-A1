@@ -33,9 +33,9 @@ The ANELLO Evaluation Kit (EVK) includes the following items:
 
 Connect the hardware as follows: 
 
-a. Connect EVK to power using either the wall-power or the in-vehicle adapter (red).
-b. Connect EVK to computer using USB-C (blue). Ethernet interface (green) is also available, either directly to the computer or through a router, but connection over serial is required first to configure IP addresses.
-c. Connect primary GNSS antenna to ANT1 on the back of the EVK (black). An optional additional antenna (ANT2) enables stationary heading initialization.
+1. Connect EVK to power using either the wall-power or the in-vehicle adapter (red).
+2. Connect EVK to computer using USB-C (blue). An ethernet connection (green) can also be used, but the EVK must first be connected via USB-C to configure IP addresses.
+3. Connect primary GNSS antenna to ANT1 on the back of the EVK (black). An optional additional antenna (ANT2) enables stationary heading initialization.
 
 .. image:: media/EVK-wiring_2.png
    :width: 60 %
@@ -53,7 +53,7 @@ Be sure to run "git pull" regularly to make sure you are using the latest Python
 ANELLO units are also compatible with ROS using our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
 
 If you would like to connect to the EVK using a serial interface software such as CoolTerm, 
-please ensure you use the correct baud rate (default for the EVK is 921600), and set Data Bits = 8, Stop Bits = 1, and Parity = None.
+please ensure you use the correct baud rate **(default for the EVK is 921600), and set Data Bits = 8, Stop Bits = 1, and Parity = None.**
 
 For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software_tools.html>`_.
 
@@ -140,3 +140,5 @@ If you would like help from the ANELLO team on data analysis and fine-tuning, we
 
 **Congratulations!!!**
 You have completed the EVK setup and data collection! Please feel free to contact support@anellophotonics.com with any questions. 
+
+*EVK User Manual 93001601 v1.0.0*

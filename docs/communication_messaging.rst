@@ -510,7 +510,7 @@ The payload for the binary output message is described below
   +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
 
 
-3.1.3 IMU Message (IMU & IMU+)
+3.1.3 IM1 Message (IMU & IMU+)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The IMU output message for IMU and IMU+ units has a subtype ID of 6. 
 It is the same as IMU message for the EVK and GNSS INS but without odometer values.

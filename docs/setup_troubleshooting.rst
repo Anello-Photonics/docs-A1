@@ -8,12 +8,14 @@ PIP is Python's package manager and it is usually installed by default in Python
 You can check its installation by running the following in your command prompt or terminal:
 
 .. code-block:: python
+    :caption: Terminal
 
     pip --version
 
 If you receive an error that pip cannot be found, we recommend uninstalling and re-installing Python.
 
 .. code-block:: python
+    :caption: Terminal
 
     cd user_tool
     pip install -r requirements.txt
@@ -24,6 +26,7 @@ On some Linux systems, matplotlib and numpy dependencies must be installed with 
 You can get around this by manually running:
 
 .. code-block:: python
+    :caption: Terminal
 
     sudo apt install matplotlib
     sudo apt install numpy
@@ -31,6 +34,7 @@ You can get around this by manually running:
 Or if you already installed requirements.txt and ran the program, but received a matplotlib error:
 
 .. code-block:: python
+    :caption: Terminal
 
     pip uninstall matplotlib
     sudo apt install matplotlib
@@ -38,6 +42,7 @@ Or if you already installed requirements.txt and ran the program, but received a
 Starting Feb 2024, PySimpleGUI started requiring a license for their new version 5 release. If you have any issues with license requests, please run:
 
 .. code-block:: python
+    :caption: Terminal
 
     pip uninstall PySimpleGUI
     pip install -r requirements.txt
@@ -103,6 +108,7 @@ This can be fixed by increasing user permissions or running as root.
 The user may need to be added to groups "tty" or "dialout" to access the serial port.
 
 .. code-block:: python
+    :caption: Terminal
 
     sudo usermod -a -G tty <your user name>
     sudo usermod -a -G dialout <your user name>
@@ -115,12 +121,14 @@ Running as root may also help with user permisions issues, but note that root ma
 Check your python location with:
 
 .. code-block:: python
+    :caption: Terminal
 
     which python
 
 then run as root using that path to python:
 
 .. code-block:: python
+    :caption: Terminal
 
     sudo <path to python> user_program.py
 
@@ -140,12 +148,14 @@ If you have multiple Python versions installed, ensure firewall lists the versio
 - in cmd: check the Python location and version with:
 
 .. code-block:: python
+    :caption: Terminal
 
     where python
 
 and
 
 .. code-block:: python
+    :caption: Terminal
 
     python --version
 
