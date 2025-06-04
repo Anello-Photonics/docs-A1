@@ -69,8 +69,7 @@ ANELLO Maritime INS
 
 Maritime INS SCD Drawing: :download:`PDF <media/SCD_Mechanical_Maritime_INS.pdf>`
 
-.. figure:: media/SCD_Mechanical_Maritime_INS.pdf
-   :align: center
+
 
 .. note::
-   If you purchased the X3 Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/SCD_Breakout Cable_Maritime_INS.pdf>`
+   If you purchased the Maritime INS Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/SCD_Breakout Cable_Maritime_INS.pdf>`
