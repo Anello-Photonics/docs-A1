@@ -4,88 +4,89 @@ Firmware Upgrade
 
 ANELLO recommends using the latest firmware (FW) for best results. The latest FW release is:
 
-- GNSS INS, EVK, IMU+: v1.3.24 (released June 17, 2024)
-- X3: v1.0.8 (Released Dec 13, 2024)
+- 
 
 If you are on an older version, please contact ANELLO for the latest FW image.
 
-FW upgrades currently must be done over the serial interface and can be done on computers using the following OS/processors:
-
-- GNSS INS, EVK, X3: Windows, Linux (x86), Linux (ARM)
-- IMU+: Windows only
+FW upgrades currently must be done over the serial interface (RS232-1) and can be done on Linux environments
 
 Please ensure power and serial connection is not disrupted to the unit during the firmware upgrade process. 
 If you experience any errors during the process, please power cycle the unit and try again.
 
-Firmware Upgrade Procedure - Python Tool
+Firmware Upgrade Procedure - Linux over RS232-1 only
 ------------------------------------------
-Make sure to first run "git pull" in user_tool to ensure you are using the latest firmware upgrade functionality.
+1. In Mavlink console:
 
-    1. Connect both serial ports to a Windows, Linux (x86), or Linux (ARM) computer using the provided USB cable (EVK) or DB9 to USB cables (all other units).
-    
-    2. Run user_program.py (for EVK, GNSS INS, and IMU+) or x3_tool.py (for X3) and connect to unit over COM (USB)
-        
-    3. On main menu, select Upgrade -> Yes. Select ANELLO-provided .hex file
-        - Upgrade will run automatically and typically takes about 5 minutes to completed
-        - If you experience any issues, power cycle the unit and start again from step 2
+.. code-block:: python
+    :caption: Mavlink console
 
-    3. After successful upgrade, the FW version will be updated in System Status upon re-connecting to the unit
+    reboot -b
 
-If for any reason the power or serial connection gets disrupted during the firmware upgrade process and power cycling doesn't bring back the unit to a 
-functioning state, please try running the bootloader commands from the command line as described below (starting with step 1).
+2. Plug into RS232-1
+3. Download ANELLO-provided FW image (.px4 file) onto your local computer
+4. In terminal:
 
-Firmware Upgrade Procedure - Command Line
-------------------------------------------
-Connect both serial ports to a Windows, Linux (x86), or Linux (ARM) computer using the provided USB cable (EVK) or DB9 to USB cables (all other units).
+.. code-block:: python
+    :caption: Terminal
 
-To enter bootloading mode, send the following command to the UART port using a serial interface program such as CoolTerm:
-#APRST,2*5A
+        # run the following to find the USB port # that the Maritime INS is plugged into: sudo ls /dev/ttyUSB*
+        cd into PX4-Autopilot repo
+        ./Tools/px_uploader.py --port /dev/ttyUSB0 --baud-bootloader 115200 --baud-flightstack 115200 /Users/user1/Downloads/anello_maritime_default.px4
+        # Change "/dev/ttyUSB0" to match your port that the Maritime INS is plugged into
+        # Change "/Users/user1/Downloads/anello_maritime_default.px4" to the path to the ANELLO-provided FW image (.px4 file) on your local computer
 
-In a terminal, navigate to the bootloader (found in user_tool -> board_tools directory) and locate the correct bootloader for your OS (using Windows x86 as an exampl below).
-Enter the following commands one at a time:
+5. After it completes, you will see "Rebooting. Elapsed Time x.x" - this means the FW upgrade was successful
+ 
+FW upgrade over Windows Subsystem for Linux: 
+--------------------------------------------------------------------------------------------
 
-    1. ./crossplatform_bootloader_windows_x86_release START TC36X 6 <data port #> 115200 0 0 0 0
-        a. E.g. if the data port is COM8, you would enter 8 for <data port #>
-        b. For the X3, the "data" port is the RS-422 port
-    2. ./crossplatform_bootloader_windows_x86_release PROGRAM <hex file path>
-    3. ./crossplatform_bootloader_windows_x86_release END
+Connecting to USB in WSL 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-After each step it should show "Operation Successful!" If it doesn't, repeat the last step.
+Follow the instructions at `Microsoft <https://learn.microsoft.com/en-us/windows/wsl/connect-usb>`_ 
 
-EVK / GNSS INS Firmware Upgrade Notes
----------------------------------------
-Please review the key considerations below to ensure the best performance when upgrading between different FW versions. 
-Always make sure to run "git pull" to make sure your user_tool has all the latest configurations and calibration schemes.
-Please contact ANELLO for the latest firmware image and full release notes.
+Initial Setup 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Upgrading from v1.2
-~~~~~~~~~~~~~~~~~~~~~~~
-If you are upgrading from v1.2, improvements in were made in v1.3 during stationary periods, particularly when odometer input is not provided.
-To take advantage of these improvements, a `ZUPT calibration <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html#zupt-calibration>`_ must be performed.
+Install usbipd .msi file at `Github <https://github.com/dorssel/usbipd-win/releases>`_ 
 
-Upgrading from v1.1
-~~~~~~~~~~~~~~~~~~~~~~~
-If you are upgrading from v1.1, in addition to the items above:
+Follow all instructions
 
-1. Completing `antenna baseline calibration <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html#dual-antenna-baseline-calibration>`_ is now required to use the dual antenna feature.
-2. An installation `misalignment angle configuration <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#anello-unit-installation-misalignment>`_ is now available, which improves performance on long-distance dead reckoning.
 
-Upgrading from v1.0
-~~~~~~~~~~~~~~~~~~~~~~~
-If you are upgrading from v1.0 or older, in addition to the items above:
+Required Steps each power up 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The IMU message now has an additional field (T_Sync) which wasn't included in previous firmwares.
+Windows command line refers to the terminal windows OS. The linux command line refers to the command line within WSL. Steps 1-3 are all on the windows command line. 
 
-There are also several new `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_ which will default to OFF when upgrading from v1.0 or earlier.
-Please make sure these are set properly upon upgrading:
+This needs to be done every time the system restarts or the device is plugged in 
 
-1. Enable Serial Output: defaults OFF, turn ON if outputting over serial.
-2. Enable Ethernet Output: defaults OFF, turn ON if outputting over ethernet.
-3. NTRIP Input Channel: defaults OFF (no NTRIP data used), set to Serial if sending NTRIP over serial, set to Ethernet if sending NTRIP over ethernet.
-4. Sensor low-pass filter cutoff frequencies are defaulted to 0 (no filter). We recommend setting these to 90% Nyquist (90 Hz for output data rate of 200 Hz).
+1. Get bus id 
 
-Legacy Units
-~~~~~~~~~~~~~~~~~
-Units received before Nov 1, 2022 are an older hardware revision that are not dual GNSS capable and may be limited in performance. 
-These older units are are not guaranteed compatibility with newer software and features. 
-To upgrade to the latest hardware, please contact ANELLO.
+    a. With the device not plugged in run “usbipd list” 
+
+    b. Plug in the device 
+
+    c. Run “usbipd list” again 
+
+    d. The new row in the second use is the evk. 
+
+    e. The First column should be labelled BUSID. That code is the bus id (ex: "1-1")
+
+2. Bind the device with “usbipd bind --busid <busid>” 
+
+    a. Replace <busid> with the value from step 1. 
+
+    b. Example: “usbipd bind --busid 1-1” 
+
+    c. Run “usbipd list” to make sure it worked. The evk row should now say shared under the “STATE” column 
+
+3. Attach the device with “usbipd attach --wsl --busid <busid>” 
+
+    a. Replace <busid> with the value from step 1. 
+
+    b. Example: “usbipd attach --wsl --busid 1-1” 
+
+4. Check its working within linux by typing “ls /dev/ttyUSB*” in the linux command line. Multiple ports should showup. 
+
+
+After USB ports are attached to WSL, steps for FW upgrade on Linux can be followed from WSL terminal.
