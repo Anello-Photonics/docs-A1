@@ -24,7 +24,11 @@ Install `QGroundControl <https://qgroundcontrol.com/>`_ software onto your lapto
 
 Connect the Maritime INS to computer using either the RS232 serial to USB or ethernet
 
-Change ethernet IP address on host computer to "192.168.0.2"
+Change ethernet IP address on host computer to "192.168.0.2" and subnet mask to "255.255.255.0"
+
+.. image:: media/ethernet_settings.png
+   :width: 60 %
+   :align: center
 
 Open QGroundControl. 
 
@@ -50,13 +54,15 @@ The ANELLO Maritime INS can be configured for various installation positions. Th
 4. Configure ANELLO Maritime INS
 ---------------------------------
 
-Orientation: If the box is facing forwards, the below should each be 0 (default). Otherwise, these values should be the angle offset in degrees. For example, if box is facing backwards, both X and Y should be set to 180. 
+Orientation: The box should be installed with the X axis facing forward to vehicle front / direction of travel.
 
-	SENS_BOARD_X_OFF 
+In QGroundControl under Vehicle Setup > Parameters
 
-	SENS_BOARD_Y_OFF 
+.. image:: media/QGC_parameters.png
+   :width: 60 %
+   :align: center
 
-	SENS_BOARD_X_OFF 
+
 
 The lever arm to ANT1, with the center of the box as the origin and using forward (X), right (Y), down (Z) frame, should be entered in meters: 
 
@@ -79,6 +85,13 @@ After installing the box and configuring the units, you are ready for data colle
 A new log can be started simply by cycling power to the ANELLO payload. 
 
 Logs must be started in good GPS conditions, as GPS is currently used for global position initialization. 
+
+Logs can be downloaded in QGroundControl under Analyze Tools > Log Download
+
+.. image:: media/QGC_logs.png
+   :width: 60 %
+   :align: center
+
 
 
 7. Water Testing Procedure
