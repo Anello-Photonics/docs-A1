@@ -4,23 +4,15 @@ Communication & Messaging
 1  Interfacing
 --------------------------
 
-The communication interfaces currently supported for the ANELLO products are listed below:
-
-    1. ANELLO EVK: Serial (USB C), UDP (Ethernet)
-    
-    2. ANELLO GNSS INS: Serial (RS-232), UDP (Automotive Ethernet)
-
-    3. ANELLO IMU/IMU+: Serial (RS-232)
-
-    4. ANELLO X3: Serial (RS-422), UART (3.3V)
+The communication interfaces currently supported for the ANELLO Maritime INS:
+    1. Serial RS232
+    2. Ethernet
 
 1.1 Serial Communication Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Default Baud Rate:
-    - EVK: 921600
-    - GNSS INS and IMU/IMU+: 230400
-    - X3: 460800
+    - 57600
 
 RS-232 Voltage Levels: 
     - +/- 7V
@@ -34,35 +26,25 @@ Data Format:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For all interfaces, there are two main port types. 
 
-1. The data port is where the main ANELLO output messages are transmitted, and also serves as the input port for the RTCM correction stream.
-2. The configuration port is used for inputting configuration messaging, inputting odometer messages, and outputting NMEA messages (firmware v1.2 and later).
+1. RS232-1, The configuration and data port
+2. RS232-2, Input port for speed aiding sensors
 
-For UDP interface, there is a third "odometer" port, which is strictly used to send odometer messages. 
-This option can be used to feed in odometer data if using ANELLO Python Program to record data over serial, 
-in order to keep the serial configuration port free.
 
     +--------------------+------------------------------------------+---------------------------------------+
     | **Logical Port**   |  **Physical Port**                       |  **Functions**                        |
     +--------------------+------------------------------------------+---------------------------------------+
-    | Data Port          | Lowest serial port #, e.g. COM7          | Output: Data Messages                 |
+    | RS232-1            |                                          |                                       |
     |                    +------------------------------------------+                                       |
-    |                    | UDP: EVK port 1, computer port selectable| Input: RTCM Data                      |
+    |                    |                                          |                                       |
     +--------------------+------------------------------------------+---------------------------------------+
-    | Configuration Port | Highest serial port #, e.g. COM10        | Output: NMEA Messages (if configured) |
+    | RS232-2            |                                          |                                       |
     |                    +------------------------------------------+                                       |
-    |                    | UDP: EVK port 2, computer port selectable| Input: Odometer Data, Configuration   |
+    |                    |                                          |                                       |
     +--------------------+------------------------------------------+---------------------------------------+
-    | Odometer Port      | UDP: EVK port 3, computer port selectable| Odometer Channel (UDP Only)           |
+    | Ethernet           |                                          |                                       |
     +--------------------+------------------------------------------+---------------------------------------+
 
-UDP communication uses fixed port numbers on the EVK but selectable ports on the external device.
-These ports, along with IP addresses and other UDP settings should be configured (see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_).
-
- .. note:: 
-  The "lowest" and "highest" serial ports mentioned above refer to the EVK, which uses an FTDI chip to create 4 virtual COM ports.
-  The GNSS INS and IMU/IMU+ have two RS-232 connections, where RS232-1 is the configuration port and RS232-2 is the data port. 
-  The port numbers that appear once connected to the computer are determined by how the OS assigns the ports, and therefore the 
-  Data port is not necessarily the lowest port # like in the EVK.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 1.3 Time Synchronization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
