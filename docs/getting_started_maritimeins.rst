@@ -24,6 +24,8 @@ Install `QGroundControl <https://qgroundcontrol.com/>`_ software onto your lapto
 
 Connect the Maritime INS to computer using either the RS232 serial to USB or ethernet
 
+Change ethernet IP address on host computer to "192.168.0.2"
+
 Open QGroundControl. 
 
 

@@ -13,14 +13,44 @@ FW upgrades currently must be done over the serial interface (RS232-1) and can b
 Please ensure power and serial connection is not disrupted to the unit during the firmware upgrade process. 
 If you experience any errors during the process, please power cycle the unit and try again.
 
+Firmware Upgrade Procedure - Windows over RS232-1 only
+-------------------------------------------------------
+1. Connect ethernet to computer and open QGround Control (to connect to QGroundControl with ethernet, computer IP adress must be set to 192.168.0.2, subnet mask 255.255.255.0)
+
+2. In Mavlink console:
+
+.. code-block:: python
+    :caption: Mavlink console
+
+    reboot -b
+
+3. Close QGroundControl
+4. Plug into RS232-1
+5. Download ANELLO-provided FW image (.px4 file) onto your local computer
+6. Open device manager, and find which COM port is the serial connection.
+7. In terminal:
+
+.. code-block:: python
+    :caption: Terminal
+    
+        # cd into folder with px4_uploader.py
+        ./Tools/px_uploader.py --port /dev/ttyUSB0 --baud-bootloader 115200 /Users/user1/Downloads/anello_maritime_default.px4
+        # Change "/dev/ttyUSB0" to match your port that the Maritime INS is plugged into
+        # Change "/Users/user1/Downloads/anello_maritime_default.px4" to the path to the ANELLO-provided FW image (.px4 file) on your local computer
+
+8. After it completes, you will see "Rebooting. Elapsed Time x.x" - this means the FW upgrade was successful
+
+
 Firmware Upgrade Procedure - Linux over RS232-1 only
 -----------------------------------------------------
+
 1. In Mavlink console:
 
 .. code-block:: python
     :caption: Mavlink console
 
     reboot -b
+
 
 2. Plug into RS232-1
 3. Download ANELLO-provided FW image (.px4 file) onto your local computer
@@ -29,8 +59,9 @@ Firmware Upgrade Procedure - Linux over RS232-1 only
 .. code-block:: python
     :caption: Terminal
 
-        # run the following to find the USB port # that the Maritime INS is plugged into: sudo ls /dev/ttyUSB*
-        cd into PX4-Autopilot repo
+        # run the following to find the USB port # that the Maritime INS is plugged into: 
+        sudo ls /dev/ttyUSB*
+        # cd into PX4-Autopilot repo
         ./Tools/px_uploader.py --port /dev/ttyUSB0 --baud-bootloader 115200 --baud-flightstack 115200 /Users/user1/Downloads/anello_maritime_default.px4
         # Change "/dev/ttyUSB0" to match your port that the Maritime INS is plugged into
         # Change "/Users/user1/Downloads/anello_maritime_default.px4" to the path to the ANELLO-provided FW image (.px4 file) on your local computer
