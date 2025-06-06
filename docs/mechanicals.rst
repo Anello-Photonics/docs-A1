@@ -17,5 +17,13 @@ Production Intent SCD Drawing:
    :align: center
 
 
+
 .. note::
    If you purchased the Maritime INS Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/SCD_Breakout Cable_Maritime_INS.pdf>`
+
+
+   Connector Pinout:
+
+.. image:: media/Plug_Socket_Face.png
+   :width: 80%
+   :align: center

@@ -14,9 +14,6 @@ The ANELLO Maritime INS unit is pictured below. It features a 20 pin ... connect
    :width: 20 %
    :align: center
 
-.. image:: media/Maritime_INS_System.pdf
-   :width: 40 %
-   :align: center
 
 2. Software Interfaces
 ---------------------------------
@@ -27,8 +24,18 @@ Install `QGroundControl <https://qgroundcontrol.com/>`_ software onto your lapto
 
 Connect the Maritime INS to computer using either the RS232 serial to USB or ethernet
 
-Open QGroundControl. Once connected, the text on the top left will change from “Disconnected” to “Not Ready” 
+Open QGroundControl. 
 
+
+.. image:: media/QGroundControl-Disconnected.png
+   :width: 60 %
+   :align: center
+
+Once connected, the text on the top left will change from “Disconnected” to “Not Ready” 
+
+.. image:: media/QGroundControl-NotReady.png
+   :width: 60 %
+   :align: center
 
 
 

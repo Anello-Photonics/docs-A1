@@ -14,7 +14,7 @@ Please ensure power and serial connection is not disrupted to the unit during th
 If you experience any errors during the process, please power cycle the unit and try again.
 
 Firmware Upgrade Procedure - Linux over RS232-1 only
-------------------------------------------
+-----------------------------------------------------
 1. In Mavlink console:
 
 .. code-block:: python
@@ -64,9 +64,19 @@ This needs to be done every time the system restarts or the device is plugged in
 
     a. With the device not plugged in run “usbipd list” 
 
+    .. code-block:: python
+        :caption: Terminal
+
+            usbipd list
+
     b. Plug in the device 
 
     c. Run “usbipd list” again 
+
+    .. code-block:: python
+        :caption: Terminal
+
+            usbipd list
 
     d. The new row in the second use is the evk. 
 
@@ -78,15 +88,35 @@ This needs to be done every time the system restarts or the device is plugged in
 
     b. Example: “usbipd bind --busid 1-1” 
 
-    c. Run “usbipd list” to make sure it worked. The evk row should now say shared under the “STATE” column 
+    .. code-block:: python
+        :caption: Terminal
+
+            usbipd bind --busid 1-1
+
+    c. Run “usbipd list” to make sure it worked. The evk row should now say shared under the “STATE” column
+
+    .. code-block:: python
+        :caption: Terminal
+
+            usbipd list 
 
 3. Attach the device with “usbipd attach --wsl --busid <busid>” 
 
     a. Replace <busid> with the value from step 1. 
 
-    b. Example: “usbipd attach --wsl --busid 1-1” 
+    b. Example: “usbipd attach --wsl --busid 1-1”
+
+    .. code-block:: python
+        :caption: Terminal
+
+            usbipd attach --wsl --busid 1-1
 
 4. Check its working within linux by typing “ls /dev/ttyUSB*” in the linux command line. Multiple ports should showup. 
+
+    .. code-block:: python
+        :caption: WSL Terminal
+
+            ls /dev/ttyUSB*
 
 
 After USB ports are attached to WSL, steps for FW upgrade on Linux can be followed from WSL terminal.
