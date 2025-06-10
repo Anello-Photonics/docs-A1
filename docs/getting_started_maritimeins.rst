@@ -66,11 +66,11 @@ In QGroundControl under Vehicle Setup > Parameters
 
 The lever arm to ANT1, with the center of the box as the origin and using forward (X), right (Y), down (Z) frame, should be entered in meters: 
 
-	GPS_SEP_ANT_X 
+	EKF2_GPS_POS_X
 
-	GPS_SEP_ANT_Y 
+	EKF2_GPS_POS_Y 
 
-	GPS_SEP_ANT_Z 
+	EKF2_GPS_POS_Z
 
 If the antennae are aligned in any other orientation other than ANT1 in back and ANT2 in front, the GPS_YAW_OFF must be updated to account for the offset.  
 
