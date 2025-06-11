@@ -1,14 +1,8 @@
-ANELLO Developer Manual
+ANELLO Maritime INS Integration Manual
 ============================
 
-The ANELLO EVK is an easy to use high-accuracy navigation system that provides a convenient way 
-to evaluate the exclusive benefits of Anello’s low-drift optical gyro technology. System designers 
-use the EVK system to begin design for the high-precision Anello SiPhOG :sup:`TM` sensor. The EVK system
-also serves as a truth reference system for difficult environment driving scenarios such as dense urban 
-canyon environments.
+Equipped with three ANELLO Silicon Photonics Optical Gyroscopes (SiPhOG™), the ANELLO Maritime INS is redefining precision and reliability for navigation in demanding maritime environments. The ANELLO Maritime INS integrates the company's groundbreaking SiPhOG™ technology with its advanced sensor fusion engine to deliver unparalleled precision and reliability for autonomous surface vessels (ASVs) and autonomous underwater vessels (AUVs).
 
-On May 22, 2022 the ANELLO announced the availability of the GNSS INS as a ruggedized volume product version of the ANELLO EVK.
-Reach out to info@anellophotonics.com for more information.
 
 .. toctree::
     :caption: ANELLO Developer Manual
@@ -16,12 +10,9 @@ Reach out to info@anellophotonics.com for more information.
 
 
     getting_started_maritimeins
-    setup_troubleshooting
     communication_messaging
     mechanicals
-    drive_testing
+    sensor_calibrations
     fw_upgrade
-    software_tools
-    known_limitations
     version
     

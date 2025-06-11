@@ -15,29 +15,38 @@ The ANELLO Maritime INS unit is pictured below. It features a 20 pin circular co
    :align: center
 
 
+An SCD drawing of the GNSS INS and a schematic of the Accessory kit breakout cable can be found in 
+`Mechanicals <https://docs-a1.readthedocs.io/en/maritime_ins/mechanicals.html>`__.
+
+
 2. Software Interfaces
 ---------------------------------
 
 Connect with QGroundControl:
 
-Install `QGroundControl <https://qgroundcontrol.com/>`_ software onto your laptop or computer 
+1. Install `QGroundControl <https://qgroundcontrol.com/>`_ software onto your laptop or computer 
 
-Connect the Maritime INS to computer using ethernet
+2. Connect the Maritime INS to computer using ethernet breakout from 20 pin connector
 
-Change ethernet IP address on host computer to "192.168.0.2" and subnet mask to "255.255.255.0"
+3. Change ethernet IP address on host computer to "192.168.0.2" and subnet mask to "255.255.255.0"
 
 .. image:: media/ethernet_settings.png
    :width: 60 %
    :align: center
 
-Open QGroundControl. 
-
+4. Open QGroundControl. 
 
 .. image:: media/QGroundControl-Disconnected.png
    :width: 60 %
    :align: center
 
-Once connected, the text on the top left will change from “Disconnected” to “Not Ready” 
+
+5. Set up ethernet connection in QGroundControl (only needs to be done once):
+	a.	Click Q button (top right) -> Application Settings -> Comm Links -> ETH
+	b.	Type: UDP
+	c.	Port: 14550
+
+6. Once connected, the text on the top left will change from “Disconnected” to “Not Ready” 
 
 .. image:: media/QGroundControl-NotReady.png
    :width: 60 %
@@ -48,13 +57,21 @@ Once connected, the text on the top left will change from “Disconnected” to 
 3. Vehicle Installation
 ----------------------------
 
-The ANELLO Maritime INS can be configured for various installation positions. 
+The ANELLO Maritime INS can be configured for various installation positions as long as parameters are set as detailed in the next section.
+An external speed aiding sensor is required to maintain accuracy in GPS denied conditions. Calibration procedures for common sensors are detailed in  `Sensor Calibrations <https://docs-a1.readthedocs.io/en/maritime_ins/sensor_calibrations.html>`_
+
+The Maritime INS should be installed with the X axis facing forward to vehicle front / direction of travel and as close to the centerline as possible.
+
+Below is the recommended installation configuration, with the longest possible antenna baseline (distance between antenna) to ensure maximum dual antenna heading accuracy.
+
+.. image:: media/maritime_ins_installation.drawio.png
+   :width: 40 %
+   :align: center
+
 
 
 4. Configure ANELLO Maritime INS
 ---------------------------------
-
-The Maritime INS should be installed with the X axis facing forward to vehicle front / direction of travel.
 
 
 The lever arms of the installation must be measured and configured as parameters in QGroundControl to ensure solution accuracy. The X, Y, Z are based on hand rule (X forward, Y right, Z down). The IMU center is the center of the red Maritime INS unit. Most important parameters are bolded. 
@@ -80,7 +97,7 @@ The lever arms of the installation must be measured and configured as parameters
 | EKF2_IMU_POS_Z     | ft     | 0       | Z offset from center of boat to IMU center                                                                 |
 +--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
 
-In QGroundControl under Vehicle Setup > Parameters
+In QGroundControl under Q > Vehicle Setup > Parameters
 
 .. image:: media/QGC_parameters.png
    :width: 60 %
@@ -94,11 +111,11 @@ In QGroundControl under Vehicle Setup > Parameters
 
 After installing the box and configuring the units, you are ready for data collection. Data from the Maritime INS is logged automatically once power is applied to the box. There is no manual intervention needed to start a log. A couple notes: 
 
-A new log can be started simply by cycling power to the ANELLO payload. 
+* A new log can be started simply by cycling power to the ANELLO payload. 
 
-Logs must be started in good GPS conditions, as GPS is currently used for global position initialization. 
+* Logs must be started in good GPS conditions, as GPS is currently used for global position initialization. 
 
-Logs can be downloaded in QGroundControl under Analyze Tools > Log Download
+* Logs can be downloaded in QGroundControl under Q > Analyze Tools > Log Download
 
 .. image:: media/QGC_logs.png
    :width: 60 %
