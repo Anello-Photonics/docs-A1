@@ -8,7 +8,7 @@ Please contact support@anellophotonics.com with any questions.
 1. Hardware Connections
 ---------------------------------
 
-The ANELLO Maritime INS unit is pictured below. It features a 20 pin ... connector and two female SMA GNSS connectors
+The ANELLO Maritime INS unit is pictured below. It features a 20 pin circular connector and two female SMA GNSS connectors
 
 .. image:: media/ANELLO_Maritime_INS.png
    :width: 20 %
@@ -22,7 +22,7 @@ Connect with QGroundControl:
 
 Install `QGroundControl <https://qgroundcontrol.com/>`_ software onto your laptop or computer 
 
-Connect the Maritime INS to computer using either the RS232 serial to USB or ethernet
+Connect the Maritime INS to computer using ethernet
 
 Change ethernet IP address on host computer to "192.168.0.2" and subnet mask to "255.255.255.0"
 
@@ -48,13 +48,37 @@ Once connected, the text on the top left will change from “Disconnected” to 
 3. Vehicle Installation
 ----------------------------
 
-The ANELLO Maritime INS can be configured for various installation positions. The vector from ANT1 to ANT2 should be parallel to vehicle forward; i.e., both antennae may be offset from the vehicle centerline, as long as it’s by the same amount. 
+The ANELLO Maritime INS can be configured for various installation positions. 
 
 
 4. Configure ANELLO Maritime INS
 ---------------------------------
 
-Orientation: The box should be installed with the X axis facing forward to vehicle front / direction of travel.
+The Maritime INS should be installed with the X axis facing forward to vehicle front / direction of travel.
+
+
+The lever arms of the installation must be measured and configured as parameters in QGroundControl to ensure solution accuracy. The X, Y, Z are based on hand rule (X forward, Y right, Z down). The IMU center is the center of the red Maritime INS unit. Most important parameters are bolded. 
+
++--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
+| Parameter          | Units  | Default | Description                                                                                                |
++====================+========+=========+============================================================================================================+
+| **EKF2_GPS_POS_X** | ft     | 0       | X offset from IMU center to ANT1                                                                           |
++--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
+| **EKF2_GPS_POS_Y** | ft     | 0       | Y offset from IMU center to ANT1                                                                           |
++--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
+| EKF2_GPS_POS_Z     | ft     | 0       | Z offset from IMU center to ANT1                                                                           |
++--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
+| **EKF2_GPS_BSL**   | ft     | 0       | Baseline length between ANT1 and ANT2                                                                      |
++--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
+|**EKF2_GPS_YAW_OFF**| deg    | 0       | Angle offset between ANT1 and ANT2. 0 = ANT1 in back and ANT2 in front, and value up to 359 deg is         |
+|                    |        |         | counterclockwise rotation (e.g. 90 if ANT1 on left and ANT2 on right).                                     |
++--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
+| **EKF2_IMU_POS_X** | ft     | 0       | X offset from center of boat to IMU center                                                                 |
++--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
+| **EKF2_IMU_POS_Y** | ft     | 0       | Y offset from center of boat to IMU center                                                                 |
++--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
+| EKF2_IMU_POS_Z     | ft     | 0       | Z offset from center of boat to IMU center                                                                 |
++--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
 
 In QGroundControl under Vehicle Setup > Parameters
 
@@ -63,18 +87,6 @@ In QGroundControl under Vehicle Setup > Parameters
    :align: center
 
 
-
-The lever arm to ANT1, with the center of the box as the origin and using forward (X), right (Y), down (Z) frame, should be entered in meters: 
-
-	EKF2_GPS_POS_X
-
-	EKF2_GPS_POS_Y 
-
-	EKF2_GPS_POS_Z
-
-If the antennae are aligned in any other orientation other than ANT1 in back and ANT2 in front, the GPS_YAW_OFF must be updated to account for the offset.  
-
-For example, if ANT1 is on the left and ANT2 is on the right, GPS_YAW_OFF should be 90.  
 
 
 6. Data Collection & Visualization
