@@ -65,7 +65,7 @@ It is recommended that the Maritime INS is installed with the X axis facing forw
 Below is the recommended installation configuration, with the longest possible antenna baseline (distance between antenna) to ensure maximum dual antenna heading accuracy.
 
 .. image:: media/maritime_ins_installation.drawio.png
-   :width: 40 %
+   :width: 60 %
    :align: center
 
 
