@@ -60,7 +60,7 @@ Connect with QGroundControl:
 The ANELLO Maritime INS can be configured for various installation positions as long as parameters are set as detailed in the next section.
 An external speed aiding sensor is required to maintain accuracy in GPS denied conditions. Calibration procedures for common sensors are detailed in  `Sensor Calibrations <https://docs-a1.readthedocs.io/en/maritime_ins/sensor_calibrations.html>`_
 
-The Maritime INS should be installed with the X axis facing forward to vehicle front / direction of travel and as close to the centerline as possible.
+It is recommended that the Maritime INS is installed with the X axis facing forward to vehicle front / direction of travel and as close to the centerline as possible. Otherwise SENS_BOARD and EKF2_IMU_POS offsets will need to be configured.
 
 Below is the recommended installation configuration, with the longest possible antenna baseline (distance between antenna) to ensure maximum dual antenna heading accuracy.
 
@@ -87,14 +87,25 @@ The lever arms of the installation must be measured and configured as parameters
 +--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
 | **EKF2_GPS_BSL**   | ft     | 0       | Baseline length between ANT1 and ANT2                                                                      |
 +--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
-|**EKF2_GPS_YAW_OFF**| deg    | 0       | Angle offset between ANT1 and ANT2. 0 = ANT1 in back and ANT2 in front, and value up to 359 deg is         |
-|                    |        |         | counterclockwise rotation (e.g. 90 if ANT1 on left and ANT2 on right).                                     |
+|**EKF2_GPS_YAW_OFF**| deg    | 0       | 0: ANT1 in back and ANT2 in front                                                                          |
+|                    |        |         |                                                                                                            |
+|                    |        |         | 90: ANT1 on right and ANT2 on left                                                                         |
+|                    |        |         |                                                                                                            |
+|                    |        |         | 180: ANT1 in front and ANT2 in back                                                                        |
+|                    |        |         |                                                                                                            |
+|                    |        |         | 270: ANT1 on left and ANT2 on right                                                                        |
 +--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
 | **EKF2_IMU_POS_X** | ft     | 0       | X offset from center of boat to IMU center                                                                 |
 +--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
 | **EKF2_IMU_POS_Y** | ft     | 0       | Y offset from center of boat to IMU center                                                                 |
 +--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
 | EKF2_IMU_POS_Z     | ft     | 0       | Z offset from center of boat to IMU center                                                                 |
++--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
+|**SENS_BOARD_X_OFF**| deg    | 0       | Maritime INS installation rotation X (Roll) offset                                                         |
++--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
+|**SENS_BOARD_Y_OFF**| deg    | 0       | Maritime INS installation rotation Y (Pitch) offset                                                        |
++--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
+|**SENS_BOARD_Z_OFF**| deg    | 0       | Maritime INS installation rotation Z (Yaw) offset                                                          |
 +--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
 
 In QGroundControl under Q > Vehicle Setup > Parameters

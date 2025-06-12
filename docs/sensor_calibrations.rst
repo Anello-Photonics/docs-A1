@@ -24,7 +24,9 @@ Each time the ANELLO payload is installed on a new boat model, the boat’s padd
 .. image:: media/example_out_and_back.png
    :width: 60 %
    :align: center
+
 *Example "Out and Back" Mission for Paddle Wheel Calibration*
+
 
 4. Once “out and backs” are complete, power off ANELLO payload 
 
