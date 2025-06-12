@@ -8,9 +8,9 @@ ANELLO recommends using the latest firmware (FW) for best results. The latest FW
 
 If you are on an older version, please contact ANELLO for the latest FW image.
 
-FW upgrades currently must be done over the serial interface (RS232-1) and can be done on Linux environments
+FW upgrades currently must be done using both the serial RS-232-1 port and ethernet port and can be done on Windows and Linux environments
 
-Please ensure power and serial connection is not disrupted to the unit during the firmware upgrade process. 
+Please ensure power, serial, and ethernet connection is not disrupted to the unit during the firmware upgrade process. 
 If you experience any errors during the process, please power cycle the unit and try again.
 
 Firmware Upgrade Procedure - Windows over RS232-1 only
