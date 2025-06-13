@@ -108,6 +108,8 @@ The lever arms of the installation must be measured and configured as parameters
 |**SENS_BOARD_Z_OFF**| deg    | 0       | Maritime INS installation rotation Z (Yaw) offset                                                          |
 +--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
 
+For example, if box is facing backwards, both SENS_BOARD_X_OFF and SENS_BOARD_Y_OFF should be set to 180.
+
 In QGroundControl under Q > Vehicle Setup > Parameters
 
 .. image:: media/QGC_parameters.png
