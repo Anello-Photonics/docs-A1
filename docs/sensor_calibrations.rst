@@ -14,7 +14,7 @@ Each time the ANELLO payload is installed on a new boat model, the boat’s padd
 
 2. Power on ANELLO payload while boat is stationary and allow ~30s to gain GPS 
 
-3. Perform “out and back” mission of at least 30 second duration per leg, 2-3 times at each of the following motor percentages: 20%, 40%, 60%, 80%, 100% 
+3. Perform “out and back” mission of at least 30 second duration per leg, 2-3 times at each of the following percentages of the vehicle's max speed: 20%, 40%, 60%, 80%, 100% 
 
 	a. If there are constant currents, performing the “out and backs” with and against the current is ideal 
 
