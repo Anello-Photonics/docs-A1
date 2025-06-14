@@ -29,7 +29,7 @@ The minimum sensor aiding for the ANELLO Maritime INS is velocity aiding via eit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-$--RPM,a\ :sub:`1` \,x\ :sub:`2` \,x.x\ :sub:`3` \,x.x\ :sub:`4` \,A\ :sub:`5` \*hh\ :sub:`6` |  
+$--RPM,a\ :sub:`1` \,x\ :sub:`2` \,x.x\ :sub:`3` \,x.x\ :sub:`4` \,A\ :sub:`5` \*hh\ :sub:`6` \  
 
 1) Source; S = Shaft, E = Engine 
 2) Engine or shaft number 
@@ -190,8 +190,8 @@ The following table shows the format of the sensor data message.
 
 
 
-4. Example Data
----------------------
+3.1 Example Data
+~~~~~~~~~~~~~~~~~~~
 
 Example Data (mix of valid and invalid data): 
 
@@ -243,9 +243,9 @@ Example Data (mix of valid and invalid data):
 
 
 
-5. Output Messages
+4. Output Messages
 ---------------------
-5.1 RMC: Recommended Minimum Navigation Information
+4.1 RMC: Recommended Minimum Navigation Information
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 $--RMC,hhmmss.ss\ :sub:`1` \,A\ :sub:`2` \,xxxx.xx\ :sub:`3` \,a\ :sub:`4` \,xxxxx.xx\ :sub:`5` \,a\ :sub:`6` \,x.x\ :sub:`7` \,x.x\ :sub:`8` \,xxxx\ :sub:`9` \,x.x\ :sub:`10` \,a\ :sub:`11` \*hh\ :sub:`12` \  
