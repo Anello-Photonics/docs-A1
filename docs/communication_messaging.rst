@@ -14,8 +14,11 @@ The communication interfaces currently supported for the ANELLO Maritime INS:
 
 
 
-2.  NMEA 0183 Data Input Messages
-------------------------------------
+2. Input Messages
+---------------------------------
+
+2.1  NMEA 0183 Data Input Messages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ANELLO Maritime INS supports standard NMEA 0183 input messages which allow the USV to send in external sensor information, e.g. for speed-aiding. ANELLO also has a set of proprietary messages, following the standard NMEA proprietary format with a prefix of “$P”, company code of “AP” (ANELLO Photonics), and the message code. 
 
@@ -25,8 +28,8 @@ The minimum sensor aiding for the ANELLO Maritime INS is velocity aiding via eit
 
 
 
-2.1. RPM: Revolutions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2.1.1. RPM: Revolutions
+""""""""""""""""""""""""""""""""
 
 
 $--RPM,a\ :sub:`1` \,x\ :sub:`2` \,x.x\ :sub:`3` \,x.x\ :sub:`4` \,A\ :sub:`5` \*hh\ :sub:`6` \  
@@ -38,8 +41,8 @@ $--RPM,a\ :sub:`1` \,x\ :sub:`2` \,x.x\ :sub:`3` \,x.x\ :sub:`4` \,A\ :sub:`5` \
 5) Status, A means data is valid  
 6) Checksum  
 
-2.2. RSA: Rudder Sensor Angle
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2.1.2. RSA: Rudder Sensor Angle
+"""""""""""""""""""""""""""""""""
 
 $--RSA,x.x\ :sub:`1` \,A\ :sub:`2` \,x.x\ :sub:`3` \,A\ :sub:`4` \*hh\ :sub:`5` \  
 
@@ -49,8 +52,8 @@ $--RSA,x.x\ :sub:`1` \,A\ :sub:`2` \,x.x\ :sub:`3` \,A\ :sub:`4` \*hh\ :sub:`5` 
 4) Status, A means data is valid  
 5) Checksum  
 
-2.3. VHW: Water Speed & Heading
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2.1.3. VHW: Water Speed & Heading
+""""""""""""""""""""""""""""""""""
 $--VHW,x.x\ :sub:`1` \,T\ :sub:`2` \,x.x\ :sub:`3` \,M\ :sub:`4` \,x.x\ :sub:`5` \,N\ :sub:`6` \,x.x\ :sub:`7` \,K\ :sub:`8` \*hh\ :sub:`9` \  
 
 1) Degrees True 
@@ -64,8 +67,8 @@ $--VHW,x.x\ :sub:`1` \,T\ :sub:`2` \,x.x\ :sub:`3` \,M\ :sub:`4` \,x.x\ :sub:`5`
 9) Checksum  
 
 
-2.4. VBW: Dual Ground/Water Speed
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2.1.4. VBW: Dual Ground/Water Speed
+"""""""""""""""""""""""""""""""""""""
 $--VBW,x.x\ :sub:`1` \,x.x\ :sub:`2` \,A\ :sub:`3` \,x.x\ :sub:`4` \,x.x\ :sub:`5` \,A\ :sub:`6` \*hh\ :sub:`7` \  
 
 1) Longitudinal water speed, “-“ means astern 
@@ -76,8 +79,8 @@ $--VBW,x.x\ :sub:`1` \,x.x\ :sub:`2` \,A\ :sub:`3` \,x.x\ :sub:`4` \,x.x\ :sub:`
 6) Status, A = Data Valid 
 7) Checksum 
 
-2.5. VWR: Relative Wind Speed & Angle
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2.1.5. VWR: Relative Wind Speed & Angle
+"""""""""""""""""""""""""""""""""""""""""
  
 $--VWR,x.x\ :sub:`1` \,a\ :sub:`2` \,x.x\ :sub:`3` \,N\ :sub:`4` \,x.x\ :sub:`5` \,M\ :sub:`6` \,x.x\ :sub:`7` \,K\ :sub:`8` \*hh\ :sub:`9` \  
 
@@ -91,16 +94,18 @@ $--VWR,x.x\ :sub:`1` \,a\ :sub:`2` \,x.x\ :sub:`3` \,N\ :sub:`4` \,x.x\ :sub:`5`
 8) K = Kilometers Per Hour  
 9) Checksum 
 
-2.6. $PAPGPSCTRL: GPS Control 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2.1.6. $PAPGPSCTRL: GPS Control 
+"""""""""""""""""""""""""""""""""
 
 $PAPGPSCTRL,x\ :sub:`1` \*hh\ :sub:`2` \  
 
 1) GPS control, “1” = Use GPS (default), “0” = Ignore GPS 
 2) Checksum   
 
-3. ANELLO Custom Binary Sensor Input Message
------------------------------------------------
+
+
+2.2. ANELLO Custom Binary Sensor Input Message
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In addition to standard NMEA messages, the ANELLO Maritime INS supports a custom binary input message which can be used to populate available sensor information from an external GPS, a paddle wheel sensor, an external magnetometer, a wind speed and direction, and motor and rudder percentage information. This message is detailed below. 
  
 **Serial communication protocol0**: RS-232 
@@ -190,8 +195,8 @@ The following table shows the format of the sensor data message.
 
 
 
-3.1 Example Data
-~~~~~~~~~~~~~~~~~~~
+2.2.1 Example Data
+""""""""""""""""""""
 
 Example Data (mix of valid and invalid data): 
 
@@ -243,9 +248,9 @@ Example Data (mix of valid and invalid data):
 
 
 
-4. Output Messages
----------------------
-4.1 RMC: Recommended Minimum Navigation Information
+3. Output Messages
+-------------------------
+3.1 RMC: Recommended Minimum Navigation Information
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 $--RMC,hhmmss.ss\ :sub:`1` \,A\ :sub:`2` \,xxxx.xx\ :sub:`3` \,a\ :sub:`4` \,xxxxx.xx\ :sub:`5` \,a\ :sub:`6` \,x.x\ :sub:`7` \,x.x\ :sub:`8` \,xxxx\ :sub:`9` \,x.x\ :sub:`10` \,a\ :sub:`11` \*hh\ :sub:`12` \  
