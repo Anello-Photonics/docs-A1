@@ -56,7 +56,7 @@ $--RSA,x.x\ :sub:`1` \,A\ :sub:`2` \,x.x\ :sub:`3` \,A\ :sub:`4` \*hh\ :sub:`5` 
 """"""""""""""""""""""""""""""""""
 $--VHW,x.x\ :sub:`1` \,T\ :sub:`2` \,x.x\ :sub:`3` \,M\ :sub:`4` \,x.x\ :sub:`5` \,N\ :sub:`6` \,x.x\ :sub:`7` \,K\ :sub:`8` \*hh\ :sub:`9` \  
 
-1) Degrees True 
+1) Degrees
 2) T = True 
 3) Degrees Magnetic 
 4) M = Magnetic 
