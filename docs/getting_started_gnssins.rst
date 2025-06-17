@@ -42,7 +42,7 @@ Be sure to run "git pull" regularly to make sure you are using the latest Python
 ANELLO units are also compatible with ROS using our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
 
 If you would like to connect to the GNSS INS using a serial interface software such as CoolTerm, 
-please ensure you use the correct baud rate (default for the GNSS INS is 230400), and set Data Bits = 8, Stop Bits = 1, and Parity = None.
+please ensure you use the correct baud rate **(default for the GNSS INS is 230400), and set Data Bits = 8, Stop Bits = 1, and Parity = None.**
 
 For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software_tools.html>`_.
 
@@ -128,3 +128,5 @@ If you would like help from the ANELLO team on data analysis and fine-tuning, we
 
 **Congratulations!!!**
 You have completed the GNSS INS setup and data collection! Please feel free to contact support@anellophotonics.com with any questions. 
+
+*GNSS INS User Manual 93001201 v1.0.0*
