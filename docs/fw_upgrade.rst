@@ -35,8 +35,8 @@ Firmware Upgrade Procedure - Windows over RS232-1 only
     :caption: Terminal
     
         # cd into folder with px4_uploader.py
-        ./Tools/px_uploader.py --port /dev/ttyUSB0 --baud-bootloader 115200 /Users/user1/Downloads/anello_maritime_default.px4
-        # Change "/dev/ttyUSB0" to match your port that the Maritime INS is plugged into
+        python px_uploader.py --port COM5 --baud-bootloader 115200 /Users/user1/Downloads/anello_maritime_default.px4
+        # Change "COM5" to match your port that the Maritime INS is plugged into
         # Change "/Users/user1/Downloads/anello_maritime_default.px4" to the path to the ANELLO-provided FW image (.px4 file) on your local computer
 
 8. After it completes, you will see "Rebooting. Elapsed Time x.x" - this means the FW upgrade was successful
