@@ -5,14 +5,15 @@ Firmware Upgrade
 ANELLO recommends using the latest firmware (FW) for best results. The latest FW release is:
 
 - GNSS INS, EVK, IMU+: v1.3.24 (released June 17, 2024)
-- X3: v1.0.8 (Released Dec 13, 2024)
 
 If you are on an older version, please contact ANELLO for the latest FW image.
 
 FW upgrades currently must be done over the serial interface and can be done on computers using the following OS/processors:
 
-- GNSS INS, EVK, X3: Windows, Linux (x86), Linux (ARM)
-- IMU+: Windows only
+- Windows
+- Linux (x86)
+- Linux (ARM)
+
 
 Please ensure power and serial connection is not disrupted to the unit during the firmware upgrade process. 
 If you experience any errors during the process, please power cycle the unit and try again.
@@ -23,7 +24,7 @@ Make sure to first run "git pull" in user_tool to ensure you are using the lates
 
     1. Connect both serial ports to a Windows, Linux (x86), or Linux (ARM) computer using the provided USB cable (EVK) or DB9 to USB cables (all other units).
     
-    2. Run user_program.py (for EVK, GNSS INS, and IMU+) or x3_tool.py (for X3) and connect to unit over COM (USB)
+    2. Run user_program.py
         
     3. On main menu, select Upgrade -> Yes. Select ANELLO-provided .hex file
         - Upgrade will run automatically and typically takes about 5 minutes to completed

@@ -10,9 +10,6 @@ The communication interfaces currently supported for the ANELLO products are lis
     
     2. ANELLO GNSS INS: Serial (RS-232), UDP (Automotive Ethernet)
 
-    3. ANELLO IMU/IMU+: Serial (RS-232)
-
-    4. ANELLO X3: Serial (RS-422), UART (3.3V)
 
 1.1 Serial Communication Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -20,7 +17,6 @@ The communication interfaces currently supported for the ANELLO products are lis
 Default Baud Rate:
     - EVK: 921600
     - GNSS INS and IMU/IMU+: 230400
-    - X3: 460800
 
 RS-232 Voltage Levels: 
     - +/- 7V
@@ -103,7 +99,7 @@ following conventions:
 - APGPS messages are transmitted at 4 Hz
 
 
-2.1.1 APIMU Message (EVK & GNSS INS)
+2.1 APIMU Message 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The APIMU message is the IMU output message for EVK and GNSS INS units only.
 
@@ -139,94 +135,7 @@ The APIMU message is the IMU output message for EVK and GNSS INS units only.
   
 .. note:: Firmware before v1.0.39 does not have T_Sync field.
 
-2.1.2 APIMU Message (X3)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-This is the same as APIMU but with additional Optical Gyro Rates for 3 axes, magnetic field measurements, and without odometer values. This is the output message for X3 units only.
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  |   | Field      |  Units    |  Description                                                          |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 0 | APIMU      |           |  Sentence identifier                                                  |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 1 | Time       |  ms       |  Time since power on                                                  |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 2 | T_Sync     |  ms       |  Time at last sync rising edge (zero when sync config disabled)       |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 3 | AX         |  g        |  X-Axis Acceleration                                                  |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 4 | AY         |  g        |  Y-Axis Acceleration                                                  |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 5 | AZ         |  g        |  Z-Axis Acceleration                                                  |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 6 | WX         |  deg/s    |  X-Axis Angular Rate (MEMS)                                           |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 7 | WY         |  deg/s    |  Y-Axis Angular Rate (MEMS)                                           |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 8 | WZ         |  deg/s    |  Z-Axis Angular Rate (MEMS)                                           |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 9 | OG_WX      |  deg/s    |  High Precicision X-Axis Angular Rate (ANELLO Optical Gyro)           |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 10| OG_WY      |  deg/s    |  High Precicision Y-Axis Angular Rate (ANELLO Optical Gyro)           |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 11| OG_WZ      |  deg/s    |  High Precicision Z-Axis Angular Rate (ANELLO Optical Gyro)           |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 12| MAG_X      |  g        |  X-Axis Magnetic Field Measurement                                    |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 13| MAG_Y      |  g        |  X-Axis Magnetic Field Measurement                                    |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 14| MAG_Z      |  g        |  X-Axis Magnetic Field Measurement                                    |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 15| Temp C     |  °C       |  Temperature                                                          |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 16| Status_X   | Bitfield  |  Status based on bits:                                                |
-  |   |            |           |  - Bit 0: Gyro discrepency                                            |
-  |   |            |           |  - Bit 1: Temperature uncontrolled                                    |
-  |   |            |           |  - Bit 2: Over current error                                          |
-  |   |            |           |  - Bit 3: SiPhOG supply voltage bad                                   |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 17| Status_Y   | Bitfield  |  Status based on bits:                                                |
-  |   |            |           |  - Bit 0: Gyro discrepency                                            |
-  |   |            |           |  - Bit 1: Temperature uncontrolled                                    |
-  |   |            |           |  - Bit 2: Over current error                                          |
-  |   |            |           |  - Bit 3: SiPhOG supply voltage bad                                   |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 18| Status_Z   | Bitfield  |  Status based on bits:                                                |
-  |   |            |           |  - Bit 0: Gyro discrepency                                            |
-  |   |            |           |  - Bit 1: Temperature uncontrolled                                    |
-  |   |            |           |  - Bit 2: Over current error                                          |
-  |   |            |           |  - Bit 3: SiPhOG supply voltage bad                                   |
-  +---+------------+-----------+-----------------------------------------------------------------------+
 
-
-
-2.1.3 APIM1 Message (IMU & IMU+)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The APIM1 message is the same as APIMU but without odometer values. This is the output message for IMU and IMU+ units only.
-
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  |   | Field      |  Units    |  Description                                                          |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 0 | APIMU      |           |  Sentence identifier                                                  |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 1 | Time       |  ms       |  Time since power on                                                  |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 2 | T_Sync     |  ms       |  Time at last sync rising edge (zero when sync config disabled)       |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 3 | AX         |  g        |  X-Axis Acceleration                                                  |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 4 | AY         |  g        |  Y-Axis Acceleration                                                  |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 5 | AZ         |  g        |  Z-Axis Acceleration                                                  |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 6 | WX         |  deg/s    |  X-Axis Angular Rate (MEMS)                                           |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 7 | WY         |  deg/s    |  Y-Axis Angular Rate (MEMS)                                           |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 8 | WZ         |  deg/s    |  Z-Axis Angular Rate (MEMS)                                           |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 9 | OG_WZ      |  deg/s    |  High Precicision Z-Axis Angular Rate (ANELLO Optical Gyro)           |
-  +---+------------+-----------+-----------------------------------------------------------------------+
-  | 12| Temp C     |  °C       |  Temperature                                                          |
-  +---+------------+-----------+-----------------------------------------------------------------------+
   
 .. note:: Firmware before v1.0.39 does not have T_Sync field.
 
@@ -355,29 +264,7 @@ The APINS message is the Kalman filter position, velocity, and attitude solution
 
 .. note:: Roll, pitch and heading angles are calculated as standard aerospace Euler angles in a 3-2-1 (yaw, pitch, roll) body frame rotation.
 
-2.5 APAHRS Message
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The APAHRS message is only available with the ANELLO AHRS upgrade on the IMU+. It provides the roll, pitch and yaw angles calculated as standard aerospace Euler angles in a 3-2-1 (yaw, pitch, roll) body frame rotation.
 
-  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
-  |   | Field      |  Units    |  Description                                                                                                                   |
-  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
-  | 0 | APINS      |           |  Sentence identifier                                                                                                           |
-  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
-  | 1 | Time       |  ms       |  Time since power on                                                                                                           |
-  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
-  | 2 | Sync Time  |  ns       |  Time of the last sync pulse.                                                                                                  |
-  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
-  | 3 | Roll       |  deg      |  Roll in degrees                                                                                                               |
-  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
-  | 4 | Pitch      |  deg      |  Pitch in degrees                                                                                                              |
-  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
-  | 5 | Yaw        |  deg      |  Yaw in degrees                                                                                                                |
-  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
-  | 6 | ZUPT Status|           |  1 if ZUPT is enabled, 0 if ZUPT is disabled                                                                                   |
-  +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
-
-.. note:: The yaw is not an absolute heading but an integrated relative heading - unless an absolute heading is provided by the user, after which the optical gyro integrates relative to that absolute heading.
 
 3  RTCM Binary Data Output Messages
 --------------------------------------
@@ -403,7 +290,7 @@ However, an `RTCM decoder <https://github.com/Anello-Photonics/decoder/blob/mast
 with the checksum definition found `here <https://github.com/Anello-Photonics/decoder/blob/master/artcm/artcm.c>`_.
 
 
-3.1.1 IMU Message (EVK & GNSS INS)
+3.1 IMU Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The IMU output message for EVK and GNSS INS units has a subtype ID of 1.
 
@@ -439,114 +326,9 @@ The IMU output message for EVK and GNSS INS units has a subtype ID of 1.
   | 13| Temp C      |  int16   |  0.01 °C         |  Temperature                                             |
   +---+-------------+----------+------------------+----------------------------------------------------------+
 
-3.1.2 IMU Message (X3)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ANELLO binary packets use a 2-byte preamble followed by a 1-byte message type and a 1-byte length. There is also a 2-byte checksum after the payload.
-
-  +-----------+---------------+---------------------+------------------------------------+-------------+
-  | Preamble  | Message Type  |  Length information |  Payload                           |  Checksum   | 
-  +-----------+---------------+---------------------+------------------------------------+-------------+
-  | 0xC5 0x50 | IMU = 253     |  1-byte             |  Message structure defined below   |  2-byte     | 
-  +-----------+---------------+---------------------+------------------------------------+-------------+
-
-
-The payload for the binary output message is described below
-
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  |   | Field       |  Type    |  Units                             |  Description                                                                |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 0 | MCU Time    |  uint64  |  ns                                |  Time since power on                                                        |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 1 | Sync Time   |  uint64  |  ns                                |  Timestamp of input sync pulse (if enabled and provided)                    |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 2 | AX1         |  int16   |  g=value*(range*0.0000305)         |  Scaled sensor accel                                                        |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 3 | AY1         |  int16   |  g=value*(range*0.0000305)         |  Scaled sensor accel                                                        |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 4 | AZ1         |  int16   |  g=value*(range*0.0000305)         |  Scaled sensor accel                                                        |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 5 | WX1         |  int16   |  dps=value*(range*0.000035)        |  Scaled sensor rate                                                         |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 6 | WY1         |  int16   |  dps=value*(range*0.000035)        |  Scaled sensor rate                                                         |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 7 | WZ1         |  int16   |  dps=value*(range*0.000035)        |  Scaled sensor rate                                                         |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 8 | OG_WX       |  int32   |  dps * 2147483648 / MEMS Gyro Range|  Scaled sensor rate for FOG. MEMS gyro range is last 11 in MEMS Range field |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 9 | OG_WY       |  int32   |  dps * 2147483648 / MEMS Gyro Range|  Scaled sensor rate for FOG. MEMS gyro range is last 11 in MEMS Range field |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 10| OG_WZ       |  int32   |  dps * 2147483648 / MEMS Gyro Range|  Scaled sensor rate for FOG. MEMS gyro range is last 11 in MEMS Range field |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 11| MAG_X       |  int16   |  g * 4096                          |  Scaled magnetometer data                                                   |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 12| MAG_Y       |  int16   |  g * 4096                          |  Scaled magnetometer data                                                   |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 13| MAG_Z       |  int16   |  g * 4096                          |  Scaled magnetometer data                                                   |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 14| Temperature |  int16   |  °C * 100                          |  Scaled temperature data                                                    |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 15| MEMS Range  |  uint16  |  g and dps                         |  First 5 bits accel range, next 11 bits rate range                          |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 16| FOG Range   |  uint16  |  dps                               |  FOG range in DPS                                                           |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 17| Status_X    | Bitfield |                                    | Status based on bits:                                                       |
-  |   |             |          |                                    | - Bit 0: Gyro discrepency                                                   |
-  |   |             |          |                                    | - Bit 1: Temperature uncontrolled                                           |
-  |   |             |          |                                    | - Bit 2: Over current error                                                 |
-  |   |             |          |                                    | - Bit 3: SiPhOG supply voltage bad                                          |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 18| Status_Y    | Bitfield |                                    | Status based on bits:                                                       |
-  |   |             |          |                                    | - Bit 0: Gyro discrepency                                                   |
-  |   |             |          |                                    | - Bit 1: Temperature uncontrolled                                           |
-  |   |             |          |                                    | - Bit 2: Over current error                                                 |
-  |   |             |          |                                    | - Bit 3: SiPhOG supply voltage bad                                          |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-  | 19| Status_Z    | Bitfield |                                    | Status based on bits:                                                       |
-  |   |             |          |                                    | - Bit 0: Gyro discrepency                                                   |
-  |   |             |          |                                    | - Bit 1: Temperature uncontrolled                                           |
-  |   |             |          |                                    | - Bit 2: Over current error                                                 |
-  |   |             |          |                                    | - Bit 3: SiPhOG supply voltage bad                                          |
-  +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
-
-
-3.1.3 IM1 Message (IMU & IMU+)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The IMU output message for IMU and IMU+ units has a subtype ID of 6. 
-It is the same as IMU message for the EVK and GNSS INS but without odometer values.
-
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  |   | Field       |  Type    |  Units           |  Description                                             |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 0 | Message #   |  uint12  |  4058            |  ANELLO Photonics custom message number                  |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 1 | Sub Type ID |  uint4   |  6               |                                                          |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 2 | MCU Time    |  uint64  |  ns              |  Time since power on                                     |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 3 | Sync Time   |  uint64  |  ns              |  Timestamp of input sync pulse (if enabled and provided) |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 4 | AX          |  int32   |  1/143165577 g   |  X-Axis Acceleration (intended 15g/2^31)                 |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 5 | AY          |  int32   |  1/143165577 g   |  Y-Axis Acceleration                                     |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 6 | AZ          |  int32   |  1/143165577 g   |  Z-Axis Acceleration                                     |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 7 | WX          |  int32   |  1/4772186 deg/s |  X-Axis Angular Rate (MEMS) (intended 450/2^31)          |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 8 | WY          |  int32   |  1/4772186 deg/s |  Y-Axis Angular Rate (MEMS)                              |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 9 | WZ          |  int32   |  1/4772186 deg/s |  Z-Axis Angular Rate (MEMS)                              |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 10| OG_WZ       |  int32   |  1/4772186 deg/s |  High precision optical gyro z-axis angular rate         |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-  | 11| Temp C      |  int16   |  0.01 °C         |  Temperature                                             |
-  +---+-------------+----------+------------------+----------------------------------------------------------+
-
-
-3.3 GPS PVT Message (EVK/GNSS INS)
+3.3 GPS PVT Message 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The GPS message is the PVT output from the EVK and GNSS INS units only. 
 The Antenna ID field indicates which receiver (that connected to ANT1 or ANT2) produced the position information. 
 
   +---+---------------+----------+------------+----------------------------------------------------------+
@@ -591,10 +373,10 @@ The Antenna ID field indicates which receiver (that connected to ANT1 or ANT2) p
   | 18| Antenna ID    |  uint8   |            |  Primary or secondary antenna                            |
   +---+---------------+----------+------------+----------------------------------------------------------+
 
-3.4 HDG Message (EVK/GNSS INS)
+3.4 HDG Message 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The HDG message contains dual heading information from the dual GNSS receivers if both ANT1 and ANT2 are connected. 
-This message is output from the EVK and GNSS INS units only.
+
 
   +---+------------------------+----------+------------------+----------------------------------------------------------+
   |   | Field                  |  Type    |  Units           |  Description                                             |
@@ -672,32 +454,6 @@ The INS message is the Kalman filter position, velocity, and attitude solution o
   | 14| Status        |  uint8   |            |  0: Attitude Only; 1: Position and Attitude; 2: Position, Attitude, and Heading; 3: RTK Float; 4: RTK Fix                    |
   |   |               |          |            |  If GPS button is turned OFF in Python tool, 8: Attitude Only; 9: Position and Attitude; 10: Position, Attitude, and Heading |  
   +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
-
-3.6 AHRS Message (IMU+)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The APAHRS message is only available with the ANELLO AHRS upgrade on the IMU+. It provides the roll, pitch and yaw angles calculated as standard aerospace Euler angles in a 3-2-1 (yaw, pitch, roll) body frame rotation.
-
-  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
-  |   | Field         |  Type    |  Units     |  Description                                                                                                                 |
-  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
-  | 0 | Message #     |  uint12  |  4058      |                                                                                                                              |
-  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
-  | 1 | Sub Type ID   |  uint4   |  8         |                                                                                                                              |
-  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
-  | 2 | Time          |  uint64  |  ns        |  Time since power on                                                                                                         |
-  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
-  | 3 | Sync Time     |  uint64  |  ns        |  Time of last sync pulse.                                                                                                    |
-  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
-  | 4 | Roll          |  int32   |  1e-5 deg  |  Roll in degrees                                                                                                             |
-  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
-  | 5 | Pitch         |  int32   |  1e-5 deg  |  Pitch in degrees                                                                                                            |
-  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
-  | 6 | Yaw           |  int32   |  1e-5 deg  |  Yaw in degrees                                                                                                              |
-  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
-  | 7 | ZUPT Status   |  uint8   |  1 or 0    |  1 if ZUPT is enabled, 0 if ZUPT is disabled                                                                                 |
-  +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
-
-.. note:: The yaw is not an absolute heading but an integrated relative heading - unless an absolute heading is provided by the user, after which the optical gyro integrates relative to that absolute heading.
 
 
 
@@ -886,20 +642,6 @@ The ASCII checksum is an XOR of all characters between the start character ‘#�
 
 6.2 Binary Checksum
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-GNSS / INS, EVK, IMU / IMU+:
-  The checksum definition can be found `here <https://github.com/Anello-Photonics/decoder/blob/master/artcm/artcm.c>`_.
+The checksum definition can be found `here <https://github.com/Anello-Photonics/decoder/blob/master/artcm/artcm.c>`_.
 
-X3:
-  The 2 preamble bytes and the checksum itself are not included in the checksum calculation.
-  Checksum is calculated as follows, where N is the number of bytes included in the checksum calculation:
-
-  .. code-block:: python
-
-      CK_A = 0
-      CK_B = 0
-      for (I = 0; I < N; I++)
-      {
-      CK_A = CK_A + Buffer[I]
-      CK_B = CK_B + CK_A
-      }
 
