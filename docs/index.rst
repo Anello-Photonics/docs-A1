@@ -1,14 +1,7 @@
 ANELLO Developer Manual
 ============================
 
-The ANELLO EVK is an easy to use high-accuracy navigation system that provides a convenient way 
-to evaluate the exclusive benefits of Anello’s low-drift optical gyro technology. System designers 
-use the EVK system to begin design for the high-precision Anello SiPhOG :sup:`TM` sensor. The EVK system
-also serves as a truth reference system for difficult environment driving scenarios such as dense urban 
-canyon environments.
-
-On May 22, 2022 the ANELLO announced the availability of the GNSS INS as a ruggedized volume product version of the ANELLO EVK.
-Reach out to info@anellophotonics.com for more information.
+The ANELLO IMU+ is a hardened measurement unit with ANELLO Optical Gyroscope Technology. The ANELLO IMU+ achieves high reliability and performance under harsh environments including shock, vibration, and thermal gradients. The ANELLO IMU+ is intended for Construction, Robotics, Mining, Trucking and Defense applications in harsh environments.
 
 .. toctree::
     :caption: ANELLO Developer Manual
