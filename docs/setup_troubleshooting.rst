@@ -72,10 +72,8 @@ The main menu actions are:
 -   Connect:               Connect to the unit over COM or UDP
 -   Restart Unit:          Restart the unit
 -   Unit Configuration:    Edit unit configurations such as output data rate
--   Vehicle Configuration: Set lever arms such as to antennae and vehicle center
 -   Log:                   Collect GPS, IMU, and INS data and convert to CSV
 -   Monitor:               Opens a display showing the real-time INS message contents
--   NTRIP:                 Connect to a server for GNSS corrections
 -   Upgrade:               Change the unit's firmware version
 -   Exit:                  Exit the python program
 
@@ -84,7 +82,7 @@ Connect to ANELLO Unit
 ----------------------------
 
 For information on the interfaces, ports, and baud rates for your ANELLO unit, 
-see `Communication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`_.
+see `Communication & Messaging <https://docs-a1.readthedocs.io/en/imu_plus/communication_messaging.html>`_.
 
 If the auto detection fails, you can try manual connection. First check that the ports associated with your ANELLO unit are recognized by your computer. 
 On Windows, use the device manager to find the COM ports. On Mac and Ubuntu, use the terminal and change directory to */dev*, 
@@ -92,10 +90,8 @@ and check for ports associated with the ANELLO unit, typically named something l
 
 Drivers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-If you are using the EVK and four COM ports do not show in the manual connection mode or your computer's device manager, 
-you may need to install the `FTDI drivers <https://ftdichip.com/drivers/d2xx-drivers/>`_
 
-If you are using the GNSS INS or IMU and the two ports do not show in the manual connection mode or your computer's device manager, 
+If the two ports do not show in the manual connection mode or your computer's device manager, 
 you may need to install the CableCreations drivers for the RS-232 to USB cable. 
 This can be found by installing the zip file `here <https://www.prolific.com.tw/US/ShowProduct.aspx?p_id=225&pcid=41>`_.
 `This YouTube video <https://www.youtube.com/watch?v=wEsv6_a0YTs>` can be helpful resource for walking through those steps.
