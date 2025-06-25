@@ -250,6 +250,8 @@ Example Data (mix of valid and invalid data):
 
 3. Output Messages
 -------------------------
+*Additional messages available upon request*
+
 3.1 RMC: Recommended Minimum Navigation Information
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
