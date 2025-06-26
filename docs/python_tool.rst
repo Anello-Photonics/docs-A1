@@ -41,7 +41,7 @@ Install dependencies using pip:
     cd user_tool
     pip install -r requirements.txt
 
-If you have any issues, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`__.
+If you have any issues, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/imu_plus/setup_troubleshooting.html#install-anello-python-program>`__.
 
 Run the Python Tool 
 -------------------------------------
@@ -51,7 +51,7 @@ Run the Python Tool
 
     python user_program.py
 
-You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#run-python-program>`__.
+You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/imu_plus/setup_troubleshooting.html#run-python-program>`__.
 
 Connect to ANELLO Unit
 -------------------------------------
@@ -63,7 +63,7 @@ Ensure the power cable is connected and the green power light is illuminated. Co
 Use the arrow keys to select *Connect*, then *COM*, then *Auto* to auto-detect the unit. You can also use *Manual* if you know the data and config ports.
 You should now see the *System Status* updated with the device information.
 
-For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#connect-to-anello-unit>`__.
+For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/imu_plus/setup_troubleshooting.html#connect-to-anello-unit>`__.
 
 
 Set ANELLO Configurations
@@ -87,7 +87,7 @@ To end a log, select *Log* then *Stop*. Log files are saved in the "logs" direct
 
 To export a log to CSV, Select *Log*, then *Export to CSV*, then choose the log file.
 CSV files for each message will be saved in the "exports" directory, under the name of the original log file. 
-For more information on the output messages, see `Comminication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`_.
+For more information on the output messages, see `Comminication & Messaging <https://docs-a1.readthedocs.io/en/imu_plus/communication_messaging.html>`_.
 
 
 Monitor Output

@@ -28,13 +28,13 @@ c. Connect to PC, Mac, or Ubuntu computing system via RS-232 using USB 2.0 to DB
 
 
 An SCD drawing of the IMU+ and a schematic of the Accessory kit breakout cable can be found in 
-`Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-imu-imu>`__.
+`Mechanicals <https://docs-a1.readthedocs.io/en/imu_plus/mechanicals.html#anello-imu-imu>`__.
 
 
 2. Software Interfaces
 ---------------------------------
 ANELLO provides a Python tool to connect, configure, and log data with the ANELLO IMU.
-Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`__ to install and run the Python tool.
+Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/imu_plus/python_tool.html>`__ to install and run the Python tool.
 Be sure to run "git pull" regularly to make sure you are using the latest Python tool updates.
 
 ANELLO units are also compatible with ROS using our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
@@ -42,46 +42,46 @@ ANELLO units are also compatible with ROS using our C-based `ROS driver <https:/
 If you would like to connect to the IMU using a serial interface software such as CoolTerm, 
 please ensure you use the correct baud rate **(default for the IMU is 230400), and set Data Bits = 8, Stop Bits = 1, and Parity = None.**
 
-More information on the IMU+ interfacing can be found under under `Communication and Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`__.
+More information on the IMU+ interfacing can be found under under `Communication and Messaging <https://docs-a1.readthedocs.io/en/imu_plus/communication_messaging.html>`__.
 
-For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software_tools.html>`_.
+For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/imu_plus/software_tools.html>`_.
 
 
 3. Configure ANELLO IMU/IMU+
 ---------------------------------
-Before testing your IMU, please review the `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_ 
+Before testing your IMU, please review the `Unit Configurations <https://docs-a1.readthedocs.io/en/imu_plus/unit_configuration.html>`_ 
 and ensure they are set according to your testing needs.
 
-The easiest way to change configurations is using the `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#set-anello-configurations>`__.
+The easiest way to change configurations is using the `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/imu_plus/python_tool.html#set-anello-configurations>`__.
 Select *Unit Configuration* from the main menu. The default configurations will appear, and you can select *Edit* to change a configuration.
 
-You may also send configurations manually using the `#APCFG command <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apcfg-messages>`_ 
+You may also send configurations manually using the `#APCFG command <https://docs-a1.readthedocs.io/en/imu_plus/communication_messaging.html#apcfg-messages>`_ 
 over the IMU's configuration port using a serial interface software such as CoolTerm.
 
 
 4. Data Collection
 ----------------------------
 
-The IMU+ message format is found under under `Communication and Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#imu-message-imu-imu>`_.
+The IMU+ message format is found under under `Communication and Messaging <https://docs-a1.readthedocs.io/en/imu_plus/communication_messaging.html#imu-message-imu-imu>`_.
 
 a. Log Data
 ~~~~~~~~~~~~~~~~~
 ANELLO provides the following tools for logging:
 
-1. ANELLO `Python tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection>`__, by selecting *Log* in the main menu, OR
+1. ANELLO `Python tool <https://docs-a1.readthedocs.io/en/imu_plus/python_tool.html#data-collection>`__, by selecting *Log* in the main menu, OR
 2. ANELLO `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`__
 
 b. Monitor Data Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The ANELLO Python Tool can be used to `monitor data <https://docs-a1.readthedocs.io/en/latest/python_tool.html#monitor-output>`__ 
+The ANELLO Python Tool can be used to `monitor data <https://docs-a1.readthedocs.io/en/imu_plus/python_tool.html#monitor-output>`__ 
 from the ANELLO IMU in real-time by selecting *Monitor* in the main menu.
 
 5. ANELLO AHRS Solution
 -------------------------------
 Available as an upgrade for the ANELLO IMU+ is the ANELLO AHRS Solution which provides the roll, pitch and yaw angles calculated as standard aerospace Euler angles in a 3-2-1 (yaw, pitch, roll) body frame rotation at a fixed 100 Hz output data rate.
 Please note that the yaw is not an absolute heading but an integrated relative heading - unless an absolute heading is provided by the user, after which the optical gyro integrates relative to that absolute heading.
-Information for configurations can be found in the `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_  and message structures can be found in
-`Communication and Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`__.
+Information for configurations can be found in the `Unit Configurations <https://docs-a1.readthedocs.io/en/imu_plus/unit_configuration.html>`_  and message structures can be found in
+`Communication and Messaging <https://docs-a1.readthedocs.io/en/imu_plus/communication_messaging.html>`__.
 
 **Congratulations!!!**
 You have completed the IMU setup! Please contact support@anellophotonics.com with any questions. 

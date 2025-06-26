@@ -18,6 +18,6 @@ Serial Interface Software
 ---------------------------------
 You are welcome to use a serial interface software, such as CoolTerm, to interface with ANELLO units.
 
-Please ensure you use the correct baud rate and set Data Bits = 8, Stop Bits = 1, and Parity = None. See `Comminication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`_ 
+Please ensure you use the correct baud rate and set Data Bits = 8, Stop Bits = 1, and Parity = None. See `Comminication & Messaging <https://docs-a1.readthedocs.io/en/imu_plus/communication_messaging.html>`_ 
 for information on data and configuration ports and default baud rates.
 
