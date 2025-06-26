@@ -1,5 +1,5 @@
-ANELLO Developer Manual
-============================
+ANELLO GNSS INS and EVK Developer Manual
+=========================================
 
 The ANELLO EVK is an easy to use high-accuracy navigation system that provides a convenient way 
 to evaluate the exclusive benefits of Anello’s low-drift optical gyro technology. System designers 
