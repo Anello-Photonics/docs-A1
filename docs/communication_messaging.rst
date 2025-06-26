@@ -52,7 +52,7 @@ in order to keep the serial configuration port free.
     +--------------------+------------------------------------------+---------------------------------------+
 
 UDP communication uses fixed port numbers on the EVK but selectable ports on the external device.
-These ports, along with IP addresses and other UDP settings should be configured (see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_).
+These ports, along with IP addresses and other UDP settings should be configured (see `Unit Configurations <https://docs-a1.readthedocs.io/en/gnss_ins/unit_configuration.html>`_).
 
  .. note:: 
   The "lowest" and "highest" serial ports mentioned above refer to the EVK, which uses an FTDI chip to create 4 virtual COM ports.
@@ -65,20 +65,20 @@ These ports, along with IP addresses and other UDP settings should be configured
 1.3.1 External Sync Pulse
 """"""""""""""""""""""""""
 All ANELLO products include the option for time synchronization via an external sync pulse, e.g. from external PPS signal.
-To enable external synchronization, the "Sync Pulse Enable" `Unit Configuration <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_ must be enabled.
+To enable external synchronization, the "Sync Pulse Enable" `Unit Configuration <https://docs-a1.readthedocs.io/en/gnss_ins/unit_configuration.html>`_ must be enabled.
 Enabling the sync configuration requires the unit to be reset or repowered as the interrupt is set up during MCU initialization. 
 When "Sync Pulse Enable" is on, the rising edge of the sync pulse is detected by an interrupt and time-tagged in the IMU message "T_Sync" field.
 
 The sync pulse input can be sent up to 100 Hz with a pulse width of at least 5 ms. 
 A voltage level of 3.3 V is standard, but voltages from 1.5 to 5 V are also supported.
-See `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-evk>`_ to find the sync input pin for each product.
+See `Mechanicals <https://docs-a1.readthedocs.io/en/gnss_ins/mechanicals.html#anello-evk>`_ to find the sync input pin for each product.
 
 1.3.2 PPS Synchronization
 """"""""""""""""""""""""""
 For the ANELLO GNSS INS and EVK products which contain an internal GNSS receiver, a PPS output pulse is also supplied for time synchronization.
 PPS is output directly from the GNSS receiver, which will continue outputting a PPS pulse even if a GPS time fix is lost. 
 Note that the PPS accuracy will degrade with time, with drifts around 1 us per second without GPS.
-See `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-evk>`_ to find the PPS output pin for each product.
+See `Mechanicals <https://docs-a1.readthedocs.io/en/gnss_ins/mechanicals.html#anello-evk>`_ to find the PPS output pin for each product.
 
 The PPS rising edge is also detected by an interrupt in the firmware. At the time of the interrupt, the MCU time is recorded by the firmware.
 The MCU time of the PPS interrupt is placed into the APINS message. 
@@ -463,7 +463,7 @@ The INS message is the Kalman filter position, velocity, and attitude solution o
 4.1 APCFG Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The easiest way to configure an ANELLO unit is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#unit-configurations>`__, 
+The easiest way to configure an ANELLO unit is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/gnss_ins/python_tool.html#unit-configurations>`__, 
 which saves all changes to non-volatile flash memory. 
 
 Alternatively, the unit can be configured using the APCFG message, which allows for both temporary (RAM) and permanent setting (FLASH) of configuration parameters.
@@ -484,12 +484,12 @@ Alternatively, the unit can be configured using the APCFG message, which allows 
   | 4 | checksum   |  XOR of bytes between # and \* written in hexadecimal (letters must be uppercase)   |
   +---+------------+-------------------------------------------------------------------------------------+
 
-For more details on configuration parameters and values, see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.
+For more details on configuration parameters and values, see `Unit Configurations <https://docs-a1.readthedocs.io/en/gnss_ins/unit_configuration.html>`_.
 
 4.2 APVEH Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The easiest way to set ANELLO vehicle configurations is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#vehicle-configurations>`__, 
+The easiest way to set ANELLO vehicle configurations is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/gnss_ins/python_tool.html#vehicle-configurations>`__, 
 which saves all changes to non-volatile flash memory. 
 
 Alternatively, the unit can be configured using the APVEH message, which allows for both temporary (RAM) and permanent setting (FLASH) of configuration parameters.
@@ -521,7 +521,7 @@ This is useful to enable INS initialization in both forward and reverse.
 
 When an APODO message is received with a reverse direction indication, the unit will assume the vehicle is in reverse until a packet is received with a forward direction. 
 The units of the speed in the APODO message is user configurable to m/s (default), mile/hr, km/hr, ft/s 
-(see 'odo' code in `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_).
+(see 'odo' code in `Unit Configurations <https://docs-a1.readthedocs.io/en/gnss_ins/unit_configuration.html>`_).
 
 **#APODO,<dir>,<speed>*checksum**
 
