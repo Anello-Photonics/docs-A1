@@ -1,4 +1,4 @@
-ANELLO Developer Manual
+ANELLO X3 Developer Manual
 ============================
 
 The ANELLO X3 is world's smallest and lightest 3-Axis high performance optical gyroscope IMU.
