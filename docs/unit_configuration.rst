@@ -1,10 +1,10 @@
 Unit Configurations
 =======================
 
-The easiest way to configure an ANELLO unit is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#unit-configurations>`_, 
+The easiest way to configure an ANELLO unit is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/gnss_ins/python_tool.html#unit-configurations>`_, 
 which saves all changes to non-volatile flash memory. 
 
-Alternatively, the unit can be configured using the `APCFG message <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apcfg-messages>`_.
+Alternatively, the unit can be configured using the `APCFG message <https://docs-a1.readthedocs.io/en/gnss_ins/communication_messaging.html#apcfg-messages>`_.
 
 Unit Configuration Settings
 -----------------------------------

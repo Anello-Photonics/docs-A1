@@ -11,7 +11,7 @@ Vehicle Configurations
 It is important to ensure the lever arms are set properly prior to drive testing. 
 If you are using dual antenna in your setup, this includes an accurate antenna baseline calibration.
 
-For more information, please refer to `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_.
+For more information, please refer to `Vehicle Configurations <https://docs-a1.readthedocs.io/en/gnss_ins/vehicle_configuration.html>`_.
 
 
 Odometer Input
@@ -28,7 +28,7 @@ Heading Initialization
 Heading can be initialized in one of two ways: 
 
 1. Using GNSS velocity heading (while moving). This requires driving forwards at speeds of > 2 m/s (> 5 mph) for about 30 seconds. The faster you drive, the better tuned the GNSS velocity heading will be.
-2. Using dual antenna heading (while stationary). This requires an antenna separation of at least 0.6 meters, and accurate antenna baseline calibration (see `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_).
+2. Using dual antenna heading (while stationary). This requires an antenna separation of at least 0.6 meters, and accurate antenna baseline calibration (see `Vehicle Configurations <https://docs-a1.readthedocs.io/en/gnss_ins/vehicle_configuration.html>`_).
 
 Direction Initialization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

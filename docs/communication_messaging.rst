@@ -327,7 +327,7 @@ The IMU output message for EVK and GNSS INS units has a subtype ID of 1.
   +---+-------------+----------+------------------+----------------------------------------------------------+
 
 
-3.3 GPS PVT Message 
+3.2 GPS PVT Message 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The Antenna ID field indicates which receiver (that connected to ANT1 or ANT2) produced the position information. 
 
@@ -373,7 +373,7 @@ The Antenna ID field indicates which receiver (that connected to ANT1 or ANT2) p
   | 18| Antenna ID    |  uint8   |            |  Primary or secondary antenna                            |
   +---+---------------+----------+------------+----------------------------------------------------------+
 
-3.4 HDG Message 
+3.3 HDG Message 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The HDG message contains dual heading information from the dual GNSS receivers if both ANT1 and ANT2 are connected. 
 
@@ -416,7 +416,7 @@ The HDG message contains dual heading information from the dual GNSS receivers i
   +---+------------------------+----------+------------------+----------------------------------------------------------+
 
 
-3.5 INS Message (EVK/GNSS INS)
+3.4 INS Message (EVK/GNSS INS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The INS message is the Kalman filter position, velocity, and attitude solution output from the EVK and GNSS INS units.
 

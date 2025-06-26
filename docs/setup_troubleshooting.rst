@@ -84,7 +84,7 @@ Connect to ANELLO Unit
 ----------------------------
 
 For information on the interfaces, ports, and baud rates for your ANELLO unit, 
-see `Communication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`_.
+see `Communication & Messaging <https://docs-a1.readthedocs.io/en/gnss_ins/communication_messaging.html>`_.
 
 If the auto detection fails, you can try manual connection. First check that the ports associated with your ANELLO unit are recognized by your computer. 
 On Windows, use the device manager to find the COM ports. On Mac and Ubuntu, use the terminal and change directory to */dev*, 

@@ -18,10 +18,10 @@ Serial Interface Software
 ---------------------------------
 You are welcome to use a serial interface software, such as CoolTerm, to interface with ANELLO units.
 
-Please ensure you use the correct baud rate and set Data Bits = 8, Stop Bits = 1, and Parity = None. See `Comminication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`_ 
+Please ensure you use the correct baud rate and set Data Bits = 8, Stop Bits = 1, and Parity = None. See `Comminication & Messaging <https://docs-a1.readthedocs.io/en/gnss_ins/communication_messaging.html>`_ 
 for information on data and configuration ports and default baud rates.
 
 Sample Odometer Programs
 ---------------------------------
-The message format and instructions for sending odometer information to an ANELLO EVK or GNSS INS can be found under `Communication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apodo-message>`_.
+The message format and instructions for sending odometer information to an ANELLO EVK or GNSS INS can be found under `Communication & Messaging <https://docs-a1.readthedocs.io/en/gnss_ins/communication_messaging.html#apodo-message>`_.
 We have also included several sample odometer programs in user_tool -> `board_tools <https://github.com/Anello-Photonics/user_tool/tree/main/board_tools>`_, supporting both UDP and serial interfaces.

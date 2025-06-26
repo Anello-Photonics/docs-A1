@@ -4,10 +4,10 @@ Vehicle Configuration
 
 The ANELLO EVK and GNSS INS products require vehicle configurations to be set for proper functionality. 
 
-The easiest way to set ANELLO vehicle configurations is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#vehicle-configurations>`__, 
+The easiest way to set ANELLO vehicle configurations is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/gnss_ins/python_tool.html#vehicle-configurations>`__, 
 which saves all changes to non-volatile flash memory. 
 
-Alternatively, the unit can be configured using the `APVEH message <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apveh-messages>`_.
+Alternatively, the unit can be configured using the `APVEH message <https://docs-a1.readthedocs.io/en/gnss_ins/communication_messaging.html#apveh-messages>`_.
 
 Vehicle Configuration Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -68,10 +68,10 @@ For the least complexity, we recommendation mounting the unit above the center o
    Default Installation Location
 
 If the unit is oriented differently (e.g. backwards or upside down), the "Orientation" configuration must be configured using the ANELLO Python Program.
-See `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#unit-installation-orientation>`__ for orientation options.
+See `Unit Configurations <https://docs-a1.readthedocs.io/en/gnss_ins/unit_configuration.html#unit-installation-orientation>`__ for orientation options.
 
 In addition, if the unit is misaligned from the vehicle axis in either roll, pitch, or heading, the "Installation Misalignment Angle" configuration must also be set.
-If the misalignment angles are unknown, the roll and pitch misalignment can be measured using the `these procedures <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#anello-unit-installation-misalignment>`__.
+If the misalignment angles are unknown, the roll and pitch misalignment can be measured using the `these procedures <https://docs-a1.readthedocs.io/en/gnss_ins/unit_configuration.html#anello-unit-installation-misalignment>`__.
 
 Antenna Mounting
 ~~~~~~~~~~~~~~~~~~~~~
@@ -91,7 +91,7 @@ On firmware v1.2.6 and later, antennae can be positioned in any orientation on t
 Odometer Input
 ~~~~~~~~~~~~~~~~~~~~~
 For extended GNSS-denied testing, it is recommended to send odometer input (including both speed and direction) to the ANELLO EVK or GNSS INS. 
-This can be done by sending an `APODO message <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apodo-message>`_ to the configuration port of the ANELLO unit.
+This can be done by sending an `APODO message <https://docs-a1.readthedocs.io/en/gnss_ins/communication_messaging.html#apodo-message>`_ to the configuration port of the ANELLO unit.
 A few recommended odometer options are:
 
 1. If you have access to the vehicle CAN bus, you can read in the directional speed from the CAN bus to the computer used to connect to the EVK or GNSS INS. Then, construct and send the APODO message to the ANELLO unit.

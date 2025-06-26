@@ -41,7 +41,7 @@ Install dependencies using pip:
     cd user_tool
     pip install -r requirements.txt
 
-If you have any issues, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#install-anello-python-program>`__.
+If you have any issues, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/gnss_ins/setup_troubleshooting.html#install-anello-python-program>`__.
 
 Run the Python Tool 
 -------------------------------------
@@ -51,7 +51,7 @@ Run the Python Tool
 
     python user_program.py
 
-You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#run-python-program>`__.
+You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/gnss_ins/setup_troubleshooting.html#run-python-program>`__.
 
 Connect to ANELLO Unit
 -------------------------------------
@@ -63,7 +63,7 @@ Ensure the power cable is connected and the green power light is illuminated. Co
 Use the arrow keys to select *Connect*, then *COM*, then *Auto* to auto-detect the unit. You can also use *Manual* if you know the data and config ports.
 You should now see the *System Status* updated with the device information.
 
-For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#connect-to-anello-unit>`__.
+For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/gnss_ins/setup_troubleshooting.html#connect-to-anello-unit>`__.
 
 Connect Over Ethernet
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -97,7 +97,7 @@ Unit Configurations
 In main menu, select *Unit Configuration* to see default configurations. To change any configurations, 
 select *Edit*, then the configuration to change, then select the new value.
 
-Please see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_ for more information on available configurations.
+Please see `Unit Configurations <https://docs-a1.readthedocs.io/en/gnss_ins/unit_configuration.html>`_ for more information on available configurations.
 
 Vehicle Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -108,7 +108,7 @@ All measurements are using the center of the ANELLO unit as the origin and are m
 
 For firmware versions 1.2.6 and later, antenna baseline calibration must be performed. 
 
-Please see `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_ for more information.
+Please see `Vehicle Configurations <https://docs-a1.readthedocs.io/en/gnss_ins/vehicle_configuration.html>`_ for more information.
 
 Data Collection
 ---------------------------------
@@ -120,7 +120,7 @@ To end a log, select *Log* then *Stop*. Log files are saved in the "logs" direct
 
 To export a log to CSV, Select *Log*, then *Export to CSV*, then choose the log file.
 CSV files for each message (IMU, GPS, GP2, HDG, and INS) will be saved in the "exports" directory, under the name of the original log file. 
-For more information on the output messages, see `Comminication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`_.
+For more information on the output messages, see `Comminication & Messaging <https://docs-a1.readthedocs.io/en/gnss_ins/communication_messaging.html>`_.
 
 The INS solution can be visualized by importing ins.csv into `Kepler <https://kepler.gl/demo>`_.
 
