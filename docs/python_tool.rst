@@ -49,7 +49,7 @@ Run the Python Tool
 .. code-block:: python
     :caption: Terminal
 
-    python user_program.py (for ANELLO X3: python x3_tool.py)
+    python x3_tool.py
 
 You will see *System Status* at the top, and *Main Menu* below. For more information, see `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/latest/setup_troubleshooting.html#run-python-program>`__.
 
@@ -58,7 +58,7 @@ Connect to ANELLO Unit
 
 Connect Over Serial
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Ensure the power cable is connected and the green power light is illuminated. Connect the ANELLO unit to the computer using the USB-C interface.
+Ensure the power cable is connected and the green power light is illuminated. Connect the ANELLO unit to the computer using both UART and RS-422
 
 Use the arrow keys to select *Connect*, then *COM*, then *Auto* to auto-detect the unit. You can also use *Manual* if you know the data and config ports.
 You should now see the *System Status* updated with the device information.
@@ -97,18 +97,8 @@ Unit Configurations
 In main menu, select *Unit Configuration* to see default configurations. To change any configurations, 
 select *Edit*, then the configuration to change, then select the new value.
 
-Please see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_ for more information on available configurations.
+Please see `Unit Configurations <https://docs-a1.readthedocs.io/en/x3/unit_configuration.html>`_ for more information on available configurations.
 
-Vehicle Configurations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Before you collect data with the ANELLO EVK or GNSS INS, vehicle configurations must be set.
-
-In the main menu, select *Vehicle Configurations* and set the lever arms as prompted. 
-All measurements are using the center of the ANELLO unit as the origin and are measured in meters.
-
-For firmware versions 1.2.6 and later, antenna baseline calibration must be performed. 
-
-Please see `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_ for more information.
 
 Data Collection
 ---------------------------------
@@ -119,29 +109,14 @@ The *System Status* will be updated with the logging information.
 To end a log, select *Log* then *Stop*. Log files are saved in the "logs" directory in user_tool, grouped by month and day.
 
 To export a log to CSV, Select *Log*, then *Export to CSV*, then choose the log file.
-CSV files for each message (IMU, GPS, GP2, HDG, and INS) will be saved in the "exports" directory, under the name of the original log file. 
-For more information on the output messages, see `Comminication & Messaging <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html>`_.
+CSV files for each message will be saved in the "exports" directory, under the name of the original log file. 
+For more information on the output messages, see `Comminication & Messaging <https://docs-a1.readthedocs.io/en/x3/communication_messaging.html>`_.
 
-The INS solution can be visualized by importing ins.csv into `Kepler <https://kepler.gl/demo>`_.
 
 Monitor Output
 -------------------------------------
 For a real-time display of the ANELLO data, select *Monitor* in the main menu.
 
-Logging can be started/ended by clicking the LOG button, and GNSS input can be turned on/off by clicking the GPS button.
-If the LOG button is red, that means data is not logging, and if the GPS button is red, GNSS input is turned off.
+Logging can be started/ended by clicking the LOG button.
+If the LOG button is red, that means data is not logging.
 
-Turning the GPS button off stops sending GPS data into the ANELLO unit, and may be useful for simulating GPS-denied scenarios without physically blocking GPS signal. 
-You may also simulate GPS loss by covering antennae with an metal enclosure, using a digital attenuator, or other methods.
-ANELLO does not recommend simulating GPS loss by disconnecting antennae mid-drive as this can often cause spurious signal to be read by the GPS receiver and fed into the INS algorithm.
-
-Connect to NTRIP Caster
--------------------------------------
-Standard RTCM messages can be forwarded to the ANELLO EVK and GNSS INS units data port to enable the GNSS receivers to reach RTK-level accuracy. 
-The EVK and GNSS INS receive standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages. 
-
-The ANELLO Python Program also provides an NTRIP client which can connect to a standard NTRIP network and forward the RTCM messages into the EVK or GNSS INS.
-To do this:
-
-From the main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster details as prompted. 
-If successful, the *System Status* will show the NTRIP connection status.
