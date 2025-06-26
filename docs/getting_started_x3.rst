@@ -29,12 +29,12 @@ c. Connect to PC, Mac, or Ubuntu computing system via RS-422 using USB 2.0 to DB
 
 
 An SCD drawing of the X3 and a schematic of the Accessory kit breakout cable can be found in 
-`Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-x3>`__.
+`Mechanicals <https://docs-a1.readthedocs.io/en/x3/mechanicals.html#anello-x3>`__.
 
 2. Software Interfaces
 ---------------------------------
 ANELLO provides a Python tool to connect, configure, and log data with the ANELLO X3.
-Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`__ to install and run the Python tool.
+Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/x3/python_tool.html>`__ to install and run the Python tool.
 Be sure to run "git pull" regularly to make sure you are using the latest Python tool updates.
 
 ANELLO units are also compatible with ROS using our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
@@ -42,18 +42,18 @@ ANELLO units are also compatible with ROS using our C-based `ROS driver <https:/
 If you would like to connect to the X3 using a serial interface software such as CoolTerm, 
 please ensure you use the correct baud rate **(default for the X3 is 460800), and set Data Bits = 8, Stop Bits = 1, and Parity = None.**
 
-For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software_tools.html>`_.
+For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/x3/software_tools.html>`_.
 
 
 3. Configure ANELLO X3
 ---------------------------------
-Before testing your X3, please review the `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_ 
+Before testing your X3, please review the `Unit Configurations <https://docs-a1.readthedocs.io/en/x3/unit_configuration.html>`_ 
 and ensure they are set according to your testing needs.
 
-The easiest way to change configurations is using the `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#set-anello-configurations>`__.
+The easiest way to change configurations is using the `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/x3/python_tool.html#set-anello-configurations>`__.
 Select *Unit Configuration* from the main menu. The default configurations will appear, and you can select *Edit* to change a configuration.
 
-You may also send configurations manually using the `#APCFG command <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apcfg-messages>`_ 
+You may also send configurations manually using the `#APCFG command <https://docs-a1.readthedocs.io/en/x3/communication_messaging.html#apcfg-messages>`_ 
 over the X3's configuration port using a serial interface software such as CoolTerm.
 
 
@@ -72,12 +72,12 @@ The timing of the startup sequence is shown below. Please allow ~7 seconds for v
 b. Log Data
 ~~~~~~~~~~~~~~~~~
 ANELLO recommends logging data using either:
-1. ANELLO `Python tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html#data-collection>`__, by selecting *Log* in the main menu, OR
+1. ANELLO `Python tool <https://docs-a1.readthedocs.io/en/x3/python_tool.html#data-collection>`__, by selecting *Log* in the main menu, OR
 2. ANELLO `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`__
 
 c. Monitor Data Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The ANELLO Python Tool can be used to `monitor data <https://docs-a1.readthedocs.io/en/latest/python_tool.html#monitor-output>`__ 
+The ANELLO Python Tool can be used to `monitor data <https://docs-a1.readthedocs.io/en/x3/python_tool.html#monitor-output>`__ 
 from the ANELLO X3 in real-time by selecting *Monitor* in the main menu.
 
 
