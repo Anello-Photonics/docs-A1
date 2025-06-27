@@ -5,16 +5,41 @@ ANELLO has developed a patented silicon photonics integrated circuit that replac
 
 Product Manuals
 -----------------------
-`GNSS INS and EVK Developer Manual <https://docs-a1.readthedocs.io/en/gnss_ins/>`_
 
-`Maritime INS Developer Manual <https://docs-a1.readthedocs.io/en/maritime_ins/>`_
+.. raw:: html
 
-`IMU+ Developer Manual <https://docs-a1.readthedocs.io/en/imu_plus/>`_
+    <table style="width: 100%; text-align: center;">
+      <tr>
+        <td>
+          <a href="https://docs-a1.readthedocs.io/en/gnss_ins/">
+            <strong>GNSS INS and EVK Developer Manual</strong><br>
+            <img src="_static/media/ANELLO_GNSS_INS.png" width="200">
+          </a>
+        </td>
+        <td>
+          <a href="https://docs-a1.readthedocs.io/en/maritime_ins/">
+            <strong>Maritime INS Developer Manual</strong><br>
+            <img src="_static/media/ANELLO_MARITIME_INS.png" width="200">
+          </a>
+        </td>
+        <td>
+          <a href="https://docs-a1.readthedocs.io/en/imu_plus/">
+            <strong>IMU+ Developer Manual</strong><br>
+            <img src="_static/media/ANELLO_IMU.png" width="200">
+          </a>
+        </td>
+        <td>
+          <a href="https://docs-a1.readthedocs.io/en/x3/">
+            <strong>X3 Developer Manual</strong><br>
+            <img src="_static/media/ANELLO_X3.png" width="200">
+          </a>
+        </td>
+      </tr>
+    </table>
+    &nbsp;
 
-`X3 Developer Manual <https://docs-a1.readthedocs.io/en/x3/>`_
 
 .. toctree::
-    :caption: Version Control
     :maxdepth: 1
     
     version
