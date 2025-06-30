@@ -47,7 +47,6 @@ Enter the following commands one at a time:
 
     1. ./crossplatform_bootloader_windows_x86_release START TC36X 6 <data port #> 115200 0 0 0 0
         a. E.g. if the data port is COM8, you would enter 8 for <data port #>
-        b. For the X3, the "data" port is the RS-422 port
     2. ./crossplatform_bootloader_windows_x86_release PROGRAM <hex file path>
     3. ./crossplatform_bootloader_windows_x86_release END
 
