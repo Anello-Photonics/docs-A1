@@ -5,9 +5,10 @@ Communication & Messaging
 --------------------------
 
 The communication interfaces currently supported for the ANELLO Maritime INS:
-    1. Serial RS232-1 - NMEA 0183 output messaging
-    2. Serial RS232-2 - NMEA 0183 input messaging
-    3. Ethernet - QGroundControl
+    1. Serial RS232-1
+    2. Serial RS232-2
+    3. Ethernet
+    4. CAN
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -190,7 +191,7 @@ $PAPGPSCTRL,x\ :sub:`1` \*hh\ :sub:`2` \
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In addition to standard NMEA messages, the ANELLO Maritime INS supports a custom binary input message which can be used to populate available sensor information from an external GPS, a paddle wheel sensor, an external magnetometer, a wind speed and direction, and motor and rudder percentage information. This message is detailed below. 
  
-**Serial communication protocol0**: RS-232 
+**Serial communication protocol**: RS-232 
 
 **Baud rate**: 115200 (8 data bits, 1 stop bit, no parity, no hardware flow control) (other baud rates available upon request) 
 
