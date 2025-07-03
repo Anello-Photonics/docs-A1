@@ -329,6 +329,152 @@ Example Data (mix of valid and invalid data):
 0xFFFF: Barometric pressure (invalid / not reported) 
 
 
+2.3 NMEA 2000 Data Input Messages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ANELLO Maritime INS also supports the following standard NMEA 2000 input messages which allow the USV to send in external sensor information, e.g. for speed-aiding.
+
+2.3.1 PGN 127488: NMEA2000_ENGINE
+"""""""""""""""""""""""""""""""""""
+**Engine Parameters, Rapid Update**
+
+Provides data with a high update rate for a specific engine in a single frame message. The first field provides information as to which engine.
+
++----+------------------------+
+| #  | Field                  |
++====+========================+
+| 1  | Engine Instance        |
++----+------------------------+
+| 2  | Engine Speed           |
++----+------------------------+
+| 3  | Engine Boost Pressure  |
++----+------------------------+
+| 4  | Engine Tilt/Trim       |
++----+------------------------+
+| 5  | Reserved Bits          |
++----+------------------------+
+
+2.3.2 PGN 127489: NMEA2000_ENGINE_DYN
+"""""""""""""""""""""""""""""""""""""""
+**Engine Parameters, Dynamic**
+
+Provides real-time operational data and status for a specific engine, usually broadcast periodically for control or instrumentation.
+
++-----+----------------------------+
+| #   | Field                      |
++=====+============================+
+| 1   | Engine Instance            |
++-----+----------------------------+
+| 2   | Engine Oil Pressure        |
++-----+----------------------------+
+| 3   | Engine Oil Temperature     |
++-----+----------------------------+
+| 4   | Engine Temperature         |
++-----+----------------------------+
+| 5   | Alternator Potential       |
++-----+----------------------------+
+| 6   | Fuel Rate                  |
++-----+----------------------------+
+| 7   | Total Engine Hours         |
++-----+----------------------------+
+| 8   | Engine Coolant Pressure    |
++-----+----------------------------+
+| 9   | Fuel Pressure              |
++-----+----------------------------+
+| 10  | Not Available              |
++-----+----------------------------+
+| 11  | Engine Discrete Status 1   |
++-----+----------------------------+
+| 12  | Engine Discrete Status 2   |
++-----+----------------------------+
+| 13  | Percent Engine Load        |
++-----+----------------------------+
+| 14  | Percent Engine Torque      |
++-----+----------------------------+
+
+2.3.3 PGN 128259: NMEA2000_SPEED
+"""""""""""""""""""""""""""""""""
+**Speed, Water Referenced**
+
+Provides a single transmission describing the motion of a vessel.
+
++----+-----------------------------+
+| #  | Field                       |
++====+=============================+
+| 1  | Sequence ID                 |
++----+-----------------------------+
+| 2  | Speed Water Referenced      |
++----+-----------------------------+
+| 3  | Speed Ground Referenced     |
++----+-----------------------------+
+| 4  | Speed Water Referenced Type |
++----+-----------------------------+
+| 5  | Reserved Bits               |
++----+-----------------------------+
+
+2.3.4 PGN 128275: NMEA2000_DISTANCE
+"""""""""""""""""""""""""""""""""""""
+**Distance Log**
+
+Cumulative voyage distance traveled since last reset, tagged with time and date.
+
++----+-----------------------------+
+| #  | Field                       |
++====+=============================+
+| 1  | Measurement Date            |
++----+-----------------------------+
+| 2  | Measurement Time            |
++----+-----------------------------+
+| 3  | Total Cumulative Distance   |
++----+-----------------------------+
+| 4  | Distance Since Last Reset   |
++----+-----------------------------+
+
+2.3.5 PGN 130311: NMEA2000_ENVIRONMENT
+"""""""""""""""""""""""""""""""""""""""
+**Environmental Parameters**
+
++----+------------------------+
+| #  | Field                  |
++====+========================+
+| 1  | Sequence ID            |
++----+------------------------+
+| 2  | Temperature Instance   |
++----+------------------------+
+| 3  | Humidity Instance      |
++----+------------------------+
+| 4  | Temperature            |
++----+------------------------+
+| 5  | Humidity               |
++----+------------------------+
+| 6  | Atmospheric Pressure   |
++----+------------------------+
+
+2.3.6 PGN 130578: NMEA2000_VESSEL_SPEED
+""""""""""""""""""""""""""""""""""""""""
+**Vessel Speed Components**
+
+Accurately describes the speed of a vessel by component vectors.
+
++----+--------------------------------------------+
+| #  | Field                                      |
++====+============================================+
+| 1  | Longitudinal Speed, Water-referenced       |
++----+--------------------------------------------+
+| 2  | Transverse Speed, Water-referenced         |
++----+--------------------------------------------+
+| 3  | Longitudinal Speed, Ground-referenced      |
++----+--------------------------------------------+
+| 4  | Transverse Speed, Ground-referenced        |
++----+--------------------------------------------+
+| 5  | Stern Speed, Water-referenced              |
++----+--------------------------------------------+
+| 6  | Stern Speed, Ground-referenced             |
++----+--------------------------------------------+
+
+
+
+
 
 3. Output Messages
 -------------------------
