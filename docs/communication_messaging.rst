@@ -20,87 +20,169 @@ The communication interfaces currently supported for the ANELLO Maritime INS:
 2.1  NMEA 0183 Data Input Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ANELLO Maritime INS supports standard NMEA 0183 input messages which allow the USV to send in external sensor information, e.g. for speed-aiding. ANELLO also has a set of proprietary messages, following the standard NMEA proprietary format with a prefix of “$P”, company code of “AP” (ANELLO Photonics), and the message code. 
+The ANELLO Maritime INS supports standard NMEA 0183 input messages which allow the USV to send in external sensor information, e.g. for speed-aiding. ANELLO also has a set of proprietary messages, following the standard NMEA proprietary format with a prefix of “$P”, company code of “AP” (ANELLO Photonics), and the message code.
 
- 
-
-The minimum sensor aiding for the ANELLO Maritime INS is velocity aiding via either a paddle wheel, doppler velocity log (DVL), or another source. 
-
-
+The minimum sensor aiding for the ANELLO Maritime INS is velocity aiding via either a paddle wheel, doppler velocity log (DVL), or another source.
 
 2.1.1. RPM: Revolutions
-""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""
 
+**Message Format**::
+
+    $--RPM,a,x,x.x,x.x,A*hh
 
 $--RPM,a\ :sub:`1` \,x\ :sub:`2` \,x.x\ :sub:`3` \,x.x\ :sub:`4` \,A\ :sub:`5` \*hh\ :sub:`6` \  
 
-1) Source; S = Shaft, E = Engine 
-2) Engine or shaft number 
-3) Speed, Revolutions per minute 
-4) Propeller pitch, % of maximum, "-" means astern  
-5) Status, A means data is valid  
-6) Checksum  
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | a          | Source; S = Shaft, E = Engine                                 |
++-------+------------+---------------------------------------------------------------+
+| 2     | x          | Engine or shaft number                                        |
++-------+------------+---------------------------------------------------------------+
+| 3     | x.x        | Speed, Revolutions per minute                                 |
++-------+------------+---------------------------------------------------------------+
+| 4     | x.x        | Propeller pitch, % of maximum, "-" means astern               |
++-------+------------+---------------------------------------------------------------+
+| 5     | A          | Status, A means data is valid                                 |
++-------+------------+---------------------------------------------------------------+
+| 6     | hh         | Checksum                                                      |
++-------+------------+---------------------------------------------------------------+
+
 
 2.1.2. RSA: Rudder Sensor Angle
-"""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""
+
+**Message Format**::
+
+    $--RSA,x.x,A,x.x,A*hh
 
 $--RSA,x.x\ :sub:`1` \,A\ :sub:`2` \,x.x\ :sub:`3` \,A\ :sub:`4` \*hh\ :sub:`5` \  
 
-1) Starboard (or single) rudder sensor, "-" means Turn To Port  
-2) Status, A means data is valid 
-3) Port rudder sensor 
-4) Status, A means data is valid  
-5) Checksum  
++-------+------------+-------------------------------------------------------------+
+| Index | Part       | Description                                                 |
++=======+============+=============================================================+
+| 1     | x.x        | Starboard (or single) rudder sensor, "-" means Turn To Port |
++-------+------------+-------------------------------------------------------------+
+| 2     | A          | Status, A means data is valid                               |
++-------+------------+-------------------------------------------------------------+
+| 3     | x.x        | Port rudder sensor                                          |
++-------+------------+-------------------------------------------------------------+
+| 4     | A          | Status, A means data is valid                               |
++-------+------------+-------------------------------------------------------------+
+| 5     | hh         | Checksum                                                    |
++-------+------------+-------------------------------------------------------------+
+
 
 2.1.3. VHW: Water Speed & Heading
-""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""
+
+**Message Format**::
+
+    $--VHW,x.x,T,x.x,M,x.x,N,x.x,K*hh
+
 $--VHW,x.x\ :sub:`1` \,T\ :sub:`2` \,x.x\ :sub:`3` \,M\ :sub:`4` \,x.x\ :sub:`5` \,N\ :sub:`6` \,x.x\ :sub:`7` \,K\ :sub:`8` \*hh\ :sub:`9` \  
 
-1) Degrees
-2) T = True 
-3) Degrees Magnetic 
-4) M = Magnetic 
-5) Knots (speed of vessel relative to the water) 
-6) N = Knots 
-7) Kilometers (speed of vessel relative to the water)  
-8) K = Kilometres per hour 
-9) Checksum  
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | x.x        | Degrees                                                       |
++-------+------------+---------------------------------------------------------------+
+| 2     | T          | T = True                                                      |
++-------+------------+---------------------------------------------------------------+
+| 3     | x.x        | Degrees Magnetic                                              |
++-------+------------+---------------------------------------------------------------+
+| 4     | M          | M = Magnetic                                                  |
++-------+------------+---------------------------------------------------------------+
+| 5     | x.x        | Knots (speed of vessel relative to the water)                 |
++-------+------------+---------------------------------------------------------------+
+| 6     | N          | N = Knots                                                     |
++-------+------------+---------------------------------------------------------------+
+| 7     | x.x        | Kilometers (speed of vessel relative to the water)            |
++-------+------------+---------------------------------------------------------------+
+| 8     | K          | K = Kilometres per hour                                       |
++-------+------------+---------------------------------------------------------------+
+| 9     | hh         | Checksum                                                      |
++-------+------------+---------------------------------------------------------------+
 
 
 2.1.4. VBW: Dual Ground/Water Speed
-"""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""
+
+**Message Format**::
+
+    $--VBW,x.x,x.x,A,x.x,x.x,A*hh
+
 $--VBW,x.x\ :sub:`1` \,x.x\ :sub:`2` \,A\ :sub:`3` \,x.x\ :sub:`4` \,x.x\ :sub:`5` \,A\ :sub:`6` \*hh\ :sub:`7` \  
 
-1) Longitudinal water speed, “-“ means astern 
-2) Transverse water speed, “-“ means port 
-3) Status, A = Data Valid 
-4) Longitudinal ground speed, “-“ means astern 
-5) Transverse ground speed, “-“ means port 
-6) Status, A = Data Valid 
-7) Checksum 
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | x.x        | Longitudinal water speed, “-“ means astern                    |
++-------+------------+---------------------------------------------------------------+
+| 2     | x.x        | Transverse water speed, “-“ means port                        |
++-------+------------+---------------------------------------------------------------+
+| 3     | A          | Status, A = Data Valid                                        |
++-------+------------+---------------------------------------------------------------+
+| 4     | x.x        | Longitudinal ground speed, “-“ means astern                   |
++-------+------------+---------------------------------------------------------------+
+| 5     | x.x        | Transverse ground speed, “-“ means port                       |
++-------+------------+---------------------------------------------------------------+
+| 6     | A          | Status, A = Data Valid                                        |
++-------+------------+---------------------------------------------------------------+
+| 7     | hh         | Checksum                                                      |
++-------+------------+---------------------------------------------------------------+
+
 
 2.1.5. VWR: Relative Wind Speed & Angle
-"""""""""""""""""""""""""""""""""""""""""
- 
+""""""""""""""""""""""""""""""""""""""""
+
+**Message Format**::
+
+    $--VWR,x.x,a,x.x,N,x.x,M,x.x,K*hh
+
 $--VWR,x.x\ :sub:`1` \,a\ :sub:`2` \,x.x\ :sub:`3` \,N\ :sub:`4` \,x.x\ :sub:`5` \,M\ :sub:`6` \,x.x\ :sub:`7` \,K\ :sub:`8` \*hh\ :sub:`9` \  
 
-1) Wind direction magnitude in degrees  
-2) Wind direction Left/Right of bow 
-3) Speed 
-4) N = Knots  
-5) Speed 
-6) M = Meters Per Second  
-7) Speed 
-8) K = Kilometers Per Hour  
-9) Checksum 
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | x.x        | Wind direction magnitude in degrees                           |
++-------+------------+---------------------------------------------------------------+
+| 2     | a          | Wind direction Left/Right of bow                              |
++-------+------------+---------------------------------------------------------------+
+| 3     | x.x        | Speed                                                         |
++-------+------------+---------------------------------------------------------------+
+| 4     | N          | N = Knots                                                     |
++-------+------------+---------------------------------------------------------------+
+| 5     | x.x        | Speed                                                         |
++-------+------------+---------------------------------------------------------------+
+| 6     | M          | M = Meters Per Second                                         |
++-------+------------+---------------------------------------------------------------+
+| 7     | x.x        | Speed                                                         |
++-------+------------+---------------------------------------------------------------+
+| 8     | K          | K = Kilometers Per Hour                                       |
++-------+------------+---------------------------------------------------------------+
+| 9     | hh         | Checksum                                                      |
++-------+------------+---------------------------------------------------------------+
 
-2.1.6. $PAPGPSCTRL: GPS Control 
+
+
+2.1.6. $PAPGPSCTRL: GPS Control
 """""""""""""""""""""""""""""""""
+
+**Message Format**::
+
+    $PAPGPSCTRL,x*hh
 
 $PAPGPSCTRL,x\ :sub:`1` \*hh\ :sub:`2` \  
 
-1) GPS control, “1” = Use GPS (default), “0” = Ignore GPS 
-2) Checksum   
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | x          | GPS control, “1” = Use GPS (default), “0” = Ignore GPS        |
++-------+------------+---------------------------------------------------------------+
+| 2     | hh         | Checksum                                                      |
++-------+------------+---------------------------------------------------------------+
 
 
 
@@ -255,17 +337,36 @@ Example Data (mix of valid and invalid data):
 3.1 RMC: Recommended Minimum Navigation Information
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+**Message Format**::
+
+    $--RMC,hhmmss.ss,A,xxxx.xx,a,xxxxx.xx,a,x.x,x.x,xxxx,x.x,a*hh
+
 $--RMC,hhmmss.ss\ :sub:`1` \,A\ :sub:`2` \,xxxx.xx\ :sub:`3` \,a\ :sub:`4` \,xxxxx.xx\ :sub:`5` \,a\ :sub:`6` \,x.x\ :sub:`7` \,x.x\ :sub:`8` \,xxxx\ :sub:`9` \,x.x\ :sub:`10` \,a\ :sub:`11` \*hh\ :sub:`12` \  
 
-1) Time (UTC) 
-2) Status, A = Active, V = Navigation receiver warning  
-3) Latitude 
-4) N or S 
-5) Longitude 
-6) E or W 
-7) Speed over ground, knots 
-8) Track made good, degrees true 
-9) Date, ddmmyy  
-10) Magnetic Variation, degrees  
-11) E or W 
-12) Checksum  
++--------+------------+--------------------------------------------------------------------------+
+| Index  | Part       | Description                                                              |
++========+============+==========================================================================+
+| 1      | hhmmss.ss  | Time (UTC)                                                               |
++--------+------------+--------------------------------------------------------------------------+
+| 2      | A          | Status, A = Active, V = Navigation receiver warning                      |
++--------+------------+--------------------------------------------------------------------------+
+| 3      | xxxx.xx    | Latitude                                                                 |
++--------+------------+--------------------------------------------------------------------------+
+| 4      | a          | N or S                                                                   |
++--------+------------+--------------------------------------------------------------------------+
+| 5      | xxxxx.xx   | Longitude                                                                |
++--------+------------+--------------------------------------------------------------------------+
+| 6      | a          | E or W                                                                   |
++--------+------------+--------------------------------------------------------------------------+
+| 7      | x.x        | Speed over ground, knots                                                 |
++--------+------------+--------------------------------------------------------------------------+
+| 8      | x.x        | Track made good, degrees true                                            |
++--------+------------+--------------------------------------------------------------------------+
+| 9      | xxxx       | Date, ddmmyy                                                             |
++--------+------------+--------------------------------------------------------------------------+
+| 10     | x.x        | Magnetic Variation, degrees                                              |
++--------+------------+--------------------------------------------------------------------------+
+| 11     | a          | E or W                                                                   |
++--------+------------+--------------------------------------------------------------------------+
+| 12     | hh         | Checksum                                                                 |
++--------+------------+--------------------------------------------------------------------------+
