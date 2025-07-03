@@ -73,44 +73,59 @@ Below is the recommended installation configuration, with the longest possible a
 4. Configure ANELLO Maritime INS
 ---------------------------------
 
+The lever arms of the installation must be measured and configured as parameters in QGroundControl to ensure solution accuracy. The X, Y, Z directions follow the right-hand rule: **X = forward**, **Y = right**, **Z = down**. The IMU center is the center of the red Maritime INS unit.
 
-The lever arms of the installation must be measured and configured as parameters in QGroundControl to ensure solution accuracy. The X, Y, Z are based on hand rule (X forward, Y right, Z down). The IMU center is the center of the red Maritime INS unit. Most important parameters are bolded. 
+Most important parameters are bolded. Distances are measured in feet from the IMU center to the respective antenna phase center.
 
-+--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
-| Parameter          | Units  | Default | Description                                                                                                |
-+====================+========+=========+============================================================================================================+
-| **EKF2_GPS_POS_X** | ft     | 0       | X offset from IMU center to ANT1                                                                           |
-+--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
-| **EKF2_GPS_POS_Y** | ft     | 0       | Y offset from IMU center to ANT1                                                                           |
-+--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
-| EKF2_GPS_POS_Z     | ft     | 0       | Z offset from IMU center to ANT1                                                                           |
-+--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
-| **EKF2_GPS_BSL**   | ft     | 0       | Baseline length between ANT1 and ANT2                                                                      |
-+--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
-|**EKF2_GPS_YAW_OFF**| deg    | 0       | 0: ANT1 in back and ANT2 in front                                                                          |
-|                    |        |         |                                                                                                            |
-|                    |        |         | 90: ANT1 on right and ANT2 on left                                                                         |
-|                    |        |         |                                                                                                            |
-|                    |        |         | 180: ANT1 in front and ANT2 in back                                                                        |
-|                    |        |         |                                                                                                            |
-|                    |        |         | 270: ANT1 on left and ANT2 on right                                                                        |
-+--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_X** | ft     | 0       | X offset from center of boat to IMU center                                                                 |
-+--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_Y** | ft     | 0       | Y offset from center of boat to IMU center                                                                 |
-+--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
-| EKF2_IMU_POS_Z     | ft     | 0       | Z offset from center of boat to IMU center                                                                 |
-+--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
-|**SENS_BOARD_X_OFF**| deg    | 0       | Maritime INS installation rotation X (Roll) offset                                                         |
-+--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
-|**SENS_BOARD_Y_OFF**| deg    | 0       | Maritime INS installation rotation Y (Pitch) offset                                                        |
-+--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
-|**SENS_BOARD_Z_OFF**| deg    | 0       | Maritime INS installation rotation Z (Yaw) offset                                                          |
-+--------------------+--------+---------+------------------------------------------------------------------------------------------------------------+
++------------------------------+--------+---------+-----------------------------------------------------------------------------------------------+
+| Parameter                    | Units  | Default | Description                                                                                   |
++==============================+========+=========+===============================================================================================+
+| **GPS_SEP_ROVER_X**          | m      | 0       | X offset from IMU center to **Rover antenna (ANT2)**                                          |
++------------------------------+--------+---------+-----------------------------------------------------------------------------------------------+
+| **GPS_SEP_ROVER_Y**          | m      | 0       | Y offset from IMU center to Rover antenna (ANT2)                                              |
++------------------------------+--------+---------+-----------------------------------------------------------------------------------------------+
+| GPS_SEP_ROVER_Z              | m      | 0       | Z offset from IMU center to Rover antenna (ANT2)                                              |
++------------------------------+--------+---------+-----------------------------------------------------------------------------------------------+
+| **GPS_SEP_BASE_X**           | m      | 0       | X offset from IMU center to **Base antenna (ANT1)**                                           |
++------------------------------+--------+---------+-----------------------------------------------------------------------------------------------+
+| **GPS_SEP_BASE_Y**           | m      | 0       | Y offset from IMU center to Base antenna (ANT1)                                               |
++------------------------------+--------+---------+-----------------------------------------------------------------------------------------------+
+| GPS_SEP_BASE_Z               | m      | 0       | Z offset from IMU center to Base antenna (ANT1)                                               |
++------------------------------+--------+---------+-----------------------------------------------------------------------------------------------+
+| **GPS_YAW_OFFSET**           | deg    | 0       | Yaw offset to align antenna heading with vessel heading; typically set to align coordinate    |
+|                              |        |         | frames                                                                                        |
++------------------------------+--------+---------+-----------------------------------------------------------------------------------------------+
+| **EKF2_GPS_POS_X**           | ft     | 0       | X offset from IMU center to Rover antenna (ANT2)                                              |
++------------------------------+--------+---------+-----------------------------------------------------------------------------------------------+
+| **EKF2_GPS_POS_Y**           | ft     | 0       | Y offset from IMU center to Rover antenna (ANT2)                                              |
++------------------------------+--------+---------+-----------------------------------------------------------------------------------------------+
+| EKF2_GPS_POS_Z               | ft     | 0       | Z offset from IMU center to Rover antenna (ANT2)                                              |
++------------------------------+--------+---------+-----------------------------------------------------------------------------------------------+
+| **EKF2_GPS_BSL**             | ft     | 0       | Baseline length (distance) between Base (ANT1) and Rover (ANT2) antennas                      |
++------------------------------+--------+---------+-----------------------------------------------------------------------------------------------+
+| **EKF2_IMU_POS_X**           | ft     | 0       | X offset from center of boat to IMU center                                                    |
++------------------------------+--------+---------+-----------------------------------------------------------------------------------------------+
+| **EKF2_IMU_POS_Y**           | ft     | 0       | Y offset from center of boat to IMU center                                                    |
++------------------------------+--------+---------+-----------------------------------------------------------------------------------------------+
+| EKF2_IMU_POS_Z               | ft     | 0       | Z offset from center of boat to IMU center                                                    |
++------------------------------+--------+---------+-----------------------------------------------------------------------------------------------+
+| **SENS_BOARD_ROT**           | enum   | 0       | IMU/INS mounting orientation. Set this if the red box is not mounted with X-forward.          |
+|                              |        |         |                                                                                               |
+|                              |        |         | *Common values:*                                                                              |
+|                              |        |         | - ``0`` No rotation (X forward, Y right, Z down)                                              |
+|                              |        |         | - ``4`` Yaw 180° (box facing backwards)                                                       |
+|                              |        |         | - ``6`` Yaw 270° (box rotated left)                                                           |
+|                              |        |         | - ``2`` Yaw 90° (box rotated right)                                                           |
+|                              |        |         | - ``12`` Pitch 180° (flipped upside down)                                                     |
+|                              |        |         |                                                                                               |
+|                              |        |         | Will be presented as drop down menu in QGroundControl                                         |
++------------------------------+--------+---------+-----------------------------------------------------------------------------------------------+
 
-For example, if box is facing backwards, both SENS_BOARD_X_OFF and SENS_BOARD_Y_OFF should be set to 180.
 
-In QGroundControl under Q > Vehicle Setup > Parameters
+
+
+
+In QGroundControl: **Q > Vehicle Setup > Parameters**
 
 .. image:: media/QGC_parameters.png
    :width: 60 %
@@ -119,7 +134,7 @@ In QGroundControl under Q > Vehicle Setup > Parameters
 
 
 
-6. Data Collection & Visualization
+5. Data Collection & Visualization
 ------------------------------------
 
 After installing the box and configuring the units, you are ready for data collection. Data from the Maritime INS is logged automatically once power is applied to the box. There is no manual intervention needed to start a log. A couple notes: 
@@ -136,7 +151,7 @@ After installing the box and configuring the units, you are ready for data colle
 
 
 
-7. Water Testing Procedure
+6. Water Testing Procedure
 -------------------------------
 
 For best GPS-denied navigation results, ANELLO recommends the following initialization procedure after each startup: 
