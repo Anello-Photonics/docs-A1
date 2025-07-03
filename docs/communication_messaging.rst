@@ -433,6 +433,7 @@ Cumulative voyage distance traveled since last reset, tagged with time and date.
 2.3.5 PGN 130311: NMEA2000_ENVIRONMENT
 """""""""""""""""""""""""""""""""""""""
 **Environmental Parameters**
+These values provide weather and ambient condition data, often used for sensor calibration, navigation adjustments, and environmental awareness.
 
 +----+------------------------+
 | #  | Field                  |
