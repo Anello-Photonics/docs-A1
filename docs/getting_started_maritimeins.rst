@@ -95,14 +95,6 @@ Distances are measured in feet from the IMU center to the respective antenna pha
 | **GPS_YAW_OFFSET** | deg   | 0       | Yaw offset to align antenna heading with vessel heading; typically set to align          |
 |                    |       |         | coordinate frames                                                                        |
 +--------------------+-------+---------+------------------------------------------------------------------------------------------+
-| **EKF2_GPS_POS_X** | ft    | 0       | X offset from IMU center to Rover antenna (ANT2)                                         |
-+--------------------+-------+---------+------------------------------------------------------------------------------------------+
-| **EKF2_GPS_POS_Y** | ft    | 0       | Y offset from IMU center to Rover antenna (ANT2)                                         |
-+--------------------+-------+---------+------------------------------------------------------------------------------------------+
-| **EKF2_GPS_POS_Z** | ft    | 0       | Z offset from IMU center to Rover antenna (ANT2)                                         |
-+--------------------+-------+---------+------------------------------------------------------------------------------------------+
-| **EKF2_GPS_BSL**   | ft    | 0       | Baseline length (distance) between Base (ANT1) and Rover (ANT2) antennas                 |
-+--------------------+-------+---------+------------------------------------------------------------------------------------------+
 | **EKF2_IMU_POS_X** | ft    | 0       | X offset from center of boat to IMU center                                               |
 +--------------------+-------+---------+------------------------------------------------------------------------------------------+
 | **EKF2_IMU_POS_Y** | ft    | 0       | Y offset from center of boat to IMU center                                               |
