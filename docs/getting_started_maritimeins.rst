@@ -75,7 +75,7 @@ Below is the recommended installation configuration, with the longest possible a
 
 The lever arms of the installation must be measured and configured as parameters in QGroundControl to ensure solution accuracy. The X, Y, Z directions follow the right-hand rule: **X = forward**, **Y = right**, **Z = down**. The IMU center is the center of the red Maritime INS unit.
 
-Distances are measured in feet from the IMU center to the respective antenna phase center.
+Distances are measured in meters from the IMU center to the respective antenna phase center.
 
 +--------------------+-------+---------+------------------------------------------------------------------------------------------+
 | Parameter          | Units | Default | Description                                                                              |
@@ -95,11 +95,11 @@ Distances are measured in feet from the IMU center to the respective antenna pha
 | **GPS_YAW_OFFSET** | deg   | 0       | Yaw offset to align antenna heading with vessel heading; typically set to align          |
 |                    |       |         | coordinate frames                                                                        |
 +--------------------+-------+---------+------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_X** | ft    | 0       | X offset from center of boat to IMU center                                               |
+| **EKF2_IMU_POS_X** | m     | 0       | X offset from center of boat to IMU center                                               |
 +--------------------+-------+---------+------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_Y** | ft    | 0       | Y offset from center of boat to IMU center                                               |
+| **EKF2_IMU_POS_Y** | m     | 0       | Y offset from center of boat to IMU center                                               |
 +--------------------+-------+---------+------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_Z** | ft    | 0       | Z offset from center of boat to IMU center                                               |
+| **EKF2_IMU_POS_Z** | m     | 0       | Z offset from center of boat to IMU center                                               |
 +--------------------+-------+---------+------------------------------------------------------------------------------------------+
 | **SENS_BOARD_ROT** | enum  | 0       | IMU/INS mounting orientation. Set this if the red box is not mounted with X-forward.     |
 |                    |       |         |                                                                                          |
