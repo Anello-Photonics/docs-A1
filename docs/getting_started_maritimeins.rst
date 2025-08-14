@@ -92,7 +92,7 @@ Distances are measured in meters from the IMU center to the respective antenna p
 +--------------------+-------+---------+------------------------------------------------------------------------------------------+
 | **GPS_SEP_BASE_Z** | m     | 0       | Z offset from IMU center to Base antenna (ANT1)                                          |
 +--------------------+-------+---------+------------------------------------------------------------------------------------------+
-| **GPS_YAW_OFFSET** | deg   | 0       | Yaw offset to align antenna heading with vessel heading; typically set to align          |
+|**EKF2_GPS_YAW_OFF**| deg   | 0       | Yaw offset to align antenna heading with vessel heading; typically set to align          |
 |                    |       |         | coordinate frames                                                                        |
 +--------------------+-------+---------+------------------------------------------------------------------------------------------+
 | **EKF2_IMU_POS_X** | m     | 0       | X offset from center of boat to IMU center                                               |
