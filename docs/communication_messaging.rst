@@ -6,17 +6,17 @@ Communication & Messaging
 
 The communication interfaces currently supported for the ANELLO Maritime INS:
 
-+-----------------+----------------------------------------------------+
-| Interface       | Supported Protocols                                |
-+=================+====================================================+
-| RS232-1         | Mavlink (QGroundControl), NMEA 0183, ANELLO Binary |
-+-----------------+----------------------------------------------------+
-| RS232-2         | NMEA 0183, ANELLO Binary                           |
-+-----------------+----------------------------------------------------+
-| Ethernet        | NMEA 0183, ANELLO Binary                           |
-+-----------------+----------------------------------------------------+
-| CAN             | NMEA 2000                                          |
-+-----------------+----------------------------------------------------+
++-----------------+-------------------------------------------------------------------+
+| Interface       | Supported Protocols                                               |
++=================+===================================================================+
+| RS232-1         | NMEA 0183, ANELLO Binary, Configuration, Firmware Upgrade         |
++-----------------+-------------------------------------------------------------------+
+| RS232-2         | NMEA 0183, ANELLO Binary                                          |
++-----------------+-------------------------------------------------------------------+
+| Ethernet        | NMEA 0183, ANELLO Binary, Configuration, Firmware Upgrade         |
++-----------------+-------------------------------------------------------------------+
+| CAN             | NMEA 2000                                                         |
++-----------------+-------------------------------------------------------------------+
 
 
 2. Input Messages
@@ -25,10 +25,9 @@ The communication interfaces currently supported for the ANELLO Maritime INS:
 2.1  NMEA 0183 Data Input Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ANELLO Maritime INS supports standard NMEA 0183 input messages which allow the USV to send in external sensor information (e.g., speed-aiding).  
-ANELLO also has proprietary messages following the NMEA proprietary format, with a prefix of “$P”, company code “AP” (ANELLO Photonics), and the message code.
+The ANELLO Maritime INS supports standard NMEA 0183 input messages which allow the USV to send in external sensor information, e.g. for speed-aiding. ANELLO also has a set of proprietary messages, following the standard NMEA proprietary format with a prefix of “$P”, company code of “AP” (ANELLO Photonics), and the message code.
 
-The minimum sensor aiding for the ANELLO Maritime INS is velocity aiding via either a paddle wheel, Doppler velocity log (DVL), or another source.
+The minimum aiding recommended for optimal GPS-denied performance with the ANELLO Maritime INS is speed aiding via either a paddle wheel, ultrasonic sensor, Doppler velocity log (DVL), or another source.
 
 2.1.1. RPM: Revolutions
 """"""""""""""""""""""""
@@ -44,11 +43,11 @@ The minimum sensor aiding for the ANELLO Maritime INS is velocity aiding via eit
 +-------+------------+---------------------------------------------------------------+
 | 2     | x          | Engine or shaft number                                        |
 +-------+------------+---------------------------------------------------------------+
-| 3     | x.x        | Speed, revolutions per minute                                 |
+| 3     | x.x        | Speed, Revolutions per minute                                 |
 +-------+------------+---------------------------------------------------------------+
 | 4     | x.x        | Propeller pitch, % of maximum, "-" means astern               |
 +-------+------------+---------------------------------------------------------------+
-| 5     | A          | Status, A = data valid                                        |
+| 5     | A          | Status, A means data is valid                                 |
 +-------+------------+---------------------------------------------------------------+
 | 6     | hh         | Checksum                                                      |
 +-------+------------+---------------------------------------------------------------+
@@ -64,13 +63,13 @@ The minimum sensor aiding for the ANELLO Maritime INS is velocity aiding via eit
 +-------+------------+-------------------------------------------------------------+
 | Index | Part       | Description                                                 |
 +=======+============+=============================================================+
-| 1     | x.x        | Starboard (or single) rudder sensor, "-" means port turn    |
+| 1     | x.x        | Starboard (or single) rudder sensor, "-" means Turn To Port |
 +-------+------------+-------------------------------------------------------------+
-| 2     | A          | Status, A = data valid                                      |
+| 2     | A          | Status, A means data is valid                               |
 +-------+------------+-------------------------------------------------------------+
 | 3     | x.x        | Port rudder sensor                                          |
 +-------+------------+-------------------------------------------------------------+
-| 4     | A          | Status, A = data valid                                      |
+| 4     | A          | Status, A means data is valid                               |
 +-------+------------+-------------------------------------------------------------+
 | 5     | hh         | Checksum                                                    |
 +-------+------------+-------------------------------------------------------------+
@@ -86,19 +85,19 @@ The minimum sensor aiding for the ANELLO Maritime INS is velocity aiding via eit
 +-------+------------+---------------------------------------------------------------+
 | Index | Part       | Description                                                   |
 +=======+============+===============================================================+
-| 1     | x.x        | True heading, degrees                                         |
+| 1     | x.x        | True Heading, Degrees                                         |
 +-------+------------+---------------------------------------------------------------+
 | 2     | T          | T = True                                                      |
 +-------+------------+---------------------------------------------------------------+
-| 3     | x.x        | Magnetic heading, degrees                                     |
+| 3     | x.x        | Magnetic Heading, Degrees                                     |
 +-------+------------+---------------------------------------------------------------+
 | 4     | M          | M = Magnetic                                                  |
 +-------+------------+---------------------------------------------------------------+
-| 5     | x.x        | Speed, knots (relative to water)                              |
+| 5     | x.x        | Knots (speed of vessel relative to the water)                 |
 +-------+------------+---------------------------------------------------------------+
 | 6     | N          | N = Knots                                                     |
 +-------+------------+---------------------------------------------------------------+
-| 7     | x.x        | Speed, km/h (relative to water)                               |
+| 7     | x.x        | Kilometers (speed of vessel relative to the water)            |
 +-------+------------+---------------------------------------------------------------+
 | 8     | K          | K = Kilometres per hour                                       |
 +-------+------------+---------------------------------------------------------------+
@@ -116,17 +115,412 @@ The minimum sensor aiding for the ANELLO Maritime INS is velocity aiding via eit
 +-------+------------+---------------------------------------------------------------+
 | Index | Part       | Description                                                   |
 +=======+============+===============================================================+
-| 1     | x.x        | Longitudinal water speed, "-" means astern                    |
+| 1     | x.x        | Longitudinal water speed, “-“ means astern                    |
 +-------+------------+---------------------------------------------------------------+
-| 2     | x.x        | Transverse water speed, "-" means port                        |
+| 2     | x.x        | Transverse water speed, “-“ means port                        |
 +-------+------------+---------------------------------------------------------------+
-| 3     | A          | Status, A = data valid                                        |
+| 3     | A          | Status, A = Data Valid                                        |
 +-------+------------+---------------------------------------------------------------+
-| 4     | x.x        | Longitudinal ground speed, "-" means astern                   |
+| 4     | x.x        | Longitudinal ground speed, “-“ means astern                   |
 +-------+------------+---------------------------------------------------------------+
-| 5     | x.x        | Transverse ground speed, "-" means port                       |
+| 5     | x.x        | Transverse ground speed, “-“ means port                       |
 +-------+------------+---------------------------------------------------------------+
-| 6     | A          | Status, A = data valid                                        |
+| 6     | A          | Status, A = Data Valid                                        |
 +-------+------------+---------------------------------------------------------------+
 | 7     | hh         | Checksum                                                      |
 +-------+------------+---------------------------------------------------------------+
+
+
+2.1.5. VWR: Relative Wind Speed & Angle
+""""""""""""""""""""""""""""""""""""""""
+
+**Message Format**::
+
+    $--VWR,x.x,a,x.x,N,x.x,M,x.x,K*hh
+
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | x.x        | Wind direction magnitude in degrees                           |
++-------+------------+---------------------------------------------------------------+
+| 2     | a          | Wind direction Left/Right of bow                              |
++-------+------------+---------------------------------------------------------------+
+| 3     | x.x        | Wind Speed in knots                                           |
++-------+------------+---------------------------------------------------------------+
+| 4     | N          | N = Knots                                                     |
++-------+------------+---------------------------------------------------------------+
+| 5     | x.x        | Wind Speed in m/s                                             |
++-------+------------+---------------------------------------------------------------+
+| 6     | M          | M = Meters Per Second                                         |
++-------+------------+---------------------------------------------------------------+
+| 7     | x.x        | Wind Speed in km/hr                                           |
++-------+------------+---------------------------------------------------------------+
+| 8     | K          | K = Kilometers Per Hour                                       |
++-------+------------+---------------------------------------------------------------+
+| 9     | hh         | Checksum                                                      |
++-------+------------+---------------------------------------------------------------+
+
+
+
+2.1.6. GPSCTRL: GPS Control (ANELLO Proprietary)
+"""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Message Format**::
+
+    $PAPGPSCTRL,x*hh
+
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | x          | GPS control, “1” = Use GPS (default), “0” = Ignore GPS        |
++-------+------------+---------------------------------------------------------------+
+| 2     | hh         | Checksum                                                      |
++-------+------------+---------------------------------------------------------------+
+
+
+
+2.2. ANELLO Custom Binary Sensor Input Message
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In addition to standard NMEA messages, the ANELLO Maritime INS supports a custom binary input message which can be used to populate available sensor information from an external GPS, a paddle wheel sensor, an external magnetometer, a wind speed and direction, and motor and rudder percentage information. This message is detailed below. 
+ 
+**Serial communication protocol**: RS-232 
+
+**Baud rate**: Configurable, Default: 115200. 8 data bits, 1 stop bit, no parity, no hardware flow control
+
+**Transmission rate**: Up to 10 Hz (4 Hz default) 
+
+**Endianness**: All fields are big endian 
+
+
+.. note::
+    Any invalid data should be set to the max value for its data type. For unsigned types: 0xFF, 0xFFFF, etc. For signed types: 0x7F, 0x7FFF, etc. 
+
++--------+----------+------------------------------+--------------------------------------------------+
+| Offset | Type     | Item                         | Description                                      |
+|        |          |                              |                                                  |
++========+==========+==============================+==================================================+
+| 0      | Uint16   | Msg ID                       | 0xAB00                                           |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 2      | Uint16   | Msg Length                   | Payload length in bytes                          |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 4      | Uint32   | CRC                          | CRC-32 of message payload (bytes 8-N)            |
+|        |          |                              | (polynomial 0xEDB88320, starting value 0xFFFFFFF |
++--------+----------+------------------------------+--------------------------------------------------+
+| 8      | Uint16   | IMU Compass Heading          | Degrees: 0-360                                   |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 10     | Int32    | GPS Latitude                 | Millionths of degrees                            |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 14     | Int32    | GPS Longitude                | Millionths of degrees                            |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 18     | Uint16   | GPS SOG (speed over ground)  | Tenths of meters per second                      |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 20     | Uint16   | GPS COG (course over ground) | Degrees: 0-360                                   |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 22     | Uint64   | GPS time                     | Milliseconds since epoch (1970)                  |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 30     | Int32    | GPS altitude: MSL            | Tenths of meters                                 |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 34     | Int32    | GPS altitude: geoid separat. | Tenths of meters                                 |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 38     | Uint8    | GPS HDOP                     | Tenths of HDOP (HDOP range 0-1; this field range |
+|        |          |                              | 0-10)                                            |
++--------+----------+------------------------------+--------------------------------------------------+
+| 39     | Uint8    | GPS fix quality              | GPS Quality indicator (as defined by GPGGA msg)  |
+|        |          |                              | 0: Fix not valid   1: GPS FIX                    |
++--------+----------+------------------------------+--------------------------------------------------+
+| 40     | Int8     | Motor %                      | [-100, 100]                                      |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 41     | Int8     | Rudder %                     | [-100,100]                                       |
+|        |          |                              | 100 = full starboard                             |
++--------+----------+------------------------------+--------------------------------------------------+
+| 42     | Uint16   | Speed through water          | Tenths of meters per second                      |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 44     | Uint16   | Wind speed: absolute         | Tenths of meters per second                      |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 46     | Uint16   | Wind dir: absolute           | Degrees: 0-360                                   |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 48     | Uint16   | Wind speed: relative to boat | Tenths of meters per second                      |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 50     | Uint16   | Wind dir: relative to boat   | Degrees: 0-360                                   |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 52     | Int16    | Air temp                     | Tenths of degrees C                              |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+| 54     | Uint16   | Barometric pressure          | hPa (hectopascal; 1 hPa = 100 Pa)                |
+|        |          |                              |                                                  |
++--------+----------+------------------------------+--------------------------------------------------+
+
+
+
+2.2.1 Example Data
+""""""""""""""""""""
+
+Example Data (mix of valid and invalid data): 
+
+0xAB0000308EF7F176005901F4ECFFF903369A0000FFFF00000190794363D0000001E07FFFFFFFFFFF000000000002006C0003005AFFFFFFFF 
+
+- 0xAB00:         Header
+- 0x0030:         Payload Length (48 bytes)
+- 0x8EF7F176:     CRC-32
+- 0x0059:         IMU Compass Heading -> 89 -> 89.0 degrees
+- 0x01F4ECFF:     GPS Latitude -> 32,828,671 -> 32.828671 degrees
+- 0xF903369A:     GPS Longitude -> -117,229,926 -> -117.229926 degrees
+- 0x0000:         GPS SOG -> 0 -> 0.0 m/s
+- 0xFFFF:         GPS COG (invalid)
+- 0x0000...63D0:  GPS Time (1720021378000 ms) -> Jul 03 2024 15:42:58 UTC
+- 0x000001E0:     GPS Altitude (MSL) -> 480 -> 48.0 meters
+- 0x7FFFFFFF:     Geoid Separation (invalid)
+- 0xFF:           GPS HDOP (invalid)
+- 0xFF:           GPS Fix Quality (invalid)
+- 0x00:           Motor Percentage -> 0%
+- 0x00:           Rudder Percentage -> 0%
+- 0x0000:         Speed Through Water -> 0 -> 0.0 m/s
+- 0x0002:         Absolute Wind Speed -> 2 -> 0.2 m/s
+- 0x006C:         Absolute Wind Direction -> 108 -> 108 degrees
+- 0x0003:         Relative Wind Speed -> 3 -> 0.3 m/s
+- 0x005A:         Relative Wind Direction -> 90 -> 90 degrees
+- 0xFFFF:         Air Temp (invalid)
+- 0xFFFF:         Barometric Pressure (invalid)
+
+
+2.3 NMEA 2000 Data Input Messages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The ANELLO Maritime INS also supports the following standard NMEA 2000 input messages, which allow the vehicle to send in external sensor information, e.g. for speed-aiding.
+
+2.3.1 PGN 127488: Engine Parameters, Rapid Update
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Provides data with a high update rate for a specific engine in a single frame message.
+
++---+-----------------------+-------------------------------------------------+------+----------------+
+| # | Field                 | Description                                     | Unit | Type           |
++===+=======================+=================================================+======+================+
+| 1 | Engine Instance       | Identifies the specific engine (0=Single)       |      | 8-bit unsigned |
++---+-----------------------+-------------------------------------------------+------+----------------+
+| 2 | Engine Speed          | Engine rotational speed                         | RPM  | 16-bit unsigned|
++---+-----------------------+-------------------------------------------------+------+----------------+
+| 3 | Engine Boost Pressure | Turbocharger or supercharger pressure           | kPa  | 16-bit signed  |
++---+-----------------------+-------------------------------------------------+------+----------------+
+| 4 | Engine Tilt/Trim      | Engine tilt or trim position                    | %    | 8-bit signed   |
++---+-----------------------+-------------------------------------------------+------+----------------+
+
+Logged topic: NMEA2000_ENGINE
+
+2.3.2 PGN 127489: Engine Parameters, Dynamic
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Provides real-time operational data and status for a specific engine, usually broadcast periodically for control or instrumentation.
+
++----+--------------------------+---------------------------------------------+-------+----------------+
+| #  | Field                    | Description                                 | Unit  | Type           |
++====+==========================+=============================================+=======+================+
+| 1  | Engine Instance          | Identifies the specific engine (0=Single)   |       | 8-bit unsigned |
++----+--------------------------+---------------------------------------------+-------+----------------+
+| 2  | Engine Oil Pressure      | Engine lubricant pressure                   | kPa   | 16-bit unsigned|
++----+--------------------------+---------------------------------------------+-------+----------------+
+| 3  | Engine Oil Temperature   | Temperature of the engine lubricant         | K     | 16-bit unsigned|
++----+--------------------------+---------------------------------------------+-------+----------------+
+| 4  | Engine Temperature       | Temperature of the engine coolant           | K     | 16-bit unsigned|
++----+--------------------------+---------------------------------------------+-------+----------------+
+| 5  | Alternator Potential     | Alternator output voltage                   | V     | 16-bit signed  |
++----+--------------------------+---------------------------------------------+-------+----------------+
+| 6  | Fuel Rate                | Engine fuel consumption rate                | L/hr  | 16-bit signed  |
++----+--------------------------+---------------------------------------------+-------+----------------+
+| 7  | Total Engine Hours       | Cumulative operating time of the engine     | s     | 32-bit unsigned|
++----+--------------------------+---------------------------------------------+-------+----------------+
+| 8  | Engine Coolant Pressure  | Pressure of the engine coolant              | kPa   | 16-bit unsigned|
++----+--------------------------+---------------------------------------------+-------+----------------+
+| 9  | Fuel Pressure            | Pressure of the fuel                        | kPa   | 16-bit unsigned|
++----+--------------------------+---------------------------------------------+-------+----------------+
+| 10 | Engine Discrete Status 1 | Bitmask indicating warnings and statuses    |       | 16-bit bitmap  |
++----+--------------------------+---------------------------------------------+-------+----------------+
+| 11 | Engine Discrete Status 2 | Bitmask indicating other statuses           |       | 16-bit bitmap  |
++----+--------------------------+---------------------------------------------+-------+----------------+
+| 12 | Percent Engine Load      | Current power output as a percentage of max | %     | 8-bit unsigned |
++----+--------------------------+---------------------------------------------+-------+----------------+
+| 13 | Percent Engine Torque    | Current torque output as a percentage of max| %     | 8-bit signed   |
++----+--------------------------+---------------------------------------------+-------+----------------+
+
+Logged topic: NMEA2000_ENGINE_DYN
+
+2.3.3 PGN 128259: Speed, Water Referenced
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Provides a single transmission describing the motion of a vessel relative to the water.
+
++---+-----------------------------+----------------------------------------------+------+----------------+
+| # | Field                       | Description                                  | Unit | Type           |
++===+=============================+==============================================+======+================+
+| 1 | SID                         | Sequence Identifier                          |      | 8-bit unsigned |
++---+-----------------------------+----------------------------------------------+------+----------------+
+| 2 | Speed Water Referenced      | Vessel's speed relative to the water         | m/s  | 16-bit signed  |
++---+-----------------------------+----------------------------------------------+------+----------------+
+| 3 | Speed Ground Referenced     | Vessel's speed relative to the ground (SOG)  | m/s  | 16-bit signed  |
++---+-----------------------------+----------------------------------------------+------+----------------+
+| 4 | Speed Water Referenced Type | Method of measurement (e.g., Paddle wheel)   |      | 8-bit lookup   |
++---+-----------------------------+----------------------------------------------+------+----------------+
+| 5 | Speed Direction             | Direction of water-referenced speed          |      | 4-bit unsigned |
++---+-----------------------------+----------------------------------------------+------+----------------+
+
+Logged topic: NMEA2000_SPEED
+
+2.3.4 PGN 128275: Distance Log
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Cumulative voyage distance traveled since last reset, tagged with time and date.
+
++---+-----------------------------+-----------------------------------------+------+----------------+
+| # | Field                       | Description                             | Unit | Type           |
++===+=============================+=========================================+======+================+
+| 1 | Date                        | Days since January 1, 1970              | d    | 16-bit unsigned|
++---+-----------------------------+-----------------------------------------+------+----------------+
+| 2 | Time                        | Seconds since midnight                  | s    | 32-bit unsigned|
++---+-----------------------------+-----------------------------------------+------+----------------+
+| 3 | Total Cumulative Distance   | Total distance traveled through water   | m    | 32-bit unsigned|
++---+-----------------------------+-----------------------------------------+------+----------------+
+| 4 | Distance Since Last Reset   | Distance traveled since last reset      | m    | 32-bit unsigned|
++---+-----------------------------+-----------------------------------------+------+----------------+
+
+Logged topic: NMEA2000_DISTANCE
+
+2.3.5 PGN 130311: Environmental Parameters
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+These values provide weather and ambient condition data, often used for sensor calibration, navigation adjustments, and environmental awareness.
+
++---+------------------------+------------------------------------------+------+----------------+
+| # | Field                  | Description                              | Unit | Type           |
++===+========================+==========================================+======+================+
+| 1 | SID                    | Sequence Identifier                      |      | 8-bit unsigned |
++---+------------------------+------------------------------------------+------+----------------+
+| 2 | Temperature Source     | Source of the temperature reading        |      | 6-bit lookup   |
++---+------------------------+------------------------------------------+------+----------------+
+| 3 | Humidity Source        | Source of the humidity reading           |      | 2-bit lookup   |
++---+------------------------+------------------------------------------+------+----------------+
+| 4 | Temperature            | Actual temperature reading               | K    | 16-bit signed  |
++---+------------------------+------------------------------------------+------+----------------+
+| 5 | Humidity               | Relative humidity                        | %    | 16-bit signed  |
++---+------------------------+------------------------------------------+------+----------------+
+| 6 | Atmospheric Pressure   | Barometric pressure                      | Pa   | 16-bit unsigned|
++---+------------------------+------------------------------------------+------+----------------+
+
+Logged topic: NMEA2000_ENVIRONMENT
+
+2.3.6 PGN 130578: Vessel Speed Components
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Accurately describes the speed of a vessel by component vectors.
+
++---+---------------------------------------+-------------------------------------------------+------+----------------+
+| # | Field                                 | Description                                     | Unit | Type           |
++===+=======================================+=================================================+======+================+
+| 1 | Longitudinal Speed, Water-referenced  | Forward/aft speed relative to water (surge)     | m/s  | 16-bit signed  |
++---+---------------------------------------+-------------------------------------------------+------+----------------+
+| 2 | Transverse Speed, Water-referenced    | Port/starboard speed relative to water (sway)   | m/s  | 16-bit signed  |
++---+---------------------------------------+-------------------------------------------------+------+----------------+
+| 3 | Longitudinal Speed, Ground-referenced | Forward/aft speed relative to ground            | m/s  | 16-bit signed  |
++---+---------------------------------------+-------------------------------------------------+------+----------------+
+| 4 | Transverse Speed, Ground-referenced   | Port/starboard speed relative to ground         | m/s  | 16-bit signed  |
++---+---------------------------------------+-------------------------------------------------+------+----------------+
+| 5 | Stern Speed, Water-referenced         | Transverse speed of the stern relative to water | m/s  | 16-bit signed  |
++---+---------------------------------------+-------------------------------------------------+------+----------------+
+| 6 | Stern Speed, Ground-referenced        | Transverse speed of the stern relative to ground| m/s  | 16-bit signed  |
++---+---------------------------------------+-------------------------------------------------+------+----------------+
+
+Logged topic: NMEA2000_VESSEL_SPEED
+
+
+3. Output Messages
+-------------------------
+*Additional messages available upon request*
+
+3.1 NMEA 0183 RMC: Recommended Minimum Navigation Information
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Message Format**::
+
+    $--RMC,hhmmss.ss,A,xxxx.xx,a,xxxxx.xx,a,x.x,x.x,xxxx,x.x,a*hh
+
++--------+------------+--------------------------------------------------------------------------+
+| Index  | Part       | Description                                                              |
++========+============+==========================================================================+
+| 1      | hhmmss.ss  | Time (UTC)                                                               |
++--------+------------+--------------------------------------------------------------------------+
+| 2      | A          | Status, A = Active, V = Navigation receiver warning                      |
++--------+------------+--------------------------------------------------------------------------+
+| 3      | xxxx.xx    | Latitude                                                                 |
++--------+------------+--------------------------------------------------------------------------+
+| 4      | a          | N or S                                                                   |
++--------+------------+--------------------------------------------------------------------------+
+| 5      | xxxxx.xx   | Longitude                                                                |
++--------+------------+--------------------------------------------------------------------------+
+| 6      | a          | E or W                                                                   |
++--------+------------+--------------------------------------------------------------------------+
+| 7      | x.x        | Speed over ground, knots                                                 |
++--------+------------+--------------------------------------------------------------------------+
+| 8      | x.x        | Track made good, degrees true                                            |
++--------+------------+--------------------------------------------------------------------------+
+| 9      | xxxx       | Date, ddmmyy                                                             |
++--------+------------+--------------------------------------------------------------------------+
+| 10     | x.x        | Magnetic Variation, degrees                                              |
++--------+------------+--------------------------------------------------------------------------+
+| 11     | a          | E or W                                                                   |
++--------+------------+--------------------------------------------------------------------------+
+| 12     | hh         | Checksum                                                                 |
++--------+------------+--------------------------------------------------------------------------+
+
+3.2 NMEA 0183 GGA: Global Positioning System Fix Data
+
+**Message Format**::
+
+    $--GGA,hhmmss.ss,llll.ll,a,yyyyy.yy,a,x,xx,x.x,x.x,M,x.x,M,x.x,xxxx*hh
+
++--------+------------+--------------------------------------------------------------------------+
+| Index  | Part       | Description                                                              |
++========+============+==========================================================================+
+| 1      | hhmmss.ss  | Time (UTC)                                                               |
++--------+------------+--------------------------------------------------------------------------+
+| 2      | llll.ll    | Latitude                                                                 |
++--------+------------+--------------------------------------------------------------------------+
+| 3      | a          | N or S                                                                   |
++--------+------------+--------------------------------------------------------------------------+
+| 4      | yyyyy.yy   | Longitude                                                                |
++--------+------------+--------------------------------------------------------------------------+
+| 5      | a          | E or W                                                                   |
++--------+------------+--------------------------------------------------------------------------+
+| 6      | x          | GPS Quality Indicator (0=Invalid; 1=GPS fix; 2=DGPS fix)                 |
++--------+------------+--------------------------------------------------------------------------+
+| 7      | xx         | Number of satellites in use (00-12)                                      |
++--------+------------+--------------------------------------------------------------------------+
+| 8      | x.x        | Horizontal Dilution of Precision (HDOP)                                  |
++--------+------------+--------------------------------------------------------------------------+
+| 9      | x.x        | Altitude (MSL)                                                           |
++--------+------------+--------------------------------------------------------------------------+
+| 10     | M          | Units of altitude (M=Meters)                                             |
++--------+------------+--------------------------------------------------------------------------+
+| 11     | x.x        | Geoidal separation                                                       |
++--------+------------+--------------------------------------------------------------------------+
+| 12     | M          | Units of geoidal separation (M=Meters)                                   |
++--------+------------+--------------------------------------------------------------------------+
+| 13     | x.x        | Age of differential data (seconds)                                       |
++--------+------------+--------------------------------------------------------------------------+
+| 14     | xxxx       | Differential Reference Station ID (0000-1023)                            |
++--------+------------+--------------------------------------------------------------------------+
+| 15     | hh         | Checksum                                                                 |
++--------+------------+--------------------------------------------------------------------------+
