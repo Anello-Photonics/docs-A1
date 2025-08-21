@@ -6,17 +6,17 @@ Communication & Messaging
 
 The communication interfaces currently supported for the ANELLO Maritime INS:
 
-+-----------------+----------------------------------------------------+
-| Interface       | Supported Protocols                                |
-+=================+====================================================+
-| RS232-1         | Mavlink (QGroundControl), NMEA 0183, ANELLO Binary |
-+-----------------+----------------------------------------------------+
-| RS232-2         | NMEA 0183, ANELLO Binary                           |
-+-----------------+----------------------------------------------------+
-| Ethernet        | NMEA 0183, ANELLO Binary                           |
-+-----------------+----------------------------------------------------+
-| CAN             | NMEA 2000                                          |
-+-----------------+----------------------------------------------------+
++-----------------+-------------------------------------------------------------------+
+| Interface       | Supported Protocols                                               |
++=================+===================================================================+
+| RS232-1         | NMEA 0183, ANELLO Binary, Configuration, Firmware Upgrade         |
++-----------------+-------------------------------------------------------------------+
+| RS232-2         | NMEA 0183, ANELLO Binary                                          |
++-----------------+-------------------------------------------------------------------+
+| Ethernet        | NMEA 0183, ANELLO Binary, Configuration, Firmware Upgrade         |
++-----------------+-------------------------------------------------------------------+
+| CAN             | NMEA 2000                                                         |
++-----------------+-------------------------------------------------------------------+
 
 
 2. Input Messages
@@ -27,7 +27,7 @@ The communication interfaces currently supported for the ANELLO Maritime INS:
 
 The ANELLO Maritime INS supports standard NMEA 0183 input messages which allow the USV to send in external sensor information, e.g. for speed-aiding. ANELLO also has a set of proprietary messages, following the standard NMEA proprietary format with a prefix of “$P”, company code of “AP” (ANELLO Photonics), and the message code.
 
-The minimum sensor aiding for the ANELLO Maritime INS is velocity aiding via either a paddle wheel, doppler velocity log (DVL), or another source.
+The minimum aiding recommended for optimal GPS-denied performance with the ANELLO Maritime INS is speed aiding via either a paddle wheel, ultrasonic sensor, Doppler velocity log (DVL), or another source.
 
 2.1.1. RPM: Revolutions
 """"""""""""""""""""""""
