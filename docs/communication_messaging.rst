@@ -329,9 +329,16 @@ The APINS message is the Kalman filter position, velocity, and attitude solution
   +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
   | 2 | PPS Time   |  ns       |  Time of last PPS pulse converted to GPS time (time since midnight on Jan 6, 1980)                                             |
   +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
-  | 3 | Status     |           |  0: Attitude Only; 1: Position and Attitude; 2: Position, Attitude, and Heading; 3: RTK Float; 4: RTK Fix                     |
+  | 3 | Status     |           |  - 0: Attitude Only                                                                                                            |
+  |   |            |           |  - 1: Position and Attitude                                                                                                    |
+  |   |            |           |  - 2: Position, Attitude, and Heading                                                                                          |
+  |   |            |           |  - 3: RTK Float                                                                                                                |
+  |   |            |           |  - 4: RTK Fix                                                                                                                  |
   |   |            |           |                                                                                                                                |
-  |   |            |           |  If GPS button is turned OFF in Python tool, 8: Attitude Only; 9: Position and Attitude; 10: Position, Attitude, and Heading   |
+  |   |            |           |  If GPS button is turned OFF in Python tool:                                                                                   |
+  |   |            |           |  - 8: Attitude Only                                                                                                            |
+  |   |            |           |  - 9: Position and Attitude                                                                                                    |
+  |   |            |           |  - 10: Position, Attitude, and Heading                                                                                         |
   +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
   | 4 | Lat        |  deg      |  Latitude, '+': North, '-': South                                                                                              |
   +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
