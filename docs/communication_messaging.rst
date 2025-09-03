@@ -335,7 +335,8 @@ The APINS message is the Kalman filter position, velocity, and attitude solution
   |   |            |           |  - 3: RTK Float                                                                                                                |
   |   |            |           |  - 4: RTK Fix                                                                                                                  |
   |   |            |           |                                                                                                                                |
-  |   |            |           |  If GPS button is turned OFF in Python tool:                                                                                   |
+  |   |            |           |  **If GPS button is turned OFF in Python tool:**                                                                               |
+  |   |            |           |                                                                                                                                |
   |   |            |           |  - 8: Attitude Only                                                                                                            |
   |   |            |           |  - 9: Position and Attitude                                                                                                    |
   |   |            |           |  - 10: Position, Attitude, and Heading                                                                                         |
