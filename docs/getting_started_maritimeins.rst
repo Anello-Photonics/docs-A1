@@ -140,7 +140,11 @@ Data is logged automatically once power is applied to the Maritime INS. No manua
    :width: 60%
    :align: center
 
+
+
 Some key topics in the log files are:
+
+
 +-------------------------+-----------+----------------------------------------------------------------------------------------------------+
 | Topic                   | instances | Description                                                                                        |
 +=========================+===========+====================================================================================================+
