@@ -86,7 +86,7 @@ IMU / IMU+ and ANELLO X3:
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
   | Sync Pulse Enable      | sync       | Enables the external synchronization pulse input: 'on', 'off'                                               |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
-  | Output Message Format  | mfm        | Format of the output messages. 1: ASCII, 4: RTCM (default)                                                  |
+  | Output Message Format  | mfm        | Format of the output messages. 0: Binary (X3 only), 1: ASCII, 4: RTCM Binary (GNSS INS, IMU+, and EVK only) |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
 
 Additional IMU+ ANELLO AHRS Commands:
