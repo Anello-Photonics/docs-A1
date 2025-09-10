@@ -460,29 +460,29 @@ The payload for the binary output message is described below
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
   | 1 | Sync Time   |  uint64  |  ns                                            |  Timestamp of input sync pulse (if enabled and provided)                    |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 2 | AX1         |  int16   |  g=raw_int16*(accel_range*0.0000305)           |  Scaled sensor accel                                                        |
+  | 2 | AX1         |  int16   |  g = raw_int16 * (accel_range * 0.0000305)     |  Scaled sensor accel. MEMS accel range is first 5 bits in MEMS range field. |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 3 | AY1         |  int16   |  g=raw_int16*(accel_range*0.0000305)           |  Scaled sensor accel                                                        |
+  | 3 | AY1         |  int16   |  g = raw_int16 * (accel_range * 0.0000305)     |  Scaled sensor accel. MEMS accel range is first 5 bits in MEMS range field. |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 4 | AZ1         |  int16   |  g=raw_int16*(accel_range*0.0000305)           |  Scaled sensor accel                                                        |
+  | 4 | AZ1         |  int16   |  g = raw_int16 * (accel_range * 0.0000305)     |  Scaled sensor accel. MEMS accel range is first 5 bits in MEMS range field. |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 5 | WX1         |  int16   |  dps=raw_int16*(mems_gyro_range*0.000035)      |  Scaled sensor rate                                                         |
+  | 5 | WX1         |  int16   |  dps = raw_int16 * (mems_gyro_range * 0.000035)|  Scaled sensor rate. MEMS gyro range is last 11 in MEMS Range field         |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 6 | WY1         |  int16   |  dps=raw_int16*(mems_gyro_range*0.000035)      |  Scaled sensor rate                                                         |
+  | 6 | WY1         |  int16   |  dps = raw_int16 * (mems_gyro_range * 0.000035)|  Scaled sensor rate. MEMS gyro range is last 11 in MEMS Range field         |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 7 | WZ1         |  int16   |  dps=raw_int16*(mems_gyro_range*0.000035)      |  Scaled sensor rate                                                         |
+  | 7 | WZ1         |  int16   |  dps = raw_int16 * (mems_gyro_range * 0.000035)|  Scaled sensor rate. MEMS gyro range is last 11 in MEMS Range field         |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 8 | OG_WX       |  int32   |  fog_dps = raw_int32 * (mems_gyro_range / 2^31)|  Scaled sensor rate for FOG. MEMS gyro range is last 11 in MEMS Range field |
+  | 8 | OG_WX       |  int32   |  dps = raw_int32 * (mems_gyro_range / 2^31)    |  Scaled sensor rate for FOG. MEMS gyro range is last 11 in MEMS Range field |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 9 | OG_WY       |  int32   |  fog_dps = raw_int32 * (mems_gyro_range / 2^31)|  Scaled sensor rate for FOG. MEMS gyro range is last 11 in MEMS Range field |
+  | 9 | OG_WY       |  int32   |  dps = raw_int32 * (mems_gyro_range / 2^31)    |  Scaled sensor rate for FOG. MEMS gyro range is last 11 in MEMS Range field |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 10| OG_WZ       |  int32   |  fog_dps = raw_int32 * (mems_gyro_range / 2^31)|  Scaled sensor rate for FOG. MEMS gyro range is last 11 in MEMS Range field |
+  | 10| OG_WZ       |  int32   |  dps = raw_int32 * (mems_gyro_range / 2^31)    |  Scaled sensor rate for FOG. MEMS gyro range is last 11 in MEMS Range field |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 11| MAG_X       |  int16   |  mag_G = raw_int16 / 4096.0                    |  Scaled magnetometer data                                                   |
+  | 11| MAG_X       |  int16   |  G = raw_int16 / 4096.0                        |  Scaled magnetometer data                                                   |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 12| MAG_Y       |  int16   |  mag_G = raw_int16 / 4096.0                    |  Scaled magnetometer data                                                   |
+  | 12| MAG_Y       |  int16   |  G = raw_int16 / 4096.0                        |  Scaled magnetometer data                                                   |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 13| MAG_Z       |  int16   |  mag_G = raw_int16 / 4096.0                    |  Scaled magnetometer data                                                   |
+  | 13| MAG_Z       |  int16   |  G = raw_int16 / 4096.0                        |  Scaled magnetometer data                                                   |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
   | 14| Temperature |  int16   |  °C * 100                                      |  Scaled temperature data                                                    |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
@@ -490,21 +490,21 @@ The payload for the binary output message is described below
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
   | 16| FOG Range   |  uint16  |  dps                                           |  FOG range in degrees per second                                            |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 17| Status_X    | Bitfield |                                                | Status based on bits:                                                       |
+  | 17| Status_X    | uint8    |                                                | Status based on bits:                                                       |
   |   |             |          |                                                | - Bit 0: Gyro discrepency                                                   |
   |   |             |          |                                                | - Bit 1: Temperature uncontrolled                                           |
   |   |             |          |                                                | - Bit 2: Over current error                                                 |
   |   |             |          |                                                | - Bit 3: SiPhOG supply voltage bad                                          |
   |   |             |          |                                                | - Bits 4-7: RESERVED                                                        |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 18| Status_Y    | Bitfield |                                                | Status based on bits:                                                       |
+  | 18| Status_Y    | uint8    |                                                | Status based on bits:                                                       |
   |   |             |          |                                                | - Bit 0: Gyro discrepency                                                   |
   |   |             |          |                                                | - Bit 1: Temperature uncontrolled                                           |
   |   |             |          |                                                | - Bit 2: Over current error                                                 |
   |   |             |          |                                                | - Bit 3: SiPhOG supply voltage bad                                          |
   |   |             |          |                                                | - Bits 4-7: RESERVED                                                        |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 19| Status_Z    | Bitfield |                                                | Status based on bits:                                                       |
+  | 19| Status_Z    | uint8    |                                                | Status based on bits:                                                       |
   |   |             |          |                                                | - Bit 0: Gyro discrepency                                                   |
   |   |             |          |                                                | - Bit 1: Temperature uncontrolled                                           |
   |   |             |          |                                                | - Bit 2: Over current error                                                 |
