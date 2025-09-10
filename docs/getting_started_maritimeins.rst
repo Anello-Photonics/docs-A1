@@ -150,11 +150,11 @@ Some key topics in the log files are:
 +===========================+===========+====================================================================================================+
 | vehicle_global_position   | 1         | Full INS solution containing latitude longitude coordinates                                        |
 +---------------------------+-----------+----------------------------------------------------------------------------------------------------+
-| senor_gps                 | 2         | GNSS only solution from each receiver                                                              |
+| sensor_gps                | 2         | GNSS only solution from each receiver                                                              |
 +---------------------------+-----------+----------------------------------------------------------------------------------------------------+
-| senor_gps_heading         | 1         | GNSS Dual heading and baseline data                                                                |
+| sensor_gps_heading        | 1         | GNSS Dual heading and baseline data                                                                |
 +---------------------------+-----------+----------------------------------------------------------------------------------------------------+
-| senor_water_speed_generic | 1         | Speed aiding data from external sensor                                                             |
+| sensor_water_speed_generic| 1         | Speed aiding data from external sensor                                                             |
 +---------------------------+-----------+----------------------------------------------------------------------------------------------------+
 | nmea_engine               | 1         | NMEA engine data from NMEA2000 bus                                                                 |
 +---------------------------+-----------+----------------------------------------------------------------------------------------------------+
