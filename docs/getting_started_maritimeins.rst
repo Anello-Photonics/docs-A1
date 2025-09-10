@@ -95,9 +95,6 @@ Distances are measured in meters from the IMU center to the respective antenna p
 +---------------------+-------+---------+-----------------------------------------------------------------------------------------+
 | **GPS_SEP_ROVER_Z** | m     | 0       | Z offset from INS center to Rover antenna (ANT2).                                       |
 +---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **EKF2_GPS_YAW_OFF**| deg   | 0       | Yaw offset to align antenna heading with vessel heading;                                |
-|                     |       |         | typically set to align coordinate frames.                                               |
-+---------------------+-------+---------+-----------------------------------------------------------------------------------------+
 | **EKF2_IMU_POS_X**  | m     | 0       | X offset from center of boat to INS center.                                             |
 +---------------------+-------+---------+-----------------------------------------------------------------------------------------+
 | **EKF2_IMU_POS_Y**  | m     | 0       | Y offset from center of boat to INS center.                                             |
@@ -124,6 +121,8 @@ To change parameters using QGroundControl: **Q > Vehicle Setup > Parameters**
 .. image:: media/QGC_parameters.png
    :width: 60%
    :align: center
+
+.. note:: For best results, it is recommended that antenna lever arms be centimeter accurate as these are used to calculate any offsets for dual antenna heading measurements.
 
 
 5. Data Collection & Visualization
