@@ -25,13 +25,15 @@ The communication interfaces currently supported for the ANELLO Maritime INS:
 2.1  NMEA 0183 Data Input Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ANELLO Maritime INS supports standard NMEA 0183 input messages which allow the USV to send in external sensor information, e.g. for speed-aiding. ANELLO also has a set of proprietary messages, following the standard NMEA proprietary format with a prefix of “$P”, company code of “AP” (ANELLO Photonics), and the message code.
+The ANELLO Maritime INS supports standard NMEA 0183 input messages which allow the USV to send in external sensor information, e.g. for speed-aiding. 
+ANELLO also has a set of proprietary messages, following the standard NMEA proprietary format with a prefix of “$P”, company code of “AP” (ANELLO Photonics), and the message code.
 
-The minimum aiding recommended for optimal GPS-denied performance with the ANELLO Maritime INS is speed aiding via either a paddle wheel, ultrasonic sensor, Doppler velocity log (DVL), or another source.
+To configure NMEA 0183 over a serial port, update the following configs (see
+`Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`_
+for instructions on changing settings):
 
-To enable NMEA 0183 over RS232, use the following configurations:
+``NMEA_BRG_SER_CFG`` = ``101`` (RS232-1) **or** ``102`` (RS232-2)
 
-* ``NMEA_BRG_SER_CFG`` = ``101`` (RS232-1) **or** ``102`` (RS232-2)
 The default baud rate is ``38400``. To change the baud rate use
 ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
 
@@ -342,17 +344,16 @@ Logged topic: NMEA2000_VESSEL_SPEED
 3.1 NMEA 0183 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To enable NMEA 0183 over RS232, use the following configurations:
+To configure NMEA 0183 over a serial port, update the following configs (see
+`Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`_
+for instructions on changing settings):
 
 * ``NMEA_BRG_SER_CFG`` = ``101`` (RS232-1) **or** ``102`` (RS232-2)
+* ``NMEA_BRG_ODR_GGA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NMEA_BRG_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+
 The default baud rate is ``38400``. To change the baud rate use
 ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
-
-The NMEA 0183 output can be configured using the following:
-* ``NMEA_BRG_ODR_GGA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no
-  output)
-* ``NMEA_BRG_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no
-  output)
 
 3.1.1 RMC: Recommended Minimum Navigation Information
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
