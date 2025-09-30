@@ -332,6 +332,19 @@ Logged topic: NMEA2000_VESSEL_SPEED
 3.1 NMEA 0183 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+To configure NMEA 0183 over a serial port, update the following configs (see
+the :ref:`configuration section <configuration>` for instructions on changing
+settings):
+
+* ``NMEA_BRG_SER_CFG`` = ``101`` (RS232-1) **or** ``102`` (RS232-2)
+* ``NMEA_BRG_ODR_GGA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no
+  output)
+* ``NMEA_BRG_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no
+  output)
+
+The default baud rate is ``38400``. To change the baud rate use
+``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
+
 3.1.1 RMC: Recommended Minimum Navigation Information
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -410,6 +423,10 @@ Logged topic: NMEA2000_VESSEL_SPEED
 
 3.2 NMEA 2000 
 ~~~~~~~~~~~~~~~~~~~~~~~
+
+Ensure ``NMEA2000_CFG`` is set to ``1`` before using the NMEA 2000 driver on the
+CAN port. This enables the driver and allows the system to publish and receive
+NMEA 2000 messages.
 
 3.2.1 PGN 129025: Position, Rapid Update
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
