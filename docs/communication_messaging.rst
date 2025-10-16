@@ -29,6 +29,8 @@ The ANELLO Maritime INS supports standard NMEA 0183 input messages which allow t
 
 The minimum aiding recommended for optimal GPS-denied performance with the ANELLO Maritime INS is speed aiding via either a paddle wheel, ultrasonic sensor, Doppler velocity log (DVL), or another source.
 
+..note:: If NMEA 2000 output rate is set to greater than 100 Hz or less than 1 Hz, the output rate will fall back to 1 Hz.
+
 2.1.1. RPM: Revolutions
 """"""""""""""""""""""""
 

@@ -1,2 +1,2 @@
 # docs-A1
-Repository for the Anello EVK online user manual
+Repository for the Anello Maritime INS online user manual
