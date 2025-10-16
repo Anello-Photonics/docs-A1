@@ -4,12 +4,8 @@ Mechanicals
 
 The ANELLO Maritime INS features a 20 pin circular connector. The case housing is aluminum with an anodized finish.
 
-Maritime INS SCD Drawing: :download:`PDF <media/100013,R02-Outline_Drawing,Maritime_IMU.PDF>`
+Maritime INS SCD Drawing: :download:`PDF <media/100013R03-Outline_DrawingMaritime_INS.pdf>`
 
-Pre A0 Prototype SCD Drawing:
-
-.. figure:: media/SCD_Mechanical_Maritime_INS_Pre_A0_Prototype.png
-   :align: center
 
 Production Intent SCD Drawing:
 
