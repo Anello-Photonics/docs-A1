@@ -22,14 +22,14 @@ The communication interfaces currently supported for the ANELLO Maritime INS:
 2. Input Messages
 ---------------------------------
 
-2.1  NMEA 0183 Data Input Messages
+2.1  NMEA 0183 Input Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ANELLO Maritime INS supports standard NMEA 0183 input messages which allow the USV to send in external sensor information, e.g. for speed-aiding. 
 ANELLO also has a set of proprietary messages, following the standard NMEA proprietary format with a prefix of “$P”, company code of “AP” (ANELLO Photonics), and the message code.
 
 To configure NMEA 0183 over a serial port, update the following configs (see
-`Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`_
+`Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 for instructions on changing settings):
 
 ``NMEA_BRG_SER_CFG`` = ``101`` (RS232-1) **or** ``102`` (RS232-2)
@@ -186,7 +186,7 @@ The default baud rate is ``38400``. To change the baud rate use
 +-------+------------+---------------------------------------------------------------+
 
 
-2.2 NMEA 2000 Data Input Messages
+2.2 NMEA 2000 Input Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The ANELLO Maritime INS also supports the following standard NMEA 2000 input messages, which allow the vehicle to send in external sensor information, e.g. for speed-aiding.
 
@@ -339,13 +339,11 @@ Logged topic: NMEA2000_VESSEL_SPEED
 
 3. Output Messages
 -------------------------
-*Additional messages available upon request*
-
-3.1 NMEA 0183 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3.1 NMEA 0183 Output Messages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To configure NMEA 0183 over a serial port, update the following configs (see
-`Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`_
+`Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 for instructions on changing settings):
 
 * ``NMEA_BRG_SER_CFG`` = ``101`` (RS232-1) **or** ``102`` (RS232-2)
@@ -431,12 +429,17 @@ The default baud rate is ``38400``. To change the baud rate use
 | 15     | hh         | Checksum                                                                 |
 +--------+------------+--------------------------------------------------------------------------+
 
-3.2 NMEA 2000 
-~~~~~~~~~~~~~~~~~~~~~~~
+3.2 NMEA 2000 Output Messages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Ensure ``NMEA2000_CFG`` is set to ``1`` before using the NMEA 2000 driver on the
 CAN port. This enables the driver and allows the system to publish and receive
 NMEA 2000 messages.
+
+Each published PGN has an associated output data rate parameter (for example,
+``N2K_129025_RATE``, ``N2K_129026_RATE``, ``N2K_129029_RATE``) within the
+**NMEA2000** parameter group. Rates are specified in Hertz, clamped to the
+range ``0``–``100``; setting a rate to ``0`` disables that PGN.
 
 3.2.1 PGN 129025: Position, Rapid Update
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

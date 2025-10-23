@@ -125,6 +125,18 @@ To change parameters using QGroundControl: **Q > Vehicle Setup > Parameters**
 
 .. note:: For best results, it is recommended that antenna lever arms be centimeter accurate as these are used to calculate any offsets for dual antenna heading measurements.
 
+NMEA 2000 Output Rate Parameters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Each published PGN has an associated output data rate parameter in the
+**NMEA2000** group (e.g. ``N2K_129025_RATE``, ``N2K_129026_RATE``,
+``N2K_129029_RATE``). Rates are specified in Hertz and are clamped between
+``0`` and ``100``. Setting a value to ``0`` stops transmission of that PGN; any
+positive value defines the broadcast frequency. Update the rates from
+QGroundControl's parameter editor or from the command-line interface. See
+`Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
+for instructions on setting configurations.
+
 
 5. Data Collection & Visualization
 ------------------------------------
