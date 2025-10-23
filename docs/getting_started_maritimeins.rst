@@ -56,7 +56,8 @@ Connect with QGroundControl:
 ----------------------------
 
 The ANELLO Maritime INS can be configured for various installation positions as long as parameters are set as detailed in the next section.  
-An external speed-aiding sensor is highly recommended to maintain accuracy in GPS-denied conditions. Calibration procedures for common sensors are detailed in  
+An external speed-aiding sensor, e.g. paddle wheel, ultrasonic sensor, Doppler velocity log (DVL), is highly recommended to maintain accuracy in GPS-denied conditions. 
+Calibration procedures for common sensors are detailed in  
 `Sensor Calibrations <https://docs-a1.readthedocs.io/en/maritime_ins/sensor_calibrations.html>`__.
 
 It is recommended that the Maritime INS be installed with the **X axis facing forward** and as close to the centerline as possible.  
@@ -123,6 +124,18 @@ To change parameters using QGroundControl: **Q > Vehicle Setup > Parameters**
    :align: center
 
 .. note:: For best results, it is recommended that antenna lever arms be centimeter accurate as these are used to calculate any offsets for dual antenna heading measurements.
+
+NMEA 2000 Output Rate Parameters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Each published PGN has an associated output data rate parameter in the
+**NMEA2000** group (e.g. ``N2K_129025_RATE``, ``N2K_129026_RATE``,
+``N2K_129029_RATE``). Rates are specified in Hertz and are clamped between
+``0`` and ``100``. Setting a value to ``0`` stops transmission of that PGN; any
+positive value defines the broadcast frequency. Update the rates from
+QGroundControl's parameter editor or from the command-line interface. See
+`Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
+for instructions on setting configurations.
 
 
 5. Data Collection & Visualization
