@@ -15,7 +15,7 @@ Production Intent SCD Drawing:
 
 
 .. note::
-   If you purchased the Maritime INS Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/SCD_Breakout Cable_Maritime_INS.pdf>` 
+   If you purchased the Maritime INS Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/25002301_01-25_SCD Assy Cable Maritime A0 Breakout (002).pdf>` 
 
 
 

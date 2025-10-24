@@ -11,7 +11,7 @@ Please contact support@anellophotonics.com with any questions.
 The ANELLO Maritime INS unit is pictured below. It features a 20-pin circular connector and two female SMA GNSS connectors.
 
 .. image:: media/ANELLO_Maritime_INS.png
-   :width: 25%
+   :width: 35%
    :align: center
 
 An SCD drawing of the Maritime INS and a schematic of the accessory kit breakout cable can be found in  
