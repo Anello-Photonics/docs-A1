@@ -37,6 +37,7 @@ for instructions on changing settings):
 The default baud rate is ``38400``. To change the baud rate use
 ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
 
+
 2.1.1. RPM: Revolutions
 """"""""""""""""""""""""
 
@@ -193,6 +194,7 @@ The ANELLO Maritime INS also supports the following standard NMEA 2000 input mes
 Ensure ``NMEA2000_CFG`` is set to ``1`` before using the NMEA 2000 driver on the
 CAN port. This enables the driver and allows the system to publish and receive
 NMEA 2000 messages.
+
 
 2.2.1 PGN 127488: Engine Parameters, Rapid Update
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
