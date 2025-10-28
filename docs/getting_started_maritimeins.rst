@@ -8,7 +8,7 @@ Please contact support@anellophotonics.com with any questions.
 1. Hardware Connections
 ---------------------------------
 
-The ANELLO Maritime INS unit is pictured below. It features a 20-pin circular connector and two female SMA GNSS connectors.
+The ANELLO Maritime INS unit is pictured below. It features a 22-pin circular connector and two female SMA GNSS connectors.
 
 .. image:: media/ANELLO_Maritime_INS.png
    :width: 35%
