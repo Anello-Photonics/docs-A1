@@ -8,12 +8,12 @@ If you are on an older version, please contact ANELLO for the latest FW image.
 Firmware Upgrade Procedure
 ------------------------------
 
-FW upgrades currently must be done with both the serial RS232-1 port and ethernet ports connected and can be done on Windows and Linux computers.
+FW upgrades currently must be done with the serial RS232-1 port and can be done on Windows and Linux computers.
 
-Please ensure power, serial, and ethernet connection is not disrupted to the unit during the firmware upgrade process. 
+Please ensure power and serial is not disrupted to the unit during the firmware upgrade process. 
 If you experience any errors during the process, please power cycle the unit and try again.
 
-1. Connect **both** ethernet and RS-232-1 to computer and set the ethernet adapter to 192.168.0.2. Details for setting ethernet adapter can be found in the `Maritime INS Getting Started Guide <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html>`_
+1. Connect RS-232-1 to computer.
 2. Download ANELLO-provided FW image onto your local computer
 3. Open device manager, and find which COM port is the serial connection.
 4. In terminal:

@@ -5,7 +5,7 @@ Sensor Calibrations
 Paddle Wheel Calibration
 ---------------------------------
 
-The ANELLO Dual Solution Maritime INS box uses paddle wheel input as a speed aiding source. From prior testing, the paddle wheels appear to have a speed-dependent scale factor which needs to be accounted for, and this can vary from boat-to-boat. 
+The ANELLO Maritime INS uses paddle wheel input as a speed aiding source. From prior testing, the paddle wheels appear to have a speed-dependent scale factor which needs to be accounted for, and this can vary from boat-to-boat. 
  
 
 Each time the ANELLO payload is installed on a new boat model, the boat’s paddle wheel needs to be calibrated relative to the boat’s motor percentage. To calibrate the paddle wheel: 
@@ -53,7 +53,7 @@ Each time the ANELLO payload is installed on a new boat model, the boat’s padd
 (Optional) External Magnetometer Calibration
 ----------------------------------------------
 
-In the case that you will be supplying the ANELLO Dual Solution Maritime INS box with data from an external magnetometer, you may conduct an optional external magnetometer calibration procedure to improve the accuracy of the reported heading. 
+In the case that you will be supplying the ANELLO Maritime INS with data from an external magnetometer, you may conduct an optional external magnetometer calibration procedure to improve the accuracy of the reported heading. 
 
  
 
