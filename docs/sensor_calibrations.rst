@@ -5,7 +5,7 @@ Sensor Calibrations
 Paddle Wheel Calibration
 ---------------------------------
 
-The ANELLO Maritime INS uses paddle wheel input as a speed aiding source. From prior testing, the paddle wheels appear to have a speed-dependent scale factor which needs to be accounted for, and this can vary from boat-to-boat. 
+The ANELLO Maritime INS uses paddle wheel input as a speed aiding source. Paddle wheels typically have a speed-dependent scale factor which needs to be accounted for, and this can vary from boat-to-boat. 
  
 
 Each time the ANELLO Maritime INS is installed on a new boat model, the boat’s paddle wheel needs to be calibrated relative to the boat’s motor percentage. To calibrate the paddle wheel: 
