@@ -61,9 +61,9 @@ Calibration procedures for common sensors are detailed in
 `Sensor Calibrations <https://docs-a1.readthedocs.io/en/maritime_ins/sensor_calibrations.html>`__.
 
 It is recommended that the Maritime INS be installed with the **X axis facing forward** and as close to the centerline as possible.  
-If this is not possible, configure **SENS_BOARD_ROT** and **EKF2_IMU_POS** offsets accordingly.
+If this is not possible, configure **SENS_BOARD_ROT** and **EKF2_IMU_POS_...** offsets accordingly.
 
-Below is the recommended installation configuration, with the longest possible antenna baseline (distance between antennae) with a minimum of 1m baseline to ensure optimal dual antenna heading accuracy.
+Below is the recommended installation configuration, with the longest possible antenna baseline (distance between antennae). A minimum of a 1 meter baseline is required to ensure optimal dual antenna heading accuracy.
 
 Ensure that antennae are mounted on a ground plane of at least 10 cm x 10 cm and with no obstructions to open sky view.
 
