@@ -40,7 +40,7 @@ The communication interfaces currently supported for the ANELLO Maritime INS:
 ---------------------------------
 
 2.1  NMEA 0183 Input Messages
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ss
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ANELLO Maritime INS supports standard NMEA 0183 input messages which allow the USV to send in external sensor information, e.g. for speed-aiding. 
 ANELLO also has a set of proprietary messages, following the standard NMEA proprietary format with a prefix of “$P”, company code of “AP” (ANELLO Photonics), and the message code.
