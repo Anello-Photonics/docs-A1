@@ -137,6 +137,35 @@ QGroundControl's parameter editor or from the command-line interface. See
 `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 for instructions on setting configurations.
 
+Ethernet Parameters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Ethernet settings can be configured using the following parameters:
+
++---------------------+----------------------+-----------------------------------------------------------------------------------------+
+| Parameter           | Default              | Description                                                                             |
++=====================+======================+=========================================================================================+
+| **NET_CFG_PROTO**   | DEVICE=eth0          | Network device interface name.                                                          |
++---------------------+----------------------+-----------------------------------------------------------------------------------------+
+| **NET_CFG_NETMASK** | NETMASK=255.255.255.0| Network subnet mask.                                                                    |
++---------------------+----------------------+-----------------------------------------------------------------------------------------+
+| **NET_CFG_IPADDR**  | IPADDR=192.168.0.3   | Static IP address assigned to the interface.                                            |
++---------------------+----------------------+-----------------------------------------------------------------------------------------+
+| **NET_CFG_ROUTER**  | ROUTER=192.168.0.254 | Default gateway (router) for the network.                                               |
++---------------------+----------------------+-----------------------------------------------------------------------------------------+
+| **NET_CFG_DNS**     | DNS=192.168.0.254    | DNS server address.                                                                     |
++---------------------+----------------------+-----------------------------------------------------------------------------------------+
+
+CAN Termination
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The ANELLO Maritime INS supports configurable internal CAN termination.
+
++------------------+---------+-----------------------------------------------------------+
+| Parameter        | Default | Description                                               |
++==================+=========+===========================================================+
+| **CAN_TERM**     | 1       | CAN bus termination setting.                              |
+|                  |         | **0** = No termination resistor.                          |
+|                  |         | **1** = 120 Ω termination resistor enabled.               |
++------------------+---------+-----------------------------------------------------------+
 
 5. Data Collection & Visualization
 ------------------------------------
