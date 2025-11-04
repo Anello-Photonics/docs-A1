@@ -5,14 +5,14 @@ Sensor Calibrations
 Paddle Wheel Calibration
 ---------------------------------
 
-The ANELLO Maritime INS uses paddle wheel input as a speed aiding source. From prior testing, the paddle wheels appear to have a speed-dependent scale factor which needs to be accounted for, and this can vary from boat-to-boat. 
+The ANELLO Maritime INS uses paddle wheel input as a speed aiding source. Paddle wheels typically have a speed-dependent scale factor which needs to be accounted for, and this can vary from boat-to-boat. 
  
 
-Each time the ANELLO payload is installed on a new boat model, the boat’s paddle wheel needs to be calibrated relative to the boat’s motor percentage. To calibrate the paddle wheel: 
+Each time the ANELLO Maritime INS is installed on a new boat model, the boat’s paddle wheel needs to be calibrated relative to the boat’s motor percentage. To calibrate the paddle wheel: 
 
 1. Launch boat into water with as little currents as possible 
 
-2. Power on ANELLO payload while boat is stationary and allow ~30s to gain GPS 
+2. Power on the ANELLO Maritime INS while boat is stationary and allow ~30s to gain GPS 
 
 3. Perform “out and back” mission of at least 30 second duration per leg, 2-3 times at each of the following percentages of the vehicle's max speed: 20%, 40%, 60%, 80%, 100% 
 
@@ -28,9 +28,9 @@ Each time the ANELLO payload is installed on a new boat model, the boat’s padd
 *Example "Out and Back" Mission for Paddle Wheel Calibration*
 
 
-4. Once “out and backs” are complete, power off ANELLO payload 
+4. Once “out and backs” are complete, power off ANELLO Maritime INS 
 
-5. After you finish other water missions, download the logs from the ANELLO box (using the instructions under Obtaining ANELLO Logs section) and send to ANELLO. 
+5. After you finish other water missions, download the logs from the ANELLO Maritime INS (using the instructions under `Data Collection and Visualization <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#data-collection-visualization>`__ ) and send to ANELLO. 
 
 6. ANELLO will instruct on updating the paddle wheel calibration values. 
 
@@ -65,13 +65,13 @@ To calibrate the external magnetometer:
 
 1. Launch boat into water. 
 
-2. Power on ANELLO payload while boat is stationary and allow ~30s to gain GPS. 
+2. Power on the ANELLO Maritime INS while boat is stationary and allow ~30s to gain GPS. 
 
 3. Perform a “figure-eight” or “flower” shaped mission at a series of increasing motor percentages, maintaining a constant motor percentage per each figure-eight or flower.  
 
-4. Once the calibration mission is complete, power off ANELLO payload. 
+4. Once the calibration mission is complete, power off the ANELLO Maritime INS. 
 
-5. After you finish other water missions, download the logs from the ANELLO box (using the instructions under Obtaining ANELLO Logs section) and send to ANELLO. 
+5. After you finish other water missions, download the logs from the ANELLO Maritime INS (using the instructions under `Data Collection and Visualization <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#data-collection-visualization>`__ ) and send to ANELLO.
 
 6. ANELLO will instruct on updating the external magnetometer calibration values. 
 

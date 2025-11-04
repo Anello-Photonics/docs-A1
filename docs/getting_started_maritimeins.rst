@@ -61,9 +61,9 @@ Calibration procedures for common sensors are detailed in
 `Sensor Calibrations <https://docs-a1.readthedocs.io/en/maritime_ins/sensor_calibrations.html>`__.
 
 It is recommended that the Maritime INS be installed with the **X axis facing forward** and as close to the centerline as possible.  
-If this is not possible, configure **SENS_BOARD_ROT** and **EKF2_IMU_POS** offsets accordingly.
+If this is not possible, configure **SENS_BOARD_ROT** and **EKF2_IMU_POS_...** offsets accordingly.
 
-Below is the recommended installation configuration, with the longest possible antenna baseline (distance between antennae) with a minimum of 1m baseline to ensure optimal dual antenna heading accuracy.
+Below is the recommended installation configuration, with the longest possible antenna baseline (distance between antennae). A minimum of a 1 meter baseline is required to ensure optimal dual antenna heading accuracy.
 
 Ensure that antennae are mounted on a ground plane of at least 10 cm x 10 cm and with no obstructions to open sky view.
 
@@ -137,6 +137,35 @@ QGroundControl's parameter editor or from the command-line interface. See
 `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 for instructions on setting configurations.
 
+Ethernet Parameters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Ethernet settings can be configured using the following parameters:
+
++---------------------+----------------------+-----------------------------------------------------------------------------------------+
+| Parameter           | Default              | Description                                                                             |
++=====================+======================+=========================================================================================+
+| **NET_CFG_PROTO**   | DEVICE=eth0          | Network device interface name.                                                          |
++---------------------+----------------------+-----------------------------------------------------------------------------------------+
+| **NET_CFG_NETMASK** | NETMASK=255.255.255.0| Network subnet mask.                                                                    |
++---------------------+----------------------+-----------------------------------------------------------------------------------------+
+| **NET_CFG_IPADDR**  | IPADDR=192.168.0.3   | Static IP address assigned to the interface.                                            |
++---------------------+----------------------+-----------------------------------------------------------------------------------------+
+| **NET_CFG_ROUTER**  | ROUTER=192.168.0.254 | Default gateway (router) for the network.                                               |
++---------------------+----------------------+-----------------------------------------------------------------------------------------+
+| **NET_CFG_DNS**     | DNS=192.168.0.254    | DNS server address.                                                                     |
++---------------------+----------------------+-----------------------------------------------------------------------------------------+
+
+CAN Termination
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The ANELLO Maritime INS supports configurable internal CAN termination.
+
++------------------+---------+-----------------------------------------------------------+
+| Parameter        | Default | Description                                               |
++==================+=========+===========================================================+
+| **CAN_TERM**     | 1       | CAN bus termination setting.                              |
+|                  |         | **0** = No termination resistor.                          |
+|                  |         | **1** = 120 Ω termination resistor enabled.               |
++------------------+---------+-----------------------------------------------------------+
 
 5. Data Collection & Visualization
 ------------------------------------
