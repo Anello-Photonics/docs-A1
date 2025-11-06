@@ -26,11 +26,11 @@ The communication interfaces currently supported for the ANELLO Maritime INS:
 +-----------------+-------------------------------------------------------------------+------------------------------------------------------+
 | Interface       | Supported Protocols                                               | Functions                                            |
 +=================+===================================================================+======================================================+
-| RS232-1         | Serial, Mavlink, NMEA 0183                                        | Data input / output, configuration, firmware updates |
+| RS232-1         | Serial, MAVLink, NMEA 0183                                        | Data input / output, configuration, firmware updates |
 +-----------------+-------------------------------------------------------------------+------------------------------------------------------+
-| RS232-2         | Serial, Mavlink, NMEA 0183                                        | Data input / output, configuration                   |
+| RS232-2         | Serial, MAVLink, NMEA 0183                                        | Data input / output, configuration                   |
 +-----------------+-------------------------------------------------------------------+------------------------------------------------------+
-| Ethernet        | UDP, Mavlink, NMEA 0183                                           | Data input / output, configuration, log downloads    |
+| Ethernet        | UDP, MAVLink, NMEA 0183                                           | Data input / output, configuration, log downloads    |
 +-----------------+-------------------------------------------------------------------+------------------------------------------------------+
 | CAN             | NMEA 2000                                                         | Data input / output                                  |
 +-----------------+-------------------------------------------------------------------+------------------------------------------------------+

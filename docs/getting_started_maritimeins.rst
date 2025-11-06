@@ -167,7 +167,7 @@ The ANELLO Maritime INS supports configurable internal CAN termination.
 |                  |         | **1** = 120 Ω termination resistor enabled.               |
 +------------------+---------+-----------------------------------------------------------+
 
-.. note:: Configurable CAN termination supported for part number 10001301
+.. note:: Configurable CAN termination supported for production units (P/N 10001301), not for evaluation units (P/N 10001302)
 
 
 5. Data Collection & Visualization
