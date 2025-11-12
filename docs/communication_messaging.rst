@@ -355,6 +355,20 @@ Accurately describes the speed of a vessel by component vectors.
 
 Logged topic: NMEA2000_VESSEL_SPEED
 
+2.2.7 PGN 65281: GPS Control
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Manufacturer proprietary message used to enable or disable the GPS through the NMEA2000 interface.
+
++---+------------+----------------------------------+------+----------------+
+| # | Field      | Description                      | Unit | Type           |
++===+============+==================================+======+================+
+| 1 | GPS Control| GPS enable/disable command:      |      | 8-bit unsigned |
+|   |            | 0 = Disable GPS,                 |      |                |
+|   |            | 1 = Enable GPS                   |      |                |
++---+------------+----------------------------------+------+----------------+
+
+Logged topic: NMEA2000_GPSCTRL
 
 3. Output Messages
 -------------------------
@@ -514,7 +528,7 @@ Complete GNSS navigation solution including position, quality, and DOP.
 +-----+-------------------------+---------------------------------------+------+------------------+
 | 7   | GNSS Type               | GPS, GLONASS, Galileo, BeiDou, etc.   |      | 4-bit lookup     |
 +-----+-------------------------+---------------------------------------+------+------------------+
-| 8   | Method                  | No fix, 2D, 3D, etc.                  |      | 4-bit lookup     |
+| 8   | Method                  | No fix, RTK, etc. (*see table below*) |      | 4-bit lookup     |
 +-----+-------------------------+---------------------------------------+------+------------------+
 | 9   | Integrity               | Integrity flag                        |      | 2-bit lookup     |
 +-----+-------------------------+---------------------------------------+------+------------------+
@@ -536,6 +550,32 @@ Complete GNSS navigation solution including position, quality, and DOP.
 +-----+-------------------------+---------------------------------------+------+------------------+
 | 18  | Age of DGNSS Corrections| Age of corrections for station #1     | s    | 16-bit signed    |
 +-----+-------------------------+---------------------------------------+------+------------------+
+
+**Method Field Values (4-bit lookup):**
+
++------+----------------------------+
+| Value| Meaning                    |
++======+============================+
+| 0    | No GNSS (no valid fix)     |
++------+----------------------------+
+| 1    | GNSS Fix (standard 2D/3D)  |
++------+----------------------------+
+| 2    | DGNSS (differential fix)   |
++------+----------------------------+
+| 3    | Precise GNSS               |
++------+----------------------------+
+| 4    | RTK Fixed Integer          |
++------+----------------------------+
+| 5    | RTK Float                  |
++------+----------------------------+
+| 6    | Estimated (dead reckoning) |
++------+----------------------------+
+| 7    | Manual Input               |
++------+----------------------------+
+| 8    | Simulation Mode            |
++------+----------------------------+
+| 15   | Invalid                    |
++------+----------------------------+
 
 
 
