@@ -5,6 +5,8 @@ Firmware Upgrade
 ANELLO recommends using the latest firmware (FW) for best results. The latest FW release is v1.1.9. 
 If you are on an older version, please contact ANELLO for the latest FW image.
 
+The ANELLO FW upgrade python script can be found in the following public GIT repo: `ANELLO_FW_Uploader <https://github.com/Anello-Photonics/ANELLO_FW_Uploader.git>`__
+
 Firmware Upgrade Procedure
 ------------------------------
 
