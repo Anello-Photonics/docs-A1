@@ -21,10 +21,10 @@ If you experience any errors during the process, please power cycle the unit and
 .. code-block:: python
     :caption: Terminal
     
-        # cd into folder with px4_uploader.py
-        python px_uploader.py --port COM5 --baud-bootloader 115200 /Users/user1/Downloads/anello_maritime_default.px4
+        # cd into folder with anello_fw_uploader.py
+        python anello_fw_uploader.py --port COM5 --baud-bootloader 115200 /Users/user1/Downloads/anello_maritime_default.anello
         # Change "COM5" to match your port that the Maritime INS is plugged into
-        # Change "/Users/user1/Downloads/anello_maritime_default.px4" to the path to the ANELLO-provided FW image (.px4 file) on your local computer
+        # Change "/Users/user1/Downloads/anello_maritime_default.anello" to the path to the ANELLO-provided FW image (.anello file) on your local computer
 
 8. After it completes, you will see "Rebooting. Elapsed Time x.x" - this means the FW upgrade was successful
 
