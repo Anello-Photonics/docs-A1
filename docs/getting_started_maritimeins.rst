@@ -21,7 +21,7 @@ An SCD drawing of the Maritime INS and a schematic of the accessory kit breakout
 2. Software Interfaces
 ---------------------------------
 
-Connect with AMarinerControl:
+Connect with the ANELLO Maritime Control software (AMarinerControl):
 
 1. Install ANELLO's `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/download/v1.0.0/AMarinerControl-Setup.exe>`_ on your Windows computer. For MacOS and Linux support contact support@anellophotonics.com.
 
