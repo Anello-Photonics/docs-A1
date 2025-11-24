@@ -21,9 +21,9 @@ An SCD drawing of the Maritime INS and a schematic of the accessory kit breakout
 2. Software Interfaces
 ---------------------------------
 
-Connect with QGroundControl:
+Connect with the ANELLO Maritime Control software (AMarinerControl):
 
-1. Install `QGroundControl <https://qgroundcontrol.com/>`_ on your computer.
+1. Install ANELLO's `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/download/v1.0.0/AMarinerControl-Setup.exe>`_ on your Windows computer. For MacOS and Linux support contact support@anellophotonics.com.
 
 2. Set the Ethernet IP address of the host computer to **192.168.0.2** and subnet mask to **255.255.255.0**.
 
@@ -31,24 +31,28 @@ Connect with QGroundControl:
    :width: 50%
    :align: center
 
-3. Open QGroundControl.
+3. Open AMarinerControl.
 
-.. image:: media/QGroundControl-Disconnected.png
-   :width: 60%
+.. image:: media/AMarinerControl-Disconnected.png
+   :width: 70%
    :align: center
 
-4. Set up the Ethernet connection in QGroundControl (only needs to be done once):
+4. Set up the Ethernet connection in AMarinerControl (only needs to be done once):
 
-   a. Click the **Q** button (top right) → Application Settings → Comm Links → ETH  
+   a. Click the **A** button (top left) → Application Settings → Comm Links → Add New Link  
    b. Type: UDP  
    c. Port: 14550
 
+.. image:: media/AMC_eth_connect.png
+   :width: 70%
+   :align: center
+
 5. Connect the Maritime INS to the computer using Ethernet.
 
-6. Once connected, the status in the top left of QGroundControl changes from **Disconnected** to **Not Ready**.
+6. Once connected, the status in the top left of AMarinerControl changes from **Disconnected** to **Connected**.
 
-.. image:: media/QGroundControl-NotReady.png
-   :width: 60%
+.. image:: media/AMarinerControl-Connected.png
+   :width: 70%
    :align: center
 
 
@@ -68,7 +72,7 @@ Below is the recommended installation configuration, with the longest possible a
 Ensure that antennae are mounted on a ground plane of at least 10 cm x 10 cm and with no obstructions to open sky view.
 
 .. image:: media/maritime_ins_installation.drawio.png
-   :width: 60%
+   :width: 70%
    :align: center
 
 
@@ -114,13 +118,13 @@ Distances are measured in meters from the IMU center to the respective antenna p
 |                     |       |         |   - **Roll 180°, Yaw 180°**: Unit mounted upside down with X pointing in vehicle back   |
 |                     |       |         |   - **Roll 180°, Yaw 270°**: Unit mounted upside down with X pointing in vehicle left   |
 |                     |       |         |                                                                                         |
-|                     |       |         | Will be presented as a drop-down menu in QGroundControl.                                |
+|                     |       |         | Will be presented as a drop-down menu in AMarinerControl.                               |
 +---------------------+-------+---------+-----------------------------------------------------------------------------------------+
 
-To change parameters using QGroundControl: **Q > Vehicle Setup > Parameters**
+To change parameters using AMarinerControl: **A > Parameters**
 
-.. image:: media/QGC_parameters.png
-   :width: 60%
+.. image:: media/AMC_parameters.png
+   :width: 70%
    :align: center
 
 .. note:: For best results, it is recommended that antenna lever arms be centimeter accurate as these are used to calculate any offsets for dual antenna heading measurements.
@@ -133,7 +137,7 @@ Each published PGN has an associated output data rate parameter in the
 ``N2K_129029_RATE``). Rates are specified in Hertz and are clamped between
 ``0`` and ``100``. Setting a value to ``0`` stops transmission of that PGN; any
 positive value defines the broadcast frequency. Update the rates from
-QGroundControl's parameter editor or from the command-line interface. See
+AMarinerControl's parameter editor or from the command-line interface. See
 `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 for instructions on setting configurations.
 
@@ -177,10 +181,10 @@ After installation and configuration, the unit is ready for data collection.
 Data is logged automatically once power is applied to the Maritime INS. No manual steps are required to start logging.
 
 * Start a new log by cycling power to the unit.  
-* Download logs in QGroundControl under **Q > Analyze Tools > Log Download**.  
+* Download logs in AMarinerControl under **A > Analyze Tools > Log Download**.  
 * Use a plotting tool such as PlotJuggler for visualization. Contact ANELLO for assistance with post-processing, including GPS-denied simulations.
 
-.. image:: media/QGC_logs.png
+.. image:: media/AMC_logs.png
    :width: 60%
    :align: center
 
