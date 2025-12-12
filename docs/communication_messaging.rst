@@ -54,6 +54,14 @@ for instructions on changing settings):
 The default baud rate is ``38400``. To change the baud rate use
 ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
 
+To configure NMEA 0183 over UDP, update the following configs (see
+`Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
+for instructions on changing settings):
+
+``NMEA_UDP_EN`` = ``1``
+
+The default port is 19551 for input messages and 19550 for output messages.
+
 
 2.1.1. RPM: Revolutions
 """"""""""""""""""""""""
@@ -385,6 +393,16 @@ for instructions on changing settings):
 
 The default baud rate is ``38400``. To change the baud rate use
 ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
+
+To configure NMEA 0183 over UDP, update the following configs (see
+`Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
+for instructions on changing settings):
+
+* ``NMEA_UDP_EN`` = ``1``
+* ``NMEA_UDP_ODR_GGA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NMEA_UDP_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+
+The default output port is 19550 and input port is 19551
 
 3.1.1 RMC: Recommended Minimum Navigation Information
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
