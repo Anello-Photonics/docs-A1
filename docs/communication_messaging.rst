@@ -49,7 +49,7 @@ To configure NMEA 0183 over a serial port, update the following configs (see
 `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 for instructions on changing settings):
 
-``NMEA_BRG_SER_CFG`` = ``101`` (RS232-1) **or** ``102`` (RS232-2)
+``NM0183_CFG`` = ``101`` (RS232-1) **or** ``102`` (RS232-2)
 
 The default baud rate is ``38400``. To change the baud rate use
 ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
@@ -216,7 +216,7 @@ The default port is 19551 for input messages and 19550 for output messages.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The ANELLO Maritime INS also supports the following standard NMEA 2000 input messages, which allow the vehicle to send in external sensor information, e.g. for speed-aiding.
 
-Ensure ``NMEA2000_CFG`` is set to ``1`` before using the NMEA 2000 driver on the
+Ensure ``NM2K_CFG`` is set to ``1`` before using the NMEA 2000 driver on the
 CAN port. This enables the driver and allows the system to publish and receive
 NMEA 2000 messages.
 
@@ -387,9 +387,9 @@ To configure NMEA 0183 over a serial port, update the following configs (see
 `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 for instructions on changing settings):
 
-* ``NMEA_BRG_SER_CFG`` = ``101`` (RS232-1) **or** ``102`` (RS232-2)
-* ``NMEA_BRG_ODR_GGA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
-* ``NMEA_BRG_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NM0183_SER_CFG`` = ``101`` (RS232-1) **or** ``102`` (RS232-2)
+* ``NM0183_ODR_GGA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NM0183_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 
 The default baud rate is ``38400``. To change the baud rate use
 ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
@@ -483,12 +483,12 @@ The default output port is 19550 and input port is 19551
 3.2 NMEA 2000 Output Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ensure ``NMEA2000_CFG`` is set to ``1`` before using the NMEA 2000 driver on the
+Ensure ``NM2K_CFG`` is set to ``1`` before using the NMEA 2000 driver on the
 CAN port. This enables the driver and allows the system to publish and receive
 NMEA 2000 messages.
 
 Each published PGN has an associated output data rate parameter (for example,
-``N2K_129025_RATE``, ``N2K_129026_RATE``, ``N2K_129029_RATE``) within the
+``NM2K_129025_RATE``, ``NM2K_129026_RATE``, ``NM2K_129029_RATE``) within the
 **NMEA2000** parameter group. Rates are specified in Hertz, clamped to the
 range ``0``–``100``; setting a rate to ``0`` disables that PGN.
 

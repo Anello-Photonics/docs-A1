@@ -133,8 +133,8 @@ NMEA 2000 Output Rate Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Each published PGN has an associated output data rate parameter in the
-**NMEA2000** group (e.g. ``N2K_129025_RATE``, ``N2K_129026_RATE``,
-``N2K_129029_RATE``). Rates are specified in Hertz and are clamped between
+**NM2K** group (e.g. ``NM2K_129025_RATE``, ``NM2K_129026_RATE``,
+``NM2K_129029_RATE``). Rates are specified in Hertz and are clamped between
 ``0`` and ``100``. Setting a value to ``0`` stops transmission of that PGN; any
 positive value defines the broadcast frequency. Update the rates from
 AMarinerControl's parameter editor or from the command-line interface. See
