@@ -13,7 +13,7 @@ Maritime INS SCD Drawing: :download:`PDF <media/100013R03-Outline_DrawingMaritim
 
 
 .. note::
-   If you purchased the Maritime INS Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/25002301_01-25_SCD Assy Cable Maritime A0 Breakout (002).pdf>` 
+   If you purchased the Maritime INS Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/25002301_02-25_SCD Assy Cable Maritime Breakout.pdf>` 
 
 
 

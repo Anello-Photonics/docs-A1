@@ -23,7 +23,7 @@ An SCD drawing of the Maritime INS and a schematic of the accessory kit breakout
 
 Connect with the ANELLO Maritime Control software (AMarinerControl):
 
-1. Install ANELLO's `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/download/v1.0.0/AMarinerControl-Setup.exe>`_ on your Windows computer. For MacOS and Linux support contact support@anellophotonics.com.
+1. Install ANELLO's `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/download/v1.0.1/AMarinerControl-Setup.exe>`_ on your Windows computer. For MacOS and Linux support contact support@anellophotonics.com.
 
 2. Set the Ethernet IP address of the host computer to **192.168.0.2** and subnet mask to **255.255.255.0**.
 
@@ -133,8 +133,8 @@ NMEA 2000 Output Rate Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Each published PGN has an associated output data rate parameter in the
-**NMEA2000** group (e.g. ``N2K_129025_RATE``, ``N2K_129026_RATE``,
-``N2K_129029_RATE``). Rates are specified in Hertz and are clamped between
+**NM2K** group (e.g. ``NM2K_129025_RATE``, ``NM2K_129026_RATE``,
+``NM2K_129029_RATE``). Rates are specified in Hertz and are clamped between
 ``0`` and ``100``. Setting a value to ``0`` stops transmission of that PGN; any
 positive value defines the broadcast frequency. Update the rates from
 AMarinerControl's parameter editor or from the command-line interface. See
