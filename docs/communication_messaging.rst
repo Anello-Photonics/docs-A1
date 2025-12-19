@@ -504,18 +504,21 @@ The payload for the binary output message is described below
   |   |             |          |                                    | - Bit 1: Temperature uncontrolled                                           |
   |   |             |          |                                    | - Bit 2: Over current error                                                 |
   |   |             |          |                                    | - Bit 3: SiPhOG supply voltage bad                                          |
+  |   |             |          |                                    | - Bits 4-7: Reserved.                                                       |
   +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
   | 18| Status_Y    | Bitfield |                                    | Status based on bits:                                                       |
   |   |             |          |                                    | - Bit 0: Gyro discrepency                                                   |
   |   |             |          |                                    | - Bit 1: Temperature uncontrolled                                           |
   |   |             |          |                                    | - Bit 2: Over current error                                                 |
   |   |             |          |                                    | - Bit 3: SiPhOG supply voltage bad                                          |
+  |   |             |          |                                    | - Bits 4-7: Reserved.                                                       |
   +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
   | 19| Status_Z    | Bitfield |                                    | Status based on bits:                                                       |
   |   |             |          |                                    | - Bit 0: Gyro discrepency                                                   |
   |   |             |          |                                    | - Bit 1: Temperature uncontrolled                                           |
   |   |             |          |                                    | - Bit 2: Over current error                                                 |
   |   |             |          |                                    | - Bit 3: SiPhOG supply voltage bad                                          |
+  |   |             |          |                                    | - Bits 4-7: Reserved.                                                       |
   +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
 
 

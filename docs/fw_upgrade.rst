@@ -4,8 +4,8 @@ Firmware Upgrade
 
 ANELLO recommends using the latest firmware (FW) for best results. The latest FW release is:
 
-- GNSS INS, EVK, IMU+: v1.3.24 (released June 17, 2024)
-- X3: v1.0.8 (Released Dec 13, 2024)
+- GNSS INS, EVK, IMU+: v1.3.24 (released June 2024)
+- X3: v2.2.6 (Released July 2025)
 
 If you are on an older version, please contact ANELLO for the latest FW image.
 
