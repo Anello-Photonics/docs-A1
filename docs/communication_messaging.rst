@@ -434,7 +434,7 @@ Provides real-time operational data and status for a specific transmission, typi
 +====+======================+===============================================+=======+==================+
 | 1  | Transmission Instance| Identifies the specific transmission instance |       | 8-bit unsigned   |
 +----+----------------------+-----------------------------------------------+-------+------------------+
-| 2  | Gear*                 | Current transmission gear state              |       | 2-bit unsigned   |
+| 2  | Gear*                |  Current transmission gear state              |       | 2-bit unsigned   |
 +----+----------------------+-----------------------------------------------+-------+------------------+
 | 3  | Reserved             | Reserved for future use                       |       | 6-bit unsigned   |
 +----+----------------------+-----------------------------------------------+-------+------------------+
@@ -447,7 +447,6 @@ Provides real-time operational data and status for a specific transmission, typi
 | 7  | Reserved             | Reserved for future use                       |       | 8-bit unsigned   |
 +----+----------------------+-----------------------------------------------+-------+------------------+
 
-Logged topic: NMEA2000_TRANSMISSION
 
 **Gear Status (2-bit value)**
 
@@ -462,6 +461,8 @@ Logged topic: NMEA2000_TRANSMISSION
 +-------+-------------+
 | 3     | Reserved    |
 +-------+-------------+
+
+Logged topic: NMEA2000_TRANSMISSION
 
 3. Output Messages
 -------------------------
