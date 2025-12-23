@@ -211,6 +211,32 @@ The default port is 19551 for input messages and 19550 for output messages.
 | 2     | hh         | Checksum                                                      |
 +-------+------------+---------------------------------------------------------------+
 
+2.1.7. AUTOCAL: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+This message starts/stops the Maritime INS speed sensor auto-calibration routine (e.g., for water-speed aiding sensors). The default state is 0 (not in auto-calibration mode).
+
+**Message Format**::
+
+    $PAPAUTOCAL,x*hh
+
++-------+------------+--------------------------------------------------------------------------+
+| Index | Part       | Description                                                              |
++=======+============+==========================================================================+
+| 1     | x          | Auto-calibration control: "0" = Off (default), "1" = On (enter auto-cal) |
++-------+------------+--------------------------------------------------------------------------+
+| 2     | hh         | Checksum                                                                 |
++-------+------------+--------------------------------------------------------------------------+
+
+Recommended data collection procedure (while x = 1)
+
+- Operate in calm waters with minimal currents/wind/wake.
+- Run out-and-back legs along the same line (reciprocal headings).
+- Collect data at ≥ 5 different steady speeds spanning the full operating speed range.
+- Each out leg and back leg should be at least 30 seconds at a steady speed.
+- Repeat each speed at least once (more repeats improves robustness), and avoid aggressive turns during the steady legs.
+- When complete, send ``$PAPAUTOCAL,0*hh`` to exit auto-calibration mode.
+
 
 2.2 NMEA 2000 Input Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -378,7 +404,27 @@ Manufacturer proprietary message used to enable or disable the GPS through the N
 
 Logged topic: NMEA2000_GPSCTRL
 
-2.2.8 PGN 127493: Transmission Parameters, Dynamic
+
+2.2.8 PGN 65282: Speed Sensor Auto-Calibration Control (Manufacturer Proprietary)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Manufacturer proprietary NMEA 2000 message used to start/stop the speed sensor auto-calibration routine. The default state is 0 (not in auto-calibration mode).
+
++-------+----------------------------+-----------------------------------------------------------+------+------------------+
+| Field | Name                       | Description                                               | Unit | Type             |
++=======+============================+===========================================================+======+==================+
+| 1     | Auto-calibration Control   | 0 = Off (default), 1 = On (enter auto-calibration mode)   |      | 8-bit unsigned   |
++-------+----------------------------+-----------------------------------------------------------+------+------------------+
+
+Recommended data collection procedure (while Auto-calibration Control = 1)
+
+- Operate in calm waters with minimal currents/wind/wake.
+- Run out-and-back legs on reciprocal headings.
+- Use ≥ 5 steady speeds spanning your full speed range.
+- Hold each leg ≥ 30 seconds at steady speed.
+- Exit auto-calibration by transmitting Auto-calibration Control = 0.
+
+2.2.9 PGN 127493: Transmission Parameters, Dynamic
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
 Provides real-time operational data and status for a specific transmission, typically broadcast periodically for monitoring and instrumentation.
@@ -416,7 +462,6 @@ Logged topic: NMEA2000_TRANSMISSION
 +-------+-------------+
 | 3     | Reserved    |
 +-------+-------------+
-
 
 3. Output Messages
 -------------------------
