@@ -378,6 +378,46 @@ Manufacturer proprietary message used to enable or disable the GPS through the N
 
 Logged topic: NMEA2000_GPSCTRL
 
+2.2.8 PGN 127493: Transmission Parameters, Dynamic
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Provides real-time operational data and status for a specific transmission, typically broadcast periodically for monitoring and instrumentation.
+
++----+----------------------+-----------------------------------------------+-------+------------------+
+| #  | Field                | Description                                   | Unit  | Type             |
++====+======================+===============================================+=======+==================+
+| 1  | Transmission Instance| Identifies the specific transmission instance |       | 8-bit unsigned   |
++----+----------------------+-----------------------------------------------+-------+------------------+
+| 2  | Gear*                 | Current transmission gear state              |       | 2-bit unsigned   |
++----+----------------------+-----------------------------------------------+-------+------------------+
+| 3  | Reserved             | Reserved for future use                       |       | 6-bit unsigned   |
++----+----------------------+-----------------------------------------------+-------+------------------+
+| 4  | Oil Pressure         | Transmission oil pressure                     | kPa   | 16-bit unsigned  |
++----+----------------------+-----------------------------------------------+-------+------------------+
+| 5  | Oil Temperature      | Transmission oil temperature                  | K     | 16-bit unsigned  |
++----+----------------------+-----------------------------------------------+-------+------------------+
+| 6  | Transmission Status  | Bitmask indicating transmission status        |       | 8-bit bitmap     |
++----+----------------------+-----------------------------------------------+-------+------------------+
+| 7  | Reserved             | Reserved for future use                       |       | 8-bit unsigned   |
++----+----------------------+-----------------------------------------------+-------+------------------+
+
+Logged topic: NMEA2000_TRANSMISSION
+
+**Gear Status (2-bit value)**
+
++-------+-------------+
+| Value | Description |
++=======+=============+
+| 0     | Forward     |
++-------+-------------+
+| 1     | Neutral     |
++-------+-------------+
+| 2     | Reverse     |
++-------+-------------+
+| 3     | Reserved    |
++-------+-------------+
+
+
 3. Output Messages
 -------------------------
 3.1 NMEA 0183 Output Messages
