@@ -132,7 +132,7 @@ To change parameters using AMarinerControl: **A > Parameters**
 NMEA 2000 Output Rate Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Each published PGN has an associated output data rate parameter in the
+To enable the NMEA 2000 driver, ensure the parameter ``NM2K_CFG`` is set to 1. Then, each published PGN has an associated output data rate parameter in the
 **NM2K** group (e.g. ``NM2K_129025_RATE``, ``NM2K_129026_RATE``,
 ``NM2K_129029_RATE``). Rates are specified in Hertz and are clamped between
 ``0`` and ``100``. Setting a value to ``0`` stops transmission of that PGN; any
