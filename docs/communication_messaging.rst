@@ -392,7 +392,7 @@ Logged topic: NMEA2000_VESSEL_SPEED
 2.2.7 PGN 65281: GPS Control
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Manufacturer proprietary message used to enable or disable the GPS through the NMEA2000 interface.
+ANELLO proprietary message used to enable or disable the GPS through the NMEA2000 interface.
 
 +---+------------+----------------------------------+------+----------------+
 | # | Field      | Description                      | Unit | Type           |
@@ -405,10 +405,10 @@ Manufacturer proprietary message used to enable or disable the GPS through the N
 Logged topic: NMEA2000_GPSCTRL
 
 
-2.2.8 PGN 65282: Speed Sensor Auto-Calibration Control (Manufacturer Proprietary)
+2.2.8 PGN 65282: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Manufacturer proprietary NMEA 2000 message used to start/stop the speed sensor auto-calibration routine. The default state is 0 (not in auto-calibration mode).
+ANELLO proprietary NMEA 2000 message used to start/stop the speed sensor auto-calibration routine. The default state is 0 (not in auto-calibration mode).
 
 +-------+----------------------------+-----------------------------------------------------------+------+------------------+
 | Field | Name                       | Description                                               | Unit | Type             |
