@@ -121,11 +121,18 @@ Distances are measured in meters from the IMU center to the respective antenna p
 |                     |       |         | Will be presented as a drop-down menu in AMarinerControl.                               |
 +---------------------+-------+---------+-----------------------------------------------------------------------------------------+
 
-To change parameters using AMarinerControl: **A > Parameters**
+Parameters can be changed using
 
-.. image:: media/AMC_parameters.png
-   :width: 70%
-   :align: center
+   1. AMC
+
+      To change parameters using AMarinerControl: **A > Parameters**
+
+      .. image:: media/AMC_parameters.png
+         :width: 70%
+         :align: center
+
+   2. Python scripts from the ANELLO INS Scripts public repository: `Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Tools/Maritime_INS_CFG.py>`_
+ 
 
 .. note:: For best results, it is recommended that antenna lever arms be centimeter accurate as these are used to calculate any offsets for dual antenna heading measurements.
 
@@ -207,17 +214,6 @@ configuration parameters.
 
 The same logic is already implemented in the ANELLO INS Scripts repository: 
 `Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Tools/Maritime_INS_CFG.py>`_
-
-Using the ANELLO INS Configuration Script
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If you prefer not to perform this conversion manually, the same logic is already
-implemented in the ANELLO INS Scripts repository:
-
-`Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Tools/Maritime_INS_CFG.py>`_
-
-This script accepts standard IPv4 strings and handles the required conversion
-automatically when configuring Ethernet parameters.
 
 
 CAN Termination
