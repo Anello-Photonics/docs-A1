@@ -121,43 +121,90 @@ Distances are measured in meters from the IMU center to the respective antenna p
 |                     |       |         | Will be presented as a drop-down menu in AMarinerControl.                               |
 +---------------------+-------+---------+-----------------------------------------------------------------------------------------+
 
-To change parameters using AMarinerControl: **A > Parameters**
+Parameters can be changed using
 
-.. image:: media/AMC_parameters.png
-   :width: 70%
-   :align: center
+   1. AMC
+
+      To change parameters using AMarinerControl: **A > Parameters**
+
+      .. image:: media/AMC_parameters.png
+         :width: 70%
+         :align: center
+
+   2. Python scripts from the ANELLO INS Scripts public repository: `Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Tools/Maritime_INS_CFG.py>`_
+ 
 
 .. note:: For best results, it is recommended that antenna lever arms be centimeter accurate as these are used to calculate any offsets for dual antenna heading measurements.
 
 NMEA 2000 Output Rate Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Each published PGN has an associated output data rate parameter in the
+To enable the NMEA 2000 driver, ensure the parameter ``NM2K_CFG`` is set to 1. Then, each published PGN has an associated output data rate parameter in the
 **NM2K** group (e.g. ``NM2K_129025_RATE``, ``NM2K_129026_RATE``,
 ``NM2K_129029_RATE``). Rates are specified in Hertz and are clamped between
 ``0`` and ``100``. Setting a value to ``0`` stops transmission of that PGN; any
 positive value defines the broadcast frequency. Update the rates from
-AMarinerControl's parameter editor or from the command-line interface. See
-`Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
-for instructions on setting configurations.
+AMarinerControl's parameter editor or from the command-line interface.
+
 
 Ethernet Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Ethernet settings can be configured using the following parameters:
 
-+---------------------+----------------------+-----------------------------------------------------------------------------------------+
-| Parameter           | Default              | Description                                                                             |
-+=====================+======================+=========================================================================================+
-| **NET_CFG_PROTO**   | DEVICE=eth0          | Network device interface name.                                                          |
-+---------------------+----------------------+-----------------------------------------------------------------------------------------+
-| **NET_CFG_NETMASK** | NETMASK=255.255.255.0| Network subnet mask.                                                                    |
-+---------------------+----------------------+-----------------------------------------------------------------------------------------+
-| **NET_CFG_IPADDR**  | IPADDR=192.168.0.3   | Static IP address assigned to the interface.                                            |
-+---------------------+----------------------+-----------------------------------------------------------------------------------------+
-| **NET_CFG_ROUTER**  | ROUTER=192.168.0.254 | Default gateway (router) for the network.                                               |
-+---------------------+----------------------+-----------------------------------------------------------------------------------------+
-| **NET_CFG_DNS**     | DNS=192.168.0.254    | DNS server address.                                                                     |
-+---------------------+----------------------+-----------------------------------------------------------------------------------------+
++---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
+| Parameter           | Default (human readable) | Default (int32)    | Description                                                                             |
++=====================+==========================+====================+=========================================================================================+
+| **NET_CFG_PROTO**   | DEVICE=eth0              | 1                  | Network device interface name.                                                          |
++---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
+| **NET_CFG_NETMASK** | NETMASK=255.255.255.0    | -256               | Network subnet mask.                                                                    |
++---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
+| **NET_CFG_IPADDR**  | IPADDR=192.168.0.3       | -1062731773        | Static IP address assigned to the interface.                                            |
++---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
+| **NET_CFG_ROUTER**  | ROUTER=192.168.0.254     | -1062731522        | Default gateway (router) for the network.                                               |
++---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
+| **NET_CFG_DNS**     | DNS=192.168.0.254        | -1062731522        | DNS server address.                                                                     |
++---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
+
+
+Ethernet IPv4 Parameter Encoding
+""""""""""""""""""""""""""""""""""
+
+Ethernet configuration parameters (IP address, netmask, router, DNS) are stored
+internally as **signed 32-bit integers (int32)**, not as human-readable
+IPv4 strings.
+
+The following Python helper function converts a standard IPv4 string
+(e.g. ``"192.168.0.3"``) into the signed int32 value used by the Ethernet
+configuration parameters.
+
+.. code-block:: python
+
+    # ==================================================================================
+    # IPv4 string → signed int32 conversion
+    # ==================================================================================
+    def ipv4_to_int32(ip_str):
+        """
+        Convert readable IPv4 like '192.168.0.2' into signed 32-bit integer
+        """
+        parts = ip_str.split('.')
+        if len(parts) != 4:
+            raise ValueError("Invalid IPv4 address format: %s" % ip_str)
+
+        a, b, c, d = [int(p) for p in parts]
+
+        unsigned32 = (a << 24) | (b << 16) | (c << 8) | d
+
+        # Convert to signed 32-bit
+        if unsigned32 >= (1 << 31):
+            signed32 = unsigned32 - (1 << 32)
+        else:
+            signed32 = unsigned32
+
+        return signed32
+
+The same logic is already implemented in the ANELLO INS Scripts repository: 
+`Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Tools/Maritime_INS_CFG.py>`_
+
 
 CAN Termination
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
