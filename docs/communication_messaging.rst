@@ -199,6 +199,8 @@ The default port is 19551 for input messages and 19550 for output messages.
 2.1.6. GPSCTRL: GPS Control (ANELLO Proprietary)
 """""""""""""""""""""""""""""""""""""""""""""""""
 
+Enables or disables GPS utilization in sensor fusion algorithm.
+
 **Message Format**::
 
     $PAPGPSCTRL,x*hh
@@ -236,6 +238,7 @@ Recommended data collection procedure (while x = 1)
 - Each out leg and back leg should be at least 30 seconds at a steady speed.
 - Repeat each speed at least once (more repeats improves robustness), and avoid aggressive turns during the steady legs.
 - When complete, send ``$PAPAUTOCAL,0*hh`` to exit auto-calibration mode.
+
 
 
 2.2 NMEA 2000 Input Messages
