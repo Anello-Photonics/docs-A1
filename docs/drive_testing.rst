@@ -3,7 +3,7 @@ Drive Testing Best Practices
 ==================================
 Please review these best practices prior to drive testing. 
 
-Note that the EVK and GNSS INS algorithms are currently optimized for wheeled land vehicles. 
+Note that the EVK and Ground INS algorithms are optimized for wheeled land vehicles. 
 For support on other vehicle types, please contact support@anellophotonics.com.
 
 Vehicle Configurations
@@ -16,7 +16,7 @@ For more information, please refer to `Vehicle Configurations <https://docs-a1.r
 
 Odometer Input
 -----------------------
-For extended GNSS-denied testing, it is strongly recommended to add odometer input to the ANELLO EVK or GNSS INS to minimize error, particularly in distance traveled.
+For extended GNSS-denied testing, it is strongly recommended to add odometer input to the ANELLO EVK or Ground INS to minimize error, particularly in distance traveled.
 
 
 Initialization

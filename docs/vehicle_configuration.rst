@@ -2,7 +2,7 @@
 Vehicle Configuration
 ==================================
 
-The ANELLO EVK and GNSS INS products require vehicle configurations to be set for proper functionality. 
+The ANELLO EVK and Ground INS products require vehicle configurations to be set for proper functionality. 
 
 The easiest way to set ANELLO vehicle configurations is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#vehicle-configurations>`__, 
 which saves all changes to non-volatile flash memory. 
@@ -58,7 +58,7 @@ To utilize these improvements, a stationary period must be calibrated using the 
 Mounting ANELLO Unit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The ANELLO unit should be mounted securely on a flat surface to avoid movement of the unit during vehicle testing.
-The mounting location of the ANELLO EVK and GNSS INS is flexible and can be configured for various installation positions and orientations. 
+The mounting location of the ANELLO EVK and Ground INS is flexible and can be configured for various installation positions and orientations. 
 For the least complexity, we recommendation mounting the unit above the center of the vehicle’s rear axle with the X-Axis facing forward along the direction of travel. 
 
 .. figure:: media/a1_install_location.png
@@ -90,14 +90,14 @@ On firmware v1.2.6 and later, antennae can be positioned in any orientation on t
 
 Odometer Input
 ~~~~~~~~~~~~~~~~~~~~~
-For extended GNSS-denied testing, it is recommended to send odometer input (including both speed and direction) to the ANELLO EVK or GNSS INS. 
+For extended GNSS-denied testing, it is recommended to send odometer input (including both speed and direction) to the ANELLO EVK or Ground INS. 
 This can be done by sending an `APODO message <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apodo-message>`_ to the configuration port of the ANELLO unit.
 A few recommended odometer options are:
 
-1. If you have access to the vehicle CAN bus, you can read in the directional speed from the CAN bus to the computer used to connect to the EVK or GNSS INS. Then, construct and send the APODO message to the ANELLO unit.
+1. If you have access to the vehicle CAN bus, you can read in the directional speed from the CAN bus to the computer used to connect to the EVK or Ground INS. Then, construct and send the APODO message to the ANELLO unit.
 2. An external wheel speed sensor can be installed on the vehicle. ANELLO recommends the Pegasem WSS, though it is not robust enough to suit rough terrains.
 3. A radar odometer can be installed on the vehicle. ANELLO recommends the Pegasem GSS.
 
 Supported Vehicle Types
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-The ANELLO GNSS INS and EVK algorithm is currently designed for wheeled land vehicles. Please contact ANELLO about support for other vehicle types.
+The ANELLO Ground INS and EVK algorithm is currently designed for wheeled land vehicles. Please contact ANELLO about support for other vehicle types.

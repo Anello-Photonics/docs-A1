@@ -95,7 +95,7 @@ Drivers
 If you are using the EVK and four COM ports do not show in the manual connection mode or your computer's device manager, 
 you may need to install the `FTDI drivers <https://ftdichip.com/drivers/d2xx-drivers/>`_
 
-If you are using the GNSS INS or IMU and the two ports do not show in the manual connection mode or your computer's device manager, 
+If you are using the Ground INS or IMU and the two ports do not show in the manual connection mode or your computer's device manager, 
 you may need to install the CableCreations drivers for the RS-232 to USB cable. 
 This can be found by installing the zip file `here <https://www.prolific.com.tw/US/ShowProduct.aspx?p_id=225&pcid=41>`_.
 `This YouTube video <https://www.youtube.com/watch?v=wEsv6_a0YTs>` can be helpful resource for walking through those steps.

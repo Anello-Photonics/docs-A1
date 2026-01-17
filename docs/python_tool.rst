@@ -3,7 +3,7 @@ ANELLO Python Tool
 
 The ANELLO Python Program can be used to connect, configure, and log data with any ANELLO product. 
 It works on any computer running Windows, macOS, or Linux (including Ubuntu).
-It can also be used as an NTRIP client to forward RTK corrections to your EVK or GNSS INS for enhanced GPS accuracy.
+It can also be used as an NTRIP client to forward RTK corrections to your EVK or Ground INS for enhanced GPS accuracy.
 Please see the instructions below to use the ANELLO Python program and contact support@anellophotonics.com with any questions. 
 
 Install ANELLO Python Program
@@ -101,7 +101,7 @@ Please see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_c
 
 Vehicle Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Before you collect data with the ANELLO EVK or GNSS INS, vehicle configurations must be set.
+Before you collect data with the ANELLO EVK or Ground INS, vehicle configurations must be set.
 
 In the main menu, select *Vehicle Configurations* and set the lever arms as prompted. 
 All measurements are using the center of the ANELLO unit as the origin and are measured in meters.
@@ -137,10 +137,10 @@ ANELLO does not recommend simulating GPS loss by disconnecting antennae mid-driv
 
 Connect to NTRIP Caster
 -------------------------------------
-Standard RTCM messages can be forwarded to the ANELLO EVK and GNSS INS units data port to enable the GNSS receivers to reach RTK-level accuracy. 
-The EVK and GNSS INS receive standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages. 
+Standard RTCM messages can be forwarded to the ANELLO EVK and Ground INS units data port to enable the GNSS receivers to reach RTK-level accuracy. 
+The EVK and Ground INS receive standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages. 
 
-The ANELLO Python Program also provides an NTRIP client which can connect to a standard NTRIP network and forward the RTCM messages into the EVK or GNSS INS.
+The ANELLO Python Program also provides an NTRIP client which can connect to a standard NTRIP network and forward the RTCM messages into the EVK or Ground INS.
 To do this:
 
 From the main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster details as prompted. 
