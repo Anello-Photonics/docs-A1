@@ -3,7 +3,7 @@ Known Issues and Limitations
 
 Please see below for a list of known issues and limitations, and contact support@anellophotonics.com with any questions.
 
-* The algorithm on the ANELLO GNSS INS and EVK is currently designed for wheeled land vehicles. Contact ANELLO about support for other vehicle types such as aerial and maritime vehicles.
+* The algorithm on the ANELLO Ground INS and EVK is designed for wheeled land vehicles. Contact ANELLO about support for other vehicle types such as aerial and maritime vehicles.
 
 * The CAN interface is not yet available. Please use the serial and ethernet interfaces and contact ANELLO for questions on future CAN availability.
 

@@ -20,33 +20,33 @@ EVK SCD Drawing: :download:`PDF <media/Anello_A1_MechanicalDwg_rev2.pdf>`
 
 
 
-ANELLO GNSS INS
+ANELLO Ground INS
 ---------------------------------
-The ANELLO GNSS INS features a 20 pin Molex MX150 connector and two FAKRA SMB GNSS connectors. The case housing is aluminum with an anodized finish.
+The ANELLO Ground INS features a 20 pin Molex MX150 connector and two FAKRA SMB GNSS connectors. The case housing is aluminum with an anodized finish.
 The ground pins (11, 12) are electrically connected to the case. There is also a case ground screw on the side of the case.
 
-GNSS INS SCD Drawing: :download:`PDF <media/SCD_Mechanical_GNSS_INS.pdf>`
+Ground INS SCD Drawing: :download:`PDF <media/SCD_Mechanical_GNSS_INS.pdf>`
 
 .. figure:: media/SCD_Mechanical_GNSS_INS.pdf
    :align: center
 
 .. note::
-   If you purchased the GNSS INS Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/SCD_Breakout Cable_INS-GNSS.pdf>`
+   If you purchased the Ground INS Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/SCD_Breakout Cable_INS-GNSS.pdf>`
 
 
 
-ANELLO IMU/IMU+
+ANELLO Ground IMU
 ---------------------------------
-The ANELLO IMU/IMU+ features an 8 pin Molex MX150 connector. The case housing is aluminum with an anodized finish.
+The ANELLO Ground IMU features an 8 pin Molex MX150 connector. The case housing is aluminum with an anodized finish.
 The ground pin is electrically connected to the case. There is also a case ground screw on the side of the case.
 
-IMU/IMU+ SCD Drawing: :download:`PDF <media/SCD_Mechanical_IMU.pdf>`
+Ground IMU SCD Drawing: :download:`PDF <media/SCD_Mechanical_IMU.pdf>`
 
 .. figure:: media/SCD_Mechanical_IMU.pdf
    :align: center
 
 .. note::
-   If you purchased the IMU/IMU+ Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/SCD_Breakout Cable_IMU.pdf>`
+   If you purchased the Ground IMU Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/SCD_Breakout Cable_IMU.pdf>`
 
 ANELLO X3
 ---------------------------------

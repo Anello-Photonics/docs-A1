@@ -8,9 +8,9 @@ The communication interfaces currently supported for the ANELLO products are lis
 
     1. ANELLO EVK: Serial (USB C), UDP (Ethernet)
     
-    2. ANELLO GNSS INS: Serial (RS-232), UDP (Automotive Ethernet)
+    2. ANELLO Ground INS: Serial (RS-232), UDP (Automotive Ethernet)
 
-    3. ANELLO IMU/IMU+: Serial (RS-232)
+    3. ANELLO Ground IMU: Serial (RS-232)
 
     4. ANELLO X3: Serial (RS-422), UART (3.3V)
 
@@ -19,7 +19,7 @@ The communication interfaces currently supported for the ANELLO products are lis
 
 Default Baud Rate:
     - EVK: 921600
-    - GNSS INS and IMU/IMU+: 230400
+    - Ground INS and Ground IMU: 230400
     - X3: 460800
 
 RS-232 Voltage Levels: 
@@ -60,7 +60,7 @@ These ports, along with IP addresses and other UDP settings should be configured
 
  .. note:: 
   The "lowest" and "highest" serial ports mentioned above refer to the EVK, which uses an FTDI chip to create 4 virtual COM ports.
-  The GNSS INS and IMU/IMU+ have two RS-232 connections, where RS232-1 is the configuration port and RS232-2 is the data port. 
+  The Ground INS and Ground IMU have two RS-232 connections, where RS232-1 is the configuration port and RS232-2 is the data port. 
   The port numbers that appear once connected to the computer are determined by how the OS assigns the ports, and therefore the 
   Data port is not necessarily the lowest port # like in the EVK.
 
@@ -79,7 +79,7 @@ See `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anel
 
 1.3.2 PPS Synchronization
 """"""""""""""""""""""""""
-For the ANELLO GNSS INS and EVK products which contain an internal GNSS receiver, a PPS output pulse is also supplied for time synchronization.
+For the ANELLO Ground INS and EVK products which contain an internal GNSS receiver, a PPS output pulse is also supplied for time synchronization.
 PPS is output directly from the GNSS receiver, which will continue outputting a PPS pulse even if a GPS time fix is lost. 
 Note that the PPS accuracy will degrade with time, with drifts around 1 us per second without GPS.
 See `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-evk>`_ to find the PPS output pin for each product.
@@ -103,9 +103,9 @@ following conventions:
 - APGPS messages are transmitted at 4 Hz
 
 
-2.1.1 APIMU Message (EVK & GNSS INS)
+2.1.1 APIMU Message (EVK & Ground INS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The APIMU message is the IMU output message for EVK and GNSS INS units only.
+The APIMU message is the IMU output message for EVK and Ground INS units only.
 
   +---+------------+-----------+-----------------------------------------------------------------------+
   |   | Field      |  Units    |  Description                                                          |
@@ -198,9 +198,9 @@ This is the same as APIMU but with additional Optical Gyro Rates for 3 axes, mag
 
 
 
-2.1.3 APIM1 Message (IMU & IMU+)
+2.1.3 APIM1 Message (Ground IMU)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The APIM1 message is the same as APIMU but without odometer values. This is the output message for IMU and IMU+ units only.
+The APIM1 message is the same as APIMU but without odometer values. This is the output message for Ground IMU units only.
 
   +---+------------+-----------+-----------------------------------------------------------------------+
   |   | Field      |  Units    |  Description                                                          |
@@ -232,7 +232,7 @@ The APIM1 message is the same as APIMU but without odometer values. This is the 
 
 2.2 APGPS Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The APGPS message is the PVT output from the EVK and GNSS INS units only.
+The APGPS message is the PVT output from the EVK and Ground INS units only.
 
   +---+---------------+-----------+-----------------------------------------------------------------------+
   |   | Field         |  Units    |  Description                                                          |
@@ -278,7 +278,7 @@ The APGPS message is the PVT output from the EVK and GNSS INS units only.
 2.3 APHDG Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The APHDG message contains dual heading information from the dual GNSS receivers if both ANT1 and ANT2 are connected. 
-This message is output from the EVK and GNSS INS units only.
+This message is output from the EVK and Ground INS units only.
 
   +---+------------------------+-----------+-----------------------------------------------------------------------+
   |   | Field                  |  Units    |  Description                                                          |
@@ -318,7 +318,7 @@ This message is output from the EVK and GNSS INS units only.
 
 2.4 APINS Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The APINS message is the Kalman filter position, velocity, and attitude solution output from the EVK and GNSS INS units.
+The APINS message is the Kalman filter position, velocity, and attitude solution output from the EVK and Ground INS units.
 
   +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
   |   | Field      |  Units    |  Description                                                                                                                   |
@@ -366,7 +366,7 @@ The APINS message is the Kalman filter position, velocity, and attitude solution
 
 2.5 APAHRS Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The APAHRS message is only available with the ANELLO AHRS upgrade on the IMU+. It provides the roll, pitch and yaw angles calculated as standard aerospace Euler angles in a 3-2-1 (yaw, pitch, roll) body frame rotation.
+The APAHRS message is only available with the ANELLO AHRS upgrade on the Ground IMU. It provides the roll, pitch and yaw angles calculated as standard aerospace Euler angles in a 3-2-1 (yaw, pitch, roll) body frame rotation.
 
   +---+------------+-----------+--------------------------------------------------------------------------------------------------------------------------------+
   |   | Field      |  Units    |  Description                                                                                                                   |
@@ -412,9 +412,9 @@ However, an `RTCM decoder <https://github.com/Anello-Photonics/decoder/blob/mast
 with the checksum definition found `here <https://github.com/Anello-Photonics/decoder/blob/master/artcm/artcm.c>`_.
 
 
-3.1.1 IMU Message (EVK & GNSS INS)
+3.1.1 IMU Message (EVK & Ground INS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The IMU output message for EVK and GNSS INS units has a subtype ID of 1.
+The IMU output message for EVK and Ground INS units has a subtype ID of 1.
 
   +---+-------------+----------+------------------+----------------------------------------------------------+
   |   | Field       |  Type    |  Units           |  Description                                             |
@@ -524,8 +524,8 @@ The payload for the binary output message is described below
 
 3.1.3 IM1 Message (IMU & IMU+)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The IMU output message for IMU and IMU+ units has a subtype ID of 6. 
-It is the same as IMU message for the EVK and GNSS INS but without odometer values.
+The IMU output message for Ground IMU units has a subtype ID of 6. 
+It is the same as IMU message for the EVK and Ground INS but without odometer values.
 
   +---+-------------+----------+------------------+----------------------------------------------------------+
   |   | Field       |  Type    |  Units           |  Description                                             |
@@ -556,9 +556,9 @@ It is the same as IMU message for the EVK and GNSS INS but without odometer valu
   +---+-------------+----------+------------------+----------------------------------------------------------+
 
 
-3.3 GPS PVT Message (EVK/GNSS INS)
+3.3 GPS PVT Message (EVK/Ground INS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The GPS message is the PVT output from the EVK and GNSS INS units only. 
+The GPS message is the PVT output from the EVK and Ground INS units only. 
 The Antenna ID field indicates which receiver (that connected to ANT1 or ANT2) produced the position information. 
 
   +---+---------------+----------+------------+----------------------------------------------------------+
@@ -603,10 +603,10 @@ The Antenna ID field indicates which receiver (that connected to ANT1 or ANT2) p
   | 18| Antenna ID    |  uint8   |            |  Primary or secondary antenna                            |
   +---+---------------+----------+------------+----------------------------------------------------------+
 
-3.4 HDG Message (EVK/GNSS INS)
+3.4 HDG Message (EVK/Ground INS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The HDG message contains dual heading information from the dual GNSS receivers if both ANT1 and ANT2 are connected. 
-This message is output from the EVK and GNSS INS units only.
+This message is output from the EVK and Ground INS units only.
 
   +---+------------------------+----------+------------------+----------------------------------------------------------+
   |   | Field                  |  Type    |  Units           |  Description                                             |
@@ -646,9 +646,9 @@ This message is output from the EVK and GNSS INS units only.
   +---+------------------------+----------+------------------+----------------------------------------------------------+
 
 
-3.5 INS Message (EVK/GNSS INS)
+3.5 INS Message (EVK/Ground INS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The INS message is the Kalman filter position, velocity, and attitude solution output from the EVK and GNSS INS units.
+The INS message is the Kalman filter position, velocity, and attitude solution output from the EVK and Ground INS units.
 
   +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
   |   | Field         |  Type    |  Units     |  Description                                                                                                                 |
@@ -685,9 +685,9 @@ The INS message is the Kalman filter position, velocity, and attitude solution o
   |   |               |          |            |  If GPS button is turned OFF in Python tool, 8: Attitude Only; 9: Position and Attitude; 10: Position, Attitude, and Heading |  
   +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
 
-3.6 AHRS Message (IMU+)
+3.6 AHRS Message (Ground IMU)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The APAHRS message is only available with the ANELLO AHRS upgrade on the IMU+. It provides the roll, pitch and yaw angles calculated as standard aerospace Euler angles in a 3-2-1 (yaw, pitch, roll) body frame rotation.
+The APAHRS message is only available with the ANELLO AHRS upgrade on the Ground IMU. It provides the roll, pitch and yaw angles calculated as standard aerospace Euler angles in a 3-2-1 (yaw, pitch, roll) body frame rotation.
 
   +---+---------------+----------+------------+------------------------------------------------------------------------------------------------------------------------------+
   |   | Field         |  Type    |  Units     |  Description                                                                                                                 |
@@ -768,7 +768,7 @@ Alternatively, the unit can be configured using the APVEH message, which allows 
 
 4.3 APODO Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The ANELLO EVK and GNSS INS accepts odometer input over the configuration port.
+The ANELLO EVK and Ground INS accepts odometer input over the configuration port.
 The APODO message is in ASCII format and used to convey the vehicle direction and a speed.
 A negative value indicates reverse, and a positive value indicates forward. If no direction is indicated, the direction is assumed to be forward.   
 
@@ -804,7 +804,7 @@ For example, the following would all be interpreted as moving in reverse with a 
 
 4.4 RTCM Data Input 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Standard RTCM messages can be forwarded to the data port of the ANELLO EVK and GNSS INS to enable the GNSS receivers to reach RTK precision. 
+Standard RTCM messages can be forwarded to the data port of the ANELLO EVK and Ground INS to enable the GNSS receivers to reach RTK precision. 
 Standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages, are supported. 
 The ANELLO Python Program provides an NTRIP client which can connect to a standard NTRIP network and forward the RTCM messages to the ANELLO unit.
 
@@ -898,7 +898,7 @@ The ASCII checksum is an XOR of all characters between the start character â€˜#â
 
 6.2 Binary Checksum
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-GNSS / INS, EVK, IMU / IMU+:
+GNSS / INS, EVK, IMU / Ground IMU:
   The checksum definition can be found `here <https://github.com/Anello-Photonics/decoder/blob/master/artcm/artcm.c>`_.
 
 X3:

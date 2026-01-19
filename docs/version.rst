@@ -5,15 +5,15 @@ Version Control
   +-------------+------------------------+-----------------------------------------------------------------------------------------------+
   |  Doc Number |     Document           |         Version History                                                                       |
   +-------------+------------------------+-----------------------------------------------------------------------------------------------+
-  |  93001201   | User Manual, GNSS INS  | - 29 April 2025 - Version 1.0.0 - First revision controlled GNSS INS user manual document.    |
-  |             |                        |                                                                                               |
+  |  93001201   | User Manual, Ground INS| - 29 April 2025 - Version 1.0.0 - First revision controlled GNSS INS user manual document.    |
+  |             |                        | - 16 January 2026 - Version 1.0.1 - Changed name of GNSS INS to Ground INS                    |
   |             |                        |                                                                                               |
   |             |                        |                                                                                               |
   |             |                        |                                                                                               |
   |             |                        |                                                                                               |
   +-------------+------------------------+-----------------------------------------------------------------------------------------------+
-  |  93001301   | User Manual, IMU+      | - 29 April 2025 - Version 1.0.0 - First revision controlled IMU+ user manual document.        |
-  |             |                        |                                                                                               |
+  |  93001301   | User Manual, Ground IMU| - 29 April 2025 - Version 1.0.0 - First revision controlled IMU+ user manual document.        |
+  |             |                        | - 16 January 2026 - Version 1.0.1 - Changed name of IMU+ to Ground IMU                        |
   |             |                        |                                                                                               |
   |             |                        |                                                                                               |
   |             |                        |                                                                                               |

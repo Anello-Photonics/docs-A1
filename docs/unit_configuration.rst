@@ -10,7 +10,7 @@ Unit Configuration Settings
 -----------------------------------
 The available parameters and values to configure are described in the table below:
 
-GNSS / INS and ANELLO EVK:
+Ground INS and ANELLO EVK:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
@@ -69,7 +69,7 @@ GNSS / INS and ANELLO EVK:
 
 .. note:: The UDP ports are the numbers on the connected computer only. The EVK uses UDP port 1 for data, 2 for configuration, and 3 for odometer.
 
-IMU / IMU+ and ANELLO X3:
+Ground IMU and ANELLO X3:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
   | Configuration          | APCFG Code | Value/Description                                                                                           |
@@ -86,10 +86,10 @@ IMU / IMU+ and ANELLO X3:
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
   | Sync Pulse Enable      | sync       | Enables the external synchronization pulse input: 'on', 'off'                                               |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
-  | Output Message Format  | mfm        | Format of the output messages. 0: Binary (X3 only), 1: ASCII, 4: RTCM Binary (GNSS INS, IMU+, and EVK only) |
+  | Output Message Format  | mfm        | Format of the output messages. 0: Binary (X3 only), 1: ASCII, 4: RTCM Binary (Ground INS, Ground IMU, and EVK only) |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
 
-Additional IMU+ ANELLO AHRS Commands:
+Additional Ground IMU ANELLO AHRS Commands:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
   | Configuration          | APCFG Code | Value/Description                                                                                           |
@@ -108,11 +108,11 @@ Additional IMU+ ANELLO AHRS Commands:
 
 Output Data Rate (ODR)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The GNSS INS has output data rate constraints when outputting data over RS-232. In RTCM or binary messaging mode, 
+The Ground INS has output data rate constraints when outputting data over RS-232. In RTCM or binary messaging mode, 
 maximum ODR is 100 Hz. In ASCII mode, maximum ODR is 50 Hz.
 All other ANELLO units support ODR up to 200 Hz. RTCM message format is recommended for best timing.
 
-.. note:: Decreasing the baud rate will affect the maximum output data rate. It is recommended to keep the default baud rate (921600 for EVK; 230400 for GNSS INS and IMU) enable highest ODR.
+.. note:: Decreasing the baud rate will affect the maximum output data rate. It is recommended to keep the default baud rate (921600 for EVK; 230400 for Ground INS and IMU) enable highest ODR.
 
 Digital Filters
 ~~~~~~~~~~~~~~~~~~~
