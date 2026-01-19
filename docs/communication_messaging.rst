@@ -522,7 +522,7 @@ The payload for the binary output message is described below
   +---+-------------+----------+------------------------------------+-----------------------------------------------------------------------------+
 
 
-3.1.3 IM1 Message (IMU & IMU+)
+3.1.3 IM1 Message (Ground IMU)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The IMU output message for Ground IMU units has a subtype ID of 6. 
 It is the same as IMU message for the EVK and Ground INS but without odometer values.
