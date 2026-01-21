@@ -240,6 +240,56 @@ Recommended data collection procedure (while x = 1)
 - When complete, send ``$PAPAUTOCAL,0*hh`` to exit auto-calibration mode.
 
 
+2.1.8. PAPPOS: ANELLO Proprietary Auxiliary Position (Lat/Lon/Alt)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Message Format**::
+
+    $PAPPOS,<lat>,<lon>,<alt>,<hacc>,<vacc>*hh
+
+
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | <lat>      | Latitude in degrees (signed; +N / -S)                         |
++-------+------------+---------------------------------------------------------------+
+| 2     | <lon>      | Longitude in degrees (signed; +E / -W)                        |
++-------+------------+---------------------------------------------------------------+
+| 3     | <alt>      | Altitude above mean sea level (meters)                        |
++-------+------------+---------------------------------------------------------------+
+| 4     | <hacc>     | Horizontal accuracy / uncertainty (meters)                    |
++-------+------------+---------------------------------------------------------------+
+| 5     | <vacc>     | Vertical accuracy / uncertainty (meters)                      |
++-------+------------+---------------------------------------------------------------+
+| 6     | hh         | NMEA checksum (hex)                                           |
++-------+------------+---------------------------------------------------------------+
+
+2.1.9. PAPRPH: ANELLO Proprietary Roll/Pitch/Heading (with Accuracies)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Message Format**::
+
+    $PAPRPH,<roll>,<pitch>,<heading>,<roll_acc>,<pitch_acc>,<head_acc>*hh
+
+
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | <roll>     | Roll angle (degrees)                                          |
++-------+------------+---------------------------------------------------------------+
+| 2     | <pitch>    | Pitch angle (degrees)                                         |
++-------+------------+---------------------------------------------------------------+
+| 3     | <heading>  | Heading / yaw (degrees, typically 0..360)                     |
++-------+------------+---------------------------------------------------------------+
+| 4     | <roll_acc> | Roll accuracy / uncertainty (degrees)                         |
++-------+------------+---------------------------------------------------------------+
+| 5     | <pitch_acc>| Pitch accuracy / uncertainty (degrees)                        |
++-------+------------+---------------------------------------------------------------+
+| 6     | <head_acc> | Heading accuracy / uncertainty (degrees)                      |
++-------+------------+---------------------------------------------------------------+
+| 7     | hh         | NMEA checksum (hex)                                           |
++-------+------------+---------------------------------------------------------------+
+
 
 2.2 NMEA 2000 Input Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -427,6 +477,8 @@ Recommended data collection procedure (while Auto-calibration Control = 1)
 - Hold each leg ≥ 30 seconds at steady speed.
 - Exit auto-calibration by transmitting Auto-calibration Control = 0.
 
+Logged topic: NMEA2000_AUTOCAL_WATERSPEED
+
 2.2.9 PGN 127493: Transmission Parameters, Dynamic
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -466,6 +518,51 @@ Provides real-time operational data and status for a specific transmission, typi
 +-------+-------------+
 
 Logged topic: NMEA2000_TRANSMISSION
+
+
+2.2.10 PGN 130816: Auxiliary Position (ANELLO Proprietary)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Auxiliary GPS / GNSS position information input
+
++---+--------+-------------------------------------------+------+----------------+
+| # | Field  | Description                               | Unit | Type           |
++===+========+===========================================+======+================+
+| 1 | lat    | Latitude                                  | deg  | 32-bit signed  |
++---+--------+-------------------------------------------+------+----------------+
+| 2 | lon    | Longitude                                 | deg  | 32-bit signed  |
++---+--------+-------------------------------------------+------+----------------+
+| 3 | alt    | Altitude above mean sea level             | m    | 32-bit signed  |
++---+--------+-------------------------------------------+------+----------------+
+| 4 | hacc   | Horizontal accuracy / uncertainty         | m    | 32-bit signed  |
++---+--------+-------------------------------------------+------+----------------+
+| 5 | vacc   | Vertical accuracy / uncertainty           | m    | 32-bit signed  |
++---+--------+-------------------------------------------+------+----------------+
+
+Logged topic: NMEA2000_POS
+
+2.2.11 PGN 130817: Auxiliary Attitude (ANELLO Proprietary)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Auxiliary roll, pitch, and heading information along with accuracy estimates
+
++---+----------+-------------------------------------------+------+----------------+
+| # | Field    | Description                               | Unit | Type           |
++===+==========+===========================================+======+================+
+| 1 | roll     | Roll angle                                | deg  | 32-bit signed  |
++---+----------+-------------------------------------------+------+----------------+
+| 2 | pitch    | Pitch angle                               | deg  | 32-bit signed  |
++---+----------+-------------------------------------------+------+----------------+
+| 3 | heading  | Heading / yaw                             | deg  | 32-bit signed  |
++---+----------+-------------------------------------------+------+----------------+
+| 4 | roll_acc | Roll accuracy / uncertainty               | deg  | 32-bit signed  |
++---+----------+-------------------------------------------+------+----------------+
+| 5 | pitch_acc| Pitch accuracy / uncertainty              | deg  | 32-bit signed  |
++---+----------+-------------------------------------------+------+----------------+
+| 6 | head_acc | Heading accuracy / uncertainty            | deg  | 32-bit signed  |
++---+----------+-------------------------------------------+------+----------------+
+
+Logged topic: NMEA2000_RPH
 
 3. Output Messages
 -------------------------

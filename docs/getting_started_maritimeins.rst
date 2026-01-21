@@ -40,8 +40,11 @@ Connect with the ANELLO Maritime Control software (AMarinerControl):
 4. Set up the Ethernet connection in AMarinerControl (only needs to be done once):
 
    a. Click the **A** button (top left) → Application Settings → Comm Links → Add New Link  
-   b. Type: UDP  
-   c. Port: 14550
+   b. Name: ETH
+   c. Type: UDP  
+   d. Port: 14550
+
+   You can also check "Automatically Connect on Start" to automatically use these comm link settings to connect to the Maritime INS every time the application is opened.
 
 .. image:: media/AMC_eth_connect.png
    :width: 70%
