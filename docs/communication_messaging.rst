@@ -242,6 +242,7 @@ Recommended data collection procedure (while x = 1)
 
 2.1.8. PAPPOS: ANELLO Proprietary Auxiliary Position (Lat/Lon/Alt)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+This message can be used to pass in an external position, either from user input or an external aiding source such as visual waypoint detection, USBL acoustic positioning, star tracker, or an M Code receiver.
 
 **Message Format**::
 
@@ -266,6 +267,8 @@ Recommended data collection procedure (while x = 1)
 
 2.1.9. PAPRPH: ANELLO Proprietary Roll/Pitch/Heading (with Accuracies)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+This message can be used to pass in an external heading, either from user input or an external aiding source such as a well-calibrated magnetometer, star tracker, or an M Code receiver. *Currently only external heading aiding is implemented, and roll/pitch aiding are available upon request.*
 
 **Message Format**::
 
