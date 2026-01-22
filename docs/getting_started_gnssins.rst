@@ -1,19 +1,19 @@
 ==================================
-GNSS INS Getting Started Guide
+Ground INS Getting Started Guide
 ==================================
-Thank you for choosing the ANELLO GNSS INS! This step-by-step guide will get you started with connection, configuration and data collection.
+Thank you for choosing the ANELLO Ground INS! This step-by-step guide will get you started with connection, configuration and data collection.
 Please contact support@anellophotonics.com with any questions.  
 
 1. Hardware Connections
 ---------------------------------
-The ANELLO GNSS INS unit is pictured below. It features a 20 pin automotive-grade Molex MX150 connector and two FAKRA SMB GNSS connectors.
+The ANELLO Ground INS unit is pictured below. It features a 20 pin automotive-grade Molex MX150 connector and two FAKRA SMB GNSS connectors.
 
 .. image:: media/ANELLO_GNSS_INS.png
    :width: 30 %
    :align: center
 
-If you received an ANELLO GNSS INS Loaner unit, you will also receive the Accessory Kit with the items pictured below. 
-For GNSS INS purchases, the Accessory Kit is sold separately and more information is available upon request.
+If you received an ANELLO Ground INS Loaner unit, you will also receive the Accessory Kit with the items pictured below. 
+For Ground INS purchases, the Accessory Kit is sold separately and more information is available upon request.
 
 
 .. image:: media/GNSS_INS_EvalKit.png
@@ -21,28 +21,28 @@ For GNSS INS purchases, the Accessory Kit is sold separately and more informatio
    :align: center
 
 
-To use the GNSS INS Evaluation Kit, connect the hardware as follows: 
+To use the Ground INS Evaluation Kit, connect the hardware as follows: 
 
-   a. Connect breakout cable to GNSS INS unit
+   a. Connect breakout cable to Ground INS unit
    b. Connect to power using either the AC/DC adapter or the Auto Cable Plug.
    c. Connect primary GNSS antenna to ANT1 using SMA to FAKRA Adapters. An additional antenna (ANT2) is optional and enables stationary dual heading.
    d. Connect to computer via RS-232 using USB 2.0 to DB9 serial converters for configuration.
    e. If you'd like to use the automotive ethernet interface, connection over serial is required first to configure IP addresses.
 
-An SCD drawing of the GNSS INS and a schematic of the Accessory kit breakout cable can be found in 
+An SCD drawing of the Ground INS and a schematic of the Accessory kit breakout cable can be found in 
 `Mechanicals <https://docs-a1.readthedocs.io/en/latest/mechanicals.html#anello-gnss-ins>`__.
 
 
 2. Software Interfaces
 ---------------------------------
-ANELLO provides a Python tool to connect, configure, and log data with the GNSS INS.
+ANELLO provides a Python tool to connect, configure, and log data with the Ground INS.
 Please see instructions on `ANELLO Python Tool <https://docs-a1.readthedocs.io/en/latest/python_tool.html>`__  to install and run the Python tool.
 Be sure to run "git pull" regularly to make sure you are using the latest Python tool updates.
 
 ANELLO units are also compatible with ROS using our C-based `ROS driver <https://github.com/Anello-Photonics/ANELLO_ROS_Driver>`_.
 
-If you would like to connect to the GNSS INS using a serial interface software such as CoolTerm, 
-please ensure you use the correct baud rate **(default for the GNSS INS is 230400), and set Data Bits = 8, Stop Bits = 1, and Parity = None.**
+If you would like to connect to the Ground INS using a serial interface software such as CoolTerm, 
+please ensure you use the correct baud rate **(default for the Ground INS is 230400), and set Data Bits = 8, Stop Bits = 1, and Parity = None.**
 
 For a full list of software tools, please see `Software Tools <https://docs-a1.readthedocs.io/en/latest/software_tools.html>`_.
 
@@ -50,7 +50,7 @@ For a full list of software tools, please see `Software Tools <https://docs-a1.r
 
 3. Vehicle Installation
 ----------------------------
-The GNSS INS can be configured for various installation positions. To minimize configuration steps, 
+The Ground INS can be configured for various installation positions. To minimize configuration steps, 
 mount near the center of the vehicle’s rear axle, with the X-forward facing the direction of travel.
 
 .. image:: media/GNSSINS_Vehicle_Installation.png
@@ -61,9 +61,9 @@ The GNSS antennae can be magnetically mounted on the roof of the vehicle. See `A
 for requirements on antenna installation.
 
 
-4. Configure ANELLO GNSS INS
+4. Configure ANELLO Ground INS
 ---------------------------------
-Before testing the ANELLO GNSS INS, please review and set:
+Before testing the ANELLO Ground INS, please review and set:
 
 1. `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_: Common Unit Configurations which change between setups are `Orientation <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#unit-installation-orientation>`_, 
 `Misalignment Angle <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html#anello-unit-installation-misalignment>`_, and Odometer Units. If you would like to use the Ethernet interface, please turn on "Enable Ethernet Output" and set UDP-related configurations. 
@@ -75,17 +75,17 @@ The easiest way to change configurations is using the `ANELLO Python Tool <https
 Select *Unit Configuration* from the main menu. The default configurations will appear, and you can select *Edit* to change a configuration.
 
 You may also send configurations manually using the `#APCFG command <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apcfg-messages>`_ 
-over the GNSS INS configuration port (RS232-2) using a serial interface software such as CoolTerm.
+over the Ground INS configuration port (RS232-2) using a serial interface software such as CoolTerm.
 
 .. note:: As of firmware v1.2.6, the antenna baseline must be calibrated to use dual antenna functionality. Please refer to `Vehicle Configurations <https://docs-a1.readthedocs.io/en/latest/vehicle_configuration.html>`_ to ensure all vehicle configurations are set properly.
 
 
 5. Connect to NTRIP Caster
 ------------------------------
-Standard RTCM messages can be forwarded to the ANELLO GNSS INS data port to enable the GNSS receivers to reach RTK-level accuracy. 
-The GNSS INS receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages. 
+Standard RTCM messages can be forwarded to the ANELLO Ground INS data port to enable the GNSS receivers to reach RTK-level accuracy. 
+The Ground INS receives standard RTCM3.3 in MSM format, including MSM4, MSM5, and MSM7 messages. 
 
-The ANELLO Python Program also provides an NTRIP caster which can connect to a standard NTRIP network and forward the received RTCM messages into the GNSS INS.
+The ANELLO Python Program also provides an NTRIP caster which can connect to a standard NTRIP network and forward the received RTCM messages into the Ground INS.
 
 From the Python tool main menu, select *NTRIP* and then *Start*. Enter the NTRIP caster details as prompted. 
 The *System Status* will show the NTRIP connection status.
@@ -105,7 +105,7 @@ ANELLO recommends logging data using either:
 b. Monitor Data Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The ANELLO Python Tool can be used to `monitor data <https://docs-a1.readthedocs.io/en/latest/python_tool.html#monitor-output>`__ 
-from the ANELLO GNSS INS in real-time by selecting *Monitor* in the main menu.
+from the ANELLO Ground INS in real-time by selecting *Monitor* in the main menu.
 
 c. Data Visualization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -127,6 +127,6 @@ If you would like help from the ANELLO team on data analysis and fine-tuning, we
 4. Description of testing goals and performance requirements
 
 **Congratulations!!!**
-You have completed the GNSS INS setup and data collection! Please feel free to contact support@anellophotonics.com with any questions. 
+You have completed the Ground INS setup and data collection! Please feel free to contact support@anellophotonics.com with any questions. 
 
-*GNSS INS User Manual 93001201 v1.0.0*
+*Ground INS User Manual 93001201 v1.0.0*
