@@ -14,7 +14,9 @@ Each time the ANELLO Maritime INS is installed on a new boat model, the boat’s
 
 2. Power on the ANELLO Maritime INS while boat is stationary and allow ~30s to gain GPS 
 
-3. Perform “out and back” mission of at least 30 second duration per leg, 2-3 times at each of the following percentages of the vehicle's max speed: 20%, 40%, 60%, 80%, 100% 
+3. Enable Speed Sensor Auto-Calibration Control with either the `NMEA0183 message detailed here <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#autocal-speed-sensor-auto-calibration-control-anello-proprietary>`_ or the `NMEA2000 message detailed here <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#pgn-65282-speed-sensor-auto-calibration-control-anello-proprietary>`_
+
+4. Perform “out and back” mission of at least 30 second duration per leg, 2-3 times at each of the following percentages of the vehicle's max speed: 20%, 40%, 60%, 80%, 100% 
 
 	a. If there are constant currents, performing the “out and backs” with and against the current is ideal 
 
@@ -28,11 +30,10 @@ Each time the ANELLO Maritime INS is installed on a new boat model, the boat’s
 *Example "Out and Back" Mission for Paddle Wheel Calibration*
 
 
-4. Once “out and backs” are complete, power off ANELLO Maritime INS 
+5. Once “out and backs” are complete, disable the auto calibration mode through the `NMEA0183 message detailed here <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#autocal-speed-sensor-auto-calibration-control-anello-proprietary>`_ or the `NMEA2000 message detailed here <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#pgn-65282-speed-sensor-auto-calibration-control-anello-proprietary>`_
 
-5. After you finish other water missions, download the logs from the ANELLO Maritime INS (using the instructions under `Data Collection and Visualization <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#data-collection-visualization>`__ ) and send to ANELLO. 
+6. For any questions or assistance with the calibration procedure, please download the logs from the ANELLO Maritime INS (using the instructions under `Data Collection and Visualization <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#data-collection-visualization>`__ ) and send to ANELLO along with your inquiry. 
 
-6. ANELLO will instruct on updating the paddle wheel calibration values. 
 
  
 

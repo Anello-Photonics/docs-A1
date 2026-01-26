@@ -134,7 +134,7 @@ Parameters can be changed using
          :width: 70%
          :align: center
 
-   2. Python scripts from the ANELLO INS Scripts public repository: `Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Tools/Maritime_INS_CFG.py>`_
+   2. Python scripts from the ANELLO INS Scripts public repository: `Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Maritime_INS_CFG.py>`_
  
 
 .. note:: For best results, it is recommended that antenna lever arms be centimeter accurate as these are used to calculate any offsets for dual antenna heading measurements.
@@ -206,7 +206,7 @@ configuration parameters.
         return signed32
 
 The same logic is already implemented in the ANELLO INS Scripts repository: 
-`Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Tools/Maritime_INS_CFG.py>`_
+`Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Maritime_INS_CFG.py>`_
 
 
 CAN Termination
