@@ -203,12 +203,12 @@ Enables or disables GPS utilization in sensor fusion algorithm.
 
 **Message Format**::
 
-    $PAPGPSCTRL,x*hh
+    $PAPGPSCTRL,A*hh
 
 +-------+------------+---------------------------------------------------------------+
 | Index | Part       | Description                                                   |
 +=======+============+===============================================================+
-| 1     | x          | GPS control, “1” = Use GPS (default), “0” = Ignore GPS        |
+| 1     | A          | GPS control, “1” = Use GPS (default), “0” = Ignore GPS        |
 +-------+------------+---------------------------------------------------------------+
 | 2     | hh         | Checksum                                                      |
 +-------+------------+---------------------------------------------------------------+
@@ -220,12 +220,12 @@ This message starts/stops the Maritime INS speed sensor auto-calibration routine
 
 **Message Format**::
 
-    $PAPAUTOCAL,x*hh
+    $PAPAUTOCAL,A*hh
 
 +-------+------------+--------------------------------------------------------------------------+
 | Index | Part       | Description                                                              |
 +=======+============+==========================================================================+
-| 1     | x          | Auto-calibration control: "0" = Off (default), "1" = On (enter auto-cal) |
+| 1     | A          | Auto-calibration control: "0" = Off (default), "1" = On (enter auto-cal) |
 +-------+------------+--------------------------------------------------------------------------+
 | 2     | hh         | Checksum                                                                 |
 +-------+------------+--------------------------------------------------------------------------+
@@ -240,27 +240,27 @@ Recommended data collection procedure (while x = 1)
 - When complete, send ``$PAPAUTOCAL,0*hh`` to exit auto-calibration mode.
 
 
-2.1.8. PAPPOS: ANELLO Proprietary Auxiliary Position (Lat/Lon/Alt)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+2.1.8. PAPPOS: Auxiliary Position (Lat/Lon/Alt) (ANELLO Proprietary)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 This message can be used to pass in an external position, either from user input or an external aiding source such as visual waypoint detection, USBL acoustic positioning, star tracker, or an M Code receiver.
 
 **Message Format**::
 
-    $PAPPOS,<lat>,<lon>,<alt>,<hacc>,<vacc>*hh
+    $PAPPOS,PX,PY,PZ,H_acc,V_acc*hh
 
 
 +-------+------------+---------------------------------------------------------------+
 | Index | Part       | Description                                                   |
 +=======+============+===============================================================+
-| 1     | <lat>      | Latitude in degrees (signed; +N / -S)                         |
+| 1     | PX         | Latitude in degrees (signed; +N / -S)                         |
 +-------+------------+---------------------------------------------------------------+
-| 2     | <lon>      | Longitude in degrees (signed; +E / -W)                        |
+| 2     | PY         | Longitude in degrees (signed; +E / -W)                        |
 +-------+------------+---------------------------------------------------------------+
-| 3     | <alt>      | Altitude above mean sea level (meters)                        |
+| 3     | PZ         | Altitude above mean sea level (meters)                        |
 +-------+------------+---------------------------------------------------------------+
-| 4     | <hacc>     | Horizontal accuracy / uncertainty (meters)                    |
+| 4     | H_acc      | Horizontal accuracy / uncertainty (meters)                    |
 +-------+------------+---------------------------------------------------------------+
-| 5     | <vacc>     | Vertical accuracy / uncertainty (meters)                      |
+| 5     | V_acc      | Vertical accuracy / uncertainty (meters)                      |
 +-------+------------+---------------------------------------------------------------+
 | 6     | hh         | NMEA checksum (hex)                                           |
 +-------+------------+---------------------------------------------------------------+
@@ -272,23 +272,23 @@ This message can be used to pass in an external heading, either from user input 
 
 **Message Format**::
 
-    $PAPRPH,<roll>,<pitch>,<heading>,<roll_acc>,<pitch_acc>,<head_acc>*hh
+    $PAPRPH,R,P,Y,R_acc,P_acc,H_acc*hh
 
 
 +-------+------------+---------------------------------------------------------------+
 | Index | Part       | Description                                                   |
 +=======+============+===============================================================+
-| 1     | <roll>     | Roll angle (degrees)                                          |
+| 1     | R          | Roll angle (degrees)                                          |
 +-------+------------+---------------------------------------------------------------+
-| 2     | <pitch>    | Pitch angle (degrees)                                         |
+| 2     | P          | Pitch angle (degrees)                                         |
 +-------+------------+---------------------------------------------------------------+
-| 3     | <heading>  | Heading / yaw (degrees, typically 0..360)                     |
+| 3     | Y          | Heading / yaw (degrees, typically 0..360)                     |
 +-------+------------+---------------------------------------------------------------+
-| 4     | <roll_acc> | Roll accuracy / uncertainty (degrees)                         |
+| 4     | R_acc      | Roll accuracy / uncertainty (degrees)                         |
 +-------+------------+---------------------------------------------------------------+
-| 5     | <pitch_acc>| Pitch accuracy / uncertainty (degrees)                        |
+| 5     | P_acc      | Pitch accuracy / uncertainty (degrees)                        |
 +-------+------------+---------------------------------------------------------------+
-| 6     | <head_acc> | Heading accuracy / uncertainty (degrees)                      |
+| 6     | H_acc      | Heading accuracy / uncertainty (degrees)                      |
 +-------+------------+---------------------------------------------------------------+
 | 7     | hh         | NMEA checksum (hex)                                           |
 +-------+------------+---------------------------------------------------------------+
