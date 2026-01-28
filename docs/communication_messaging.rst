@@ -199,14 +199,16 @@ The default port is 19551 for input messages and 19550 for output messages.
 2.1.6. GPSCTRL: GPS Control (ANELLO Proprietary)
 """""""""""""""""""""""""""""""""""""""""""""""""
 
+Enables or disables GPS utilization in sensor fusion algorithm.
+
 **Message Format**::
 
-    $PAPGPSCTRL,x*hh
+    $PAPGPSCTRL,A*hh
 
 +-------+------------+---------------------------------------------------------------+
 | Index | Part       | Description                                                   |
 +=======+============+===============================================================+
-| 1     | x          | GPS control, “1” = Use GPS (default), “0” = Ignore GPS        |
+| 1     | A          | GPS control, “1” = Use GPS (default), “0” = Ignore GPS        |
 +-------+------------+---------------------------------------------------------------+
 | 2     | hh         | Checksum                                                      |
 +-------+------------+---------------------------------------------------------------+
@@ -218,12 +220,12 @@ This message starts/stops the Maritime INS speed sensor auto-calibration routine
 
 **Message Format**::
 
-    $PAPAUTOCAL,x*hh
+    $PAPAUTOCAL,A*hh
 
 +-------+------------+--------------------------------------------------------------------------+
 | Index | Part       | Description                                                              |
 +=======+============+==========================================================================+
-| 1     | x          | Auto-calibration control: "0" = Off (default), "1" = On (enter auto-cal) |
+| 1     | A          | Auto-calibration control: "0" = Off (default), "1" = On (enter auto-cal) |
 +-------+------------+--------------------------------------------------------------------------+
 | 2     | hh         | Checksum                                                                 |
 +-------+------------+--------------------------------------------------------------------------+
@@ -236,6 +238,60 @@ Recommended data collection procedure (while x = 1)
 - Each out leg and back leg should be at least 30 seconds at a steady speed.
 - Repeat each speed at least once (more repeats improves robustness), and avoid aggressive turns during the steady legs.
 - When complete, send ``$PAPAUTOCAL,0*hh`` to exit auto-calibration mode.
+
+
+2.1.8. PAPPOS: Auxiliary Position (Lat/Lon/Alt) (ANELLO Proprietary) 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+This message can be used to pass in an external position, either from user input or an external aiding source such as visual waypoint detection, USBL acoustic positioning, star tracker, or an M Code receiver.
+
+**Message Format**::
+
+    $PAPPOS,PX,PY,PZ,H_acc,V_acc*hh
+
+
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | PX         | Latitude in degrees (signed; +N / -S)                         |
++-------+------------+---------------------------------------------------------------+
+| 2     | PY         | Longitude in degrees (signed; +E / -W)                        |
++-------+------------+---------------------------------------------------------------+
+| 3     | PZ         | Altitude above mean sea level (meters)                        |
++-------+------------+---------------------------------------------------------------+
+| 4     | H_acc      | Horizontal accuracy / uncertainty (meters)                    |
++-------+------------+---------------------------------------------------------------+
+| 5     | V_acc      | Vertical accuracy / uncertainty (meters)                      |
++-------+------------+---------------------------------------------------------------+
+| 6     | hh         | NMEA checksum (hex)                                           |
++-------+------------+---------------------------------------------------------------+
+
+2.1.9. PAPRPH:Roll/Pitch/Heading (with Accuracies) (ANELLO Proprietary) 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+This message can be used to pass in an external heading, either from user input or an external aiding source such as a well-calibrated magnetometer, star tracker, or an M Code receiver. *Currently only external heading aiding is implemented, and roll/pitch aiding are available upon request.*
+
+**Message Format**::
+
+    $PAPRPH,R,P,Y,R_acc,P_acc,H_acc*hh
+
+
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | R          | Roll angle (degrees)                                          |
++-------+------------+---------------------------------------------------------------+
+| 2     | P          | Pitch angle (degrees)                                         |
++-------+------------+---------------------------------------------------------------+
+| 3     | Y          | Heading / yaw (degrees, typically 0..360)                     |
++-------+------------+---------------------------------------------------------------+
+| 4     | R_acc      | Roll accuracy / uncertainty (degrees)                         |
++-------+------------+---------------------------------------------------------------+
+| 5     | P_acc      | Pitch accuracy / uncertainty (degrees)                        |
++-------+------------+---------------------------------------------------------------+
+| 6     | H_acc      | Heading accuracy / uncertainty (degrees)                      |
++-------+------------+---------------------------------------------------------------+
+| 7     | hh         | NMEA checksum (hex)                                           |
++-------+------------+---------------------------------------------------------------+
 
 
 2.2 NMEA 2000 Input Messages
@@ -424,6 +480,8 @@ Recommended data collection procedure (while Auto-calibration Control = 1)
 - Hold each leg ≥ 30 seconds at steady speed.
 - Exit auto-calibration by transmitting Auto-calibration Control = 0.
 
+Logged topic: NMEA2000_AUTOCAL_WATERSPEED
+
 2.2.9 PGN 127493: Transmission Parameters, Dynamic
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -463,6 +521,51 @@ Provides real-time operational data and status for a specific transmission, typi
 +-------+-------------+
 
 Logged topic: NMEA2000_TRANSMISSION
+
+
+2.2.10 PGN 130816: Auxiliary Position (ANELLO Proprietary)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Auxiliary GPS / GNSS position information input
+
++---+--------+-------------------------------------------+------+----------------+
+| # | Field  | Description                               | Unit | Type           |
++===+========+===========================================+======+================+
+| 1 | lat    | Latitude                                  | deg  | 32-bit signed  |
++---+--------+-------------------------------------------+------+----------------+
+| 2 | lon    | Longitude                                 | deg  | 32-bit signed  |
++---+--------+-------------------------------------------+------+----------------+
+| 3 | alt    | Altitude above mean sea level             | m    | 32-bit signed  |
++---+--------+-------------------------------------------+------+----------------+
+| 4 | hacc   | Horizontal accuracy / uncertainty         | m    | 32-bit signed  |
++---+--------+-------------------------------------------+------+----------------+
+| 5 | vacc   | Vertical accuracy / uncertainty           | m    | 32-bit signed  |
++---+--------+-------------------------------------------+------+----------------+
+
+Logged topic: NMEA2000_POS
+
+2.2.11 PGN 130817: Auxiliary Attitude (ANELLO Proprietary)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Auxiliary roll, pitch, and heading information along with accuracy estimates
+
++---+----------+-------------------------------------------+------+----------------+
+| # | Field    | Description                               | Unit | Type           |
++===+==========+===========================================+======+================+
+| 1 | roll     | Roll angle                                | deg  | 32-bit signed  |
++---+----------+-------------------------------------------+------+----------------+
+| 2 | pitch    | Pitch angle                               | deg  | 32-bit signed  |
++---+----------+-------------------------------------------+------+----------------+
+| 3 | heading  | Heading / yaw                             | deg  | 32-bit signed  |
++---+----------+-------------------------------------------+------+----------------+
+| 4 | roll_acc | Roll accuracy / uncertainty               | deg  | 32-bit signed  |
++---+----------+-------------------------------------------+------+----------------+
+| 5 | pitch_acc| Pitch accuracy / uncertainty              | deg  | 32-bit signed  |
++---+----------+-------------------------------------------+------+----------------+
+| 6 | head_acc | Heading accuracy / uncertainty            | deg  | 32-bit signed  |
++---+----------+-------------------------------------------+------+----------------+
+
+Logged topic: NMEA2000_RPH
 
 3. Output Messages
 -------------------------
@@ -565,6 +668,110 @@ The default output port is 19550 and input port is 19551
 +--------+------------+--------------------------------------------------------------------------+
 | 15     | hh         | Checksum                                                                 |
 +--------+------------+--------------------------------------------------------------------------+
+
+3.1.3 APIMU: Proprietary IMU Output -- *coming soon*
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Message Format**::
+
+    $PAPIMU,Time,T_Sync,AX,AY,AZ,WX,WY,WZ,OG_WX,OG_WY,OG_WZ,MAG_X,MAG_Y,MAG_Z,TempC,Status_X,Status_Y,Status_Z*hh
+
++-------+----------+-------+--------------------------------------------------------------------------+
+| Index | Field    | Units | Description                                                              |
++=======+==========+=======+==========================================================================+
+| 0     | APIMU    |       | Sentence identifier                                                      |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 1     | Time     | ms    | Time since power on                                                      |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 2     | T_Sync   | ms    | Time at last sync rising edge (zero when sync config disabled)           |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 3     | AX       | g     | X-Axis Acceleration                                                      |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 4     | AY       | g     | Y-Axis Acceleration                                                      |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 5     | AZ       | g     | Z-Axis Acceleration                                                      |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 6     | WX       | deg/s | X-Axis Angular Rate (MEMS)                                               |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 7     | WY       | deg/s | Y-Axis Angular Rate (MEMS)                                               |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 8     | WZ       | deg/s | Z-Axis Angular Rate (MEMS)                                               |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 9     | OG_WX    | deg/s | High Precision X-Axis Angular Rate (ANELLO Optical Gyro)                 |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 10    | OG_WY    | deg/s | High Precision Y-Axis Angular Rate (ANELLO Optical Gyro)                 |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 11    | OG_WZ    | deg/s | High Precision Z-Axis Angular Rate (ANELLO Optical Gyro)                 |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 12    | MAG_X    | g     | X-Axis Magnetic Field Measurement                                        |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 13    | MAG_Y    | g     | Y-Axis Magnetic Field Measurement                                        |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 14    | MAG_Z    | g     | Z-Axis Magnetic Field Measurement                                        |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 15    | TempC    | °C    | Temperature                                                              |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 16    | Status_X |       | Status based on bits: Bit 0: Gyro discrepancy; Bit 1: Temperature        |
+|       |          |       | uncontrolled; Bit 2: Over current error; Bit 3: SiPhOG supply voltage    |
+|       |          |       | error                                                                    |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 17    | Status_Y |       | Status based on bits: Bit 0: Gyro discrepancy; Bit 1: Temperature        |
+|       |          |       | uncontrolled; Bit 2: Over current error; Bit 3: SiPhOG supply voltage    |
+|       |          |       | error                                                                    |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 18    | Status_Z |       | Status based on bits: Bit 0: Gyro discrepancy; Bit 1: Temperature        |
+|       |          |       | uncontrolled; Bit 2: Over current error; Bit 3: SiPhOG supply voltage    |
+|       |          |       | error                                                                    |
++-------+----------+-------+--------------------------------------------------------------------------+
+
+3.1.4 APINS: Proprietary Navigation Output -- *coming soon*
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Message Format**::
+
+    $PAPINS,Time,PPS_Time,Status,Lat,Long,Height,VN,VE,VD,Roll,Pitch,Heading,ZUPT*hh
+
++-------+----------+-------+--------------------------------------------------------------------------+
+| Index | Field    | Units | Description                                                              |
++=======+==========+=======+==========================================================================+
+| 0     | APINS    |       | Sentence identifier                                                      |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 1     | Time     | ms    | Time since power on                                                      |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 2     | PPS Time | ns    | Time of last PPS pulse converted to GPS time (time since midnight        |
+|       |          |       | on Jan 6, 1980)                                                          |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 3     | Status   |       | 0: Attitude Only                                                         |
+|       |          |       | 1: Position and Attitude                                                 |
+|       |          |       | 2: Position, Attitude, and Heading                                       |
+|       |          |       | 3: RTK Float                                                             |
+|       |          |       | 4: RTK Fix                                                               |
+|       |          |       |                                                                          |
+|       |          |       | If GPS is commanded OFF by the user:                                     |
+|       |          |       | 8: Attitude Only                                                         |
+|       |          |       | 9: Position and Attitude                                                 |
+|       |          |       | 10: Position, Attitude, and Heading                                      |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 4     | Lat      | deg   | Latitude, '+': North, '-': South                                         |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 5     | Long     | deg   | Longitude, '+': East, '-': West                                          |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 6     | Height   | m     | Height above ellipsoid                                                   |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 7     | VN       | m/s   | North Velocity in NED Frame                                              |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 8     | VE       | m/s   | East Velocity in NED Frame                                               |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 9     | VD       | m/s   | Down Velocity in NED Frame                                               |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 10    | Roll     | deg   | Roll Angle, rotation about body frame X                                  |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 11    | Pitch    | deg   | Pitch Angle, rotation about body frame Y                                 |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 12    | Heading  | deg   | Heading Angle, rotation about body frame Z                               |
++-------+----------+-------+--------------------------------------------------------------------------+
+| 13    | ZUPT     |       | 0: Moving, 1: Stationary                                                 |
++-------+----------+-------+--------------------------------------------------------------------------+
 
 3.2 NMEA 2000 Output Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

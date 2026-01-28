@@ -17,13 +17,25 @@ The ANELLO Maritime INS unit is pictured below. It features a 22-pin circular co
 An SCD drawing of the Maritime INS and a schematic of the accessory kit breakout cable can be found in  
 `Mechanicals <https://docs-a1.readthedocs.io/en/maritime_ins/mechanicals.html>`__.
 
+If you received an ANELLO Maritime INS Loaner unit, you will also receive the Accessory Kit pictured below. 
+
+.. image:: media/MaritimeINS_eval_kit.jpg
+   :width: 35%
+   :align: center
+
+The kit includes the following hardware:
+   a. 22 pin MIL-DTL-38999 circular breakout connector for connecting to the Maritime INS
+   b. 2 Triple frequency GNSS antennae
+   c. 2 USB to serial FTDI chipset adapter cables
+   d. Ethernet to USB adapter cable
+   e. 12V AC/DC barrel jack wall plug adapter
 
 2. Software Interfaces
 ---------------------------------
 
 Connect with the ANELLO Maritime Control software (AMarinerControl):
 
-1. Install ANELLO's `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/download/v1.0.1/AMarinerControl-Setup.exe>`_ on your Windows computer. For MacOS and Linux support contact support@anellophotonics.com.
+1. Install ANELLO's `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/download/v1.0.2/AMarinerControl-Setup.exe>`_ on your Windows computer. For MacOS and Linux support contact support@anellophotonics.com.
 
 2. Set the Ethernet IP address of the host computer to **192.168.0.2** and subnet mask to **255.255.255.0**.
 
@@ -40,8 +52,11 @@ Connect with the ANELLO Maritime Control software (AMarinerControl):
 4. Set up the Ethernet connection in AMarinerControl (only needs to be done once):
 
    a. Click the **A** button (top left) → Application Settings → Comm Links → Add New Link  
-   b. Type: UDP  
-   c. Port: 14550
+   b. Name: ETH
+   c. Type: UDP  
+   d. Port: 14550
+
+   You can also check "Automatically Connect on Start" to automatically use these comm link settings to connect to the Maritime INS every time the application is opened.
 
 .. image:: media/AMC_eth_connect.png
    :width: 70%
@@ -131,7 +146,7 @@ Parameters can be changed using
          :width: 70%
          :align: center
 
-   2. Python scripts from the ANELLO INS Scripts public repository: `Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Tools/Maritime_INS_CFG.py>`_
+   2. Python scripts from the ANELLO INS Scripts public repository: `Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Maritime_INS_CFG.py>`_
  
 
 .. note:: For best results, it is recommended that antenna lever arms be centimeter accurate as these are used to calculate any offsets for dual antenna heading measurements.
@@ -203,7 +218,7 @@ configuration parameters.
         return signed32
 
 The same logic is already implemented in the ANELLO INS Scripts repository: 
-`Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Tools/Maritime_INS_CFG.py>`_
+`Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Maritime_INS_CFG.py>`_
 
 
 CAN Termination
