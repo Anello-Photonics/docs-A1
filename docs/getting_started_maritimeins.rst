@@ -17,6 +17,18 @@ The ANELLO Maritime INS unit is pictured below. It features a 22-pin circular co
 An SCD drawing of the Maritime INS and a schematic of the accessory kit breakout cable can be found in  
 `Mechanicals <https://docs-a1.readthedocs.io/en/maritime_ins/mechanicals.html>`__.
 
+If you received an ANELLO Maritime INS Loaner unit, you will also receive the Accessory Kit pictured below. 
+
+.. image:: media/MaritimeINS_eval_kit.jpg
+   :width: 35%
+   :align: center
+
+The kit includes the following hardware:
+   a. 22 pin MIL-DTL-38999 circular breakout connector for connecting to the Maritime INS
+   b. 2 Triple Frequency GNSS antennae
+   c. 2 USB to serial FTDI chipset adapter cables
+   d. 1 ethernet to USB adapter cable
+   e. 12V AC/DC barrel jack wall plug adapter
 
 2. Software Interfaces
 ---------------------------------
