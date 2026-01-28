@@ -25,9 +25,9 @@ If you received an ANELLO Maritime INS Loaner unit, you will also receive the Ac
 
 The kit includes the following hardware:
    a. 22 pin MIL-DTL-38999 circular breakout connector for connecting to the Maritime INS
-   b. 2 Triple Frequency GNSS antennae
+   b. 2 Triple frequency GNSS antennae
    c. 2 USB to serial FTDI chipset adapter cables
-   d. 1 ethernet to USB adapter cable
+   d. Ethernet to USB adapter cable
    e. 12V AC/DC barrel jack wall plug adapter
 
 2. Software Interfaces
