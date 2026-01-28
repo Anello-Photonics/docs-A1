@@ -240,8 +240,8 @@ Recommended data collection procedure (while x = 1)
 - When complete, send ``$PAPAUTOCAL,0*hh`` to exit auto-calibration mode.
 
 
-2.1.8. PAPPOS: Auxiliary Position (Lat/Lon/Alt) (ANELLO Proprietary)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+2.1.8. PAPPOS: Auxiliary Position (Lat/Lon/Alt) (ANELLO Proprietary) 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 This message can be used to pass in an external position, either from user input or an external aiding source such as visual waypoint detection, USBL acoustic positioning, star tracker, or an M Code receiver.
 
 **Message Format**::
@@ -669,7 +669,7 @@ The default output port is 19550 and input port is 19551
 | 15     | hh         | Checksum                                                                 |
 +--------+------------+--------------------------------------------------------------------------+
 
-3.1.3 APIMU: Proprietary IMU Output
+3.1.3 APIMU: Proprietary IMU Output -- *coming soon*
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 **Message Format**::
@@ -724,7 +724,7 @@ The default output port is 19550 and input port is 19551
 |       |          |       | error                                                                    |
 +-------+----------+-------+--------------------------------------------------------------------------+
 
-3.1.4 APINS: Proprietary Navigation Output
+3.1.4 APINS: Proprietary Navigation Output -- *coming soon*
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 **Message Format**::

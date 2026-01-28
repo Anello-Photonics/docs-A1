@@ -16,12 +16,14 @@ Each time the ANELLO Maritime INS is installed on a new boat model, the boat’s
 
 3. Enable Speed Sensor Auto-Calibration Control with either the `NMEA0183 message detailed here <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#autocal-speed-sensor-auto-calibration-control-anello-proprietary>`_ or the `NMEA2000 message detailed here <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#pgn-65282-speed-sensor-auto-calibration-control-anello-proprietary>`_
 
-4. Perform “out and back” mission of at least 30 second duration per leg, 2-3 times at each of the following percentages of the vehicle's max speed: 20%, 40%, 60%, 80%, 100% 
+4. Perform “out and back” mission of at least 30 second duration per leg at each of the following percentages of the vehicle's max speed: 20%, 40%, 60%, 80%, 100% 
 
 	a. If there are constant currents, performing the “out and backs” with and against the current is ideal 
 
 	b. Ensure there are no other major sources of currents (e.g. other boats) during the “out and backs” as this will alter the calculation. If any anomalies occur (other boats, deviations from out and back route”, please jot down when it occurred so we can remove the anomaly. 
 
+.. note::
+	Increasing the number of out-and-back data points across the full speed range improves calibration accuracy.
 
 .. image:: media/example_out_and_back.png
    :width: 60 %
