@@ -104,7 +104,7 @@ following conventions:
 
 
 2.1.1 APIMU Message (EVK & Ground INS)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The APIMU message is the IMU output message for EVK and Ground INS units only.
 
   +---+------------+-----------+-----------------------------------------------------------------------+
@@ -413,7 +413,7 @@ with the checksum definition found `here <https://github.com/Anello-Photonics/de
 
 
 3.1.1 IMU Message (EVK & Ground INS)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The IMU output message for EVK and Ground INS units has a subtype ID of 1.
 
   +---+-------------+----------+------------------+----------------------------------------------------------+
@@ -557,7 +557,7 @@ It is the same as IMU message for the EVK and Ground INS but without odometer va
 
 
 3.3 GPS PVT Message (EVK/Ground INS)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The GPS message is the PVT output from the EVK and Ground INS units only. 
 The Antenna ID field indicates which receiver (that connected to ANT1 or ANT2) produced the position information. 
 
@@ -915,3 +915,7 @@ X3:
       CK_B = CK_B + CK_A
       }
 
+      return CK_A, CK_B
+
+.. note::
+    The checksum is a two-byte value (CK_A, CK_B). In the reference implementation, these bytes are appended to the end of the message buffer (the last two bytes).
