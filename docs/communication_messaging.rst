@@ -898,7 +898,7 @@ The ASCII checksum is an XOR of all characters between the start character â€˜#â
 
 6.2 Binary Checksum
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-GNSS / INS, EVK, IMU / Ground IMU:
+Ground INS, EVK, Ground IMU:
   The checksum definition can be found `here <https://github.com/Anello-Photonics/decoder/blob/master/artcm/artcm.c>`_.
 
 X3:
