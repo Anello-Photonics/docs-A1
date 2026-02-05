@@ -35,6 +35,13 @@ The communication interfaces currently supported for the ANELLO Maritime INS:
 | CAN             | NMEA 2000                                                         | Data input / output                                  |
 +-----------------+-------------------------------------------------------------------+------------------------------------------------------+
 
+1.2 PPS Synchronization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The ANELLO Maritime INS also supplied a 3.3V PPS output pulse for time synchronization. 
+PPS is output directly from the GNSS receiver, which will continue outputting a PPS pulse even if a GPS time fix is lost. 
+Note that the PPS accuracy will degrade with time, with drifts around 1 us per second without GPS.
+See `Mechanicals <https://docs-a1.readthedocs.io/en/maritime_ins/mechanicals.html>`_ to find the PPS output pin for each product.
+
 
 2. Input Messages
 ---------------------------------
