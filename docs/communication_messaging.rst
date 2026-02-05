@@ -685,7 +685,7 @@ The default output port is 19550 and input port is 19551
 +-------+------------------------------------------------------------------+
 | 1     | GPS fix (no corrections)                                         |
 +-------+------------------------------------------------------------------+
-| 2     | Differential GPS fix (e.g. RTK corrections active)               |
+| 2     | Differential GPS fix                                             |
 +-------+------------------------------------------------------------------+
 | 6     | Dead reckoning mode (GPS is determined to be jammed or spoofed)  |
 +-------+------------------------------------------------------------------+
