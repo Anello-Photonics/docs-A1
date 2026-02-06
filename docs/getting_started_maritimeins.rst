@@ -179,6 +179,10 @@ Ethernet settings can be configured using the following parameters:
 +---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
 | **NET_CFG_DNS**     | DNS=192.168.0.254        | -1062731522        | DNS server address.                                                                     |
 +---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
+| MAV_2_UDP_PRT       | 14550                    | 14550              | MAVLink UDP port number (INS side)                                                      |
++---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
+| MAV_2_REMOTE_PRT    | 14550                    | 14550              | MAVLink UDP remote port number (PC side)                                                |
++---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
 
 
 Ethernet IPv4 Parameter Encoding
@@ -219,6 +223,8 @@ configuration parameters.
 
 The same logic is already implemented in the ANELLO INS Scripts repository: 
 `Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Maritime_INS_CFG.py>`_
+
+Port number configs can be changed directly in AMC.
 
 
 CAN Termination
