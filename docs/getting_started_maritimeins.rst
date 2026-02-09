@@ -100,6 +100,12 @@ The INS center is the center of the Maritime INS unit.
 
 Distances are measured in meters from the IMU center to the respective antenna phase center.
 
+Units can be configured in AMarinerControl in the Applications Settings menu under General > Units
+
+   .. image:: media/amc-units.png
+         :width: 50%
+         :align: center
+
 +---------------------+-------+---------+-----------------------------------------------------------------------------------------+
 | Parameter           | Units | Default | Description                                                                             |
 +=====================+=======+=========+=========================================================================================+
@@ -135,14 +141,14 @@ Distances are measured in meters from the IMU center to the respective antenna p
 |                     |       |         |                                                                                         |
 |                     |       |         | Will be presented as a drop-down menu in AMarinerControl.                               |
 +---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **GPS_EXT_X**       | m     | 0       | X offset from INS center to external GPS receiver antenna.                              |
+| **GPS_EXT_X**       | m     | 0       | X offset from INS center to external GPS receiver's antenna.                            |
 +---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **GPS_EXT_Y**       | m     | 0       | Y offset from INS center to external GPS receiver antenna.                              |
+| **GPS_EXT_Y**       | m     | 0       | Y offset from INS center to external GPS receiver's antenna.                            |
 +---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **GPS_EXT_Z**       | m     | 0       | Z offset from INS center to external GPS receiver antenna.                              |
+| **GPS_EXT_Z**       | m     | 0       | Z offset from INS center to external GPS receiver's antenna.                            |
 +---------------------+-------+---------+-----------------------------------------------------------------------------------------+
 
-Parameters can be changed using
+Parameters can be changed using :
 
    1. AMC
 
@@ -156,6 +162,8 @@ Parameters can be changed using
  
 
 .. note:: For best results, it is recommended that antenna lever arms be centimeter accurate as these are used to calculate any offsets for dual antenna heading measurements.
+
+.. note:: If configuring lever arms through Python scripts, the units are always meters by default.
 
 NMEA 2000 Output Rate Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -270,11 +278,9 @@ Some key topics in the log files are:
 +-------------------------------+----------------------------------------------------------------------------------------------------+
 | Topic                         | Description                                                                                        |
 +===============================+====================================================================================================+
-| **vehicle_global_position**   | Full INS solution containing latitude longitude coordinates                                        |
+| **vehicle_global_position**   | Full INS solution containing latitude and longitude coordinates                                    |
 +-------------------------------+----------------------------------------------------------------------------------------------------+
-| **sensor_gps.01**             | GNSS only solution from BASE receiver.                                                             |
-+-------------------------------+----------------------------------------------------------------------------------------------------+
-| **sensor_gps.00**             | GNSS only solution from ROVER receiver.                                                            |
+| **vehicle_gps_position**      | GNSS only solution containing latitude and longitude coordinates                                   |
 +-------------------------------+----------------------------------------------------------------------------------------------------+
 | **sensor_gps_heading**        | GNSS Dual heading and baseline data                                                                |
 +-------------------------------+----------------------------------------------------------------------------------------------------+
