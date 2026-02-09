@@ -35,7 +35,7 @@ The communication interfaces currently supported for the ANELLO Maritime INS:
 | CAN             | NMEA 2000                                                         | Data input / output                                  |
 +-----------------+-------------------------------------------------------------------+------------------------------------------------------+
 
-1.2 PPS Synchronization
+1.3 PPS Synchronization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The ANELLO Maritime INS also supplied a 3.3V PPS output pulse for time synchronization. 
 PPS is output directly from the GNSS receiver, which will continue outputting a PPS pulse even if a GPS time fix is lost. 
@@ -69,15 +69,11 @@ for instructions on changing settings):
 
 The default port is 19551 for input messages and 19550 for output messages.
 
-To enable external NMEA0183 GNSS input through serial set ``NM0183_GPS_EXT`` = ``1`` or ``Enabled``
 
-To enable external NMEA0183 GNSS input through UDP set ``NMUDP_GPS_EXT`` = ``1`` or ``Enabled``
+2.1.1 External Sensor Aiding
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To use an external GNSS input, the minimum required messages are GGA, RMC, and GSA at a rate of at least 1 Hz.
-
-
-
-2.1.1. RPM: Revolutions
+2.1.1.1. RPM: Revolutions
 """"""""""""""""""""""""
 
 **Message Format**::
@@ -101,7 +97,7 @@ To use an external GNSS input, the minimum required messages are GGA, RMC, and G
 +-------+------------+---------------------------------------------------------------+
 
 
-2.1.2. RSA: Rudder Sensor Angle
+2.1.1.2. RSA: Rudder Sensor Angle
 """"""""""""""""""""""""""""""""
 
 **Message Format**::
@@ -123,7 +119,7 @@ To use an external GNSS input, the minimum required messages are GGA, RMC, and G
 +-------+------------+-------------------------------------------------------------+
 
 
-2.1.3. VHW: Water Speed & Heading
+2.1.1.3. VHW: Water Speed & Heading
 """""""""""""""""""""""""""""""""
 
 **Message Format**::
@@ -153,7 +149,7 @@ To use an external GNSS input, the minimum required messages are GGA, RMC, and G
 +-------+------------+---------------------------------------------------------------+
 
 
-2.1.4. VBW: Dual Ground/Water Speed
+2.1.1.4. VBW: Dual Ground/Water Speed
 """"""""""""""""""""""""""""""""""""
 
 **Message Format**::
@@ -179,7 +175,7 @@ To use an external GNSS input, the minimum required messages are GGA, RMC, and G
 +-------+------------+---------------------------------------------------------------+
 
 
-2.1.5. VWR: Relative Wind Speed & Angle
+2.1.1.5. VWR: Relative Wind Speed & Angle
 """"""""""""""""""""""""""""""""""""""""
 
 **Message Format**::
@@ -208,106 +204,16 @@ To use an external GNSS input, the minimum required messages are GGA, RMC, and G
 | 9     | hh         | Checksum                                                      |
 +-------+------------+---------------------------------------------------------------+
 
+2.1.2 External Position Aiding
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To enable external NMEA0183 GNSS input through serial set ``NM0183_GPS_EXT`` = ``1`` or ``Enabled``
+
+To enable external NMEA0183 GNSS input through UDP set ``NMUDP_GPS_EXT`` = ``1`` or ``Enabled``
+
+To use an external GNSS input, the minimum required messages are GGA, RMC, and GSA at a rate of at least 1 Hz.
 
 
-2.1.6. GPSCTRL: GPS Control (ANELLO Proprietary)
-"""""""""""""""""""""""""""""""""""""""""""""""""
-
-Enables or disables GPS utilization in sensor fusion algorithm.
-
-**Message Format**::
-
-    $PAPGPSCTRL,A*hh
-
-+-------+------------+---------------------------------------------------------------+
-| Index | Part       | Description                                                   |
-+=======+============+===============================================================+
-| 1     | A          | GPS control, “1” = Use GPS (default), “0” = Ignore GPS        |
-+-------+------------+---------------------------------------------------------------+
-| 2     | hh         | Checksum                                                      |
-+-------+------------+---------------------------------------------------------------+
-
-2.1.7. AUTOCAL: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-This message starts/stops the Maritime INS speed sensor auto-calibration routine (e.g., for water-speed aiding sensors). The default state is 0 (not in auto-calibration mode).
-
-**Message Format**::
-
-    $PAPAUTOCAL,A*hh
-
-+-------+------------+--------------------------------------------------------------------------+
-| Index | Part       | Description                                                              |
-+=======+============+==========================================================================+
-| 1     | A          | Auto-calibration control: "0" = Off (default), "1" = On (enter auto-cal) |
-+-------+------------+--------------------------------------------------------------------------+
-| 2     | hh         | Checksum                                                                 |
-+-------+------------+--------------------------------------------------------------------------+
-
-Recommended data collection procedure (while x = 1)
-
-- Operate in calm waters with minimal currents/wind/wake.
-- Run out-and-back legs along the same line (reciprocal headings).
-- Collect data at ≥ 5 different steady speeds spanning the full operating speed range.
-- Each out leg and back leg should be at least 30 seconds at a steady speed.
-- Repeat each speed at least once (more repeats improves robustness), and avoid aggressive turns during the steady legs.
-- When complete, send ``$PAPAUTOCAL,0*hh`` to exit auto-calibration mode.
-
-
-2.1.8. PAPPOS: Auxiliary Position (Lat/Lon/Alt) (ANELLO Proprietary) 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-This message can be used to pass in an external position, either from user input or an external aiding source such as visual waypoint detection, USBL acoustic positioning, star tracker, or an M Code receiver.
-
-**Message Format**::
-
-    $PAPPOS,PX,PY,PZ,H_acc,V_acc*hh
-
-
-+-------+------------+---------------------------------------------------------------+
-| Index | Part       | Description                                                   |
-+=======+============+===============================================================+
-| 1     | PX         | Latitude in degrees (signed; +N / -S)                         |
-+-------+------------+---------------------------------------------------------------+
-| 2     | PY         | Longitude in degrees (signed; +E / -W)                        |
-+-------+------------+---------------------------------------------------------------+
-| 3     | PZ         | Altitude above mean sea level (meters)                        |
-+-------+------------+---------------------------------------------------------------+
-| 4     | H_acc      | Horizontal accuracy / uncertainty (meters)                    |
-+-------+------------+---------------------------------------------------------------+
-| 5     | V_acc      | Vertical accuracy / uncertainty (meters)                      |
-+-------+------------+---------------------------------------------------------------+
-| 6     | hh         | NMEA checksum (hex)                                           |
-+-------+------------+---------------------------------------------------------------+
-
-2.1.9. PAPRPH:Roll/Pitch/Heading (with Accuracies) (ANELLO Proprietary) 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-This message can be used to pass in an external heading, either from user input or an external aiding source such as a well-calibrated magnetometer, star tracker, or an M Code receiver. *Currently only external heading aiding is implemented, and roll/pitch aiding are available upon request.*
-
-**Message Format**::
-
-    $PAPRPH,R,P,Y,R_acc,P_acc,H_acc*hh
-
-
-+-------+------------+---------------------------------------------------------------+
-| Index | Part       | Description                                                   |
-+=======+============+===============================================================+
-| 1     | R          | Roll angle (degrees)                                          |
-+-------+------------+---------------------------------------------------------------+
-| 2     | P          | Pitch angle (degrees)                                         |
-+-------+------------+---------------------------------------------------------------+
-| 3     | Y          | Heading / yaw (degrees, typically 0..360)                     |
-+-------+------------+---------------------------------------------------------------+
-| 4     | R_acc      | Roll accuracy / uncertainty (degrees)                         |
-+-------+------------+---------------------------------------------------------------+
-| 5     | P_acc      | Pitch accuracy / uncertainty (degrees)                        |
-+-------+------------+---------------------------------------------------------------+
-| 6     | H_acc      | Heading accuracy / uncertainty (degrees)                      |
-+-------+------------+---------------------------------------------------------------+
-| 7     | hh         | NMEA checksum (hex)                                           |
-+-------+------------+---------------------------------------------------------------+
-
-2.1.10 RMC: Recommended Minimum Navigation Information
+2.1.2.1. RMC: Recommended Minimum Navigation Information
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 **Message Format**::
@@ -342,7 +248,7 @@ This message can be used to pass in an external heading, either from user input 
 | 12     | hh         | Checksum                                                                 |
 +--------+------------+--------------------------------------------------------------------------+
 
-2.1.11 GGA: Global Positioning System Fix Data
+2.1.2.2. GGA: Global Positioning System Fix Data
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 **Message Format**::
@@ -402,7 +308,7 @@ This message can be used to pass in an external heading, either from user input 
 +-------+------------------------------------------------------------------+
 
 
-2.1.12 GSA: GNSS DOP and Active Satellites
+2.1.2.3 GSA: GNSS DOP and Active Satellites
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 **Message Format**::
@@ -448,6 +354,109 @@ This message can be used to pass in an external heading, either from user input 
 +--------+------------+--------------------------------------------------------------------------+
 | 18     | hh         | Checksum                                                                 |
 +--------+------------+--------------------------------------------------------------------------+
+
+
+2.1.3 ANELLO Proprietary
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+2.1.3.1. GPSCTRL: GPS Control (ANELLO Proprietary)
+"""""""""""""""""""""""""""""""""""""""""""""""""
+
+Enables or disables GPS utilization in sensor fusion algorithm.
+
+**Message Format**::
+
+    $PAPGPSCTRL,A*hh
+
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | A          | GPS control, “1” = Use GPS (default), “0” = Ignore GPS        |
++-------+------------+---------------------------------------------------------------+
+| 2     | hh         | Checksum                                                      |
++-------+------------+---------------------------------------------------------------+
+
+2.1.3.2. AUTOCAL: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+This message starts/stops the Maritime INS speed sensor auto-calibration routine (e.g., for water-speed aiding sensors). The default state is 0 (not in auto-calibration mode).
+
+**Message Format**::
+
+    $PAPAUTOCAL,A*hh
+
++-------+------------+--------------------------------------------------------------------------+
+| Index | Part       | Description                                                              |
++=======+============+==========================================================================+
+| 1     | A          | Auto-calibration control: "0" = Off (default), "1" = On (enter auto-cal) |
++-------+------------+--------------------------------------------------------------------------+
+| 2     | hh         | Checksum                                                                 |
++-------+------------+--------------------------------------------------------------------------+
+
+Recommended data collection procedure (while x = 1)
+
+- Operate in calm waters with minimal currents/wind/wake.
+- Run out-and-back legs along the same line (reciprocal headings).
+- Collect data at ≥ 5 different steady speeds spanning the full operating speed range.
+- Each out leg and back leg should be at least 30 seconds at a steady speed.
+- Repeat each speed at least once (more repeats improves robustness), and avoid aggressive turns during the steady legs.
+- When complete, send ``$PAPAUTOCAL,0*hh`` to exit auto-calibration mode.
+
+
+2.1.3.3. PAPPOS: Auxiliary Position (Lat/Lon/Alt) (ANELLO Proprietary) 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+This message can be used to pass in an external position, either from user input or an external aiding source such as visual waypoint detection, USBL acoustic positioning, star tracker, or an M Code receiver.
+
+**Message Format**::
+
+    $PAPPOS,PX,PY,PZ,H_acc,V_acc*hh
+
+
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | PX         | Latitude in degrees (signed; +N / -S)                         |
++-------+------------+---------------------------------------------------------------+
+| 2     | PY         | Longitude in degrees (signed; +E / -W)                        |
++-------+------------+---------------------------------------------------------------+
+| 3     | PZ         | Altitude above mean sea level (meters)                        |
++-------+------------+---------------------------------------------------------------+
+| 4     | H_acc      | Horizontal accuracy / uncertainty (meters)                    |
++-------+------------+---------------------------------------------------------------+
+| 5     | V_acc      | Vertical accuracy / uncertainty (meters)                      |
++-------+------------+---------------------------------------------------------------+
+| 6     | hh         | NMEA checksum (hex)                                           |
++-------+------------+---------------------------------------------------------------+
+
+2.1.3.4. PAPRPH:Roll/Pitch/Heading (with Accuracies) (ANELLO Proprietary) 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+This message can be used to pass in an external heading, either from user input or an external aiding source such as a well-calibrated magnetometer, star tracker, or an M Code receiver. *Currently only external heading aiding is implemented, and roll/pitch aiding are available upon request.*
+
+**Message Format**::
+
+    $PAPRPH,R,P,Y,R_acc,P_acc,H_acc*hh
+
+
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | R          | Roll angle (degrees)                                          |
++-------+------------+---------------------------------------------------------------+
+| 2     | P          | Pitch angle (degrees)                                         |
++-------+------------+---------------------------------------------------------------+
+| 3     | Y          | Heading / yaw (degrees, typically 0..360)                     |
++-------+------------+---------------------------------------------------------------+
+| 4     | R_acc      | Roll accuracy / uncertainty (degrees)                         |
++-------+------------+---------------------------------------------------------------+
+| 5     | P_acc      | Pitch accuracy / uncertainty (degrees)                        |
++-------+------------+---------------------------------------------------------------+
+| 6     | H_acc      | Heading accuracy / uncertainty (degrees)                      |
++-------+------------+---------------------------------------------------------------+
+| 7     | hh         | NMEA checksum (hex)                                           |
++-------+------------+---------------------------------------------------------------+
+
 
 
 
