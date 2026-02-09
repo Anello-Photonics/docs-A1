@@ -43,7 +43,7 @@ Each time the ANELLO Maritime INS is installed on a new boat model, the boat’s
 
 * Otherwise, the calibration does not need to be redone for boats of the same model, with the same sensor models and similar installation positions.
 
-..note:: 
+.. note:: 
 	Reach out to **support@anellophotonics.com** for speed sensor recommendations  
 
 (Optional) External Magnetometer Calibration

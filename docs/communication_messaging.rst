@@ -74,7 +74,7 @@ The default port is 19551 for input messages and 19550 for output messages.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 2.1.1.1. RPM: Revolutions
-""""""""""""""""""""""""
+"""""""""""""""""""""""""""
 
 **Message Format**::
 
@@ -98,7 +98,7 @@ The default port is 19551 for input messages and 19550 for output messages.
 
 
 2.1.1.2. RSA: Rudder Sensor Angle
-""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""
 
 **Message Format**::
 
@@ -120,7 +120,7 @@ The default port is 19551 for input messages and 19550 for output messages.
 
 
 2.1.1.3. VHW: Water Speed & Heading
-"""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""
 
 **Message Format**::
 
@@ -150,7 +150,7 @@ The default port is 19551 for input messages and 19550 for output messages.
 
 
 2.1.1.4. VBW: Dual Ground/Water Speed
-""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
 
 **Message Format**::
 
@@ -176,7 +176,7 @@ The default port is 19551 for input messages and 19550 for output messages.
 
 
 2.1.1.5. VWR: Relative Wind Speed & Angle
-""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""
 
 **Message Format**::
 
@@ -361,7 +361,7 @@ To use an external GNSS input, the minimum required messages are GGA, RMC, and G
 
 
 2.1.3.1. GPSCTRL: GPS Control (ANELLO Proprietary)
-"""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Enables or disables GPS utilization in sensor fusion algorithm.
 
@@ -471,7 +471,7 @@ NMEA 2000 messages.
 
 
 2.2.1 PGN 127488: Engine Parameters, Rapid Update
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides data with a high update rate for a specific engine in a single frame message.
 
@@ -490,7 +490,7 @@ Provides data with a high update rate for a specific engine in a single frame me
 Logged topic: NMEA2000_ENGINE
 
 2.2.2 PGN 127489: Engine Parameters, Dynamic
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides real-time operational data and status for a specific engine, usually broadcast periodically for control or instrumentation.
 
@@ -527,7 +527,7 @@ Provides real-time operational data and status for a specific engine, usually br
 Logged topic: NMEA2000_ENGINE_DYN
 
 2.2.3 PGN 128259: Speed, Water Referenced
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides a single transmission describing the motion of a vessel relative to the water.
 
@@ -548,7 +548,7 @@ Provides a single transmission describing the motion of a vessel relative to the
 Logged topic: NMEA2000_SPEED
 
 2.2.4 PGN 128275: Distance Log
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Cumulative voyage distance traveled since last reset, tagged with time and date.
 
@@ -567,7 +567,7 @@ Cumulative voyage distance traveled since last reset, tagged with time and date.
 Logged topic: NMEA2000_DISTANCE
 
 2.2.5 PGN 130311: Environmental Parameters
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 These values provide weather and ambient condition data, often used for sensor calibration, navigation adjustments, and environmental awareness.
 
@@ -590,7 +590,7 @@ These values provide weather and ambient condition data, often used for sensor c
 Logged topic: NMEA2000_ENVIRONMENT
 
 2.2.6 PGN 130578: Vessel Speed Components
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Accurately describes the speed of a vessel by component vectors.
 
@@ -613,7 +613,7 @@ Accurately describes the speed of a vessel by component vectors.
 Logged topic: NMEA2000_VESSEL_SPEED
 
 2.2.7 PGN 65281: GPS Control
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ANELLO proprietary message used to enable or disable the GPS through the NMEA2000 interface.
 
@@ -629,7 +629,7 @@ Logged topic: NMEA2000_GPSCTRL
 
 
 2.2.8 PGN 65282: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ANELLO proprietary NMEA 2000 message used to start/stop the speed sensor auto-calibration routine. The default state is 0 (not in auto-calibration mode).
 
@@ -650,7 +650,7 @@ Recommended data collection procedure (while Auto-calibration Control = 1)
 Logged topic: NMEA2000_AUTOCAL_WATERSPEED
 
 2.2.9 PGN 127493: Transmission Parameters, Dynamic
-"""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides real-time operational data and status for a specific transmission, typically broadcast periodically for monitoring and instrumentation.
 
@@ -691,7 +691,7 @@ Logged topic: NMEA2000_TRANSMISSION
 
 
 2.2.10 PGN 130816: Auxiliary Position (ANELLO Proprietary)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Auxiliary GPS / GNSS position information input
 
@@ -712,7 +712,7 @@ Auxiliary GPS / GNSS position information input
 Logged topic: NMEA2000_POS
 
 2.2.11 PGN 130817: Auxiliary Attitude (ANELLO Proprietary)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Auxiliary roll, pitch, and heading information along with accuracy estimates
 
@@ -787,7 +787,7 @@ The multicast IP for NMEA0183 UDP messaging can be set with the following 4 para
 
 
 3.1.1 RMC: Recommended Minimum Navigation Information
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
 
@@ -822,7 +822,7 @@ The multicast IP for NMEA0183 UDP messaging can be set with the following 4 para
 +--------+------------+--------------------------------------------------------------------------+
 
 3.1.2 GGA: Global Positioning System Fix Data
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
 
@@ -881,7 +881,7 @@ The multicast IP for NMEA0183 UDP messaging can be set with the following 4 para
 +-------+------------------------------------------------------------------+
 
 3.1.3 APIMU: Proprietary IMU Output
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
 
@@ -936,7 +936,7 @@ The multicast IP for NMEA0183 UDP messaging can be set with the following 4 para
 +-------+----------+-------+--------------------------------------------------------------------------+
 
 3.1.4 APINS: Proprietary Navigation Output
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
 
@@ -997,7 +997,7 @@ Each published PGN has an associated output data rate parameter (for example,
 range ``0``–``100``; setting a rate to ``0`` disables that PGN.
 
 3.2.1 PGN 129025: Position, Rapid Update
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 High-speed update of vessel latitude/longitude position.
 
@@ -1011,7 +1011,7 @@ High-speed update of vessel latitude/longitude position.
 
 
 3.2.2 PGN 129026: COG & SOG, Rapid Update
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Rapid update of Course Over Ground (COG) and Speed Over Ground (SOG).
 
@@ -1029,7 +1029,7 @@ Rapid update of Course Over Ground (COG) and Speed Over Ground (SOG).
 
 
 3.2.3 PGN 129029: GNSS Position Data
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Complete GNSS navigation solution including position, quality, and DOP.
 
@@ -1102,7 +1102,7 @@ Complete GNSS navigation solution including position, quality, and DOP.
 
 
 3.2.4 PGN 127250: Vessel Heading
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides vessel heading and related status.
 
@@ -1122,7 +1122,7 @@ Provides vessel heading and related status.
 
 
 3.2.5 PGN 127251: Rate of Turn
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides vessel rate of turn information.
 
@@ -1136,7 +1136,7 @@ Provides vessel rate of turn information.
 
 
 3.2.6 PGN 127257: Attitude
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides vessel orientation (roll, pitch, yaw).
 
@@ -1154,7 +1154,7 @@ Provides vessel orientation (roll, pitch, yaw).
 
 
 3.2.7 PGN 126992: System Time
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides system time for network synchronization.
 
