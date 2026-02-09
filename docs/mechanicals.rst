@@ -27,7 +27,7 @@ The ground pins (11, 12) are electrically connected to the case. There is also a
 
 Ground INS SCD Drawing: :download:`PDF <media/SCD_Mechanical_GNSS_INS.pdf>`
 
-.. figure:: media/SCD_Mechanical_GNSS_INS.pdf
+.. figure:: media/SCD_Mechanical_GNSS_INS.png
    :align: center
 
 .. note::
@@ -42,7 +42,7 @@ The ground pin is electrically connected to the case. There is also a case groun
 
 Ground IMU SCD Drawing: :download:`PDF <media/SCD_Mechanical_IMU.pdf>`
 
-.. figure:: media/SCD_Mechanical_IMU.pdf
+.. figure:: media/SCD_Mechanical_IMU.png
    :align: center
 
 .. note::
@@ -55,7 +55,7 @@ the unit will need to be mounted on the heat sinking mounting plate shipped with
 
 X3 SCD Drawing: :download:`PDF <media/SCD_Mechanical_X3.pdf>`
 
-.. figure:: media/SCD_Mechanical_X3.pdf
+.. figure:: media/SCD_Mechanical_X3.png
    :align: center
 
 .. note::
