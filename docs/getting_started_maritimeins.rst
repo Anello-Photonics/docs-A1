@@ -135,11 +135,11 @@ Distances are measured in meters from the IMU center to the respective antenna p
 |                     |       |         |                                                                                         |
 |                     |       |         | Will be presented as a drop-down menu in AMarinerControl.                               |
 +---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **GPS_EXT_X**       | m     | 0       | X offset from INS center to Base antenna (ANT1).                                        |
+| **GPS_EXT_X**       | m     | 0       | X offset from INS center to external GPS receiver antenna.                              |
 +---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **GPS_EXT_Y**       | m     | 0       | Y offset from INS center to Base antenna (ANT1).                                        |
+| **GPS_EXT_Y**       | m     | 0       | Y offset from INS center to external GPS receiver antenna.                              |
 +---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **GPS_EXT_Z**       | m     | 0       | Z offset from INS center to Base antenna (ANT1).                                        |
+| **GPS_EXT_Z**       | m     | 0       | Z offset from INS center to external GPS receiver antenna.                              |
 +---------------------+-------+---------+-----------------------------------------------------------------------------------------+
 
 Parameters can be changed using

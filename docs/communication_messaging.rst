@@ -394,6 +394,10 @@ This message can be used to pass in an external heading, either from user input 
 +-------+------------------------------------------------------------------+
 | 2     | Differential GPS fix                                             |
 +-------+------------------------------------------------------------------+
+| 4     | RTK Fixed                                                        |
++-------+------------------------------------------------------------------+
+| 5     | RTK Float                                                        |
++-------+------------------------------------------------------------------+
 | 6     | Dead reckoning mode (GPS is determined to be jammed or spoofed)  |
 +-------+------------------------------------------------------------------+
 
@@ -860,10 +864,14 @@ The multicast IP for NMEA0183 UDP messaging can be set with the following 4 para
 +-------+------------------------------------------------------------------+
 | 2     | Differential GPS fix                                             |
 +-------+------------------------------------------------------------------+
+| 4     | RTK Fixed                                                        |
++-------+------------------------------------------------------------------+
+| 5     | RTK Float                                                        |
++-------+------------------------------------------------------------------+
 | 6     | Dead reckoning mode (GPS is determined to be jammed or spoofed)  |
 +-------+------------------------------------------------------------------+
 
-3.1.3 APIMU: Proprietary IMU Output -- *coming soon*
+3.1.3 APIMU: Proprietary IMU Output
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 **Message Format**::
@@ -918,7 +926,7 @@ The multicast IP for NMEA0183 UDP messaging can be set with the following 4 para
 |       |          |       | error                                                                    |
 +-------+----------+-------+--------------------------------------------------------------------------+
 
-3.1.4 APINS: Proprietary Navigation Output -- *coming soon*
+3.1.4 APINS: Proprietary Navigation Output
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 **Message Format**::
