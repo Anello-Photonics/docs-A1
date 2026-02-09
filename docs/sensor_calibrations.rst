@@ -5,8 +5,7 @@ Sensor Calibrations
 Speed Sensor Calibration
 ---------------------------------
 
-The ANELLO Maritime INS uses paddle wheel input as a speed aiding source. Paddle wheels typically have a speed-dependent scale factor which needs to be accounted for, and this can vary from boat-to-boat. 
- 
+The ANELLO Maritime INS uses paddle wheel input as a speed aiding source. Paddle wheels typically have a speed-dependent scale factor which needs to be accounted for, and this can vary from boat-to-boat.  
 
 Each time the ANELLO Maritime INS is installed on a new boat model, the boat’s paddle wheel needs to be calibrated relative to the boat’s motor percentage. To calibrate the paddle wheel: 
 
@@ -24,18 +23,10 @@ Each time the ANELLO Maritime INS is installed on a new boat model, the boat’s
 
 	c. Increasing the number of out-and-back data points across the full speed range improves calibration accuracy.
 
-.. image:: media/example_out_and_back.png
-   :width: 60 %
-   :align: center
-
-*Example "Out and Back" Mission for Paddle Wheel Calibration*
-
 
 5. Once “out and backs” are complete, disable the auto calibration mode through the `NMEA0183 message detailed here <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#autocal-speed-sensor-auto-calibration-control-anello-proprietary>`_ or the `NMEA2000 message detailed here <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#pgn-65282-speed-sensor-auto-calibration-control-anello-proprietary>`_
 
 6. For any questions or assistance with the calibration procedure, please download the logs from the ANELLO Maritime INS (using the instructions under `Data Collection and Visualization <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#data-collection-visualization>`__ ) and send to ANELLO along with your inquiry. 
-
-
  
 
 **Re-calibration of the paddle wheel is necessary if any of the following conditions are met:** 
@@ -50,7 +41,10 @@ Each time the ANELLO Maritime INS is installed on a new boat model, the boat’s
 
 * The loaded weight of the boat is significantly changed (e.g. the weight of the boat is doubled due to a payload). 
 
-* Otherwise, the calibration does not need to be redone for boats of the same model, with the same sensor models and similar installation positions.  
+* Otherwise, the calibration does not need to be redone for boats of the same model, with the same sensor models and similar installation positions.
+
+..note:: 
+	Reach out to **support@anellophotonics.com** for speed sensor recommendations  
 
 (Optional) External Magnetometer Calibration
 ----------------------------------------------
