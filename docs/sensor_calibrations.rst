@@ -2,7 +2,7 @@
 Sensor Calibrations
 ==================================
 
-Paddle Wheel Calibration
+Speed Sensor Calibration
 ---------------------------------
 
 The ANELLO Maritime INS uses paddle wheel input as a speed aiding source. Paddle wheels typically have a speed-dependent scale factor which needs to be accounted for, and this can vary from boat-to-boat. 
@@ -20,10 +20,9 @@ Each time the ANELLO Maritime INS is installed on a new boat model, the boat’s
 
 	a. If there are constant currents, performing the “out and backs” with and against the current is ideal 
 
-	b. Ensure there are no other major sources of currents (e.g. other boats) during the “out and backs” as this will alter the calculation. If any anomalies occur (other boats, deviations from out and back route”, please jot down when it occurred so we can remove the anomaly. 
+	b. Ensure there are no other major sources of currents (e.g. other boats) during the “out and backs” as this will alter the calculation.
 
-.. note::
-	Increasing the number of out-and-back data points across the full speed range improves calibration accuracy.
+	c. Increasing the number of out-and-back data points across the full speed range improves calibration accuracy.
 
 .. image:: media/example_out_and_back.png
    :width: 60 %
@@ -56,7 +55,7 @@ Each time the ANELLO Maritime INS is installed on a new boat model, the boat’s
 (Optional) External Magnetometer Calibration
 ----------------------------------------------
 
-In the case that you will be supplying the ANELLO Maritime INS with data from an external magnetometer, you may conduct an optional external magnetometer calibration procedure to improve the accuracy of the reported heading. 
+In the case that you will be supplying the ANELLO Maritime INS with data from an external magnetometer via `NMEA0183 VHW input <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#vhw-water-speed-heading>`_, you may conduct an optional external magnetometer calibration procedure to improve the accuracy of the reported heading. 
 
  
 

@@ -308,7 +308,7 @@ To use an external GNSS input, the minimum required messages are GGA, RMC, and G
 +-------+------------------------------------------------------------------+
 
 
-2.1.2.3 GSA: GNSS DOP and Active Satellites
+2.1.2.3. GSA: GNSS DOP and Active Satellites
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 **Message Format**::
