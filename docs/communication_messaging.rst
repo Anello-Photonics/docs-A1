@@ -219,7 +219,7 @@ To enable external NMEA0183 GNSS input through serial set ``NM0183_GPS_EXT`` = `
 
 To enable external NMEA0183 GNSS input through UDP set ``NMUDP_GPS_EXT`` = ``1`` or ``Enabled``
 
-To use an external GNSS input, the minimum required messages are GGA, RMC, and GSA at a rate of at least 0.2 Hz.
+To use an external GNSS input, the minimum required messages are GGA, RMC, and GSA at a rate of at least 0.5 Hz.
 
 
 2.1.2.1. RMC: Recommended Minimum Navigation Information
