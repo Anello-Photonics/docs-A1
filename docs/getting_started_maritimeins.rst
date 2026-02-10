@@ -100,11 +100,6 @@ The INS center is the center of the Maritime INS unit.
 
 Distances are measured in meters from the IMU center to the respective antenna phase center.
 
-Units can be configured in AMarinerControl in the Applications Settings menu under General > Units
-
-   .. image:: media/amc-units.png
-         :width: 50%
-         :align: center
 
 +---------------------+-------+---------+-----------------------------------------------------------------------------------------+
 | Parameter           | Units | Default | Description                                                                             |
@@ -162,6 +157,12 @@ Parameters can be changed using :
  
 
 .. note:: For best results, it is recommended that antenna lever arms be centimeter accurate as these are used to calculate any offsets for dual antenna heading measurements.
+
+Units can be configured in AMarinerControl in the Applications Settings menu under General > Units
+
+.. image:: media/amc-units.png
+      :width: 50%
+      :align: center
 
 .. note:: If configuring lever arms through Python scripts, the units are always meters by default.
 
