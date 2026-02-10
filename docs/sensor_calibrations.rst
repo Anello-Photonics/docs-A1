@@ -49,7 +49,7 @@ Each time the ANELLO Maritime INS is installed on a new boat model, the boat’s
 (Optional) External Magnetometer Calibration
 ----------------------------------------------
 
-In the case that you will be supplying the ANELLO Maritime INS with data from an external magnetometer via `NMEA0183 VHW input <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#vhw-water-speed-heading>`_ or the ANELLO Proprietary Auxiliary RPH messages in `NMEA0183 <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#paprph-roll-pitch-heading-with-accuracies-anello-proprietary>`_ or `NMEA2000 <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#pgn-130817-auxiliary-attitude-anello-proprietary>`_ or you may conduct an optional external magnetometer calibration procedure to improve the accuracy of the reported heading. 
+In the case that you will be supplying the ANELLO Maritime INS with data from an external magnetometer via `NMEA0183 VHW input <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#vhw-water-speed-heading>`_ or the ANELLO Proprietary Auxiliary RPH messages in `NMEA0183 <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#paprph-roll-pitch-heading-with-accuracies-anello-proprietary>`_ or `NMEA2000 <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#pgn-130817-auxiliary-attitude-anello-proprietary>`_ you may conduct an optional external magnetometer calibration procedure to improve the accuracy of the reported heading. 
 
  
 
