@@ -35,6 +35,22 @@ The communication interfaces currently supported for the ANELLO Maritime INS:
 | CAN             | NMEA 2000                                                         | Data input / output                                  |
 +-----------------+-------------------------------------------------------------------+------------------------------------------------------+
 
+1.3 Time Synchronization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The ANELLO Maritime INS supplies the following I/O pins for time synchronization
+
++-----------------+--------------------------+------------------------------------------------------+
+| Interface       | Max Voltage              | Functions                                            |
++=================+==========================+======================================================+
+| PPS             | 3.3 V                    | GNSS time synchronization output pulse               |
++-----------------+--------------------------+------------------------------------------------------+
+| Sync            | 3.3 V                    | GNSS time synchronization input pulse                |
++-----------------+--------------------------+------------------------------------------------------+
+| Reset           | 3.3 V                    | Driving low restarts the Maritime INS                |
++-----------------+--------------------------+------------------------------------------------------+
+
+See `Mechanicals <https://docs-a1.readthedocs.io/en/maritime_ins/mechanicals.html>`_ to find the specified output pins.
+
 
 2. Input Messages
 ---------------------------------
@@ -49,22 +65,25 @@ To configure NMEA 0183 over a serial port, update the following configs (see
 `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 for instructions on changing settings):
 
-``NM0183_CFG`` = ``101`` (RS232-1) **or** ``102`` (RS232-2)
+``NM0183_CFG`` = ``1`` (RS232-1) **or** ``2`` (RS232-2)
 
-The default baud rate is ``38400``. To change the baud rate use
+The default baud rate is ``57600``. To change the baud rate use
 ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
 
 To configure NMEA 0183 over UDP, update the following configs (see
 `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 for instructions on changing settings):
 
-``NMEA_UDP_EN`` = ``1``
+``NMUDP_EN`` = ``1``
 
 The default port is 19551 for input messages and 19550 for output messages.
 
 
-2.1.1. RPM: Revolutions
-""""""""""""""""""""""""
+2.1.1 External Sensor Aiding
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+2.1.1.1. RPM: Revolutions
+"""""""""""""""""""""""""""
 
 **Message Format**::
 
@@ -87,8 +106,8 @@ The default port is 19551 for input messages and 19550 for output messages.
 +-------+------------+---------------------------------------------------------------+
 
 
-2.1.2. RSA: Rudder Sensor Angle
-""""""""""""""""""""""""""""""""
+2.1.1.2. RSA: Rudder Sensor Angle
+"""""""""""""""""""""""""""""""""""
 
 **Message Format**::
 
@@ -109,8 +128,8 @@ The default port is 19551 for input messages and 19550 for output messages.
 +-------+------------+-------------------------------------------------------------+
 
 
-2.1.3. VHW: Water Speed & Heading
-"""""""""""""""""""""""""""""""""
+2.1.1.3. VHW: Water Speed & Heading
+""""""""""""""""""""""""""""""""""""
 
 **Message Format**::
 
@@ -139,8 +158,8 @@ The default port is 19551 for input messages and 19550 for output messages.
 +-------+------------+---------------------------------------------------------------+
 
 
-2.1.4. VBW: Dual Ground/Water Speed
-""""""""""""""""""""""""""""""""""""
+2.1.1.4. VBW: Dual Ground/Water Speed
+"""""""""""""""""""""""""""""""""""""""
 
 **Message Format**::
 
@@ -165,8 +184,8 @@ The default port is 19551 for input messages and 19550 for output messages.
 +-------+------------+---------------------------------------------------------------+
 
 
-2.1.5. VWR: Relative Wind Speed & Angle
-""""""""""""""""""""""""""""""""""""""""
+2.1.1.5. VWR: Relative Wind Speed & Angle
+"""""""""""""""""""""""""""""""""""""""""""
 
 **Message Format**::
 
@@ -194,10 +213,164 @@ The default port is 19551 for input messages and 19550 for output messages.
 | 9     | hh         | Checksum                                                      |
 +-------+------------+---------------------------------------------------------------+
 
+2.1.2 External Position Aiding
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To enable external NMEA0183 GNSS input through serial set ``NM0183_GPS_EXT`` = ``1`` or ``Enabled``
+
+To enable external NMEA0183 GNSS input through UDP set ``NMUDP_GPS_EXT`` = ``1`` or ``Enabled``
+
+To use an external GNSS input, the minimum required messages are GGA, RMC, and GSA at a rate of at least 0.5 Hz.
 
 
-2.1.6. GPSCTRL: GPS Control (ANELLO Proprietary)
-"""""""""""""""""""""""""""""""""""""""""""""""""
+2.1.2.1. RMC: Recommended Minimum Navigation Information
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Message Format**::
+
+    $--RMC,hhmmss.ss,A,xxxx.xx,a,xxxxx.xx,a,x.x,x.x,xxxx,x.x,a*hh
+
++--------+------------+--------------------------------------------------------------------------+
+| Index  | Part       | Description                                                              |
++========+============+==========================================================================+
+| 1      | hhmmss.ss  | Time (UTC)                                                               |
++--------+------------+--------------------------------------------------------------------------+
+| 2      | A          | Status, A = Active, V = Navigation receiver warning                      |
++--------+------------+--------------------------------------------------------------------------+
+| 3      | xxxx.xx    | Latitude                                                                 |
++--------+------------+--------------------------------------------------------------------------+
+| 4      | a          | N or S                                                                   |
++--------+------------+--------------------------------------------------------------------------+
+| 5      | xxxxx.xx   | Longitude                                                                |
++--------+------------+--------------------------------------------------------------------------+
+| 6      | a          | E or W                                                                   |
++--------+------------+--------------------------------------------------------------------------+
+| 7      | x.x        | Speed over ground, knots                                                 |
++--------+------------+--------------------------------------------------------------------------+
+| 8      | x.x        | Track made good, degrees true                                            |
++--------+------------+--------------------------------------------------------------------------+
+| 9      | xxxx       | Date, ddmmyy                                                             |
++--------+------------+--------------------------------------------------------------------------+
+| 10     | x.x        | Magnetic Variation, degrees                                              |
++--------+------------+--------------------------------------------------------------------------+
+| 11     | a          | E or W                                                                   |
++--------+------------+--------------------------------------------------------------------------+
+| 12     | hh         | Checksum                                                                 |
++--------+------------+--------------------------------------------------------------------------+
+
+2.1.2.2. GGA: Global Positioning System Fix Data
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Message Format**::
+
+    $--GGA,hhmmss.ss,llll.ll,a,yyyyy.yy,a,x,xx,x.x,x.x,M,x.x,M,x.x,xxxx*hh
+
++--------+------------+--------------------------------------------------------------------------+
+| Index  | Part       | Description                                                              |
++========+============+==========================================================================+
+| 1      | hhmmss.ss  | Time (UTC)                                                               |
++--------+------------+--------------------------------------------------------------------------+
+| 2      | llll.ll    | Latitude                                                                 |
++--------+------------+--------------------------------------------------------------------------+
+| 3      | a          | N or S                                                                   |
++--------+------------+--------------------------------------------------------------------------+
+| 4      | yyyyy.yy   | Longitude                                                                |
++--------+------------+--------------------------------------------------------------------------+
+| 5      | a          | E or W                                                                   |
++--------+------------+--------------------------------------------------------------------------+
+| 6      | x          | GPS Quality Indicator* *see table below*                                 |
++--------+------------+--------------------------------------------------------------------------+
+| 7      | xx         | Number of satellites in use (00-12)                                      |
++--------+------------+--------------------------------------------------------------------------+
+| 8      | x.x        | Horizontal Dilution of Precision (HDOP)                                  |
++--------+------------+--------------------------------------------------------------------------+
+| 9      | x.x        | Altitude (MSL)                                                           |
++--------+------------+--------------------------------------------------------------------------+
+| 10     | M          | Units of altitude (M=Meters)                                             |
++--------+------------+--------------------------------------------------------------------------+
+| 11     | x.x        | Geoidal separation                                                       |
++--------+------------+--------------------------------------------------------------------------+
+| 12     | M          | Units of geoidal separation (M=Meters)                                   |
++--------+------------+--------------------------------------------------------------------------+
+| 13     | x.x        | Age of differential data (seconds)                                       |
++--------+------------+--------------------------------------------------------------------------+
+| 14     | xxxx       | Differential Reference Station ID (0000-1023)                            |
++--------+------------+--------------------------------------------------------------------------+
+| 15     | hh         | Checksum                                                                 |
++--------+------------+--------------------------------------------------------------------------+
+
+**GPS Quality Indicator**
+
++-------+------------------------------------------------------------------+
+| Value | Description                                                      |
++=======+==================================================================+
+| 0     | Fix not available or invalid                                     |
++-------+------------------------------------------------------------------+
+| 1     | GPS fix (no corrections)                                         |
++-------+------------------------------------------------------------------+
+| 2     | Differential GPS fix                                             |
++-------+------------------------------------------------------------------+
+| 4     | RTK Fixed                                                        |
++-------+------------------------------------------------------------------+
+| 5     | RTK Float                                                        |
++-------+------------------------------------------------------------------+
+| 6     | Dead reckoning mode (GPS is determined to be jammed or spoofed)  |
++-------+------------------------------------------------------------------+
+
+
+2.1.2.3. GSA: GNSS DOP and Active Satellites
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Message Format**::
+
+    $--GSA,a,x,xx,xx,xx,xx,xx,xx,xx,xx,xx,xx,xx,xx,xx,x.x,x.x,x.x*hh
+
++--------+------------+--------------------------------------------------------------------------+
+| Index  | Part       | Description                                                              |
++========+============+==========================================================================+
+| 1      | a          | Mode 1: M = Manual, A = Automatic                                        |
++--------+------------+--------------------------------------------------------------------------+
+| 2      | x          | Mode 2: Fix Type (1 = No Fix, 2 = 2D Fix, 3 = 3D Fix)                    |
++--------+------------+--------------------------------------------------------------------------+
+| 3      | xx         | Satellite ID used for fix (PRN #1)                                       |
++--------+------------+--------------------------------------------------------------------------+
+| 4      | xx         | Satellite ID used for fix (PRN #2)                                       |
++--------+------------+--------------------------------------------------------------------------+
+| 5      | xx         | Satellite ID used for fix (PRN #3)                                       |
++--------+------------+--------------------------------------------------------------------------+
+| 6      | xx         | Satellite ID used for fix (PRN #4)                                       |
++--------+------------+--------------------------------------------------------------------------+
+| 7      | xx         | Satellite ID used for fix (PRN #5)                                       |
++--------+------------+--------------------------------------------------------------------------+
+| 8      | xx         | Satellite ID used for fix (PRN #6)                                       |
++--------+------------+--------------------------------------------------------------------------+
+| 9      | xx         | Satellite ID used for fix (PRN #7)                                       |
++--------+------------+--------------------------------------------------------------------------+
+| 10     | xx         | Satellite ID used for fix (PRN #8)                                       |
++--------+------------+--------------------------------------------------------------------------+
+| 11     | xx         | Satellite ID used for fix (PRN #9)                                       |
++--------+------------+--------------------------------------------------------------------------+
+| 12     | xx         | Satellite ID used for fix (PRN #10)                                      |
++--------+------------+--------------------------------------------------------------------------+
+| 13     | xx         | Satellite ID used for fix (PRN #11)                                      |
++--------+------------+--------------------------------------------------------------------------+
+| 14     | xx         | Satellite ID used for fix (PRN #12)                                      |
++--------+------------+--------------------------------------------------------------------------+
+| 15     | x.x        | PDOP (Position Dilution of Precision)                                    |
++--------+------------+--------------------------------------------------------------------------+
+| 16     | x.x        | HDOP (Horizontal Dilution of Precision)                                  |
++--------+------------+--------------------------------------------------------------------------+
+| 17     | x.x        | VDOP (Vertical Dilution of Precision)                                    |
++--------+------------+--------------------------------------------------------------------------+
+| 18     | hh         | Checksum                                                                 |
++--------+------------+--------------------------------------------------------------------------+
+
+
+2.1.3 ANELLO Proprietary
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+2.1.3.1. GPSCTRL: GPS Control (ANELLO Proprietary)
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Enables or disables GPS utilization in sensor fusion algorithm.
 
@@ -213,7 +386,7 @@ Enables or disables GPS utilization in sensor fusion algorithm.
 | 2     | hh         | Checksum                                                      |
 +-------+------------+---------------------------------------------------------------+
 
-2.1.7. AUTOCAL: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
+2.1.3.2. AUTOCAL: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 This message starts/stops the Maritime INS speed sensor auto-calibration routine (e.g., for water-speed aiding sensors). The default state is 0 (not in auto-calibration mode).
@@ -240,7 +413,7 @@ Recommended data collection procedure (while x = 1)
 - When complete, send ``$PAPAUTOCAL,0*hh`` to exit auto-calibration mode.
 
 
-2.1.8. PAPPOS: Auxiliary Position (Lat/Lon/Alt) (ANELLO Proprietary) 
+2.1.3.3. PAPPOS: Auxiliary Position (Lat/Lon/Alt) (ANELLO Proprietary) 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 This message can be used to pass in an external position, either from user input or an external aiding source such as visual waypoint detection, USBL acoustic positioning, star tracker, or an M Code receiver.
 
@@ -265,7 +438,7 @@ This message can be used to pass in an external position, either from user input
 | 6     | hh         | NMEA checksum (hex)                                           |
 +-------+------------+---------------------------------------------------------------+
 
-2.1.9. PAPRPH:Roll/Pitch/Heading (with Accuracies) (ANELLO Proprietary) 
+2.1.3.4. PAPRPH:Roll/Pitch/Heading (with Accuracies) (ANELLO Proprietary) 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 This message can be used to pass in an external heading, either from user input or an external aiding source such as a well-calibrated magnetometer, star tracker, or an M Code receiver. *Currently only external heading aiding is implemented, and roll/pitch aiding are available upon request.*
@@ -294,6 +467,9 @@ This message can be used to pass in an external heading, either from user input 
 +-------+------------+---------------------------------------------------------------+
 
 
+
+
+
 2.2 NMEA 2000 Input Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The ANELLO Maritime INS also supports the following standard NMEA 2000 input messages, which allow the vehicle to send in external sensor information, e.g. for speed-aiding.
@@ -304,7 +480,7 @@ NMEA 2000 messages.
 
 
 2.2.1 PGN 127488: Engine Parameters, Rapid Update
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides data with a high update rate for a specific engine in a single frame message.
 
@@ -323,7 +499,7 @@ Provides data with a high update rate for a specific engine in a single frame me
 Logged topic: NMEA2000_ENGINE
 
 2.2.2 PGN 127489: Engine Parameters, Dynamic
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides real-time operational data and status for a specific engine, usually broadcast periodically for control or instrumentation.
 
@@ -360,7 +536,7 @@ Provides real-time operational data and status for a specific engine, usually br
 Logged topic: NMEA2000_ENGINE_DYN
 
 2.2.3 PGN 128259: Speed, Water Referenced
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides a single transmission describing the motion of a vessel relative to the water.
 
@@ -381,7 +557,7 @@ Provides a single transmission describing the motion of a vessel relative to the
 Logged topic: NMEA2000_SPEED
 
 2.2.4 PGN 128275: Distance Log
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Cumulative voyage distance traveled since last reset, tagged with time and date.
 
@@ -400,7 +576,7 @@ Cumulative voyage distance traveled since last reset, tagged with time and date.
 Logged topic: NMEA2000_DISTANCE
 
 2.2.5 PGN 130311: Environmental Parameters
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 These values provide weather and ambient condition data, often used for sensor calibration, navigation adjustments, and environmental awareness.
 
@@ -423,7 +599,7 @@ These values provide weather and ambient condition data, often used for sensor c
 Logged topic: NMEA2000_ENVIRONMENT
 
 2.2.6 PGN 130578: Vessel Speed Components
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Accurately describes the speed of a vessel by component vectors.
 
@@ -446,7 +622,7 @@ Accurately describes the speed of a vessel by component vectors.
 Logged topic: NMEA2000_VESSEL_SPEED
 
 2.2.7 PGN 65281: GPS Control
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ANELLO proprietary message used to enable or disable the GPS through the NMEA2000 interface.
 
@@ -462,7 +638,7 @@ Logged topic: NMEA2000_GPSCTRL
 
 
 2.2.8 PGN 65282: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ANELLO proprietary NMEA 2000 message used to start/stop the speed sensor auto-calibration routine. The default state is 0 (not in auto-calibration mode).
 
@@ -483,7 +659,7 @@ Recommended data collection procedure (while Auto-calibration Control = 1)
 Logged topic: NMEA2000_AUTOCAL_WATERSPEED
 
 2.2.9 PGN 127493: Transmission Parameters, Dynamic
-"""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides real-time operational data and status for a specific transmission, typically broadcast periodically for monitoring and instrumentation.
 
@@ -524,7 +700,7 @@ Logged topic: NMEA2000_TRANSMISSION
 
 
 2.2.10 PGN 130816: Auxiliary Position (ANELLO Proprietary)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Auxiliary GPS / GNSS position information input
 
@@ -545,7 +721,7 @@ Auxiliary GPS / GNSS position information input
 Logged topic: NMEA2000_POS
 
 2.2.11 PGN 130817: Auxiliary Attitude (ANELLO Proprietary)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Auxiliary roll, pitch, and heading information along with accuracy estimates
 
@@ -579,6 +755,9 @@ for instructions on changing settings):
 * ``NM0183_SER_CFG`` = ``101`` (RS232-1) **or** ``102`` (RS232-2)
 * ``NM0183_ODR_GGA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NM0183_ODR_APIMU`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NM0183_ODR_APINS`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+
 
 The default baud rate is ``38400``. To change the baud rate use
 ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
@@ -587,14 +766,37 @@ To configure NMEA 0183 over UDP, update the following configs (see
 `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 for instructions on changing settings):
 
-* ``NMEA_UDP_EN`` = ``1``
-* ``NMEA_UDP_ODR_GGA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
-* ``NMEA_UDP_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NMUDP_EN`` = ``1``
+* ``NMUDP_ODR_GGA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NMUDP_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NMUDP_ODR_APIMU`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NMUDP_ODR_APINS`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 
 The default output port is 19550 and input port is 19551
 
+The multicast IP for NMEA0183 UDP messaging can be set with the following 4 parameters:
+
++-------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| Parameter         | Units | Default | Description                                                                                  |
++===================+=======+=========+==============================================================================================+
+| **NMUDP_MC_IP0**  | byte  | 0       | Multicast IPv4 address octet 0 (most significant byte). Forms the first field of the         |
+|                   |       |         | dotted-decimal multicast address (e.g. ``224.x.x.x``).                                       |
++-------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **NMUDP_MC_IP1**  | byte  | 0       | Multicast IPv4 address octet 1. Forms the second field of the dotted-decimal multicast       |
+|                   |       |         | address (e.g. ``224.1.x.x``).                                                                |
++-------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **NMUDP_MC_IP2**  | byte  | 0       | Multicast IPv4 address octet 2. Forms the third field of the dotted-decimal multicast        |
+|                   |       |         | address (e.g. ``224.1.1.x``).                                                                |
++-------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **NMUDP_MC_IP3**  | byte  | 0       | Multicast IPv4 address octet 3 (least significant byte). Forms the fourth field of the       |
+|                   |       |         | dotted-decimal multicast address (e.g. ``224.1.1.1``).                                       |
++-------------------+-------+---------+----------------------------------------------------------------------------------------------+
+
+
+
+
 3.1.1 RMC: Recommended Minimum Navigation Information
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
 
@@ -629,7 +831,7 @@ The default output port is 19550 and input port is 19551
 +--------+------------+--------------------------------------------------------------------------+
 
 3.1.2 GGA: Global Positioning System Fix Data
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
 
@@ -648,7 +850,7 @@ The default output port is 19550 and input port is 19551
 +--------+------------+--------------------------------------------------------------------------+
 | 5      | a          | E or W                                                                   |
 +--------+------------+--------------------------------------------------------------------------+
-| 6      | x          | GPS Quality Indicator (0=Invalid; 1=GPS fix; 2=DGPS fix)                 |
+| 6      | x          | GPS Quality Indicator* *see table below*                                 |
 +--------+------------+--------------------------------------------------------------------------+
 | 7      | xx         | Number of satellites in use (00-12)                                      |
 +--------+------------+--------------------------------------------------------------------------+
@@ -669,8 +871,26 @@ The default output port is 19550 and input port is 19551
 | 15     | hh         | Checksum                                                                 |
 +--------+------------+--------------------------------------------------------------------------+
 
-3.1.3 APIMU: Proprietary IMU Output -- *coming soon*
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+**GPS Quality Indicator**
+
++-------+------------------------------------------------------------------+
+| Value | Description                                                      |
++=======+==================================================================+
+| 0     | Fix not available or invalid                                     |
++-------+------------------------------------------------------------------+
+| 1     | GPS fix (no corrections)                                         |
++-------+------------------------------------------------------------------+
+| 2     | Differential GPS fix                                             |
++-------+------------------------------------------------------------------+
+| 4     | RTK Fixed                                                        |
++-------+------------------------------------------------------------------+
+| 5     | RTK Float                                                        |
++-------+------------------------------------------------------------------+
+| 6     | Dead reckoning mode (GPS is determined to be jammed or spoofed)  |
++-------+------------------------------------------------------------------+
+
+3.1.3 APIMU: Proprietary IMU Output
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
 
@@ -724,8 +944,8 @@ The default output port is 19550 and input port is 19551
 |       |          |       | error                                                                    |
 +-------+----------+-------+--------------------------------------------------------------------------+
 
-3.1.4 APINS: Proprietary Navigation Output -- *coming soon*
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+3.1.4 APINS: Proprietary Navigation Output
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
 
@@ -786,7 +1006,7 @@ Each published PGN has an associated output data rate parameter (for example,
 range ``0``–``100``; setting a rate to ``0`` disables that PGN.
 
 3.2.1 PGN 129025: Position, Rapid Update
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 High-speed update of vessel latitude/longitude position.
 
@@ -800,7 +1020,7 @@ High-speed update of vessel latitude/longitude position.
 
 
 3.2.2 PGN 129026: COG & SOG, Rapid Update
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Rapid update of Course Over Ground (COG) and Speed Over Ground (SOG).
 
@@ -818,7 +1038,7 @@ Rapid update of Course Over Ground (COG) and Speed Over Ground (SOG).
 
 
 3.2.3 PGN 129029: GNSS Position Data
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Complete GNSS navigation solution including position, quality, and DOP.
 
@@ -891,7 +1111,7 @@ Complete GNSS navigation solution including position, quality, and DOP.
 
 
 3.2.4 PGN 127250: Vessel Heading
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides vessel heading and related status.
 
@@ -911,7 +1131,7 @@ Provides vessel heading and related status.
 
 
 3.2.5 PGN 127251: Rate of Turn
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides vessel rate of turn information.
 
@@ -925,7 +1145,7 @@ Provides vessel rate of turn information.
 
 
 3.2.6 PGN 127257: Attitude
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides vessel orientation (roll, pitch, yaw).
 
@@ -943,7 +1163,7 @@ Provides vessel orientation (roll, pitch, yaw).
 
 
 3.2.7 PGN 126992: System Time
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides system time for network synchronization.
 
