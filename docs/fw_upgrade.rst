@@ -17,7 +17,7 @@ If you experience any errors during the process, please power cycle the unit and
 
 1. Connect RS-232-1 to computer.
 2. Download ANELLO-provided FW image onto your local computer
-3. Open device manager, and find which COM port is the serial connection.
+3. Open device manager, and find which serial port is the serial connection.
 4. In terminal:
 
 .. code-block:: python
@@ -25,7 +25,7 @@ If you experience any errors during the process, please power cycle the unit and
     
         # cd into folder with anello_fw_uploader.py
         python anello_fw_uploader.py --port COM5 --baud-bootloader 115200 /Users/user1/Downloads/anello_maritime_default.anello
-        # Change "COM5" to match your port that the Maritime INS is plugged into
+        # Change "COM5" to match your port that the Maritime INS is plugged into (e.g. "COM23" on Windows or "/dev/ttyUSB0" on Linux)
         # Change "/Users/user1/Downloads/anello_maritime_default.anello" to the path to the ANELLO-provided FW image (.anello file) on your local computer
 
 8. After it completes, you will see "Rebooting. Elapsed Time x.x" - this means the FW upgrade was successful
@@ -34,4 +34,3 @@ If you experience any errors during the process, please power cycle the unit and
    :width: 80%
    :align: center
 
-*For support upgrading firmware with Linux, contact info@anellophotonics.com*
