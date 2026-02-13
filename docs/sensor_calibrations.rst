@@ -5,9 +5,9 @@ Sensor Calibrations
 Speed Sensor Calibration
 ---------------------------------
 
-The ANELLO Maritime INS uses paddle wheel input as a speed aiding source. Paddle wheels typically have a speed-dependent scale factor which needs to be accounted for, and this can vary from boat-to-boat.  
+The ANELLO Maritime INS uses input from paddle wheels, ultrasonic sensors, or doppler velocity logs as a speed aiding source. These sensors typically have a speed-dependent scale factor which needs to be accounted for, and this can vary from boat-to-boat.  
 
-Each time the ANELLO Maritime INS is installed on a new boat model, the boat’s paddle wheel needs to be calibrated relative to the boat’s motor percentage. To calibrate the paddle wheel: 
+Each time the ANELLO Maritime INS is installed on a new boat model, the boat’s speed sensor needs to be calibrated relative to the boat’s motor percentage. To calibrate the speed sensor: 
 
 1. Launch boat into water with as little currents as possible 
 
@@ -29,13 +29,13 @@ Each time the ANELLO Maritime INS is installed on a new boat model, the boat’s
 6. For any questions or assistance with the calibration procedure, please download the logs from the ANELLO Maritime INS (using the instructions under `Data Collection and Visualization <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#data-collection-visualization>`__ ) and send to ANELLO along with your inquiry. 
  
 
-**Re-calibration of the paddle wheel is necessary if any of the following conditions are met:** 
+**Re-calibration of the speed sensor is necessary if any of the following conditions are met:** 
 
 * The boat type/model is changed. 
 
-* The location of the paddle wheel is changed. 
+* The location of the speed sensor is changed. 
 
-* The paddle wheel type/model is changed. 
+* The speed sensor type/model is changed. 
 
 * The motor type/model is changed. 
 
