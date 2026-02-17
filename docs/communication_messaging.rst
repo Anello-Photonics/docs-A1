@@ -227,7 +227,7 @@ To use an external GNSS input, the minimum required messages are GGA, RMC, and G
 
 **Message Format**::
 
-    $--RMC,hhmmss.ss,A,ddmm.mmmmm,a,dddmm.mmmm,a,x.x,x.x,xxxx,x.x,a*hh
+    $--RMC,hhmmss.ss,A,ddmm.mmmm,a,dddmm.mmmm,a,x.x,x.x,xxxx,x.x,a*hh
 
 +--------+------------+--------------------------------------------------------------------------+
 | Index  | Part       | Description                                                              |
@@ -800,7 +800,7 @@ The multicast IP for NMEA0183 UDP messaging can be set with the following 4 para
 
 **Message Format**::
 
-    $--RMC,hhmmss.ss,A,ddmm.mmmmm,a,dddmm.mmmm,a,x.x,x.x,xxxx,x.x,a*hh
+    $--RMC,hhmmss.ss,A,ddmm.mmmm,a,dddmm.mmmm,a,x.x,x.x,xxxx,x.x,a*hh
 
 +--------+------------+--------------------------------------------------------------------------+
 | Index  | Part       | Description                                                              |
