@@ -839,7 +839,7 @@ The multicast IP for NMEA0183 UDP messaging can be set with the following 4 para
 +--------+-------------+--------------------------------------------------------------------------+
 | 7      | x.x         | Speed over ground, knots                                                 |
 +--------+-------------+--------------------------------------------------------------------------+
-| 8      | x.x         | INS Heading, degrees                                                     |
+| 8      | x.x         | INS Heading, degrees (range from -180 to 180)                            |
 +--------+-------------+--------------------------------------------------------------------------+
 | 9      | xxxx        | Date, ddmmyy                                                             |
 +--------+-------------+--------------------------------------------------------------------------+
@@ -851,7 +851,7 @@ The multicast IP for NMEA0183 UDP messaging can be set with the following 4 para
 +--------+-------------+--------------------------------------------------------------------------+
 
 ..note::
-    Fields 2 and 8 differ from NMEA0183 standard
+    Fields 2 and 8 differ from NMEA0183 standard for RMC output
 
 3.1.2. GGA: Global Positioning System Fix Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1007,11 +1007,11 @@ The multicast IP for NMEA0183 UDP messaging can be set with the following 4 para
 +-------+----------+-------+--------------------------------------------------------------------------+
 | 9     | VD       | m/s   | Down Velocity in NED Frame                                               |
 +-------+----------+-------+--------------------------------------------------------------------------+
-| 10    | Roll     | deg   | Roll Angle, rotation about body frame X                                  |
+| 10    | Roll     | deg   | Roll Angle, rotation about body frame X (range from -90 to 90)           |
 +-------+----------+-------+--------------------------------------------------------------------------+
-| 11    | Pitch    | deg   | Pitch Angle, rotation about body frame Y                                 |
+| 11    | Pitch    | deg   | Pitch Angle, rotation about body frame Y (range from -180 to 180)        |
 +-------+----------+-------+--------------------------------------------------------------------------+
-| 12    | Heading  | deg   | Heading Angle, rotation about body frame Z                               |
+| 12    | Heading  | deg   | Heading Angle, rotation about body frame Z (range from -180 to 180)      |
 +-------+----------+-------+--------------------------------------------------------------------------+
 | 13    | ZUPT     |       | 0: Moving, 1: Stationary                                                 |
 +-------+----------+-------+--------------------------------------------------------------------------+
