@@ -850,7 +850,7 @@ The multicast IP for NMEA0183 UDP messaging can be set with the following 4 para
 | 12     | hh          | Checksum                                                                 |
 +--------+-------------+--------------------------------------------------------------------------+
 
-..note::
+.. note::
     Fields 2 and 8 differ from NMEA0183 standard for RMC output
 
 3.1.2. GGA: Global Positioning System Fix Data
