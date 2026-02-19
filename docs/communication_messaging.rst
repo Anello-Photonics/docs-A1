@@ -228,15 +228,15 @@ To use an external GNSS input, the minimum required messages are GGA, RMC, and G
 +==================+==============+===============================================================+
 | EKF2_PRIME_GPS   | Internal (0) | Preferred GPS receiver when all are reported healthy          |
 +------------------+--------------+---------------------------------------------------------------+
-| EKF2_GPS_DS_MODE | Off (0)      |Used for GNSS spoofing detection.                              | 
-|                  |              |If horizontal disagreement exceeds EKF2_GPS_DIS_HOR:           |
-|                  |              | - trust internal: prefer base / rover                         |
-|                  |              | - trust external: prefer external receiver                    |
-|                  |              | - trust neither: reject GPS aiding for that update cycle      |
+| EKF2_GPS_DS_MODE | Off (0)      | Used for GNSS spoofing detection.                             | 
+|                  |              | If horizontal disagreement exceeds EKF2_GPS_DIS_HOR:          |
+|                  |              |  - trust internal: prefer base / rover                        |
+|                  |              |  - trust external: prefer external receiver                   |
+|                  |              |  - trust neither: reject GPS aiding for that update cycle     |
 +------------------+--------------+---------------------------------------------------------------+
-| EKF2_GPS_DIS_HOR | 100 meters   |GPS receivers are considered in disagreement if their          |
-|                  |              |horizontal position differs from the selected reciever by more |
-|                  |              |than this value                                                |
+| EKF2_GPS_DIS_HOR | 100 meters   | GPS receivers are considered in disagreement if their         |
+|                  |              | horizontal position differs from the selected reciever by more|
+|                  |              | than this value                                               |
 +------------------+--------------+---------------------------------------------------------------+
 
 *see* `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
