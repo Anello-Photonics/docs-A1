@@ -221,6 +221,26 @@ To enable external NMEA0183 GNSS input through UDP set ``NMUDP_GPS_EXT`` = ``1``
 
 To use an external GNSS input, the minimum required messages are GGA, RMC, and GSA at a rate of at least 0.5 Hz.
 
+**Advanced Options for External GNSS**
+
++------------------+--------------+---------------------------------------------------------------+
+| Parameter        | Default      | Description                                                   |
++==================+==============+===============================================================+
+| EKF2_PRIME_GPS   | Internal (0) | Preferred GPS receiver when all are reported healthy          |
++------------------+--------------+---------------------------------------------------------------+
+| EKF2_GPS_DS_MODE | Off (0)      |Used for GNSS spoofing detection.                              | 
+|                  |              |If horizontal disagreement exceeds EKF2_GPS_DIS_HOR:           |
+|                  |              | - trust internal: prefer base / rover                         |
+|                  |              | - trust external: prefer external receiver                    |
+|                  |              | - trust neither: reject GPS aiding for that update cycle      |
++------------------+--------------+---------------------------------------------------------------+
+| EKF2_GPS_DIS_HOR | 100 meters   |GPS receivers are considered in disagreement if their          |
+|                  |              |horizontal position differs from the selected reciever by more |
+|                  |              |than this value                                                |
++------------------+--------------+---------------------------------------------------------------+
+
+*see* `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
+*for instructions on changing settings*
 
 2.1.2.1. RMC: Recommended Minimum Navigation Information
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
