@@ -230,9 +230,9 @@ To use an external GNSS input, the minimum required messages are GGA, RMC, and G
 +------------------+--------------+---------------------------------------------------------------+
 | EKF2_GPS_DS_MODE | Off (0)      | Used for GNSS spoofing detection.                             | 
 |                  |              | If horizontal disagreement exceeds EKF2_GPS_DIS_HOR:          |
-|                  |              |  - trust internal: prefer base / rover                        |
-|                  |              |  - trust external: prefer external receiver                   |
-|                  |              |  - trust neither: reject GPS aiding for that update cycle     |
+|                  |              | - trust internal: prefer base / rover                         |
+|                  |              | - trust external: prefer external receiver                    |
+|                  |              | - trust neither: reject GPS aiding for that update cycle      |
 +------------------+--------------+---------------------------------------------------------------+
 | EKF2_GPS_DIS_HOR | 100 meters   | GPS receivers are considered in disagreement if their         |
 |                  |              | horizontal position differs from the selected reciever by more|
