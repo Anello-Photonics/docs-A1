@@ -101,47 +101,47 @@ The INS center is the center of the Maritime INS unit.
 Distances are measured in meters from the IMU center to the respective antenna phase center.
 
 
-+---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| Parameter           | Units | Default | Description                                                                             |
-+=====================+=======+=========+=========================================================================================+
-| **GPS_SEP_BASE_X**  | m     | 0       | X offset from INS center to Base antenna (ANT1).                                        |
-+---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **GPS_SEP_BASE_Y**  | m     | 0       | Y offset from INS center to Base antenna (ANT1).                                        |
-+---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **GPS_SEP_BASE_Z**  | m     | 0       | Z offset from INS center to Base antenna (ANT1).                                        |
-+---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **GPS_SEP_ROVER_X** | m     | 0       | X offset from INS center to Rover antenna (ANT2).                                       |
-+---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **GPS_SEP_ROVER_Y** | m     | 0       | Y offset from INS center to Rover antenna (ANT2).                                       |
-+---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **GPS_SEP_ROVER_Z** | m     | 0       | Z offset from INS center to Rover antenna (ANT2).                                       |
-+---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_X**  | m     | 0       | X offset from center of boat to INS center.                                             |
-+---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_Y**  | m     | 0       | Y offset from center of boat to INS center.                                             |
-+---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_Z**  | m     | 0       | Z offset from center of boat to INS center.                                             |
-+---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **SENS_BOARD_ROT**  | enum  | 0       | INS mounting orientation. Set this if unit is not mounted with X-forward.               |
-|                     |       |         |                                                                                         |
-|                     |       |         | *Common values:*                                                                        |
-|                     |       |         |   - **No Rotation**: Unit mounted upright with X pointing in vehicle forward            |
-|                     |       |         |   - **Yaw 90°**: Unit mounted upright with X pointing in vehicle right                  |
-|                     |       |         |   - **Yaw 180°**: Unit mounted upright with X pointing in vehicle back                  |
-|                     |       |         |   - **Yaw 270°**: Unit mounted upright with X pointing in vehicle left                  |
-|                     |       |         |   - **Roll 180°**: Unit mounted upside down with X pointing in vehicle forward          |
-|                     |       |         |   - **Roll 180°, Yaw 90°**: Unit mounted upside down with X pointing in vehicle right   |
-|                     |       |         |   - **Roll 180°, Yaw 180°**: Unit mounted upside down with X pointing in vehicle back   |
-|                     |       |         |   - **Roll 180°, Yaw 270°**: Unit mounted upside down with X pointing in vehicle left   |
-|                     |       |         |                                                                                         |
-|                     |       |         | Will be presented as a drop-down menu in AMarinerControl.                               |
-+---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **GPS_EXT_X**       | m     | 0       | X offset from INS center to external GPS receiver's antenna.                            |
-+---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **GPS_EXT_Y**       | m     | 0       | Y offset from INS center to external GPS receiver's antenna.                            |
-+---------------------+-------+---------+-----------------------------------------------------------------------------------------+
-| **GPS_EXT_Z**       | m     | 0       | Z offset from INS center to external GPS receiver's antenna.                            |
-+---------------------+-------+---------+-----------------------------------------------------------------------------------------+
++---------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| Parameter           | Units | Default | Description                                                                                  |
++=====================+=======+=========+==============================================================================================+
+| **GPS_SEP_BASE_X**  | m     | 0       | X offset from INS center to Base antenna (ANT1).                                             |
++---------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **GPS_SEP_BASE_Y**  | m     | 0       | Y offset from INS center to Base antenna (ANT1).                                             |
++---------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **GPS_SEP_BASE_Z**  | m     | 0       | Z offset from INS center to Base antenna (ANT1).                                             |
++---------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **GPS_SEP_ROVER_X** | m     | 0       | X offset from INS center to Rover antenna (ANT2).                                            |
++---------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **GPS_SEP_ROVER_Y** | m     | 0       | Y offset from INS center to Rover antenna (ANT2).                                            |
++---------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **GPS_SEP_ROVER_Z** | m     | 0       | Z offset from INS center to Rover antenna (ANT2).                                            |
++---------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **EKF2_IMU_POS_X**  | m     | 0       | X offset from center of boat to INS center.                                                  |
++---------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **EKF2_IMU_POS_Y**  | m     | 0       | Y offset from center of boat to INS center.                                                  |
++---------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **EKF2_IMU_POS_Z**  | m     | 0       | Z offset from center of boat to INS center.                                                  |
++---------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **SENS_BOARD_ROT**  | enum  | 0       | INS mounting orientation. Set this if unit is not mounted with X-forward.                    |
+|                     |       |         |                                                                                              |
+|                     |       |         | *Common values:*                                                                             |
+|                     |       |         |   - **No Rotation**: Unit mounted upright with X pointing towards vessel bow                 |
+|                     |       |         |   - **Yaw 90°**: Unit mounted upright with X pointing towards vessel starboard               |
+|                     |       |         |   - **Yaw 180°**: Unit mounted upright with X pointing towards vessel stern                  |
+|                     |       |         |   - **Yaw 270°**: Unit mounted upright with X pointing towards vessel port                   |
+|                     |       |         |   - **Roll 180°**: Unit mounted upside down with X pointing towards vessel bow               |
+|                     |       |         |   - **Roll 180°, Yaw 90°**: Unit mounted upside down with X pointing towards vessel starboard|
+|                     |       |         |   - **Roll 180°, Yaw 180°**: Unit mounted upside down with X pointing towards vessel stern   |
+|                     |       |         |   - **Roll 180°, Yaw 270°**: Unit mounted upside down with X pointing towards vessel port    |
+|                     |       |         |                                                                                              |
+|                     |       |         | Will be presented as a drop-down menu in AMarinerControl.                                    |
++---------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **GPS_EXT_X**       | m     | 0       | X offset from INS center to external GPS receiver's antenna.                                 |
++---------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **GPS_EXT_Y**       | m     | 0       | Y offset from INS center to external GPS receiver's antenna.                                 |
++---------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **GPS_EXT_Z**       | m     | 0       | Z offset from INS center to external GPS receiver's antenna.                                 |
++---------------------+-------+---------+----------------------------------------------------------------------------------------------+
 
 Parameters can be changed using :
 
