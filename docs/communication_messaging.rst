@@ -827,7 +827,7 @@ The multicast IP for NMEA0183 UDP messaging can be set with the following 4 para
 +========+=============+==========================================================================+
 | 1      | hhmmss.ss   | Time (UTC)                                                               |
 +--------+-------------+--------------------------------------------------------------------------+
-| 2      | A           | Status, A = Active, V = Navigation receiver warning                      |
+| 2      | A           | Status, A = solution initialized, V = Void, heading not initialized      |
 +--------+-------------+--------------------------------------------------------------------------+
 | 3      | ddmm.mmmmmm | Latitude                                                                 |
 +--------+-------------+--------------------------------------------------------------------------+
@@ -849,6 +849,9 @@ The multicast IP for NMEA0183 UDP messaging can be set with the following 4 para
 +--------+-------------+--------------------------------------------------------------------------+
 | 12     | hh          | Checksum                                                                 |
 +--------+-------------+--------------------------------------------------------------------------+
+
+..note::
+    Fields 2 and 8 differ from NMEA0183 standard
 
 3.1.2. GGA: Global Positioning System Fix Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
