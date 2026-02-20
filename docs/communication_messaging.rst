@@ -15,7 +15,7 @@ The communication interfaces currently supported for the ANELLO Maritime INS:
 
 **Default Baud Rate:**
     * RS-232-1: 57600 
-    * RS-232-2: 921600 (*units shipped previous to 2/19/2026 have a default baud rate of 57600*)
+    * RS-232-2: 921600 *units shipped previous to 2/19/2026 have a default baud rate of 57600*
 
 The maximum supported baud rate for both serial ports is 921600
 
