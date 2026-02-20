@@ -303,4 +303,4 @@ For best GPS-denied navigation results, ANELLO recommends the following initiali
 
 4. Perform your mission. Best performance in GPS-denied conditions is achieved with calibrated speed aiding and at speeds above 2 knots.
 
-*Maritime INS User Manual 93001501 v1.0.0*
+*Maritime INS User Manual 93001501 v1.1.0*
