@@ -35,7 +35,7 @@ The kit includes the following hardware:
 
 Connect with the ANELLO Maritime Control software (AMarinerControl):
 
-1. Install ANELLO's `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/download/v1.0.2/AMarinerControl-Setup.exe>`_ on your Windows computer. For MacOS and Linux support contact support@anellophotonics.com.
+1. Install ANELLO's `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/download/v1.0.3/AMarinerControl-Setup.exe>`_ on your Windows computer. For MacOS and Linux support contact support@anellophotonics.com.
 
 2. Set the Ethernet IP address of the host computer to **192.168.0.2** and subnet mask to **255.255.255.0**.
 
@@ -166,7 +166,7 @@ Units can be configured in AMarinerControl in the Applications Settings menu und
 
 .. note:: If configuring lever arms through Python scripts, the units are always meters by default.
 
-NMEA 2000 Output Rate Parameters
+NMEA 2000 Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To enable the NMEA 2000 driver, ensure the parameter ``NM2K_CFG`` is set to 1. Then, each published PGN has an associated output data rate parameter in the
@@ -175,6 +175,35 @@ To enable the NMEA 2000 driver, ensure the parameter ``NM2K_CFG`` is set to 1. T
 ``0`` and ``100``. Setting a value to ``0`` stops transmission of that PGN; any
 positive value defines the broadcast frequency. Update the rates from
 AMarinerControl's parameter editor or from the command-line interface.
+
++------------------+-----------+--------------------------------------------------------------------------+
+| Parameters       | Default   | Description                                                              |
++==================+===========+==========================================================================+
+| CAN_TERM         | 0         | Enable or disable 120ohm CAN termination. 0 is disable, 1 is enable      |
++------------------+-----------+--------------------------------------------------------------------------+
+| NM2K_126992_RATE | 0         | Message rate for the PGN specified (Time data)                           |
++------------------+-----------+--------------------------------------------------------------------------+
+| NM2K_127250_RATE | 0         | Message rate for the PGN specified (Heading data)                        |
++------------------+-----------+--------------------------------------------------------------------------+
+| NM2K_127251_RATE | 0         | Message rate for the PGN specified (Rate of turn data)                   |
++------------------+-----------+--------------------------------------------------------------------------+
+| NM2K_127257_RATE | 10        | Message rate for the PGN specified (Attitude data)                       |
++------------------+-----------+--------------------------------------------------------------------------+
+| NM2K_129025_RATE | 0         | Message rate for the PGN specified (Latitude and longitude data)         |
++------------------+-----------+--------------------------------------------------------------------------+
+| NM2K_129026_RATE | 0         | Message rate for the PGN specified (Course over ground data)             |
++------------------+-----------+--------------------------------------------------------------------------+
+| NM2K_129029_RATE | 0         | Message rate for the PGN specified (Position data)                       |
++------------------+-----------+--------------------------------------------------------------------------+
+| NM2K_BITRATE     | 250 kbps  | CAN Bitrate                                                              |
++------------------+-----------+--------------------------------------------------------------------------+
+| NM2K_CFG         | 1         | Enable or disable NMEA2000 driver. 0 is disable, 1 is enable             |
++------------------+-----------+--------------------------------------------------------------------------+
+| NM2K_SRC_ADDR    | 254       | Populates the source address field in the NMEA2000 frame                 |
++------------------+-----------+--------------------------------------------------------------------------+
+
+.. note ::
+   Output data rate parameters will only appear in AMarinerControl after the driver is enabled
 
 
 Ethernet Parameters
