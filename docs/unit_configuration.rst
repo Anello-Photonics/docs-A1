@@ -112,7 +112,7 @@ The Ground INS has output data rate constraints when outputting data over RS-232
 maximum ODR is 100 Hz. In ASCII mode, maximum ODR is 50 Hz.
 All other ANELLO units support ODR up to 200 Hz. RTCM message format is recommended for best timing.
 
-Decreasing the baud rate will affect the maximum output data rate. It is recommended to keep the default baud rate (921600 for EVK; 230400 for Ground INS and IMU) enable highest ODR.
+Decreasing the baud rate will affect the maximum output data rate. It is recommended to keep the default baud rate (921600 for EVK; 230400 for Ground INS and IMU; 460800 for X3) enable highest ODR.
 
 The following Output Data rates are supported on the X3 according to baudrate:
 
