@@ -219,9 +219,7 @@ The default port is 19551 for input messages and 19550 for output messages.
 
 2.1.2 External Position Aiding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-To enable external NMEA0183 GNSS input through serial set ``NM0183_GPS_EXT`` = ``1`` or ``Enabled``
-
-To enable external NMEA0183 GNSS input through UDP set ``NMUDP_GPS_EXT`` = ``1`` or ``Enabled``
+To enable external NMEA0183 GNSS input set ``EKF2_GPS_EXT_EN`` = ``1`` or ``Enabled``
 
 To use an external GNSS input, the minimum required messages are GGA, RMC, and GSA at a rate of at least 0.5 Hz.
 
@@ -462,7 +460,7 @@ This message can be used to pass in an external position, either from user input
 | 6     | hh         | NMEA checksum (hex)                                           |
 +-------+------------+---------------------------------------------------------------+
 
-2.1.3.4. PAPRPH:Roll/Pitch/Heading (with Accuracies) (ANELLO Proprietary) 
+2.1.3.4. PAPRPH: Roll/Pitch/Heading (with Accuracies) (ANELLO Proprietary) 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 This message can be used to pass in an external heading, either from user input or an external aiding source such as a well-calibrated magnetometer, star tracker, or an M Code receiver. *Currently only external heading aiding is implemented, and roll/pitch aiding are available upon request.*
