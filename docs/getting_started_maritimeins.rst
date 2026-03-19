@@ -136,12 +136,7 @@ Distances are measured in meters from the IMU center to the respective antenna p
 |                     |       |         |                                                                                              |
 |                     |       |         | Will be presented as a drop-down menu in AMarinerControl.                                    |
 +---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **GPS_EXT_X**       | m     | 0       | X offset from INS center to external GPS receiver's antenna.                                 |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **GPS_EXT_Y**       | m     | 0       | Y offset from INS center to external GPS receiver's antenna.                                 |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **GPS_EXT_Z**       | m     | 0       | Z offset from INS center to external GPS receiver's antenna.                                 |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
+
 
 Parameters can be changed using :
 
@@ -269,6 +264,28 @@ The same logic is already implemented in the ANELLO INS Scripts repository:
 `Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Maritime_INS_CFG.py>`_
 
 Port number configs can be changed directly in AMC.
+
+NMEA0183 over UDP Parameters
+"""""""""""""""""""""""""""""""
+If utilizing NMEA0183 messaging over UDP, the multicast IP for NMEA0183 UDP messaging can be set with the following 4 parameters:
+
++-------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| Parameter         | Units | Default | Description                                                                                  |
++===================+=======+=========+==============================================================================================+
+| **NMUDP_MC_IP0**  | byte  | 0       | Multicast IPv4 address octet 0 (most significant byte). Forms the first field of the         |
+|                   |       |         | dotted-decimal multicast address (e.g. ``224.x.x.x``).                                       |
++-------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **NMUDP_MC_IP1**  | byte  | 0       | Multicast IPv4 address octet 1. Forms the second field of the dotted-decimal multicast       |
+|                   |       |         | address (e.g. ``224.1.x.x``).                                                                |
++-------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **NMUDP_MC_IP2**  | byte  | 0       | Multicast IPv4 address octet 2. Forms the third field of the dotted-decimal multicast        |
+|                   |       |         | address (e.g. ``224.1.1.x``).                                                                |
++-------------------+-------+---------+----------------------------------------------------------------------------------------------+
+| **NMUDP_MC_IP3**  | byte  | 0       | Multicast IPv4 address octet 3 (least significant byte). Forms the fourth field of the       |
+|                   |       |         | dotted-decimal multicast address (e.g. ``224.1.1.1``).                                       |
++-------------------+-------+---------+----------------------------------------------------------------------------------------------+
+
+The default output port is 19550 and input port is 19551
 
 
 CAN Termination
