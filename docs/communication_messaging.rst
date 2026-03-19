@@ -221,6 +221,8 @@ The default port is 19551 for input messages and 19550 for output messages.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To enable external NMEA0183 GNSS input set ``EKF2_GPS_EXT_EN`` = ``1`` or ``Enabled``
 
+To enable a secondary input-only serial port to receive external NMEA0183 GNSS input set ``NM_GNSS_CFG`` = ``1`` (RS232-1) **or** ``2`` (RS232-2)
+
 To use an external GNSS input, the minimum required messages are GGA, RMC, and GSA at a rate of at least 0.5 Hz.
 
 **Advanced Options for External GNSS**
