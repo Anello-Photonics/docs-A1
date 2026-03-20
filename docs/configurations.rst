@@ -242,7 +242,7 @@ If utilizing NMEA0183 messaging over UDP, the multicast IP for NMEA0183 UDP mess
 The default output port is 19550 and input port is 19551.
 
 
-.. _external-position-aiding-parameters
+.. _external-position-aiding-parameters:
 
 External Position Aiding Parameters
 --------------------------------------------
