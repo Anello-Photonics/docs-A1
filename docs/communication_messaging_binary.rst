@@ -45,7 +45,7 @@ in order to keep the serial configuration port free.
     +--------------------+------------------------------------------+---------------------------------------+
 
 UDP communication uses fixed port numbers on the EVK but selectable ports on the external device.
-These ports, along with IP addresses and other UDP settings should be configured (see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_).
+These ports, along with IP addresses and other UDP settings should be configured (see :doc:`configurations`).
 
  .. note:: 
   The "lowest" and "highest" serial ports mentioned above refer to the EVK, which uses an FTDI chip to create 4 virtual COM ports.
@@ -658,7 +658,7 @@ The INS message is the Kalman filter position, velocity, and attitude solution o
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The easiest way to configure the EVK is with the ANELLO Python Program, which saves all changes to non-volatile flash memory. 
-To do this, see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.
+To do this, see :doc:`configurations`.
 
 Alternatively, the EVK can be dynamically configured using the APCFG message. The protocol allows for both temporary (RAM) and permanent setting (FLASH) of configuration parameters.
 
@@ -676,7 +676,7 @@ Alternatively, the EVK can be dynamically configured using the APCFG message. Th
   | 3 | <value>    |  Configuration value, expressed in ASCII                              |
   +---+------------+-----------------------------------------------------------------------+
 
-For more details on configuration parameters and values, see `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_.
+For more details on configuration parameters and values, see :doc:`configurations`.
 
 5.2 APODO Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -689,7 +689,7 @@ This is useful to enable INS initialization in both forward and reverse.
 
 When an APODO message is received with a reverse direction indication, the unit will assume the vehicle is in reverse until a packet is received with a forward direction. 
 The units of the speed in the APODO message is user configurable to m/s (default), mile/hr, km/hr, ft/s 
-(see 'odo' code in `Unit Configurations <https://docs-a1.readthedocs.io/en/latest/unit_configuration.html>`_).
+(see the odometer-related entries on the :doc:`configurations` page).
 
 **#APODO,<dir>,<speed>*checksum**
 

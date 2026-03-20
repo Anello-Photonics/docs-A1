@@ -10,6 +10,7 @@ Equipped with three ANELLO Silicon Photonics Optical Gyroscopes (SiPhOG™), the
 
 
     getting_started_maritimeins
+    configurations
     communication_messaging
     mechanicals
     sensor_calibrations
