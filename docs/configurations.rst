@@ -6,9 +6,12 @@ Use the links below to jump directly to a configuration group.
 
 * :ref:`installation-parameters`
 * :ref:`nmea-2000-parameters`
-* :ref:`ethernet-parameters`
-* :ref:`nmea0183-over-udp-parameters`
 * :ref:`can-termination`
+* :ref:`ethernet-parameters`
+* :ref:`nmea0183-serial-parameters`
+* :ref:`nmea0183-over-udp-parameters`
+* :ref:`external-position-aiding-parameters`
+
 
 .. _installation-parameters:
 
