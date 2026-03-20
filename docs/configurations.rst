@@ -72,7 +72,7 @@ AMarinerControl's parameter editor or from the command-line interface.
 +------------------+-----------+--------------------------------------------------------------------------+
 | Parameters       | Default   | Description                                                              |
 +==================+===========+==========================================================================+
-| CAN_TERM         | 0         | Enable or disable 120ohm CAN termination. 0 is disable, 1 is enable      |
+| NM2K_CFG         | 1         | Enable or disable NMEA2000 driver. 0 is disable, 1 is enable             |
 +------------------+-----------+--------------------------------------------------------------------------+
 | NM2K_126992_RATE | 0         | Message rate for the PGN specified (Time data)                           |
 +------------------+-----------+--------------------------------------------------------------------------+
@@ -90,10 +90,26 @@ AMarinerControl's parameter editor or from the command-line interface.
 +------------------+-----------+--------------------------------------------------------------------------+
 | NM2K_BITRATE     | 250 kbps  | CAN Bitrate                                                              |
 +------------------+-----------+--------------------------------------------------------------------------+
-| NM2K_CFG         | 1         | Enable or disable NMEA2000 driver. 0 is disable, 1 is enable             |
-+------------------+-----------+--------------------------------------------------------------------------+
 | NM2K_SRC_ADDR    | 254       | Populates the source address field in the NMEA2000 frame                 |
 +------------------+-----------+--------------------------------------------------------------------------+
+
+
+.. _can-termination:
+
+CAN Termination
+---------------
+
+The ANELLO Maritime INS supports configurable internal CAN termination.
+
++------------------+---------+-----------------------------------------------------------+
+| Parameter        | Default | Description                                               |
++==================+=========+===========================================================+
+| **CAN_TERM**     | 1       | CAN bus termination setting.                              |
+|                  |         | **0** = No termination resistor.                          |
+|                  |         | **1** = 120 Ω termination resistor enabled.               |
++------------------+---------+-----------------------------------------------------------+
+
+.. note:: Configurable CAN termination supported for production units (P/N 10001301), not for evaluation units (P/N 10001302)
 
 .. _ethernet-parameters:
 
@@ -161,6 +177,34 @@ The same logic is already implemented in the ANELLO INS Scripts repository:
 
 Port number configs can be changed directly in AMC.
 
+.. _nmea0183-serial-parameters:
+
+NMEA0183 Serial Parameters
+----------------------------
+
+Full Parameter list for NMEA0183 messaging over serial
+
++--------------------+---------+--------------------------------------------------------------------------+
+| Parameter          | Default | Description                                                              |
++====================+=========+==========================================================================+
+| NM0183_CFG         | 2       | Configure NMEA0183 serial output. Set to ``1`` for RS232-1 or ``2``      |
+|                    |         | for RS232-2.                                                             |
++--------------------+---------+--------------------------------------------------------------------------+
+| NM0183_GPS_EXT     | 1       | Enable external GPS data output over NMEA0183 serial.                    |
++--------------------+---------+--------------------------------------------------------------------------+
+| NM0183_ODR_APIMU   | 0       | Output data rate for AP IMU messages over NMEA0183 serial (Hz).          |
++--------------------+---------+--------------------------------------------------------------------------+
+| NM0183_ODR_APINS   | 10      | Output data rate for AP INS messages over NMEA0183 serial (Hz).          |
++--------------------+---------+--------------------------------------------------------------------------+
+| NM0183_ODR_GGA     | 0       | Output data rate for GGA messages over NMEA0183 serial (Hz).             |
++--------------------+---------+--------------------------------------------------------------------------+
+| NM0183_ODR_RMC     | 0       | Output data rate for RMC messages over NMEA0183 serial (Hz).             |
++--------------------+---------+--------------------------------------------------------------------------+
+| SER_TEL1_BAUD      | 57600   | Baud rate for RS232-1 when used for NMEA0183 output.                     |
++--------------------+---------+--------------------------------------------------------------------------+
+| SER_TEL2_BAUD      | 921600  | Baud rate for RS232-2 when used for NMEA0183 output.                     |
++--------------------+---------+--------------------------------------------------------------------------+
+
 .. _nmea0183-over-udp-parameters:
 
 NMEA0183 over UDP Parameters
@@ -168,37 +212,61 @@ NMEA0183 over UDP Parameters
 
 If utilizing NMEA0183 messaging over UDP, the multicast IP for NMEA0183 UDP messaging can be set with the following 4 parameters:
 
-+-------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| Parameter         | Units | Default | Description                                                                                  |
-+===================+=======+=========+==============================================================================================+
-| **NMUDP_MC_IP0**  | byte  | 0       | Multicast IPv4 address octet 0 (most significant byte). Forms the first field of the         |
-|                   |       |         | dotted-decimal multicast address (e.g. ``224.x.x.x``).                                       |
-+-------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **NMUDP_MC_IP1**  | byte  | 0       | Multicast IPv4 address octet 1. Forms the second field of the dotted-decimal multicast       |
-|                   |       |         | address (e.g. ``224.1.x.x``).                                                                |
-+-------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **NMUDP_MC_IP2**  | byte  | 0       | Multicast IPv4 address octet 2. Forms the third field of the dotted-decimal multicast        |
-|                   |       |         | address (e.g. ``224.1.1.x``).                                                                |
-+-------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **NMUDP_MC_IP3**  | byte  | 0       | Multicast IPv4 address octet 3 (least significant byte). Forms the fourth field of the       |
-|                   |       |         | dotted-decimal multicast address (e.g. ``224.1.1.1``).                                       |
-+-------------------+-------+---------+----------------------------------------------------------------------------------------------+
++--------------------+---------+--------------------------------------------------------------------------+
+| Parameter          | Default | Description                                                              |
++====================+=========+==========================================================================+
+| NMUDP_EN           | 1       | Enable/disable NMEA0183 over UDP output.                                 |
++--------------------+---------+--------------------------------------------------------------------------+
+| NMUDP_GPS_EXT      | 1       | Enable external GPS data transmission over NMEA0183 over UDP.            |
++--------------------+---------+--------------------------------------------------------------------------+
+| NMUDP_MC_IP0       | 0       | Multicast IP address byte 0 for NMEA0183 over UDP.                       |
++--------------------+---------+--------------------------------------------------------------------------+
+| NMUDP_MC_IP1       | 0       | Multicast IP address byte 1 for NMEA0183 over UDP.                       |
++--------------------+---------+--------------------------------------------------------------------------+
+| NMUDP_MC_IP2       | 0       | Multicast IP address byte 2 for NMEA0183 over UDP.                       |
++--------------------+---------+--------------------------------------------------------------------------+
+| NMUDP_MC_IP3       | 0       | Multicast IP address byte 3 for NMEA0183 over UDP.                       |
++--------------------+---------+--------------------------------------------------------------------------+
+| NMUDP_ODR_APIMU    | 10      | Output data rate for AP IMU messages over NMEA0183 over UDP (Hz).        |
++--------------------+---------+--------------------------------------------------------------------------+
+| NMUDP_ODR_APINS    | 0       | Output data rate for AP INS messages over NMEA0183 over UDP (Hz).        |
++--------------------+---------+--------------------------------------------------------------------------+
+| NMUDP_ODR_GGA      | 0       | Output data rate for GGA messages over NMEA0183 over UDP (Hz).           |
++--------------------+---------+--------------------------------------------------------------------------+
+| NMUDP_ODR_RMC      | 0       | Output data rate for RMC messages over NMEA0183 over UDP (Hz).           |
++--------------------+---------+--------------------------------------------------------------------------+
 
 The default output port is 19550 and input port is 19551.
 
-.. _can-termination:
 
-CAN Termination
----------------
+.. _external-position-aiding-parameters
 
-The ANELLO Maritime INS supports configurable internal CAN termination.
+External Position Aiding Parameters
+--------------------------------------------
 
-+------------------+---------+-----------------------------------------------------------+
-| Parameter        | Default | Description                                               |
-+==================+=========+===========================================================+
-| **CAN_TERM**     | 1       | CAN bus termination setting.                              |
-|                  |         | **0** = No termination resistor.                          |
-|                  |         | **1** = 120 Ω termination resistor enabled.               |
-+------------------+---------+-----------------------------------------------------------+
-
-.. note:: Configurable CAN termination supported for production units (P/N 10001301), not for evaluation units (P/N 10001302)
+Parameters used if receiving an external NMEA0183 GNSS input
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| Parameter          | Units | Default        | Description                                                                                  |
++====================+=======+================+==============================================================================================+
+| EKF2_GPS_EXT_EN    | N/A   | 0              | Enables external NMEA0183 GNSS input.                                                        |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| NM_GNSS_CFG        | N/A   | 0              | Enable a secondary input-only serial port to receive external NMEA0183 GNSS input.           |
+|                    |       |                | Set to ``1`` to use RS232-1 **or** ``2`` for RS232-2.                                        |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| GPS_EXT_X          | m     | 0              | X offset from INS center to external GPS receiver's antenna.                                 |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| GPS_EXT_Y          | m     | 0              | Y offset from INS center to external GPS receiver's antenna.                                 |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| GPS_EXT_Z          | m     | 0              | Z offset from INS center to external GPS receiver's antenna.                                 |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| EKF2_PRIME_GPS     | N/A   | Internal (0)   | Preferred GPS receiver when all are reported healthy.                                        |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| EKF2_GPS_DS_MODE   | N/A   | Off (0)        | Used for GNSS spoofing detection. If horizontal disagreement exceeds                         |
+|                    |       |                | EKF2_GPS_DIS_HOR:                                                                            |
+|                    |       |                | - trust internal: prefer base / rover                                                        |
+|                    |       |                | - trust external: prefer external receiver                                                   |
+|                    |       |                | - trust neither: reject GPS aiding for that update cycle                                     |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| EKF2_GPS_DIS_HOR   | m     | 100            | GPS receivers are considered in disagreement if their horizontal position differs            |
+|                    |       |                | from the selected receiver by more than this value.                                          |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
