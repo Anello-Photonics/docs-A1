@@ -71,8 +71,9 @@ for instructions on changing settings):
 
 ``NM0183_CFG`` = ``1`` (RS232-1) **or** ``2`` (RS232-2)
 
-The default baud rate is ``57600``. To change the baud rate use
-``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
+To change the baud rate use ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
+
+For full table of serial NMEA0183 parameters See :ref:`nmea0183-serial-parameters`
 
 To configure NMEA 0183 over UDP, update the following configs (see
 `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
@@ -81,6 +82,8 @@ for instructions on changing settings):
 ``NMUDP_EN`` = ``1``
 
 The default port is 19551 for input messages and 19550 for output messages.
+
+See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 
 
 2.1.1 External Sensor Aiding
@@ -219,29 +222,13 @@ The default port is 19551 for input messages and 19550 for output messages.
 
 2.1.2 External Position Aiding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-To enable external NMEA0183 GNSS input through serial set ``NM0183_GPS_EXT`` = ``1`` or ``Enabled``
+To enable external NMEA0183 GNSS input set ``EKF2_GPS_EXT_EN`` = ``1`` or ``Enabled``
 
-To enable external NMEA0183 GNSS input through UDP set ``NMUDP_GPS_EXT`` = ``1`` or ``Enabled``
+To enable a secondary input-only serial port to receive external NMEA0183 GNSS input set ``NM_GNSS_CFG`` = ``1`` (RS232-1) **or** ``2`` (RS232-2)
 
 To use an external GNSS input, the minimum required messages are GGA, RMC, and GSA at a rate of at least 0.5 Hz.
 
-**Advanced Options for External GNSS**
-
-+------------------+--------------+---------------------------------------------------------------+
-| Parameter        | Default      | Description                                                   |
-+==================+==============+===============================================================+
-| EKF2_PRIME_GPS   | Internal (0) | Preferred GPS receiver when all are reported healthy          |
-+------------------+--------------+---------------------------------------------------------------+
-| EKF2_GPS_DS_MODE | Off (0)      | Used for GNSS spoofing detection.                             | 
-|                  |              | If horizontal disagreement exceeds EKF2_GPS_DIS_HOR:          |
-|                  |              | - trust internal: prefer base / rover                         |
-|                  |              | - trust external: prefer external receiver                    |
-|                  |              | - trust neither: reject GPS aiding for that update cycle      |
-+------------------+--------------+---------------------------------------------------------------+
-| EKF2_GPS_DIS_HOR | 100 meters   | GPS receivers are considered in disagreement if their         |
-|                  |              | horizontal position differs from the selected reciever by more|
-|                  |              | than this value                                               |
-+------------------+--------------+---------------------------------------------------------------+
+See :ref:'external-position-aiding-parameters' for parameter table to configure external position aiding.
 
 *see* `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 *for instructions on changing settings*
@@ -462,7 +449,7 @@ This message can be used to pass in an external position, either from user input
 | 6     | hh         | NMEA checksum (hex)                                           |
 +-------+------------+---------------------------------------------------------------+
 
-2.1.3.4. PAPRPH:Roll/Pitch/Heading (with Accuracies) (ANELLO Proprietary) 
+2.1.3.4. PAPRPH: Roll/Pitch/Heading (with Accuracies) (ANELLO Proprietary) 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 This message can be used to pass in an external heading, either from user input or an external aiding source such as a well-calibrated magnetometer, star tracker, or an M Code receiver. *Currently only external heading aiding is implemented, and roll/pitch aiding are available upon request.*
@@ -798,26 +785,7 @@ for instructions on changing settings):
 
 The default output port is 19550 and input port is 19551
 
-The multicast IP for NMEA0183 UDP messaging can be set with the following 4 parameters:
-
-+-------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| Parameter         | Units | Default | Description                                                                                  |
-+===================+=======+=========+==============================================================================================+
-| **NMUDP_MC_IP0**  | byte  | 0       | Multicast IPv4 address octet 0 (most significant byte). Forms the first field of the         |
-|                   |       |         | dotted-decimal multicast address (e.g. ``224.x.x.x``).                                       |
-+-------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **NMUDP_MC_IP1**  | byte  | 0       | Multicast IPv4 address octet 1. Forms the second field of the dotted-decimal multicast       |
-|                   |       |         | address (e.g. ``224.1.x.x``).                                                                |
-+-------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **NMUDP_MC_IP2**  | byte  | 0       | Multicast IPv4 address octet 2. Forms the third field of the dotted-decimal multicast        |
-|                   |       |         | address (e.g. ``224.1.1.x``).                                                                |
-+-------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **NMUDP_MC_IP3**  | byte  | 0       | Multicast IPv4 address octet 3 (least significant byte). Forms the fourth field of the       |
-|                   |       |         | dotted-decimal multicast address (e.g. ``224.1.1.1``).                                       |
-+-------------------+-------+---------+----------------------------------------------------------------------------------------------+
-
-
-
+See `NMEA0183 over UDP Parameters <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#nmea0183-over-udp-parameters>`__ for how to set multicast IP
 
 3.1.1. RMC: Recommended Minimum Navigation Information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
