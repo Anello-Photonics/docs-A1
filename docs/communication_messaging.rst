@@ -543,6 +543,11 @@ Provides real-time operational data and status for a specific engine, usually br
 | 13 | Percent Engine Torque    | Current torque output as a percentage of max| %     | 8-bit signed   |
 +----+--------------------------+---------------------------------------------+-------+----------------+
 
+.. note::
+   PX4 passes ``engine_status_1`` and ``engine_status_2`` through unchanged as
+   raw 16-bit values. The firmware does not define or decode per-bit meanings
+   in-tree, so all 16 bits are preserved and none are interpreted.
+
 Logged topic: NMEA2000_ENGINE_DYN
 
 2.2.3 PGN 128259: Speed, Water Referenced
@@ -563,6 +568,11 @@ Provides a single transmission describing the motion of a vessel relative to the
 +---+-----------------------------+----------------------------------------------+------+----------------+
 | 5 | Speed Direction             | Direction of water-referenced speed          |      | 4-bit unsigned |
 +---+-----------------------------+----------------------------------------------+------+----------------+
+
+.. note::
+   PX4 accepts and publishes ``water_reference`` unchanged as a raw 8-bit value
+   and ``direction`` as the raw low 4 bits. The firmware does not validate or
+   remap either field and does not emit PGN 128259 in this driver.
 
 Logged topic: NMEA2000_SPEED
 
@@ -605,6 +615,11 @@ These values provide weather and ambient condition data, often used for sensor c
 +---+------------------------+------------------------------------------+------+----------------+
 | 6 | Atmospheric Pressure   | Barometric pressure                      | Pa   | 16-bit unsigned|
 +---+------------------------+------------------------------------------+------+----------------+
+
+.. note::
+   PX4 accepts and publishes ``temperature_source`` as a raw 6-bit value and
+   ``humidity_source`` as a raw 2-bit value. The firmware does not map either
+   field to named enums in-tree and does not emit PGN 130311 in this driver.
 
 Logged topic: NMEA2000_ENVIRONMENT
 
@@ -705,6 +720,11 @@ Provides real-time operational data and status for a specific transmission, typi
 +-------+-------------+
 | 3     | Reserved    |
 +-------+-------------+
+
+.. note::
+   PX4 passes ``status`` through unchanged as a raw 8-bit value and does not
+   define per-bit meanings in-tree. Only the low 2 bits of the gear byte are
+   decoded into the gear field; the upper 6 bits are treated as reserved.
 
 Logged topic: NMEA2000_TRANSMISSION
 
@@ -924,17 +944,20 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 +-------+----------+-------+--------------------------------------------------------------------------+
 | 15    | TempC    | °C    | Temperature                                                              |
 +-------+----------+-------+--------------------------------------------------------------------------+
-| 16    | Status_X |       | Status based on bits: Bit 0: Gyro discrepancy; Bit 1: Temperature        |
-|       |          |       | uncontrolled; Bit 2: Over current error; Bit 3: SiPhOG supply voltage    |
-|       |          |       | error                                                                    |
+| 16    | Status_X |       | Status based on bits: Bit 0: Gyro discrepancy (implemented, currently     |
+|       |          |       | never set); Bit 1: Temperature uncontrolled (inverse of sensor_flags bit 2);|
+|       |          |       | Bit 2: Over current error (sensor_flags bit 5 OR bit 6); Bit 3: Supply   |
+|       |          |       | voltage error (sensor_flags bit 0); Bits 4-7 unused and remain 0          |
 +-------+----------+-------+--------------------------------------------------------------------------+
-| 17    | Status_Y |       | Status based on bits: Bit 0: Gyro discrepancy; Bit 1: Temperature        |
-|       |          |       | uncontrolled; Bit 2: Over current error; Bit 3: SiPhOG supply voltage    |
-|       |          |       | error                                                                    |
+| 17    | Status_Y |       | Status based on bits: Bit 0: Gyro discrepancy (implemented, currently     |
+|       |          |       | never set); Bit 1: Temperature uncontrolled (inverse of sensor_flags bit 2);|
+|       |          |       | Bit 2: Over current error (sensor_flags bit 5 OR bit 6); Bit 3: Supply   |
+|       |          |       | voltage error (sensor_flags bit 0); Bits 4-7 unused and remain 0          |
 +-------+----------+-------+--------------------------------------------------------------------------+
-| 18    | Status_Z |       | Status based on bits: Bit 0: Gyro discrepancy; Bit 1: Temperature        |
-|       |          |       | uncontrolled; Bit 2: Over current error; Bit 3: SiPhOG supply voltage    |
-|       |          |       | error                                                                    |
+| 18    | Status_Z |       | Status based on bits: Bit 0: Gyro discrepancy (implemented, currently     |
+|       |          |       | never set); Bit 1: Temperature uncontrolled (inverse of sensor_flags bit 2);|
+|       |          |       | Bit 2: Over current error (sensor_flags bit 5 OR bit 6); Bit 3: Supply   |
+|       |          |       | voltage error (sensor_flags bit 0); Bits 4-7 unused and remain 0          |
 +-------+----------+-------+--------------------------------------------------------------------------+
 
 3.1.4 INS: Proprietary Navigation Output
@@ -1027,6 +1050,20 @@ Rapid update of Course Over Ground (COG) and Speed Over Ground (SOG).
 | 4 | SOG            | Speed over ground              | m/s    | 16-bit unsigned|
 +---+----------------+--------------------------------+--------+----------------+
 
+**COG Reference Values (standard NMEA 2000 inference):**
+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | True      |
++-------+-----------+
+| 1     | Magnetic  |
++-------+-----------+
+
+.. note::
+   The firmware emits only ``COG Reference = 0``. The labels above are inferred
+   from the NMEA 2000 standard; they are not named anywhere in this repository.
+
 
 3.2.3 PGN 129029: GNSS Position Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1073,6 +1110,15 @@ Complete GNSS navigation solution including position, quality, and DOP.
 | 18  | Age of DGNSS Corrections| Age of corrections for station #1     | s    | 16-bit signed    |
 +-----+-------------------------+---------------------------------------+------+------------------+
 
+.. note::
+   Current Maritime INS output values are:
+
+   * ``GNSS Type = 0``
+   * ``Integrity = 0``
+   * ``Reference Stations = 1``
+   * ``Reference Station Type = 6``
+   * ``Reference Station ID`` is populated from ``_gnss_data.reference_id``
+
 **Method Field Values (4-bit lookup):**
 
 +------+----------------------------+
@@ -1099,6 +1145,17 @@ Complete GNSS navigation solution including position, quality, and DOP.
 | 15   | Invalid                    |
 +------+----------------------------+
 
+.. note::
+   PX4 remaps Septentrio ``mode_type`` into the NMEA 2000 Method field as
+   follows:
+
+   * ``3 -> 2``
+   * ``5`` or ``8 -> 5``
+   * ``4`` or ``7 -> 4``
+   * ``6`` or ``10 -> 3``
+   * ``6`` is forced when dead reckoning is active or after a previously valid
+     fix is lost
+
 
 
 3.2.4 PGN 127250: Vessel Heading
@@ -1119,6 +1176,20 @@ Provides vessel heading and related status.
 +---+------------------+-----------------------------------+--------+----------------+
 | 5 | Reference        | True/Magnetic                     |        | 2-bit lookup   |
 +---+------------------+-----------------------------------+--------+----------------+
+
+**Reference Values (standard NMEA 2000 inference):**
+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | True      |
++-------+-----------+
+| 1     | Magnetic  |
++-------+-----------+
+
+.. note::
+   The firmware emits only ``Reference = 0``. The labels above are inferred
+   from the NMEA 2000 standard; they are not named anywhere in this repository.
 
 
 3.2.5 PGN 127251: Rate of Turn
@@ -1169,3 +1240,7 @@ Provides system time for network synchronization.
 +---+----------------+-------------------------------------+--------+----------------+
 | 4 | Time           | Seconds since midnight              | s      | 32-bit unsigned|
 +---+----------------+-------------------------------------+--------+----------------+
+
+.. note::
+   The firmware emits only ``Source = 0``. No other time-source value is
+   currently used or named in this repository.
