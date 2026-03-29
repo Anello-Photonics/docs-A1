@@ -10,12 +10,12 @@ The communication interfaces currently supported for the ANELLO Maritime INS:
     2. UDP (Ethernet)
     3. CAN (NMEA 2000)
 
-1.1 Serial communication Parameters
+1.1 Serial Communication Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Default Baud Rate:**
     * RS-232-1: 57600 
-    * RS-232-2: 921600 *units shipped previous to 2/19/2026 have a default baud rate of 57600*
+    * RS-232-2: 921600 *units shipped prior to 2/19/2026 have a default baud rate of 57600*
 
 The maximum supported baud rate for both serial ports is 921600
 
@@ -73,7 +73,7 @@ for instructions on changing settings):
 
 To change the baud rate use ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
 
-For full table of serial NMEA0183 parameters See :ref:`nmea0183-serial-parameters`
+For the full table of serial NMEA0183 parameters, see :ref:`nmea0183-serial-parameters`.
 
 To configure NMEA 0183 over UDP, update the following configs (see
 `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
@@ -157,7 +157,7 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 +-------+------------+---------------------------------------------------------------+
 | 6     | N          | N = Knots                                                     |
 +-------+------------+---------------------------------------------------------------+
-| 7     | x.x        | Kilometers (speed of vessel relative to the water)            |
+| 7     | x.x        | Kilometers per hour (speed of vessel relative to the water)   |
 +-------+------------+---------------------------------------------------------------+
 | 8     | K          | K = Kilometres per hour                                       |
 +-------+------------+---------------------------------------------------------------+
@@ -228,10 +228,9 @@ To enable a secondary input-only serial port to receive external NMEA0183 GNSS i
 
 To use an external GNSS input, the minimum required messages are GGA, RMC, and GSA at a rate of at least 0.5 Hz.
 
-See :ref:'external-position-aiding-parameters' for parameter table to configure external position aiding.
-
-*see* `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
-*for instructions on changing settings*
+See :ref:`external-position-aiding-parameters` for the parameter table used to configure external position aiding.
+See `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
+for instructions on changing settings.
 
 2.1.2.1. RMC: Recommended Minimum Navigation Information
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -288,7 +287,7 @@ See :ref:'external-position-aiding-parameters' for parameter table to configure 
 +--------+-------------+--------------------------------------------------------------------------+
 | 5      | a           | E or W                                                                   |
 +--------+-------------+--------------------------------------------------------------------------+
-| 6      | x           | GPS Quality Indicator* *see table below*                                 |
+| 6      | x           | GPS Quality Indicator (see table below)                                  |
 +--------+-------------+--------------------------------------------------------------------------+
 | 7      | xx          | Number of satellites in use (00-12)                                      |
 +--------+-------------+--------------------------------------------------------------------------+
@@ -770,8 +769,9 @@ for instructions on changing settings):
 * ``NM0183_ODR_APINS`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 
 
-The default baud rate is ``38400``. To change the baud rate use
-``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
+The default baud rate is ``57600`` for RS232-1 and ``921600`` for RS232-2.
+Units shipped prior to 2/19/2026 have a default baud rate of ``57600`` on both ports.
+To change the baud rate use ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
 
 To configure NMEA 0183 over UDP, update the following configs (see
 `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
@@ -785,7 +785,7 @@ for instructions on changing settings):
 
 The default output port is 19550 and input port is 19551
 
-See `NMEA0183 over UDP Parameters <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#nmea0183-over-udp-parameters>`__ for how to set multicast IP
+See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 
 3.1.1. RMC: Recommended Minimum Navigation Information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -845,7 +845,7 @@ See `NMEA0183 over UDP Parameters <https://docs-a1.readthedocs.io/en/maritime_in
 +--------+-------------+--------------------------------------------------------------------------+
 | 5      | a           | E or W                                                                   |
 +--------+-------------+--------------------------------------------------------------------------+
-| 6      | x           | GPS Quality Indicator* *see table below*                                 |
+| 6      | x           | GPS Quality Indicator (see table below)                                  |
 +--------+-------------+--------------------------------------------------------------------------+
 | 7      | xx          | Number of satellites in use (00-12)                                      |
 +--------+-------------+--------------------------------------------------------------------------+
@@ -884,7 +884,7 @@ See `NMEA0183 over UDP Parameters <https://docs-a1.readthedocs.io/en/maritime_in
 | 6     | Dead reckoning mode (GPS is determined to be jammed or spoofed)  |
 +-------+------------------------------------------------------------------+
 
-3.1.3 APIMU: Proprietary IMU Output
+3.1.3 IMU: Proprietary IMU Output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
@@ -894,8 +894,6 @@ See `NMEA0183 over UDP Parameters <https://docs-a1.readthedocs.io/en/maritime_in
 +-------+----------+-------+--------------------------------------------------------------------------+
 | Index | Field    | Units | Description                                                              |
 +=======+==========+=======+==========================================================================+
-| 0     | APIMU    |       | Sentence identifier                                                      |
-+-------+----------+-------+--------------------------------------------------------------------------+
 | 1     | Time     | ms    | Time since power on                                                      |
 +-------+----------+-------+--------------------------------------------------------------------------+
 | 2     | T_Sync   | ms    | Time at last sync rising edge (zero when sync config disabled)           |
@@ -939,7 +937,7 @@ See `NMEA0183 over UDP Parameters <https://docs-a1.readthedocs.io/en/maritime_in
 |       |          |       | error                                                                    |
 +-------+----------+-------+--------------------------------------------------------------------------+
 
-3.1.4 APINS: Proprietary Navigation Output
+3.1.4 INS: Proprietary Navigation Output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
@@ -949,8 +947,6 @@ See `NMEA0183 over UDP Parameters <https://docs-a1.readthedocs.io/en/maritime_in
 +-------+----------+-------+--------------------------------------------------------------------------+
 | Index | Field    | Units | Description                                                              |
 +=======+==========+=======+==========================================================================+
-| 0     | APINS    |       | Sentence identifier                                                      |
-+-------+----------+-------+--------------------------------------------------------------------------+
 | 1     | Time     | ms    | Time since power on                                                      |
 +-------+----------+-------+--------------------------------------------------------------------------+
 | 2     | PPS Time | ns    | Time of last PPS pulse converted to GPS time (time since midnight        |
@@ -1054,7 +1050,7 @@ Complete GNSS navigation solution including position, quality, and DOP.
 +-----+-------------------------+---------------------------------------+------+------------------+
 | 7   | GNSS Type               | GPS, GLONASS, Galileo, BeiDou, etc.   |      | 4-bit lookup     |
 +-----+-------------------------+---------------------------------------+------+------------------+
-| 8   | Method                  | No fix, RTK, etc. (*see table below*) |      | 4-bit lookup     |
+| 8   | Method                  | No fix, RTK, etc. (see table below)   |      | 4-bit lookup     |
 +-----+-------------------------+---------------------------------------+------+------------------+
 | 9   | Integrity               | Integrity flag                        |      | 2-bit lookup     |
 +-----+-------------------------+---------------------------------------+------+------------------+
