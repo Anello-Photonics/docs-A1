@@ -35,7 +35,7 @@ The kit includes the following hardware:
 
 Connect with the ANELLO Maritime Control software (AMarinerControl):
 
-1. Install ANELLO's `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/download/v1.0.3/AMarinerControl-Setup.exe>`_ on your Windows computer. For MacOS and Linux support contact support@anellophotonics.com.
+1. Install ANELLO's `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/download/v1.0.3/AMarinerControl-Setup.exe>`_ on your Windows computer. For macOS and Linux support contact support@anellophotonics.com.
 
 2. Set the Ethernet IP address of the host computer to **192.168.0.2** and subnet mask to **255.255.255.0**.
 
@@ -102,7 +102,7 @@ Distances are measured in meters from the IMU center to the respective antenna p
 
 See :ref:`installation-parameters` for the full parameter table.
 
-Parameters can be changed using :
+Parameters can be changed using:
 
    1. AMC
 
@@ -117,7 +117,7 @@ Parameters can be changed using :
 
 .. note:: For best results, it is recommended that antenna lever arms be centimeter accurate as these are used to calculate any offsets for dual antenna heading measurements.
 
-Units can be configured in AMarinerControl in the Applications Settings menu under General > Units
+Units can be configured in AMarinerControl in the Application Settings menu under General > Units
 
 .. image:: media/amc-units.png
       :width: 50%
@@ -211,4 +211,4 @@ For best GPS-denied navigation results, ANELLO recommends the following initiali
 
 4. Perform your mission. Best performance in GPS-denied conditions is achieved with calibrated speed aiding and at speeds above 2 knots.
 
-*Maritime INS User Manual 93001501 v1.1.0*
+*Maritime INS User Manual 93001501 v1.1.1*

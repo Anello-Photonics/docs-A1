@@ -107,7 +107,7 @@ The ANELLO Maritime INS supports configurable internal CAN termination.
 +------------------+---------+-----------------------------------------------------------+
 | Parameter        | Default | Description                                               |
 +==================+=========+===========================================================+
-| **CAN_TERM**     | 1       | CAN bus termination setting.                              |
+| **CAN_TERM**     | 0       | CAN bus termination setting.                              |
 |                  |         | **0** = No termination resistor.                          |
 |                  |         | **1** = 120 Ω termination resistor enabled.               |
 +------------------+---------+-----------------------------------------------------------+
