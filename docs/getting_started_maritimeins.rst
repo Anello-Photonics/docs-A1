@@ -102,20 +102,18 @@ Distances are measured in meters from the IMU center to the respective antenna p
 
 See :ref:`installation-parameters` for the full parameter table.
 
-Parameters can be changed using:
+Parameters can be changed using either AMarinerControl or ANELLO Python scripts.
 
-   1. AMC
+4.1.1 Configuring Using AMarinerControl
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      To change parameters using AMarinerControl: **A > Parameters**
+Parameters can be using AMarinerControl: Click the **A (top right) > Parameters**
 
-      .. image:: media/AMC_parameters.png
-         :width: 70%
-         :align: center
+.. image:: media/AMC_parameters.png
+   :width: 70%
+   :align: center
 
-   2. Python scripts from the ANELLO INS Scripts public repository: `Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Maritime_INS_CFG.py>`_
- 
-
-.. note:: For best results, it is recommended that antenna lever arms be centimeter accurate as these are used to calculate any offsets for dual antenna heading measurements.
+Parameters can be searched in the search bar. To change a parameter's value, click on the parameter, and select the desired value using either the text box or drop down tab.
 
 Units can be configured in AMarinerControl in the Application Settings menu under General > Units
 
@@ -123,9 +121,14 @@ Units can be configured in AMarinerControl in the Application Settings menu unde
       :width: 50%
       :align: center
 
+4.2.2 Configuring Using ANELLO Python Scripts 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To change parameters using ANELLO Python Scripts: `Maritime_INS_CFG.py (in ANELLO_INS_Scripts repository) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Maritime_INS_CFG.py>`_
+
 .. note:: If configuring lever arms through Python scripts, the units are always meters by default.
 
-Interface Setup Summary
+4.3.3 Configurations Overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Maritime INS is shipped with the following communication interfaces configured:
@@ -135,19 +138,8 @@ The Maritime INS is shipped with the following communication interfaces configur
 * Ethernet: MAVLink on UDP ``14550``
 * CAN: NMEA 2000 enabled
 
-The most common configuration steps after installation are:
-
-1. Set the installation parameters for antenna lever arms, INS position offsets,
+The minimum required parameters recommended are installation parameters for antenna lever arms, INS position offsets,
    and mounting orientation.
-2. If using external GNSS input, enable external GNSS and select the input
-   path. Use ``NM_GNSS_CFG`` for a dedicated serial input, ``NM0183_GPS_EXT``
-   to use the same serial port as NMEA 0183 output, or ``NMUDP_GPS_EXT`` for
-   NMEA 0183 over UDP input.
-3. If using NMEA 0183 over UDP output, set ``NMUDP_MC_IP0`` through
-   ``NMUDP_MC_IP3`` to a valid multicast IP. UDP input uses port ``19551`` and
-   output uses port ``19550``.
-4. If using additional NMEA 2000 outputs, set the desired PGN output data
-   rates. A rate of ``0`` disables that PGN.
 
 For the full parameter tables and all configuration options, see:
 
@@ -159,9 +151,6 @@ For the full parameter tables and all configuration options, see:
 * :ref:`external-position-aiding-parameters`
 * :ref:`can-termination`
 
-.. note:: Configurable CAN termination is supported for production units (P/N 10001301), not for evaluation units (P/N 10001302).
-
-
 5. Data Collection & Visualization
 ------------------------------------
 
@@ -169,7 +158,7 @@ After installation and configuration, the unit is ready for data collection.
 Data is logged automatically once power is applied to the Maritime INS. No manual steps are required to start logging.
 
 * Start a new log by cycling power to the unit.  
-* Download logs in AMarinerControl under **A > Analyze Tools > Log Download**.  
+* Download logs in AMarinerControl by clicking **A (top left) > Analyze Tools > Log Download**.  
 * Use a plotting tool such as PlotJuggler for visualization. Contact ANELLO for assistance with post-processing, including GPS-denied simulations.
 
 .. image:: media/AMC_logs.png
@@ -177,9 +166,7 @@ Data is logged automatically once power is applied to the Maritime INS. No manua
    :align: center
 
 
-
 Some key topics in the log files are:
-
 
 +-------------------------------+----------------------------------------------------------------------------------------------------+
 | Topic                         | Description                                                                                        |
@@ -202,7 +189,7 @@ For best GPS-denied navigation results, ANELLO recommends the following initiali
 
 1. Ensure the unit is powered off while launching the vehicle into the water.
 
-2. While the USV is stationary in water, power on the unit. A good GPS signal is required for position initialization.
+2. While the USV is stationary in water, power on the unit. A good GPS signal is required for position and heading initialization. 
 
 3. For best performance, first perform a short square mission with 30–50 m edges to give the system visibility into currents before GPS is lost.
 
