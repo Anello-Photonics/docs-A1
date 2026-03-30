@@ -125,45 +125,41 @@ Units can be configured in AMarinerControl in the Application Settings menu unde
 
 .. note:: If configuring lever arms through Python scripts, the units are always meters by default.
 
-NMEA 2000 Parameters
+Interface Setup Summary
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To enable the NMEA 2000 driver, ensure the parameter ``NM2K_CFG`` is set to 1. Then, each published PGN has an associated output data rate parameter in the
-**NM2K** group (e.g. ``NM2K_129025_RATE``, ``NM2K_129026_RATE``,
-``NM2K_129029_RATE``). Rates are specified in Hertz and are clamped between
-``0`` and ``100``. Setting a value to ``0`` stops transmission of that PGN; any
-positive value defines the broadcast frequency. Update the rates from
-AMarinerControl's parameter editor or from the command-line interface.
+The Maritime INS is shipped with the following communication interfaces configured:
 
-See :ref:`nmea-2000-parameters` for the full parameter table.
+* ``RS232-1``: MAVLink at ``57600``
+* ``RS232-2``: NMEA 0183 at ``921600``
+* Ethernet: MAVLink on UDP ``14550``
+* CAN: NMEA 2000 enabled
 
-.. note ::
-   Output data rate parameters will only appear in AMarinerControl after the driver is enabled
+The most common configuration steps after installation are:
 
+1. Set the installation parameters for antenna lever arms, INS position offsets,
+   and mounting orientation.
+2. If using external GNSS input, enable external GNSS and select the input
+   path. Use ``NM_GNSS_CFG`` for a dedicated serial input, ``NM0183_GPS_EXT``
+   to use the same serial port as NMEA 0183 output, or ``NMUDP_GPS_EXT`` for
+   NMEA 0183 over UDP input.
+3. If using NMEA 0183 over UDP output, set ``NMUDP_MC_IP0`` through
+   ``NMUDP_MC_IP3`` to a valid multicast IP. UDP input uses port ``19551`` and
+   output uses port ``19550``.
+4. If using additional NMEA 2000 outputs, set the desired PGN output data
+   rates. A rate of ``0`` disables that PGN.
 
-Ethernet Parameters
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Ethernet settings can be configured using the following parameters:
+For the full parameter tables and all configuration options, see:
 
-See :ref:`ethernet-parameters` for the full Ethernet parameter table and IPv4 encoding details.
+* :ref:`installation-parameters`
+* :ref:`nmea-2000-parameters`
+* :ref:`ethernet-parameters`
+* :ref:`nmea0183-serial-parameters`
+* :ref:`nmea0183-over-udp-parameters`
+* :ref:`external-position-aiding-parameters`
+* :ref:`can-termination`
 
-NMEA0183 over UDP Parameters
-""""""""""""""""""""""""""""
-If utilizing NMEA0183 messaging over UDP, input uses port ``19551`` and output uses
-port ``19550``. External UDP output only occurs when ``NMUDP_MC_IP0`` through
-``NMUDP_MC_IP3`` define a valid multicast group. Setting ``NMUDP_EN`` to ``1``
-alone does not produce external UDP output.
-
-See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
-
-
-CAN Termination
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The ANELLO Maritime INS supports configurable internal CAN termination.
-
-See :ref:`can-termination` for the full parameter table.
-
-.. note:: Configurable CAN termination supported for production units (P/N 10001301), not for evaluation units (P/N 10001302)
+.. note:: Configurable CAN termination is supported for production units (P/N 10001301), not for evaluation units (P/N 10001302).
 
 
 5. Data Collection & Visualization
