@@ -745,8 +745,8 @@ Auxiliary GPS / GNSS position information input
 
 .. note::
    Maritime INS uses fields 1 through 5 from this PGN. Latitude and longitude
-   are encoded as ``1e-16 deg/count``. Altitude, horizontal accuracy, and
-   vertical accuracy are encoded as ``1e-7 m/count``.
+   are encoded as ``1e-7 deg/count``. Altitude is encoded as ``1e-3 m/count``. 
+   Horizontal accuracy and vertical accuracy are encoded as ``1e-7 m/count``.
 
 Logged topic: NMEA2000_POS
 
