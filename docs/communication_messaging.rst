@@ -113,7 +113,7 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 +-------+------------+---------------------------------------------------------------+
 
 .. note::
-   PX4 does not currently consume this sentence in-tree.
+   This sentence is logged only and is not used in the real-time algorithm.
 
 
 2.1.1.2. RSA: Rudder Sensor Angle
@@ -138,7 +138,7 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 +-------+------------+-------------------------------------------------------------+
 
 .. note::
-   PX4 does not currently consume this sentence in-tree.
+   This sentence is logged only and is not used in the real-time algorithm.
 
 
 2.1.1.3. VHW: Water Speed & Heading
@@ -171,7 +171,7 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 +-------+------------+---------------------------------------------------------------+
 
 .. note::
-   PX4 uses fields 1, 3, 5, and 7 from this sentence.
+   Maritime INS uses fields 1, 3, 5, and 7 from this sentence.
 
 
 2.1.1.4. VBW: Dual Ground/Water Speed
@@ -200,7 +200,7 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 +-------+------------+---------------------------------------------------------------+
 
 .. note::
-   PX4 uses fields 1 through 6 from this sentence.
+   Maritime INS uses fields 1 through 6 from this sentence.
 
 
 2.1.1.5. VWR: Relative Wind Speed & Angle
@@ -233,7 +233,7 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 +-------+------------+---------------------------------------------------------------+
 
 .. note::
-   PX4 does not currently consume this sentence in-tree.
+   This sentence is logged only and is not used in the real-time algorithm.
 
 2.1.2 External Position Aiding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -283,8 +283,8 @@ for instructions on changing settings.
 +--------+-------------+--------------------------------------------------------------------------+
 
 .. note::
-   PX4 uses fields 1 through 9 for external GNSS input. Fields 10 and 11 are
-   parsed into the logged topic but are not required by the fusion path.
+   Maritime INS uses fields 1 through 9 for external GNSS input. Fields 10 and
+   11 are logged but are not used in the real-time algorithm.
 
 2.1.2.2. GGA: Global Positioning System Fix Data
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -328,7 +328,7 @@ for instructions on changing settings.
 +--------+-------------+--------------------------------------------------------------------------+
 
 .. note::
-   PX4 uses fields 1 through 9 and field 11 from this sentence.
+   Maritime INS uses fields 1 through 9 and field 11 from this sentence.
 
 **GPS Quality Indicator**
 
@@ -397,8 +397,8 @@ for instructions on changing settings.
 +--------+------------+--------------------------------------------------------------------------+
 
 .. note::
-   PX4 uses fields 1 through 17 from this sentence. External GNSS fusion
-   relies on fields 2, 15, 16, and 17.
+   Maritime INS uses fields 1 through 17 from this sentence. The real-time
+   algorithm relies on fields 2, 15, 16, and 17.
 
 
 2.1.3 ANELLO Proprietary
@@ -423,7 +423,7 @@ Enables or disables GPS utilization in sensor fusion algorithm.
 +-------+------------+---------------------------------------------------------------+
 
 .. note::
-   PX4 uses field 1 from this sentence.
+   Maritime INS uses field 1 from this sentence.
 
 2.1.3.2. AUTOCAL: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -443,7 +443,7 @@ This message starts/stops the Maritime INS speed sensor auto-calibration routine
 +-------+------------+--------------------------------------------------------------------------+
 
 .. note::
-   PX4 uses field 1 from this sentence.
+   Maritime INS uses field 1 from this sentence.
 
 Recommended data collection procedure (while x = 1)
 
@@ -481,7 +481,7 @@ This message can be used to pass in an external position, either from user input
 +-------+------------+---------------------------------------------------------------+
 
 .. note::
-   PX4 uses fields 1 through 5 from this sentence.
+   Maritime INS uses fields 1 through 5 from this sentence.
 
 2.1.3.4. PAPRPH: Roll/Pitch/Heading (with Accuracies) (ANELLO Proprietary) 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -512,7 +512,7 @@ This message can be used to pass in an external heading, either from user input 
 +-------+------------+---------------------------------------------------------------+
 
 .. note::
-   PX4 uses fields 1 through 6 from this sentence.
+   Maritime INS uses fields 1 through 6 from this sentence.
 
 
 
@@ -545,7 +545,7 @@ Provides data with a high update rate for a specific engine in a single frame me
 +---+-----------------------+-------------------------------------------------+------+----------------+
 
 .. note::
-   PX4 uses fields 1 through 4 from this PGN.
+   Maritime INS uses fields 1 through 4 from this PGN.
 
 Logged topic: NMEA2000_ENGINE
 
@@ -585,8 +585,8 @@ Provides real-time operational data and status for a specific engine, usually br
 +----+--------------------------+---------------------------------------------+-------+----------------+
 
 .. note::
-   PX4 uses fields 1 through 13 from this PGN. Fields 10 and 11 are passed
-   through as raw bitmaps.
+   Maritime INS uses fields 1 through 13 from this PGN. Fields 10 and 11 are
+   logged as raw bitmaps.
 
 Logged topic: NMEA2000_ENGINE_DYN
 
@@ -610,8 +610,8 @@ Provides a single transmission describing the motion of a vessel relative to the
 +---+-----------------------------+----------------------------------------------+------+----------------+
 
 .. note::
-   PX4 uses fields 1 through 5 from this PGN. Fields 4 and 5 are passed
-   through without remapping.
+   Maritime INS uses fields 1 through 5 from this PGN. Fields 4 and 5 are used
+   without remapping.
 
 Logged topic: NMEA2000_SPEED
 
@@ -633,7 +633,7 @@ Cumulative voyage distance traveled since last reset, tagged with time and date.
 +---+-----------------------------+-----------------------------------------+------+----------------+
 
 .. note::
-   PX4 uses fields 1 through 4 from this PGN.
+   Maritime INS uses fields 1 through 4 from this PGN.
 
 Logged topic: NMEA2000_DISTANCE
 
@@ -659,8 +659,8 @@ These values provide weather and ambient condition data, often used for sensor c
 +---+------------------------+------------------------------------------+------+----------------+
 
 .. note::
-   PX4 uses fields 1 through 6 from this PGN. Fields 2 and 3 are passed
-   through without remapping.
+   Maritime INS uses fields 1 through 6 from this PGN. Fields 2 and 3 are used
+   without remapping.
 
 Logged topic: NMEA2000_ENVIRONMENT
 
@@ -686,7 +686,7 @@ Accurately describes the speed of a vessel by component vectors.
 +---+---------------------------------------+-------------------------------------------------+------+----------------+
 
 .. note::
-   PX4 uses fields 1 through 6 from this PGN.
+   Maritime INS uses fields 1 through 6 from this PGN.
 
 Logged topic: NMEA2000_VESSEL_SPEED
 
@@ -704,7 +704,7 @@ ANELLO proprietary message used to enable or disable the GPS through the NMEA200
 +---+------------+----------------------------------+------+----------------+
 
 .. note::
-   PX4 uses field 1 from this PGN.
+   Maritime INS uses field 1 from this PGN.
 
 Logged topic: NMEA2000_GPSCTRL
 
@@ -729,7 +729,7 @@ Recommended data collection procedure (while Auto-calibration Control = 1)
 - Exit auto-calibration by transmitting Auto-calibration Control = 0.
 
 .. note::
-   PX4 uses field 1 from this PGN.
+   Maritime INS uses field 1 from this PGN.
 
 Logged topic: NMEA2000_AUTOCAL_WATERSPEED
 
@@ -772,7 +772,7 @@ Provides real-time operational data and status for a specific transmission, typi
 +-------+-------------+
 
 .. note::
-   PX4 uses fields 1, 2, 4, 5, and 6 from this PGN. Field 6 is passed through
+   Maritime INS uses fields 1, 2, 4, 5, and 6 from this PGN. Field 6 is logged
    as a raw bitmap.
 
 Logged topic: NMEA2000_TRANSMISSION
@@ -798,7 +798,7 @@ Auxiliary GPS / GNSS position information input
 +---+--------+-------------------------------------------+------+----------------+
 
 .. note::
-   PX4 uses fields 1 through 5 from this PGN.
+   Maritime INS uses fields 1 through 5 from this PGN.
 
 Logged topic: NMEA2000_POS
 
@@ -824,7 +824,7 @@ Auxiliary roll, pitch, and heading information along with accuracy estimates
 +---+----------+-------------------------------------------+------+----------------+
 
 .. note::
-   PX4 uses fields 1 through 6 from this PGN.
+   Maritime INS uses fields 1 through 6 from this PGN.
 
 Logged topic: NMEA2000_RPH
 
