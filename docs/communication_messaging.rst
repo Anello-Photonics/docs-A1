@@ -112,6 +112,9 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 | 6     | hh         | Checksum                                                      |
 +-------+------------+---------------------------------------------------------------+
 
+.. note::
+   This sentence is logged only and is not used in the real-time algorithm.
+
 
 2.1.1.2. RSA: Rudder Sensor Angle
 """""""""""""""""""""""""""""""""""
@@ -133,6 +136,9 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 +-------+------------+-------------------------------------------------------------+
 | 5     | hh         | Checksum                                                    |
 +-------+------------+-------------------------------------------------------------+
+
+.. note::
+   This sentence is logged only and is not used in the real-time algorithm.
 
 
 2.1.1.3. VHW: Water Speed & Heading
@@ -164,6 +170,9 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 | 9     | hh         | Checksum                                                      |
 +-------+------------+---------------------------------------------------------------+
 
+.. note::
+   Maritime INS uses fields 1, 3, 5, and 7 from this sentence.
+
 
 2.1.1.4. VBW: Dual Ground/Water Speed
 """""""""""""""""""""""""""""""""""""""
@@ -189,6 +198,9 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 +-------+------------+---------------------------------------------------------------+
 | 7     | hh         | Checksum                                                      |
 +-------+------------+---------------------------------------------------------------+
+
+.. note::
+   Maritime INS uses fields 1 through 6 from this sentence.
 
 
 2.1.1.5. VWR: Relative Wind Speed & Angle
@@ -219,6 +231,9 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 +-------+------------+---------------------------------------------------------------+
 | 9     | hh         | Checksum                                                      |
 +-------+------------+---------------------------------------------------------------+
+
+.. note::
+   This sentence is logged only and is not used in the real-time algorithm.
 
 2.1.2 External Position Aiding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -267,6 +282,10 @@ for instructions on changing settings.
 | 12     | hh          | Checksum                                                                 |
 +--------+-------------+--------------------------------------------------------------------------+
 
+.. note::
+   Maritime INS uses fields 1 through 9 for external GNSS input. Fields 10 and
+   11 are logged but are not used in the real-time algorithm.
+
 2.1.2.2. GGA: Global Positioning System Fix Data
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -307,6 +326,9 @@ for instructions on changing settings.
 +--------+-------------+--------------------------------------------------------------------------+
 | 15     | hh          | Checksum                                                                 |
 +--------+-------------+--------------------------------------------------------------------------+
+
+.. note::
+   Maritime INS uses fields 1 through 9 and field 11 from this sentence.
 
 **GPS Quality Indicator**
 
@@ -374,6 +396,10 @@ for instructions on changing settings.
 | 18     | hh         | Checksum                                                                 |
 +--------+------------+--------------------------------------------------------------------------+
 
+.. note::
+   Maritime INS uses fields 1 through 17 from this sentence. The real-time
+   algorithm relies on fields 2, 15, 16, and 17.
+
 
 2.1.3 ANELLO Proprietary
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -396,6 +422,9 @@ Enables or disables GPS utilization in sensor fusion algorithm.
 | 2     | hh         | Checksum                                                      |
 +-------+------------+---------------------------------------------------------------+
 
+.. note::
+   Maritime INS uses field 1 from this sentence.
+
 2.1.3.2. AUTOCAL: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -412,6 +441,9 @@ This message starts/stops the Maritime INS speed sensor auto-calibration routine
 +-------+------------+--------------------------------------------------------------------------+
 | 2     | hh         | Checksum                                                                 |
 +-------+------------+--------------------------------------------------------------------------+
+
+.. note::
+   Maritime INS uses field 1 from this sentence.
 
 Recommended data collection procedure (while x = 1)
 
@@ -448,6 +480,9 @@ This message can be used to pass in an external position, either from user input
 | 6     | hh         | NMEA checksum (hex)                                           |
 +-------+------------+---------------------------------------------------------------+
 
+.. note::
+   Maritime INS uses fields 1 through 5 from this sentence.
+
 2.1.3.4. PAPRPH: Roll/Pitch/Heading (with Accuracies) (ANELLO Proprietary) 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -475,6 +510,9 @@ This message can be used to pass in an external heading, either from user input 
 +-------+------------+---------------------------------------------------------------+
 | 7     | hh         | NMEA checksum (hex)                                           |
 +-------+------------+---------------------------------------------------------------+
+
+.. note::
+   Maritime INS uses fields 1 through 6 from this sentence.
 
 
 
@@ -505,6 +543,9 @@ Provides data with a high update rate for a specific engine in a single frame me
 +---+-----------------------+-------------------------------------------------+------+----------------+
 | 4 | Engine Tilt/Trim      | Engine tilt or trim position                    | %    | 8-bit signed   |
 +---+-----------------------+-------------------------------------------------+------+----------------+
+
+.. note::
+   Maritime INS uses fields 1 through 4 from this PGN.
 
 Logged topic: NMEA2000_ENGINE
 
@@ -544,9 +585,8 @@ Provides real-time operational data and status for a specific engine, usually br
 +----+--------------------------+---------------------------------------------+-------+----------------+
 
 .. note::
-   PX4 passes ``engine_status_1`` and ``engine_status_2`` through unchanged as
-   raw 16-bit values. The firmware does not define or decode per-bit meanings
-   in-tree, so all 16 bits are preserved and none are interpreted.
+   Maritime INS uses fields 1 through 13 from this PGN. Fields 10 and 11 are
+   logged as raw bitmaps.
 
 Logged topic: NMEA2000_ENGINE_DYN
 
@@ -570,9 +610,8 @@ Provides a single transmission describing the motion of a vessel relative to the
 +---+-----------------------------+----------------------------------------------+------+----------------+
 
 .. note::
-   PX4 accepts and publishes ``water_reference`` unchanged as a raw 8-bit value
-   and ``direction`` as the raw low 4 bits. The firmware does not validate or
-   remap either field and does not emit PGN 128259 in this driver.
+   Maritime INS uses fields 1 through 5 from this PGN. Fields 4 and 5 are used
+   without remapping.
 
 Logged topic: NMEA2000_SPEED
 
@@ -592,6 +631,9 @@ Cumulative voyage distance traveled since last reset, tagged with time and date.
 +---+-----------------------------+-----------------------------------------+------+----------------+
 | 4 | Distance Since Last Reset   | Distance traveled since last reset      | m    | 32-bit unsigned|
 +---+-----------------------------+-----------------------------------------+------+----------------+
+
+.. note::
+   Maritime INS uses fields 1 through 4 from this PGN.
 
 Logged topic: NMEA2000_DISTANCE
 
@@ -617,9 +659,8 @@ These values provide weather and ambient condition data, often used for sensor c
 +---+------------------------+------------------------------------------+------+----------------+
 
 .. note::
-   PX4 accepts and publishes ``temperature_source`` as a raw 6-bit value and
-   ``humidity_source`` as a raw 2-bit value. The firmware does not map either
-   field to named enums in-tree and does not emit PGN 130311 in this driver.
+   Maritime INS uses fields 1 through 6 from this PGN. Fields 2 and 3 are used
+   without remapping.
 
 Logged topic: NMEA2000_ENVIRONMENT
 
@@ -644,6 +685,9 @@ Accurately describes the speed of a vessel by component vectors.
 | 6 | Stern Speed, Ground-referenced        | Transverse speed of the stern relative to ground| m/s  | 16-bit signed  |
 +---+---------------------------------------+-------------------------------------------------+------+----------------+
 
+.. note::
+   Maritime INS uses fields 1 through 6 from this PGN.
+
 Logged topic: NMEA2000_VESSEL_SPEED
 
 2.2.7 PGN 65281: GPS Control
@@ -658,6 +702,9 @@ ANELLO proprietary message used to enable or disable the GPS through the NMEA200
 |   |            | 0 = Disable GPS,                 |      |                |
 |   |            | 1 = Enable GPS                   |      |                |
 +---+------------+----------------------------------+------+----------------+
+
+.. note::
+   Maritime INS uses field 1 from this PGN.
 
 Logged topic: NMEA2000_GPSCTRL
 
@@ -680,6 +727,9 @@ Recommended data collection procedure (while Auto-calibration Control = 1)
 - Use ≥ 5 steady speeds spanning your full speed range.
 - Hold each leg ≥ 30 seconds at steady speed.
 - Exit auto-calibration by transmitting Auto-calibration Control = 0.
+
+.. note::
+   Maritime INS uses field 1 from this PGN.
 
 Logged topic: NMEA2000_AUTOCAL_WATERSPEED
 
@@ -722,9 +772,8 @@ Provides real-time operational data and status for a specific transmission, typi
 +-------+-------------+
 
 .. note::
-   PX4 passes ``status`` through unchanged as a raw 8-bit value and does not
-   define per-bit meanings in-tree. Only the low 2 bits of the gear byte are
-   decoded into the gear field; the upper 6 bits are treated as reserved.
+   Maritime INS uses fields 1, 2, 4, 5, and 6 from this PGN. Field 6 is logged
+   as a raw bitmap.
 
 Logged topic: NMEA2000_TRANSMISSION
 
@@ -748,6 +797,9 @@ Auxiliary GPS / GNSS position information input
 | 5 | vacc   | Vertical accuracy / uncertainty           | m    | 32-bit signed  |
 +---+--------+-------------------------------------------+------+----------------+
 
+.. note::
+   Maritime INS uses fields 1 through 5 from this PGN.
+
 Logged topic: NMEA2000_POS
 
 2.2.11 PGN 130817: Auxiliary Attitude (ANELLO Proprietary)
@@ -770,6 +822,9 @@ Auxiliary roll, pitch, and heading information along with accuracy estimates
 +---+----------+-------------------------------------------+------+----------------+
 | 6 | head_acc | Heading accuracy / uncertainty            | deg  | 32-bit signed  |
 +---+----------+-------------------------------------------+------+----------------+
+
+.. note::
+   Maritime INS uses fields 1 through 6 from this PGN.
 
 Logged topic: NMEA2000_RPH
 
@@ -1050,19 +1105,8 @@ Rapid update of Course Over Ground (COG) and Speed Over Ground (SOG).
 | 4 | SOG            | Speed over ground              | m/s    | 16-bit unsigned|
 +---+----------------+--------------------------------+--------+----------------+
 
-**COG Reference Values (standard NMEA 2000 inference):**
-
-+-------+-----------+
-| Value | Meaning   |
-+=======+===========+
-| 0     | True      |
-+-------+-----------+
-| 1     | Magnetic  |
-+-------+-----------+
-
 .. note::
-   The firmware emits only ``COG Reference = 0``. The labels above are inferred
-   from the NMEA 2000 standard; they are not named anywhere in this repository.
+   Current Maritime INS output sets field 2 to ``0``.
 
 
 3.2.3 PGN 129029: GNSS Position Data
@@ -1111,13 +1155,9 @@ Complete GNSS navigation solution including position, quality, and DOP.
 +-----+-------------------------+---------------------------------------+------+------------------+
 
 .. note::
-   Current Maritime INS output values are:
-
-   * ``GNSS Type = 0``
-   * ``Integrity = 0``
-   * ``Reference Stations = 1``
-   * ``Reference Station Type = 6``
-   * ``Reference Station ID`` is populated from ``_gnss_data.reference_id``
+   Current Maritime INS output sets field 7 to ``0``, field 9 to ``0``,
+   field 15 to ``1``, and field 16 to ``6``. Field 17 comes from the GNSS
+   reference ID.
 
 **Method Field Values (4-bit lookup):**
 
@@ -1146,15 +1186,7 @@ Complete GNSS navigation solution including position, quality, and DOP.
 +------+----------------------------+
 
 .. note::
-   PX4 remaps Septentrio ``mode_type`` into the NMEA 2000 Method field as
-   follows:
-
-   * ``3 -> 2``
-   * ``5`` or ``8 -> 5``
-   * ``4`` or ``7 -> 4``
-   * ``6`` or ``10 -> 3``
-   * ``6`` is forced when dead reckoning is active or after a previously valid
-     fix is lost
+   Current Maritime INS output uses field 8 for the reported GNSS method.
 
 
 
@@ -1177,19 +1209,8 @@ Provides vessel heading and related status.
 | 5 | Reference        | True/Magnetic                     |        | 2-bit lookup   |
 +---+------------------+-----------------------------------+--------+----------------+
 
-**Reference Values (standard NMEA 2000 inference):**
-
-+-------+-----------+
-| Value | Meaning   |
-+=======+===========+
-| 0     | True      |
-+-------+-----------+
-| 1     | Magnetic  |
-+-------+-----------+
-
 .. note::
-   The firmware emits only ``Reference = 0``. The labels above are inferred
-   from the NMEA 2000 standard; they are not named anywhere in this repository.
+   Current Maritime INS output sets field 5 to ``0``.
 
 
 3.2.5 PGN 127251: Rate of Turn
@@ -1242,5 +1263,4 @@ Provides system time for network synchronization.
 +---+----------------+-------------------------------------+--------+----------------+
 
 .. note::
-   The firmware emits only ``Source = 0``. No other time-source value is
-   currently used or named in this repository.
+   Current Maritime INS output sets field 2 to ``0``.
