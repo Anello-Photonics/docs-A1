@@ -94,20 +94,39 @@ Ensure that antennae are mounted on a ground plane of at least 10 cm x 10 cm and
 4. Configure ANELLO Maritime INS
 ---------------------------------
 
-The lever arms of the installation must be measured and configured as parameters to ensure accuracy.  
+4.3.1 Configurations Overview
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Maritime INS is shipped with the following communication interfaces configured:
+
+* ``RS232-1``: MAVLink at ``57600``
+* ``RS232-2``: NMEA 0183 at ``921600``
+* Ethernet: MAVLink on UDP ``14550``
+* CAN: NMEA 2000 enabled
+
+The minimum required parameters recommended are installation parameters for antenna lever arms, 
+INS position offsets, and mounting orientation.
 The coordinate system follows the right-hand rule: **X = forward**, **Y = right**, **Z = down**.  
 The INS center is the center of the Maritime INS unit.
 
 Distances are measured in meters from the IMU center to the respective antenna phase center.
 
-See :ref:`installation-parameters` for the full parameter table.
+For the full parameter tables and all configuration options, see:
+
+* :ref:`installation-parameters`
+* :ref:`nmea-2000-parameters`
+* :ref:`ethernet-parameters`
+* :ref:`nmea0183-serial-parameters`
+* :ref:`nmea0183-over-udp-parameters`
+* :ref:`external-position-aiding-parameters`
+* :ref:`can-termination`
 
 Parameters can be changed using either AMarinerControl or ANELLO Python scripts.
 
-4.1.1 Configuring Using AMarinerControl
+4.1.2 Configuring Using AMarinerControl
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Parameters can be using AMarinerControl: Click the **A (top right) > Parameters**
+Parameters can be changed using AMarinerControl: Click the **A (top right) > Parameters**
 
 .. image:: media/AMC_parameters.png
    :width: 70%
@@ -121,35 +140,14 @@ Units can be configured in AMarinerControl in the Application Settings menu unde
       :width: 50%
       :align: center
 
-4.2.2 Configuring Using ANELLO Python Scripts 
+4.2.3 Configuring Using ANELLO Python Scripts 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To change parameters using ANELLO Python Scripts: `Maritime_INS_CFG.py (in ANELLO_INS_Scripts repository) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Maritime_INS_CFG.py>`_
+To change parameters using ANELLO Python Scripts (currently Ethernet only), use: 
+`Maritime_INS_CFG.py (in ANELLO_INS_Scripts repository) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Maritime_INS_CFG.py>`_
 
 .. note:: If configuring lever arms through Python scripts, the units are always meters by default.
 
-4.3.3 Configurations Overview
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The Maritime INS is shipped with the following communication interfaces configured:
-
-* ``RS232-1``: MAVLink at ``57600``
-* ``RS232-2``: NMEA 0183 at ``921600``
-* Ethernet: MAVLink on UDP ``14550``
-* CAN: NMEA 2000 enabled
-
-The minimum required parameters recommended are installation parameters for antenna lever arms, INS position offsets,
-   and mounting orientation.
-
-For the full parameter tables and all configuration options, see:
-
-* :ref:`installation-parameters`
-* :ref:`nmea-2000-parameters`
-* :ref:`ethernet-parameters`
-* :ref:`nmea0183-serial-parameters`
-* :ref:`nmea0183-over-udp-parameters`
-* :ref:`external-position-aiding-parameters`
-* :ref:`can-termination`
 
 5. Data Collection & Visualization
 ------------------------------------
