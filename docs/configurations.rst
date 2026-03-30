@@ -107,7 +107,7 @@ The ANELLO Maritime INS supports configurable internal CAN termination.
 +------------------+---------+-----------------------------------------------------------+
 | Parameter        | Default | Description                                               |
 +==================+=========+===========================================================+
-| **CAN_TERM**     | 0       | CAN bus termination setting.                              |
+| **CAN_TERM**     | 1       | CAN bus termination setting.                              |
 |                  |         | **0** = No termination resistor.                          |
 |                  |         | **1** = 120 Ω termination resistor enabled.               |
 +------------------+---------+-----------------------------------------------------------+
@@ -193,11 +193,12 @@ Full Parameter list for NMEA0183 messaging over serial
 | NM0183_CFG         | 2       | Configure NMEA0183 serial output. Set to ``1`` for RS232-1 or ``2``      |
 |                    |         | for RS232-2.                                                             |
 +--------------------+---------+--------------------------------------------------------------------------+
-| NM0183_GPS_EXT     | 1       | Enable external GPS data output over NMEA0183 serial.                    |
+| NM0183_GPS_EXT     | 1       | Use received NMEA0183 serial data for external GNSS input when           |
+|                    |         | ``EKF2_GPS_EXT_EN`` is enabled.                                          |
 +--------------------+---------+--------------------------------------------------------------------------+
-| NM0183_ODR_APIMU   | 0       | Output data rate for AP IMU messages over NMEA0183 serial (Hz).          |
+| NM0183_ODR_APIMU   | 10      | Output data rate for AP IMU messages over NMEA0183 serial (Hz).          |
 +--------------------+---------+--------------------------------------------------------------------------+
-| NM0183_ODR_APINS   | 10      | Output data rate for AP INS messages over NMEA0183 serial (Hz).          |
+| NM0183_ODR_APINS   | 0       | Output data rate for AP INS messages over NMEA0183 serial (Hz).          |
 +--------------------+---------+--------------------------------------------------------------------------+
 | NM0183_ODR_GGA     | 0       | Output data rate for GGA messages over NMEA0183 serial (Hz).             |
 +--------------------+---------+--------------------------------------------------------------------------+
@@ -213,14 +214,17 @@ Full Parameter list for NMEA0183 messaging over serial
 NMEA0183 over UDP Parameters
 ----------------------------
 
-If utilizing NMEA0183 messaging over UDP, the multicast IP for NMEA0183 UDP messaging can be set with the following 4 parameters:
+NMEA0183 over UDP uses port ``19551`` for input messages and port ``19550`` for output messages.
+Setting ``NMUDP_EN`` to ``1`` enables the UDP driver, but external UDP output only occurs when
+``NMUDP_MC_IP0`` through ``NMUDP_MC_IP3`` define a valid multicast group.
 
 +--------------------+---------+--------------------------------------------------------------------------+
 | Parameter          | Default | Description                                                              |
 +====================+=========+==========================================================================+
-| NMUDP_EN           | 1       | Enable/disable NMEA0183 over UDP output.                                 |
+| NMUDP_EN           | 1       | Enable or disable the NMEA0183 UDP driver.                               |
 +--------------------+---------+--------------------------------------------------------------------------+
-| NMUDP_GPS_EXT      | 1       | Enable external GPS data transmission over NMEA0183 over UDP.            |
+| NMUDP_GPS_EXT      | 1       | Use received NMEA0183 UDP data for external GNSS input when              |
+|                    |         | ``EKF2_GPS_EXT_EN`` is enabled.                                          |
 +--------------------+---------+--------------------------------------------------------------------------+
 | NMUDP_MC_IP0       | 0       | Multicast IP address byte 0 for NMEA0183 over UDP.                       |
 +--------------------+---------+--------------------------------------------------------------------------+
@@ -238,8 +242,6 @@ If utilizing NMEA0183 messaging over UDP, the multicast IP for NMEA0183 UDP mess
 +--------------------+---------+--------------------------------------------------------------------------+
 | NMUDP_ODR_RMC      | 0       | Output data rate for RMC messages over NMEA0183 over UDP (Hz).           |
 +--------------------+---------+--------------------------------------------------------------------------+
-
-The default output port is 19550 and input port is 19551.
 
 
 .. _external-position-aiding-parameters:
@@ -263,6 +265,8 @@ Parameters used if receiving an external NMEA0183 GNSS input
 +--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
 | GPS_EXT_Z          | m     | 0              | Z offset from INS center to external GPS receiver's antenna.                                 |
 +--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| GPS_EXT_DELAY      | ms    | 110            | Delay applied to the external GNSS measurements relative to the IMU timing.                  |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
 | EKF2_PRIME_GPS     | N/A   | Internal (0)   | Preferred GPS receiver when all are reported healthy.                                        |
 +--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
 | EKF2_GPS_DS_MODE   | N/A   | Off (0)        | Used for GNSS spoofing detection. If horizontal disagreement exceeds                         |
@@ -273,4 +277,24 @@ Parameters used if receiving an external NMEA0183 GNSS input
 +--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
 | EKF2_GPS_DIS_HOR   | m     | 100            | GPS receivers are considered in disagreement if their horizontal position differs            |
 |                    |       |                | from the selected receiver by more than this value.                                          |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| EKF2_REQ_GPS_REC   | N/A   | Off (0)        | Post-selection GPS receiver dependency mode. This can require a healthy                      |
+|                    |       |                | internal receiver, a healthy external receiver, or all receivers to agree                    |
+|                    |       |                | before GPS aiding is fused.                                                                  |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| EKF2_GPS_CHECK     | mask  | 245            | Bitmask that enables GPS quality checks before GPS aiding is accepted.                       |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| EKF2_REQ_NSATS     | count | 6              | Minimum satellite count required when the satellite-count check is enabled.                  |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| EKF2_REQ_PDOP      | N/A   | 2.5            | Maximum PDOP allowed when the PDOP check is enabled.                                         |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| EKF2_REQ_EPH       | m     | 3.0            | Maximum horizontal position error allowed when the EPH check is enabled.                     |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| EKF2_REQ_EPV       | m     | 5.0            | Maximum vertical position error allowed when the EPV check is enabled.                       |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| EKF2_REQ_SACC      | m/s   | 0.5            | Maximum speed accuracy error allowed when the speed-accuracy check is enabled.               |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| EKF2_REQ_HDRIFT    | m/s   | 0.1            | Maximum horizontal drift speed allowed when the stationary drift checks are enabled.         |
++--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+| EKF2_REQ_VDRIFT    | m/s   | 0.2            | Maximum vertical drift speed allowed when the vertical drift checks are enabled.             |
 +--------------------+-------+----------------+----------------------------------------------------------------------------------------------+

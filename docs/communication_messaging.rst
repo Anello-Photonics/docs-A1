@@ -27,16 +27,17 @@ The maximum supported baud rate for both serial ports is 921600
 1.2 Port Definitions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 +-----------------+-------------------------------------------------------------------+-----------------------------------------------+------------------------------------------------------+
-| Interface       | Supported Protocols                                               | Default Protocols                             | Functions                                            |
+| Interface       | Supported Protocols                                               | Default Configuration                         | Functions                                            |
 +=================+===================================================================+===============================================+======================================================+
-| RS232-1         | Serial, MAVLink, NMEA 0183                                        | MAVLink                                       | Data input / output, configuration, firmware updates |
+| RS232-1         | Serial, MAVLink, NMEA 0183                                        | MAVLink at 57600                              | Data input / output, configuration, firmware updates |
 +-----------------+-------------------------------------------------------------------+-----------------------------------------------+------------------------------------------------------+
-| RS232-2         | Serial, MAVLink, NMEA 0183                                        | NMEA 0183                                     | Data input / output, configuration                   |
+| RS232-2         | Serial, MAVLink, NMEA 0183                                        | NMEA 0183 at 921600                           | Data input / output, configuration                   |
 +-----------------+-------------------------------------------------------------------+-----------------------------------------------+------------------------------------------------------+
 | Ethernet        | UDP, MAVLink, NMEA 0183                                           | MAVLink (UDP 14550),                          | Data input / output, configuration, log downloads    |
-|                 |                                                                   | NMEA 0183 (UDP 19550/19551)                   |                                                      |
+|                 |                                                                   | NMEA 0183 UDP enabled (RX 19551, TX 19550     |                                                      |
+|                 |                                                                   | with valid multicast IP)                      |                                                      |
 +-----------------+-------------------------------------------------------------------+-----------------------------------------------+------------------------------------------------------+
-| CAN             | NMEA 2000, J1939                                                  | NMEA 2000                                     | Data input / output                                  |
+| CAN             | NMEA 2000                                                         | NMEA 2000                                     | Data input / output                                  |
 +-----------------+-------------------------------------------------------------------+-----------------------------------------------+------------------------------------------------------+
 
 1.3 Time Synchronization
@@ -81,7 +82,10 @@ for instructions on changing settings):
 
 ``NMUDP_EN`` = ``1``
 
-The default port is 19551 for input messages and 19550 for output messages.
+UDP input uses port ``19551`` and UDP output uses port ``19550``.
+External UDP output only occurs when ``NMUDP_MC_IP0`` through ``NMUDP_MC_IP3``
+define a valid multicast group. Setting ``NMUDP_EN`` to ``1`` alone does not
+produce external UDP output.
 
 See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 
@@ -89,59 +93,7 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 2.1.1 External Sensor Aiding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.1.1.1. RPM: Revolutions
-"""""""""""""""""""""""""""
-
-**Message Format**::
-
-    $--RPM,a,x,x.x,x.x,A*hh
-
-+-------+------------+---------------------------------------------------------------+
-| Index | Part       | Description                                                   |
-+=======+============+===============================================================+
-| 1     | a          | Source; S = Shaft, E = Engine                                 |
-+-------+------------+---------------------------------------------------------------+
-| 2     | x          | Engine or shaft number                                        |
-+-------+------------+---------------------------------------------------------------+
-| 3     | x.x        | Speed, Revolutions per minute                                 |
-+-------+------------+---------------------------------------------------------------+
-| 4     | x.x        | Propeller pitch, % of maximum, "-" means astern               |
-+-------+------------+---------------------------------------------------------------+
-| 5     | A          | Status, A means data is valid                                 |
-+-------+------------+---------------------------------------------------------------+
-| 6     | hh         | Checksum                                                      |
-+-------+------------+---------------------------------------------------------------+
-
-.. note::
-   This sentence is logged only and is not used in the real-time algorithm.
-
-
-2.1.1.2. RSA: Rudder Sensor Angle
-"""""""""""""""""""""""""""""""""""
-
-**Message Format**::
-
-    $--RSA,x.x,A,x.x,A*hh
-
-+-------+------------+-------------------------------------------------------------+
-| Index | Part       | Description                                                 |
-+=======+============+=============================================================+
-| 1     | x.x        | Starboard (or single) rudder sensor, "-" means Turn To Port |
-+-------+------------+-------------------------------------------------------------+
-| 2     | A          | Status, A means data is valid                               |
-+-------+------------+-------------------------------------------------------------+
-| 3     | x.x        | Port rudder sensor                                          |
-+-------+------------+-------------------------------------------------------------+
-| 4     | A          | Status, A means data is valid                               |
-+-------+------------+-------------------------------------------------------------+
-| 5     | hh         | Checksum                                                    |
-+-------+------------+-------------------------------------------------------------+
-
-.. note::
-   This sentence is logged only and is not used in the real-time algorithm.
-
-
-2.1.1.3. VHW: Water Speed & Heading
+2.1.1.1. VHW: Water Speed & Heading
 """"""""""""""""""""""""""""""""""""
 
 **Message Format**::
@@ -174,7 +126,7 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
    Maritime INS uses fields 1, 3, 5, and 7 from this sentence.
 
 
-2.1.1.4. VBW: Dual Ground/Water Speed
+2.1.1.2. VBW: Dual Ground/Water Speed
 """""""""""""""""""""""""""""""""""""""
 
 **Message Format**::
@@ -203,45 +155,19 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
    Maritime INS uses fields 1 through 6 from this sentence.
 
 
-2.1.1.5. VWR: Relative Wind Speed & Angle
-"""""""""""""""""""""""""""""""""""""""""""
-
-**Message Format**::
-
-    $--VWR,x.x,a,x.x,N,x.x,M,x.x,K*hh
-
-+-------+------------+---------------------------------------------------------------+
-| Index | Part       | Description                                                   |
-+=======+============+===============================================================+
-| 1     | x.x        | Wind direction magnitude in degrees                           |
-+-------+------------+---------------------------------------------------------------+
-| 2     | a          | Wind direction Left/Right of bow                              |
-+-------+------------+---------------------------------------------------------------+
-| 3     | x.x        | Wind Speed in knots                                           |
-+-------+------------+---------------------------------------------------------------+
-| 4     | N          | N = Knots                                                     |
-+-------+------------+---------------------------------------------------------------+
-| 5     | x.x        | Wind Speed in m/s                                             |
-+-------+------------+---------------------------------------------------------------+
-| 6     | M          | M = Meters Per Second                                         |
-+-------+------------+---------------------------------------------------------------+
-| 7     | x.x        | Wind Speed in km/hr                                           |
-+-------+------------+---------------------------------------------------------------+
-| 8     | K          | K = Kilometers Per Hour                                       |
-+-------+------------+---------------------------------------------------------------+
-| 9     | hh         | Checksum                                                      |
-+-------+------------+---------------------------------------------------------------+
-
-.. note::
-   This sentence is logged only and is not used in the real-time algorithm.
-
 2.1.2 External Position Aiding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To enable external NMEA0183 GNSS input set ``EKF2_GPS_EXT_EN`` = ``1`` or ``Enabled``
 
 To enable a secondary input-only serial port to receive external NMEA0183 GNSS input set ``NM_GNSS_CFG`` = ``1`` (RS232-1) **or** ``2`` (RS232-2)
 
-To use an external GNSS input, the minimum required messages are GGA, RMC, and GSA at a rate of at least 0.5 Hz.
+To use received NMEA0183 serial data for external GNSS input, ensure ``NM0183_GPS_EXT`` = ``1``.
+To use received NMEA0183 UDP data for external GNSS input, ensure ``NMUDP_GPS_EXT`` = ``1``.
+
+To use an external GNSS input, the minimum required messages are ``GGA``, ``RMC``, and ``GSA``
+at a rate of at least ``0.5 Hz``. These messages must be recent, ``RMC`` must report
+``status = A``, latitude and longitude must be valid, ``GSA`` mode must be ``3`` or greater,
+and PDOP, HDOP, and VDOP must all be present, finite, and greater than zero.
 
 See :ref:`external-position-aiding-parameters` for the parameter table used to configure external position aiding.
 See `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
@@ -461,27 +387,31 @@ This message can be used to pass in an external position, either from user input
 
 **Message Format**::
 
-    $PAPPOS,PX,PY,PZ,H_acc,V_acc*hh
+    $PAPPOS,hhmmss.ss,PX,PY,PZ,H_acc,V_acc*hh
 
 
 +-------+------------+---------------------------------------------------------------+
 | Index | Part       | Description                                                   |
 +=======+============+===============================================================+
-| 1     | PX         | Latitude in degrees (signed; +N / -S)                         |
+| 1     | hhmmss.ss  | UTC time field. This field may be left empty, but the comma   |
+|       |            | position is required.                                         |
 +-------+------------+---------------------------------------------------------------+
-| 2     | PY         | Longitude in degrees (signed; +E / -W)                        |
+| 2     | PX         | Latitude in degrees (signed; +N / -S)                         |
 +-------+------------+---------------------------------------------------------------+
-| 3     | PZ         | Altitude above mean sea level (meters)                        |
+| 3     | PY         | Longitude in degrees (signed; +E / -W)                        |
 +-------+------------+---------------------------------------------------------------+
-| 4     | H_acc      | Horizontal accuracy / uncertainty (meters)                    |
+| 4     | PZ         | Altitude above mean sea level (meters)                        |
 +-------+------------+---------------------------------------------------------------+
-| 5     | V_acc      | Vertical accuracy / uncertainty (meters)                      |
+| 5     | H_acc      | Horizontal accuracy / uncertainty (meters)                    |
 +-------+------------+---------------------------------------------------------------+
-| 6     | hh         | NMEA checksum (hex)                                           |
+| 6     | V_acc      | Vertical accuracy / uncertainty (meters)                      |
++-------+------------+---------------------------------------------------------------+
+| 7     | hh         | NMEA checksum (hex)                                           |
 +-------+------------+---------------------------------------------------------------+
 
 .. note::
-   Maritime INS uses fields 1 through 5 from this sentence.
+   Maritime INS uses fields 2 through 6 from this sentence. The leading time
+   field may be empty, but its position must be preserved.
 
 2.1.3.4. PAPRPH: Roll/Pitch/Heading (with Accuracies) (ANELLO Proprietary) 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -490,29 +420,67 @@ This message can be used to pass in an external heading, either from user input 
 
 **Message Format**::
 
-    $PAPRPH,R,P,Y,R_acc,P_acc,H_acc*hh
+    $PAPRPH,hhmmss.ss,R,P,Y,R_acc,P_acc,H_acc*hh
 
 
 +-------+------------+---------------------------------------------------------------+
 | Index | Part       | Description                                                   |
 +=======+============+===============================================================+
-| 1     | R          | Roll angle (degrees)                                          |
+| 1     | hhmmss.ss  | UTC time field. This field may be left empty, but the comma   |
+|       |            | position is required.                                         |
 +-------+------------+---------------------------------------------------------------+
-| 2     | P          | Pitch angle (degrees)                                         |
+| 2     | R          | Roll angle (degrees)                                          |
 +-------+------------+---------------------------------------------------------------+
-| 3     | Y          | Heading / yaw (degrees, typically 0..360)                     |
+| 3     | P          | Pitch angle (degrees)                                         |
 +-------+------------+---------------------------------------------------------------+
-| 4     | R_acc      | Roll accuracy / uncertainty (degrees)                         |
+| 4     | Y          | Heading / yaw (degrees, typically 0..360)                     |
 +-------+------------+---------------------------------------------------------------+
-| 5     | P_acc      | Pitch accuracy / uncertainty (degrees)                        |
+| 5     | R_acc      | Roll accuracy / uncertainty (degrees)                         |
 +-------+------------+---------------------------------------------------------------+
-| 6     | H_acc      | Heading accuracy / uncertainty (degrees)                      |
+| 6     | P_acc      | Pitch accuracy / uncertainty (degrees)                        |
 +-------+------------+---------------------------------------------------------------+
-| 7     | hh         | NMEA checksum (hex)                                           |
+| 7     | H_acc      | Heading accuracy / uncertainty (degrees)                      |
++-------+------------+---------------------------------------------------------------+
+| 8     | hh         | NMEA checksum (hex)                                           |
 +-------+------------+---------------------------------------------------------------+
 
 .. note::
-   Maritime INS uses fields 1 through 6 from this sentence.
+   Maritime INS uses fields 2 through 7 from this sentence. The leading time
+   field may be empty, but its position must be preserved.
+
+2.1.3.5. APMAV: Restore Serial MAVLink Access (ANELLO Proprietary)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+This recovery command restores MAVLink on RS232-1, disables the NMEA0183 serial
+and dedicated GNSS serial inputs, saves the changes, and reboots the unit.
+
+**Message Format**::
+
+    $APMAV*hh
+
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | hh         | NMEA checksum (hex)                                           |
++-------+------------+---------------------------------------------------------------+
+
+2.1.3.6. APRBL: Reboot Control (ANELLO Proprietary)
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+This command reboots the Maritime INS normally or into the bootloader.
+
+**Message Format**::
+
+    $APRBL,x*hh
+
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | x          | Reboot mode. ``0`` = normal reboot, ``1`` = reboot to         |
+|       |            | bootloader.                                                   |
++-------+------------+---------------------------------------------------------------+
+| 2     | hh         | NMEA checksum (hex)                                           |
++-------+------------+---------------------------------------------------------------+
 
 
 
@@ -798,7 +766,9 @@ Auxiliary GPS / GNSS position information input
 +---+--------+-------------------------------------------+------+----------------+
 
 .. note::
-   Maritime INS uses fields 1 through 5 from this PGN.
+   Maritime INS uses fields 1 through 5 from this PGN. Latitude and longitude
+   are encoded as ``1e-16 deg/count``. Altitude, horizontal accuracy, and
+   vertical accuracy are encoded as ``1e-7 m/count``.
 
 Logged topic: NMEA2000_POS
 
@@ -824,7 +794,8 @@ Auxiliary roll, pitch, and heading information along with accuracy estimates
 +---+----------+-------------------------------------------+------+----------------+
 
 .. note::
-   Maritime INS uses fields 1 through 6 from this PGN.
+   Maritime INS uses fields 1 through 6 from this PGN. All fields are encoded
+   as ``1e-7 deg/count``.
 
 Logged topic: NMEA2000_RPH
 
@@ -837,7 +808,7 @@ To configure NMEA 0183 over a serial port, update the following configs (see
 `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 for instructions on changing settings):
 
-* ``NM0183_SER_CFG`` = ``101`` (RS232-1) **or** ``102`` (RS232-2)
+* ``NM0183_CFG`` = ``1`` (RS232-1) **or** ``2`` (RS232-2)
 * ``NM0183_ODR_GGA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_APIMU`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
@@ -858,7 +829,10 @@ for instructions on changing settings):
 * ``NMUDP_ODR_APIMU`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_APINS`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 
-The default output port is 19550 and input port is 19551
+UDP output uses port ``19550`` and UDP input uses port ``19551``.
+External UDP output only occurs when ``NMUDP_MC_IP0`` through ``NMUDP_MC_IP3``
+define a valid multicast group. Setting ``NMUDP_EN`` to ``1`` alone does not
+produce external UDP output.
 
 See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 
@@ -898,7 +872,8 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 +--------+-------------+--------------------------------------------------------------------------+
 
 .. note::
-    Fields 2 and 8 differ from NMEA0183 standard for RMC output
+    Fields 2 and 8 differ from NMEA0183 standard for RMC output. Fields 10 and
+    11 are left blank in current Maritime INS output.
 
 3.1.2. GGA: Global Positioning System Fix Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -971,7 +946,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 +=======+==========+=======+==========================================================================+
 | 1     | Time     | ms    | Time since power on                                                      |
 +-------+----------+-------+--------------------------------------------------------------------------+
-| 2     | T_Sync   | ms    | Time at last sync rising edge (zero when sync config disabled)           |
+| 2     | T_Sync   | ms    | Reserved in current Maritime INS output and currently always ``0.000``   |
 +-------+----------+-------+--------------------------------------------------------------------------+
 | 3     | AX       | g     | X-Axis Acceleration                                                      |
 +-------+----------+-------+--------------------------------------------------------------------------+
@@ -991,76 +966,131 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 +-------+----------+-------+--------------------------------------------------------------------------+
 | 11    | OG_WZ    | deg/s | High Precision Z-Axis Angular Rate (ANELLO Optical Gyro)                 |
 +-------+----------+-------+--------------------------------------------------------------------------+
-| 12    | MAG_X    | g     | X-Axis Magnetic Field Measurement                                        |
+| 12    | MAG_X    | Gauss | X-Axis Magnetic Field Measurement                                        |
 +-------+----------+-------+--------------------------------------------------------------------------+
-| 13    | MAG_Y    | g     | Y-Axis Magnetic Field Measurement                                        |
+| 13    | MAG_Y    | Gauss | Y-Axis Magnetic Field Measurement                                        |
 +-------+----------+-------+--------------------------------------------------------------------------+
-| 14    | MAG_Z    | g     | Z-Axis Magnetic Field Measurement                                        |
+| 14    | MAG_Z    | Gauss | Z-Axis Magnetic Field Measurement                                        |
 +-------+----------+-------+--------------------------------------------------------------------------+
 | 15    | TempC    | °C    | Temperature                                                              |
 +-------+----------+-------+--------------------------------------------------------------------------+
-| 16    | Status_X |       | Status based on bits: Bit 0: Gyro discrepancy (implemented, currently     |
-|       |          |       | never set); Bit 1: Temperature uncontrolled (inverse of sensor_flags bit 2);|
-|       |          |       | Bit 2: Over current error (sensor_flags bit 5 OR bit 6); Bit 3: Supply   |
-|       |          |       | voltage error (sensor_flags bit 0); Bits 4-7 unused and remain 0          |
+| 16    | Status_X |       | Status bitfield for X-axis SiPhOG (see table below)                      |
 +-------+----------+-------+--------------------------------------------------------------------------+
-| 17    | Status_Y |       | Status based on bits: Bit 0: Gyro discrepancy (implemented, currently     |
-|       |          |       | never set); Bit 1: Temperature uncontrolled (inverse of sensor_flags bit 2);|
-|       |          |       | Bit 2: Over current error (sensor_flags bit 5 OR bit 6); Bit 3: Supply   |
-|       |          |       | voltage error (sensor_flags bit 0); Bits 4-7 unused and remain 0          |
+| 17    | Status_Y |       | Status bitfield for Y-axis SiPhOG (see table below)                      |
 +-------+----------+-------+--------------------------------------------------------------------------+
-| 18    | Status_Z |       | Status based on bits: Bit 0: Gyro discrepancy (implemented, currently     |
-|       |          |       | never set); Bit 1: Temperature uncontrolled (inverse of sensor_flags bit 2);|
-|       |          |       | Bit 2: Over current error (sensor_flags bit 5 OR bit 6); Bit 3: Supply   |
-|       |          |       | voltage error (sensor_flags bit 0); Bits 4-7 unused and remain 0          |
+| 18    | Status_Z |       | Status bitfield for Z-axis SiPhOG (see table below)                      |
 +-------+----------+-------+--------------------------------------------------------------------------+
+
+**APIMU Status Bits**
+
++-------+---------------------------------------------------------------+
+| Bit   | Meaning                                                       |
++=======+===============================================================+
+| 0     | Reserved in current Maritime INS output and always ``0``      |
++-------+---------------------------------------------------------------+
+| 1     | Temperature uncontrolled                                      |
++-------+---------------------------------------------------------------+
+| 2     | Over-current error                                            |
++-------+---------------------------------------------------------------+
+| 3     | SiPhOG supply-voltage error                                   |
++-------+---------------------------------------------------------------+
+| 4-7   | Unused and always ``0``                                       |
++-------+---------------------------------------------------------------+
 
 3.1.4 INS: Proprietary Navigation Output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
 
-    $PAPINS,Time,PPS_Time,Status,Lat,Long,Height,VN,VE,VD,Roll,Pitch,Heading,ZUPT*hh
+    $PAPINS,Time,PPS_Time,Status,Lat,Long,Height,VN,VE,VD,Roll,Pitch,Heading,Reserved*hh
 
-+-------+----------+-------+--------------------------------------------------------------------------+
-| Index | Field    | Units | Description                                                              |
-+=======+==========+=======+==========================================================================+
-| 1     | Time     | ms    | Time since power on                                                      |
-+-------+----------+-------+--------------------------------------------------------------------------+
-| 2     | PPS Time | ns    | Time of last PPS pulse converted to GPS time (time since midnight        |
-|       |          |       | on Jan 6, 1980)                                                          |
-+-------+----------+-------+--------------------------------------------------------------------------+
-| 3     | Status   |       | 0: Attitude Only                                                         |
-|       |          |       | 1: Position and Attitude                                                 |
-|       |          |       | 2: Position, Attitude, and Heading                                       |
-|       |          |       | 3: RTK Float                                                             |
-|       |          |       | 4: RTK Fix                                                               |
-|       |          |       |                                                                          |
-|       |          |       | If GPS is commanded OFF by the user:                                     |
-|       |          |       | 8: Attitude Only                                                         |
-|       |          |       | 9: Position and Attitude                                                 |
-|       |          |       | 10: Position, Attitude, and Heading                                      |
-+-------+----------+-------+--------------------------------------------------------------------------+
-| 4     | Lat      | deg   | Latitude, '+': North, '-': South                                         |
-+-------+----------+-------+--------------------------------------------------------------------------+
-| 5     | Long     | deg   | Longitude, '+': East, '-': West                                          |
-+-------+----------+-------+--------------------------------------------------------------------------+
-| 6     | Height   | m     | Height above ellipsoid                                                   |
-+-------+----------+-------+--------------------------------------------------------------------------+
-| 7     | VN       | m/s   | North Velocity in NED Frame                                              |
-+-------+----------+-------+--------------------------------------------------------------------------+
-| 8     | VE       | m/s   | East Velocity in NED Frame                                               |
-+-------+----------+-------+--------------------------------------------------------------------------+
-| 9     | VD       | m/s   | Down Velocity in NED Frame                                               |
-+-------+----------+-------+--------------------------------------------------------------------------+
-| 10    | Roll     | deg   | Roll Angle, rotation about body frame X (range from -90 to 90)           |
-+-------+----------+-------+--------------------------------------------------------------------------+
-| 11    | Pitch    | deg   | Pitch Angle, rotation about body frame Y (range from -180 to 180)        |
-+-------+----------+-------+--------------------------------------------------------------------------+
-| 12    | Heading  | deg   | Heading Angle, rotation about body frame Z (range from -180 to 180)      |
-+-------+----------+-------+--------------------------------------------------------------------------+
-| 13    | ZUPT     |       | 0: Moving, 1: Stationary                                                 |
-+-------+----------+-------+--------------------------------------------------------------------------+
+.. list-table::
+   :header-rows: 1
+   :widths: 8 16 10 66
+
+   * - Index
+     - Field
+     - Units
+     - Description
+   * - 1
+     - Time
+     - ms
+     - Time since power on
+   * - 2
+     - PPS Time
+     - ns
+     - Currently always ``0.000``
+   * - 3
+     - Status
+     -
+     - Navigation status code (see table below)
+   * - 4
+     - Lat
+     - deg
+     - Latitude, ``+`` = North, ``-`` = South
+   * - 5
+     - Long
+     - deg
+     - Longitude, ``+`` = East, ``-`` = West
+   * - 6
+     - Height
+     - m
+     - Height above ellipsoid
+   * - 7
+     - VN
+     - m/s
+     - North velocity in NED frame
+   * - 8
+     - VE
+     - m/s
+     - East velocity in NED frame
+   * - 9
+     - VD
+     - m/s
+     - Down velocity in NED frame
+   * - 10
+     - Roll
+     - deg
+     - Roll angle about body X
+   * - 11
+     - Pitch
+     - deg
+     - Pitch angle about body Y
+   * - 12
+     - Heading
+     - deg
+     - Heading angle about body Z
+   * - 13
+     - Reserved
+     -
+     - Currently emitted empty
+
+**APINS Status Values**
+
+.. list-table::
+   :header-rows: 1
+   :widths: 10 90
+
+   * - Value
+     - Meaning
+   * - 0
+     - Attitude only using internal GNSS selection
+   * - 1
+     - Position and attitude using internal GNSS selection
+   * - 2
+     - Position, attitude, and heading using internal GNSS selection
+   * - 8
+     - Attitude only with GPS commanded off by the user
+   * - 9
+     - Position and attitude with GPS commanded off by the user
+   * - 10
+     - Position, attitude, and heading with GPS commanded off by the user
+   * - 15
+     - Position and attitude while external GNSS is selected
+   * - 16
+     - Position, attitude, and heading while external GNSS is selected
+   * - 20
+     - Dead reckoning after GNSS loss following prior GNSS fusion
 
 3.2 NMEA 2000 Output Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1086,6 +1116,10 @@ High-speed update of vessel latitude/longitude position.
 +---+-------------+----------------------+--------+----------------+
 | 2 | Longitude   | Position longitude   | deg    | 32-bit signed  |
 +---+-------------+----------------------+--------+----------------+
+
+.. note::
+   Current Maritime INS output encodes latitude and longitude as
+   ``1e-7 deg/count``.
 
 
 3.2.2 PGN 129026: COG & SOG, Rapid Update
@@ -1157,7 +1191,8 @@ Complete GNSS navigation solution including position, quality, and DOP.
 .. note::
    Current Maritime INS output sets field 7 to ``0``, field 9 to ``0``,
    field 15 to ``1``, and field 16 to ``6``. Field 17 comes from the GNSS
-   reference ID.
+   reference ID. Latitude and longitude are encoded as ``1e-16 deg/count``.
+   Altitude is encoded as ``1e-6 m/count``.
 
 **Method Field Values (4-bit lookup):**
 
@@ -1243,6 +1278,10 @@ Provides vessel orientation (roll, pitch, yaw).
 +---+--------+-------------------------+--------+----------------+
 | 4 | Roll   | Vessel roll angle       | rad    | 16-bit signed  |
 +---+--------+-------------------------+--------+----------------+
+
+.. note::
+   Current Maritime INS output encodes yaw, pitch, and roll as
+   ``1e-4 rad/count``.
 
 
 3.2.7 PGN 126992: System Time

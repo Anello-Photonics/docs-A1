@@ -149,11 +149,12 @@ See :ref:`ethernet-parameters` for the full Ethernet parameter table and IPv4 en
 
 NMEA0183 over UDP Parameters
 """"""""""""""""""""""""""""
-If utilizing NMEA0183 messaging over UDP, the multicast IP for NMEA0183 UDP messaging can be set with the following 4 parameters:
+If utilizing NMEA0183 messaging over UDP, input uses port ``19551`` and output uses
+port ``19550``. External UDP output only occurs when ``NMUDP_MC_IP0`` through
+``NMUDP_MC_IP3`` define a valid multicast group. Setting ``NMUDP_EN`` to ``1``
+alone does not produce external UDP output.
 
 See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
-
-The default output port is 19550 and input port is 19551
 
 
 CAN Termination
@@ -211,4 +212,4 @@ For best GPS-denied navigation results, ANELLO recommends the following initiali
 
 4. Perform your mission. Best performance in GPS-denied conditions is achieved with calibrated speed aiding and at speeds above 2 knots.
 
-*Maritime INS User Manual 93001501 v1.1.1*
+*Maritime INS User Manual 93001501 v1.1.2*
