@@ -94,7 +94,7 @@ Ensure that antennae are mounted on a ground plane of at least 10 cm x 10 cm and
 4. Configure ANELLO Maritime INS
 ---------------------------------
 
-4.3.1 Configurations Overview
+4.1 Configurations Overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Maritime INS is shipped with the following communication interfaces configured:
@@ -123,7 +123,7 @@ For the full parameter tables and all configuration options, see:
 
 Parameters can be changed using either AMarinerControl or ANELLO Python scripts.
 
-4.1.2 Configuring Using AMarinerControl
+4.2 Configuring Using AMarinerControl
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Parameters can be changed using AMarinerControl: Click the **A (top right) > Parameters**
@@ -140,7 +140,7 @@ Units can be configured in AMarinerControl in the Application Settings menu unde
       :width: 50%
       :align: center
 
-4.2.3 Configuring Using ANELLO Python Scripts 
+4.3 Configuring Using ANELLO Python Scripts 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To change parameters using ANELLO Python Scripts (currently Ethernet only), use: 
