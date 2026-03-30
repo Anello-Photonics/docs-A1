@@ -33,9 +33,7 @@ The maximum supported baud rate for both serial ports is 921600
 +-----------------+-------------------------------------------------------------------+-----------------------------------------------+------------------------------------------------------+
 | RS232-2         | Serial, MAVLink, NMEA 0183                                        | NMEA 0183 at 921600                           | Data input / output, configuration                   |
 +-----------------+-------------------------------------------------------------------+-----------------------------------------------+------------------------------------------------------+
-| Ethernet        | UDP, MAVLink, NMEA 0183                                           | MAVLink (UDP 14550),                          | Data input / output, configuration, log downloads    |
-|                 |                                                                   | NMEA 0183 UDP enabled (RX 19551, TX 19550     |                                                      |
-|                 |                                                                   | with valid multicast IP)                      |                                                      |
+| Ethernet        | UDP, MAVLink, NMEA 0183                                           | MAVLink (UDP 14550)                           | Data input / output, configuration, log downloads    |
 +-----------------+-------------------------------------------------------------------+-----------------------------------------------+------------------------------------------------------+
 | CAN             | NMEA 2000                                                         | NMEA 2000                                     | Data input / output                                  |
 +-----------------+-------------------------------------------------------------------+-----------------------------------------------+------------------------------------------------------+
@@ -161,12 +159,10 @@ To enable external NMEA0183 GNSS input set ``EKF2_GPS_EXT_EN`` = ``1`` or ``Enab
 
 To enable a secondary input-only serial port to receive external NMEA0183 GNSS input set ``NM_GNSS_CFG`` = ``1`` (RS232-1) **or** ``2`` (RS232-2)
 
-To use received NMEA0183 serial data for external GNSS input, ensure ``NM0183_GPS_EXT`` = ``1``.
-To use received NMEA0183 UDP data for external GNSS input, ensure ``NMUDP_GPS_EXT`` = ``1``.
-
 To use an external GNSS input, the minimum required messages are ``GGA``, ``RMC``, and ``GSA``
-at a rate of at least ``0.5 Hz``. These messages must be recent, ``RMC`` must report
-``status = A``, latitude and longitude must be valid, ``GSA`` mode must be ``3`` or greater,
+at a rate of at least ``0.5 Hz``. In order for the algorithm to use external GNSS
+updates, ``RMC`` must report ``status = A``, latitude and longitude must be valid,
+``GSA`` mode must be ``3`` or greater,
 and PDOP, HDOP, and VDOP must all be present, finite, and greater than zero.
 
 See :ref:`external-position-aiding-parameters` for the parameter table used to configure external position aiding.
@@ -410,8 +406,7 @@ This message can be used to pass in an external position, either from user input
 +-------+------------+---------------------------------------------------------------+
 
 .. note::
-   Maritime INS uses fields 2 through 6 from this sentence. The leading time
-   field may be empty, but its position must be preserved.
+   Maritime INS uses fields 2 through 6 from this sentence.
 
 2.1.3.4. PAPRPH: Roll/Pitch/Heading (with Accuracies) (ANELLO Proprietary) 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -445,14 +440,15 @@ This message can be used to pass in an external heading, either from user input 
 +-------+------------+---------------------------------------------------------------+
 
 .. note::
-   Maritime INS uses fields 2 through 7 from this sentence. The leading time
-   field may be empty, but its position must be preserved.
+   Maritime INS uses fields 2 through 7 from this sentence.
 
 2.1.3.5. APMAV: Restore Serial MAVLink Access (ANELLO Proprietary)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-This recovery command restores MAVLink on RS232-1, disables the NMEA0183 serial
-and dedicated GNSS serial inputs, saves the changes, and reboots the unit.
+This recovery command enables MAVLink on RS232-1, disables the NMEA0183 serial
+driver, and reboots the unit. This is intended if you only have serial
+connected to your computer and you need to change parameters, which is done
+over MAVLink.
 
 **Message Format**::
 
@@ -462,24 +458,6 @@ and dedicated GNSS serial inputs, saves the changes, and reboots the unit.
 | Index | Part       | Description                                                   |
 +=======+============+===============================================================+
 | 1     | hh         | NMEA checksum (hex)                                           |
-+-------+------------+---------------------------------------------------------------+
-
-2.1.3.6. APRBL: Reboot Control (ANELLO Proprietary)
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-This command reboots the Maritime INS normally or into the bootloader.
-
-**Message Format**::
-
-    $APRBL,x*hh
-
-+-------+------------+---------------------------------------------------------------+
-| Index | Part       | Description                                                   |
-+=======+============+===============================================================+
-| 1     | x          | Reboot mode. ``0`` = normal reboot, ``1`` = reboot to         |
-|       |            | bootloader.                                                   |
-+-------+------------+---------------------------------------------------------------+
-| 2     | hh         | NMEA checksum (hex)                                           |
 +-------+------------+---------------------------------------------------------------+
 
 
@@ -946,7 +924,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 +=======+==========+=======+==========================================================================+
 | 1     | Time     | ms    | Time since power on                                                      |
 +-------+----------+-------+--------------------------------------------------------------------------+
-| 2     | T_Sync   | ms    | Reserved in current Maritime INS output and currently always ``0.000``   |
+| 2     | T_Sync   | ms    | IMU synchronization timestamp                                            |
 +-------+----------+-------+--------------------------------------------------------------------------+
 | 3     | AX       | g     | X-Axis Acceleration                                                      |
 +-------+----------+-------+--------------------------------------------------------------------------+

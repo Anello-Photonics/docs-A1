@@ -193,9 +193,6 @@ Full Parameter list for NMEA0183 messaging over serial
 | NM0183_CFG         | 2       | Configure NMEA0183 serial output. Set to ``1`` for RS232-1 or ``2``      |
 |                    |         | for RS232-2.                                                             |
 +--------------------+---------+--------------------------------------------------------------------------+
-| NM0183_GPS_EXT     | 1       | Use received NMEA0183 serial data for external GNSS input when           |
-|                    |         | ``EKF2_GPS_EXT_EN`` is enabled.                                          |
-+--------------------+---------+--------------------------------------------------------------------------+
 | NM0183_ODR_APIMU   | 10      | Output data rate for AP IMU messages over NMEA0183 serial (Hz).          |
 +--------------------+---------+--------------------------------------------------------------------------+
 | NM0183_ODR_APINS   | 0       | Output data rate for AP INS messages over NMEA0183 serial (Hz).          |
@@ -223,9 +220,6 @@ Setting ``NMUDP_EN`` to ``1`` enables the UDP driver, but external UDP output on
 +====================+=========+==========================================================================+
 | NMUDP_EN           | 1       | Enable or disable the NMEA0183 UDP driver.                               |
 +--------------------+---------+--------------------------------------------------------------------------+
-| NMUDP_GPS_EXT      | 1       | Use received NMEA0183 UDP data for external GNSS input when              |
-|                    |         | ``EKF2_GPS_EXT_EN`` is enabled.                                          |
-+--------------------+---------+--------------------------------------------------------------------------+
 | NMUDP_MC_IP0       | 0       | Multicast IP address byte 0 for NMEA0183 over UDP.                       |
 +--------------------+---------+--------------------------------------------------------------------------+
 | NMUDP_MC_IP1       | 0       | Multicast IP address byte 1 for NMEA0183 over UDP.                       |
@@ -251,50 +245,59 @@ External Position Aiding Parameters
 
 Parameters used if receiving an external NMEA0183 GNSS input
 
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| Parameter          | Units | Default        | Description                                                                                  |
-+====================+=======+================+==============================================================================================+
-| EKF2_GPS_EXT_EN    | N/A   | 0              | Enables external NMEA0183 GNSS input.                                                        |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| NM_GNSS_CFG        | N/A   | 0              | Enable a secondary input-only serial port to receive external NMEA0183 GNSS input.           |
-|                    |       |                | Set to ``1`` to use RS232-1 **or** ``2`` for RS232-2.                                        |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| GPS_EXT_X          | m     | 0              | X offset from INS center to external GPS receiver's antenna.                                 |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| GPS_EXT_Y          | m     | 0              | Y offset from INS center to external GPS receiver's antenna.                                 |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| GPS_EXT_Z          | m     | 0              | Z offset from INS center to external GPS receiver's antenna.                                 |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| GPS_EXT_DELAY      | ms    | 110            | Delay applied to the external GNSS measurements relative to the IMU timing.                  |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| EKF2_PRIME_GPS     | N/A   | Internal (0)   | Preferred GPS receiver when all are reported healthy.                                        |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| EKF2_GPS_DS_MODE   | N/A   | Off (0)        | Used for GNSS spoofing detection. If horizontal disagreement exceeds                         |
-|                    |       |                | EKF2_GPS_DIS_HOR:                                                                            |
-|                    |       |                | - trust internal: prefer base / rover                                                        |
-|                    |       |                | - trust external: prefer external receiver                                                   |
-|                    |       |                | - trust neither: reject GPS aiding for that update cycle                                     |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| EKF2_GPS_DIS_HOR   | m     | 100            | GPS receivers are considered in disagreement if their horizontal position differs            |
-|                    |       |                | from the selected receiver by more than this value.                                          |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| EKF2_REQ_GPS_REC   | N/A   | Off (0)        | Post-selection GPS receiver dependency mode. This can require a healthy                      |
-|                    |       |                | internal receiver, a healthy external receiver, or all receivers to agree                    |
-|                    |       |                | before GPS aiding is fused.                                                                  |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| EKF2_GPS_CHECK     | mask  | 245            | Bitmask that enables GPS quality checks before GPS aiding is accepted.                       |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| EKF2_REQ_NSATS     | count | 6              | Minimum satellite count required when the satellite-count check is enabled.                  |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| EKF2_REQ_PDOP      | N/A   | 2.5            | Maximum PDOP allowed when the PDOP check is enabled.                                         |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| EKF2_REQ_EPH       | m     | 3.0            | Maximum horizontal position error allowed when the EPH check is enabled.                     |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| EKF2_REQ_EPV       | m     | 5.0            | Maximum vertical position error allowed when the EPV check is enabled.                       |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| EKF2_REQ_SACC      | m/s   | 0.5            | Maximum speed accuracy error allowed when the speed-accuracy check is enabled.               |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| EKF2_REQ_HDRIFT    | m/s   | 0.1            | Maximum horizontal drift speed allowed when the stationary drift checks are enabled.         |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
-| EKF2_REQ_VDRIFT    | m/s   | 0.2            | Maximum vertical drift speed allowed when the vertical drift checks are enabled.             |
-+--------------------+-------+----------------+----------------------------------------------------------------------------------------------+
+.. list-table::
+   :header-rows: 1
+   :widths: 22 10 18 50
+
+   * - Parameter
+     - Units
+     - Default
+     - Description
+   * - EKF2_GPS_EXT_EN
+     - N/A
+     - 0
+     - Enables external NMEA0183 GNSS input.
+   * - NM_GNSS_CFG
+     - N/A
+     - 0
+     - Enables a secondary input-only serial port for external NMEA0183 GNSS input. Set to ``1`` for RS232-1 or ``2`` for RS232-2.
+   * - NM0183_GPS_EXT
+     - N/A
+     - 1
+     - Allows the algorithm to use external GNSS data received on the same serial port selected by ``NM0183_CFG``. Use ``NM_GNSS_CFG`` instead to dedicate a separate input-only serial port for external GNSS.
+   * - NMUDP_GPS_EXT
+     - N/A
+     - 1
+     - Allows the algorithm to use external GNSS data received on the NMEA0183 UDP interface.
+   * - GPS_EXT_X
+     - m
+     - 0
+     - X offset from INS center to the external GPS receiver antenna.
+   * - GPS_EXT_Y
+     - m
+     - 0
+     - Y offset from INS center to the external GPS receiver antenna.
+   * - GPS_EXT_Z
+     - m
+     - 0
+     - Z offset from INS center to the external GPS receiver antenna.
+   * - GPS_EXT_DELAY
+     - ms
+     - 110
+     - Delay applied to external GNSS measurements relative to IMU timing.
+   * - EKF2_PRIME_GPS
+     - N/A
+     - Internal (0)
+     - Preferred GPS receiver when all receivers are reported healthy.
+   * - EKF2_GPS_DS_MODE
+     - N/A
+     - Off (0)
+     - GNSS spoofing-handling mode used when horizontal disagreement exceeds ``EKF2_GPS_DIS_HOR``.
+   * - EKF2_GPS_DIS_HOR
+     - m
+     - 100
+     - Horizontal disagreement threshold between GPS receivers.
+   * - EKF2_REQ_GPS_REC
+     - N/A
+     - Off (0)
+     - Post-selection receiver dependency mode that can require a healthy internal receiver, external receiver, or all receivers before GPS aiding is fused.
