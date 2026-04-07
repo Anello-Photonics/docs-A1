@@ -27,6 +27,8 @@ in the vehicle frame, i.e. not corrected for mounting orientation of the unit.
 +---------------------+------------------+----------------------------------------------------------------------------------+
 | Output Center       |  ocx, ocy, ocz   |   Vector from center of ANELLO unit to desired INS solution position, in meters  |
 +---------------------+------------------+----------------------------------------------------------------------------------+
+| Odometer Position   |  wsx, wsy, wsz   |   Vector from center of ANELLO unit odometer, in meters                          |
++---------------------+------------------+----------------------------------------------------------------------------------+
 | Antenna Baseline    |  bsl             |   Baseline length between two antennae, in meters                                |
 +---------------------+------------------+----------------------------------------------------------------------------------+
 
