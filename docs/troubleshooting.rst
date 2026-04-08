@@ -10,7 +10,7 @@ AMarinerControl
 
 Linux
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-On Ubuntu/Debian, the AMarinerControl.AppImage may require the following libraries:
+On Ubuntu/Debian, the AMarinerControl.AppImage may require installing the following libraries:
 
 .. code-block:: bash
     :caption: Terminal
@@ -22,7 +22,7 @@ On Ubuntu/Debian, the AMarinerControl.AppImage may require the following librari
 MacOS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-AMarinerControl for MacOS is unsigned the following error message may appear when installing for the first time.
+AMarinerControl for MacOS is unsigned, so the following error message may appear when installing for the first time.
 
 .. image:: media/Mac_error.png
    :width: 30%
