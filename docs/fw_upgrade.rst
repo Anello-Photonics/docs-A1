@@ -46,12 +46,12 @@ To upgrade FW using AMarinerControl, the ANELLO FW upgrade python script still n
    :width: 80%
    :align: center
 
-2. Download the ANELLO-provided FW image onto your local computer (Link also exists in AMarinerControl FW upgrade screen).
-3. Select firmware upgrade python script stored on local computer in first box.
-4. Select which connected serial port is RS-232-1 in drop down menu.
-5. Select path to downloaded firmware image on local computer in next box.
-6. Press "Start"
-7. After it completes, you will see "Rebooting. Elapsed Time x.x" - this means the FW upgrade was successful.
+3. Download the ANELLO-provided FW image onto your local computer (Link also exists in AMarinerControl FW upgrade screen).
+4. Select firmware upgrade python script stored on local computer in first box.
+5. Select which connected serial port is RS-232-1 in drop down menu.
+6. Select path to downloaded firmware image on local computer in next box.
+7. Press "Start"
+8. After it completes, you will see "Rebooting. Elapsed Time x.x" - this means the FW upgrade was successful.
 
 .. image:: media/FW_upgrade_AMC.png
    :width: 80%
