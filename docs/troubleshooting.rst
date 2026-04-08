@@ -15,8 +15,8 @@ On Ubuntu/Debian, AMarinerControl AppImage may require:
 .. code-block:: bash
     :caption: Terminal
 
-    	sudo apt update
-		sudo apt install libpulse0 libxcb-cursor0 libxcb-shape0
+    sudo apt update
+	sudo apt install libpulse0 libxcb-cursor0 libxcb-shape0
 
 
 MacOS
@@ -33,6 +33,8 @@ To open the app, go to System Settings > Privacy and Security, scroll to the bot
 .. image:: media/Mac_open1.png
    :width: 50%
    :align: center
+
+Select "Open Anyway" again
 
 .. image:: media/Mac_open2.png
    :width: 50%
