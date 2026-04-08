@@ -59,7 +59,8 @@ Firmware updates requires the installation of the python libraries pyserial and 
 
     	pip3 install pyserial pymavlink
 
- Hardware
+
+Hardware
 ------------------
 
 Reset Wire
