@@ -16,7 +16,7 @@ On Ubuntu/Debian, AMarinerControl AppImage may require:
     :caption: Terminal
 
     sudo apt update
-	sudo apt install libpulse0 libxcb-cursor0 libxcb-shape0
+    sudo apt install libpulse0 libxcb-cursor0 libxcb-shape0
 
 
 MacOS
