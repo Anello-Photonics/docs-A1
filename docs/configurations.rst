@@ -213,7 +213,8 @@ NMEA0183 over UDP Parameters
 
 NMEA0183 over UDP uses port ``19551`` for input messages and port ``19550`` for output messages.
 Setting ``NMUDP_EN`` to ``1`` enables the UDP driver, but external UDP output only occurs when
-``NMUDP_MC_IP0`` through ``NMUDP_MC_IP3`` define a valid multicast group.
+``NMUDP_MC_IP0`` through ``NMUDP_MC_IP3`` define a valid multicast group or ``NMUDP_UC_IP0`` through ``NMUDP_UC_IP3`` 
+define a Unicast IP.
 
 +--------------------+---------+--------------------------------------------------------------------------+
 | Parameter          | Default | Description                                                              |
@@ -228,6 +229,14 @@ Setting ``NMUDP_EN`` to ``1`` enables the UDP driver, but external UDP output on
 +--------------------+---------+--------------------------------------------------------------------------+
 | NMUDP_MC_IP3       | 0       | Multicast IP address byte 3 for NMEA0183 over UDP.                       |
 +--------------------+---------+--------------------------------------------------------------------------+
+| NMUDP_UC_IP0       | 0       | Unicast IP address byte 0 for NMEA0183 over UDP.                         |
++--------------------+---------+--------------------------------------------------------------------------+
+| NMUDP_UC_IP1       | 0       | Unicast IP address byte 1 for NMEA0183 over UDP.                         |
++--------------------+---------+--------------------------------------------------------------------------+
+| NMUDP_UC_IP2       | 0       | Unicast IP address byte 2 for NMEA0183 over UDP.                         |
++--------------------+---------+--------------------------------------------------------------------------+
+| NMUDP_UC_IP3       | 0       | Unicast IP address byte 3 for NMEA0183 over UDP.                         |
++--------------------+---------+--------------------------------------------------------------------------+
 | NMUDP_ODR_APIMU    | 10      | Output data rate for AP IMU messages over NMEA0183 over UDP (Hz).        |
 +--------------------+---------+--------------------------------------------------------------------------+
 | NMUDP_ODR_APINS    | 0       | Output data rate for AP INS messages over NMEA0183 over UDP (Hz).        |
@@ -237,6 +246,8 @@ Setting ``NMUDP_EN`` to ``1`` enables the UDP driver, but external UDP output on
 | NMUDP_ODR_RMC      | 0       | Output data rate for RMC messages over NMEA0183 over UDP (Hz).           |
 +--------------------+---------+--------------------------------------------------------------------------+
 
+.. note::
+    To use NMEA 0183 over unicast, ensure that all multicast parameters (NMUDP_MC_IP0 through NMUDP_MC_IP3) are set to zero, with the unicast parameters configured as described above.
 
 .. _external-position-aiding-parameters:
 
@@ -272,15 +283,15 @@ Parameters used if receiving an external NMEA0183 GNSS input
    * - GPS_EXT_X
      - m
      - 0
-     - X offset from INS center to the external GPS receiver antenna.
+     - X offset from INS center to the external GNSS receiver antenna.
    * - GPS_EXT_Y
      - m
      - 0
-     - Y offset from INS center to the external GPS receiver antenna.
+     - Y offset from INS center to the external GNSS receiver antenna.
    * - GPS_EXT_Z
      - m
      - 0
-     - Z offset from INS center to the external GPS receiver antenna.
+     - Z offset from INS center to the external GNSS receiver antenna.
    * - GPS_EXT_DELAY
      - ms
      - 110
@@ -288,7 +299,7 @@ Parameters used if receiving an external NMEA0183 GNSS input
    * - EKF2_PRIME_GPS
      - N/A
      - Internal (0)
-     - Preferred GPS receiver when all receivers are reported healthy.
+     - Preferred GNSS receiver when all receivers are reported healthy.
    * - EKF2_GPS_DS_MODE
      - N/A
      - Off (0)
@@ -296,8 +307,14 @@ Parameters used if receiving an external NMEA0183 GNSS input
    * - EKF2_GPS_DIS_HOR
      - m
      - 100
-     - Horizontal disagreement threshold between GPS receivers.
+     - Horizontal disagreement threshold between GNSS receivers.
    * - EKF2_REQ_GPS_REC
      - N/A
      - Off (0)
      - Post-selection receiver dependency mode that can require a healthy internal receiver, external receiver, or all receivers before GPS aiding is fused.
+   * - EXT_GPS_CHECK
+     - N/A
+     - 15
+     - External GNSS quality check bitmask parameter (enables / disables GNSS health gates). Contact support@anellophotonics.com for more information.
+
+
