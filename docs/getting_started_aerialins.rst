@@ -1,8 +1,8 @@
 ==================================
-Maritime INS Getting Started Guide
+Aerial INS Getting Started Guide
 ==================================
 
-Thank you for choosing the ANELLO Maritime INS! This step-by-step guide will get you started with connection, configuration, and data collection.  
+Thank you for choosing the ANELLO Aerial INS! This step-by-step guide will get you started with connection, configuration, and data collection.  
 Please contact support@anellophotonics.com with any questions.  
 
 1. Hardware Connections
@@ -14,17 +14,17 @@ The ANELLO Aerial INS unit is pictured below. It features a 22-pin circular conn
    :width: 35%
    :align: center
 
-An SCD drawing of the Maritime INS and a schematic of the accessory kit breakout cable can be found in  
-`Mechanicals <https://docs-a1.readthedocs.io/en/maritime_ins/mechanicals.html>`__.
+An SCD drawing of the Aerial INS and a schematic of the accessory kit breakout cable can be found in  
+`Mechanicals <https://docs-a1.readthedocs.io/en/aerial_ins/mechanicals.html>`__.
 
-If you received an ANELLO Maritime INS Loaner unit, you will also receive the Accessory Kit pictured below. 
+If you received an ANELLO Aerial INS Loaner unit, you will also receive the Accessory Kit pictured below. 
 
 .. image:: media/AerialINS_eval_kit.jpg
    :width: 35%
    :align: center
 
 The kit includes the following hardware:
-   a. 22 pin MIL-DTL-38999 circular breakout connector for connecting to the Maritime INS
+   a. 22 pin MIL-DTL-38999 circular breakout connector for connecting to the Aerial INS
    b. 2 Triple frequency GNSS antennae
    c. 2 USB to serial FTDI chipset adapter cables
    d. Ethernet to USB adapter cable
@@ -33,7 +33,7 @@ The kit includes the following hardware:
 2. Software Interfaces
 ---------------------------------
 
-Connect with the ANELLO Maritime Control software (AMarinerControl):
+Connect with the ANELLO Aerial Control software (AMarinerControl):
 
 1. Install ANELLO's `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/v1.2.1/>`_ on your Windows (.exe), Mac (.dmg), or Linux (.AppImage) computer.
 
@@ -56,13 +56,13 @@ Connect with the ANELLO Maritime Control software (AMarinerControl):
    c. Type: UDP  
    d. Port: 14550
 
-   You can also check "Automatically Connect on Start" to automatically use these comm link settings to connect to the Maritime INS every time the application is opened.
+   You can also check "Automatically Connect on Start" to automatically use these comm link settings to connect to the Aerial INS every time the application is opened.
 
 .. image:: media/AMC_eth_connect.png
    :width: 70%
    :align: center
 
-5. Connect the Maritime INS to the computer using Ethernet.
+5. Connect the Aerial INS to the computer using Ethernet.
 
 6. Once connected, the status in the top left of AMarinerControl changes from **Disconnected** to **Connected**.
 
@@ -74,12 +74,12 @@ Connect with the ANELLO Maritime Control software (AMarinerControl):
 3. Vehicle Installation
 ----------------------------
 
-The ANELLO Maritime INS can be configured for various installation positions as long as parameters are set as detailed in the next section.  
+The ANELLO Aerial INS can be configured for various installation positions as long as parameters are set as detailed in the next section.  
 An external speed-aiding sensor, e.g. paddle wheel, ultrasonic sensor, Doppler velocity log (DVL), is highly recommended to maintain accuracy in GPS-denied conditions. 
 Calibration procedures for common sensors are detailed in  
-`Sensor Calibrations <https://docs-a1.readthedocs.io/en/maritime_ins/sensor_calibrations.html>`__.
+`Sensor Calibrations <https://docs-a1.readthedocs.io/en/aerial_ins/sensor_calibrations.html>`__.
 
-It is recommended that the Maritime INS be installed with the **X axis facing forward** and as close to the centerline as possible.  
+It is recommended that the Aerial INS be installed with the **X axis facing forward** and as close to the centerline as possible.  
 If this is not possible, configure **SENS_BOARD_ROT** and **EKF2_IMU_POS_...** offsets accordingly.
 
 Below is the recommended installation configuration, with the longest possible antenna baseline (distance between antennae). A minimum of a 1 meter baseline is required to ensure optimal dual antenna heading accuracy.
@@ -91,13 +91,13 @@ Ensure that antennae are mounted on a ground plane of at least 10 cm x 10 cm and
    :align: center
 
 
-4. Configure ANELLO Maritime INS
+4. Configure ANELLO Aerial INS
 ---------------------------------
 
 4.1 Configurations Overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Maritime INS is shipped with the following communication interfaces configured:
+The Aerial INS is shipped with the following communication interfaces configured:
 
 * ``RS232-1``: MAVLink at ``57600``
 * ``RS232-2``: NMEA 0183 at ``921600``
@@ -107,7 +107,7 @@ The Maritime INS is shipped with the following communication interfaces configur
 The minimum required parameters recommended are installation parameters for antenna lever arms, 
 INS position offsets, and mounting orientation.
 The coordinate system follows the right-hand rule: **X = forward**, **Y = right**, **Z = down**.  
-The INS center is the center of the Maritime INS unit.
+The INS center is the center of the Aerial INS unit.
 
 Distances are measured in meters from the IMU center to the respective antenna phase center.
 
@@ -144,7 +144,7 @@ Units can be configured in AMarinerControl in the Application Settings menu unde
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To change parameters using ANELLO Python Scripts (currently Ethernet only), use: 
-`Maritime_INS_CFG.py (in ANELLO_INS_Scripts repository) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Maritime_INS_CFG.py>`_
+`Aerial_INS_CFG.py (in ANELLO_INS_Scripts repository) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Aerial_INS_CFG.py>`_
 
 .. note:: If configuring lever arms through Python scripts, the units are always meters by default.
 
@@ -153,7 +153,7 @@ To change parameters using ANELLO Python Scripts (currently Ethernet only), use:
 ------------------------------------
 
 After installation and configuration, the unit is ready for data collection.  
-Data is logged automatically once power is applied to the Maritime INS. No manual steps are required to start logging.
+Data is logged automatically once power is applied to the Aerial INS. No manual steps are required to start logging.
 
 * Start a new log by cycling power to the unit.  
 * Download logs in AMarinerControl by clicking **A (top left) > Analyze Tools > Log Download**.  
@@ -193,4 +193,4 @@ For best GPS-denied navigation results, ANELLO recommends the following initiali
 
 4. Perform your mission. Best performance in GPS-denied conditions is achieved with calibrated speed aiding and at speeds above 2 knots.
 
-*Maritime INS User Manual 93001501 v1.1.2*
+*Aerial INS User Manual 93001501 v1.1.2*
