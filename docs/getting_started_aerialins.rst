@@ -75,7 +75,7 @@ Connect with the ANELLO Aerial Control software (AMarinerControl):
 ----------------------------
 
 The ANELLO Aerial INS can be configured for various installation positions as long as parameters are set as detailed in the next section.  
-An external speed-aiding sensor, e.g. paddle wheel, ultrasonic sensor, Doppler velocity log (DVL), is highly recommended to maintain accuracy in GPS-denied conditions. 
+An external speed-aiding sensor is highly recommended to maintain accuracy in GPS-denied conditions. 
 Calibration procedures for common sensors are detailed in  
 `Sensor Calibrations <https://docs-a1.readthedocs.io/en/aerial_ins/sensor_calibrations.html>`__.
 
