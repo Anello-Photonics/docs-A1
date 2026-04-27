@@ -39,23 +39,23 @@ Distances are measured in meters from the IMU center to the respective antenna p
 +---------------------+-------+---------+----------------------------------------------------------------------------------------------+
 | **GPS_SEP_ROVER_Z** | m     | 0       | Z offset from INS center to Rover antenna (ANT2).                                            |
 +---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_X**  | m     | 0       | X offset from center of boat to INS center.                                                  |
+| **EKF2_IMU_POS_X**  | m     | 0       | X offset from center of aircraft to INS center.                                              |
 +---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_Y**  | m     | 0       | Y offset from center of boat to INS center.                                                  |
+| **EKF2_IMU_POS_Y**  | m     | 0       | Y offset from center of aircraft to INS center.                                              |
 +---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_Z**  | m     | 0       | Z offset from center of boat to INS center.                                                  |
+| **EKF2_IMU_POS_Z**  | m     | 0       | Z offset from center of aircraft to INS center.                                              |
 +---------------------+-------+---------+----------------------------------------------------------------------------------------------+
 | **SENS_BOARD_ROT**  | enum  | 0       | INS mounting orientation. Set this if unit is not mounted with X-forward.                    |
 |                     |       |         |                                                                                              |
 |                     |       |         | *Common values:*                                                                             |
-|                     |       |         |   - **No Rotation**: Unit mounted upright with X pointing towards vessel bow                 |
-|                     |       |         |   - **Yaw 90°**: Unit mounted upright with X pointing towards vessel starboard               |
-|                     |       |         |   - **Yaw 180°**: Unit mounted upright with X pointing towards vessel stern                  |
-|                     |       |         |   - **Yaw 270°**: Unit mounted upright with X pointing towards vessel port                   |
-|                     |       |         |   - **Roll 180°**: Unit mounted upside down with X pointing towards vessel bow               |
-|                     |       |         |   - **Roll 180°, Yaw 90°**: Unit mounted upside down with X pointing towards vessel starboard|
-|                     |       |         |   - **Roll 180°, Yaw 180°**: Unit mounted upside down with X pointing towards vessel stern   |
-|                     |       |         |   - **Roll 180°, Yaw 270°**: Unit mounted upside down with X pointing towards vessel port    |
+|                     |       |         |   - **No Rotation**: Unit mounted upright with X pointing towards aircraft nose              |
+|                     |       |         |   - **Yaw 90°**: Unit mounted upright with X pointing towards aircraft right                 |
+|                     |       |         |   - **Yaw 180°**: Unit mounted upright with X pointing towards aircraft tail                 |
+|                     |       |         |   - **Yaw 270°**: Unit mounted upright with X pointing towards aircraft left                 |
+|                     |       |         |   - **Roll 180°**: Unit mounted upside down with X pointing towards aircraft nose            |
+|                     |       |         |   - **Roll 180°, Yaw 90°**: Unit mounted upside down with X pointing towards aircraft right  |
+|                     |       |         |   - **Roll 180°, Yaw 180°**: Unit mounted upside down with X pointing towards aircraft tail  |
+|                     |       |         |   - **Roll 180°, Yaw 270°**: Unit mounted upside down with X pointing towards aircraft left  |
 |                     |       |         |                                                                                              |
 |                     |       |         | Will be presented as a drop-down menu in AMarinerControl.                                    |
 +---------------------+-------+---------+----------------------------------------------------------------------------------------------+
