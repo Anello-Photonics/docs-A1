@@ -61,7 +61,7 @@ See `Mechanicals <https://docs-a1.readthedocs.io/en/aerial_ins/mechanicals.html>
 2.1  NMEA 0183 Input Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ANELLO Aerial INS supports standard NMEA 0183 input messages which allow the UAV to receive external sensor information, e.g. for speed-aiding. 
+The ANELLO Aerial INS supports standard NMEA 0183 input messages which allow the UAV to send in external sensor information, e.g. for speed-aiding. 
 ANELLO also has a set of proprietary messages, following the standard NMEA proprietary format with a prefix of “$P”, company code of “AP” (ANELLO Photonics), and the message code.
 
 To configure NMEA 0183 over a serial port, update the following configs (see
