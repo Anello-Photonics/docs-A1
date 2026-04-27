@@ -2,7 +2,7 @@ Mechanicals
 ==================
 
 
-The ANELLO Aerial INS (P/N 10001301) features a 22 pin MIL-DTL-38999 connector. The case housing is aluminum with an anodized finish.
+The ANELLO Aerial INS (P/N 10001601) features a 22 pin MIL-DTL-38999 connector. The case housing is aluminum with an anodized finish.
 
 Aerial INS SCD Drawing: :download:`PDF <media/100013R03-Outline_DrawingMaritime_INS.pdf>`
 
