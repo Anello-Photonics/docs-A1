@@ -49,7 +49,7 @@ The ANELLO Aerial INS supplies the following I/O pins for time synchronization
 +-----------------+--------------------------+------------------------------------------------------+
 | Sync            | 3.3 V                    | GNSS time synchronization input pulse                |
 +-----------------+--------------------------+------------------------------------------------------+
-| Reset           | 3.3 V                    | Driving low restarts the Aerial INS                |
+| Reset           | 3.3 V                    | Driving low restarts the Aerial INS                  |
 +-----------------+--------------------------+------------------------------------------------------+
 
 See `Mechanicals <https://docs-a1.readthedocs.io/en/maritime_ins/mechanicals.html>`_ to find the specified output pins.
@@ -964,7 +964,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 +-------+---------------------------------------------------------------+
 | Bit   | Meaning                                                       |
 +=======+===============================================================+
-| 0     | Reserved in current Aerial INS output and always ``0``      |
+| 0     | Reserved in current Aerial INS output and always ``0``        |
 +-------+---------------------------------------------------------------+
 | 1     | Temperature uncontrolled                                      |
 +-------+---------------------------------------------------------------+
