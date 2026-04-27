@@ -66,7 +66,7 @@ Hardware
 Reset Wire
 ~~~~~~~~~~~~~~~~~~
 
-The 4-wire bundle included with the ANELLO Maritime INS development kit breakout harness provides Reset, PPS, Sync, and BIT signals. Under normal operating conditions, the Reset line is held high at 3.3V. Driving this line low will force the device into a reset state.
+The 4-wire bundle included with the ANELLO Aerial INS development kit breakout harness provides Reset, PPS, Sync, and BIT signals. Under normal operating conditions, the Reset line is held high at 3.3V. Driving this line low will force the device into a reset state.
 
 To ensure proper operation, do not tape or heat-shrink the Reset wire together with other wires, and avoid inadvertently grounding it. If the Reset line is held low, the device will remain in a reset (powered-off) state and will appear unresponsive.
 

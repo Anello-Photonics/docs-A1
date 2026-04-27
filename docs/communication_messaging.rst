@@ -4,7 +4,7 @@ Communication & Messaging
 1.  Interfacing
 --------------------------
 
-The communication interfaces currently supported for the ANELLO Maritime INS:
+The communication interfaces currently supported for the ANELLO Aerial INS:
 
     1. Serial (RS-232)
     2. UDP (Ethernet)
@@ -40,7 +40,7 @@ The maximum supported baud rate for both serial ports is 921600
 
 1.3 Time Synchronization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The ANELLO Maritime INS supplies the following I/O pins for time synchronization
+The ANELLO Aerial INS supplies the following I/O pins for time synchronization
 
 +-----------------+--------------------------+------------------------------------------------------+
 | Interface       | Max Voltage              | Functions                                            |
@@ -49,7 +49,7 @@ The ANELLO Maritime INS supplies the following I/O pins for time synchronization
 +-----------------+--------------------------+------------------------------------------------------+
 | Sync            | 3.3 V                    | GNSS time synchronization input pulse                |
 +-----------------+--------------------------+------------------------------------------------------+
-| Reset           | 3.3 V                    | Driving low restarts the Maritime INS                |
+| Reset           | 3.3 V                    | Driving low restarts the Aerial INS                |
 +-----------------+--------------------------+------------------------------------------------------+
 
 See `Mechanicals <https://docs-a1.readthedocs.io/en/maritime_ins/mechanicals.html>`_ to find the specified output pins.
@@ -61,11 +61,11 @@ See `Mechanicals <https://docs-a1.readthedocs.io/en/maritime_ins/mechanicals.htm
 2.1  NMEA 0183 Input Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ANELLO Maritime INS supports standard NMEA 0183 input messages which allow the USV to send in external sensor information, e.g. for speed-aiding. 
+The ANELLO Aerial INS supports standard NMEA 0183 input messages which allow the AUV to send in external sensor information, e.g. for speed-aiding. 
 ANELLO also has a set of proprietary messages, following the standard NMEA proprietary format with a prefix of “$P”, company code of “AP” (ANELLO Photonics), and the message code.
 
 To configure NMEA 0183 over a serial port, update the following configs (see
-`Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
+`Configure ANELLO Aerial INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 for instructions on changing settings):
 
 ``NM0183_CFG`` = ``1`` (RS232-1) **or** ``2`` (RS232-2)
@@ -75,7 +75,7 @@ To change the baud rate use ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` f
 For the full table of serial NMEA0183 parameters, see :ref:`nmea0183-serial-parameters`.
 
 To configure NMEA 0183 over UDP, update the following configs (see
-`Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
+`Configure ANELLO Aerial INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 for instructions on changing settings):
 
 ``NMUDP_EN`` = ``1``
@@ -121,7 +121,7 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 +-------+------------+---------------------------------------------------------------+
 
 .. note::
-   Maritime INS uses fields 1, 3, 5, and 7 from this sentence.
+   Aerial INS uses fields 1, 3, 5, and 7 from this sentence.
 
 
 2.1.1.2. VBW: Dual Ground/Water Speed
@@ -150,7 +150,7 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 +-------+------------+---------------------------------------------------------------+
 
 .. note::
-   Maritime INS uses fields 1 through 6 from this sentence.
+   Aerial INS uses fields 1 through 6 from this sentence.
 
 
 2.1.2 External Position Aiding
@@ -166,7 +166,7 @@ updates, ``RMC`` must report ``status = A``, latitude and longitude must be vali
 and PDOP, HDOP, and VDOP must all be present, finite, and greater than zero.
 
 See :ref:`external-position-aiding-parameters` for the parameter table used to configure external position aiding.
-See `Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
+See `Configure ANELLO Aerial INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 for instructions on changing settings.
 
 2.1.2.1. RMC: Recommended Minimum Navigation Information
@@ -205,7 +205,7 @@ for instructions on changing settings.
 +--------+-------------+--------------------------------------------------------------------------+
 
 .. note::
-   Maritime INS uses fields 1 through 9 for external GNSS input. Fields 10 and
+   Aerial INS uses fields 1 through 9 for external GNSS input. Fields 10 and
    11 are logged but are not used in the real-time algorithm.
 
 2.1.2.2. GGA: Global Positioning System Fix Data
@@ -250,7 +250,7 @@ for instructions on changing settings.
 +--------+-------------+--------------------------------------------------------------------------+
 
 .. note::
-   Maritime INS uses fields 1 through 9 and field 11 from this sentence.
+   Aerial INS uses fields 1 through 9 and field 11 from this sentence.
 
 **GPS Quality Indicator**
 
@@ -319,7 +319,7 @@ for instructions on changing settings.
 +--------+------------+--------------------------------------------------------------------------+
 
 .. note::
-   Maritime INS uses fields 1 through 17 from this sentence. The real-time
+   Aerial INS uses fields 1 through 17 from this sentence. The real-time
    algorithm relies on fields 2, 15, 16, and 17.
 
 
@@ -345,12 +345,12 @@ Enables or disables GPS utilization in sensor fusion algorithm.
 +-------+------------+---------------------------------------------------------------+
 
 .. note::
-   Maritime INS uses field 1 from this sentence.
+   Aerial INS uses field 1 from this sentence.
 
 2.1.3.2. AUTOCAL: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-This message starts/stops the Maritime INS speed sensor auto-calibration routine (e.g., for water-speed aiding sensors). The default state is 0 (not in auto-calibration mode).
+This message starts/stops the Aerial INS speed sensor auto-calibration routine (e.g., for water-speed aiding sensors). The default state is 0 (not in auto-calibration mode).
 
 **Message Format**::
 
@@ -365,7 +365,7 @@ This message starts/stops the Maritime INS speed sensor auto-calibration routine
 +-------+------------+--------------------------------------------------------------------------+
 
 .. note::
-   Maritime INS uses field 1 from this sentence.
+   Aerial INS uses field 1 from this sentence.
 
 Recommended data collection procedure (while x = 1)
 
@@ -406,7 +406,7 @@ This message can be used to pass in an external position, either from user input
 +-------+------------+---------------------------------------------------------------+
 
 .. note::
-   Maritime INS uses fields 2 through 6 from this sentence.
+   Aerial INS uses fields 2 through 6 from this sentence.
 
 2.1.3.4. PAPRPH: Roll/Pitch/Heading (with Accuracies) (ANELLO Proprietary) 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -440,7 +440,7 @@ This message can be used to pass in an external heading, either from user input 
 +-------+------------+---------------------------------------------------------------+
 
 .. note::
-   Maritime INS uses fields 2 through 7 from this sentence.
+   Aerial INS uses fields 2 through 7 from this sentence.
 
 2.1.3.5. APMAV: Restore Serial MAVLink Access (ANELLO Proprietary)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -466,7 +466,7 @@ over MAVLink.
 
 2.2 NMEA 2000 Input Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The ANELLO Maritime INS also supports the following standard NMEA 2000 input messages, which allow the vehicle to send in external sensor information, e.g. for speed-aiding.
+The ANELLO Aerial INS also supports the following standard NMEA 2000 input messages, which allow the vehicle to send in external sensor information, e.g. for speed-aiding.
 
 Ensure ``NM2K_CFG`` is set to ``1`` before using the NMEA 2000 driver on the
 CAN port. This enables the driver and allows the system to publish and receive
@@ -491,7 +491,7 @@ Provides data with a high update rate for a specific engine in a single frame me
 +---+-----------------------+-------------------------------------------------+------+----------------+
 
 .. note::
-   Maritime INS uses fields 1 through 4 from this PGN.
+   Aerial INS uses fields 1 through 4 from this PGN.
 
 Logged topic: NMEA2000_ENGINE
 
@@ -531,7 +531,7 @@ Provides real-time operational data and status for a specific engine, usually br
 +----+--------------------------+---------------------------------------------+-------+----------------+
 
 .. note::
-   Maritime INS uses fields 1 through 13 from this PGN. Fields 10 and 11 are
+   Aerial INS uses fields 1 through 13 from this PGN. Fields 10 and 11 are
    logged as raw bitmaps.
 
 Logged topic: NMEA2000_ENGINE_DYN
@@ -556,7 +556,7 @@ Provides a single transmission describing the motion of a vessel relative to the
 +---+-----------------------------+----------------------------------------------+------+----------------+
 
 .. note::
-   Maritime INS uses fields 1 through 5 from this PGN. Fields 4 and 5 are used
+   Aerial INS uses fields 1 through 5 from this PGN. Fields 4 and 5 are used
    without remapping.
 
 Logged topic: NMEA2000_SPEED
@@ -579,7 +579,7 @@ Cumulative voyage distance traveled since last reset, tagged with time and date.
 +---+-----------------------------+-----------------------------------------+------+----------------+
 
 .. note::
-   Maritime INS uses fields 1 through 4 from this PGN.
+   Aerial INS uses fields 1 through 4 from this PGN.
 
 Logged topic: NMEA2000_DISTANCE
 
@@ -605,7 +605,7 @@ These values provide weather and ambient condition data, often used for sensor c
 +---+------------------------+------------------------------------------+------+----------------+
 
 .. note::
-   Maritime INS uses fields 1 through 6 from this PGN. Fields 2 and 3 are used
+   Aerial INS uses fields 1 through 6 from this PGN. Fields 2 and 3 are used
    without remapping.
 
 Logged topic: NMEA2000_ENVIRONMENT
@@ -632,7 +632,7 @@ Accurately describes the speed of a vessel by component vectors.
 +---+---------------------------------------+-------------------------------------------------+------+----------------+
 
 .. note::
-   Maritime INS uses fields 1 through 6 from this PGN.
+   Aerial INS uses fields 1 through 6 from this PGN.
 
 Logged topic: NMEA2000_VESSEL_SPEED
 
@@ -650,7 +650,7 @@ ANELLO proprietary message used to enable or disable the GPS through the NMEA200
 +---+------------+----------------------------------+------+----------------+
 
 .. note::
-   Maritime INS uses field 1 from this PGN.
+   Aerial INS uses field 1 from this PGN.
 
 Logged topic: NMEA2000_GPSCTRL
 
@@ -675,7 +675,7 @@ Recommended data collection procedure (while Auto-calibration Control = 1)
 - Exit auto-calibration by transmitting Auto-calibration Control = 0.
 
 .. note::
-   Maritime INS uses field 1 from this PGN.
+   Aerial INS uses field 1 from this PGN.
 
 Logged topic: NMEA2000_AUTOCAL_WATERSPEED
 
@@ -718,7 +718,7 @@ Provides real-time operational data and status for a specific transmission, typi
 +-------+-------------+
 
 .. note::
-   Maritime INS uses fields 1, 2, 4, 5, and 6 from this PGN. Field 6 is logged
+   Aerial INS uses fields 1, 2, 4, 5, and 6 from this PGN. Field 6 is logged
    as a raw bitmap.
 
 Logged topic: NMEA2000_TRANSMISSION
@@ -744,7 +744,7 @@ Auxiliary GPS / GNSS position information input
 +---+--------+-------------------------------------------+------+----------------+
 
 .. note::
-   Maritime INS uses fields 1 through 5 from this PGN. Latitude and longitude
+   Aerial INS uses fields 1 through 5 from this PGN. Latitude and longitude
    are encoded as ``1e-7 deg/count``. Altitude is encoded as ``1e-3 m/count``. 
    Horizontal accuracy and vertical accuracy are encoded as ``1e-7 m/count``.
 
@@ -772,7 +772,7 @@ Auxiliary roll, pitch, and heading information along with accuracy estimates
 +---+----------+-------------------------------------------+------+----------------+
 
 .. note::
-   Maritime INS uses fields 1 through 6 from this PGN. All fields are encoded
+   Aerial INS uses fields 1 through 6 from this PGN. All fields are encoded
    as ``1e-7 deg/count``.
 
 Logged topic: NMEA2000_RPH
@@ -783,7 +783,7 @@ Logged topic: NMEA2000_RPH
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To configure NMEA 0183 over a serial port, update the following configs (see
-`Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
+`Configure ANELLO Aerial INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 for instructions on changing settings):
 
 * ``NM0183_CFG`` = ``1`` (RS232-1) **or** ``2`` (RS232-2)
@@ -798,7 +798,7 @@ Units shipped prior to 2/19/2026 have a default baud rate of ``57600`` on both p
 To change the baud rate use ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
 
 To configure NMEA 0183 over UDP, update the following configs (see
-`Configure ANELLO Maritime INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
+`Configure ANELLO Aerial INS <https://docs-a1.readthedocs.io/en/maritime_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
 for instructions on changing settings):
 
 * ``NMUDP_EN`` = ``1``
@@ -851,7 +851,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 
 .. note::
     Fields 2 and 8 differ from NMEA0183 standard for RMC output. Fields 10 and
-    11 are left blank in current Maritime INS output.
+    11 are left blank in current Aerial INS output.
 
 3.1.2. GGA: Global Positioning System Fix Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -964,7 +964,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 +-------+---------------------------------------------------------------+
 | Bit   | Meaning                                                       |
 +=======+===============================================================+
-| 0     | Reserved in current Maritime INS output and always ``0``      |
+| 0     | Reserved in current Aerial INS output and always ``0``      |
 +-------+---------------------------------------------------------------+
 | 1     | Temperature uncontrolled                                      |
 +-------+---------------------------------------------------------------+
@@ -1096,7 +1096,7 @@ High-speed update of vessel latitude/longitude position.
 +---+-------------+----------------------+--------+----------------+
 
 .. note::
-   Current Maritime INS output encodes latitude and longitude as
+   Current Aerial INS output encodes latitude and longitude as
    ``1e-7 deg/count``.
 
 
@@ -1118,7 +1118,7 @@ Rapid update of Course Over Ground (COG) and Speed Over Ground (SOG).
 +---+----------------+--------------------------------+--------+----------------+
 
 .. note::
-   Current Maritime INS output sets field 2 to ``0``.
+   Current Aerial INS output sets field 2 to ``0``.
 
 
 3.2.3 PGN 129029: GNSS Position Data
@@ -1167,7 +1167,7 @@ Complete GNSS navigation solution including position, quality, and DOP.
 +-----+-------------------------+---------------------------------------+------+------------------+
 
 .. note::
-   Current Maritime INS output sets field 7 to ``0``, field 9 to ``0``,
+   Current Aerial INS output sets field 7 to ``0``, field 9 to ``0``,
    field 15 to ``1``, and field 16 to ``6``. Field 17 comes from the GNSS
    reference ID. Latitude and longitude are encoded as ``1e-16 deg/count``.
    Altitude is encoded as ``1e-6 m/count``.
@@ -1199,7 +1199,7 @@ Complete GNSS navigation solution including position, quality, and DOP.
 +------+----------------------------+
 
 .. note::
-   Current Maritime INS output uses field 8 for the reported GNSS method.
+   Current Aerial INS output uses field 8 for the reported GNSS method.
 
 
 
@@ -1223,7 +1223,7 @@ Provides vessel heading and related status.
 +---+------------------+-----------------------------------+--------+----------------+
 
 .. note::
-   Current Maritime INS output sets field 5 to ``0``.
+   Current Aerial INS output sets field 5 to ``0``.
 
 
 3.2.5 PGN 127251: Rate of Turn
@@ -1258,7 +1258,7 @@ Provides vessel orientation (roll, pitch, yaw).
 +---+--------+-------------------------+--------+----------------+
 
 .. note::
-   Current Maritime INS output encodes yaw, pitch, and roll as
+   Current Aerial INS output encodes yaw, pitch, and roll as
    ``1e-4 rad/count``.
 
 
@@ -1280,4 +1280,4 @@ Provides system time for network synchronization.
 +---+----------------+-------------------------------------+--------+----------------+
 
 .. note::
-   Current Maritime INS output sets field 2 to ``0``.
+   Current Aerial INS output sets field 2 to ``0``.

@@ -1,7 +1,7 @@
 Configurations
 ================
 
-This page consolidates the Maritime INS parameter tables used throughout the documentation.
+This page consolidates the Aerial INS parameter tables used throughout the documentation.
 Use the links below to jump directly to a configuration group.
 
 * :ref:`installation-parameters`
@@ -20,7 +20,7 @@ Installation Parameters
 
 The lever arms of the installation must be measured and configured as parameters to ensure accuracy.
 The coordinate system follows the right-hand rule: **X = forward**, **Y = right**, **Z = down**.
-The INS center is the center of the Maritime INS unit.
+The INS center is the center of the Aerial INS unit.
 
 Distances are measured in meters from the IMU center to the respective antenna phase center.
 
@@ -102,7 +102,7 @@ AMarinerControl's parameter editor or from the command-line interface.
 CAN Termination
 ---------------
 
-The ANELLO Maritime INS supports configurable internal CAN termination.
+The ANELLO Aerial INS supports configurable internal CAN termination.
 
 +------------------+---------+-----------------------------------------------------------+
 | Parameter        | Default | Description                                               |
@@ -176,7 +176,7 @@ configuration parameters.
         return signed32
 
 The same logic is already implemented in the ANELLO INS Scripts repository:
-`Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Maritime_INS_CFG.py>`_
+`Aerial_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Aerial_INS_CFG.py>`_
 
 Port number configs can be changed directly in AMC.
 
