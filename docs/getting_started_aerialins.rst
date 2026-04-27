@@ -86,9 +86,17 @@ Below is the recommended installation configuration, with the longest possible a
 
 Ensure that antennae are mounted on a ground plane of at least 10 cm x 10 cm and with no obstructions to open sky view.
 
+
+Baseline aligned with X axis:
 .. image:: media/aerial_ins_installation.drawio.png
    :width: 70%
    :align: center
+
+Baseline aligned with Y axis:
+.. image:: media/aerial_ins_installation_horizontal.drawio.png
+   :width: 70%
+   :align: center
+
 
 
 4. Configure ANELLO Aerial INS
@@ -180,17 +188,15 @@ Some key topics in the log files are:
 | **nmea_engine**               | NMEA engine data from NMEA2000 bus                                                                 |
 +-------------------------------+----------------------------------------------------------------------------------------------------+
 
-6. Water Testing Procedure
+6. GNSS Denied Testing Procedure
 -------------------------------
 
-For best GPS-denied navigation results, ANELLO recommends the following initialization procedure after each startup:
+For best GNSS-denied navigation results, ANELLO recommends the following initialization procedure after each startup:
 
-1. Ensure the unit is powered off while launching the vehicle into the water.
+1. Power on the ANELLO Aerial INS prior to launch.
+2. While the UAV is stationary on the ground, allow the unit to receive a good GNSS signal. A good GNSS signal is required for position and heading initialization.
+3. For best performance, after launch, enter a circular or rectangular holding pattern to give the system visibility into wind speed and direction before GNSS is lost.
+4. Perform your mission. Best performance in GNSS-denied conditions is achieved with calibrated speed aiding and at speeds above 20 knots.
 
-2. While the USV is stationary in water, power on the unit. A good GPS signal is required for position and heading initialization. 
-
-3. For best performance, first perform a short square mission with 30–50 m edges to give the system visibility into currents before GPS is lost.
-
-4. Perform your mission. Best performance in GPS-denied conditions is achieved with calibrated speed aiding and at speeds above 2 knots.
 
 *Aerial INS User Manual 93001501 v1.1.2*
