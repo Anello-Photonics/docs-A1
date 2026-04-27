@@ -16,9 +16,9 @@ Calibration procedures will seek to gain visibility into all potential headings 
 
 To calibrate the external magnetometer: 
 
-1. Launch boat into water. 
+1. Power on the ANELLO Aerial INS while aircraft is stationary and allow ~30s to gain GNSS. 
 
-2. Power on the ANELLO Aerial INS while boat is stationary and allow ~30s to gain GNSS. 
+2. Launch aircraft.
 
 3. Perform a “figure-eight” or “flower” shaped mission at a series of increasing motor percentages, maintaining a constant motor percentage per each figure-eight or flower.  
 
@@ -32,7 +32,7 @@ To calibrate the external magnetometer:
 
 **Re-calibration of the external magnetometer is necessary if any of the following conditions are met:** 
 
-* The boat type/model is changed. 
+* The aircraft type/model is changed. 
 
 * The external magnetometer type/model is changed. 
 
@@ -40,4 +40,4 @@ To calibrate the external magnetometer:
 
 * The motor type/model is changed. 
 
-* The magnetic components of the boat are significantly changed. 
+* The magnetic components of the aircraft are significantly changed. 
