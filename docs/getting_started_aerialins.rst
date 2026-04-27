@@ -189,7 +189,7 @@ Some key topics in the log files are:
 +-------------------------------+----------------------------------------------------------------------------------------------------+
 
 6. GNSS Denied Testing Procedure
--------------------------------
+----------------------------------
 
 For best GNSS-denied navigation results, ANELLO recommends the following initialization procedure after each startup:
 
