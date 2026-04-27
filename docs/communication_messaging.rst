@@ -65,7 +65,7 @@ The ANELLO Aerial INS supports standard NMEA 0183 input messages which allow the
 ANELLO also has a set of proprietary messages, following the standard NMEA proprietary format with a prefix of “$P”, company code of “AP” (ANELLO Photonics), and the message code.
 
 To configure NMEA 0183 over a serial port, update the following configs (see
-`Configure ANELLO Aerial INS <https://docs-a1.readthedocs.io/en/aerial_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
+`Configure ANELLO Aerial INS <https://docs-a1.readthedocs.io/en/aerial_ins/getting_started_aerialins.html#configure-anello-aerial-ins>`__
 for instructions on changing settings):
 
 ``NM0183_CFG`` = ``1`` (RS232-1) **or** ``2`` (RS232-2)
@@ -75,7 +75,7 @@ To change the baud rate use ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` f
 For the full table of serial NMEA0183 parameters, see :ref:`nmea0183-serial-parameters`.
 
 To configure NMEA 0183 over UDP, update the following configs (see
-`Configure ANELLO Aerial INS <https://docs-a1.readthedocs.io/en/aerial_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
+`Configure ANELLO Aerial INS <https://docs-a1.readthedocs.io/en/aerial_ins/getting_started_aerialins.html#configure-anello-aerial-ins>`__
 for instructions on changing settings):
 
 ``NMUDP_EN`` = ``1``
@@ -166,7 +166,7 @@ updates, ``RMC`` must report ``status = A``, latitude and longitude must be vali
 and PDOP, HDOP, and VDOP must all be present, finite, and greater than zero.
 
 See :ref:`external-position-aiding-parameters` for the parameter table used to configure external position aiding.
-See `Configure ANELLO Aerial INS <https://docs-a1.readthedocs.io/en/aerial_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
+See `Configure ANELLO Aerial INS <https://docs-a1.readthedocs.io/en/aerial_ins/getting_started_aerialins.html#configure-anello-aerial-ins>`__
 for instructions on changing settings.
 
 2.1.2.1. RMC: Recommended Minimum Navigation Information
@@ -783,7 +783,7 @@ Logged topic: NMEA2000_RPH
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To configure NMEA 0183 over a serial port, update the following configs (see
-`Configure ANELLO Aerial INS <https://docs-a1.readthedocs.io/en/aerial_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
+`Configure ANELLO Aerial INS <https://docs-a1.readthedocs.io/en/aerial_ins/getting_started_aerialins.html#configure-anello-aerial-ins>`__
 for instructions on changing settings):
 
 * ``NM0183_CFG`` = ``1`` (RS232-1) **or** ``2`` (RS232-2)
@@ -798,7 +798,7 @@ Units shipped prior to 2/19/2026 have a default baud rate of ``57600`` on both p
 To change the baud rate use ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
 
 To configure NMEA 0183 over UDP, update the following configs (see
-`Configure ANELLO Aerial INS <https://docs-a1.readthedocs.io/en/aerial_ins/getting_started_maritimeins.html#configure-anello-maritime-ins>`__
+`Configure ANELLO Aerial INS <https://docs-a1.readthedocs.io/en/aerial_ins/getting_started_aerialins.html#configure-anello-aerial-ins>`__
 for instructions on changing settings):
 
 * ``NMUDP_EN`` = ``1``
