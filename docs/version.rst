@@ -13,4 +13,13 @@ Version Control
   |             |                        | - 8 April 2026 - Version 1.2.0 updated AMC link to v1.2.1 and added troubleshooting page      |
   |             |                        |                                                                                               |
   +-------------+------------------------+-----------------------------------------------------------------------------------------------+
+  |  xxxxxxxx   | User Manual, Aerial    | - 27 April 2026 - Version 1.0.0 - First revision controlled Aerial INS user manual document.  |
+  |             | INS                    |                                                                                               |
+  |             |                        |                                                                                               |
+  |             |                        |                                                                                               |
+  |             |                        |                                                                                               |
+  |             |                        |                                                                                               |
+  |             |                        |                                                                                               |
+  +-------------+------------------------+-----------------------------------------------------------------------------------------------+
+
 
