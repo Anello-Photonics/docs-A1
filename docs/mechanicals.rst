@@ -26,3 +26,6 @@ Maritime INS SCD Drawing: :download:`PDF <media/100013R03-Outline_DrawingMaritim
 
 .. note::
    Total capacitance on the RESET line (cable + input + ESD, etc.) must be ≤ 10 nF; no external reset capacitor recommended.
+
+.. note::
+   The Sync, RESET, and BIT pins are high-impedance inputs and do not require 50 Ω termination.

@@ -24,7 +24,7 @@ If you experience any errors during the process, please power cycle the unit and
     :caption: Terminal
     
         # cd into folder with anello_fw_uploader.py
-        python anello_fw_uploader.py --port COM5 --baud-bootloader 115200 /Users/user1/Downloads/anello_maritime_default.anello
+        python anello_fw_uploader.py --port COM5 --baud-bootloader 115200 /Users/user1/Downloads/anello_maritime_v2_default.anello
         # Change "COM5" to match your port that the Maritime INS is plugged into (e.g. "COM23" on Windows or "/dev/ttyUSB0" on Linux)
         # Change "/Users/user1/Downloads/anello_maritime_default.anello" to the path to the ANELLO-provided FW image (.anello file) on your local computer
 
