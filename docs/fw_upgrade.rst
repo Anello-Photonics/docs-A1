@@ -40,7 +40,7 @@ Firmware Upgrade Procedure with AMarinerControl
 
 To upgrade FW using AMarinerControl, the ANELLO FW upgrade python script still needs to be downloaded from the following public Git repo: `ANELLO_INS_Scripts <https://github.com/Anello-Photonics/ANELLO_INS_Scripts.git>`__
 
-Also make sure your installation of `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/v1.2.1/>`__ is v1.2.1 or higher. 
+Also make sure your installation of `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/v1.2.2/>`__ is v1.2.2 or higher. 
 
 1. Connect RS-232-1 to the computer.
 2. Open AMarinerControl and select "Firmware Upgrade"
@@ -51,7 +51,7 @@ Also make sure your installation of `AMarinerControl <https://github.com/Anello-
 
 3. Download the ANELLO-provided FW image onto your local computer (Link also exists in AMarinerControl FW upgrade screen).
 4. Select firmware upgrade python script stored on local computer in first box.
-5. Select which connected serial port is RS-232-1 in drop down menu.
+5. Select which connected serial port is RS-232-1 and select baudrate in drop down menus.
 6. Select path to downloaded firmware image on local computer in next box.
 7. Press "Start"
 8. After it completes, you will see "Rebooting. Elapsed Time x.x" - this means the FW upgrade was successful.
