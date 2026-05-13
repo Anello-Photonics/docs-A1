@@ -980,7 +980,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 
 **Message Format**::
 
-    $PAPINS,Time,PPS_Time,Status,Lat,Long,Height,VN,VE,VD,Roll,Pitch,Heading,Reserved*hh
+    $PAPINS,Time,UTC_Time,Status,Lat,Long,Height,VN,VE,VD,Roll,Pitch,Heading,Reserved*hh
 
 .. list-table::
    :header-rows: 1
@@ -995,9 +995,9 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
      - ms
      - Time since power on
    * - 2
-     - PPS Time
+     - UTC Time
      - ns
-     - Currently always ``0.000``
+     - Coordinated Universal Time
    * - 3
      - Status
      -
