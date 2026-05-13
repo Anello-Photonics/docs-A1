@@ -636,10 +636,11 @@ Accurately describes the speed of a vessel by component vectors.
 
 Logged topic: NMEA2000_VESSEL_SPEED
 
-2.2.7 PGN 65281: GPS Control
+2.2.7 PGN 61184: GPS Control
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ANELLO proprietary message used to enable or disable the GPS through the NMEA2000 interface.
+CAN ID format: 0x18EF<dest><src>
 
 +---+------------+----------------------------------+------+----------------+
 | # | Field      | Description                      | Unit | Type           |
@@ -655,10 +656,11 @@ ANELLO proprietary message used to enable or disable the GPS through the NMEA200
 Logged topic: NMEA2000_GPSCTRL
 
 
-2.2.8 PGN 65282: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
+2.2.8 PGN 126720: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ANELLO proprietary NMEA 2000 message used to start/stop the speed sensor auto-calibration routine. The default state is 0 (not in auto-calibration mode).
+CAN ID format: 0x19EF<dest><src>
 
 +-------+----------------------------+-----------------------------------------------------------+------+------------------+
 | Field | Name                       | Description                                               | Unit | Type             |
