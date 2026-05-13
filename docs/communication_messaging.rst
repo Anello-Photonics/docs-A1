@@ -996,7 +996,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
      - Time since power on
    * - 2
      - UTC Time
-     - ns
+     - s
      - Coordinated Universal Time
    * - 3
      - Status
