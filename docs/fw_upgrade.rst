@@ -17,7 +17,7 @@ If you experience any errors during the process, please power cycle the unit and
 
 1. Connect RS-232-1 to the computer.
 2. Download the ANELLO-provided FW image onto your local computer.
-3. Open Device Manager and find which serial port is the serial connection.
+3. Find which serial port on computer is RS-232-1 (e.g. through Device Manager on Windows, "ls /dev/tty*" on MacOS, or "lsusb" on Linux).
 4. In terminal:
 
 .. code-block:: bash
@@ -27,7 +27,7 @@ If you experience any errors during the process, please power cycle the unit and
         python anello_fw_uploader.py --port COM5 --baud-flightstack 57600 --baud-bootloader 115200 /Users/user1/Downloads/anello_maritime_v2_default.anello
         # Change "COM5" to match your port that the Maritime INS is plugged into (e.g. "COM23" on Windows or "/dev/ttyUSB0" on Linux)
         # Change "/Users/user1/Downloads/anello_maritime_default.anello" to the path to the ANELLO-provided FW image (.anello file) on your local computer
-        # Change "--baud-flightstack 57600" to match baudrate of RS-232-1
+        # If the RS-232-1 baud rate was changed from its default 57600, change the 57600 in "--baud-flightstack 57600" accordingly
 
 5. After it completes, you will see "Rebooting. Elapsed Time x.x" - this means the FW upgrade was successful.
 
