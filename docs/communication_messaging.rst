@@ -791,8 +791,11 @@ for instructions on changing settings):
 * ``NM0183_CFG`` = ``1`` (RS232-1) **or** ``2`` (RS232-2)
 * ``NM0183_ODR_GGA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NM0183_ODR_ZDA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NM0183_ODR_HDT`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_APIMU`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_APINS`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NM0183_ODR_APACC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 
 
 The default baud rate is ``57600`` for RS232-1 and ``921600`` for RS232-2.
@@ -806,8 +809,11 @@ for instructions on changing settings):
 * ``NMUDP_EN`` = ``1``
 * ``NMUDP_ODR_GGA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NMUDP_ODR_ZDA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NMUDP_ODR_HDT`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_APIMU`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_APINS`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NMUDP_ODR_APACC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 
 UDP output uses port ``19550`` and UDP input uses port ``19551``.
 External UDP output only occurs when ``NMUDP_MC_IP0`` through ``NMUDP_MC_IP3``
@@ -914,7 +920,53 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 | 6     | Dead reckoning mode (GPS is determined to be jammed or spoofed)  |
 +-------+------------------------------------------------------------------+
 
-3.1.3 IMU: Proprietary IMU Output
+3.1.3. ZDA: Time & Date
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Message Format**::
+
+    $--ZDA,hhmmss.ss,dd,mm,yyyy,xx,xx*hh
+
++--------+-------------+--------------------------------------------------------------------------+
+| Index  | Part        | Description                                                              |
++========+=============+==========================================================================+
+| 1      | hhmmss.ss   | Time (UTC)                                                               |
++--------+-------------+--------------------------------------------------------------------------+
+| 2      | dd          | Day, 01 to 31                                                            |
++--------+-------------+--------------------------------------------------------------------------+
+| 3      | mm          | Month, 01 to 12                                                          |
++--------+-------------+--------------------------------------------------------------------------+
+| 4      | yyyy        | Year                                                                     |
++--------+-------------+--------------------------------------------------------------------------+
+| 5      | xx          | Local time zone offset from UTC, hours                                   |
++--------+-------------+--------------------------------------------------------------------------+
+| 6      | xx          | Local time zone offset from UTC, minutes                                 |
++--------+-------------+--------------------------------------------------------------------------+
+| 7      | hh          | Checksum                                                                 |
++--------+-------------+--------------------------------------------------------------------------+
+
+.. note::
+    Current Maritime INS output uses UTC time and leaves the local time zone
+    offset fields blank.
+
+3.1.4. HDT: Heading, True
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Message Format**::
+
+    $--HDT,x.x,T*hh
+
++--------+-------------+--------------------------------------------------------------------------+
+| Index  | Part        | Description                                                              |
++========+=============+==========================================================================+
+| 1      | x.x         | Heading, degrees true                                                    |
++--------+-------------+--------------------------------------------------------------------------+
+| 2      | T           | True heading indicator                                                   |
++--------+-------------+--------------------------------------------------------------------------+
+| 3      | hh          | Checksum                                                                 |
++--------+-------------+--------------------------------------------------------------------------+
+
+3.1.5. IMU: Proprietary IMU Output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
@@ -977,7 +1029,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 | 4-7   | Unused and always ``0``                                       |
 +-------+---------------------------------------------------------------+
 
-3.1.4 INS: Proprietary Navigation Output
+3.1.6. INS: Proprietary Navigation Output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
@@ -1071,6 +1123,62 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
      - Position, attitude, and heading while external GNSS is selected
    * - 20
      - Dead reckoning after GNSS loss following prior GNSS fusion
+
+3.1.7. PAPACC: Proprietary Accuracy Output
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Message Format**::
+
+    $PAPACC,Time,UTC_Time,HAcc,VAcc,VNAcc,VEAcc,VDAcc,RollAcc,PitchAcc,HeadingAcc*hh
+
+.. list-table::
+   :header-rows: 1
+   :widths: 8 16 10 66
+
+   * - Index
+     - Field
+     - Units
+     - Description
+   * - 1
+     - Time
+     - ms
+     - Time since power on
+   * - 2
+     - UTC Time
+     - s
+     - Coordinated Universal Time
+   * - 3
+     - HAcc
+     - m
+     - Horizontal position accuracy / uncertainty
+   * - 4
+     - VAcc
+     - m
+     - Vertical position accuracy / uncertainty
+   * - 5
+     - VNAcc
+     - m/s
+     - North velocity accuracy / uncertainty
+   * - 6
+     - VEAcc
+     - m/s
+     - East velocity accuracy / uncertainty
+   * - 7
+     - VDAcc
+     - m/s
+     - Down velocity accuracy / uncertainty
+   * - 8
+     - RollAcc
+     - deg
+     - Roll accuracy / uncertainty
+   * - 9
+     - PitchAcc
+     - deg
+     - Pitch accuracy / uncertainty
+   * - 10
+     - HeadingAcc
+     - deg
+     - Heading accuracy / uncertainty
 
 3.2 NMEA 2000 Output Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
