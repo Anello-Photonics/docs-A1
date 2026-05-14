@@ -647,7 +647,7 @@ CAN ID format: 0x18EF<dest><src>
 +===+============+==============================================================+======+================+
 | 1 | GPS Control| GPS enable/disable command:                                  |      | 8-bit unsigned |
 |   |            | 0 = Disable GPS,                                             |      |                |
-|   |            | 1 = Enable GPS                                               |      |                |
+|   |            | 1 = Enable GPS,                                              |      |                |
 |   |            | 2 = Disable internal GPS (i.e. use external GPS input only)  |      |                |
 +---+------------+--------------------------------------------------------------+------+----------------+
 
