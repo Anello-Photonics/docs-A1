@@ -35,7 +35,7 @@ The kit includes the following hardware:
 
 Connect with the ANELLO Maritime Control software (AMarinerControl):
 
-1. Install ANELLO's `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/v1.2.1/>`_ on your Windows (.exe), Mac (.dmg), or Linux (.AppImage) computer.
+1. Install ANELLO's `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/v1.2.2/>`_ on your Windows (.exe), Mac (.dmg), or Linux (.AppImage) computer.
 
 2. Set the Ethernet IP address of the host computer to **192.168.0.2** and subnet mask to **255.255.255.0**.
 
@@ -155,9 +155,11 @@ To change parameters using ANELLO Python Scripts (currently Ethernet only), use:
 After installation and configuration, the unit is ready for data collection.  
 Data is logged automatically once power is applied to the Maritime INS. No manual steps are required to start logging.
 
-* Start a new log by cycling power to the unit.  
+* Start a new log by cycling power to the unit. 
+* Connect to AMarinerControl using **ethernet** 
 * Download logs in AMarinerControl by clicking **A (top left) > Analyze Tools > Log Download**.  
-* Use a plotting tool such as PlotJuggler for visualization. Contact ANELLO for assistance with post-processing, including GPS-denied simulations.
+* Use a plotting tool such as  `PlotJuggler <https://github.com/PlotJuggler/PlotJuggler>`_ for visualization. PlotJuggler can decode raw .ulg files. To convert the .ulg log files to .csv's, use `decoder.py in ANELLO_INS_Scripts <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/ULG-to-CSV-log-decoder/decoder.py>`_ 
+* Contact ANELLO for assistance with post-processing, including GPS-denied simulations.
 
 .. image:: media/AMC_logs.png
    :width: 60%
@@ -166,19 +168,21 @@ Data is logged automatically once power is applied to the Maritime INS. No manua
 
 Some key topics in the log files are:
 
-+-------------------------------+----------------------------------------------------------------------------------------------------+
-| Topic                         | Description                                                                                        |
-+===============================+====================================================================================================+
-| **vehicle_global_position**   | Full INS solution containing latitude and longitude coordinates                                    |
-+-------------------------------+----------------------------------------------------------------------------------------------------+
-| **vehicle_gps_position**      | GNSS only solution containing latitude and longitude coordinates                                   |
-+-------------------------------+----------------------------------------------------------------------------------------------------+
-| **sensor_gps_heading**        | GNSS Dual heading and baseline data                                                                |
-+-------------------------------+----------------------------------------------------------------------------------------------------+
-| **sensor_water_speed_generic**| Speed aiding data from external sensor                                                             |
-+-------------------------------+----------------------------------------------------------------------------------------------------+
-| **nmea_engine**               | NMEA engine data from NMEA2000 bus                                                                 |
-+-------------------------------+----------------------------------------------------------------------------------------------------+
++-------------------------------+----------------------------------------------------------------------------------------------------------+
+| Topic                         | Description                                                                                              |
++===============================+==========================================================================================================+
+| **vehicle_global_position**   | Full INS solution containing latitude and longitude coordinates                                          |
++-------------------------------+----------------------------------------------------------------------------------------------------------+
+| **vehicle_gps_position**      | GNSS only solution containing latitude and longitude coordinates                                         |
++-------------------------------+----------------------------------------------------------------------------------------------------------+
+| **vehicle_local_position**    | Full INS solution in local coordinate frame. Stores additional data such as heading and velocity vectors |
++-------------------------------+----------------------------------------------------------------------------------------------------------+
+| **sensor_gps_heading**        | GNSS Dual heading and baseline data                                                                      |
++-------------------------------+----------------------------------------------------------------------------------------------------------+
+| **sensor_water_speed_generic**| Speed aiding data from external sensor                                                                   |
++-------------------------------+----------------------------------------------------------------------------------------------------------+
+| **nmea_engine**               | NMEA engine data from NMEA2000 bus                                                                       |
++-------------------------------+----------------------------------------------------------------------------------------------------------+
 
 6. Water Testing Procedure
 -------------------------------
