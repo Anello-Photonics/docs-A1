@@ -158,7 +158,7 @@ Data is logged automatically once power is applied to the Maritime INS. No manua
 * Start a new log by cycling power to the unit. 
 * Connect to AMarinerControl using **ethernet** 
 * Download logs in AMarinerControl by clicking **A (top left) > Analyze Tools > Log Download**.  
-* Use a plotting tool such as  `PlotJuggler <https://github.com/PlotJuggler/PlotJuggler>`_ for visualization. PlotJuggler can decode raw .ulg files. To convert the .ulg log files to .csv's, use `decoder.py in ANELLO_INS_Scripts <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/ULG-to-CSV-log-decoder/decoder.py>`_ 
+* Use a plotting tool such as `PlotJuggler <https://github.com/PlotJuggler/PlotJuggler>`_ for visualization. PlotJuggler can decode raw ``.ulg`` files. To convert the ``.ulg`` log files to ``.csv`` files, use `decoder.py in ANELLO_INS_Scripts <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/ULG-to-CSV-log-decoder/decoder.py>`_.
 * Contact ANELLO for assistance with post-processing, including GPS-denied simulations.
 
 .. image:: media/AMC_logs.png
