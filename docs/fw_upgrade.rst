@@ -27,7 +27,7 @@ If you experience any errors during the process, please power cycle the unit and
         python anello_fw_uploader.py --port COM5 --baud-flightstack 57600 --baud-bootloader 115200 /Users/user1/Downloads/anello_aerial_default.anello
         # Change "COM5" to match your port that the Maritime INS is plugged into (e.g. "COM23" on Windows or "/dev/ttyUSB0" on Linux)
         # Change "/Users/user1/Downloads/anello_maritime_default.anello" to the path to the ANELLO-provided FW image (.anello file) on your local computer
-        # Change "--baud-flightstack 57600" to match baudrate of RS-232-1
+        # If the RS-232-1 baud rate was changed from its default 57600, change the 57600 in "--baud-flightstack 57600" accordingly
 
 5. After it completes, you will see "Rebooting. Elapsed Time x.x" - this means the FW upgrade was successful.
 
@@ -40,7 +40,7 @@ Firmware Upgrade Procedure with AMarinerControl
 
 To upgrade FW using AMarinerControl, the ANELLO FW upgrade python script still needs to be downloaded from the following public Git repo: `ANELLO_INS_Scripts <https://github.com/Anello-Photonics/ANELLO_INS_Scripts.git>`__
 
-Also make sure your installation of `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/v1.2.2/>`__ is v1.2.2 or higher. 
+Also make sure your installation of `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/v1.3.0/>`__ is v1.2.2 or higher. 
 
 1. Connect RS-232-1 to the computer.
 2. Open AMarinerControl and select "Firmware Upgrade"

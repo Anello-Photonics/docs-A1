@@ -35,7 +35,7 @@ The kit includes the following hardware:
 
 Connect with the ANELLO Aerial Control software (AMarinerControl):
 
-1. Install ANELLO's `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/v1.2.1/>`_ on your Windows (.exe), Mac (.dmg), or Linux (.AppImage) computer.
+1. Install ANELLO's `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/v1.3.0/>`_ on your Windows (.exe), Mac (.dmg), or Linux (.AppImage) computer.
 
 2. Set the Ethernet IP address of the host computer to **192.168.0.2** and subnet mask to **255.255.255.0**.
 
@@ -166,13 +166,16 @@ After installation and configuration, the unit is ready for data collection.
 Data is logged automatically once power is applied to the Aerial INS. No manual steps are required to start logging.
 
 * Start a new log by cycling power to the unit.  
-* Download logs in AMarinerControl by clicking **A (top left) > Analyze Tools > Log Download**.  
-* Use a plotting tool such as PlotJuggler for visualization. Contact ANELLO for assistance with post-processing, including GPS-denied simulations.
+* Connect to AMarinerControl using **ethernet** 
+* Download logs in AMarinerControl by clicking **A (top left) > Analyze Tools > Log Download**.
 
 .. image:: media/AMC_logs.png
    :width: 60%
    :align: center
 
+  
+* Use a plotting tool such as `PlotJuggler <https://github.com/PlotJuggler/PlotJuggler>`_ for visualization. PlotJuggler can decode raw ``.ulg`` files. To convert the ``.ulg`` log files to ``.csv`` files, use `decoder.py in ANELLO_INS_Scripts <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/ULG-to-CSV-log-decoder/decoder.py>`_.
+* Contact ANELLO for assistance with post-processing, including GPS-denied simulations.
 
 Some key topics in the log files are:
 
