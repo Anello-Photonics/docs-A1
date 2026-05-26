@@ -201,6 +201,12 @@ Full Parameter list for NMEA0183 messaging over serial
 +--------------------+---------+--------------------------------------------------------------------------+
 | NM0183_ODR_RMC     | 0       | Output data rate for RMC messages over NMEA0183 serial (Hz).             |
 +--------------------+---------+--------------------------------------------------------------------------+
+| NM0183_ODR_ZDA     | 0       | Output data rate for ZDA messages over NMEA0183 serial (Hz).             |
++--------------------+---------+--------------------------------------------------------------------------+
+| NM0183_ODR_HDT     | 0       | Output data rate for HDT messages over NMEA0183 serial (Hz).             |
++--------------------+---------+--------------------------------------------------------------------------+
+| NM0183_ODR_APACC   | 0       | Output data rate for AP ACC messages over NMEA0183 serial (Hz).          |
++--------------------+---------+--------------------------------------------------------------------------+
 | SER_TEL1_BAUD      | 57600   | Baud rate for RS232-1 when used for NMEA0183 output.                     |
 +--------------------+---------+--------------------------------------------------------------------------+
 | SER_TEL2_BAUD      | 921600  | Baud rate for RS232-2 when used for NMEA0183 output.                     |
@@ -244,6 +250,12 @@ define a Unicast IP.
 | NMUDP_ODR_GGA      | 0       | Output data rate for GGA messages over NMEA0183 over UDP (Hz).           |
 +--------------------+---------+--------------------------------------------------------------------------+
 | NMUDP_ODR_RMC      | 0       | Output data rate for RMC messages over NMEA0183 over UDP (Hz).           |
++--------------------+---------+--------------------------------------------------------------------------+
+| NMUDP_ODR_ZDA      | 0       | Output data rate for ZDA messages over NMEA0183 over UDP (Hz).           |
++--------------------+---------+--------------------------------------------------------------------------+
+| NMUDP_ODR_HDT      | 0       | Output data rate for HDT messages over NMEA0183 over UDP (Hz).           |
++--------------------+---------+--------------------------------------------------------------------------+
+| NMUDP_ODR_APACC    | 0       | Output data rate for AP ACC messages over NMEA0183 over UDP (Hz).        |
 +--------------------+---------+--------------------------------------------------------------------------+
 
 .. note::

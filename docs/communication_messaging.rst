@@ -336,13 +336,13 @@ Enables or disables GPS utilization in sensor fusion algorithm.
 
     $PAPGPSCTRL,A*hh
 
-+-------+------------+---------------------------------------------------------------+
-| Index | Part       | Description                                                   |
-+=======+============+===============================================================+
-| 1     | A          | GPS control, “1” = Use GPS (default), “0” = Ignore GPS        |
-+-------+------------+---------------------------------------------------------------+
-| 2     | hh         | Checksum                                                      |
-+-------+------------+---------------------------------------------------------------+
++-------+------------+---------------------------------------------------------------------------------------------------------------------------------------+
+| Index | Part       | Description                                                                                                                           |
++=======+============+=======================================================================================================================================+
+| 1     | A          | GPS control, “1” = Use GPS (default), “0” = Ignore GPS, "2" = Ignore internal GPS receivers (i.e. use external GPS input only)        |
++-------+------------+---------------------------------------------------------------------------------------------------------------------------------------+
+| 2     | hh         | Checksum                                                                                                                              |
++-------+------------+---------------------------------------------------------------------------------------------------------------------------------------+
 
 .. note::
    Maritime INS uses field 1 from this sentence.
@@ -636,18 +636,20 @@ Accurately describes the speed of a vessel by component vectors.
 
 Logged topic: NMEA2000_VESSEL_SPEED
 
-2.2.7 PGN 65281: GPS Control
+2.2.7 PGN 61184: GPS Control
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ANELLO proprietary message used to enable or disable the GPS through the NMEA2000 interface.
+CAN ID format: 0x18EF<dest><src>
 
-+---+------------+----------------------------------+------+----------------+
-| # | Field      | Description                      | Unit | Type           |
-+===+============+==================================+======+================+
-| 1 | GPS Control| GPS enable/disable command:      |      | 8-bit unsigned |
-|   |            | 0 = Disable GPS,                 |      |                |
-|   |            | 1 = Enable GPS                   |      |                |
-+---+------------+----------------------------------+------+----------------+
++---+------------+--------------------------------------------------------------+------+----------------+
+| # | Field      | Description                                                  | Unit | Type           |
++===+============+==============================================================+======+================+
+| 1 | GPS Control| GPS enable/disable command:                                  |      | 8-bit unsigned |
+|   |            | 0 = Disable GPS,                                             |      |                |
+|   |            | 1 = Enable GPS,                                              |      |                |
+|   |            | 2 = Disable internal GPS (i.e. use external GPS input only)  |      |                |
++---+------------+--------------------------------------------------------------+------+----------------+
 
 .. note::
    Maritime INS uses field 1 from this PGN.
@@ -655,10 +657,11 @@ ANELLO proprietary message used to enable or disable the GPS through the NMEA200
 Logged topic: NMEA2000_GPSCTRL
 
 
-2.2.8 PGN 65282: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
+2.2.8 PGN 126720: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ANELLO proprietary NMEA 2000 message used to start/stop the speed sensor auto-calibration routine. The default state is 0 (not in auto-calibration mode).
+CAN ID format: 0x19EF<dest><src>
 
 +-------+----------------------------+-----------------------------------------------------------+------+------------------+
 | Field | Name                       | Description                                               | Unit | Type             |
@@ -789,8 +792,11 @@ for instructions on changing settings):
 * ``NM0183_CFG`` = ``1`` (RS232-1) **or** ``2`` (RS232-2)
 * ``NM0183_ODR_GGA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NM0183_ODR_ZDA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NM0183_ODR_HDT`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_APIMU`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_APINS`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NM0183_ODR_APACC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 
 
 The default baud rate is ``57600`` for RS232-1 and ``921600`` for RS232-2.
@@ -804,8 +810,11 @@ for instructions on changing settings):
 * ``NMUDP_EN`` = ``1``
 * ``NMUDP_ODR_GGA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NMUDP_ODR_ZDA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NMUDP_ODR_HDT`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_APIMU`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_APINS`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NMUDP_ODR_APACC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 
 UDP output uses port ``19550`` and UDP input uses port ``19551``.
 External UDP output only occurs when ``NMUDP_MC_IP0`` through ``NMUDP_MC_IP3``
@@ -821,37 +830,36 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 
     $--RMC,hhmmss.ss,A,ddmm.mmmmmm,a,dddmm.mmmmmm,a,x.x,x.x,xxxx,x.x,a*hh
 
-+--------+-------------+--------------------------------------------------------------------------+
-| Index  | Part        | Description                                                              |
-+========+=============+==========================================================================+
-| 1      | hhmmss.ss   | Time (UTC)                                                               |
-+--------+-------------+--------------------------------------------------------------------------+
-| 2      | A           | Status, A = solution initialized, V = Void, heading not initialized      |
-+--------+-------------+--------------------------------------------------------------------------+
-| 3      | ddmm.mmmmmm | Latitude                                                                 |
-+--------+-------------+--------------------------------------------------------------------------+
-| 4      | a           | N or S                                                                   |
-+--------+-------------+--------------------------------------------------------------------------+
-| 5      | dddmm.mmmmmm| Longitude                                                                |
-+--------+-------------+--------------------------------------------------------------------------+
-| 6      | a           | E or W                                                                   |
-+--------+-------------+--------------------------------------------------------------------------+
-| 7      | x.x         | Speed over ground, knots                                                 |
-+--------+-------------+--------------------------------------------------------------------------+
-| 8      | x.x         | INS Heading, degrees (range from -180 to 180)                            |
-+--------+-------------+--------------------------------------------------------------------------+
-| 9      | xxxx        | Date, ddmmyy                                                             |
-+--------+-------------+--------------------------------------------------------------------------+
-| 10     | x.x         | Magnetic Variation, degrees                                              |
-+--------+-------------+--------------------------------------------------------------------------+
-| 11     | a           | E or W                                                                   |
-+--------+-------------+--------------------------------------------------------------------------+
-| 12     | hh          | Checksum                                                                 |
-+--------+-------------+--------------------------------------------------------------------------+
++--------+-------------+------------------------------------------------------------------------------------------------+
+| Index  | Part        | Description                                                                                    |
++========+=============+================================================================================================+
+| 1      | hhmmss.ss   | Time (UTC)                                                                                     |
++--------+-------------+------------------------------------------------------------------------------------------------+
+| 2      | A           | Status, A = solution initialized, V = Void, solution (position and/or heading) not initialized |
++--------+-------------+------------------------------------------------------------------------------------------------+
+| 3      | ddmm.mmmmmm | Latitude                                                                                       |
++--------+-------------+------------------------------------------------------------------------------------------------+
+| 4      | a           | N or S                                                                                         |
++--------+-------------+------------------------------------------------------------------------------------------------+
+| 5      | dddmm.mmmmmm| Longitude                                                                                      |
++--------+-------------+------------------------------------------------------------------------------------------------+
+| 6      | a           | E or W                                                                                         |
++--------+-------------+------------------------------------------------------------------------------------------------+
+| 7      | x.x         | Speed over ground, knots                                                                       |
++--------+-------------+------------------------------------------------------------------------------------------------+
+| 8      | x.x         | Course over ground, degrees (range from 0 to 360)                                              |
++--------+-------------+------------------------------------------------------------------------------------------------+
+| 9      | xxxx        | Date, ddmmyy                                                                                   |
++--------+-------------+------------------------------------------------------------------------------------------------+
+| 10     | x.x         | Magnetic Variation, degrees                                                                    |
++--------+-------------+------------------------------------------------------------------------------------------------+
+| 11     | a           | E or W                                                                                         |
++--------+-------------+------------------------------------------------------------------------------------------------+
+| 12     | hh          | Checksum                                                                                       |
++--------+-------------+------------------------------------------------------------------------------------------------+
 
 .. note::
-    Fields 2 and 8 differ from NMEA0183 standard for RMC output. Fields 10 and
-    11 are left blank in current Maritime INS output.
+    Fields 10 and 11 are left blank in current Maritime INS output.
 
 3.1.2. GGA: Global Positioning System Fix Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -912,7 +920,53 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 | 6     | Dead reckoning mode (GPS is determined to be jammed or spoofed)  |
 +-------+------------------------------------------------------------------+
 
-3.1.3 IMU: Proprietary IMU Output
+3.1.3. ZDA: Time & Date
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Message Format**::
+
+    $--ZDA,hhmmss.ss,dd,mm,yyyy,xx,xx*hh
+
++--------+-------------+--------------------------------------------------------------------------+
+| Index  | Part        | Description                                                              |
++========+=============+==========================================================================+
+| 1      | hhmmss.ss   | Time (UTC)                                                               |
++--------+-------------+--------------------------------------------------------------------------+
+| 2      | dd          | Day, 01 to 31                                                            |
++--------+-------------+--------------------------------------------------------------------------+
+| 3      | mm          | Month, 01 to 12                                                          |
++--------+-------------+--------------------------------------------------------------------------+
+| 4      | yyyy        | Year                                                                     |
++--------+-------------+--------------------------------------------------------------------------+
+| 5      | xx          | Local time zone offset from UTC, hours                                   |
++--------+-------------+--------------------------------------------------------------------------+
+| 6      | xx          | Local time zone offset from UTC, minutes                                 |
++--------+-------------+--------------------------------------------------------------------------+
+| 7      | hh          | Checksum                                                                 |
++--------+-------------+--------------------------------------------------------------------------+
+
+.. note::
+    Current Maritime INS output uses UTC time and leaves the local time zone
+    offset fields blank.
+
+3.1.4. HDT: Heading, True
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Message Format**::
+
+    $--HDT,x.x,T*hh
+
++--------+-------------+--------------------------------------------------------------------------+
+| Index  | Part        | Description                                                              |
++========+=============+==========================================================================+
+| 1      | x.x         | Heading, degrees true                                                    |
++--------+-------------+--------------------------------------------------------------------------+
+| 2      | T           | True heading indicator                                                   |
++--------+-------------+--------------------------------------------------------------------------+
+| 3      | hh          | Checksum                                                                 |
++--------+-------------+--------------------------------------------------------------------------+
+
+3.1.5. IMU: Proprietary IMU Output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
@@ -959,7 +1013,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 | 18    | Status_Z |       | Status bitfield for Z-axis SiPhOG (see table below)                      |
 +-------+----------+-------+--------------------------------------------------------------------------+
 
-**APIMU Status Bits**
+**IMU Status Bits**
 
 +-------+---------------------------------------------------------------+
 | Bit   | Meaning                                                       |
@@ -975,12 +1029,12 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 | 4-7   | Unused and always ``0``                                       |
 +-------+---------------------------------------------------------------+
 
-3.1.4 INS: Proprietary Navigation Output
+3.1.6. INS: Proprietary Navigation Output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
 
-    $PAPINS,Time,PPS_Time,Status,Lat,Long,Height,VN,VE,VD,Roll,Pitch,Heading,Reserved*hh
+    $PAPINS,Time,UTC_Time,Status,Lat,Lon,Height,VN,VE,VD,Roll,Pitch,Heading,Reserved*hh
 
 .. list-table::
    :header-rows: 1
@@ -995,9 +1049,9 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
      - ms
      - Time since power on
    * - 2
-     - PPS Time
-     - ns
-     - Currently always ``0.000``
+     - UTC Time
+     - s
+     - Coordinated Universal Time
    * - 3
      - Status
      -
@@ -1007,7 +1061,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
      - deg
      - Latitude, ``+`` = North, ``-`` = South
    * - 5
-     - Long
+     - Lon
      - deg
      - Longitude, ``+`` = East, ``-`` = West
    * - 6
@@ -1043,7 +1097,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
      -
      - Currently emitted empty
 
-**APINS Status Values**
+**INS Status Values**
 
 .. list-table::
    :header-rows: 1
@@ -1069,6 +1123,62 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
      - Position, attitude, and heading while external GNSS is selected
    * - 20
      - Dead reckoning after GNSS loss following prior GNSS fusion
+
+3.1.7. ACC: Proprietary Accuracy Output
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Message Format**::
+
+    $PAPACC,Time,UTC_Time,H_Acc,V_Acc,VN_Acc,VE_Acc,VD_Acc,Roll_Acc,Pitch_Acc,Heading_Acc*hh
+
+.. list-table::
+   :header-rows: 1
+   :widths: 8 16 10 66
+
+   * - Index
+     - Field
+     - Units
+     - Description
+   * - 1
+     - Time
+     - ms
+     - Time since power on
+   * - 2
+     - UTC Time
+     - s
+     - Coordinated Universal Time
+   * - 3
+     - H_Acc
+     - m
+     - Horizontal position accuracy / uncertainty
+   * - 4
+     - V_Acc
+     - m
+     - Vertical position accuracy / uncertainty
+   * - 5
+     - VN_Acc
+     - m/s
+     - North velocity accuracy / uncertainty
+   * - 6
+     - VE_Acc
+     - m/s
+     - East velocity accuracy / uncertainty
+   * - 7
+     - VD_Acc
+     - m/s
+     - Down velocity accuracy / uncertainty
+   * - 8
+     - Roll_Acc
+     - deg
+     - Roll accuracy / uncertainty
+   * - 9
+     - Pitch_Acc
+     - deg
+     - Pitch accuracy / uncertainty
+   * - 10
+     - Heading_Acc
+     - deg
+     - Heading accuracy / uncertainty
 
 3.2 NMEA 2000 Output Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
