@@ -1013,7 +1013,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 | 18    | Status_Z |       | Status bitfield for Z-axis SiPhOG (see table below)                      |
 +-------+----------+-------+--------------------------------------------------------------------------+
 
-**APIMU Status Bits**
+**IMU Status Bits**
 
 +-------+---------------------------------------------------------------+
 | Bit   | Meaning                                                       |
@@ -1034,7 +1034,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 
 **Message Format**::
 
-    $PAPINS,Time,UTC_Time,Status,Lat,Long,Height,VN,VE,VD,Roll,Pitch,Heading,Reserved*hh
+    $PAPINS,Time,UTC_Time,Status,Lat,Lon,Height,VN,VE,VD,Roll,Pitch,Heading,Reserved*hh
 
 .. list-table::
    :header-rows: 1
@@ -1061,7 +1061,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
      - deg
      - Latitude, ``+`` = North, ``-`` = South
    * - 5
-     - Long
+     - Lon
      - deg
      - Longitude, ``+`` = East, ``-`` = West
    * - 6
@@ -1097,7 +1097,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
      -
      - Currently emitted empty
 
-**APINS Status Values**
+**INS Status Values**
 
 .. list-table::
    :header-rows: 1
@@ -1124,12 +1124,12 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
    * - 20
      - Dead reckoning after GNSS loss following prior GNSS fusion
 
-3.1.7. PAPACC: Proprietary Accuracy Output
+3.1.7. ACC: Proprietary Accuracy Output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
 
-    $PAPACC,Time,UTC_Time,HAcc,VAcc,VNAcc,VEAcc,VDAcc,RollAcc,PitchAcc,HeadingAcc*hh
+    $PAPACC,Time,UTC_Time,H_Acc,V_Acc,VN_Acc,VE_Acc,VD_Acc,Roll_Acc,Pitch_Acc,Heading_Acc*hh
 
 .. list-table::
    :header-rows: 1
@@ -1148,35 +1148,35 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
      - s
      - Coordinated Universal Time
    * - 3
-     - HAcc
+     - H_Acc
      - m
      - Horizontal position accuracy / uncertainty
    * - 4
-     - VAcc
+     - V_Acc
      - m
      - Vertical position accuracy / uncertainty
    * - 5
-     - VNAcc
+     - VN_Acc
      - m/s
      - North velocity accuracy / uncertainty
    * - 6
-     - VEAcc
+     - VE_Acc
      - m/s
      - East velocity accuracy / uncertainty
    * - 7
-     - VDAcc
+     - VD_Acc
      - m/s
      - Down velocity accuracy / uncertainty
    * - 8
-     - RollAcc
+     - Roll_Acc
      - deg
      - Roll accuracy / uncertainty
    * - 9
-     - PitchAcc
+     - Pitch_Acc
      - deg
      - Pitch accuracy / uncertainty
    * - 10
-     - HeadingAcc
+     - Heading_Acc
      - deg
      - Heading accuracy / uncertainty
 
