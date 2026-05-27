@@ -58,36 +58,13 @@ Connect to ANELLO Unit
 
 Connect Over Serial
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Ensure the power cable is connected and the green power light is illuminated. Connect the ANELLO unit to the computer using both UART and RS-422
+Ensure the power cable is connected and the green power light is illuminated. Connect the ANELLO unit to the computer using either the UART or RS-422 interface.
 
 Use the arrow keys to select *Connect*, then *COM*, then *Auto* to auto-detect the unit. You can also use *Manual* if you know the data and config ports.
 You should now see the *System Status* updated with the device information.
 
 For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/x3/setup_troubleshooting.html#connect-to-anello-unit>`__.
 
-Connect Over Ethernet
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The Ethernet (UDP) interface is recommended for in-vehicle data collection. 
-
-1. Find Computer Ethernet IP using ipconfig in terminal
-2. In user_program.py, select *Unit Configurations*
-   
-   - Set Computer IP to that from step 1
-   - Keep data and configuration port as 1111 and 2222 (these can be any number not  used for something else, e.g. your OS)
-   
-   If connecting the unit directly to computer:
-   
-   - Set DHCP to off
-   - Set ANELLO IP to something with same prefix as Computer IP
-   
-   If connecting the unit to computer through router:
-   
-   - Set DHCP on
-   - ANELLO IP will be auto-assigned after restart
-
-3. Restart the unit (either using Python program or manually power cycling the unit) and re-connect via COM
-4. In main menu, select *Unit Configurations*, take note of ANELLO IP and data/config ports
-5. In main menu, select *Connect* -> *UDP* -> Enter ANELLO IP and data/config ports
 
 Set ANELLO Configurations
 -------------------------------------
