@@ -49,8 +49,6 @@ following conventions:
 - Each log ends with a hexadecimal checksum preceded by an asterisk and followed by a line termination using the carriage return and line feed characters
 - The checksum is an XOR of all the bytes between # and \*, written in hexadecimal (letters must be uppercase)
 - APIMU messages are transmitted at the output data rate (ODR) setting
-- APINS messages are transmitted at 100 Hz
-- APGPS messages are transmitted at 4 Hz
 
 
 
