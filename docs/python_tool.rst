@@ -1,9 +1,8 @@
 ANELLO Python Tool
 =====================
 
-The ANELLO Python Program can be used to connect, configure, and log data with any ANELLO product. 
+The ANELLO Python Program can be used to connect, configure, and log data. 
 It works on any computer running Windows, macOS, or Linux (including Ubuntu).
-It can also be used as an NTRIP client to forward RTK corrections to your EVK or GNSS INS for enhanced GPS accuracy.
 Please see the instructions below to use the ANELLO Python program and contact support@anellophotonics.com with any questions. 
 
 Install ANELLO Python Program
