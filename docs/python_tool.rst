@@ -57,9 +57,9 @@ Connect to ANELLO Unit
 
 Connect Over Serial
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Ensure the power cable is connected and the green power light is illuminated. Connect the ANELLO unit to the computer using either the UART or RS-422 interface.
+Ensure the power cable is connected. Connect the ANELLO unit to the computer using either the UART or RS-422 interface.
 
-Use the arrow keys to select *Connect*, then *COM*, then *Auto* to auto-detect the unit. You can also use *Manual* if you know the data and config ports.
+Use the arrow keys to select *Connect*, then *COM*, then *Auto* to auto-detect the unit. You can also use *Manual* if you know the serial ports.
 You should now see the *System Status* updated with the device information.
 
 For more information or if you experience any errors, see the `Set-Up Troubleshooting <https://docs-a1.readthedocs.io/en/x3/setup_troubleshooting.html#connect-to-anello-unit>`__.
