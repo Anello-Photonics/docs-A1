@@ -85,4 +85,4 @@ from the ANELLO X3 in real-time by selecting *Monitor* in the main menu.
 You have completed the X3 setup! Please contact support@anellophotonics.com with any questions. 
 
 
-*X3 User Manual 93001401 v1.0.0*
+*X3 User Manual 93001401 v1.0.1*
