@@ -4,16 +4,17 @@ Firmware Upgrade
 
 ANELLO recommends using the latest firmware (FW) for best results. The latest FW release is:
 
-- v1.0.8 (Released Dec 13, 2024)
+- v2.2.6
 
 If you are on an older version, please contact ANELLO for the latest FW image.
 
-FW upgrades currently must be done over the serial interface and can be done on computers using the following OS/processors:
+FW upgrades currently must be done over the **RS-422 serial interface** and can be done on computers using the following OS/processors:
 
 - Windows 
 - Linux (x86)
 - Linux (ARM)
 
+FW upgrades over the UART interface are not supported.
 
 Please ensure power and serial connection is not disrupted to the unit during the firmware upgrade process. 
 If you experience any errors during the process, please power cycle the unit and try again.
@@ -22,7 +23,7 @@ Firmware Upgrade Procedure - Python Tool
 ------------------------------------------
 Make sure to first run "git pull" in user_tool to ensure you are using the latest firmware upgrade functionality.
 
-    1. Connect both serial ports to a Windows, Linux (x86), or Linux (ARM) computer using the provided DB9 to USB cables (all other units).
+    1. Connect RS422 serial port to a Windows, Linux (x86), or Linux (ARM) computer using the provided DB9 to USB cable.
     
     2. Run x3_tool.py and connect to unit over COM (USB)
         
@@ -37,7 +38,7 @@ functioning state, please try running the bootloader commands from the command l
 
 Firmware Upgrade Procedure - Command Line
 ------------------------------------------
-Connect both ports to a Windows, Linux (x86), or Linux (ARM) computer using the provided DB9 to USB cables (all other units).
+Connect RS-422 port to a Windows, Linux (x86), or Linux (ARM) computer using the provided DB9 to USB cable.
 
 To enter bootloading mode, send the following command to the UART port using a serial interface program such as CoolTerm:
 #APRST,2*5A
@@ -45,9 +46,8 @@ To enter bootloading mode, send the following command to the UART port using a s
 In a terminal, navigate to the bootloader (found in user_tool -> board_tools directory) and locate the correct bootloader for your OS (using Windows x86 as an example below).
 Enter the following commands one at a time:
 
-    1. ./crossplatform_bootloader_windows_x86_release START TC36X 6 <data port #> 115200 0 0 0 0
-        a. E.g. if the data port is COM8, you would enter 8 for <data port #>
-        b. For the X3, the "data" port is the RS-422 port
+    1. ./crossplatform_bootloader_windows_x86_release START TC36X 6 <RS-422 port #> 115200 0 0 0 0
+        a. E.g. if the RS-422 port is COM8, you would enter 8 for <RS-422 #>
     2. ./crossplatform_bootloader_windows_x86_release PROGRAM <hex file path>
     3. ./crossplatform_bootloader_windows_x86_release END
 

@@ -58,7 +58,7 @@ Other access issues may be related to internal firewall or other security featur
 Run Python Program
 ---------------------------
 
-After installing dependencies and running x3.py, you should now see the System Status and Main Menu, as shown below.
+After installing dependencies and running x3_tool.py, you should now see the System Status and Main Menu, as shown below.
 
 .. figure:: media/full_status_labeled.png
    :scale: 50 %
@@ -72,8 +72,8 @@ The main menu actions are:
 -   Connect:               Connect to the unit over COM or UDP
 -   Restart Unit:          Restart the unit
 -   Unit Configuration:    Edit unit configurations such as output data rate
--   Log:                   Collect GPS, IMU, and INS data and convert to CSV
--   Monitor:               Opens a display showing the real-time INS message contents
+-   Log:                   Collect IMU data and convert to CSV
+-   Monitor:               Opens a display showing the real-time IMU message contents
 -   Upgrade:               Change the unit's firmware version
 -   Exit:                  Exit the python program
 
@@ -81,7 +81,7 @@ The main menu actions are:
 Connect to ANELLO Unit
 ----------------------------
 
-For information on the interfaces, ports, and baud rates for your ANELLO unit, 
+For information on the interfaces, ports, and baud rates for the ANELLO X3, 
 see `Communication & Messaging <https://docs-a1.readthedocs.io/en/x3/communication_messaging.html>`_.
 
 If the auto detection fails, you can try manual connection. First check that the ports associated with your ANELLO unit are recognized by your computer. 
@@ -121,16 +121,6 @@ then run as root using that path to python:
 
     sudo <path to python> user_program.py
 
-On Windows, the firewall can block communication on UDP ports.
-When this issue happens, you can connect by UDP in user_program.py and read/write configurations, but the logs and monitor are empty.
-
-To fix:
-
-1. In Windows start menu, search "firewall", then click "Firewall & network protection"
-2. Click "Allow an app through firewall"
-3. In the popup: click "Change Settings"
-4. Scroll down to see if "Python" is in the list. If not, click "allow another app" -> "Browse" and select your python.exe
-5. Check the "public" and "private" boxes for Python, then click "ok".
 
 If you have multiple Python versions installed, ensure firewall lists the version you use to run user_program.
 

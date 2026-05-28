@@ -20,7 +20,7 @@ Version Control
   |             |                        |                                                                                               |
   +-------------+------------------------+-----------------------------------------------------------------------------------------------+
   |  93001401   | User Manual, X3        | - 29 April 2025 - Version 1.0.0 - First revision controlled X3 user manual document.          |
-  |             |                        |                                                                                               |
+  |             |                        | - 28 July 2026 - Version 1.0.1 - Removed info only relevent to other products                 |
   |             |                        |                                                                                               |
   |             |                        |                                                                                               |
   |             |                        |                                                                                               |

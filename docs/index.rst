@@ -16,6 +16,5 @@ The ANELLO X3 leverages three state-of-the-art ANELLO SiPhOGTM (Silicon Photonic
     mechanicals
     fw_upgrade
     software_tools
-    known_limitations
     version
     

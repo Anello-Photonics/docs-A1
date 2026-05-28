@@ -14,9 +14,6 @@ The communication interfaces currently supported for the ANELLO products are lis
 Default Baud Rate:
     - 460800
 
-RS-232 Voltage Levels: 
-    - +/- 7V
-
 Data Format:
     - Data Bits: 8
     - Stop Bits: 1 
@@ -41,7 +38,7 @@ See `Mechanicals <https://docs-a1.readthedocs.io/en/x3/mechanicals.html#anello-e
 2  ASCII Data Output Messages
 ---------------------------------
 
-ANELLO has two message formats, ASCII and RTCM. The structures of all ASCII messages use the 
+ANELLO has two message formats, ASCII and Binary. The structures of all ASCII messages use the 
 following conventions:
 
 -	The lead code identifier for each record is '#'
@@ -112,29 +109,8 @@ This is the same as APIMU but with additional Optical Gyro Rates for 3 axes, mag
 
 
 
-3  RTCM Binary Data Output Messages
+3  Binary Data Output Messages
 --------------------------------------
-
-The binary packets use an RTCM standard 10403 envelope for each message. 
-
-  +---+-----------+--------------------------------------------------------------+
-  |   | Field     |  Value/Description                                           |
-  +---+-----------+--------------------------------------------------------------+
-  | 0 | Preamble  |  0xD3                                                        |
-  +---+-----------+--------------------------------------------------------------+
-  | 1 | Reserved  |  000000 (6 bit)                                              |
-  +---+-----------+--------------------------------------------------------------+
-  | 2 | Length    |  10 bit, # bytes in data message                             |
-  +---+-----------+--------------------------------------------------------------+
-  | 3 | Data      |  Data message as defined below                               |
-  +---+-----------+--------------------------------------------------------------+
-  | 4 | CRC       |  3 byte                                                      |
-  +---+-----------+--------------------------------------------------------------+
-
-The ANELLO Python Tool handles logging and decoding of the RTCM binary format. 
-However, an `RTCM decoder <https://github.com/Anello-Photonics/decoder/blob/master/decoder.cpp>`_ is provided if needed,
-with the checksum definition found `here <https://github.com/Anello-Photonics/decoder/blob/master/artcm/artcm.c>`_.
-
 
 3.1 IMU Message (X3)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -334,9 +310,8 @@ The ASCII checksum is an XOR of all characters between the start character â€˜#â
 6.2 Binary Checksum
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-X3:
-  The 2 preamble bytes and the checksum itself are not included in the checksum calculation.
-  Checksum is calculated as follows, where N is the number of bytes included in the checksum calculation:
+The 2 preamble bytes and the checksum itself are not included in the checksum calculation.
+Checksum is calculated as follows, where N is the number of bytes included in the checksum calculation:
 
   .. code-block:: python
 

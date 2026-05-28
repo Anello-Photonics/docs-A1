@@ -33,13 +33,25 @@ ANELLO X3:
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
 
 
-.. note:: Some configurations require a system reset after changing, such as the ODR and baud rate. This can be done by selecting "Reset" in the user_program.py main menu, or sending the reset command over the Configuration port: #APRST,0*58 
+Additional ANELLO X3 AHRS Commands:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
+  | Configuration          | APCFG Code | Value/Description                                                                                           |
+  +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
+  | Enable AHRS            | ahrs       | Enables or disables the AHRS filter output and calculations. This command is flash only.                    |
+  +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
+  | Enable ZUPT            | azupt      | Configures the ZUPT mode for the AHRS filter. 0 is off, 1 is heading lock. This command is RAM only.        |
+  +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
+  | Heading Update         | ahdg       | Allows the user to load in a custom heading to the AHRS filter. Input format is degrees * 1000 to give 3    |
+  |                        |            | decimals of precision. Ex: 180.123 would be loaded as  180123. This command is RAM only.                    |
+  +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
 
+.. note:: Some configurations require a system reset after changing, such as the ODR and baud rate. This can be done by selecting "Reset" in the user_program.py main menu, or sending the reset command over the Configuration port: #APRST,0*58 
 
 
 Output Data Rate (ODR)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The ANELLO X3 units support ODR up to 200 Hz. RTCM message format is recommended for best timing.
+The ANELLO X3 units support ODR up to 200 Hz. Binary message format is recommended for best timing.
 
 .. note:: Decreasing the baud rate will affect the maximum output data rate. It is recommended to keep the default baud rate (460800) enable highest ODR.
 
