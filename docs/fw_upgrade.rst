@@ -5,13 +5,12 @@ Firmware Upgrade
 ANELLO recommends using the latest firmware (FW) for best results. The latest FW release is:
 
 - Ground INS, EVK, Ground IMU: v1.3.24 (released June 2024)
-- X3: v2.2.6 (Released October 2025)
 
 If you are on an older version, please contact ANELLO for the latest FW image.
 
 FW upgrades currently must be done over the serial interface and can be done on computers using the following OS/processors:
 
-- Ground INS, EVK, X3: Windows, Linux (x86), Linux (ARM)
+- Ground INS, EVK: Windows, Linux (x86), Linux (ARM)
 - Ground IMU: Windows only
 
 Please ensure power and serial connection is not disrupted to the unit during the firmware upgrade process. 
@@ -23,7 +22,7 @@ Make sure to first run "git pull" in user_tool to ensure you are using the lates
 
     1. Connect both serial ports to a Windows, Linux (x86), or Linux (ARM) computer using the provided USB cable (EVK) or DB9 to USB cables (all other units).
     
-    2. Run user_program.py (for EVK, Ground INS, and Ground IMU) or x3_tool.py (for X3) and connect to unit over COM (USB)
+    2. Run user_program.py and connect to the unit over COM (USB)
         
     3. On main menu, select Upgrade -> Yes. Select ANELLO-provided .hex file
         - Upgrade will run automatically and typically takes about 5 minutes to completed
@@ -46,7 +45,6 @@ Enter the following commands one at a time:
 
     1. ./crossplatform_bootloader_windows_x86_release START TC36X 6 <data port #> 115200 0 0 0 0
         a. E.g. if the data port is COM8, you would enter 8 for <data port #>
-        b. For the X3, the "data" port is the RS-422 port
     2. ./crossplatform_bootloader_windows_x86_release PROGRAM <hex file path>
     3. ./crossplatform_bootloader_windows_x86_release END
 
