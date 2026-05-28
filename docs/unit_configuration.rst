@@ -1,8 +1,8 @@
 Unit Configurations
 =======================
 
-The easiest way to configure an ANELLO unit is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#unit-configurations>`_, 
-which saves all changes to non-volatile flash memory. 
+The easiest way to configure an ANELLO unit is using the `ANELLO Python Program <https://docs-a1.readthedocs.io/en/latest/python_tool.html#unit-configurations>`_,
+which saves all changes to non-volatile flash memory.
 
 Alternatively, the unit can be configured using the `APCFG message <https://docs-a1.readthedocs.io/en/latest/communication_messaging.html#apcfg-messages>`_.
 
@@ -54,7 +54,7 @@ Ground INS and ANELLO EVK:
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
   | Sync Pulse Enable      | sync       | Enables the external synchronization pulse input: 'on', 'off'                                               |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
-  | Output Message Format  | mfm        | Format of the output messages. 1: ASCII, 4: RTCM (default)                                                  |
+  | Output Message Format  | mfm        | Format of the output messages. 1: ASCII, 4: RTCM Binary                                                     |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
   | Enable Serial Output   | uart       | Enable output over serial interface: 'on', 'off'                                                            |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
@@ -69,7 +69,7 @@ Ground INS and ANELLO EVK:
 
 .. note:: The UDP ports are the numbers on the connected computer only. The EVK uses UDP port 1 for data, 2 for configuration, and 3 for odometer.
 
-Ground IMU and ANELLO X3:
+Ground IMU:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   +------------------------+------------+---------------------------------------------------------------------------------------------------------------------+
   | Configuration          | APCFG Code | Value/Description                                                                                                   |
@@ -86,7 +86,7 @@ Ground IMU and ANELLO X3:
   +------------------------+------------+---------------------------------------------------------------------------------------------------------------------+
   | Sync Pulse Enable      | sync       | Enables the external synchronization pulse input: 'on', 'off'                                                       |
   +------------------------+------------+---------------------------------------------------------------------------------------------------------------------+
-  | Output Message Format  | mfm        | Format of the output messages. 0: Binary (X3 only), 1: ASCII, 4: RTCM Binary (Ground INS, Ground IMU, and EVK only) |
+  | Output Message Format  | mfm        | Format of the output messages. 1: ASCII, 4: RTCM Binary                                                             |
   +------------------------+------------+---------------------------------------------------------------------------------------------------------------------+
 
 Additional Ground IMU ANELLO AHRS Commands:
@@ -102,45 +102,29 @@ Additional Ground IMU ANELLO AHRS Commands:
   |                        |            | decimals of precision. Ex: 180.123 would be loaded as  180123. This command is RAM only.                    |
   +------------------------+------------+-------------------------------------------------------------------------------------------------------------+
 
-.. note:: Some configurations require a system reset after changing, such as the ODR and baud rate. This can be done by selecting "Reset" in the user_program.py main menu, or sending the reset command over the Configuration port: #APRST,0*58 
+.. note:: Some configurations require a system reset after changing, such as the ODR and baud rate. This can be done by selecting "Reset" in the user_program.py main menu, or sending the reset command over the Configuration port: #APRST,0*58
 
 
 
 Output Data Rate (ODR)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The Ground INS has output data rate constraints when outputting data over RS-232. In RTCM or binary messaging mode, 
+The Ground INS has output data rate constraints when outputting data over RS-232. In RTCM or binary messaging mode,
 maximum ODR is 100 Hz. In ASCII mode, maximum ODR is 50 Hz.
 All other ANELLO units support ODR up to 200 Hz. RTCM message format is recommended for best timing.
 
-Decreasing the baud rate will affect the maximum output data rate. It is recommended to keep the default baud rate (921600 for EVK; 230400 for Ground INS and IMU; 460800 for X3) enable highest ODR.
-
-The following Output Data rates are supported on the X3 according to baudrate:
-
-+------------+------------------+--------------------+
-| Baudrate   | X3 max ODR, ASCII| X3 max ODR, Binary |
-+============+==================+====================+
-| 921600     | 200              | 200                |
-+------------+------------------+--------------------+
-| 460800     | 200              | 200                |
-+------------+------------------+--------------------+
-| 230400     | 100              | 200                |
-+------------+------------------+--------------------+
-| 115200     | 50               | 100                |
-+------------+------------------+--------------------+
-| 57600      | 20               | 50                 |
-+------------+------------------+--------------------+
+Decreasing the baud rate will affect the maximum output data rate. It is recommended to keep the default baud rate (921600 for EVK; 230400 for Ground INS and Ground IMU) to enable the highest ODR.
 
 Digital Filters
 ~~~~~~~~~~~~~~~~~~~
-Fixed-point digital filters are implemented in the firmware and operate on the raw sensors readings (counts) prior to conversion to scaled 
-sensor readings (in [g] and [°/s]). Cutoff frequencies can be selected by the user using the APCFG command for the accelerometers (lpa), 
+Fixed-point digital filters are implemented in the firmware and operate on the raw sensors readings (counts) prior to conversion to scaled
+sensor readings (in [g] and [°/s]). Cutoff frequencies can be selected by the user using the APCFG command for the accelerometers (lpa),
 MEMS angular-rate sensors (lpw), and optical gyroscopes (lpo).
 
 Any integer value between zero and 90% of Nyquist frequency (0.5*ODR) can be selected. A zero value disables filtering and any value above 90% Nyquist is limited.
 
 Unit Installation Orientation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Orientation describes the mounting orientation of the ANELLO Unit on the vehicle. 
+Orientation describes the mounting orientation of the ANELLO Unit on the vehicle.
 This configuration is only used in the ANELLO algorithm and does not affect IMU data output.
 
 The following 8 right hand rule frames are possible:
@@ -184,4 +168,4 @@ Pitch slope = (pitch_1 - pitch_2) / 2 = -5.0
 
 AZUPT for ANELLO AHRS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Zero velocity update (ZUPT) is used to tell the IMU AHRS system that it is stationary. The user should only command this mode when the user can confirm that the system is stationary and turn off the mode before motion starts. While ZUPT is on, heading is locked, roll and pitch are estimated with accelerometer values, and angular rate biases are estimated. While ZUPT is off, the angular rates have the biases subtracted before being input into the filter 
+Zero velocity update (ZUPT) is used to tell the IMU AHRS system that it is stationary. The user should only command this mode when the user can confirm that the system is stationary and turn off the mode before motion starts. While ZUPT is on, heading is locked, roll and pitch are estimated with accelerometer values, and angular rate biases are estimated. While ZUPT is off, the angular rates have the biases subtracted before being input into the filter

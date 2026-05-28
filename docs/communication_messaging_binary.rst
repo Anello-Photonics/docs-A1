@@ -14,9 +14,7 @@ The communication interfaces currently supported for the ANELLO products are lis
 
     3. ANELLO IMU/IMU+: Serial (RS-232)
 
-    4. ANELLO X3: Serial (RS-422), UART (3.3V)
-
-Serial communication occurs at a default baud rate of 921600 for the EVK, 230400 for GNSS INS and IMU/IMU+, and 460800 bps for the X3.
+Serial communication occurs at a default baud rate of 921600 for the EVK and 230400 for GNSS INS and IMU/IMU+.
 For interfacing on a serial interface software such as CoolTerm, please set Data Bits = 8, Stop Bits = 1, and Parity = None.
 
 1.1 Port Definitions
