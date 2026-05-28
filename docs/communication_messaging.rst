@@ -51,7 +51,6 @@ following conventions:
 
 2.1 APIMU Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-This is the same as APIMU but with additional Optical Gyro Rates for 3 axes, magnetic field measurements, and without odometer values. This is the output message for X3 units only.
   +---+------------+-----------+-----------------------------------------------------------------------+
   |   | Field      |  Units    |  Description                                                          |
   +---+------------+-----------+-----------------------------------------------------------------------+
@@ -105,7 +104,6 @@ This is the same as APIMU but with additional Optical Gyro Rates for 3 axes, mag
   |   |            |           |  - Bit 2: Over current error                                          |
   |   |            |           |  - Bit 3: SiPhOG supply voltage bad                                   |
   +---+------------+-----------+-----------------------------------------------------------------------+
-
 
 
 
@@ -313,13 +311,13 @@ The ASCII checksum is an XOR of all characters between the start character â€˜#â
 The 2 preamble bytes and the checksum itself are not included in the checksum calculation.
 Checksum is calculated as follows, where N is the number of bytes included in the checksum calculation:
 
-  .. code-block:: python
+.. code-block:: python
 
-      CK_A = 0
-      CK_B = 0
-      for (I = 0; I < N; I++)
-      {
-      CK_A = CK_A + Buffer[I]
-      CK_B = CK_B + CK_A
-      }
+  CK_A = 0
+  CK_B = 0
+    for (I = 0; I < N; I++)
+    {
+    CK_A = CK_A + Buffer[I]
+    CK_B = CK_B + CK_A
+    }
 
