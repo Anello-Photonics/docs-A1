@@ -4,7 +4,7 @@ Firmware Upgrade
 
 ANELLO recommends using the latest firmware (FW) for best results. The latest FW release is:
 
-- v2.2.6
+- v2.2.6 (Released October 2025)
 
 If you are on an older version, please contact ANELLO for the latest FW image.
 
