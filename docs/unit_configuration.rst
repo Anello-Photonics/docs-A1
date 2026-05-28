@@ -53,7 +53,23 @@ Output Data Rate (ODR)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The ANELLO X3 units support ODR up to 200 Hz. Binary message format is recommended for best timing.
 
-.. note:: Decreasing the baud rate will affect the maximum output data rate. It is recommended to keep the default baud rate (460800) enable highest ODR.
+Decreasing the baud rate will affect the maximum output data rate. It is recommended to keep the default baud rate (460800) enable highest ODR.
+
+The following Output Data rates are supported on the X3 according to baudrate:
+
++------------+------------------+--------------------+
+| Baudrate   | X3 max ODR, ASCII| X3 max ODR, Binary |
++============+==================+====================+
+| 921600     | 200              | 200                |
++------------+------------------+--------------------+
+| 460800     | 200              | 200                |
++------------+------------------+--------------------+
+| 230400     | 100              | 200                |
++------------+------------------+--------------------+
+| 115200     | 50               | 100                |
++------------+------------------+--------------------+
+| 57600      | 20               | 50                 |
++------------+------------------+--------------------+
 
 Digital Filters
 ~~~~~~~~~~~~~~~~~~~
