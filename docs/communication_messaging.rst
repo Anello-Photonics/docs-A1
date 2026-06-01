@@ -110,7 +110,7 @@ following conventions:
 3  Binary Data Output Messages
 --------------------------------------
 
-3.1 IMU Message (X3)
+3.1 IMU Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ANELLO binary packets use a 2-byte preamble followed by a 1-byte message type and a 1-byte length. There is also a 2-byte checksum after the payload.
