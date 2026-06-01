@@ -16,7 +16,7 @@ X3 SCD Drawing: :download:`PDF <media/SCD_Mechanical_X3.pdf>`
 
 The pinout for the black breakout board included with the X3 Evaluation Kit can be found on the second page of the X3 SCD and is also pictured here:
 
-.. figure:: media/ANELLO_X3_BB_SCD.png.png
+.. figure:: media/ANELLO_X3_BB_SCD.png
    :align: center
 
 .. note::
