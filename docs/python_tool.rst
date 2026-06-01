@@ -88,6 +88,8 @@ To export a log to CSV, Select *Log*, then *Export to CSV*, then choose the log 
 CSV files for each message will be saved in the "exports" directory, under the name of the original log file. 
 For more information on the output messages, see `Comminication & Messaging <https://docs-a1.readthedocs.io/en/x3/communication_messaging.html>`_.
 
+If only connected to one port, configurations cannot be set while logging. Connect to both UART and RS-422 simultaneously for full python tool functionality.
+
 
 Monitor Output
 -------------------------------------
