@@ -14,5 +14,10 @@ X3 SCD Drawing: :download:`PDF <media/SCD_Mechanical_X3.pdf>`
 .. note::
    If you purchased the X3 Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/SCD_Breakout Cable_X3.pdf>`
 
+The pinout for the black breakout board included with the X3 Evaluation Kit can be found on the second page of the X3 SCD and is also pictured here:
+
+.. figure:: media/ANELLO_X3_BB_SCD.png
+   :align: center
+
 .. note::
    Please note that the X3 SCD and breakout cable drawings reflect different use cases. The X3 SCD shows the raw pinout for direct connection to the X3, while the breakout cable includes a breakout board that reassigns certain pins (e.g., replacing unused SPI lines with additional grounds) for ease of use in an evaluation setting. This results in differing pin labels, but the overall functionality remains consistent. 
