@@ -58,6 +58,8 @@ See `Mechanicals <https://docs-a1.readthedocs.io/en/aerial_ins/mechanicals.html>
 2. Input Messages
 ---------------------------------
 
+The ANELLO Aerial INS supports the MAVLink common message set detailed `here <https://mavlink.io/en/messages/common.html>`_
+
 2.1  NMEA 0183 Input Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -781,6 +783,8 @@ Logged topic: NMEA2000_RPH
 
 3. Output Messages
 -------------------------
+The ANELLO Aerial INS supports the MAVLink common message set detailed `here <https://mavlink.io/en/messages/common.html>`_
+
 3.1 NMEA 0183 Output Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
