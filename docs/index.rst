@@ -7,7 +7,7 @@ use the EVK system to begin design for the high-precision Anello SiPhOG :sup:`TM
 also serves as a truth reference system for difficult environment driving scenarios such as dense urban 
 canyon environments.
 
-On May 22, 2022 the ANELLO announced the availability of the GNSS INS as a ruggedized volume product version of the ANELLO EVK.
+On May 22, 2022 the ANELLO announced the availability of the Ground INS as a ruggedized volume product version of the ANELLO EVK.
 Reach out to info@anellophotonics.com for more information.
 
 .. toctree::
