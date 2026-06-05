@@ -40,19 +40,19 @@ Follow the links below to explore manuals for our other products
         <td>
           <a href="https://docs-a1.readthedocs.io/en/maritime_ins/">
             <strong>Maritime INS Developer Manual</strong><br>
-            <img src="media/ANELLO_Maritime_INS" width="200">
+            <img src="docs/media/ANELLO_Maritime_INS" width="200">
           </a>
         </td>
         <td>
           <a href="https://docs-a1.readthedocs.io/en/imu_plus/">
             <strong>Aerial INS Developer Manual</strong><br>
-            <img src="media/ANELLO_Aerial_INS.png" width="200">
+            <img src="docs/media/ANELLO_Aerial_INS.png" width="200">
           </a>
         </td>
         <td>
           <a href="https://docs-a1.readthedocs.io/en/x3/">
             <strong>X3 Developer Manual</strong><br>
-            <img src="media/X3.png" width="200">
+            <img src="docs/media/X3.png" width="200">
           </a>
         </td>
       </tr>
