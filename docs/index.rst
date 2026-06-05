@@ -29,3 +29,32 @@ Reach out to info@anellophotonics.com for more information.
     known_limitations
     version
     
+This user manual contains information concerning the ANELLO Ground INS, Ground IMU, and EVK.
+
+Follow the links below to explore manuals for our other products
+
+.. raw:: html
+
+    <table style="width: 100%; text-align: center;">
+      <tr>
+        <td>
+          <a href="https://docs-a1.readthedocs.io/en/maritime_ins/">
+            <strong>Maritime INS Developer Manual</strong><br>
+            <img src="_static/media/ANELLO_MARITIME_INS.png" width="200">
+          </a>
+        </td>
+        <td>
+          <a href="https://docs-a1.readthedocs.io/en/imu_plus/">
+            <strong>Aerial INS Developer Manual</strong><br>
+            <img src="_static/media/ANELLO_AERIAL_INS.png" width="200">
+          </a>
+        </td>
+        <td>
+          <a href="https://docs-a1.readthedocs.io/en/x3/">
+            <strong>X3 Developer Manual</strong><br>
+            <img src="_static/media/ANELLO_X3.png" width="200">
+          </a>
+        </td>
+      </tr>
+    </table>
+    &nbsp;
