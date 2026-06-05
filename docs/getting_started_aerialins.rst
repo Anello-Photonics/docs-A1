@@ -201,5 +201,7 @@ For best GNSS-denied navigation results, ANELLO recommends the following initial
 3. For best performance, after launch, enter a circular or rectangular holding pattern to give the system visibility into wind speed and direction before GNSS is lost.
 4. Perform your mission. Best performance in GNSS-denied conditions is achieved with calibrated speed aiding. For airspeed sensors, speeds above 20 knots are required.
 
+Contact support@anellophotonics.com for speed sensor recommendations.
+
 
 *Aerial INS User Manual 93001701 v1.0.0*
