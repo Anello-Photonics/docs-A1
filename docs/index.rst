@@ -49,7 +49,7 @@ Follow the links below to explore manuals for our other products
         .. image:: media/ANELLO_Aerial_INS.png
             :width: 200
             :alt: ANELLO Aerial INS
-            :target: https://docs-a1.readthedocs.io/en/imu_plus/
+            :target: https://docs-a1.readthedocs.io/en/aerial_ins/
 
       - `X3 Developer Manual <https://docs-a1.readthedocs.io/en/x3/>`__
 
