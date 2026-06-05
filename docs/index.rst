@@ -33,28 +33,27 @@ This user manual contains information concerning the ANELLO Ground INS, Ground I
 
 Follow the links below to explore manuals for our other products
 
-.. raw:: html
+.. list-table::
+    :widths: 33 33 33
+    :align: center
 
-    <table style="width: 100%; text-align: center;">
-      <tr>
-        <td>
-          <a href="https://docs-a1.readthedocs.io/en/maritime_ins/">
-            <strong>Maritime INS Developer Manual</strong><br>
-            <img src="docs/media/ANELLO_Maritime_INS" width="200">
-          </a>
-        </td>
-        <td>
-          <a href="https://docs-a1.readthedocs.io/en/imu_plus/">
-            <strong>Aerial INS Developer Manual</strong><br>
-            <img src="docs/media/ANELLO_Aerial_INS.png" width="200">
-          </a>
-        </td>
-        <td>
-          <a href="https://docs-a1.readthedocs.io/en/x3/">
-            <strong>X3 Developer Manual</strong><br>
-            <img src="docs/media/X3.png" width="200">
-          </a>
-        </td>
-      </tr>
-    </table>
-    &nbsp;
+    * - `Maritime INS Developer Manual <https://docs-a1.readthedocs.io/en/maritime_ins/>`__
+
+        .. image:: media/ANELLO_Maritime_INS.png
+            :width: 200
+            :alt: ANELLO Maritime INS
+            :target: https://docs-a1.readthedocs.io/en/maritime_ins/
+
+      - `Aerial INS Developer Manual <https://docs-a1.readthedocs.io/en/imu_plus/>`__
+
+        .. image:: media/ANELLO_Aerial_INS.png
+            :width: 200
+            :alt: ANELLO Aerial INS
+            :target: https://docs-a1.readthedocs.io/en/imu_plus/
+
+      - `X3 Developer Manual <https://docs-a1.readthedocs.io/en/x3/>`__
+
+        .. image:: media/X3.png
+            :width: 200
+            :alt: ANELLO X3
+            :target: https://docs-a1.readthedocs.io/en/x3/
