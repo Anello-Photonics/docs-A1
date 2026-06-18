@@ -2,12 +2,12 @@
 Sensor Recommendations
 =========================
 
-The ANELLO Maritime INS has been successfully integrated with a variety of speed sensors, GNSS antennas, and M-Code receivers. The following recommendations are based on tested integrations and typical maritime deployment requirements. :contentReference[oaicite:0]{index=0}
+The ANELLO Maritime INS has been successfully integrated with a variety of speed sensors, GNSS antennas, and M-Code receivers. The following recommendations are based on tested integrations and typical maritime deployment requirements. 
 
 Speed Sensors
 -------------
 
-The Maritime INS requires a speed sensor to provide aiding data for optimal navigation performance. ANELLO recommends selecting a sensor that supports the full operating speed range of the vessel. :contentReference[oaicite:1]{index=1}
+The Maritime INS requires a speed sensor to provide aiding data for optimal navigation performance. ANELLO recommends selecting a sensor that supports the full operating speed range of the vessel.
 
 Paddle Wheel
 ^^^^^^^^^^^^
@@ -68,7 +68,7 @@ Speed Sensor Installation Guidelines
 GNSS Antenna Recommendations
 ----------------------------
 
-ANELLO recommends using active L1/L2/L5 all-constellation GNSS antennas. The following models have been successfully integrated with the Maritime INS. :contentReference[oaicite:2]{index=2}
+ANELLO recommends using active L1/L2/L5 all-constellation GNSS antennas. The following models have been successfully integrated with the Maritime INS.
 
 u-blox ANN-MB2
 ^^^^^^^^^^^^^^
@@ -128,7 +128,7 @@ Antenna Installation Guidelines
 M-Code Receiver Recommendations
 -------------------------------
 
-The Maritime INS has been successfully integrated with the following external M-Code receivers. :contentReference[oaicite:3]{index=3}
+The Maritime INS has been successfully integrated with the following external M-Code receivers. 
 
 Supported Receivers
 ^^^^^^^^^^^^^^^^^^^
@@ -168,4 +168,4 @@ Operational Guidance
 * Use keyed M-Code operation whenever available
 * Treat unkeyed or fallback modes as lower-assurance aiding sources
 
-For additional information on external position aiding, see the Maritime INS communication and messaging documentation.
+For any questions or concerns regarding external sensors, contact support@anellophotonics.com
