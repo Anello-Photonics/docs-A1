@@ -1,6 +1,6 @@
 =========================
 Sensor Recommendations
-======================
+=========================
 
 The ANELLO Maritime INS has been successfully integrated with a variety of speed sensors, GNSS antennas, and M-Code receivers. The following recommendations are based on tested integrations and typical maritime deployment requirements. :contentReference[oaicite:0]{index=0}
 
