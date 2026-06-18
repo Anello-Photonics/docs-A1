@@ -76,7 +76,7 @@ Connect with the ANELLO Maritime Control software (AMarinerControl):
 
 The ANELLO Maritime INS can be configured for various installation positions as long as parameters are set as detailed in the next section.  
 An external speed-aiding sensor, e.g. paddle wheel, ultrasonic sensor, Doppler velocity log (DVL), is highly recommended to maintain accuracy in GPS-denied conditions. 
-see `Sensor Recommendations <https://docs-a1.readthedocs.io/en/maritime_ins_dev/sensor_recommendations.html#speed-sensors>`__ for speed sensor recommendations. 
+See `Sensor Recommendations <https://docs-a1.readthedocs.io/en/maritime_ins_dev/sensor_recommendations.html#speed-sensors>`__ for speed sensor recommendations. 
 Calibration procedures for common sensors are detailed in  
 `Sensor Calibrations <https://docs-a1.readthedocs.io/en/maritime_ins/sensor_calibrations.html>`__.
 
