@@ -1051,7 +1051,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
    * - 2
      - UTC Time
      - s
-     - Coordinated Universal Time
+     - Coordinated Universal Time (microsecond precision)
    * - 3
      - Status
      -
@@ -1146,7 +1146,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
    * - 2
      - UTC Time
      - s
-     - Coordinated Universal Time
+     - Coordinated Universal Time (microsecond precision)
    * - 3
      - H_Acc
      - m
