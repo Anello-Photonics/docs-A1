@@ -56,7 +56,7 @@ These ports, along with IP addresses and other UDP settings should be configured
 
  .. note:: 
   The "lowest" and "highest" serial ports mentioned above refer to the EVK, which uses an FTDI chip to create 4 virtual COM ports.
-  The Ground INS and Ground IMU have two RS-232 connections, where RS232-1 is the configuration port and RS232-2 is the data port. 
+  The Ground INS and Ground IMU have two RS-232 connections, where RS232-1 is the data port and RS232-2 is the configuration port. 
   The port numbers that appear once connected to the computer are determined by how the OS assigns the ports, and therefore the 
   Data port is not necessarily the lowest port # like in the EVK.
 

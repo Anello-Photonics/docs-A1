@@ -37,10 +37,10 @@ Firmware Upgrade Procedure - Command Line
 ------------------------------------------
 Connect both serial ports to a Windows, Linux (x86), or Linux (ARM) computer using the provided USB cable (EVK) or DB9 to USB cables (all other units).
 
-To enter bootloading mode, send the following command to the UART port using a serial interface program such as CoolTerm:
+To enter bootloading mode, send the following command to the configuration port using a serial interface program such as CoolTerm:
 #APRST,2*5A
 
-In a terminal, navigate to the bootloader (found in user_tool -> board_tools directory) and locate the correct bootloader for your OS (using Windows x86 as an exampl below).
+In a terminal, navigate to the bootloader (found in user_tool -> board_tools directory) and locate the correct bootloader for your OS (using Windows x86 as an example below).
 Enter the following commands one at a time:
 
     1. ./crossplatform_bootloader_windows_x86_release START TC36X 6 <data port #> 115200 0 0 0 0
