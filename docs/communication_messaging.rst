@@ -87,19 +87,19 @@ following conventions:
   | 15| Temp C     |  °C       |  Temperature                                                          |
   +---+------------+-----------+-----------------------------------------------------------------------+
   | 16| Status_X   | Bitfield  |  Status based on bits:                                                |
-  |   |            |           |  - Bit 0: Gyro discrepency                                            |
+  |   |            |           |  - Bit 0: Gyro discrepancy                                            |
   |   |            |           |  - Bit 1: Temperature uncontrolled                                    |
   |   |            |           |  - Bit 2: Over current error                                          |
   |   |            |           |  - Bit 3: SiPhOG supply voltage bad                                   |
   +---+------------+-----------+-----------------------------------------------------------------------+
   | 17| Status_Y   | Bitfield  |  Status based on bits:                                                |
-  |   |            |           |  - Bit 0: Gyro discrepency                                            |
+  |   |            |           |  - Bit 0: Gyro discrepancy                                            |
   |   |            |           |  - Bit 1: Temperature uncontrolled                                    |
   |   |            |           |  - Bit 2: Over current error                                          |
   |   |            |           |  - Bit 3: SiPhOG supply voltage bad                                   |
   +---+------------+-----------+-----------------------------------------------------------------------+
   | 18| Status_Z   | Bitfield  |  Status based on bits:                                                |
-  |   |            |           |  - Bit 0: Gyro discrepency                                            |
+  |   |            |           |  - Bit 0: Gyro discrepancy                                            |
   |   |            |           |  - Bit 1: Temperature uncontrolled                                    |
   |   |            |           |  - Bit 2: Over current error                                          |
   |   |            |           |  - Bit 3: SiPhOG supply voltage bad                                   |
@@ -124,6 +124,8 @@ The ANELLO binary packets use a 2-byte preamble followed by a 1-byte message typ
 
 The payload for the binary output message is described below
 
+For IMU message type 253, the payload length is 55 bytes. The full frame length is 61 bytes including the 2-byte preamble, 1-byte message type, 1-byte length, and 2-byte checksum.
+
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
   |   | Field       |  Type    |  Units                                         |  Description                                                                |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
@@ -143,11 +145,14 @@ The payload for the binary output message is described below
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
   | 7 | WZ1         |  int16   |  dps=raw_int16*(mems_gyro_range*0.000035)      |  Scaled sensor rate                                                         |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 8 | OG_WX       |  int32   |  fog_dps = raw_int32 * (mems_gyro_range / 2^31)|  Scaled sensor rate for FOG. MEMS gyro range is last 11 in MEMS Range field |
+  | 8 | OG_WX       |  int32   |  fog_dps = raw_int32 * mems_gyro_range /       |  Scaled sensor rate for FOG. MEMS gyro range is last 11 in MEMS Range field |
+  |   |             |          |  (2^31 - 1)                                    |                                                                             |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 9 | OG_WY       |  int32   |  fog_dps = raw_int32 * (mems_gyro_range / 2^31)|  Scaled sensor rate for FOG. MEMS gyro range is last 11 in MEMS Range field |
+  | 9 | OG_WY       |  int32   |  fog_dps = raw_int32 * mems_gyro_range /       |  Scaled sensor rate for FOG. MEMS gyro range is last 11 in MEMS Range field |
+  |   |             |          |  (2^31 - 1)                                    |                                                                             |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 10| OG_WZ       |  int32   |  fog_dps = raw_int32 * (mems_gyro_range / 2^31)|  Scaled sensor rate for FOG. MEMS gyro range is last 11 in MEMS Range field |
+  | 10| OG_WZ       |  int32   |  fog_dps = raw_int32 * mems_gyro_range /       |  Scaled sensor rate for FOG. MEMS gyro range is last 11 in MEMS Range field |
+  |   |             |          |  (2^31 - 1)                                    |                                                                             |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
   | 11| MAG_X       |  int16   |  mag_G = raw_int16 / 4096.0                    |  Scaled magnetometer data                                                   |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
@@ -157,31 +162,34 @@ The payload for the binary output message is described below
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
   | 14| Temperature |  int16   |  °C * 100                                      |  Scaled temperature data                                                    |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 15| MEMS Range  |  uint16  |  g and dps                                     |  First 5 bits accel range, next 11 bits rate range                          |
+  | 15| MEMS Range  |  uint16  |  g and dps                                     |  Bits 15:11 are accel_range; bits 10:0 are mems_gyro_range                  |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 16| FOG Range   |  uint16  |  dps                                           |  FOG range in degrees per second                                            |
+  | 16| FOG Range   |  uint16  |  dps                                           |  Configured FOG range in degrees per second; not used to scale              |
+  |   |             |          |                                                |  OG_WX, OG_WY, or OG_WZ                                                     |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 17| Status_X    | Bitfield |                                                | Status based on bits:                                                       |
-  |   |             |          |                                                | - Bit 0: Gyro discrepency                                                   |
+  | 17| Status_X    | uint8    |                                                | Status based on bits:                                                       |
+  |   |             | bitfield |                                                | - Bit 0: Gyro discrepancy                                                   |
   |   |             |          |                                                | - Bit 1: Temperature uncontrolled                                           |
   |   |             |          |                                                | - Bit 2: Over current error                                                 |
   |   |             |          |                                                | - Bit 3: SiPhOG supply voltage bad                                          |
   |   |             |          |                                                | - Bits 4-7: RESERVED                                                        |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 18| Status_Y    | Bitfield |                                                | Status based on bits:                                                       |
-  |   |             |          |                                                | - Bit 0: Gyro discrepency                                                   |
+  | 18| Status_Y    | uint8    |                                                | Status based on bits:                                                       |
+  |   |             | bitfield |                                                | - Bit 0: Gyro discrepancy                                                   |
   |   |             |          |                                                | - Bit 1: Temperature uncontrolled                                           |
   |   |             |          |                                                | - Bit 2: Over current error                                                 |
   |   |             |          |                                                | - Bit 3: SiPhOG supply voltage bad                                          |
   |   |             |          |                                                | - Bits 4-7: RESERVED                                                        |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
-  | 19| Status_Z    | Bitfield |                                                | Status based on bits:                                                       |
-  |   |             |          |                                                | - Bit 0: Gyro discrepency                                                   |
+  | 19| Status_Z    | uint8    |                                                | Status based on bits:                                                       |
+  |   |             | bitfield |                                                | - Bit 0: Gyro discrepancy                                                   |
   |   |             |          |                                                | - Bit 1: Temperature uncontrolled                                           |
   |   |             |          |                                                | - Bit 2: Over current error                                                 |
   |   |             |          |                                                | - Bit 3: SiPhOG supply voltage bad                                          |
   |   |             |          |                                                | - Bits 4-7: RESERVED                                                        |
   +---+-------------+----------+------------------------------------------------+-----------------------------------------------------------------------------+
+
+Status_X, Status_Y, and Status_Z are three separate uint8 fields, not one packed uint16. They are emitted in body-axis order X, Y, Z. Bits 0-3 are defined above; bits 4-7 are reserved.
 
 
 
@@ -320,4 +328,3 @@ Checksum is calculated as follows, where N is the number of bytes included in th
     CK_A = CK_A + Buffer[I]
     CK_B = CK_B + CK_A
     }
-
