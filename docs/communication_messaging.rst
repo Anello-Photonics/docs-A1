@@ -152,6 +152,33 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 .. note::
    Maritime INS uses fields 1 through 6 from this sentence.
 
+2.1.1.3. RPM: Revolutions
+""""""""""""""""""""""""""
+
+**Message Format**::
+
+   $--RPM,a,x,x.x,x.x,A*hh
+
++-------+------+--------------------------------------------------------------+
+| Index | Part | Description                                                  |
++=======+======+==============================================================+
+| 1     | a    | Source: ``S`` = shaft; ``E`` = engine                        |
++-------+------+--------------------------------------------------------------+
+| 2     | x    | Engine or shaft number                                       |
++-------+------+--------------------------------------------------------------+
+| 3     | x.x  | Speed, in revolutions per minute (RPM)                       |
++-------+------+--------------------------------------------------------------+
+| 4     | x.x  | Propeller pitch as a percentage of maximum; a negative       |
+|       |      | value indicates astern                                       |
++-------+------+--------------------------------------------------------------+
+| 5     | A    | Status: ``A`` = valid; ``V`` = invalid                       |
++-------+------+--------------------------------------------------------------+
+| 6     | hh   | Checksum                                                     |
++-------+------+--------------------------------------------------------------+
+
+.. note::
+   Maritime INS uses fields 1, 3, 4, and 5 from this sentence.
+   
 
 2.1.2 External Position Aiding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
