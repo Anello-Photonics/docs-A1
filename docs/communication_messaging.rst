@@ -824,6 +824,7 @@ for instructions on changing settings):
 * ``NM0183_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_ZDA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_HDT`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NM0183_ODR_XDR`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_APIMU`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_APINS`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_APACC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
@@ -842,6 +843,7 @@ for instructions on changing settings):
 * ``NMUDP_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_ZDA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_HDT`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NMUDP_ODR_XDR`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_APIMU`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_APINS`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_APACC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
@@ -982,7 +984,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 .. note::
     Maximum output rate for ZDA is 10 Hz
 
-    
+
 3.1.4. HDT: Heading, True
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
