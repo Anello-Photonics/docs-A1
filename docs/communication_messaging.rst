@@ -166,7 +166,7 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 +-------+------+--------------------------------------------------------------+
 | 2     | x    | Engine or shaft number                                       |
 +-------+------+--------------------------------------------------------------+
-| 3     | x.x  | Speed, in revolutions per minute (RPM)                       |
+| 3     | x.x  | Speed, in revolutions per minute (RPM) *                     |
 +-------+------+--------------------------------------------------------------+
 | 4     | x.x  | Propeller pitch as a percentage of maximum; a negative       |
 |       |      | value indicates astern                                       |
@@ -178,6 +178,9 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 
 .. note::
    Maritime INS uses fields 1, 3, 4, and 5 from this sentence.
+
+.. note::
+   RPM field is unsigned and a reverse throttle should be indicated by a negative number in the pitch field.
    
 
 2.1.2 External Position Aiding
@@ -993,7 +996,36 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 | 3      | hh          | Checksum                                                                 |
 +--------+-------------+--------------------------------------------------------------------------+
 
-3.1.5. IMU: Proprietary IMU Output
+3.1.5. XDR: Transducer Measurements (Pitch & Roll)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Message Format**::
+
+    $--XDR,A,<pitch>,D,PTCH,A,<roll>,D,ROLL*hh
+
++--------+-------------+--------------------------------------------------------------+
+| Index  | Part        | Description                                                  |
++========+=============+==============================================================+
+| 1      | A           | Transducer type (Angular displacement)                       |
++--------+-------------+--------------------------------------------------------------+
+| 2      | <pitch>     | Pitch angle, degrees                                         |
++--------+-------------+--------------------------------------------------------------+
+| 3      | D           | Units (Degrees)                                              |
++--------+-------------+--------------------------------------------------------------+
+| 4      | PTCH        | Transducer name (Pitch)                                      |
++--------+-------------+--------------------------------------------------------------+
+| 5      | A           | Transducer type (Angular displacement)                       |
++--------+-------------+--------------------------------------------------------------+
+| 6      | <roll>      | Roll angle, degrees                                          |
++--------+-------------+--------------------------------------------------------------+
+| 7      | D           | Units (Degrees)                                              |
++--------+-------------+--------------------------------------------------------------+
+| 8      | ROLL        | Transducer name (Roll)                                       |
++--------+-------------+--------------------------------------------------------------+
+| 9      | hh          | Checksum                                                     |
++--------+-------------+--------------------------------------------------------------+
+
+3.1.6. IMU: Proprietary IMU Output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
@@ -1056,7 +1088,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 | 4-7   | Unused and always ``0``                                       |
 +-------+---------------------------------------------------------------+
 
-3.1.6. INS: Proprietary Navigation Output
+3.1.7. INS: Proprietary Navigation Output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
@@ -1151,7 +1183,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
    * - 20
      - Dead reckoning after GNSS loss following prior GNSS fusion
 
-3.1.7. ACC: Proprietary Accuracy Output
+3.1.8. ACC: Proprietary Accuracy Output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
