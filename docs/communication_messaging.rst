@@ -979,6 +979,10 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
     Current Maritime INS output uses UTC time and leaves the local time zone
     offset fields blank.
 
+.. note::
+    Maximum output rate for ZDA is 10 Hz
+
+    
 3.1.4. HDT: Heading, True
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
