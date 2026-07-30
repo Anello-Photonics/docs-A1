@@ -152,6 +152,36 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 .. note::
    Maritime INS uses fields 1 through 6 from this sentence.
 
+2.1.1.3. RPM: Revolutions
+""""""""""""""""""""""""""
+
+**Message Format**::
+
+   $--RPM,a,x,x.x,x.x,A*hh
+
++-------+------+--------------------------------------------------------------+
+| Index | Part | Description                                                  |
++=======+======+==============================================================+
+| 1     | a    | Source: ``S`` = shaft; ``E`` = engine                        |
++-------+------+--------------------------------------------------------------+
+| 2     | x    | Engine or shaft number                                       |
++-------+------+--------------------------------------------------------------+
+| 3     | x.x  | Speed, in revolutions per minute (RPM) *                     |
++-------+------+--------------------------------------------------------------+
+| 4     | x.x  | Propeller pitch as a percentage of maximum; a negative       |
+|       |      | value indicates astern                                       |
++-------+------+--------------------------------------------------------------+
+| 5     | A    | Status: ``A`` = valid; ``V`` = invalid                       |
++-------+------+--------------------------------------------------------------+
+| 6     | hh   | Checksum                                                     |
++-------+------+--------------------------------------------------------------+
+
+.. note::
+   Maritime INS uses fields 1, 3, 4, and 5 from this sentence.
+
+.. note::
+   RPM field is unsigned and a reverse throttle should be indicated by a negative number in the pitch field.
+   
 
 2.1.2 External Position Aiding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -794,6 +824,7 @@ for instructions on changing settings):
 * ``NM0183_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_ZDA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_HDT`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NM0183_ODR_XDR`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_APIMU`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_APINS`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NM0183_ODR_APACC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
@@ -812,6 +843,7 @@ for instructions on changing settings):
 * ``NMUDP_ODR_RMC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_ZDA`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_HDT`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
+* ``NMUDP_ODR_XDR`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_APIMU`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_APINS`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
 * ``NMUDP_ODR_APACC`` = ``5`` (output data rate; e.g. ``5`` = 5 Hz, ``0`` is no output)
@@ -949,6 +981,10 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
     Current Maritime INS output uses UTC time and leaves the local time zone
     offset fields blank.
 
+.. note::
+    Maximum output rate for ZDA is 10 Hz
+
+
 3.1.4. HDT: Heading, True
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -966,7 +1002,36 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 | 3      | hh          | Checksum                                                                 |
 +--------+-------------+--------------------------------------------------------------------------+
 
-3.1.5. IMU: Proprietary IMU Output
+3.1.5. XDR: Transducer Measurements (Pitch & Roll)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Message Format**::
+
+    $--XDR,A,x.x,D,PTCH,A,x.x,D,ROLL*hh
+
++--------+-------------+--------------------------------------------------------------+
+| Index  | Part        | Description                                                  |
++========+=============+==============================================================+
+| 1      | A           | Transducer type (Angular displacement)                       |
++--------+-------------+--------------------------------------------------------------+
+| 2      | x.x         | Pitch angle, degrees                                         |
++--------+-------------+--------------------------------------------------------------+
+| 3      | D           | Units (Degrees)                                              |
++--------+-------------+--------------------------------------------------------------+
+| 4      | PTCH        | Transducer name (Pitch)                                      |
++--------+-------------+--------------------------------------------------------------+
+| 5      | A           | Transducer type (Angular displacement)                       |
++--------+-------------+--------------------------------------------------------------+
+| 6      | x.x         | Roll angle, degrees                                          |
++--------+-------------+--------------------------------------------------------------+
+| 7      | D           | Units (Degrees)                                              |
++--------+-------------+--------------------------------------------------------------+
+| 8      | ROLL        | Transducer name (Roll)                                       |
++--------+-------------+--------------------------------------------------------------+
+| 9      | hh          | Checksum                                                     |
++--------+-------------+--------------------------------------------------------------+
+
+3.1.6. IMU: Proprietary IMU Output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
@@ -1029,7 +1094,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 | 4-7   | Unused and always ``0``                                       |
 +-------+---------------------------------------------------------------+
 
-3.1.6. INS: Proprietary Navigation Output
+3.1.7. INS: Proprietary Navigation Output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
@@ -1124,7 +1189,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
    * - 20
      - Dead reckoning after GNSS loss following prior GNSS fusion
 
-3.1.7. ACC: Proprietary Accuracy Output
+3.1.8. ACC: Proprietary Accuracy Output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Message Format**::
