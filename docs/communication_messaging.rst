@@ -1007,7 +1007,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 
 **Message Format**::
 
-    $--XDR,A,x.x,D,PTCH,A,x.x,D,ROLL*hh
+    $--XDR,A,x.x,D,PITCH,A,x.x,D,ROLL*hh
 
 +--------+-------------+--------------------------------------------------------------+
 | Index  | Part        | Description                                                  |
@@ -1018,7 +1018,7 @@ See :ref:`nmea0183-over-udp-parameters` for how to set the multicast IP.
 +--------+-------------+--------------------------------------------------------------+
 | 3      | D           | Units (Degrees)                                              |
 +--------+-------------+--------------------------------------------------------------+
-| 4      | PTCH        | Transducer name (Pitch)                                      |
+| 4      | PITCH       | Transducer name (Pitch)                                      |
 +--------+-------------+--------------------------------------------------------------+
 | 5      | A           | Transducer type (Angular displacement)                       |
 +--------+-------------+--------------------------------------------------------------+
