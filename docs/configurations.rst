@@ -144,9 +144,9 @@ Ethernet settings can be configured using the following parameters:
 +---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
 | **NET_CFG_DNS**     | DNS=192.168.0.254        | -1062731522        | DNS server address.                                                                     |
 +---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
-| MAV_2_UDP_PRT       | 14550                    | 14550              | MAVLink UDP port number (INS side)                                                      |
+| MAV_2_UDP_PRT       | 14550                    | 14550              | MAVLink UDP port number (Input)                                                         |
 +---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
-| MAV_2_REMOTE_PRT    | 14550                    | 14550              | MAVLink UDP remote port number (PC side)                                                |
+| MAV_2_REMOTE_PRT    | 14550                    | 14550              | MAVLink UDP remote port number (Output)                                                 |
 +---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
 
 Ethernet IPv4 Parameter Encoding
@@ -189,6 +189,28 @@ The same logic is already implemented in the ANELLO INS Scripts repository:
 `Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Maritime_INS_CFG.py>`_
 
 Port number configs can be changed directly in AMC.
+
+.. _mavlink-parameters:
+
+MAVLink Parameters
+----------------------------
+
+Full Parameter list for MAVLink messaging
+
++--------------------+----------------------+--------------------------------------------------------------------------+
+| Parameter          | Default              | Description                                                              |
++====================+======================+==========================================================================+
+| MAV_0_CONFIG       | 101 (Telem 1)        | Configuration for MAVLink instance 0. Default is configured for RS-232-1 |
++--------------------+----------------------+--------------------------------------------------------------------------+
+| MAV_1_CONFIG       | 0 (Disabled)         | Configuration for MAVLink instance 1. Default is disabled.               |
++--------------------+----------------------+--------------------------------------------------------------------------+
+| MAV_2_CONFIG       | 1000 (Ethernet)      | Configuration for MAVLink instance 2. Default is ethernet port 14550     |
++--------------------+----------------------+--------------------------------------------------------------------------+
+| MAV_2_BROADCAST    | 1 (Always Broadcast) | Configuration for MAVLink instance 2. Default is ethernet port 14550     |
++--------------------+----------------------+--------------------------------------------------------------------------+
+
+.. note::
+    If MAV_2_BROADCAST is set to 0 (Never Broadcast), then the server address (INS IP) must be specified in the Comm Link settings to continue connecting with AMarinerControl over ethernet.
 
 .. _nmea0183-serial-parameters:
 
