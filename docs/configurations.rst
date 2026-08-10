@@ -210,7 +210,7 @@ Full Parameter list for MAVLink messaging
 +--------------------+----------------------+--------------------------------------------------------------------------+
 
 .. note::
-    If MAV_2_BROADCAST is set to 0 (Never Broadcast), then the server address (INS IP) must be specified in the Comm Link settings to continue connecting with AMarinerControl over ethernet.
+    If MAV_2_BROADCAST is set to 0 (Never Broadcast), then the server address (INS IP) must be specified in the Comm Link settings to continue connecting with AMarinerControl over ethernet. MAVLink over multicast is not currently supported.
 
 .. _nmea0183-serial-parameters:
 
