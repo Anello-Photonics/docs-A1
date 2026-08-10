@@ -60,6 +60,11 @@ Firmware updates requires the installation of the python libraries pyserial and 
     	pip3 install pyserial pymavlink
 
 
+Firmware Upgrades
+~~~~~~~~~~~~~~~~~~~~~~~
+Firmware 1.3.7 and older do not support firmware upgrades over the NMEA0183 interface. To upgrade firmware MAV_0_CONFIG must by set to 101 (Telem 1) and NM0183_CFG set to 2 (RS-232-2) or 0 (Disabled)
+
+
 Hardware
 ------------------
 
