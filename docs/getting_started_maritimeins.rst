@@ -162,6 +162,8 @@ Navigate to Application Settings → NTRIP / RTK, enter the NTRIP caster details
    :align: center
 
 
+.. note:: RTK is supported starting at Maritime INS firmware 1.4.0.
+
 6. Data Collection & Visualization
 ------------------------------------
 
