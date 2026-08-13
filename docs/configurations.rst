@@ -195,7 +195,8 @@ Port number configs can be changed directly in AMC.
 MAVLink Parameters
 ----------------------------
 
-Full Parameter list for MAVLink messaging
+These are the parameters to enable or disable MAVLink for RS232-1, RS232-2, and Ethernet. AMarinerControl connects to the Maritime INS using the MAVLink communication protocol.
+If using RS232-1 for NMEA 0183 or another purpose, we recommend disabling MAV_0_CONFIG. MAVLink can be restored on an RS232 port that's in NMEA 0183 mode by sending the  `APMAV command <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#apmav-restore-serial-mavlink-access-anello-proprietary>`__.
 
 +--------------------+----------------------+--------------------------------------------------------------------------+
 | Parameter          | Default              | Description                                                              |
