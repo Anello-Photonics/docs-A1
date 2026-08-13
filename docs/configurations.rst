@@ -200,7 +200,7 @@ Full Parameter list for MAVLink messaging
 +--------------------+----------------------+--------------------------------------------------------------------------+
 | Parameter          | Default              | Description                                                              |
 +====================+======================+==========================================================================+
-| MAV_0_CONFIG       | 101 (Telem 1)        | Configuration for MAVLink instance 0. Default is configured for RS-232-1 |
+| MAV_0_CONFIG       | 101 (RS232-1)        | Configuration for MAVLink instance 0. Default is configured for RS232-1  |
 +--------------------+----------------------+--------------------------------------------------------------------------+
 | MAV_1_CONFIG       | 0 (Disabled)         | Configuration for MAVLink instance 1. Default is disabled.               |
 +--------------------+----------------------+--------------------------------------------------------------------------+
