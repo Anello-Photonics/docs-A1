@@ -123,7 +123,7 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 .. note::
    Maritime INS uses fields 1, 3, 5, and 7 from this sentence.
 
-Logged topics: sensor_water_speed_generic, sensor_heading
+Logged topics: sensor_water_speed_generic, sensor_heading, nmea_vhw
 
 
 2.1.1.2. VBW: Dual Ground/Water Speed
@@ -806,7 +806,7 @@ Auxiliary GPS / GNSS position information input
    are encoded as ``1e-7 deg/count``. Altitude is encoded as ``1e-3 m/count``. 
    Horizontal accuracy and vertical accuracy are encoded as ``1e-7 m/count``.
 
-Logged topic: NMEA2000_POS
+Logged topic: aux_global_position
 
 2.2.11 PGN 130817: Auxiliary Attitude (ANELLO Proprietary)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -833,7 +833,7 @@ Auxiliary roll, pitch, and heading information along with accuracy estimates
    Maritime INS uses fields 1 through 6 from this PGN. All fields are encoded
    as ``1e-7 deg/count``.
 
-Logged topic: NMEA2000_RPH
+Logged topic: nmea_rph
 
 3. Output Messages
 -------------------------
