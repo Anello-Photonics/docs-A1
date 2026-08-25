@@ -8,7 +8,7 @@ Please contact support@anellophotonics.com with any questions.
 ---------------------------------
 The ANELLO Ground INS unit is pictured below. It features a 20 pin automotive-grade Molex MX150 connector and two FAKRA SMB GNSS connectors.
 
-.. image:: media/ANELLO_GNSS_INS.png
+.. image:: media/Ground-INS_UPD.png
    :width: 30 %
    :align: center
 

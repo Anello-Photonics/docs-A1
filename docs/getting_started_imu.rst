@@ -8,7 +8,7 @@ Please contact support@anellophotonics.com with any questions.
 ---------------------------------
 The ANELLO IMU/Ground IMU unit is pictured below. It features an 8 pin automotive-grade Molex MX150 connector.
 
-.. image:: media/ANELLO_IMU.png
+.. image:: media/Ground-IMU_UPD.png
    :width: 30 %
    :align: center
 
