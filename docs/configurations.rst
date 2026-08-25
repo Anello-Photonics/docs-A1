@@ -63,7 +63,7 @@ Distances are measured in meters from the IMU center to the respective antenna p
 |                     |       |         |   - **Roll 180°, Yaw 180°**: Unit mounted upside down with X pointing towards vessel stern   |
 |                     |       |         |   - **Roll 180°, Yaw 270°**: Unit mounted upside down with X pointing towards vessel port    |
 |                     |       |         |                                                                                              |
-|                     |       |         | Download: :download:`complete SENS_BOARD_ROT table with enums <_static/sens_board_rot.csv>`. |
+|                     |       |         | Download: :download:`complete SENS_BOARD_ROT chart <_static/sens_board_rot.html>`.           |
 |                     |       |         |                                                                                              |
 |                     |       |         | Will be presented as a drop-down menu in AMarinerControl.                                    |
 +---------------------+-------+---------+----------------------------------------------------------------------------------------------+
