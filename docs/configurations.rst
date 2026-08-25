@@ -24,49 +24,49 @@ The INS center is the center of the Maritime INS unit.
 
 Distances are measured in meters from the IMU center to the respective antenna phase center.
 
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| Parameter           | Units | Default | Description                                                                                  |
-+=====================+=======+=========+==============================================================================================+
-| **GPS_SEP_BASE_X**  | m     | 0       | X offset from INS center to Base antenna (ANT1).                                             |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **GPS_SEP_BASE_Y**  | m     | 0       | Y offset from INS center to Base antenna (ANT1).                                             |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **GPS_SEP_BASE_Z**  | m     | 0       | Z offset from INS center to Base antenna (ANT1).                                             |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **GPS_SEP_ROVER_X** | m     | 0       | X offset from INS center to Rover antenna (ANT2).                                            |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **GPS_SEP_ROVER_Y** | m     | 0       | Y offset from INS center to Rover antenna (ANT2).                                            |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **GPS_SEP_ROVER_Z** | m     | 0       | Z offset from INS center to Rover antenna (ANT2).                                            |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **EKF2_WTSPD_POS_X**| m     | 0       | X offset from INS center to water speed sensor. *(see note)*                                 |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **EKF2_WTSPD_POS_Y**| m     | 0       | Y offset from INS center to water speed sensor. *(see note)*                                 |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **EKF2_WTSPD_POS_Z**| m     | 0       | Z offset from INS center to water speed sensor. *(see note)*                                 |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_X**  | m     | 0       | X offset from center of boat to INS center.                                                  |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_Y**  | m     | 0       | Y offset from center of boat to INS center.                                                  |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_Z**  | m     | 0       | Z offset from center of boat to INS center.                                                  |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **SENS_BOARD_ROT**  | enum  | 0       | INS mounting orientation. Set this if unit is not mounted with X-forward.                    |
-|                     |       |         |                                                                                              |
-|                     |       |         | *Common values:*                                                                             |
-|                     |       |         |   - **No Rotation**: Unit mounted upright with X pointing towards vessel bow                 |
-|                     |       |         |   - **Yaw 90°**: Unit mounted upright with X pointing towards vessel starboard               |
-|                     |       |         |   - **Yaw 180°**: Unit mounted upright with X pointing towards vessel stern                  |
-|                     |       |         |   - **Yaw 270°**: Unit mounted upright with X pointing towards vessel port                   |
-|                     |       |         |   - **Roll 180°**: Unit mounted upside down with X pointing towards vessel bow               |
-|                     |       |         |   - **Roll 180°, Yaw 90°**: Unit mounted upside down with X pointing towards vessel starboard|
-|                     |       |         |   - **Roll 180°, Yaw 180°**: Unit mounted upside down with X pointing towards vessel stern   |
-|                     |       |         |   - **Roll 180°, Yaw 270°**: Unit mounted upside down with X pointing towards vessel port    |
-|                     |       |         |                                                                                              |
-|                     |       |         | Download: :download:`complete SENS_BOARD_ROT chart <_static/sens_board_rot.html>`.           |
-|                     |       |         |                                                                                              |
-|                     |       |         | Will be presented as a drop-down menu in AMarinerControl.                                    |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| Parameter           | Units | Default | Description                                                                                       |
++=====================+=======+=========+===================================================================================================+
+| **GPS_SEP_BASE_X**  | m     | 0       | X offset from INS center to Base antenna (ANT1).                                                  |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **GPS_SEP_BASE_Y**  | m     | 0       | Y offset from INS center to Base antenna (ANT1).                                                  |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **GPS_SEP_BASE_Z**  | m     | 0       | Z offset from INS center to Base antenna (ANT1).                                                  |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **GPS_SEP_ROVER_X** | m     | 0       | X offset from INS center to Rover antenna (ANT2).                                                 |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **GPS_SEP_ROVER_Y** | m     | 0       | Y offset from INS center to Rover antenna (ANT2).                                                 |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **GPS_SEP_ROVER_Z** | m     | 0       | Z offset from INS center to Rover antenna (ANT2).                                                 |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **EKF2_WTSPD_POS_X**| m     | 0       | X offset from INS center to water speed sensor. *(see note)*                                      |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **EKF2_WTSPD_POS_Y**| m     | 0       | Y offset from INS center to water speed sensor. *(see note)*                                      |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **EKF2_WTSPD_POS_Z**| m     | 0       | Z offset from INS center to water speed sensor. *(see note)*                                      |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **EKF2_IMU_POS_X**  | m     | 0       | X offset from center of boat to INS center.                                                       |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **EKF2_IMU_POS_Y**  | m     | 0       | Y offset from center of boat to INS center.                                                       |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **EKF2_IMU_POS_Z**  | m     | 0       | Z offset from center of boat to INS center.                                                       |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **SENS_BOARD_ROT**  | enum  | 0       | INS mounting orientation. Set this if unit is not mounted with X-forward.                         |
+|                     |       |         |                                                                                                   |
+|                     |       |         | *Common values:*                                                                                  |
+|                     |       |         |   - **No Rotation** (0): Unit mounted upright with X pointing towards vessel bow                  |
+|                     |       |         |   - **Yaw 90°** (2): Unit mounted upright with X pointing towards vessel starboard                |
+|                     |       |         |   - **Yaw 180°** (4): Unit mounted upright with X pointing towards vessel stern                   |
+|                     |       |         |   - **Yaw 270°** (6): Unit mounted upright with X pointing towards vessel port                    |
+|                     |       |         |   - **Roll 180°** (8): Unit mounted upside down with X pointing towards vessel bow                |
+|                     |       |         |   - **Roll 180°, Yaw 90°** (10): Unit mounted upside down with X pointing towards vessel starboard|
+|                     |       |         |   - **Pitch 180°** (12): Unit mounted upside down with X pointing towards vessel stern            |
+|                     |       |         |   - **Roll 180°, Yaw 270°** (14): Unit mounted upside down with X pointing towards vessel port    |
+|                     |       |         |                                                                                                   |
+|                     |       |         | Download: :download:`complete SENS_BOARD_ROT chart <_static/sens_board_rot.html>`.                |
+|                     |       |         |                                                                                                   |
+|                     |       |         | Will be presented as a drop-down menu in AMarinerControl.                                         |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
 
 .. note::
     Water speed sensor lever arms are only available on FW 1.4.0 and newer
