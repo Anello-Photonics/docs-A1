@@ -123,6 +123,8 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 .. note::
    Maritime INS uses fields 1, 3, 5, and 7 from this sentence.
 
+Logged topics: sensor_water_speed_generic, sensor_heading, nmea_vhw
+
 
 2.1.1.2. VBW: Dual Ground/Water Speed
 """""""""""""""""""""""""""""""""""""""
@@ -151,6 +153,9 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 
 .. note::
    Maritime INS uses fields 1 through 6 from this sentence.
+
+Logged topic: sensor_water_speed_generic
+
 
 2.1.1.3. RPM: Revolutions
 """"""""""""""""""""""""""
@@ -181,6 +186,8 @@ See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 
 .. note::
    RPM field is unsigned and a reverse throttle should be indicated by a negative number in the pitch field.
+
+Logged topic: nmea_rpm
    
 
 2.1.2 External Position Aiding
@@ -237,6 +244,8 @@ for instructions on changing settings.
 .. note::
    Maritime INS uses fields 1 through 9 for external GNSS input. Fields 10 and
    11 are logged but are not used in the real-time algorithm.
+
+Logged topic: nmea_rmc
 
 2.1.2.2. GGA: Global Positioning System Fix Data
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -300,6 +309,8 @@ for instructions on changing settings.
 | 6     | Dead reckoning mode (GPS is determined to be jammed or spoofed)  |
 +-------+------------------------------------------------------------------+
 
+Logged topic: nmea_gga
+
 
 2.1.2.3. GSA: GNSS DOP and Active Satellites
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -352,6 +363,8 @@ for instructions on changing settings.
    Maritime INS uses fields 1 through 17 from this sentence. The real-time
    algorithm relies on fields 2, 15, 16, and 17.
 
+Logged topic: nmea_gsa
+
 
 2.1.3 ANELLO Proprietary
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -376,6 +389,8 @@ Enables or disables GPS utilization in sensor fusion algorithm.
 
 .. note::
    Maritime INS uses field 1 from this sentence.
+
+Logged topic: nmea_gps_cntrl
 
 2.1.3.2. AUTOCAL: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -405,6 +420,8 @@ Recommended data collection procedure (while x = 1)
 - Each out leg and back leg should be at least 30 seconds at a steady speed.
 - Repeat each speed at least once (more repeats improves robustness), and avoid aggressive turns during the steady legs.
 - When complete, send ``$PAPAUTOCAL,0*hh`` to exit auto-calibration mode.
+
+Logged topic: nmea_autocal_waterspeed
 
 
 2.1.3.3. PAPPOS: Auxiliary Position (Lat/Lon/Alt) (ANELLO Proprietary) 
@@ -437,6 +454,9 @@ This message can be used to pass in an external position, either from user input
 
 .. note::
    Maritime INS uses fields 2 through 6 from this sentence.
+
+Logged topic: aux_global_position
+
 
 2.1.3.4. PAPRPH: Roll/Pitch/Heading (with Accuracies) (ANELLO Proprietary) 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -471,6 +491,9 @@ This message can be used to pass in an external heading, either from user input 
 
 .. note::
    Maritime INS uses fields 2 through 7 from this sentence.
+
+Logged topic: nmea_rph
+
 
 2.1.3.5. APMAV: Restore Serial MAVLink Access (ANELLO Proprietary)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -523,7 +546,7 @@ Provides data with a high update rate for a specific engine in a single frame me
 .. note::
    Maritime INS uses fields 1 through 4 from this PGN.
 
-Logged topic: NMEA2000_ENGINE
+Logged topic: nmea_engine
 
 2.2.2 PGN 127489: Engine Parameters, Dynamic
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -564,7 +587,8 @@ Provides real-time operational data and status for a specific engine, usually br
    Maritime INS uses fields 1 through 13 from this PGN. Fields 10 and 11 are
    logged as raw bitmaps.
 
-Logged topic: NMEA2000_ENGINE_DYN
+Logged topic: nmea_engine_dyn
+
 
 2.2.3 PGN 128259: Speed, Water Referenced
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -589,7 +613,7 @@ Provides a single transmission describing the motion of a vessel relative to the
    Maritime INS uses fields 1 through 5 from this PGN. Fields 4 and 5 are used
    without remapping.
 
-Logged topic: NMEA2000_SPEED
+Logged topic: sensor_water_speed_generic, nmea_speed
 
 2.2.4 PGN 128275: Distance Log
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -611,7 +635,7 @@ Cumulative voyage distance traveled since last reset, tagged with time and date.
 .. note::
    Maritime INS uses fields 1 through 4 from this PGN.
 
-Logged topic: NMEA2000_DISTANCE
+Logged topic: nmea_distance
 
 2.2.5 PGN 130311: Environmental Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -638,7 +662,7 @@ These values provide weather and ambient condition data, often used for sensor c
    Maritime INS uses fields 1 through 6 from this PGN. Fields 2 and 3 are used
    without remapping.
 
-Logged topic: NMEA2000_ENVIRONMENT
+Logged topic: nmea_environment
 
 2.2.6 PGN 130578: Vessel Speed Components
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -664,7 +688,8 @@ Accurately describes the speed of a vessel by component vectors.
 .. note::
    Maritime INS uses fields 1 through 6 from this PGN.
 
-Logged topic: NMEA2000_VESSEL_SPEED
+Logged topic: sensor_water_speed_generic, nmea_vessel_speed
+
 
 2.2.7 PGN 61184: GPS Control
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -684,7 +709,7 @@ CAN ID format: 0x18EF<dest><src>
 .. note::
    Maritime INS uses field 1 from this PGN.
 
-Logged topic: NMEA2000_GPSCTRL
+Logged topic: nmea_gps_cntrl
 
 
 2.2.8 PGN 126720: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
@@ -710,7 +735,7 @@ Recommended data collection procedure (while Auto-calibration Control = 1)
 .. note::
    Maritime INS uses field 1 from this PGN.
 
-Logged topic: NMEA2000_AUTOCAL_WATERSPEED
+Logged topic: nmea_autocal_waterspeed
 
 2.2.9 PGN 127493: Transmission Parameters, Dynamic
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -754,7 +779,7 @@ Provides real-time operational data and status for a specific transmission, typi
    Maritime INS uses fields 1, 2, 4, 5, and 6 from this PGN. Field 6 is logged
    as a raw bitmap.
 
-Logged topic: NMEA2000_TRANSMISSION
+Logged topic: nmea_transmission
 
 
 2.2.10 PGN 130816: Auxiliary Position (ANELLO Proprietary)
@@ -781,7 +806,7 @@ Auxiliary GPS / GNSS position information input
    are encoded as ``1e-7 deg/count``. Altitude is encoded as ``1e-3 m/count``. 
    Horizontal accuracy and vertical accuracy are encoded as ``1e-7 m/count``.
 
-Logged topic: NMEA2000_POS
+Logged topic: aux_global_position
 
 2.2.11 PGN 130817: Auxiliary Attitude (ANELLO Proprietary)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -808,7 +833,7 @@ Auxiliary roll, pitch, and heading information along with accuracy estimates
    Maritime INS uses fields 1 through 6 from this PGN. All fields are encoded
    as ``1e-7 deg/count``.
 
-Logged topic: NMEA2000_RPH
+Logged topic: nmea_rph
 
 3. Output Messages
 -------------------------

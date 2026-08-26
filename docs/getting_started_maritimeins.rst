@@ -150,7 +150,21 @@ To change parameters using ANELLO Python Scripts (currently Ethernet only), use:
 .. note:: If configuring lever arms through Python scripts, the units are always meters by default.
 
 
-5. Data Collection & Visualization
+5. Connect to NTRIP Caster
+----------------------------
+
+The AMarinerControl software also provides an NTRIP caster which can connect to a standard NTRIP network and forward the received RTCM messages into the Maritime INS through the MAVLink connection.
+
+Navigate to Application Settings → NTRIP / RTK, enter the NTRIP caster details and credentials, then select "Enable NTRIP"
+
+.. image:: media/NTRIP.png
+   :width: 60%
+   :align: center
+
+
+.. note:: RTK is supported starting at Maritime INS firmware 1.4.0.
+
+6. Data Collection & Visualization
 ------------------------------------
 
 After installation and configuration, the unit is ready for data collection.  

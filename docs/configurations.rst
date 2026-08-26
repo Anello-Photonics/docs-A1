@@ -24,47 +24,49 @@ The INS center is the center of the Maritime INS unit.
 
 Distances are measured in meters from the IMU center to the respective antenna phase center.
 
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| Parameter           | Units | Default | Description                                                                                  |
-+=====================+=======+=========+==============================================================================================+
-| **GPS_SEP_BASE_X**  | m     | 0       | X offset from INS center to Base antenna (ANT1).                                             |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **GPS_SEP_BASE_Y**  | m     | 0       | Y offset from INS center to Base antenna (ANT1).                                             |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **GPS_SEP_BASE_Z**  | m     | 0       | Z offset from INS center to Base antenna (ANT1).                                             |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **GPS_SEP_ROVER_X** | m     | 0       | X offset from INS center to Rover antenna (ANT2).                                            |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **GPS_SEP_ROVER_Y** | m     | 0       | Y offset from INS center to Rover antenna (ANT2).                                            |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **GPS_SEP_ROVER_Z** | m     | 0       | Z offset from INS center to Rover antenna (ANT2).                                            |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **EKF2_WTSPD_POS_X**| m     | 0       | X offset from INS center to water speed sensor. *(see note)*                                 |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **EKF2_WTSPD_POS_Y**| m     | 0       | Y offset from INS center to water speed sensor. *(see note)*                                 |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **EKF2_WTSPD_POS_Z**| m     | 0       | Z offset from INS center to water speed sensor. *(see note)*                                 |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_X**  | m     | 0       | X offset from center of boat to INS center.                                                  |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_Y**  | m     | 0       | Y offset from center of boat to INS center.                                                  |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_Z**  | m     | 0       | Z offset from center of boat to INS center.                                                  |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
-| **SENS_BOARD_ROT**  | enum  | 0       | INS mounting orientation. Set this if unit is not mounted with X-forward.                    |
-|                     |       |         |                                                                                              |
-|                     |       |         | *Common values:*                                                                             |
-|                     |       |         |   - **No Rotation**: Unit mounted upright with X pointing towards vessel bow                 |
-|                     |       |         |   - **Yaw 90°**: Unit mounted upright with X pointing towards vessel starboard               |
-|                     |       |         |   - **Yaw 180°**: Unit mounted upright with X pointing towards vessel stern                  |
-|                     |       |         |   - **Yaw 270°**: Unit mounted upright with X pointing towards vessel port                   |
-|                     |       |         |   - **Roll 180°**: Unit mounted upside down with X pointing towards vessel bow               |
-|                     |       |         |   - **Roll 180°, Yaw 90°**: Unit mounted upside down with X pointing towards vessel starboard|
-|                     |       |         |   - **Roll 180°, Yaw 180°**: Unit mounted upside down with X pointing towards vessel stern   |
-|                     |       |         |   - **Roll 180°, Yaw 270°**: Unit mounted upside down with X pointing towards vessel port    |
-|                     |       |         |                                                                                              |
-|                     |       |         | Will be presented as a drop-down menu in AMarinerControl.                                    |
-+---------------------+-------+---------+----------------------------------------------------------------------------------------------+
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| Parameter           | Units | Default | Description                                                                                       |
++=====================+=======+=========+===================================================================================================+
+| **GPS_SEP_BASE_X**  | m     | 0       | X offset from INS center to Base antenna (ANT1).                                                  |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **GPS_SEP_BASE_Y**  | m     | 0       | Y offset from INS center to Base antenna (ANT1).                                                  |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **GPS_SEP_BASE_Z**  | m     | 0       | Z offset from INS center to Base antenna (ANT1).                                                  |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **GPS_SEP_ROVER_X** | m     | 0       | X offset from INS center to Rover antenna (ANT2).                                                 |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **GPS_SEP_ROVER_Y** | m     | 0       | Y offset from INS center to Rover antenna (ANT2).                                                 |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **GPS_SEP_ROVER_Z** | m     | 0       | Z offset from INS center to Rover antenna (ANT2).                                                 |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **EKF2_WTSPD_POS_X**| m     | 0       | X offset from INS center to water speed sensor. *(see note)*                                      |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **EKF2_WTSPD_POS_Y**| m     | 0       | Y offset from INS center to water speed sensor. *(see note)*                                      |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **EKF2_WTSPD_POS_Z**| m     | 0       | Z offset from INS center to water speed sensor. *(see note)*                                      |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **EKF2_IMU_POS_X**  | m     | 0       | X offset from center of boat to INS center.                                                       |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **EKF2_IMU_POS_Y**  | m     | 0       | Y offset from center of boat to INS center.                                                       |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **EKF2_IMU_POS_Z**  | m     | 0       | Z offset from center of boat to INS center.                                                       |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
+| **SENS_BOARD_ROT**  | enum  | 0       | INS mounting orientation. Set this if unit is not mounted with X-forward.                         |
+|                     |       |         |                                                                                                   |
+|                     |       |         | *Common values:*                                                                                  |
+|                     |       |         |   - **No Rotation** (0): Unit mounted upright with X pointing towards vessel bow                  |
+|                     |       |         |   - **Yaw 90°** (2): Unit mounted upright with X pointing towards vessel starboard                |
+|                     |       |         |   - **Yaw 180°** (4): Unit mounted upright with X pointing towards vessel stern                   |
+|                     |       |         |   - **Yaw 270°** (6): Unit mounted upright with X pointing towards vessel port                    |
+|                     |       |         |   - **Roll 180°** (8): Unit mounted upside down with X pointing towards vessel bow                |
+|                     |       |         |   - **Roll 180°, Yaw 90°** (10): Unit mounted upside down with X pointing towards vessel starboard|
+|                     |       |         |   - **Pitch 180°** (12): Unit mounted upside down with X pointing towards vessel stern            |
+|                     |       |         |   - **Roll 180°, Yaw 270°** (14): Unit mounted upside down with X pointing towards vessel port    |
+|                     |       |         |                                                                                                   |
+|                     |       |         | Download: :download:`complete SENS_BOARD_ROT chart <_static/sens_board_rot.html>`.                |
+|                     |       |         |                                                                                                   |
+|                     |       |         | Will be presented as a drop-down menu in AMarinerControl.                                         |
++---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
 
 .. note::
     Water speed sensor lever arms are only available on FW 1.4.0 and newer
@@ -144,9 +146,9 @@ Ethernet settings can be configured using the following parameters:
 +---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
 | **NET_CFG_DNS**     | DNS=192.168.0.254        | -1062731522        | DNS server address.                                                                     |
 +---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
-| MAV_2_UDP_PRT       | 14550                    | 14550              | MAVLink UDP port number (INS side)                                                      |
+| MAV_2_UDP_PRT       | 14550                    | 14550              | MAVLink UDP port number (Input)                                                         |
 +---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
-| MAV_2_REMOTE_PRT    | 14550                    | 14550              | MAVLink UDP remote port number (PC side)                                                |
+| MAV_2_REMOTE_PRT    | 14550                    | 14550              | MAVLink UDP remote port number (Output)                                                 |
 +---------------------+--------------------------+--------------------+-----------------------------------------------------------------------------------------+
 
 Ethernet IPv4 Parameter Encoding
@@ -189,6 +191,29 @@ The same logic is already implemented in the ANELLO INS Scripts repository:
 `Maritime_INS_CFG.py (ANELLO INS Scripts) <https://github.com/Anello-Photonics/ANELLO_INS_Scripts/blob/main/Maritime_INS_CFG.py>`_
 
 Port number configs can be changed directly in AMC.
+
+.. _mavlink-parameters:
+
+MAVLink Parameters
+----------------------------
+
+These are the parameters to enable or disable MAVLink for RS232-1, RS232-2, and Ethernet. AMarinerControl connects to the Maritime INS using the MAVLink communication protocol.
+If using RS232-1 for NMEA 0183 or another purpose, we recommend disabling MAV_0_CONFIG. MAVLink can be restored on an RS232 port that's in NMEA 0183 mode by sending the  `APMAV command <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#apmav-restore-serial-mavlink-access-anello-proprietary>`__.
+
++--------------------+----------------------+--------------------------------------------------------------------------+
+| Parameter          | Default              | Description                                                              |
++====================+======================+==========================================================================+
+| MAV_0_CONFIG       | 101 (RS232-1)        | Configuration for MAVLink instance 0. Default is configured for RS232-1  |
++--------------------+----------------------+--------------------------------------------------------------------------+
+| MAV_1_CONFIG       | 0 (Disabled)         | Configuration for MAVLink instance 1. Default is disabled.               |
++--------------------+----------------------+--------------------------------------------------------------------------+
+| MAV_2_CONFIG       | 1000 (Ethernet)      | Configuration for MAVLink instance 2. Default is ethernet port 14550     |
++--------------------+----------------------+--------------------------------------------------------------------------+
+| MAV_2_BROADCAST    | 1 (Always Broadcast) | Configuration for MAVLink instance 2. Default is ethernet port 14550     |
++--------------------+----------------------+--------------------------------------------------------------------------+
+
+.. note::
+    If MAV_2_BROADCAST is set to 0 (Never Broadcast), then the server address (INS IP) must be specified in the Comm Link settings to continue connecting with AMarinerControl over ethernet. MAVLink over multicast is not currently supported.
 
 .. _nmea0183-serial-parameters:
 
