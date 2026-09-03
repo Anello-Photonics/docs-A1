@@ -806,7 +806,7 @@ Auxiliary GPS / GNSS position information input
    are encoded as ``1e-7 deg/count``. Altitude is encoded as ``1e-3 m/count``. 
    Horizontal accuracy and vertical accuracy are encoded as ``1e-7 m/count``.
 
-Logged topic: aux_global_position
+Logged topic: aux_global_position_nmea2000
 
 2.2.11 PGN 130817: Auxiliary Attitude (ANELLO Proprietary)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -833,7 +833,7 @@ Auxiliary roll, pitch, and heading information along with accuracy estimates
    Maritime INS uses fields 1 through 6 from this PGN. All fields are encoded
    as ``1e-7 deg/count``.
 
-Logged topic: nmea_rph
+Logged topic: nmea2000_rph
 
 3. Output Messages
 -------------------------
