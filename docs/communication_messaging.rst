@@ -87,6 +87,9 @@ produce external UDP output.
 
 See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
 
+An RTCM data stream can be sent to any NMEA 0183 port to provide RTK corrections.
+RTCM corrections are also accepted over UDP on port ``19552``.
+
 
 2.1.1 External Sensor Aiding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
