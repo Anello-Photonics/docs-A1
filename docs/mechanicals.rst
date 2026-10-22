@@ -14,7 +14,7 @@ Maritime INS SCD Drawing: :download:`PDF <media/100013R03-Outline_DrawingMaritim
 
 .. note::
 
-   If you purchased the Maritime INS Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/25002231_03-25_SCD Assy Cable Maritime A0 Breakout.pdf>`.
+   If you purchased the Maritime INS Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <media/25-002301-22, r4_SCD, Assy, Cable, Maritime A0, Breakout.pdf>`.
 
    **Wiring Variation (Pre–February 20, 2026 Cables):**  
    Cables manufactured prior to February 20, 2026 may contain either red/black or purple/yellow CAN wiring.  
