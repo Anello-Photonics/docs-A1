@@ -14,7 +14,7 @@ Ground INS Gen 2 SCD Drawing: :download:`PDF <media/100013R03-Outline_DrawingMar
 
 .. note::
 
-   If you purchased the Ground INS Gen 2 Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <25-002301-22, r4_SCD, Assy, Cable, Maritime A0, Breakout.pdf>`.
+   If you purchased the Ground INS Gen 2 Evaluation Kit, a schematic of the breakout cable can be downloaded :download:`here <25-002301-22r4_SCDAssyCableMaritimeA0Breakout.pdf>`.
 
    **Wiring Variation (Pre–February 20, 2026 Cables):**  
    Cables manufactured prior to February 20, 2026 may contain either red/black or purple/yellow CAN wiring.  
