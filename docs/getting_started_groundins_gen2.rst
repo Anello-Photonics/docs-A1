@@ -10,7 +10,7 @@ Please contact support@anellophotonics.com with any questions.
 
 The ANELLO Ground INS Gen 2 unit is pictured below. It features a 22-pin circular connector and two female SMA GNSS connectors.
 
-.. image:: media/ANELLO_GROUND_INS _GEN2.png
+.. image:: media/ANELLO_GROUND_INS_GEN2.png
    :width: 35%
    :align: center
 
