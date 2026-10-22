@@ -10,7 +10,7 @@ Please contact support@anellophotonics.com with any questions.
 
 The ANELLO Ground INS Gen 2 unit is pictured below. It features a 22-pin circular connector and two female SMA GNSS connectors.
 
-.. image:: media/ANELLO_Maritime_INS.png
+.. image:: media/GROUND INS - GEN 2 - M.png
    :width: 35%
    :align: center
 
@@ -87,7 +87,7 @@ Below is the recommended installation configuration, with the longest possible a
 
 Ensure that antennae are mounted on a ground plane of at least 10 cm x 10 cm and with no obstructions to open sky view.
 
-.. image:: media/maritime_ins_installation.drawio.png
+.. image:: media/GroundINSGen2_installation.drawio.png
    :width: 70%
    :align: center
 
