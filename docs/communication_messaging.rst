@@ -1400,17 +1400,17 @@ Complete GNSS navigation solution including position, quality, and DOP.
 
 
 
-3.2.4 PGN 127250: Vehicle Heading
+3.2.4 PGN 127250: Vessel Heading
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Provides vehicle heading and related status.
+Provides vessel heading and related status.
 
 +---+------------------+-----------------------------------+--------+----------------+
 | # | Field            | Description                       | Unit   | Type           |
 +===+==================+===================================+========+================+
 | 1 | SID              | Sequence Identifier               |        | 8-bit unsigned |
 +---+------------------+-----------------------------------+--------+----------------+
-| 2 | Heading          | Vehicle heading                   | rad    | 16-bit unsigned|
+| 2 | Heading          | Vessel heading                    | rad    | 16-bit unsigned|
 +---+------------------+-----------------------------------+--------+----------------+
 | 3 | Deviation        | Magnetic deviation                | rad    | 16-bit signed  |
 +---+------------------+-----------------------------------+--------+----------------+
