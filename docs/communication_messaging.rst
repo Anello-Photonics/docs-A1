@@ -79,7 +79,7 @@ See :doc:`Mechanicals <mechanicals>` to find the specified output pins.
 2.1  NMEA 0183 Input Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ANELLO Ground INS Gen 2 supports standard NMEA 0183 input messages which allow the USV to send in external sensor information, e.g. for speed-aiding.
+The ANELLO Ground INS Gen 2 supports standard NMEA 0183 input messages which allow the ground vehicle to send in external sensor information, e.g. for speed-aiding.
 ANELLO also has a set of proprietary messages, following the standard NMEA proprietary format with a prefix of “$P”, company code of “AP” (ANELLO Photonics), and the message code.
 
 To configure NMEA 0183 over a serial port, update the following configs (see
@@ -134,11 +134,11 @@ RTCM corrections are also accepted over UDP on port ``19552``.
 +-------+------------+---------------------------------------------------------------+
 | 4     | M          | M = Magnetic                                                  |
 +-------+------------+---------------------------------------------------------------+
-| 5     | x.x        | Knots (speed of vessel relative to the water)                 |
+| 5     | x.x        | Knots (speed of vehicle relative to the water)                |
 +-------+------------+---------------------------------------------------------------+
 | 6     | N          | N = Knots                                                     |
 +-------+------------+---------------------------------------------------------------+
-| 7     | x.x        | Kilometers per hour (speed of vessel relative to the water)   |
+| 7     | x.x        | Kilometers per hour (speed of vehicle relative to the water)  |
 +-------+------------+---------------------------------------------------------------+
 | 8     | K          | K = Kilometres per hour                                       |
 +-------+------------+---------------------------------------------------------------+
@@ -585,16 +585,16 @@ Logged topic: nmea_engine_dyn
 2.2.3 PGN 128259: Speed, Water Referenced
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Provides a single transmission describing the motion of a vessel relative to the water.
+Provides a single transmission describing the motion of a vehicle relative to the water.
 
 +---+-----------------------------+----------------------------------------------+------+----------------+
 | # | Field                       | Description                                  | Unit | Type           |
 +===+=============================+==============================================+======+================+
 | 1 | SID                         | Sequence Identifier                          |      | 8-bit unsigned |
 +---+-----------------------------+----------------------------------------------+------+----------------+
-| 2 | Speed Water Referenced      | Vessel's speed relative to the water         | m/s  | 16-bit signed  |
+| 2 | Speed Water Referenced      | Vehicle's speed relative to the water        | m/s  | 16-bit signed  |
 +---+-----------------------------+----------------------------------------------+------+----------------+
-| 3 | Speed Ground Referenced     | Vessel's speed relative to the ground (SOG)  | m/s  | 16-bit signed  |
+| 3 | Speed Ground Referenced     | Vehicle's speed relative to the ground (SOG) | m/s  | 16-bit signed  |
 +---+-----------------------------+----------------------------------------------+------+----------------+
 | 4 | Speed Water Referenced Type | Method of measurement (e.g., Paddle wheel)   |      | 8-bit lookup   |
 +---+-----------------------------+----------------------------------------------+------+----------------+
@@ -656,10 +656,10 @@ These values provide weather and ambient condition data, often used for sensor c
 
 Logged topic: nmea_environment
 
-2.2.6 PGN 130578: Vessel Speed Components
+2.2.6 PGN 130578: Vehicle Speed Components
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Accurately describes the speed of a vessel by component vectors.
+Accurately describes the speed of a vehicle by component vectors.
 
 +---+---------------------------------------+-------------------------------------------------+------+----------------+
 | # | Field                                 | Description                                     | Unit | Type           |
@@ -1282,7 +1282,7 @@ range ``0``–``100``; setting a rate to ``0`` disables that PGN.
 3.2.1 PGN 129025: Position, Rapid Update
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-High-speed update of vessel latitude/longitude position.
+High-speed update of vehicle latitude/longitude position.
 
 +---+-------------+----------------------+--------+----------------+
 | # | Field       | Description          | Unit   | Type           |
@@ -1400,17 +1400,17 @@ Complete GNSS navigation solution including position, quality, and DOP.
 
 
 
-3.2.4 PGN 127250: Vessel Heading
+3.2.4 PGN 127250: Vehicle Heading
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Provides vessel heading and related status.
+Provides vehicle heading and related status.
 
 +---+------------------+-----------------------------------+--------+----------------+
 | # | Field            | Description                       | Unit   | Type           |
 +===+==================+===================================+========+================+
 | 1 | SID              | Sequence Identifier               |        | 8-bit unsigned |
 +---+------------------+-----------------------------------+--------+----------------+
-| 2 | Heading          | Vessel heading                    | rad    | 16-bit unsigned|
+| 2 | Heading          | Vehicle heading                   | rad    | 16-bit unsigned|
 +---+------------------+-----------------------------------+--------+----------------+
 | 3 | Deviation        | Magnetic deviation                | rad    | 16-bit signed  |
 +---+------------------+-----------------------------------+--------+----------------+
@@ -1426,7 +1426,7 @@ Provides vessel heading and related status.
 3.2.5 PGN 127251: Rate of Turn
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Provides vessel rate of turn information.
+Provides vehicle rate of turn information.
 
 +---+---------------+-----------------------------+--------+----------------+
 | # | Field         | Description                 | Unit   | Type           |
@@ -1440,18 +1440,18 @@ Provides vessel rate of turn information.
 3.2.6 PGN 127257: Attitude
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Provides vessel orientation (roll, pitch, yaw).
+Provides vehicle orientation (roll, pitch, yaw).
 
 +---+--------+-------------------------+--------+----------------+
 | # | Field  | Description             | Unit   | Type           |
 +===+========+=========================+========+================+
 | 1 | SID    | Sequence Identifier     |        | 8-bit unsigned |
 +---+--------+-------------------------+--------+----------------+
-| 2 | Yaw    | Vessel yaw angle        | rad    | 16-bit signed  |
+| 2 | Yaw    | Vehicle yaw angle       | rad    | 16-bit signed  |
 +---+--------+-------------------------+--------+----------------+
-| 3 | Pitch  | Vessel pitch angle      | rad    | 16-bit signed  |
+| 3 | Pitch  | Vehicle pitch angle     | rad    | 16-bit signed  |
 +---+--------+-------------------------+--------+----------------+
-| 4 | Roll   | Vessel roll angle       | rad    | 16-bit signed  |
+| 4 | Roll   | Vehicle roll angle      | rad    | 16-bit signed  |
 +---+--------+-------------------------+--------+----------------+
 
 .. note::
