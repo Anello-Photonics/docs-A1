@@ -69,7 +69,7 @@ Distances are measured in meters from the IMU center to the respective antenna p
 +---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
 
 .. note::
-    Water speed sensor lever arms are only available on FW 1.4.0 and newer
+    Speed sensor lever arms are only available on FW 1.4.0 and newer
 
 
 .. _nmea-2000-parameters:
