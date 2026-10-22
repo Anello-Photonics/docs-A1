@@ -1,7 +1,7 @@
 Configurations
 ================
 
-This page consolidates the Maritime INS parameter tables used throughout the documentation.
+This page consolidates the Ground INS Gen 2 parameter tables used throughout the documentation.
 Use the links below to jump directly to a configuration group.
 
 * :ref:`installation-parameters`
@@ -20,7 +20,7 @@ Installation Parameters
 
 The lever arms of the installation must be measured and configured as parameters to ensure accuracy.
 The coordinate system follows the right-hand rule: **X = forward**, **Y = right**, **Z = down**.
-The INS center is the center of the Maritime INS unit.
+The INS center is the center of the Ground INS Gen 2 unit.
 
 Distances are measured in meters from the IMU center to the respective antenna phase center.
 
@@ -114,7 +114,7 @@ AMarinerControl's parameter editor or from the command-line interface.
 CAN Termination
 ---------------
 
-The ANELLO Maritime INS supports configurable internal CAN termination.
+The ANELLO Ground INS Gen 2 supports configurable internal CAN termination.
 
 +------------------+---------+-----------------------------------------------------------+
 | Parameter        | Default | Description                                               |
@@ -197,7 +197,7 @@ Port number configs can be changed directly in AMC.
 MAVLink Parameters
 ----------------------------
 
-These are the parameters to enable or disable MAVLink for RS232-1, RS232-2, and Ethernet. AMarinerControl connects to the Maritime INS using the MAVLink communication protocol.
+These are the parameters to enable or disable MAVLink for RS232-1, RS232-2, and Ethernet. AMarinerControl connects to the Ground INS Gen 2 using the MAVLink communication protocol.
 If using RS232-1 for NMEA 0183 or another purpose, we recommend disabling MAV_0_CONFIG. MAVLink can be restored on an RS232 port that's in NMEA 0183 mode by sending the  `APMAV command <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#apmav-restore-serial-mavlink-access-anello-proprietary>`__.
 
 +--------------------+----------------------+--------------------------------------------------------------------------+

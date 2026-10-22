@@ -2,12 +2,12 @@
 Sensor Recommendations
 =========================
 
-The ANELLO Maritime INS has been successfully integrated with a variety of speed sensors, GNSS antennas, and M-Code receivers. The following recommendations are based on tested integrations and typical maritime deployment requirements. 
+The ANELLO Ground INS Gen 2 has been successfully integrated with a variety of speed sensors, GNSS antennas, and M-Code receivers. The following recommendations are based on tested integrations and typical maritime deployment requirements.
 
 Speed Sensors
 -------------
 
-The Maritime INS requires a speed sensor to provide aiding data for optimal navigation performance. ANELLO recommends selecting a sensor that supports the full operating speed range of the vessel.
+The Ground INS Gen 2 requires a speed sensor to provide aiding data for optimal navigation performance. ANELLO recommends selecting a sensor that supports the full operating speed range of the vessel.
 
 Paddle Wheel
 ^^^^^^^^^^^^
@@ -68,7 +68,7 @@ Speed Sensor Installation Guidelines
 GNSS Antenna Recommendations
 ----------------------------
 
-ANELLO recommends using active L1/L2/L5 all-constellation GNSS antennas. The following models have been successfully integrated with the Maritime INS.
+ANELLO recommends using active L1/L2/L5 all-constellation GNSS antennas. The following models have been successfully integrated with the Ground INS Gen 2.
 
 u-blox ANN-MB2
 ^^^^^^^^^^^^^^
@@ -119,7 +119,7 @@ Recommended for:
 Antenna Installation Guidelines
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* The Maritime INS supplies 3.3 V bias power for active antennas
+* The Ground INS Gen 2 supplies 3.3 V bias power for active antennas
 * The antenna baseline must be at least 1 meter; longer baselines improve dual-antenna heading accuracy
 * Ensure clear sky visibility for both antennas
 * Follow any ground-plane requirements specified by the antenna manufacturer
@@ -128,7 +128,7 @@ Antenna Installation Guidelines
 M-Code Receiver Recommendations
 -------------------------------
 
-The Maritime INS has been successfully integrated with the following external M-Code receivers. 
+The Ground INS Gen 2 has been successfully integrated with the following external M-Code receivers.
 
 Supported Receivers
 ^^^^^^^^^^^^^^^^^^^
@@ -139,7 +139,7 @@ Supported Receivers
 Integration Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Maritime INS accepts M-Code aiding as external GNSS position and velocity aiding through the receiver's decoded NMEA 0183 output.
+The Ground INS Gen 2 accepts M-Code aiding as external GNSS position and velocity aiding through the receiver's decoded NMEA 0183 output.
 
 Minimum required NMEA 0183 messages:
 
