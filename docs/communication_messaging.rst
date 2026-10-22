@@ -112,78 +112,49 @@ RTCM corrections are also accepted over UDP on port ``19552``.
 2.1.1 External Sensor Aiding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. _vhw-water-speed-heading:
+.. _vbw-dual-ground-water-speed:
 
-2.1.1.1. VHW: Water Speed & Heading
-""""""""""""""""""""""""""""""""""""
+2.1.1.1. VBW: Dual Ground/Water Speed
+""""""""""""""""""""""""""""""""""""""""
 
-**The Ground INS GEN 2 is based on the Maritime INS, so the supported messages still use nautical vocabulary. Please pass vehicle speed, such as from wheel odometry, to the Ground INS through the VHW (water speed and heading) message** 
-
-**Message Format**::
-
-    $--VHW,x.x,T,x.x,M,x.x,N,x.x,K*hh
-
-+-------+------------+---------------------------------------------------------------+
-| Index | Part       | Description                                                   |
-+=======+============+===============================================================+
-| 1     | x.x        | True Heading, Degrees                                         |
-+-------+------------+---------------------------------------------------------------+
-| 2     | T          | T = True                                                      |
-+-------+------------+---------------------------------------------------------------+
-| 3     | x.x        | Magnetic Heading, Degrees                                     |
-+-------+------------+---------------------------------------------------------------+
-| 4     | M          | M = Magnetic                                                  |
-+-------+------------+---------------------------------------------------------------+
-| 5     | x.x        | Knots (speed of vehicle relative to the water)                |
-+-------+------------+---------------------------------------------------------------+
-| 6     | N          | N = Knots                                                     |
-+-------+------------+---------------------------------------------------------------+
-| 7     | x.x        | Kilometers per hour (speed of vehicle relative to the water)  |
-+-------+------------+---------------------------------------------------------------+
-| 8     | K          | K = Kilometres per hour                                       |
-+-------+------------+---------------------------------------------------------------+
-| 9     | hh         | Checksum                                                      |
-+-------+------------+---------------------------------------------------------------+
-
-.. note::
-   Ground INS Gen 2 uses fields 1, 3, 5, and 7 from this sentence.
-
-Logged topics: sensor_water_speed_generic, sensor_heading, nmea_vhw
-
-
-
-2.1.1.3. RPM: Revolutions
-""""""""""""""""""""""""""
+Use VBW to supply odometer-derived ground speed to the Ground INS Gen 2 over NMEA 0183. Convert odometer or wheel-tick measurements to speed before constructing the message. Put ground-speed measurements in fields 4 and 5, with their validity in field 6. For NMEA 2000, use :ref:`PGN 128259: Speed <pgn-128259-speed>`.
 
 **Message Format**::
 
-   $--RPM,a,x,x.x,x.x,A*hh
+    $--VBW,x.x,x.x,A,x.x,x.x,A*hh
 
-+-------+------+--------------------------------------------------------------+
-| Index | Part | Description                                                  |
-+=======+======+==============================================================+
-| 1     | a    | Source: ``S`` = shaft; ``E`` = engine                        |
-+-------+------+--------------------------------------------------------------+
-| 2     | x    | Engine or shaft number                                       |
-+-------+------+--------------------------------------------------------------+
-| 3     | x.x  | Speed, in revolutions per minute (RPM) *                     |
-+-------+------+--------------------------------------------------------------+
-| 4     | x.x  | Propeller pitch as a percentage of maximum; a negative       |
-|       |      | value indicates astern                                       |
-+-------+------+--------------------------------------------------------------+
-| 5     | A    | Status: ``A`` = valid; ``V`` = invalid                       |
-+-------+------+--------------------------------------------------------------+
-| 6     | hh   | Checksum                                                     |
-+-------+------+--------------------------------------------------------------+
+.. list-table::
+   :header-rows: 1
+   :widths: 10 15 75
+
+   * - Index
+     - Part
+     - Description
+   * - 1
+     - x.x
+     - Longitudinal water speed, knots; negative means backward.
+   * - 2
+     - x.x
+     - Transverse water speed, knots; negative means left.
+   * - 3
+     - A
+     - Water-speed status: ``A`` = valid, ``V`` = invalid.
+   * - 4
+     - x.x
+     - Longitudinal ground speed, knots; positive means forward and negative means backward. Supply longitudinal odometer speed here.
+   * - 5
+     - x.x
+     - Transverse ground speed, knots; positive means right and negative means left.
+   * - 6
+     - A
+     - Ground-speed status: ``A`` = valid, ``V`` = invalid.
+   * - 7
+     - hh
+     - Checksum.
 
 .. note::
-   Ground INS Gen 2 uses fields 1, 3, 4, and 5 from this sentence.
+   Use the ground-speed fields for ground-vehicle aiding. Do not substitute odometer speed into the water-speed fields.
 
-.. note::
-   RPM field is unsigned and a reverse throttle should be indicated by a negative number in the pitch field.
-
-Logged topic: nmea_rpm
-   
 
 2.1.2 External Position Aiding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -582,10 +553,12 @@ Provides real-time operational data and status for a specific engine, usually br
 Logged topic: nmea_engine_dyn
 
 
-2.2.3 PGN 128259: Speed, Water Referenced
+.. _pgn-128259-speed:
+
+2.2.3 PGN 128259: Speed
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Provides a single transmission describing the motion of a vehicle relative to the water.
+This PGN contains both water-referenced and ground-referenced speed. For Ground INS Gen 2 odometer aiding over NMEA 2000, supply speed in the **Speed Ground Referenced** field (field 3), in meters per second. For NMEA 0183, use :ref:`VBW: Dual Ground/Water Speed <vbw-dual-ground-water-speed>`.
 
 +---+-----------------------------+----------------------------------------------+------+----------------+
 | # | Field                       | Description                                  | Unit | Type           |
@@ -602,8 +575,7 @@ Provides a single transmission describing the motion of a vehicle relative to th
 +---+-----------------------------+----------------------------------------------+------+----------------+
 
 .. note::
-   Ground INS Gen 2 uses fields 1 through 5 from this PGN. Fields 4 and 5 are used
-   without remapping.
+   Use field 3 for ground-speed aiding; do not substitute odometer speed into the Speed Water Referenced field.
 
 Logged topic: sensor_water_speed_generic, nmea_speed
 
@@ -678,7 +650,7 @@ Accurately describes the speed of a vehicle by component vectors.
 +---+---------------------------------------+-------------------------------------------------+------+----------------+
 
 .. note::
-   Ground INS Gen 2 uses fields 1 through 6 from this PGN.
+   Ground INS Gen 2 uses fields 3 and 4 from this PGN.
 
 Logged topic: sensor_water_speed_generic, nmea_vessel_speed
 
@@ -1400,7 +1372,7 @@ Complete GNSS navigation solution including position, quality, and DOP.
 
 
 
-3.2.4 PGN 127250: Vessel Heading
+3.2.4 PGN 127250: Vehicle Heading
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Provides vessel heading and related status.

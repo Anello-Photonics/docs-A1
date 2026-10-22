@@ -2,10 +2,6 @@
 Ground INS Gen 2 Getting Started Guide
 ======================================
 
-.. note::
-
-   The Ground INS Gen 2 is based on the Maritime INS, so much of its interfacing, including message names, parameter names, and software terminology, still uses nautical language. The Ground INS Gen 2 has its own navigation algorithms optimized for ground vehicles.
-
 Thank you for choosing the ANELLO Ground INS Gen 2! This step-by-step guide will get you started with connection, configuration, and data collection.
 Please contact support@anellophotonics.com with any questions.  
 
@@ -37,7 +33,7 @@ The kit includes the following hardware:
 2. Software Interfaces
 ---------------------------------
 
-Connect with the ANELLO Maritime Control software (AMarinerControl):
+Connect with the AMarinerControl (AMC) software:
 
 1. Install ANELLO's `AMarinerControl <https://github.com/Anello-Photonics/amarinercontrol/releases/latest>`_ on your Windows (.exe), Mac (.dmg), or Linux (.AppImage) computer.
 
@@ -79,7 +75,7 @@ Connect with the ANELLO Maritime Control software (AMarinerControl):
 ----------------------------
 
 The ANELLO Ground INS Gen 2 can be configured for various installation positions as long as parameters are set as detailed in the next section.
-An external speed-aiding sensor, e.g. odometer, wheel ticks, etc, is highly recommended to maintain accuracy in GPS-denied conditions. 
+An external speed-aiding source, such as an odometer or wheel encoder, is highly recommended to maintain accuracy in GPS-denied conditions. Supply odometer-derived ground speed through :ref:`VBW <vbw-dual-ground-water-speed>` for NMEA 0183 or :ref:`PGN 128259: Speed <pgn-128259-speed>` for NMEA 2000.
 Contact support@anellophotonics.com for speed sensor recommendations. See :doc:`Sensor Recommendations <sensor_recommendations>` for GNSS antenna and M-Code receiver recommendations.
 The optional external magnetometer calibration procedure is detailed in
 :doc:`Sensor Calibrations <sensor_calibrations>`.
