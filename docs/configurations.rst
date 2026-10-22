@@ -39,11 +39,11 @@ Distances are measured in meters from the IMU center to the respective antenna p
 +---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
 | **GPS_SEP_ROVER_Z** | m     | 0       | Z offset from INS center to Rover antenna (ANT2).                                                 |
 +---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
-| **EKF2_WTSPD_POS_X**| m     | 0       | X offset from INS center to water speed sensor. *(see note)*                                      |
+| **EKF2_WTSPD_POS_X**| m     | 0       | X offset from INS center to speed sensor. *(see note)*                                            |
 +---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
-| **EKF2_WTSPD_POS_Y**| m     | 0       | Y offset from INS center to water speed sensor. *(see note)*                                      |
+| **EKF2_WTSPD_POS_Y**| m     | 0       | Y offset from INS center to speed sensor. *(see note)*                                            |
 +---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
-| **EKF2_WTSPD_POS_Z**| m     | 0       | Z offset from INS center to water speed sensor. *(see note)*                                      |
+| **EKF2_WTSPD_POS_Z**| m     | 0       | Z offset from INS center to speed sensor. *(see note)*                                            |
 +---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
 | **EKF2_IMU_POS_X**  | m     | 0       | X offset from center of vehicle to INS center.                                                    |
 +---------------------+-------+---------+---------------------------------------------------------------------------------------------------+

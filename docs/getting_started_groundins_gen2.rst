@@ -2,6 +2,10 @@
 Ground INS Gen 2 Getting Started Guide
 ======================================
 
+.. note::
+
+   The Ground INS Gen 2 is based on the Maritime INS, so much of its interfacing—including message names, parameter names, and software terminology—still uses nautical language. The Ground INS Gen 2 has its own navigation algorithms optimized for ground vehicles.
+
 Thank you for choosing the ANELLO Ground INS Gen 2! This step-by-step guide will get you started with connection, configuration, and data collection.
 Please contact support@anellophotonics.com with any questions.  
 
