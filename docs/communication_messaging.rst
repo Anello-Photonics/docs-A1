@@ -70,7 +70,7 @@ The ANELLO Ground INS Gen 2 supplies the following I/O pins for time synchroniza
 | Reset           | 3.3 V                    | Driving low restarts the Ground INS Gen 2            |
 +-----------------+--------------------------+------------------------------------------------------+
 
-See `Mechanicals <https://docs-a1.readthedocs.io/en/maritime_ins/mechanicals.html>`_ to find the specified output pins.
+See :doc:`Mechanicals <mechanicals>` to find the specified output pins.
 
 
 2. Input Messages
@@ -83,7 +83,7 @@ The ANELLO Ground INS Gen 2 supports standard NMEA 0183 input messages which all
 ANELLO also has a set of proprietary messages, following the standard NMEA proprietary format with a prefix of “$P”, company code of “AP” (ANELLO Photonics), and the message code.
 
 To configure NMEA 0183 over a serial port, update the following configs (see
-`Configure ANELLO Ground INS Gen 2 <getting_started_groundins_gen2.html#configure-anello-ground-ins-gen-2>`__
+:ref:`Configure ANELLO Ground INS Gen 2 <configure-anello-ground-ins-gen-2>`
 for instructions on changing settings):
 
 ``NM0183_CFG`` = ``1`` (RS232-1) **or** ``2`` (RS232-2)
@@ -93,7 +93,7 @@ To change the baud rate use ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` f
 For the full table of serial NMEA0183 parameters, see :ref:`nmea0183-serial-parameters`.
 
 To configure NMEA 0183 over UDP, update the following configs (see
-`Configure ANELLO Ground INS Gen 2 <getting_started_groundins_gen2.html#configure-anello-ground-ins-gen-2>`__
+:ref:`Configure ANELLO Ground INS Gen 2 <configure-anello-ground-ins-gen-2>`
 for instructions on changing settings):
 
 ``NMUDP_EN`` = ``1``
@@ -112,8 +112,12 @@ RTCM corrections are also accepted over UDP on port ``19552``.
 2.1.1 External Sensor Aiding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _vhw-water-speed-heading:
+
 2.1.1.1. VHW: Water Speed & Heading
 """"""""""""""""""""""""""""""""""""
+
+**The Ground INS GEN 2 is based on the Maritime INS, so the supported messages still use nautical vocabulary. Please pass vehicle speed, such as from wheel odometry, to the Ground INS through the VHW (water speed and heading) message** 
 
 **Message Format**::
 
@@ -146,36 +150,6 @@ RTCM corrections are also accepted over UDP on port ``19552``.
 
 Logged topics: sensor_water_speed_generic, sensor_heading, nmea_vhw
 
-
-2.1.1.2. VBW: Dual Ground/Water Speed
-"""""""""""""""""""""""""""""""""""""""
-
-**Message Format**::
-
-    $--VBW,x.x,x.x,A,x.x,x.x,A*hh
-
-+-------+------------+---------------------------------------------------------------+
-| Index | Part       | Description                                                   |
-+=======+============+===============================================================+
-| 1     | x.x        | Longitudinal water speed, “-“ means astern                    |
-+-------+------------+---------------------------------------------------------------+
-| 2     | x.x        | Transverse water speed, “-“ means port                        |
-+-------+------------+---------------------------------------------------------------+
-| 3     | A          | Status, A = Data Valid                                        |
-+-------+------------+---------------------------------------------------------------+
-| 4     | x.x        | Longitudinal ground speed, “-“ means astern                   |
-+-------+------------+---------------------------------------------------------------+
-| 5     | x.x        | Transverse ground speed, “-“ means port                       |
-+-------+------------+---------------------------------------------------------------+
-| 6     | A          | Status, A = Data Valid                                        |
-+-------+------------+---------------------------------------------------------------+
-| 7     | hh         | Checksum                                                      |
-+-------+------------+---------------------------------------------------------------+
-
-.. note::
-   Ground INS Gen 2 uses fields 1 through 6 from this sentence.
-
-Logged topic: sensor_water_speed_generic
 
 
 2.1.1.3. RPM: Revolutions
@@ -224,7 +198,7 @@ updates, ``RMC`` must report ``status = A``, latitude and longitude must be vali
 and PDOP, HDOP, and VDOP must all be present, finite, and greater than zero.
 
 See :ref:`external-position-aiding-parameters` for the parameter table used to configure external position aiding.
-See `Configure ANELLO Ground INS Gen 2 <getting_started_groundins_gen2.html#configure-anello-ground-ins-gen-2>`__
+See :ref:`Configure ANELLO Ground INS Gen 2 <configure-anello-ground-ins-gen-2>`
 for instructions on changing settings.
 
 2.1.2.1. RMC: Recommended Minimum Navigation Information
@@ -413,6 +387,8 @@ Enables or disables GPS utilization in sensor fusion algorithm.
 
 Logged topic: nmea_gps_cntrl
 
+.. _autocal-speed-sensor-auto-calibration-control-anello-proprietary:
+
 2.1.3.2. AUTOCAL: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -432,15 +408,6 @@ This message starts/stops the Ground INS Gen 2 speed sensor auto-calibration rou
 
 .. note::
    Ground INS Gen 2 uses field 1 from this sentence.
-
-Recommended data collection procedure (while x = 1)
-
-- Operate in calm waters with minimal currents/wind/wake.
-- Run out-and-back legs along the same line (reciprocal headings).
-- Collect data at ≥ 5 different steady speeds spanning the full operating speed range.
-- Each out leg and back leg should be at least 30 seconds at a steady speed.
-- Repeat each speed at least once (more repeats improves robustness), and avoid aggressive turns during the steady legs.
-- When complete, send ``$PAPAUTOCAL,0*hh`` to exit auto-calibration mode.
 
 Logged topic: nmea_autocal_waterspeed
 
@@ -479,6 +446,8 @@ This message can be used to pass in an external position, either from user input
 Logged topic: aux_global_position
 
 
+.. _paprph-roll-pitch-heading-with-accuracies-anello-proprietary:
+
 2.1.3.4. PAPRPH: Roll/Pitch/Heading (with Accuracies) (ANELLO Proprietary) 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -515,6 +484,8 @@ This message can be used to pass in an external heading, either from user input 
 
 Logged topic: nmea_rph
 
+
+.. _apmav-restore-serial-mavlink-access-anello-proprietary:
 
 2.1.3.5. APMAV: Restore Serial MAVLink Access (ANELLO Proprietary)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -733,6 +704,8 @@ CAN ID format: 0x18EF<dest><src>
 Logged topic: nmea_gps_cntrl
 
 
+.. _pgn-126720-speed-sensor-auto-calibration-control-anello-proprietary:
+
 2.2.8 PGN 126720: Speed Sensor Auto-Calibration Control (ANELLO Proprietary)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -744,14 +717,6 @@ CAN ID format: 0x19EF<dest><src>
 +=======+============================+===========================================================+======+==================+
 | 1     | Auto-calibration Control   | 0 = Off (default), 1 = On (enter auto-calibration mode)   |      | 8-bit unsigned   |
 +-------+----------------------------+-----------------------------------------------------------+------+------------------+
-
-Recommended data collection procedure (while Auto-calibration Control = 1)
-
-- Operate in calm waters with minimal currents/wind/wake.
-- Run out-and-back legs on reciprocal headings.
-- Use ≥ 5 steady speeds spanning your full speed range.
-- Hold each leg ≥ 30 seconds at steady speed.
-- Exit auto-calibration by transmitting Auto-calibration Control = 0.
 
 .. note::
    Ground INS Gen 2 uses field 1 from this PGN.
@@ -829,6 +794,8 @@ Auxiliary GPS / GNSS position information input
 
 Logged topic: aux_global_position_nmea2000
 
+.. _pgn-130817-auxiliary-attitude-anello-proprietary:
+
 2.2.11 PGN 130817: Auxiliary Attitude (ANELLO Proprietary)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -862,7 +829,7 @@ Logged topic: nmea2000_rph
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To configure NMEA 0183 over a serial port, update the following configs (see
-`Configure ANELLO Ground INS Gen 2 <getting_started_groundins_gen2.html#configure-anello-ground-ins-gen-2>`__
+:ref:`Configure ANELLO Ground INS Gen 2 <configure-anello-ground-ins-gen-2>`
 for instructions on changing settings):
 
 * ``NM0183_CFG`` = ``1`` (RS232-1) **or** ``2`` (RS232-2)
@@ -881,7 +848,7 @@ Units shipped prior to 2/19/2026 have a default baud rate of ``57600`` on both p
 To change the baud rate use ``SER_TEL1_BAUD`` for RS232-1 or ``SER_TEL2_BAUD`` for RS232-2.
 
 To configure NMEA 0183 over UDP, update the following configs (see
-`Configure ANELLO Ground INS Gen 2 <getting_started_groundins_gen2.html#configure-anello-ground-ins-gen-2>`__
+:ref:`Configure ANELLO Ground INS Gen 2 <configure-anello-ground-ins-gen-2>`
 for instructions on changing settings):
 
 * ``NMUDP_EN`` = ``1``

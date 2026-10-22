@@ -15,7 +15,7 @@ The ANELLO Ground INS Gen 2 unit is pictured below. It features a 22-pin circula
    :align: center
 
 An SCD drawing of the Ground INS Gen 2 and a schematic of the accessory kit breakout cable can be found in
-`Mechanicals <https://docs-a1.readthedocs.io/en/maritime_ins/mechanicals.html>`__.
+:doc:`Mechanicals <mechanicals>`.
 
 If you received an ANELLO Ground INS Gen 2 Loaner unit, you will also receive the Accessory Kit pictured below.
 
@@ -75,10 +75,10 @@ Connect with the ANELLO Maritime Control software (AMarinerControl):
 ----------------------------
 
 The ANELLO Ground INS Gen 2 can be configured for various installation positions as long as parameters are set as detailed in the next section.
-An external speed-aiding sensor, e.g. paddle wheel, ultrasonic sensor, Doppler velocity log (DVL), is highly recommended to maintain accuracy in GPS-denied conditions. 
-See `Sensor Recommendations <https://docs-a1.readthedocs.io/en/maritime_ins/sensor_recommendations.html#speed-sensors>`__ for speed sensor recommendations. 
-Calibration procedures for common sensors are detailed in  
-`Sensor Calibrations <https://docs-a1.readthedocs.io/en/maritime_ins/sensor_calibrations.html>`__.
+An external speed-aiding sensor, e.g. odometer, wheel ticks, etc, is highly recommended to maintain accuracy in GPS-denied conditions. 
+Contact support@anellophotonics.com for speed sensor recommendations. See :doc:`Sensor Recommendations <sensor_recommendations>` for GNSS antenna and M-Code receiver recommendations.
+The optional external magnetometer calibration procedure is detailed in
+:doc:`Sensor Calibrations <sensor_calibrations>`.
 
 It is recommended that the Ground INS Gen 2 be installed with the **X axis facing forward** and as close to the centerline as possible.
 If this is not possible, configure **SENS_BOARD_ROT** and **EKF2_IMU_POS_...** offsets accordingly.
@@ -91,6 +91,8 @@ Ensure that antennae are mounted on a ground plane of at least 10 cm x 10 cm and
    :width: 50%
    :align: center
 
+
+.. _configure-anello-ground-ins-gen-2:
 
 4. Configure ANELLO Ground INS Gen 2
 ------------------------------------
@@ -164,6 +166,8 @@ Navigate to Application Settings → NTRIP / RTK, enter the NTRIP caster details
 
 .. note:: RTK is supported starting at Ground INS Gen 2 firmware 1.4.0.
 
+.. _data-collection-visualization:
+
 6. Data Collection & Visualization
 ------------------------------------
 
@@ -203,17 +207,5 @@ Some key topics in the log files are:
 | **nmea_engine**               | NMEA engine data from NMEA2000 bus                                                                       |
 +-------------------------------+----------------------------------------------------------------------------------------------------------+
 
-6. Water Testing Procedure
--------------------------------
 
-For best GPS-denied navigation results, ANELLO recommends the following initialization procedure after each startup:
-
-1. Ensure the unit is powered off while launching the vehicle into the water.
-
-2. While the USV is stationary in water, power on the unit. A good GPS signal is required for position and heading initialization. 
-
-3. For best performance, first perform a short square mission with 30–50 m edges to give the system visibility into currents before GPS is lost.
-
-4. Perform your mission. Best performance in GPS-denied conditions is achieved with calibrated speed aiding and at speeds above 2 knots.
-
-*Ground INS Gen 2 User Manual 93001501 v1.1.2*
+*Ground INS Gen 2 User Manual 93001701 v1.1.2*

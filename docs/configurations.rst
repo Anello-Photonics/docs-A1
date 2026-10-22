@@ -45,23 +45,23 @@ Distances are measured in meters from the IMU center to the respective antenna p
 +---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
 | **EKF2_WTSPD_POS_Z**| m     | 0       | Z offset from INS center to water speed sensor. *(see note)*                                      |
 +---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_X**  | m     | 0       | X offset from center of boat to INS center.                                                       |
+| **EKF2_IMU_POS_X**  | m     | 0       | X offset from center of vehicle to INS center.                                                    |
 +---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_Y**  | m     | 0       | Y offset from center of boat to INS center.                                                       |
+| **EKF2_IMU_POS_Y**  | m     | 0       | Y offset from center of vehicle to INS center.                                                    |
 +---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
-| **EKF2_IMU_POS_Z**  | m     | 0       | Z offset from center of boat to INS center.                                                       |
+| **EKF2_IMU_POS_Z**  | m     | 0       | Z offset from center of vehicle to INS center.                                                    |
 +---------------------+-------+---------+---------------------------------------------------------------------------------------------------+
 | **SENS_BOARD_ROT**  | enum  | 0       | INS mounting orientation. Set this if unit is not mounted with X-forward.                         |
 |                     |       |         |                                                                                                   |
 |                     |       |         | *Common values:*                                                                                  |
-|                     |       |         |   - **No Rotation** (0): Unit mounted upright with X pointing towards vessel bow                  |
-|                     |       |         |   - **Yaw 90°** (2): Unit mounted upright with X pointing towards vessel starboard                |
-|                     |       |         |   - **Yaw 180°** (4): Unit mounted upright with X pointing towards vessel stern                   |
-|                     |       |         |   - **Yaw 270°** (6): Unit mounted upright with X pointing towards vessel port                    |
-|                     |       |         |   - **Roll 180°** (8): Unit mounted upside down with X pointing towards vessel bow                |
-|                     |       |         |   - **Roll 180°, Yaw 90°** (10): Unit mounted upside down with X pointing towards vessel starboard|
-|                     |       |         |   - **Pitch 180°** (12): Unit mounted upside down with X pointing towards vessel stern            |
-|                     |       |         |   - **Roll 180°, Yaw 270°** (14): Unit mounted upside down with X pointing towards vessel port    |
+|                     |       |         |   - **No Rotation** (0): Unit mounted upright with X pointing forward                             |
+|                     |       |         |   - **Yaw 90°** (2): Unit mounted upright with X pointing right                                   |
+|                     |       |         |   - **Yaw 180°** (4): Unit mounted upright with X pointing back                                   |
+|                     |       |         |   - **Yaw 270°** (6): Unit mounted upright with X pointing left                                   |
+|                     |       |         |   - **Roll 180°** (8): Unit mounted upside down with X pointing forward                           |
+|                     |       |         |   - **Roll 180°, Yaw 90°** (10): Unit mounted upside down with X pointing right                   |
+|                     |       |         |   - **Pitch 180°** (12): Unit mounted upside down with X pointing back                            |
+|                     |       |         |   - **Roll 180°, Yaw 270°** (14): Unit mounted upside down with X pointing left                   |
 |                     |       |         |                                                                                                   |
 |                     |       |         | Download: :download:`complete SENS_BOARD_ROT chart <_static/sens_board_rot.html>`.                |
 |                     |       |         |                                                                                                   |
@@ -198,7 +198,7 @@ MAVLink Parameters
 ----------------------------
 
 These are the parameters to enable or disable MAVLink for RS232-1, RS232-2, and Ethernet. AMarinerControl connects to the Ground INS Gen 2 using the MAVLink communication protocol.
-If using RS232-1 for NMEA 0183 or another purpose, we recommend disabling MAV_0_CONFIG. MAVLink can be restored on an RS232 port that's in NMEA 0183 mode by sending the  `APMAV command <https://docs-a1.readthedocs.io/en/maritime_ins/communication_messaging.html#apmav-restore-serial-mavlink-access-anello-proprietary>`__.
+If using RS232-1 for NMEA 0183 or another purpose, we recommend disabling MAV_0_CONFIG. MAVLink can be restored on an RS232 port that's in NMEA 0183 mode by sending the  :ref:`APMAV command <apmav-restore-serial-mavlink-access-anello-proprietary>`.
 
 +--------------------+----------------------+--------------------------------------------------------------------------+
 | Parameter          | Default              | Description                                                              |

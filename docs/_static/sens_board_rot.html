@@ -69,7 +69,7 @@
 </head>
 <body>
   <h1>SENS_BOARD_ROT Chart</h1>
-  <p>Mounting-orientation enum values, UI labels, and resulting device axis directions in the vessel body FRD frame.</p>
+  <p>Mounting-orientation enum values, UI labels, and resulting device axis directions in the vehicle body FRD frame.</p>
   <table>
     <thead>
       <tr>
@@ -82,32 +82,32 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td class="enum">ROTATION_NONE</td><td class="value">0</td><td>No rotation</td><td>bow</td><td>starboard</td><td>down</td></tr>
-      <tr><td class="enum">ROTATION_YAW_90</td><td class="value">2</td><td>Yaw 90&deg;</td><td>starboard</td><td>stern</td><td>down</td></tr>
-      <tr><td class="enum">ROTATION_YAW_180</td><td class="value">4</td><td>Yaw 180&deg;</td><td>stern</td><td>port</td><td>down</td></tr>
-      <tr><td class="enum">ROTATION_YAW_270</td><td class="value">6</td><td>Yaw 270&deg;</td><td>port</td><td>bow</td><td>down</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_180</td><td class="value">8</td><td>Roll 180&deg;</td><td>bow</td><td>port</td><td>up</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_180_YAW_90</td><td class="value">10</td><td>Roll 180&deg;, Yaw 90&deg;</td><td>starboard</td><td>bow</td><td>up</td></tr>
-      <tr><td class="enum">ROTATION_PITCH_180</td><td class="value">12</td><td>Pitch 180&deg;</td><td>stern</td><td>starboard</td><td>up</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_180_YAW_270</td><td class="value">14</td><td>Roll 180&deg;, Yaw 270&deg;</td><td>port</td><td>stern</td><td>up</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_90</td><td class="value">16</td><td>Roll 90&deg;</td><td>bow</td><td>down</td><td>port</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_90_YAW_90</td><td class="value">18</td><td>Roll 90&deg;, Yaw 90&deg;</td><td>starboard</td><td>down</td><td>bow</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_270</td><td class="value">20</td><td>Roll 270&deg;</td><td>bow</td><td>up</td><td>starboard</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_270_YAW_90</td><td class="value">22</td><td>Roll 270&deg;, Yaw 90&deg;</td><td>starboard</td><td>up</td><td>stern</td></tr>
-      <tr><td class="enum">ROTATION_PITCH_90</td><td class="value">24</td><td>Pitch 90&deg;</td><td>up</td><td>starboard</td><td>bow</td></tr>
-      <tr><td class="enum">ROTATION_PITCH_270</td><td class="value">25</td><td>Pitch 270&deg;</td><td>down</td><td>starboard</td><td>stern</td></tr>
-      <tr><td class="enum">ROTATION_PITCH_180_YAW_90</td><td class="value">26</td><td>Pitch 180&deg;, Yaw 90&deg;</td><td>port</td><td>stern</td><td>up</td></tr>
-      <tr><td class="enum">ROTATION_PITCH_180_YAW_270</td><td class="value">27</td><td>Pitch 180&deg;, Yaw 270&deg;</td><td>starboard</td><td>bow</td><td>up</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_90_PITCH_90</td><td class="value">28</td><td>Roll 90&deg;, Pitch 90&deg;</td><td>up</td><td>bow</td><td>port</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_180_PITCH_90</td><td class="value">29</td><td>Roll 180&deg;, Pitch 90&deg;</td><td>up</td><td>port</td><td>stern</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_270_PITCH_90</td><td class="value">30</td><td>Roll 270&deg;, Pitch 90&deg;</td><td>up</td><td>stern</td><td>starboard</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_90_PITCH_180</td><td class="value">31</td><td>Roll 90&deg;, Pitch 180&deg;</td><td>stern</td><td>up</td><td>port</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_270_PITCH_180</td><td class="value">32</td><td>Roll 270&deg;, Pitch 180&deg;</td><td>stern</td><td>down</td><td>starboard</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_90_PITCH_270</td><td class="value">33</td><td>Roll 90&deg;, Pitch 270&deg;</td><td>down</td><td>stern</td><td>port</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_180_PITCH_270</td><td class="value">34</td><td>Roll 180&deg;, Pitch 270&deg;</td><td>down</td><td>port</td><td>bow</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_270_PITCH_270</td><td class="value">35</td><td>Roll 270&deg;, Pitch 270&deg;</td><td>down</td><td>bow</td><td>starboard</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_90_PITCH_180_YAW_90</td><td class="value">36</td><td>Roll 90&deg;, Pitch 180&deg;, Yaw 90&deg;</td><td>port</td><td>up</td><td>bow</td></tr>
-      <tr><td class="enum">ROTATION_ROLL_90_YAW_270</td><td class="value">37</td><td>Roll 90&deg;, Yaw 270&deg;</td><td>port</td><td>down</td><td>stern</td></tr>
+      <tr><td class="enum">ROTATION_NONE</td><td class="value">0</td><td>No rotation</td><td>forward</td><td>right</td><td>down</td></tr>
+      <tr><td class="enum">ROTATION_YAW_90</td><td class="value">2</td><td>Yaw 90&deg;</td><td>right</td><td>back</td><td>down</td></tr>
+      <tr><td class="enum">ROTATION_YAW_180</td><td class="value">4</td><td>Yaw 180&deg;</td><td>back</td><td>left</td><td>down</td></tr>
+      <tr><td class="enum">ROTATION_YAW_270</td><td class="value">6</td><td>Yaw 270&deg;</td><td>left</td><td>forward</td><td>down</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_180</td><td class="value">8</td><td>Roll 180&deg;</td><td>forward</td><td>left</td><td>up</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_180_YAW_90</td><td class="value">10</td><td>Roll 180&deg;, Yaw 90&deg;</td><td>right</td><td>forward</td><td>up</td></tr>
+      <tr><td class="enum">ROTATION_PITCH_180</td><td class="value">12</td><td>Pitch 180&deg;</td><td>back</td><td>right</td><td>up</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_180_YAW_270</td><td class="value">14</td><td>Roll 180&deg;, Yaw 270&deg;</td><td>left</td><td>back</td><td>up</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_90</td><td class="value">16</td><td>Roll 90&deg;</td><td>forward</td><td>down</td><td>left</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_90_YAW_90</td><td class="value">18</td><td>Roll 90&deg;, Yaw 90&deg;</td><td>right</td><td>down</td><td>forward</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_270</td><td class="value">20</td><td>Roll 270&deg;</td><td>forward</td><td>up</td><td>right</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_270_YAW_90</td><td class="value">22</td><td>Roll 270&deg;, Yaw 90&deg;</td><td>right</td><td>up</td><td>back</td></tr>
+      <tr><td class="enum">ROTATION_PITCH_90</td><td class="value">24</td><td>Pitch 90&deg;</td><td>up</td><td>right</td><td>forward</td></tr>
+      <tr><td class="enum">ROTATION_PITCH_270</td><td class="value">25</td><td>Pitch 270&deg;</td><td>down</td><td>right</td><td>back</td></tr>
+      <tr><td class="enum">ROTATION_PITCH_180_YAW_90</td><td class="value">26</td><td>Pitch 180&deg;, Yaw 90&deg;</td><td>left</td><td>back</td><td>up</td></tr>
+      <tr><td class="enum">ROTATION_PITCH_180_YAW_270</td><td class="value">27</td><td>Pitch 180&deg;, Yaw 270&deg;</td><td>right</td><td>forward</td><td>up</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_90_PITCH_90</td><td class="value">28</td><td>Roll 90&deg;, Pitch 90&deg;</td><td>up</td><td>forward</td><td>left</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_180_PITCH_90</td><td class="value">29</td><td>Roll 180&deg;, Pitch 90&deg;</td><td>up</td><td>left</td><td>back</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_270_PITCH_90</td><td class="value">30</td><td>Roll 270&deg;, Pitch 90&deg;</td><td>up</td><td>back</td><td>right</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_90_PITCH_180</td><td class="value">31</td><td>Roll 90&deg;, Pitch 180&deg;</td><td>back</td><td>up</td><td>left</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_270_PITCH_180</td><td class="value">32</td><td>Roll 270&deg;, Pitch 180&deg;</td><td>back</td><td>down</td><td>right</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_90_PITCH_270</td><td class="value">33</td><td>Roll 90&deg;, Pitch 270&deg;</td><td>down</td><td>back</td><td>left</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_180_PITCH_270</td><td class="value">34</td><td>Roll 180&deg;, Pitch 270&deg;</td><td>down</td><td>left</td><td>forward</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_270_PITCH_270</td><td class="value">35</td><td>Roll 270&deg;, Pitch 270&deg;</td><td>down</td><td>forward</td><td>right</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_90_PITCH_180_YAW_90</td><td class="value">36</td><td>Roll 90&deg;, Pitch 180&deg;, Yaw 90&deg;</td><td>left</td><td>up</td><td>forward</td></tr>
+      <tr><td class="enum">ROTATION_ROLL_90_YAW_270</td><td class="value">37</td><td>Roll 90&deg;, Yaw 270&deg;</td><td>left</td><td>down</td><td>back</td></tr>
     </tbody>
   </table>
 </body>
