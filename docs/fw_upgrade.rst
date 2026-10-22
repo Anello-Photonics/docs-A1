@@ -24,7 +24,7 @@ If you experience any errors during the process, please power cycle the unit and
     :caption: Terminal
     
         # cd into folder with anello_fw_uploader.py
-        python anello_fw_uploader.py --port COM5 --baud-flightstack 57600 --baud-bootloader 115200 /Users/user1/Downloads/anello_maritime_v2_default.anello
+        python anello_fw_uploader.py --port COM5 --baud-flightstack 57600 --baud-bootloader 115200 /Users/user1/Downloads/anello_maritime_v2_default_v1.4.1-ground.anello
         # Change "COM5" to match your port that the Ground INS Gen 2 is plugged into (e.g. "COM23" on Windows or "/dev/ttyUSB0" on Linux)
         # Change "/Users/user1/Downloads/anello_maritime_default.anello" to the path to the ANELLO-provided FW image (.anello file) on your local computer
         # If the RS-232-1 baud rate was changed from its default 57600, change the 57600 in "--baud-flightstack 57600" accordingly
