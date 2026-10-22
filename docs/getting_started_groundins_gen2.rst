@@ -88,7 +88,7 @@ Below is the recommended installation configuration, with the longest possible a
 Ensure that antennae are mounted on a ground plane of at least 10 cm x 10 cm and with no obstructions to open sky view.
 
 .. image:: media/GroundINSGen2_installation.drawio.png
-   :width: 70%
+   :width: 50%
    :align: center
 
 
