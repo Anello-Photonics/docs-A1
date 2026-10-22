@@ -2,7 +2,7 @@
 Sensor Recommendations
 =========================
 
-The ANELLO Ground INS Gen 2 has been successfully integrated with a variety of speed sensors, GNSS antennas, and M-Code receivers. The following recommendations are based on tested integrations and typical maritime deployment requirements.
+The ANELLO Ground INS Gen 2 has been successfully integrated with a variety of speed sensors, GNSS antennas, and M-Code receivers. The following recommendations are based on tested integrations and typical deployment requirements.
 
 
 GNSS Antenna Recommendations
