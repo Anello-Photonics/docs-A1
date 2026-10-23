@@ -112,12 +112,51 @@ RTCM corrections are also accepted over UDP on port ``19552``.
 2.1.1 External Sensor Aiding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _vhw-water-speed-heading:
+
+2.1.1.1. VHW: Speed & Heading
+""""""""""""""""""""""""""""""""""""
+
+**Message Format**::
+
+    $--VHW,x.x,T,x.x,M,x.x,N,x.x,K*hh
+
++-------+------------+---------------------------------------------------------------+
+| Index | Part       | Description                                                   |
++=======+============+===============================================================+
+| 1     | x.x        | True Heading, Degrees                                         |
++-------+------------+---------------------------------------------------------------+
+| 2     | T          | T = True                                                      |
++-------+------------+---------------------------------------------------------------+
+| 3     | x.x        | Magnetic Heading, Degrees                                     |
++-------+------------+---------------------------------------------------------------+
+| 4     | M          | M = Magnetic                                                  |
++-------+------------+---------------------------------------------------------------+
+| 5     | x.x        | Knots (speed of vehicle)                                      |
++-------+------------+---------------------------------------------------------------+
+| 6     | N          | N = Knots                                                     |
++-------+------------+---------------------------------------------------------------+
+| 7     | x.x        | Kilometers per hour (speed of vehicle)                        |
++-------+------------+---------------------------------------------------------------+
+| 8     | K          | K = Kilometres per hour                                       |
++-------+------------+---------------------------------------------------------------+
+| 9     | hh         | Checksum                                                      |
++-------+------------+---------------------------------------------------------------+
+
+.. note::
+   Ground INS Gen 2 uses fields 1, 3, 5, and 7 from this sentence.
+
+Logged topics: sensor_water_speed_generic, sensor_heading, nmea_vhw
+
+Use :ref:`VBW <vbw-dual-ground-water-speed>` for odometer-derived ground-speed input.
+
+
 .. _vbw-dual-ground-water-speed:
 
-2.1.1.1. VBW: Dual Ground/Water Speed
+2.1.1.2. VBW: Dual Ground/Water Speed
 """"""""""""""""""""""""""""""""""""""""
 
-Use VBW to supply odometer-derived ground speed to the Ground INS Gen 2 over NMEA 0183. Convert odometer or wheel-tick measurements to speed before constructing the message. Put ground-speed measurements in fields 4 and 5, with their validity in field 6. For NMEA 2000, use :ref:`PGN 128259: Speed <pgn-128259-speed>`.
+Use VBW to supply odometer-derived ground speed to the Ground INS Gen 2 over NMEA 0183. Convert odometer or wheel-tick measurements to speed before constructing the message. Put ground-speed measurements in fields 4 and 5, with their validity in field 6. 
 
 **Message Format**::
 
