@@ -19,7 +19,7 @@ An SCD drawing of the Ground INS Gen 2 and a schematic of the accessory kit brea
 
 If you received an ANELLO Ground INS Gen 2 Loaner unit, you will also receive the Accessory Kit pictured below.
 
-.. image:: media/MaritimeINS_eval_kit.jpg
+.. image:: media/GroundINS_gen2_eval_kit.jpg
    :width: 35%
    :align: center
 
