@@ -136,7 +136,7 @@ Parameters can be changed using either AMarinerControl or ANELLO Python scripts.
 4.2 Configuring Using AMarinerControl
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Parameters can be changed using AMarinerControl: Click the **A (top right) > Parameters**
+Parameters can be changed using AMarinerControl: Click the **A (top left) > Parameters**
 
 .. image:: media/AMC_parameters.png
    :width: 70%
