@@ -248,6 +248,16 @@ Full Parameter list for NMEA0183 messaging over serial
 +--------------------+---------+--------------------------------------------------------------------------+
 | SER_TEL2_BAUD      | 921600  | Baud rate for RS232-2 when used for NMEA0183 output.                     |
 +--------------------+---------+--------------------------------------------------------------------------+
+| NM_GNSS_CFG        | 0       | Enables a secondary input-only serial port for external NMEA0183         |
+|                    |         | GNSS input. Set to ``1`` for RS232-1 or ``2`` for RS232-2.               |
++--------------------+---------+--------------------------------------------------------------------------+
+| NM_GNSS_ODR_GGA    | 1       | Output data rate for GGA messages over NM_GNSS serial (Hz)               |
++--------------------+---------+--------------------------------------------------------------------------+
+| RTCM_CFG           | 0       | Enables a secondary input-only serial port for raw RTCM corrections      |
+|                    |         | for RTK. Set to ``1`` for RS232-1 or ``2`` for RS232-2.                  |
++--------------------+---------+--------------------------------------------------------------------------+
+| RTCM_GGA_ODR       | 1       | Output data rate for GGA messages over serial (Hz)                       |
++--------------------+---------+--------------------------------------------------------------------------+
 
 .. _nmea0183-over-udp-parameters:
 
@@ -319,10 +329,6 @@ Parameters used if receiving an external NMEA0183 GNSS input
      - N/A
      - 0
      - Enables external NMEA0183 GNSS input.
-   * - NM_GNSS_CFG
-     - N/A
-     - 0
-     - Enables a secondary input-only serial port for external NMEA0183 GNSS input. Set to ``1`` for RS232-1 or ``2`` for RS232-2.
    * - NM0183_GPS_EXT
      - N/A
      - 1

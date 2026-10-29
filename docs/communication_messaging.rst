@@ -26,17 +26,35 @@ The maximum supported baud rate for both serial ports is 921600
 
 1.2 Port Definitions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-+-----------------+-------------------------------------------------------------------+-----------------------------------------------+------------------------------------------------------+
-| Interface       | Supported Protocols                                               | Default Configuration                         | Functions                                            |
-+=================+===================================================================+===============================================+======================================================+
-| RS232-1         | Serial, MAVLink, NMEA 0183                                        | MAVLink at 57600                              | Data input / output, configuration, firmware updates |
-+-----------------+-------------------------------------------------------------------+-----------------------------------------------+------------------------------------------------------+
-| RS232-2         | Serial, MAVLink, NMEA 0183                                        | NMEA 0183 at 921600                           | Data input / output, configuration                   |
-+-----------------+-------------------------------------------------------------------+-----------------------------------------------+------------------------------------------------------+
-| Ethernet        | UDP, MAVLink, NMEA 0183                                           | MAVLink (UDP 14550)                           | Data input / output, configuration, log downloads    |
-+-----------------+-------------------------------------------------------------------+-----------------------------------------------+------------------------------------------------------+
-| CAN             | NMEA 2000                                                         | NMEA 2000                                     | Data input / output                                  |
-+-----------------+-------------------------------------------------------------------+-----------------------------------------------+------------------------------------------------------+
+.. list-table::
+   :header-rows: 1
+   :widths: 12 24 40 24
+
+   * - Interface
+     - Supported Protocols
+     - Default Configuration
+     - Functions
+   * - RS232-1
+     - Serial, MAVLink, NMEA 0183
+     - MAVLink at 57600 baud
+     - Data input / output, RTK corrections, configuration, firmware updates
+   * - RS232-2
+     - Serial, MAVLink, NMEA 0183
+     - NMEA 0183 at 921600 baud
+     - Data input / output, RTK corrections, configuration
+   * - Ethernet
+     - MAVLink, NMEA 0183, RTCM over UDP
+     - | **MAVLink:** UDP ``14550`` (default)
+       | **NMEA 0183:** input port ``19551``; output destination port ``19550``
+       | **RTCM corrections:** UDP input port ``19552``
+       | See :ref:`NMEA 0183 over UDP parameters <nmea0183-over-udp-parameters>`
+     - Data input / output, configuration, log downloads, RTK corrections
+   * - CAN
+     - NMEA 2000
+     - NMEA 2000
+     - Data input / output
+
+Input and output directions are relative to the ANELLO Maritime INS.
 
 1.3 Time Synchronization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -82,10 +100,13 @@ for instructions on changing settings):
 
 UDP input uses port ``19551`` and UDP output uses port ``19550``.
 External UDP output only occurs when ``NMUDP_MC_IP0`` through ``NMUDP_MC_IP3``
-define a valid multicast group. Setting ``NMUDP_EN`` to ``1`` alone does not
+define a valid multicast group or ``NMUDP_UC_IP0`` through ``NMUDP_UC_IP3`` define a valid unicast IP. Setting ``NMUDP_EN`` to ``1`` alone does not
 produce external UDP output.
 
 See :ref:`nmea0183-over-udp-parameters` for the full parameter table.
+
+An RTCM data stream can be sent to any NMEA 0183 port to provide RTK corrections.
+RTCM corrections are also accepted over UDP on port ``19552``.
 
 
 2.1.1 External Sensor Aiding
